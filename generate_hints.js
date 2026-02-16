@@ -18,7 +18,6 @@ function getPrimaryPieceFromSan(san) {
   if (first === 'R') return 'rook';
   if (first === 'B') return 'bishop';
   if (first === 'N') return 'knight';
-
   return 'pawn';
 }
 
@@ -42,106 +41,124 @@ function analyzeSequence(moveSequence) {
   };
 }
 
-function vulnerabilityHint(analysis) {
-  if (analysis.firstMoveHasPromotion || analysis.hasPromotion) {
-    return 'A pawn breakthrough is available and the opponent cannot safely stop promotion.';
-  }
+function inferTactic(pageName, analysis) {
+  const key = (pageName || '').toLowerCase();
 
-  if (analysis.hasMate) {
-    return 'The opponent king has very limited safety, so a mating net is already within reach.';
-  }
+  if (key.includes('pin')) return 'pin';
+  if (key.includes('fork')) return 'fork';
+  if (key.includes('skewer')) return 'skewer';
+  if (key.includes('discovered-attack')) return 'discovered attack';
+  if (key.includes('double-check')) return 'double check';
+  if (key.includes('back-rank')) return 'back-rank mate';
+  if (key.includes('smothered')) return 'smothered mate';
+  if (key.includes('anastasia')) return 'Anastasia mate';
+  if (key.includes('arabian')) return 'Arabian mate';
+  if (key.includes('boden')) return 'Boden mate';
+  if (key.includes('double-bishop')) return 'double bishop mate';
+  if (key.includes('dovetail')) return 'dovetail mate';
+  if (key.includes('hook')) return 'hook mate';
+  if (key.includes('promotion')) return 'promotion tactic';
+  if (key.includes('sacrifice')) return 'sacrifice';
+  if (key.includes('trapped-piece')) return 'trapped piece tactic';
+  if (key.includes('mate')) return 'mating net';
 
-  if (analysis.firstMoveHasCheck || analysis.hasCheck) {
-    return 'The opponent king is exposed, giving you immediate forcing chances.';
-  }
+  if (analysis.hasPromotion) return 'promotion tactic';
+  if (analysis.hasMate) return 'mating net';
+  if (analysis.firstMoveHasCheck || analysis.hasCheck) return 'forcing check sequence';
+  if (analysis.firstMoveHasCapture || analysis.hasCapture) return 'removal of defender';
+  if (analysis.moveCount >= 3) return 'combination';
 
-  if (analysis.firstMoveHasCapture || analysis.hasCapture) {
-    return 'A key defender is loose, so one tactical exchange can collapse the position.';
-  }
-
-  if (analysis.hasCastle) {
-    return 'King safety and coordination are unbalanced, creating a tactical opening immediately.';
-  }
-
-  if (analysis.moveCount > 1) {
-    return 'The position is tactically unstable, and one forcing start can trigger a winning sequence.';
-  }
-
-  return 'One important defender is overloaded, so the position is ready to break.';
+  return 'tactical idea';
 }
 
-function abstractExploitHint(analysis) {
-  if (analysis.firstMoveHasPromotion || analysis.hasPromotion) {
-    return 'Exploit this by using forcing tempo so promotion cannot be prevented.';
+function vulnerabilityHint(tactic, analysis) {
+  if (tactic === 'pin') {
+    return 'A pinned defender is creating a vulnerability you can punish immediately.';
   }
-
-  if (analysis.hasMate) {
-    return 'Exploit this by chaining forcing threats until every king escape is removed.';
+  if (tactic === 'fork') {
+    return 'Multiple targets are loose, so a fork opportunity is available now.';
   }
-
-  if (analysis.firstMoveHasCheck || analysis.hasCheck) {
-    return 'Exploit this by prioritizing forcing tempo over quiet improvement.';
+  if (tactic === 'skewer') {
+    return 'A high-value target is exposed behind a weaker shield in one line.';
   }
+  if (tactic === 'discovered attack') {
+    return 'A blocked line is hiding pressure that can be revealed with tempo.';
+  }
+  if (tactic === 'double check') {
+    return 'King safety is fragile, and a double check idea is available.';
+  }
+  if (tactic.includes('mate') || analysis.hasMate) {
+    return `King safety is broken, and a ${tactic} pattern is ready.`;
+  }
+  if (tactic === 'promotion tactic' || analysis.hasPromotion) {
+    return 'A passed pawn is close to promoting and cannot be contained safely.';
+  }
+  if (tactic === 'removal of defender' || analysis.hasCapture) {
+    return 'A key defender is overloaded, so one exchange will collapse resistance.';
+  }
+  return `The position is unstable, and a ${tactic} opportunity is present.`;
+}
 
+function exploitHint(tactic, analysis) {
+  if (tactic === 'pin') {
+    return 'Exploit the pin by increasing pressure until the defender can no longer hold.';
+  }
+  if (tactic === 'fork') {
+    return 'Exploit the fork idea by choosing the jump that attacks two critical targets.';
+  }
+  if (tactic === 'skewer') {
+    return 'Exploit the skewer by forcing the front target to move first.';
+  }
+  if (tactic === 'discovered attack') {
+    return 'Exploit the discovered attack by opening the hidden line with tempo.';
+  }
+  if (tactic === 'double check') {
+    return 'Exploit the double check by removing all king escape routes in sequence.';
+  }
+  if (tactic.includes('mate') || analysis.hasMate) {
+    return 'Exploit this by using forcing tempo so every reply worsens king safety.';
+  }
+  if (tactic === 'promotion tactic' || analysis.hasPromotion) {
+    return 'Exploit this by forcing the defense to react while promotion threat grows.';
+  }
   if (analysis.firstMoveHasCapture || analysis.hasCapture) {
     return 'Exploit this by removing the main defender before finishing the tactic.';
   }
-
-  return 'Exploit this by starting with the move that gives the opponent the fewest useful replies.';
+  return `Exploit the ${tactic} by playing forcing moves before the defense can regroup.`;
 }
 
-function pieceSpecificHint(analysis) {
-  const piece = analysis.primaryPiece;
-
+function pieceSpecificHint(piece, tactic, analysis) {
   if (piece === 'pawn') {
-    if (analysis.firstMoveHasPromotion || analysis.hasPromotion) {
-      return 'Use your pawn now to force promotion before counterplay appears.';
+    if (analysis.hasPromotion || tactic === 'promotion tactic') {
+      return `Now use your pawn to drive the ${tactic} to completion.`;
     }
-    return 'Use your pawn now to start the tactic and keep the initiative.';
+    return `Now use your pawn to start the ${tactic} with tempo.`;
   }
 
-  if (piece === 'queen') {
-    if (analysis.firstMoveHasCheck || analysis.hasCheck || analysis.hasMate) {
-      return 'Use your queen now to launch the forcing attack on the king.';
-    }
-    return 'Use your queen now to strike the loose defender and open the combination.';
-  }
-
-  if (piece === 'rook') {
-    return 'Use your rook now to create the forcing line that wins next.';
-  }
-
-  if (piece === 'bishop') {
-    return 'Use your bishop now to open the decisive diagonal tactic.';
-  }
-
-  if (piece === 'knight') {
-    return 'Use your knight now to trigger the tactical sequence with tempo.';
-  }
-
-  if (piece === 'king') {
-    return 'Use your king now to make the precise move that secures the tactic.';
-  }
-
-  return 'Use your active piece now to begin the winning sequence.';
+  return `Now use your ${piece} to execute the ${tactic}.`;
 }
 
-function obviousHint(analysis) {
-  const piece = analysis.primaryPiece;
-  return `Start with your ${piece} now; that first move is the puzzle solution.`;
+function obviousHint(piece, tactic) {
+  return `Start with your ${piece}; that move makes the ${tactic} obvious.`;
 }
 
-function generateHints(moveSequence) {
+function cleanHint(hint) {
+  return hint.replace(/\s+/g, ' ').trim();
+}
+
+function generateHints(pageName, moveSequence) {
   const analysis = analyzeSequence(moveSequence);
+  const tactic = inferTactic(pageName, analysis);
+  const piece = analysis.primaryPiece;
 
   const hints = [
-    vulnerabilityHint(analysis),
-    abstractExploitHint(analysis),
-    pieceSpecificHint(analysis),
-    obviousHint(analysis)
-  ];
+    vulnerabilityHint(tactic, analysis),
+    exploitHint(tactic, analysis),
+    pieceSpecificHint(piece, tactic, analysis),
+    obviousHint(piece, tactic)
+  ].map(cleanHint);
 
-  return hints.map((hint) => hint.replace(/\s+/g, ' ').trim());
+  return hints;
 }
 
 (async () => {
@@ -162,7 +179,7 @@ function generateHints(moveSequence) {
 
     for (const lichessUrl of Object.keys(pageData)) {
       const answer = pageData[lichessUrl];
-      const hints = generateHints(answer);
+      const hints = generateHints(pageName, answer);
 
       pageWithHints[lichessUrl] = {
         answer,
