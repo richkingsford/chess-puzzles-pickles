@@ -118,6 +118,7 @@ const PuzzleView = ({
   });
   const [moveStatus, setMoveStatus] = useState(null);
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   // Answer sequence
   const answerMoves = React.useMemo(() => {
@@ -125,9 +126,14 @@ const PuzzleView = ({
     return puzzle.answer.split(', ');
   }, [puzzle]);
 
-  const playerColor = React.useMemo(() => {
-    return game.turn() === 'w' ? 'white' : 'black';
-  }, [game]);
+  useEffect(() => {
+    if (!isPuzzleSolvedState) return;
+
+    setShowConfetti(true);
+    const timer = setTimeout(() => setShowConfetti(false), 1500);
+
+    return () => clearTimeout(timer);
+  }, [isPuzzleSolvedState]);
 
   const onDrop = (sourceSquare, targetSquare) => {
     if (isPuzzleSolvedState || isFailed) return false;
@@ -143,13 +149,13 @@ const PuzzleView = ({
 
       if (move === null) return false;
 
-      // Update the game state with the valid move
-      setGame(gameCopy);
-
       // Check if correct
       const expectedMoveSan = answerMoves[currentMoveIndex];
 
       if (move.san === expectedMoveSan) {
+        // Only commit move if it matches expected solution line
+        setGame(gameCopy);
+
         // Correct move - show instant feedback
         setMoveStatus('correct');
 
@@ -176,17 +182,8 @@ const PuzzleView = ({
         // Incorrect
         setMoveStatus('incorrect');
         setTimeout(() => {
-          // FAIL-FAST RESET: Start the puzzle over
-          const resetGame = new Chess();
-          if (initialFen) {
-            try {
-              resetGame.load(initialFen);
-            } catch (e) { }
-          }
-          setGame(resetGame);
-          setCurrentMoveIndex(0);
           setMoveStatus(null);
-        }, 1000);
+        }, 900);
       }
       return true;
     } catch (e) {
@@ -245,12 +242,28 @@ const PuzzleView = ({
         <div className="w-full aspect-square max-w-[400px] shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700 relative bg-[#302e2c]">
           <ChessgroundBoard
             fen={game.fen()}
-            orientation={playerColor}
+            orientation={orientation}
             onMove={onDrop}
             width="100%"
             height="100%"
             customArrows={customArrows}
           />
+
+          {showConfetti && (
+            <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+              {Array.from({ length: 24 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="confetti-piece"
+                  style={{
+                    left: `${(i * 17) % 100}%`,
+                    animationDelay: `${(i % 8) * 0.06}s`,
+                    backgroundColor: ['#22c55e', '#eab308', '#0ea5e9', '#f97316'][i % 4]
+                  }}
+                />
+              ))}
+            </div>
+          )}
 
           {/* No board overlays for cleaner UI */}
         </div>

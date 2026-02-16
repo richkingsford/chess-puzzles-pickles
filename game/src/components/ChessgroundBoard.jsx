@@ -45,8 +45,8 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
                 fen: fen,
                 orientation: orientation,
                 movable: {
-                    free: true, // Allow free movement to avoid blocking drag
-                    color: 'both', // Allow moving pieces of either color (logic handled in App)
+                    free: false,
+                    color: sideToMove,
                     dests: legalDests,
                     showDests: true,
                     events: {
@@ -82,6 +82,7 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
                 fen: fen,
                 orientation: orientation,
                 movable: {
+                    color: sideToMove,
                     dests: legalDests
                 },
                 drawable: {
@@ -92,11 +93,8 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
                     })) : []
                 }
             });
-
-            // Critical: Force bounds recalculation to fix click offset
-            api.current.set({});
         }
-    }, [fen, orientation, customArrows, legalDests]);
+    }, [fen, orientation, customArrows, legalDests, sideToMove]);
 
     // Secondary effect to ensure bounds are correct on mount, resize, and interaction
     useEffect(() => {
@@ -112,17 +110,11 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
         const observer = new ResizeObserver(handleSync);
         observer.observe(ref.current);
 
-        const el = ref.current;
-        el.addEventListener('mousedown', handleSync);
-        el.addEventListener('touchstart', handleSync, { passive: true });
-
         const t = setTimeout(handleSync, 200);
 
         return () => {
             window.removeEventListener('resize', handleSync);
             observer.disconnect();
-            el.removeEventListener('mousedown', handleSync);
-            el.removeEventListener('touchstart', handleSync);
             clearTimeout(t);
         };
     }, []);
