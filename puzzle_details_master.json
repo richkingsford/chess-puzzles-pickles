@@ -1,0 +1,46 @@
+{
+    "mate-in-one": {
+        "https://lichess.org/api/puzzle/fen=r1bqkb1r/pppp1ppp/2n2n2/4p2Q/2B1P3/8/PPPP1PPP/RNB1K1NR%20w%20KQkq%20-%204%203": {
+            "hints": [
+                "White's Queen is eyeing the f7 square.",
+                "The move involves the Queen and the Bishop on c4.",
+                "Can you find a move that delivers checkmate in one?",
+                "Move your Queen to f7."
+            ],
+            "answer": "Qxf7#",
+            "solution": "1. Qxf7#"
+        },
+        "https://lichess.org/api/puzzle/fen=rnbqkbnr/pppp1ppp/8/4p3/5PP1/8/PPPPP2P/RNBQKBNR%20b%20KQkq%20-%200%202": {
+            "hints": [
+                "Black can deliver checkmate in one move.",
+                "Which piece can attack the White King directly?",
+                "Can you move the Queen to a square where it checks the King?",
+                "Move your Queen to h4."
+            ],
+            "answer": "Qh4#",
+            "solution": "1... Qh4#"
+        },
+        "https://lichess.org/api/puzzle/fen=r1bqk2r/pppp1ppp/2n5/2b1p3/2B1P1n1/2NP1N2/PPP2PPP/R1BQK2R%20w%20KQkq%20-%203%205": {
+            "hints": [
+                "White needs to defend against the threat on f2.",
+                "Wait, this is mate in one for someone?",
+                "Check how many pieces attack f2.",
+                "Actually, let's find a move that checks the black king if it's white's turn."
+            ],
+            "answer": "Bxf7+",
+            "solution": "1. Bxf7+"
+        }
+    },
+    "middle-game": {
+        "https://lichess.org/api/puzzle/fen=r4rk1/pb3ppp/1p2p3/2b1n3/2P1N1n1/1P4P1/PB2NPBP/R4RK1%20b%20-%20-%202%2018": {
+            "hints": [
+                "Black has a strong tactical move here.",
+                "Look at the position of the White King and the Bishop on b2.",
+                "Is there a way to exploit the pin or the King's alignment?",
+                "Consider moves starting with your Knight on e5 or g4."
+            ],
+            "answer": "Nf3+",
+            "solution": "1... Nf3+ 2. Bxf3 Nxf2"
+        }
+    }
+}

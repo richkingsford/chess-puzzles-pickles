@@ -1,0 +1,11 @@
+{
+  "name": "playwright-open-title",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node open_title.js"
+  },
+  "dependencies": {
+    "playwright": "^1.58.1"
+  }
+}
