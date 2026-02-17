@@ -87,6 +87,214 @@ const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts }) => {
   );
 };
 
+const normalizeWord = (word) => word.toLowerCase().replace(/[^a-z-]/g, '');
+const normalizeTagTerm = (text) => String(text || '')
+  .toLowerCase()
+  .replace(/[^a-z\s-]/g, ' ')
+  .replace(/[-\s]+/g, ' ')
+  .trim();
+
+const dictionaryTypeClass = (type) => {
+  const key = String(type || '').toLowerCase();
+
+  if (key.includes('tactic') || key.includes('mate-pattern')) {
+    return 'text-sky-300 hover:text-sky-200';
+  }
+  if (key.includes('strategy') || key.includes('opening-principle')) {
+    return 'text-emerald-300 hover:text-emerald-200';
+  }
+  if (key.includes('endgame') || key.includes('method')) {
+    return 'text-purple-300 hover:text-purple-200';
+  }
+  if (key.includes('fundamental') || key.includes('board-concept') || key.includes('vocabulary')) {
+    return 'text-amber-300 hover:text-amber-200';
+  }
+
+  return 'text-sky-300 hover:text-sky-200';
+};
+
+const dictionaryTypeBadgeClass = (type) => {
+  const key = String(type || '').toLowerCase();
+
+  if (key.includes('tactic') || key.includes('mate-pattern')) {
+    return 'bg-sky-500/20 text-sky-300 border-sky-500/30';
+  }
+  if (key.includes('strategy') || key.includes('opening-principle')) {
+    return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
+  }
+  if (key.includes('endgame') || key.includes('method')) {
+    return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
+  }
+  if (key.includes('fundamental') || key.includes('board-concept') || key.includes('vocabulary')) {
+    return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
+  }
+
+  return 'bg-sky-500/20 text-sky-300 border-sky-500/30';
+};
+
+const buildDictionaryLookup = (dictionaryEntries) => {
+  const phraseMap = new Map();
+  const tagMap = new Map();
+  let maxWords = 1;
+
+  (dictionaryEntries || []).forEach((entry) => {
+    const terms = [entry.name, ...(entry.aliases || [])];
+
+    terms.forEach((term) => {
+      const normalizedWords = String(term || '')
+        .split(/\s+/)
+        .map(normalizeWord)
+        .filter(Boolean);
+
+      if (!normalizedWords.length) {
+        return;
+      }
+
+      const phraseKey = normalizedWords.join(' ');
+      const tagKey = normalizeTagTerm(term);
+
+      if (!phraseMap.has(phraseKey)) {
+        phraseMap.set(phraseKey, entry);
+      }
+
+      if (tagKey && !tagMap.has(tagKey)) {
+        tagMap.set(tagKey, entry);
+      }
+
+      maxWords = Math.max(maxWords, normalizedWords.length);
+
+      normalizedWords.forEach((part) => {
+        if (part.length >= 4 && !phraseMap.has(part)) {
+          phraseMap.set(part, entry);
+        }
+      });
+    });
+  });
+
+  return { phraseMap, tagMap, maxWords };
+};
+
+const extractHintWords = (hint) => {
+  const words = [];
+  const regex = /[A-Za-z-']+/g;
+  let match;
+
+  while ((match = regex.exec(hint)) !== null) {
+    words.push({
+      raw: match[0],
+      normalized: normalizeWord(match[0]),
+      start: match.index,
+      end: match.index + match[0].length
+    });
+  }
+
+  return words;
+};
+
+const findDictionaryMatches = (hint, dictionaryLookup) => {
+  const words = extractHintWords(hint);
+  const matches = [];
+  const { phraseMap, maxWords } = dictionaryLookup;
+
+  for (let wordIndex = 0; wordIndex < words.length; wordIndex += 1) {
+    let found = null;
+
+    for (let phraseLen = Math.min(maxWords, words.length - wordIndex); phraseLen >= 1; phraseLen -= 1) {
+      const chunk = words.slice(wordIndex, wordIndex + phraseLen);
+      const key = chunk.map((word) => word.normalized).join(' ');
+      const entry = phraseMap.get(key);
+
+      if (entry) {
+        found = {
+          entry,
+          start: chunk[0].start,
+          end: chunk[chunk.length - 1].end,
+          wordCount: phraseLen
+        };
+        break;
+      }
+    }
+
+    if (found) {
+      matches.push(found);
+      wordIndex += found.wordCount - 1;
+    }
+  }
+
+  return matches;
+};
+
+const findDictionaryEntryForTag = (tag, dictionaryLookup) => {
+  const normalizedTag = normalizeTagTerm(tag);
+
+  if (!normalizedTag) {
+    return null;
+  }
+
+  const exactMatch = dictionaryLookup.tagMap.get(normalizedTag);
+  if (exactMatch) {
+    return exactMatch;
+  }
+
+  const singularized = normalizedTag.replace(/\bpatterns\b/g, 'pattern').replace(/\bthemes\b/g, 'theme').trim();
+  if (singularized && singularized !== normalizedTag) {
+    const singularMatch = dictionaryLookup.tagMap.get(singularized);
+    if (singularMatch) {
+      return singularMatch;
+    }
+  }
+
+  return null;
+};
+
+const HintWithDictionary = ({ hint, dictionaryLookup, onWordTap }) => {
+  const text = String(hint || '');
+  const matches = findDictionaryMatches(text, dictionaryLookup);
+
+  if (!matches.length) {
+    return <>{text}</>;
+  }
+
+  const rendered = [];
+  let cursor = 0;
+
+  matches.forEach((match, index) => {
+    if (match.start > cursor) {
+      rendered.push(
+        <React.Fragment key={`plain-${index}`}>
+          {text.slice(cursor, match.start)}
+        </React.Fragment>
+      );
+    }
+
+    rendered.push(
+      <button
+        key={`dict-${index}`}
+        type="button"
+        onClick={() => onWordTap(match.entry)}
+        className={`underline decoration-dotted underline-offset-2 ${dictionaryTypeClass(match.entry.type)}`}
+        title={`Tap to learn: ${match.entry.name}`}
+      >
+        {text.slice(match.start, match.end)}
+      </button>
+    );
+
+    cursor = match.end;
+  });
+
+  if (cursor < text.length) {
+    rendered.push(
+      <React.Fragment key="plain-tail">
+        {text.slice(cursor)}
+      </React.Fragment>
+    );
+  }
+
+  return (
+    <>{rendered}</>
+  );
+};
+
 const PuzzleView = ({
   puzzle,
   initialFen,
@@ -102,6 +310,7 @@ const PuzzleView = ({
   logFeedback,
   lastFeedbackType,
   downloadLogs,
+  dictionaryEntries,
   index,
   total
 }) => {
@@ -118,6 +327,14 @@ const PuzzleView = ({
   });
   const [moveStatus, setMoveStatus] = useState(null);
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
+  const [activeDictionaryEntry, setActiveDictionaryEntry] = useState(null);
+  const [autoAdvanceCountdown, setAutoAdvanceCountdown] = useState(null);
+  const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
+
+  const dictionaryLookup = React.useMemo(
+    () => buildDictionaryLookup(dictionaryEntries),
+    [dictionaryEntries]
+  );
 
   // Answer sequence
   const answerMoves = React.useMemo(() => {
@@ -125,12 +342,8 @@ const PuzzleView = ({
     return puzzle.answer.split(', ');
   }, [puzzle]);
 
-  const playerColor = React.useMemo(() => {
-    return game.turn() === 'w' ? 'white' : 'black';
-  }, [game]);
-
   const onDrop = (sourceSquare, targetSquare) => {
-    if (isPuzzleSolvedState || isFailed) return false;
+    if (isPuzzleSolvedState || isFailed || moveStatus || autoAdvanceCountdown !== null || pendingOpponentMove) return false;
 
     // Tentative move - Use a clone to avoid state mutation
     try {
@@ -150,33 +363,35 @@ const PuzzleView = ({
       const expectedMoveSan = answerMoves[currentMoveIndex];
 
       if (move.san === expectedMoveSan) {
-        // Correct move - show instant feedback
         setMoveStatus('correct');
 
         if (currentMoveIndex === answerMoves.length - 1) {
-          // Final move
+          setPendingOpponentMove(null);
           onSolved();
+          if (index < total - 1) {
+            setAutoAdvanceCountdown(3);
+          }
         } else {
-          // Opponent moves automatically after a delay
           const nextIndex = currentMoveIndex + 1;
-          setCurrentMoveIndex(nextIndex);
+          const opponentReplySan = answerMoves[nextIndex];
+          setPendingOpponentMove(opponentReplySan || null);
 
           setTimeout(() => {
-            // Clear correct status before opponent moves
             setMoveStatus(null);
 
             const gameWithOpponent = new Chess(gameCopy.fen());
-            const nextMoveSan = answerMoves[nextIndex];
-            gameWithOpponent.move(nextMoveSan);
+            if (opponentReplySan) {
+              gameWithOpponent.move(opponentReplySan);
+            }
             setGame(gameWithOpponent);
             setCurrentMoveIndex(nextIndex + 1);
-          }, 600);
+            setPendingOpponentMove(null);
+          }, 1000);
         }
       } else {
-        // Incorrect
         setMoveStatus('incorrect');
+        setPendingOpponentMove(null);
         setTimeout(() => {
-          // FAIL-FAST RESET: Start the puzzle over
           const resetGame = new Chess();
           if (initialFen) {
             try {
@@ -194,6 +409,106 @@ const PuzzleView = ({
       return false;
     }
   };
+
+  useEffect(() => {
+    if (autoAdvanceCountdown === null) {
+      return;
+    }
+
+    if (autoAdvanceCountdown <= 0) {
+      setAutoAdvanceCountdown(null);
+      if (index < total - 1) {
+        onNext();
+      }
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setAutoAdvanceCountdown((value) => (value === null ? null : value - 1));
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [autoAdvanceCountdown, index, total, onNext]);
+
+  useEffect(() => {
+    const canPlaySanByDrop = (san) => {
+      if (!san) return false;
+      try {
+        const sanProbe = new Chess(game.fen());
+        const parsed = sanProbe.move(san);
+        if (!parsed) return false;
+
+        const dropProbe = new Chess(game.fen());
+        return Boolean(dropProbe.move({
+          from: parsed.from,
+          to: parsed.to,
+          promotion: 'q'
+        }));
+      } catch (e) {
+        return false;
+      }
+    };
+
+    window.__smokePuzzle = {
+      getState: () => ({
+        fen: game.fen(),
+        moveStatus,
+        currentMoveIndex,
+        isSolved: isPuzzleSolvedState,
+        isFailed,
+        autoAdvanceCountdown,
+        pendingOpponentMove,
+        expectedSan: answerMoves[currentMoveIndex] || null,
+        answerLength: answerMoves.length,
+        index,
+        total
+      }),
+      playExpectedMove: () => {
+        const expectedSan = answerMoves[currentMoveIndex];
+        if (!expectedSan) return false;
+        try {
+          const simulation = new Chess(game.fen());
+          const expected = simulation.move(expectedSan);
+          if (!expected) return false;
+          return onDrop(expected.from, expected.to);
+        } catch (e) {
+          return false;
+        }
+      },
+      canPlayExpected: () => {
+        const expectedSan = answerMoves[currentMoveIndex];
+        return canPlaySanByDrop(expectedSan);
+      },
+      canPlayIncorrect: () => {
+        try {
+          const simulation = new Chess(game.fen());
+          const expectedSan = answerMoves[currentMoveIndex] || '';
+          const legalMoves = simulation.moves({ verbose: true });
+          return legalMoves.some((move) => move.san !== expectedSan && canPlaySanByDrop(move.san));
+        } catch (e) {
+          return false;
+        }
+      },
+      playIncorrectMove: () => {
+        try {
+          const simulation = new Chess(game.fen());
+          const expectedSan = answerMoves[currentMoveIndex] || '';
+          const legalMoves = simulation.moves({ verbose: true });
+          const wrongMove = legalMoves.find((move) => move.san !== expectedSan && canPlaySanByDrop(move.san));
+          if (!wrongMove) return false;
+          return onDrop(wrongMove.from, wrongMove.to);
+        } catch (e) {
+          return false;
+        }
+      }
+    };
+
+    return () => {
+      if (window.__smokePuzzle) {
+        delete window.__smokePuzzle;
+      }
+    };
+  }, [game, moveStatus, currentMoveIndex, isPuzzleSolvedState, isFailed, autoAdvanceCountdown, pendingOpponentMove, answerMoves, index, total]);
 
   // Determine arrows to draw
   const customArrows = React.useMemo(() => {
@@ -217,22 +532,24 @@ const PuzzleView = ({
     <div className="flex flex-col h-screen max-w-md mx-auto bg-slate-900">
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-slate-800 shadow-md">
-        <button onClick={onBack} className="p-2 hover:bg-slate-700 rounded-full">
+        <button data-testid="back-button" onClick={onBack} className="p-2 hover:bg-slate-700 rounded-full">
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <div className="font-mono text-slate-300">
+        <div data-testid="puzzle-index" className="font-mono text-slate-300">
           {index + 1} / {total}
         </div>
         <div className="flex items-center gap-1">
           <button onClick={downloadLogs} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white" title="Download Feedback Logs">
             <Download className="w-5 h-5" />
           </button>
-          <button onClick={() => {
+          <button data-testid="reset-button" onClick={() => {
             const newGame = new Chess();
             if (initialFen) try { newGame.load(initialFen); } catch (e) { }
             setGame(newGame);
             setMoveStatus(null);
             setCurrentMoveIndex(0);
+            setAutoAdvanceCountdown(null);
+            setPendingOpponentMove(null);
           }} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white" title="Reset Puzzle">
             <RotateCcw className="w-5 h-5" />
           </button>
@@ -245,7 +562,7 @@ const PuzzleView = ({
         <div className="w-full aspect-square max-w-[400px] shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700 relative bg-[#302e2c]">
           <ChessgroundBoard
             fen={game.fen()}
-            orientation={playerColor}
+            orientation={orientation}
             onMove={onDrop}
             width="100%"
             height="100%"
@@ -254,19 +571,64 @@ const PuzzleView = ({
 
           {/* No board overlays for cleaner UI */}
         </div>
+
+        {Array.isArray(puzzle.tags) && puzzle.tags.length > 0 && (
+          <div data-testid="tags-panel" className="w-full max-w-[400px] rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-2">
+            <div className="text-[11px] uppercase tracking-wider text-slate-400 mb-2">Tags</div>
+            <div className="flex flex-wrap gap-2">
+              {puzzle.tags.map((tag) => (
+                <button
+                  key={tag}
+                  data-testid="tag-chip"
+                  type="button"
+                  onClick={() => {
+                    const entry = findDictionaryEntryForTag(tag, dictionaryLookup);
+                    if (entry) {
+                      setActiveDictionaryEntry(entry);
+                      return;
+                    }
+
+                    setActiveDictionaryEntry({
+                      name: String(tag).replace(/-/g, ' '),
+                      type: 'tag',
+                      definition: 'This puzzle tag is recognized, but a dictionary definition is not available yet.',
+                      aliases: []
+                    });
+                  }}
+                  className="px-2 py-0.5 rounded-full border border-slate-600 bg-slate-700/60 text-[11px] text-slate-200 hover:bg-slate-700 transition-colors"
+                  title={`Tap to learn: ${String(tag).replace(/-/g, ' ')}`}
+                >
+                  {String(tag).replace(/-/g, ' ')}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Controls & Hints */}
       <div className="p-4 bg-slate-800 space-y-4 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
 
         <div className="flex justify-between items-center">
-          <button onClick={onPrev} disabled={index === 0} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
+          <button data-testid="prev-button" onClick={onPrev} disabled={index === 0} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
             <ChevronLeft />
           </button>
 
           <div className="text-center min-w-[120px]">
             {moveStatus === 'correct' ? (
-              <div className="text-green-500 font-black text-xl animate-bounce">CORRECT!</div>
+              <div>
+                <div className="text-green-500 font-black text-xl animate-bounce">CORRECT!</div>
+                {!!pendingOpponentMove && (
+                  <div data-testid="opponent-reply-note" className="mt-1 text-xs font-semibold text-slate-300">
+                    Opponent reply coming...
+                  </div>
+                )}
+                {autoAdvanceCountdown !== null && (
+                  <div data-testid="next-countdown" className="mt-1 text-xs font-semibold text-emerald-300 animate-pulse">
+                    Next in {autoAdvanceCountdown}...
+                  </div>
+                )}
+              </div>
             ) : moveStatus === 'incorrect' ? (
               <div className="text-red-500 font-black text-xl animate-pulse">TRY AGAIN</div>
             ) : isPuzzleSolvedState ? (
@@ -284,18 +646,30 @@ const PuzzleView = ({
             )}
           </div>
 
-          <button onClick={onNext} disabled={index === total - 1} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
+          <button data-testid="next-button" onClick={onNext} disabled={index === total - 1} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
             <ChevronRight />
           </button>
         </div>
 
         {/* Hints */}
         <div className="space-y-2">
+          <div className="rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-[11px] text-slate-300">
+            <span className="font-semibold text-slate-200 mr-2">Color key:</span>
+            <span className="mr-2 text-sky-300">● Tactic</span>
+            <span className="mr-2 text-emerald-300">● Strategy</span>
+            <span className="mr-2 text-purple-300">● Endgame/Method</span>
+            <span className="text-amber-300">● Basic word</span>
+          </div>
+
           {puzzle.hints.slice(0, hintsRevealed).map((hint, i) => (
             <div key={i} className="flex flex-col gap-2">
               <div className="p-3 bg-slate-700/50 rounded-lg text-sm text-slate-200 border-l-4 border-yellow-500">
                 <span className="font-bold text-yellow-500 mr-2">Hint {i + 1}:</span>
-                {hint}
+                <HintWithDictionary
+                  hint={hint}
+                  dictionaryLookup={dictionaryLookup}
+                  onWordTap={setActiveDictionaryEntry}
+                />
               </div>
               <div className="flex justify-start gap-2 px-1 relative">
                 <button
@@ -346,6 +720,38 @@ const PuzzleView = ({
 
 
       </div>
+
+      {activeDictionaryEntry && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55" onClick={() => setActiveDictionaryEntry(null)}>
+          <div
+            className="w-full max-w-sm rounded-xl border border-slate-600 bg-slate-800 p-4 text-left shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-2">
+              <div>
+                <h3 className="text-lg font-bold text-yellow-400">{activeDictionaryEntry.name}</h3>
+                <p className={`inline-block mt-2 px-2 py-0.5 text-xs uppercase tracking-wider border rounded ${dictionaryTypeBadgeClass(activeDictionaryEntry.type)}`}>
+                  {activeDictionaryEntry.type}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveDictionaryEntry(null)}
+                className="text-slate-400 hover:text-slate-200"
+                aria-label="Close dictionary"
+              >
+                ✕
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-slate-200 leading-relaxed">{activeDictionaryEntry.definition}</p>
+            {!!activeDictionaryEntry.aliases?.length && (
+              <p className="mt-3 text-xs text-slate-400">
+                Also called: {activeDictionaryEntry.aliases.join(', ')}
+              </p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -373,6 +779,18 @@ export default function App() {
     resetAllProgress,
     downloadLogs
   } = usePuzzleGame();
+
+  const [dictionaryData, setDictionaryData] = useState({ entries: [] });
+
+  useEffect(() => {
+    fetch('/dictionary.json')
+      .then((response) => response.json())
+      .then((data) => setDictionaryData(data))
+      .catch((error) => {
+        console.error('Failed to load dictionary', error);
+        setDictionaryData({ entries: [] });
+      });
+  }, []);
 
   // Expose for the internal components to access if needed (hacky but works for the settings menu)
   window.resetProgress = resetAllProgress;
@@ -416,8 +834,19 @@ export default function App() {
       solvedCounts[cat] = solvedInCategory.length;
     });
 
+    const sortedCategories = Object.keys(puzzlesData).sort((left, right) => {
+      const leftComplete = (solvedCounts[left] || 0) >= (totalCounts[left] || 0) && (totalCounts[left] || 0) > 0;
+      const rightComplete = (solvedCounts[right] || 0) >= (totalCounts[right] || 0) && (totalCounts[right] || 0) > 0;
+
+      if (leftComplete === rightComplete) {
+        return 0;
+      }
+
+      return leftComplete ? 1 : -1;
+    });
+
     return <CategoryList
-      categories={Object.keys(puzzlesData)}
+      categories={sortedCategories}
       onSelect={selectCategory}
       solvedCounts={solvedCounts}
       totalCounts={totalCounts}
@@ -444,6 +873,7 @@ export default function App() {
         logFeedback={logFeedback}
         lastFeedbackType={lastFeedbackType}
         downloadLogs={downloadLogs}
+        dictionaryEntries={dictionaryData.entries || []}
       />
     </ErrorBoundary>
   );

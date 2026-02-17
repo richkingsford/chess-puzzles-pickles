@@ -1,0 +1,439 @@
+{
+  "updatedAt": "2026-02-17T02:59:29.061Z",
+  "inProgress": false,
+  "passed": 15,
+  "failed": 0,
+  "total": 15,
+  "results": [
+    {
+      "name": "Home screen loads",
+      "pass": true,
+      "checks": [
+        {
+          "label": "heading visible",
+          "pass": true
+        },
+        {
+          "label": "NEG no stuck loading",
+          "pass": true
+        },
+        {
+          "label": "NEG no error banner",
+          "pass": true
+        },
+        {
+          "label": "NEG dictionary modal hidden",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Category list is available",
+      "pass": true,
+      "checks": [
+        {
+          "label": "category count > 0",
+          "pass": true
+        },
+        {
+          "label": "category button has progress counts",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        },
+        {
+          "label": "NEG no puzzle board before selection",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Open first category puzzle",
+      "pass": true,
+      "checks": [
+        {
+          "label": "puzzle index visible",
+          "pass": true
+        },
+        {
+          "label": "board state text visible",
+          "pass": true
+        },
+        {
+          "label": "tags panel visible",
+          "pass": true
+        },
+        {
+          "label": "NEG no category heading on puzzle screen",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Tags section is shown",
+      "pass": true,
+      "checks": [
+        {
+          "label": "tag chips exist",
+          "pass": true
+        },
+        {
+          "label": "tags label visible",
+          "pass": true
+        },
+        {
+          "label": "NEG no dictionary modal yet",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Reveal first hint works",
+      "pass": true,
+      "checks": [
+        {
+          "label": "hint 1 rendered",
+          "pass": true
+        },
+        {
+          "label": "reveal button still visible",
+          "pass": true
+        },
+        {
+          "label": "NEG no dictionary modal auto-open",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Hint dictionary popup opens",
+      "pass": true,
+      "checks": [
+        {
+          "label": "scan attempt 1 found terms",
+          "pass": true
+        },
+        {
+          "label": "term tap executed",
+          "pass": true
+        },
+        {
+          "label": "dictionary modal opened",
+          "pass": true
+        },
+        {
+          "label": "NEG modal closes successfully",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Tag dictionary popup opens",
+      "pass": true,
+      "checks": [
+        {
+          "label": "tag scan attempt 1 chips > 0",
+          "pass": true
+        },
+        {
+          "label": "tag opens dictionary modal",
+          "pass": true
+        },
+        {
+          "label": "NEG modal closes successfully",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Mate-pattern tag does not overmatch",
+      "pass": true,
+      "checks": [
+        {
+          "label": "dictionary modal opened for mate patterns",
+          "pass": true
+        },
+        {
+          "label": "NEG not mapped to Smothered Mate",
+          "pass": true
+        },
+        {
+          "label": "fallback tag title shown",
+          "pass": false
+        },
+        {
+          "label": "found at least one mate patterns tag",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Incorrect move resets gracefully",
+      "pass": true,
+      "checks": [
+        {
+          "label": "found puzzle with wrong-move branch",
+          "pass": true
+        },
+        {
+          "label": "smoke API state available",
+          "pass": true
+        },
+        {
+          "label": "initial status idle",
+          "pass": true
+        },
+        {
+          "label": "wrong move injected",
+          "pass": true
+        },
+        {
+          "label": "INCORRECT status appears",
+          "pass": true
+        },
+        {
+          "label": "board resets to original fen",
+          "pass": true
+        },
+        {
+          "label": "NEG no solved flag",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Board locks during feedback",
+      "pass": true,
+      "checks": [
+        {
+          "label": "found puzzle with wrong-move branch",
+          "pass": true
+        },
+        {
+          "label": "seed incorrect feedback",
+          "pass": true
+        },
+        {
+          "label": "feedback state active",
+          "pass": true
+        },
+        {
+          "label": "moves blocked during feedback",
+          "pass": true
+        },
+        {
+          "label": "fen unchanged while feedback active",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        },
+        {
+          "label": "NEG no dictionary modal pop",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Correct flow keeps board stable",
+      "pass": true,
+      "checks": [
+        {
+          "label": "found puzzle with expected move",
+          "pass": true
+        },
+        {
+          "label": "smoke API state available",
+          "pass": true
+        },
+        {
+          "label": "expected move injected",
+          "pass": true
+        },
+        {
+          "label": "CORRECT status appears",
+          "pass": true
+        },
+        {
+          "label": "moves blocked while CORRECT shown",
+          "pass": true
+        },
+        {
+          "label": "puzzle state progresses after feedback",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        },
+        {
+          "label": "NEG no dictionary modal pop",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Solved puzzle countdown auto-advances",
+      "pass": true,
+      "checks": [
+        {
+          "label": "found puzzle with expected move",
+          "pass": true
+        },
+        {
+          "label": "index readable before solve",
+          "pass": true
+        },
+        {
+          "label": "has next puzzle available",
+          "pass": true
+        },
+        {
+          "label": "solve step 1 move accepted",
+          "pass": true
+        },
+        {
+          "label": "solve step 1 state progressed",
+          "pass": true
+        },
+        {
+          "label": "puzzle solved",
+          "pass": true
+        },
+        {
+          "label": "countdown visible",
+          "pass": true
+        },
+        {
+          "label": "moves blocked during countdown",
+          "pass": true
+        },
+        {
+          "label": "auto-advanced to next puzzle",
+          "pass": true
+        },
+        {
+          "label": "NEG no countdown after navigation",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Next puzzle navigation works",
+      "pass": true,
+      "checks": [
+        {
+          "label": "index readable",
+          "pass": true
+        },
+        {
+          "label": "has more than one puzzle",
+          "pass": true
+        },
+        {
+          "label": "index still readable after next",
+          "pass": true
+        },
+        {
+          "label": "next increased index",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        },
+        {
+          "label": "NEG no dictionary modal open",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Previous puzzle navigation works",
+      "pass": true,
+      "checks": [
+        {
+          "label": "index readable",
+          "pass": true
+        },
+        {
+          "label": "positioned beyond first puzzle",
+          "pass": true
+        },
+        {
+          "label": "index readable after previous",
+          "pass": true
+        },
+        {
+          "label": "previous decreased index",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        },
+        {
+          "label": "NEG no dictionary modal open",
+          "pass": true
+        }
+      ]
+    },
+    {
+      "name": "Back to categories works",
+      "pass": true,
+      "checks": [
+        {
+          "label": "category heading visible",
+          "pass": true
+        },
+        {
+          "label": "NEG puzzle index hidden",
+          "pass": true
+        },
+        {
+          "label": "NEG dictionary modal hidden",
+          "pass": true
+        },
+        {
+          "label": "NEG no app crash banner",
+          "pass": true
+        }
+      ]
+    }
+  ]
+}

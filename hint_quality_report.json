@@ -1,0 +1,67 @@
+{
+  "inputFile": "C:\\dev\\Chess with playwright\\puzzles_with_hints.json",
+  "dictionaryFile": "C:\\dev\\Chess with playwright\\dictionary.json",
+  "evaluatedAt": "2026-02-17T01:56:36.102Z",
+  "puzzleCount": 702,
+  "hintCount": 2808,
+  "grades": {
+    "uniqueness": {
+      "score": 74.67,
+      "grade": "C",
+      "details": {
+        "totalHints": 2808,
+        "literalUniquePercent": 15.56,
+        "maxTemplatePercent": 2.56,
+        "uniqueTemplateCount": 310
+      }
+    },
+    "specificity": {
+      "score": 83.07,
+      "grade": "B",
+      "details": {
+        "evaluatedPuzzles": 702,
+        "method": "tactic mention + clue words + answer-signal alignment - generic phrasing"
+      }
+    },
+    "readability": {
+      "score": 79,
+      "grade": "C+",
+      "details": {
+        "averageFleschReadingEase": 77.05,
+        "averageWordsPerHint": 10,
+        "targetAudience": "Approx. 8-year-old reading level"
+      }
+    },
+    "coverage": {
+      "score": 84.19,
+      "grade": "B",
+      "details": {
+        "covered": 82,
+        "total": 93,
+        "percent": 88.17,
+        "tagCoverage": {
+          "covered": 79,
+          "percent": 84.95
+        },
+        "hintCoverage": {
+          "covered": 51,
+          "percent": 54.84
+        },
+        "weightedScore": 84.19,
+        "missing": [
+          "Greek Gift Sacrifice",
+          "Ladder Mate",
+          "Legal's Mate",
+          "Fool's Mate",
+          "Scholar's Mate",
+          "Pawn Break",
+          "Isolated Pawn",
+          "Doubled Pawns",
+          "Backward Pawn",
+          "Opposite-Side Castling",
+          "Opposite-Colored Bishops"
+        ]
+      }
+    }
+  }
+}

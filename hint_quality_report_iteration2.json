@@ -1,0 +1,47 @@
+{
+  "inputFile": "C:\\dev\\Chess with playwright\\puzzles_with_hints.json",
+  "evaluatedAt": "2026-02-17T00:25:15.406Z",
+  "puzzleCount": 702,
+  "hintCount": 2808,
+  "grades": {
+    "uniqueness": {
+      "score": 74.63,
+      "grade": "C",
+      "details": {
+        "totalHints": 2808,
+        "literalUniquePercent": 15.42,
+        "maxTemplatePercent": 3.85,
+        "uniqueTemplateCount": 234
+      }
+    },
+    "specificity": {
+      "score": 84.28,
+      "grade": "B",
+      "details": {
+        "evaluatedPuzzles": 702,
+        "method": "tactic mention + clue words + answer-signal alignment - generic phrasing"
+      }
+    },
+    "readability": {
+      "score": 69,
+      "grade": "D",
+      "details": {
+        "averageFleschReadingEase": 71.47,
+        "averageWordsPerHint": 11.42,
+        "targetAudience": "Approx. 8-year-old reading level"
+      }
+    },
+    "coverage": {
+      "score": 98,
+      "grade": "A+",
+      "details": {
+        "covered": 49,
+        "total": 50,
+        "percent": 98,
+        "missing": [
+          "coordination"
+        ]
+      }
+    }
+  }
+}
