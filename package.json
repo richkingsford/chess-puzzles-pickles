@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node open_title.js"
+    "start": "node open_title.js",
+    "build:app": "npm --prefix game run build",
+    "deploy:prod": "npm run build:app && netlify deploy --prod --dir game/dist",
+    "deploy:prod:ci": "node deploy_prod.js"
   },
   "dependencies": {
     "playwright": "^1.58.1"
+  },
+  "devDependencies": {
+    "netlify-cli": "^23.15.1"
   }
 }
