@@ -1,0 +1,1430 @@
+{
+  "under-promotion/all": {
+    "https://lichess.org/analysis/3R3r/p1P1kp1b/4pnpp/7P/6P1/8/P1p2P2/3R2K1%20w%20-%20-%200%2032": {
+      "answer": "c8=N#",
+      "tags": ["under-promotion", "checkmate", "passed-pawn", "knight-promotion", "mate-in-one"],
+      "hints": [
+        "The opponent's king is restricted by your heavy pieces, and your advanced passed pawn is ready to promote.",
+        "Promoting to a standard heavy piece allows the opponent to block or escape, but promoting to a jumping piece delivers a sudden, unblockable blow.",
+        "Push your advanced pawn to promote.",
+        "Push your c-pawn to c8 and underpromote to a knight (c8=N#) for a beautiful checkmate!"
+      ]
+    },
+    "https://lichess.org/analysis/3k3r/1pR1R3/p2p4/8/PPPpP1P1/4r2p/8/6K1%20b%20-%20-%200%2033": {
+      "answer": "h2+, Kf2, h1=N+",
+      "tags": ["under-promotion", "passed-pawn", "knight-promotion", "check", "endgame"],
+      "hints": [
+        "Your passed pawn is racing down the board, but the opponent's king is stepping up to stop it.",
+        "Deliver a check with the pawn to draw the king closer, then promote to a jumping piece with check to force the king away safely.",
+        "Push your advanced pawn to deliver check.",
+        "Push your h-pawn to h2 for check (h2+). When the white king moves to f2, promote the pawn to a knight with check (h1=N+)!"
+      ]
+    },
+    "https://lichess.org/analysis/R7/2P1kp2/4p2p/4K1p1/2r5/8/2P4P/8%20w%20-%20-%201%2041": {
+      "answer": "c8=N+, Rxc8, Rxc8",
+      "tags": ["under-promotion", "passed-pawn", "knight-promotion", "deflection", "simplification"],
+      "hints": [
+        "Your passed pawn is on the verge of promotion, but the opponent's heavy piece is ready to capture whatever it turns into.",
+        "Promote to a piece that delivers an immediate check. This forces the opponent to capture it immediately, deflecting their piece so you can cleanly recapture.",
+        "Push your advanced pawn to promote with check.",
+        "Push your c-pawn to c8 and promote to a knight with check (c8=N+)! Black must capture with the rook (Rxc8), allowing you to cleanly recapture (Rxc8)."
+      ]
+    },
+    "https://lichess.org/analysis/5r2/4n3/Q2P2k1/4p1b1/2P1P1P1/5P1q/3RK3/8%20w%20-%20-%200%2043": {
+      "answer": "dxe7+, Kh7, exf8=N+",
+      "tags": ["under-promotion", "discovered-attack", "knight-promotion", "fork", "forcing-sequence"],
+      "hints": [
+        "Your pawn is poised to capture a piece, which would uncover a check on the enemy king.",
+        "After the initial capturing check forces the king away, capture a second piece and promote to a minor piece with check to secure the material gain.",
+        "Use your advanced pawn to capture and deliver the discovered check.",
+        "Capture the knight with dxe7+. When the black king steps to h7, capture the rook and promote to a knight with check (exf8=N+)!"
+      ]
+    },
+    "https://lichess.org/analysis/3k4/1P3ppp/2KP4/q1P5/8/5P2/6PP/8%20w%20-%20-%201%2042": {
+      "answer": "b8=R#",
+      "tags": ["under-promotion", "stalemate-avoidance", "checkmate", "rook-promotion", "passed-pawn"],
+      "hints": [
+        "The opponent's king is completely trapped on the back rank, and your passed pawn is ready to promote.",
+        "Promoting to a queen would accidentally cover the only escape squares in a way that causes stalemate, so you must choose a linear piece that leaves no legal moves but still gives check.",
+        "Push your advanced pawn to promote.",
+        "Push your b-pawn to b8 and promote to a rook (b8=R#) to deliver a spectacular checkmate without causing a stalemate!"
+      ]
+    },
+    "https://lichess.org/analysis/6k1/2R3p1/1p5p/5b2/BP2pB2/P7/2rp1PPP/6K1%20b%20-%20-%201%2037": {
+      "answer": "d1=R#",
+      "tags": ["under-promotion", "checkmate", "rook-promotion", "passed-pawn", "back-rank-mate"],
+      "hints": [
+        "The opponent's king is stuck on the back rank, blocked by its own pawns, and your passed pawn is one step away from crowning.",
+        "A queen promotion would accidentally control a square that allows the king to escape. Choose a linear piece to deliver checkmate directly.",
+        "Push your advanced pawn to promote.",
+        "Push your d-pawn to d1 and promote to a rook (d1=R#) for a clean checkmate!"
+      ]
+    },
+    "https://lichess.org/analysis/r1q2rk1/1ppb1ppp/p2b4/8/PPN1Pp2/2P4P/1B2QPBK/R4R2%20b%20-%20-%201%2020": {
+      "answer": "f3+, Nxd6, fxe2, Nxc8, exf1=N+",
+      "tags": ["under-promotion", "discovered-attack", "knight-promotion", "forcing-sequence", "tactics"],
+      "hints": [
+        "Your advanced pawn can step forward to deliver a discovered check while attacking a valuable target.",
+        "Push the pawn to deliver a discovered check, setting off a wild chain of captures that ends with a surprising underpromotion to secure an advantage.",
+        "Push your f-pawn forward to deliver a discovered check.",
+        "Push f3+! White plays Nxd6, and you capture the queen with fxe2. After White recaptures your queen with Nxc8, capture the rook and promote to a knight with check (exf1=N+)!"
+      ]
+    },
+    "https://lichess.org/analysis/7r/3RP3/1p3k2/1p4pr/2n5/2P2Pp1/P5P1/4R1K1%20w%20-%20-%200%2037": {
+      "answer": "e8=N+, Rxe8, Rxe8",
+      "tags": ["under-promotion", "knight-promotion", "deflection", "trade", "passed-pawn"],
+      "hints": [
+        "Your advanced pawn is ready to promote, but a standard queen promotion allows the opponent's rook to safely capture it.",
+        "Promote to a minor piece that gives an immediate check. This forces a trade that wins a full rook.",
+        "Push your passed pawn to promote.",
+        "Push your e-pawn to e8 and promote to a knight with check (e8=N+)! Black is forced to capture (Rxe8), allowing you to cleanly recapture with your rook (Rxe8)."
+      ]
+    },
+    "https://lichess.org/analysis/r1b2b1r/1p1pP1kp/p5pn/4p1N1/2B5/8/PP3PPP/4R1K1%20w%20-%20-%200%2022": {
+      "answer": "e8=N#",
+      "tags": ["under-promotion", "checkmate", "knight-promotion", "passed-pawn", "mate-in-one"],
+      "hints": [
+        "The enemy king is restricted by your minor pieces, and your passed pawn is ready to strike.",
+        "A standard promotion allows the king an escape square, but promoting to a jumping piece delivers an unblockable checkmate.",
+        "Push your advanced pawn to promote.",
+        "Push your e-pawn to e8 and promote to a knight (e8=N#) for an immediate checkmate!"
+      ]
+    }
+  },
+  "castling/all": {
+    "https://lichess.org/analysis/r3k1nr/ppp5/5b1p/4Qbp1/2B2p2/8/PPP3PP/R1B2R1K%20b%20kq%20-%200%2016": {
+      "answer": "Bxe5, Re1, O-O-O",
+      "tags": ["castling", "removal-of-defender", "simplification", "king-safety", "capture"],
+      "hints": [
+        "The opponent has positioned their heaviest piece aggressively, but it is somewhat exposed and relies on a tactical trick to stay safe.",
+        "Capture the aggressive piece. Even if the opponent tries to pin your recapturing piece to your uncastled king, you have a perfect defensive resource that breaks the pin and develops.",
+        "Use your dark-squared bishop to capture the aggressive piece.",
+        "Capture the queen with your bishop (Bxe5). When white pins it with Re1, simply castle queenside (O-O-O) to break the pin and secure your king!"
+      ]
+    },
+    "https://lichess.org/analysis/r3k2N/ppp3Qp/1bn1b1pB/3qp3/8/3P4/PP3PPP/R4RK1%20b%20q%20-%202%2015": {
+      "answer": "O-O-O",
+      "tags": ["castling", "king-safety", "development", "attack", "discovered-attack"],
+      "hints": [
+        "The opponent has invaded deeply with their pieces, creating threats on the kingside while your own king is stuck in the center.",
+        "A single, multi-purpose move can bring your king to safety, connect your heavy pieces, and immediately trap one of the opponent's invading pieces.",
+        "Use your king and rook together to execute this special move.",
+        "Castle queenside (O-O-O)! This gets your king safe and immediately traps the white knight on h8."
+      ]
+    },
+    "https://lichess.org/analysis/r1bk3r/pp3ppp/2p5/4B3/1b2n3/2N5/PPP2PPP/R3KB1R%20w%20KQ%20-%200%2011": {
+      "answer": "O-O-O+",
+      "tags": ["castling", "check", "development", "king-safety", "tactics"],
+      "hints": [
+        "The opponent's king has lost the right to castle and is awkwardly placed on an open central file.",
+        "Use a special king move to simultaneously secure your own king's safety and develop a heavy piece with a devastating check.",
+        "Use your king and rook to execute the special developing check.",
+        "Castle queenside (O-O-O+)! This develops the rook with check, bringing your king to safety while seizing the initiative."
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1b2/pp1n2pr/2p2nNp/4Pp1B/4p3/1QNkB3/PP3PPP/R3K2R%20w%20KQ%20-%202%2018": {
+      "answer": "O-O-O#",
+      "tags": ["castling", "checkmate", "development", "mating-net", "mate-in-one"],
+      "hints": [
+        "The opponent's king has foolishly marched into the center of the board and is completely surrounded by your active pieces.",
+        "A special developing move can bring your king to safety while simultaneously bringing a heavy piece to the open file to deliver an unstoppable checkmate.",
+        "Use your king and rook to execute this special final blow.",
+        "Castle queenside (O-O-O#) for a spectacular and stylish checkmate!"
+      ]
+    },
+    "https://lichess.org/analysis/4k2r/pp2qp2/5Bbp/2p3p1/2Pp2P1/3P1Q1P/PP3PB1/4R1K1%20b%20k%20-%200%2022": {
+      "answer": "Qxe1+, Kh2, O-O",
+      "tags": ["castling", "check", "capture", "king-safety", "counter-attack"],
+      "hints": [
+        "Your heaviest piece is pinned to your king, creating a seemingly desperate situation.",
+        "Instead of trying to save the pinned piece directly, sacrifice it with check. Once the opponent responds, you can use a special move to get your king out of danger and secure your position.",
+        "Use your queen to capture the piece pinning it, delivering check.",
+        "Capture the white rook with check (Qxe1+). After the white king moves to h2, safely castle kingside (O-O) to escape the pin and save the game."
+      ]
+    },
+    "https://lichess.org/analysis/rn2kb1r/pb1p1ppp/1ppP1q2/8/4N3/5n2/PP2BPPP/R1BQK2R%20w%20KQkq%20-%200%2013": {
+      "answer": "Bxf3, Qe5, O-O",
+      "tags": ["castling", "capture", "king-safety", "development", "simplification"],
+      "hints": [
+        "The opponent has an aggressive minor piece deep in your territory, but it is currently undefended.",
+        "Capture the invading piece. If the opponent responds with a pin to try and win the piece back, use a special move to break the pin and secure your king.",
+        "Use your bishop to capture the invading piece.",
+        "Capture the knight on f3 with your bishop (Bxf3). When black tries to pin the bishop with Qe5, safely castle kingside (O-O) to break the pin and keep your advantage."
+      ]
+    },
+    "https://lichess.org/analysis/r1b1Q3/pp4pk/4p2p/3p4/8/2P4P/Pq3rP1/R3KB1R%20w%20KQ%20-%203%2022": {
+      "answer": "Bd3+, Rf5, Bxf5+, exf5, O-O",
+      "tags": ["castling", "check", "capture", "king-safety", "defense"],
+      "hints": [
+        "The opponent has a heavy piece aggressively placed on your second rank, threatening your position.",
+        "Use a forcing check to draw a block from the opponent, then capture the blocking piece. Finally, use a special move to secure your king and complete development.",
+        "Use your light-squared bishop to deliver the first check.",
+        "Check the black king with Bd3+. Black must block with Rf5. Capture the rook with check (Bxf5+). After black recaptures (exf5), safely castle kingside (O-O)."
+      ]
+    },
+    "https://lichess.org/analysis/5r2/p6p/3kpnp1/8/8/P6B/1r2PP1P/R3K1R1%20w%20Q%20-%200%2024": {
+      "answer": "O-O-O+, Ke7, Kxb2",
+      "tags": ["castling", "check", "fork", "tactics", "king-safety"],
+      "hints": [
+        "The opponent has an undefended heavy piece deep in your territory, and their king is somewhat exposed.",
+        "A special developing move can simultaneously bring your king to safety and fork the enemy king and the undefended heavy piece.",
+        "Use your king and rook to execute the special checking move.",
+        "Castle queenside (O-O-O+)! This delivers check to the black king and attacks the undefended rook on b2. When the king moves, capture the rook (Kxb2)."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk2r/pp3p2/2p4p/6p1/1b2n3/2N3B1/PP3PPP/R2QKB1R%20w%20KQkq%20-%200%2012": {
+      "answer": "Qxd8+, Kxd8, O-O-O+",
+      "tags": ["castling", "trade", "check", "king-safety", "development"],
+      "hints": [
+        "The opponent's king is uncastled, and there is tension in the center involving the heaviest pieces.",
+        "Force a trade of the heaviest pieces to draw the enemy king into the center, then use a special move to develop a piece with check and secure your own king.",
+        "Use your queen to initiate the trade.",
+        "Capture the black queen (Qxd8+). After the black king recaptures (Kxd8), castle queenside (O-O-O+) to deliver check, develop the rook, and tuck your king away!"
+      ]
+    }
+  },
+  "short/all": {
+    "https://lichess.org/analysis/4k2r/p4ppp/2pbp3/q6b/2P5/5N1P/P1PrQPP1/R4RK1%20w%20k%20-%200%2016": {
+      "answer": "Qxd2, Qxd2, Nxd2",
+      "tags": ["short", "removal-of-defender", "capture", "trade", "simplification"],
+      "hints": [
+        "The opponent has an active heavy piece deep in your territory, but it is defended by only one piece.",
+        "Initiate a trade by capturing the invading piece. After the opponent recaptures, you can safely take the defending piece.",
+        "Use your queen to capture the invading heavy piece.",
+        "Capture the black rook on d2 with your queen (Qxd2). When the black queen recaptures (Qxd2), simply take the queen with your knight (Nxd2)!"
+      ]
+    },
+    "https://lichess.org/analysis/r2qrk2/1bpp1p1p/p1p3pN/2b1P3/6Q1/2N1P3/PPP3PP/R4RK1%20b%20-%20-%200%2015": {
+      "answer": "Bxe3+, Kh1, Bxh6",
+      "tags": ["short", "forcing-check-sequence", "capture", "fork", "discovered-attack"],
+      "hints": [
+        "The opponent's king has a slightly exposed diagonal, and an advanced enemy minor piece is causing trouble.",
+        "A forcing capture with check wins a central pawn and simultaneously attacks the troublesome advanced minor piece.",
+        "Use your dark-squared bishop to deliver the forcing capture with check.",
+        "Capture the e3 pawn with your bishop for check (Bxe3+). After the white king moves to h1, safely capture the knight on h6 with your bishop (Bxh6)."
+      ]
+    },
+    "https://lichess.org/analysis/2r1k2r/2p2ppp/p3bn2/PpQ1p1B1/1n2P3/3B1N2/5PPP/R3K2R%20b%20KQk%20-%200%2015": {
+      "answer": "Nxd3+, Ke2, Nxc5",
+      "tags": ["short", "fork", "check", "capture", "deflection"],
+      "hints": [
+        "The opponent's king and their most valuable piece are placed on squares vulnerable to a minor piece attack.",
+        "A forcing minor piece capture with check forks the king and the most valuable piece, winning material.",
+        "Use your advanced knight to deliver the royal fork.",
+        "Capture the bishop on d3 with your knight for check (Nxd3+). When the white king moves to e2, cleanly capture the white queen on c5 (Nxc5)!"
+      ]
+    },
+    "https://lichess.org/analysis/4r1k1/1b2Q1pp/p1q2N2/2p5/1pP5/1P3N1P/1P3PP1/2R3K1%20b%20-%20-%200%2027": {
+      "answer": "gxf6, Re1, Rxe7",
+      "tags": ["short", "capture", "simplification", "removal-of-defender", "trade"],
+      "hints": [
+        "The opponent has jumped a minor piece forward to attack your king, but it is currently pinned to its own heaviest piece.",
+        "Capture the attacking minor piece to break the tension. Even if the opponent tries to complicate things with a pin of their own, you win material.",
+        "Use your g-pawn to capture the attacking minor piece.",
+        "Capture the white knight on f6 with your pawn (gxf6). If white plays Re1 to pin your rook, simply capture the white queen on e7 (Rxe7)!"
+      ]
+    },
+    "https://lichess.org/analysis/6rk/1b2qp1p/2n1p1p1/p3P2P/1p1r4/4R1NQ/PP3PP1/1B2R1K1%20b%20-%20-%202%2024": {
+      "answer": "Rh4, Qxh4, Qxh4",
+      "tags": ["short", "capture", "removal-of-defender", "deflection", "fork"],
+      "hints": [
+        "The opponent's most valuable piece is defending a key square, but your heavy piece can attack it directly.",
+        "Attack the defending piece to force a trade that ultimately leaves the opponent's position completely vulnerable.",
+        "Use your active rook to attack the opponent's heaviest piece.",
+        "Move your rook to h4 to attack the white queen (Rh4). White is forced to capture the rook (Qxh4), allowing you to recapture with your own queen (Qxh4)."
+      ]
+    },
+    "https://lichess.org/analysis/k4r2/2p2q2/n1npp1p1/8/3PP3/3Q4/P1P2PPP/1R4K1%20w%20-%20-%200%2033": {
+      "answer": "Qxa6+, Na7, Qb7#",
+      "tags": ["short", "checkmate", "sacrifice", "mating-net", "heavy-pieces"],
+      "hints": [
+        "The opponent's king is cramped on the edge of the board, and your heavy pieces are perfectly positioned to crash through the remaining defenses.",
+        "A forcing capture with check destroys the pawn cover and leads to a direct, unanswerable checkmate on the next move.",
+        "Use your queen to crash into the pawn cover with check.",
+        "Capture the knight on a6 with your queen for check (Qxa6+). Black must block with the other knight (Na7), allowing you to deliver checkmate with Qb7#!"
+      ]
+    },
+    "https://lichess.org/analysis/r2qk1nr/pp3p1p/n4b2/1Npp4/5P2/6Q1/PPPP2PP/R1B1K1NR%20b%20KQkq%20-%202%2010": {
+      "answer": "Bh4, Kd1, Bxg3",
+      "tags": ["short", "pin", "capture", "deflection", "attack"],
+      "hints": [
+        "The opponent has placed their most valuable piece directly on the same diagonal as their king.",
+        "A simple minor piece move perfectly pins the heaviest piece to the king, forcing the opponent to give it up.",
+        "Use your dark-squared bishop to create the absolute pin.",
+        "Move your dark-squared bishop to h4 (Bh4). The white queen is pinned to the king. After the king steps away (Kd1), capture the queen (Bxg3)!"
+      ]
+    },
+    "https://lichess.org/analysis/2kr3r/1p6/2p5/7p/qQ6/2K1B2b/PP1N1P2/2R1R3%20b%20-%20-%209%2033": {
+      "answer": "Rd3+, Kxd3, Qxb4",
+      "tags": ["short", "check", "capture", "deflection", "tactics"],
+      "hints": [
+        "Your heaviest piece is facing off against the opponent's heaviest piece, but the opponent's king is positioned awkwardly between your pieces.",
+        "A forcing check forces the enemy king to capture, which distracts it from defending its most valuable piece.",
+        "Use your rook to deliver the forcing check.",
+        "Check the white king with your rook on d3 (Rd3+). The king is forced to capture the rook (Kxd3), leaving the white queen completely undefended for you to capture (Qxb4)!"
+      ]
+    },
+    "https://lichess.org/analysis/3r1bk1/p4qpp/2nr2b1/1Np1p3/4p2P/PPP3PB/1Q1N1P1K/3RR3%20w%20-%20-%200%2029": {
+      "answer": "Nxd6, Qxf2+, Bg2",
+      "tags": ["short", "capture", "simplification", "defense", "trade"],
+      "hints": [
+        "You have a minor piece attacking a heavy piece, but your opponent has a scary looking counter-attack against your king.",
+        "Capture the heavy piece first. Even though the opponent will deliver a check, you can safely block it and consolidate your material advantage.",
+        "Use your advanced knight to capture the heavy piece.",
+        "Capture the black rook on d6 with your knight (Nxd6). Black will play Qxf2+, but you can simply block the check with your bishop (Bg2) and keep your advantage."
+      ]
+    }
+  },
+  "one-move/all": {
+    "https://lichess.org/analysis/2r3k1/pq2bp1p/6p1/1Q2R3/3p3N/P2P2P1/4PP1P/6K1%20b%20-%20-%201%2025": {
+      "answer": "Rc1#",
+      "tags": ["one-move", "checkmate", "back-rank-mate", "heavy-pieces", "mate-in-one"],
+      "hints": [
+        "The opponent's king is restricted behind its own pawns, leaving the back rank entirely undefended.",
+        "A heavy piece can instantly end the game by dropping down to the unguarded back rank.",
+        "Use your active rook to deliver the final blow.",
+        "Move your rook to c1 for an immediate back-rank checkmate (Rc1#)!"
+      ]
+    },
+    "https://lichess.org/analysis/r2qk1nr/pp2ppbp/3p2p1/3Pn3/2P3b1/2N2N2/PP2BPPP/R1BQK2R%20w%20KQkq%20-%203%209": {
+      "answer": "Nxe5",
+      "tags": ["one-move", "capture", "hanging-piece", "simplification", "center-control"],
+      "hints": [
+        "The opponent has aggressively jumped a minor piece into the center, but it lacks sufficient protection.",
+        "Simply capture the overextended central piece to win material and relieve the pressure.",
+        "Use your centralized knight to take the hanging piece.",
+        "Capture the black knight on e5 with your knight (Nxe5) to cleanly win the piece."
+      ]
+    },
+    "https://lichess.org/analysis/2kr4/pp6/2n1PR2/3p4/3P4/3Q2b1/PP2B3/4RKBq%20b%20-%20-%2010%2032": {
+      "answer": "Qh3#",
+      "tags": ["one-move", "checkmate", "mating-net", "heavy-pieces", "mate-in-one"],
+      "hints": [
+        "The enemy king is completely surrounded by its own pieces and yours, leaving it with absolutely no escape squares.",
+        "A single, supported check from your heaviest piece directly in front of the king will end the game instantly.",
+        "Use your queen to deliver the crushing final check.",
+        "Slide your queen to h3 for a beautiful, supported checkmate (Qh3#)!"
+      ]
+    },
+    "https://lichess.org/analysis/4Q3/2k1KP2/7q/8/8/8/8/8%20b%20-%20-%202%2080": {
+      "answer": "Qd6#",
+      "tags": ["one-move", "checkmate", "queen-mate", "endgame", "mate-in-one"],
+      "hints": [
+        "The opponent's king is highly exposed and severely restricted by your king's active placement.",
+        "Bring your heaviest piece right next to the enemy king, supported perfectly by your own king, to end the game.",
+        "Use your queen to deliver the supported checkmate.",
+        "Move your queen to d6 for an immediate and unanswerable checkmate (Qd6#)!"
+      ]
+    },
+    "https://lichess.org/analysis/8/2k3bp/p3p3/1pKpPp2/3B1P2/PP4P1/7P/8%20b%20-%20-%206%2038": {
+      "answer": "Bf8#",
+      "tags": ["one-move", "checkmate", "minor-piece-mate", "mating-net", "mate-in-one"],
+      "hints": [
+        "The opponent's king has boldly marched into your territory, but it is now completely frozen by your pawns.",
+        "A simple minor piece retreat covers the king's final escape square, resulting in a sudden and unexpected checkmate.",
+        "Use your dark-squared bishop to deliver the final check.",
+        "Retreat your bishop to f8 (Bf8#) to perfectly cut off the white king and deliver checkmate!"
+      ]
+    },
+    "https://lichess.org/analysis/8/1Q3bk1/3b2p1/2pp2Pp/p6P/n1P5/PP6/KR6%20b%20-%20-%200%2042": {
+      "answer": "Nc2#",
+      "tags": ["one-move", "checkmate", "smothered-mate", "knight-mate", "mate-in-one"],
+      "hints": [
+        "The opponent's king is suffocating in the corner, entirely blocked by its own pieces and pawns.",
+        "A jumping piece can leap over the blockades to deliver a classic, unblockable checkmate.",
+        "Use your knight to leap into the corner and end the game.",
+        "Jump your knight to c2 for a spectacular smothered mate (Nc2#)!"
+      ]
+    },
+    "https://lichess.org/analysis/4q3/8/8/8/1pQ5/k7/P7/2K5%20w%20-%20-%2010%2063": {
+      "answer": "Qb3#",
+      "tags": ["one-move", "checkmate", "queen-mate", "endgame", "mate-in-one"],
+      "hints": [
+        "The enemy king is trapped on the edge of the board, completely restricted by your pawn and king.",
+        "A single queen move, fully supported by your pawn, will cover all remaining squares and end the game.",
+        "Use your queen to deliver the final, supported check.",
+        "Move your queen to b3 for an immediate checkmate (Qb3#)!"
+      ]
+    },
+    "https://lichess.org/analysis/2k4r/pppq2p1/3pBp1r/2b1pQ2/4P3/N1PP4/PP3PP1/R4RK1%20b%20-%20-%204%2018": {
+      "answer": "Rh1#",
+      "tags": ["one-move", "checkmate", "rook-mate", "open-file", "mate-in-one"],
+      "hints": [
+        "Your heavy pieces are doubled on a fully open file, pointing directly at the opponent's castled king.",
+        "Crash your leading heavy piece into the corner to deliver an unstoppable checkmate along the open file.",
+        "Use your leading rook to deliver the final blow.",
+        "Slide your h6 rook down to h1 for a crushing checkmate (Rh1#)!"
+      ]
+    },
+    "https://lichess.org/analysis/r4rk1/1p2qpp1/pbn4p/8/1PB1n3/P1B1p1QN/2P2PPP/2K1R3%20w%20-%20-%202%2023": {
+      "answer": "Qxg7#",
+      "tags": ["one-move", "checkmate", "queen-mate", "battery", "mate-in-one"],
+      "hints": [
+        "Your heaviest piece and a minor piece form a deadly battery aimed directly at the weakest point in the opponent's pawn shield.",
+        "Capture the defending pawn right in front of the enemy king to deliver an instantly fatal, supported checkmate.",
+        "Use your queen to capture the pawn and end the game.",
+        "Capture the g7 pawn with your queen for a sudden and supported checkmate (Qxg7#)!"
+      ]
+    }
+  },
+  "long/all": {
+    "https://lichess.org/analysis/4r1k1/1p3pbp/p5p1/4q1P1/5Q2/1PN4P/1PP3P1/5R1K%20b%20-%20-%201%2027": {
+      "answer": "Qxf4, Rxf4, Re1+, Kh2, Be5",
+      "tags": ["long", "trade", "pin", "skewer", "win-material"],
+      "hints": [
+        "The opponent has offered a trade of the most valuable pieces, but after the trade, their recapturing piece becomes vulnerable to a back-rank check and pin.",
+        "Initiate the trade. When the opponent recaptures, use a forcing check to move their king, which then allows you to perfectly pin and win the recapturing piece.",
+        "Use your queen to initiate the sequence by capturing the opponent's queen.",
+        "Capture the white queen with Qxf4. When white recaptures (Rxf4), play Re1+! The king moves to h2, and you pin the rook to the king with your bishop (Be5), winning the exchange!"
+      ]
+    },
+    "https://lichess.org/analysis/7R/5p1p/4pNpk/3pP3/1b1P4/4P3/p2r2PP/2K5%20w%20-%20-%200%2038": {
+      "answer": "Rxh7+, Kg5, h4+, Kf5, g4#",
+      "tags": ["long", "checkmate", "king-hunt", "forcing-sequence", "mating-net"],
+      "hints": [
+        "The opponent's king is awkwardly placed on the edge of the board, heavily restricted by your minor piece.",
+        "A sequence of forcing checks pushes the enemy king out into the open, leading to an inevitable checkmate with your pawns.",
+        "Use your heavy piece to deliver the first forcing check.",
+        "Capture the pawn with your rook for check (Rxh7+). The king must step up (Kg5). Check again with your pawn (h4+). The king steps to f5, and you deliver checkmate with another pawn push (g4#)!"
+      ]
+    },
+    "https://lichess.org/analysis/rn1qk1nr/3b2pp/p3pp2/1p2N3/2pPPP2/2P5/3B2PP/R2QKB1R%20w%20KQkq%20-%200%2012": {
+      "answer": "Qh5+, g6, Nxg6, hxg6, Qxh8",
+      "tags": ["long", "check", "sacrifice", "fork", "win-material"],
+      "hints": [
+        "The opponent's kingside is somewhat weak, and your advanced minor piece is ready to cause chaos.",
+        "A forcing check forces the opponent to weaken their pawn structure, allowing your minor piece to sacrifice itself to break open the corner and win a heavy piece.",
+        "Use your queen to deliver the initial forcing check.",
+        "Check with your queen on h5 (Qh5+). Black must block with g6. Sacrifice your knight by capturing the pawn (Nxg6). When black recaptures (hxg6), their corner rook is undefended; capture it with your queen (Qxh8)."
+      ]
+    },
+    "https://lichess.org/analysis/8/2p2P2/5N2/1Pb5/8/6k1/4K2p/8%20w%20-%20-%200%2060": {
+      "answer": "Ne4+, Kg4, Nxc5, h1=Q, f8=Q",
+      "tags": ["long", "promotion", "fork", "check", "endgame"],
+      "hints": [
+        "Both sides are racing to promote a pawn, but the opponent's minor piece is currently guarding your promotion square.",
+        "Deliver a check with your minor piece to simultaneously force the king away and fork the piece guarding your promotion square.",
+        "Use your knight to deliver the forcing check.",
+        "Check the king with your knight (Ne4+). The king must move (e.g., Kg4). Capture the black bishop (Nxc5). Black promotes their pawn (h1=Q), and you promote yours (f8=Q), maintaining a material advantage."
+      ]
+    },
+    "https://lichess.org/analysis/r1kr4/2p2Rp1/pp6/8/5P2/6B1/PbP4P/3R2K1%20w%20-%20-%202%2031": {
+      "answer": "Rxd8+, Kxd8, Rf8+, Kd7, Rxa8",
+      "tags": ["long", "skewer", "check", "trade", "simplification"],
+      "hints": [
+        "Your heavy pieces are active, and the opponent has an undefended heavy piece tucked away in the corner.",
+        "Force a trade of the central heavy pieces to bring the opponent's king onto an exposed square, then deliver a skewer to win the piece in the corner.",
+        "Use your central rook to initiate the trade.",
+        "Capture the black rook with check (Rxd8+). The king must recapture (Kxd8). Now skewer the king and the corner rook with a check (Rf8+). The king moves (Kd7), and you win the rook on a8 (Rxa8)!"
+      ]
+    },
+    "https://lichess.org/analysis/8/5pp1/7p/4Pp2/6PP/4k1K1/8/8%20w%20-%20-%200%2048": {
+      "answer": "gxf5, Kd4, e6, fxe6, fxe6",
+      "tags": ["long", "pawn-endgame", "passed-pawn", "breakthrough", "capture"],
+      "hints": [
+        "In this pawn endgame, your opponent's king has aggressively advanced, but their pawn structure has a flaw.",
+        "Capture an advanced pawn to create an imbalance. When the enemy king tries to react, use a pawn sacrifice breakthrough to create an unstoppable passed pawn.",
+        "Use your pawn to capture the opponent's advanced pawn.",
+        "Capture the f5 pawn (gxf5). The black king steps back (Kd4). Push your e-pawn (e6) to force a breakthrough! Black captures (fxe6), and you recapture (fxe6) to create an unstoppable passed pawn."
+      ]
+    },
+    "https://lichess.org/analysis/1k1r3r/1b2bp2/5q2/5p2/Q4P1p/2p2NP1/P6P/1R3R1K%20w%20-%20-%200%2025": {
+      "answer": "Rxb7+, Kxb7, Rb1+, Qb6, Rxb6+",
+      "tags": ["long", "sacrifice", "check", "mating-attack", "forcing-sequence"],
+      "hints": [
+        "The opponent's king is somewhat exposed on the queenside, and your heavy pieces are perfectly lined up to crash through.",
+        "Sacrifice a heavy piece to tear open the king's pawn cover. Then bring your other heavy piece in with check to win the opponent's most valuable piece.",
+        "Use your rook to crash into the pawn cover with a sacrifice.",
+        "Sacrifice your rook on b7 with check (Rxb7+). The king must capture (Kxb7). Bring your other rook to the b-file with check (Rb1+). Black must block with the queen (Qb6), and you simply capture it (Rxb6+)!"
+      ]
+    },
+    "https://lichess.org/analysis/k2r4/pp2P3/2p4p/4Q1p1/1q6/6P1/PPP2PP1/2K1R3%20b%20-%20-%200%2024": {
+      "answer": "Qd2+, Kb1, Qd1+, Rxd1, Rxd1#",
+      "tags": ["long", "checkmate", "back-rank-mate", "forcing-sequence", "sacrifice"],
+      "hints": [
+        "The opponent's king is castled behind a solid pawn structure, but their back rank is dangerously weak.",
+        "A forcing check sequence drives the king into a corner, culminating in a heavy piece sacrifice that forces a spectacular back-rank mate.",
+        "Use your most powerful piece to deliver the first check and infiltrate the position.",
+        "Check with your queen on d2 (Qd2+). The king moves to b1. Sacrifice your queen on d1 with check (Qd1+). The rook must capture (Rxd1), and your remaining heavy piece delivers checkmate (Rxd1#)."
+      ]
+    },
+    "https://lichess.org/analysis/r2qr1k1/1p3pbp/2p3p1/p2pn2n/P7/1P1P1NP1/1BP2PBP/R1Q1R1K1%20b%20-%20-%201%2015": {
+      "answer": "Nxf3+, Bxf3, Rxe1+, Qxe1, Bxb2",
+      "tags": ["long", "trade", "discovered-attack", "simplification", "win-material"],
+      "hints": [
+        "A tense situation exists in the center with multiple pieces attacking and defending, and your long-range minor piece is eyeing an undefended target.",
+        "A sequence of forcing captures removes the defenders. First, trade the minor pieces with check, then trade the heavy pieces. Finally, capture the exposed, undefended piece.",
+        "Use your centralized knight to initiate the sequence with check.",
+        "Capture the knight on f3 for check (Nxf3+). White recaptures (Bxf3). Then capture the rook (Rxe1+). After White recaptures (Qxe1), the bishop on b2 is undefended. Capture it (Bxb2) to win a clean piece!"
+      ]
+    }
+  },
+  "very-long/all": {
+    "https://lichess.org/analysis/6k1/1p3pbp/8/5p2/pqr4P/2NRP3/Q1K2PP1/1R6%20b%20-%20-%201%2026": {
+      "answer": "Rxc3+, Rxc3, Qxc3+, Kd1, Qd3+, Qd2, Qxb1+",
+      "tags": ["very-long", "sacrifice", "forcing-sequence", "fork", "win-material"],
+      "hints": [
+        "The opponent's king is somewhat exposed, and their pieces are pinned or tied down defending each other.",
+        "A heavy piece sacrifice destroys the key defender, leading to a long sequence of checks that eventually wins a full heavy piece.",
+        "Use your rook to crash into the defending minor piece.",
+        "Sacrifice the exchange with Rxc3+. After white recaptures (Rxc3), check with your queen (Qxc3+). The king steps back (Kd1). Check again (Qd3+). White must block (Qd2), allowing you to win the rook (Qxb1+)!"
+      ]
+    },
+    "https://lichess.org/analysis/8/7p/2p3p1/6P1/pP1K2kB/P7/8/8%20b%20-%20-%200%2048": {
+      "answer": "Kxh4, Kc5, Kxg5, Kxc6, h5, b5, h4, b6, h3, Kd7, h2, b7, h1=Q",
+      "tags": ["very-long", "endgame", "pawn-race", "king-walk", "capture"],
+      "hints": [
+        "You are entering a pure pawn race where both kings will capture pawns to clear the way for their own passed pawns.",
+        "Accurately calculate the race. Capture the blocking pieces, push your pawn as fast as possible, and you will crown just in time.",
+        "Use your king to capture the opponent's minor piece.",
+        "Capture the bishop (Kxh4). White will play Kc5 to win your pawn. Continue capturing (Kxg5). After white takes your pawn (Kxc6), start pushing: h5, b5, h4, b6, h3, Kd7, h2, b7, and promote to a queen (h1=Q)!"
+      ]
+    },
+    "https://lichess.org/analysis/r3k1nr/1bpnqp2/pp2p3/3P4/2P1N3/P1N3p1/1P2B1P1/R1BQ2KR%20b%20kq%20-%201%2018": {
+      "answer": "Rxh1+, Kxh1, Qh4+, Kg1, Qh2+, Kf1, Qh1#",
+      "tags": ["very-long", "sacrifice", "king-hunt", "forcing-sequence", "checkmate"],
+      "hints": [
+        "Your advanced pawn has created massive weaknesses around the opponent's castled king, but an enemy heavy piece is currently defending the corner.",
+        "Sacrifice your heavy piece to eliminate the key defender and draw the enemy king out, then follow up with a relentless queen hunt.",
+        "Use your rook to sacrifice itself in the corner.",
+        "Sacrifice your rook on h1 for check (Rxh1+). The white king must capture (Kxh1). Bring the queen in with Qh4+. The king retreats (Kg1). Check again (Qh2+). The king steps out (Kf1), and you deliver checkmate with Qh1#!"
+      ]
+    },
+    "https://lichess.org/analysis/3r2k1/1Q2b3/2n1p2p/p5p1/8/1N3N1P/PPq2PP1/2R3K1%20b%20-%20-%200%2025": {
+      "answer": "Rd1+, Rxd1, Qxd1+, Kh2, Bd6+, g3, Qxf3",
+      "tags": ["very-long", "sacrifice", "discovered-attack", "fork", "forcing-sequence"],
+      "hints": [
+        "Your queen is under attack by an enemy rook, but the opponent's back rank is vulnerable to a forcing sequence.",
+        "Ignore the threat to your queen temporarily. Force a heavy piece trade on the back rank to deflect the opponent's defenders, then use a minor piece check to uncover an attack.",
+        "Use your rook to initiate the sequence with a check on the back rank.",
+        "Play Rd1+! White must capture (Rxd1). Recapture with your queen (Qxd1+). The white king steps to h2. Check with your bishop (Bd6+). When white blocks (g3), capture the undefended knight with your queen (Qxf3)!"
+      ]
+    },
+    "https://lichess.org/analysis/6k1/5pp1/3q3p/3Pr3/1R3Q1P/6P1/5P2/6K1%20b%20-%20-%200%2036": {
+      "answer": "Re1+, Kg2, Qxd5+, Qf3, Rg1+, Kxg1, Qxf3",
+      "tags": ["very-long", "forcing-sequence", "skewer", "deflection", "win-material"],
+      "hints": [
+        "The opponent's king has restricted mobility, and your heavy pieces are perfectly placed to coordinate a devastating attack.",
+        "A series of forcing checks forces the opponent to block with their most valuable piece. Then, a shocking sacrifice deflects the king away from its defense.",
+        "Use your active rook to deliver the first check.",
+        "Check with your rook (Re1+). The king steps up (Kg2). Check with your queen (Qxd5+). White must block (Qf3). Sacrifice your rook to deflect the king (Rg1+)! The king must capture (Kxg1), leaving the white queen hanging (Qxf3)."
+      ]
+    },
+    "https://lichess.org/analysis/7r/p1k1b3/3p1n1p/2pPpBp1/2P1Pp2/1N5P/P5P1/1R4K1%20w%20-%20-%206%2028": {
+      "answer": "Na5, Rb8, Rxb8, Kxb8, Nc6+, Kc7, Nxe7",
+      "tags": ["very-long", "outpost", "fork", "trade", "simplification"],
+      "hints": [
+        "The opponent has an exposed minor piece, and there is an empty, powerful outpost near the enemy king that your minor piece can jump to.",
+        "Maneuver your minor piece to the strong outpost. The opponent will try to challenge you, but after trading heavy pieces, you will land a devastating fork.",
+        "Use your knight to jump to the powerful outpost.",
+        "Jump your knight to a5 (Na5). Black tries to challenge the file (Rb8). Trade rooks (Rxb8) and after the king recaptures (Kxb8), fork the king and bishop with Nc6+, winning the bishop (Nxe7)!"
+      ]
+    },
+    "https://lichess.org/analysis/8/2pk1p2/p4Pp1/1p1P2Pp/1P1K3P/P7/8/8%20w%20-%20-%206%2047": {
+      "answer": "Kc5, Kd8, Kc6, Kc8, d6, cxd6, Kxd6",
+      "tags": ["very-long", "endgame", "opposition", "breakthrough", "pawn-structure"],
+      "hints": [
+        "You are in a tightly locked pawn endgame, but your king is more active than the opponent's.",
+        "Use your king to squeeze the opponent into a corner. Once they run out of moves, force a pawn breakthrough to win the structure.",
+        "Step your king forward to restrict the enemy king.",
+        "Step up with Kc5. The black king retreats (Kd8). Follow it (Kc6). Black must step aside (Kc8). Now break through with d6! After black captures (cxd6), recapture with your king (Kxd6) to win the endgame."
+      ]
+    },
+    "https://lichess.org/analysis/1k6/pP3p2/P1K1p2p/1P6/6pn/8/8/8%20w%20-%20-%200%2043": {
+      "answer": "b6, Nf5, bxa7+, Kxa7, Kc7, Kxa6, b8=Q",
+      "tags": ["very-long", "endgame", "pawn-breakthrough", "promotion", "sacrifice"],
+      "hints": [
+        "Your king and pawns have completely paralyzed the enemy king, but you need to find a way to break through and promote.",
+        "Sacrifice a pawn to open lines, deliver a check, and then use your king to escort the remaining passed pawn to the promotion square.",
+        "Push your less advanced passed pawn forward.",
+        "Push b6! Black tries to bring their knight closer (Nf5). Sacrifice with check (bxa7+). The black king captures (Kxa7). Step your king up to escort the pawn (Kc7). Black captures your other pawn (Kxa6), but you promote to a queen (b8=Q)!"
+      ]
+    },
+    "https://lichess.org/analysis/8/5k1p/6p1/2R1K1P1/8/7P/5r2/8%20b%20-%20-%204%2054": {
+      "answer": "Rf5+, Kd6, Rxc5, Kxc5, Ke6, Kd4, Kf5, Ke3, Kxg5",
+      "tags": ["very-long", "endgame", "trade", "simplification", "pawn-endgame"],
+      "hints": [
+        "You are in a rook endgame where your king is cut off, but you can force a transition into a winning pawn endgame.",
+        "Force a rook trade with a check. Even though it simplifies the position, your king will be faster in the resulting race to capture pawns.",
+        "Use your active rook to deliver the forcing check.",
+        "Play Rf5+ to force a trade! The white king moves to d6. Trade rooks (Rxc5). After white recaptures (Kxc5), march your king: Ke6, Kd4, Kf5, Ke3, and capture the pawn (Kxg5) to win the pawn endgame!"
+      ]
+    }
+  },
+  "mate/all": {
+    "https://lichess.org/analysis/3r1rk1/pQ2R2p/6p1/6p1/3q4/1P6/P4PPP/5RK1%20b%20-%20-%202%2024": {
+      "answer": "Qxf2+, Rxf2, Rd1+, Re1, Rxe1+, Rf1, Rexf1#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "back-rank-mate",
+        "sacrifice",
+        "heavy-pieces"
+      ],
+      "hints": [
+        "The opponent's king relies on a back rank defense that looks solid but is vulnerable to overwhelming force.",
+        "A spectacular heavy piece sacrifice removes the key defender, allowing your remaining pieces to swarm the back rank for a forced checkmate.",
+        "Use your queen to crash into the pawn shield with a sacrifice.",
+        "Sacrifice your queen with Qxf2+! White must recapture with Rxf2, allowing you to play Rd1+. White blocks with Re1, you take with Rxe1+. White blocks with Rf1, and Rexf1# is checkmate!"
+      ]
+    },
+    "https://lichess.org/analysis/2R2B2/p7/1b5R/3kppp1/8/5P1K/5qPP/8%20w%20-%20-%202%2038": {
+      "answer": "Rd6#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "mate-in-one",
+        "mating-net",
+        "king-hunt"
+      ],
+      "hints": [
+        "The enemy king is stranded in the center, severely restricted by your minor pieces and pawns.",
+        "A single heavy piece check can cover the remaining escape squares, delivering an instant and unanswerable checkmate.",
+        "Use your active rook to deliver the final blow.",
+        "Slide your rook to d6 for a sudden and crushing checkmate (Rd6#)!"
+      ]
+    },
+    "https://lichess.org/analysis/r1b4k/pp1nNBbp/5qp1/8/3P2n1/6P1/PPP2P1P/R1BQR1K1%20b%20-%20-%200%2018": {
+      "answer": "Qxf2+, Kh1, Qxh2#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "mating-net",
+        "attack",
+        "heavy-pieces"
+      ],
+      "hints": [
+        "The opponent's king is somewhat exposed, and your heavy piece and minor piece are coordinating perfectly against a weak pawn.",
+        "A forcing capture with check destroys the defense, allowing your heaviest piece to slide right next to the king for checkmate.",
+        "Use your queen to capture the weak pawn and deliver check.",
+        "Capture the f2 pawn with your queen for check (Qxf2+). The king steps to h1, and you deliver checkmate with Qxh2#!"
+      ]
+    },
+    "https://lichess.org/analysis/8/2p5/2b5/5Q2/2k3Np/2q4P/6PK/8%20b%20-%20-%209%2058": {
+      "answer": "Qg3+, Kg1, Qxg2#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "forcing-sequence",
+        "mating-net",
+        "attack"
+      ],
+      "hints": [
+        "Your opponent's king is tucked away, but their pawn shield is missing a crucial defender on the dark squares.",
+        "A forcing check drives the king into the corner, allowing your heaviest piece to slide in and deliver a supported checkmate.",
+        "Use your queen to deliver the first check and infiltrate the position.",
+        "Check the white king with Qg3+. The king is forced to move to g1, and you deliver checkmate with Qxg2#!"
+      ]
+    },
+    "https://lichess.org/analysis/5k2/R5pp/4K3/6r1/3P4/8/8/8%20w%20-%20-%200%2052": {
+      "answer": "Ra8#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "mate-in-one",
+        "back-rank-mate",
+        "endgame"
+      ],
+      "hints": [
+        "The opponent's king is trapped on the back rank, completely restricted by your own active king.",
+        "A single heavy piece move to the back rank covers all remaining squares, ending the game immediately.",
+        "Use your rook to deliver the final check.",
+        "Move your rook to a8 for a clean back-rank checkmate (Ra8#)!"
+      ]
+    },
+    "https://lichess.org/analysis/2kr1bnr/3np1pp/p4p2/3N1b2/3P1B2/1P2PN2/1P3PPP/4KB1R%20w%20K%20-%200%2012": {
+      "answer": "Bxa6#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "mate-in-one",
+        "minor-piece-mate",
+        "attack"
+      ],
+      "hints": [
+        "The opponent's king is castled queenside but its pawn shield is full of holes, and your minor pieces are swarming.",
+        "A single capture by a minor piece can destroy the pawn shield and cover all escape squares simultaneously.",
+        "Use your light-squared bishop to capture the defending pawn with check.",
+        "Capture the a6 pawn with your bishop (Bxa6#) for a spectacular, unblockable checkmate!"
+      ]
+    },
+    "https://lichess.org/analysis/r6k/pb5p/4Q2p/2p3q1/2Pp3N/1P1P2P1/P7/4RRK1%20b%20-%20-%200%2029": {
+      "answer": "Qxg3+, Ng2, Qxg2#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "forcing-sequence",
+        "capture",
+        "attack"
+      ],
+      "hints": [
+        "Your opponent's king has a weakened pawn shield, and your most valuable piece is ready to strike a vulnerable spot.",
+        "A forcing capture with check draws out the only defender, allowing you to capture that defender on the very next move for checkmate.",
+        "Use your queen to capture the weak pawn with check.",
+        "Capture the g3 pawn with your queen for check (Qxg3+). White is forced to block with the knight (Ng2), which you immediately capture for checkmate (Qxg2#)!"
+      ]
+    },
+    "https://lichess.org/analysis/6R1/p6k/1p3pR1/2p2p1K/5P1P/2P3P1/PP4n1/7r%20b%20-%20-%204%2041": {
+      "answer": "Rxh4+, gxh4, Nxf4#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "sacrifice",
+        "forcing-sequence",
+        "knight-mate"
+      ],
+      "hints": [
+        "The opponent's king is extremely restricted by your pawns and pieces on the edge of the board.",
+        "A surprising heavy piece sacrifice forces an enemy pawn to capture, which then clears the way for a minor piece checkmate.",
+        "Use your active rook to sacrifice itself with check.",
+        "Sacrifice your rook on h4 with check (Rxh4+)! White must capture with their pawn (gxh4), allowing your knight to jump to f4 for a stunning checkmate (Nxf4#)!"
+      ]
+    },
+    "https://lichess.org/analysis/6k1/p5pp/2p2p2/1bBp4/3PqP2/2P5/P4QPP/6K1%20b%20-%20-%201%2024": {
+      "answer": "Qb1+, Qe1, Qxe1#",
+      "tags": [
+        "mate",
+        "checkmate",
+        "back-rank-mate",
+        "forcing-sequence",
+        "heavy-pieces"
+      ],
+      "hints": [
+        "The opponent's king relies on a back rank defense that looks solid but is surprisingly fragile.",
+        "A sudden invasion on the back rank by your heaviest piece forces the opponent's only defender to block, leading to an immediate mate.",
+        "Use your queen to infiltrate the back rank with check.",
+        "Check the white king by moving your queen to b1 (Qb1+). White must block with their queen (Qe1), which you simply capture for checkmate (Qxe1#)!"
+      ]
+    }
+  },
+  "advantage/all": {
+    "https://lichess.org/analysis/r4rk1/p3ppbp/2P2np1/8/PP2P3/3B1NK1/bB4PP/R1R5%20b%20-%20-%202%2021": {
+      "answer": "Nh5+, Kf2, Bxb2",
+      "tags": [
+        "advantage",
+        "discovered-attack",
+        "check",
+        "win-material",
+        "minor-piece"
+      ],
+      "hints": [
+        "Your minor piece is under attack, but its defender is also indirectly attacking the opponent's valuable piece.",
+        "A forcing check with the attacked piece moves it to safety while simultaneously uncovering the attack on the opponent's valuable piece.",
+        "Use your knight to jump forward and deliver the forcing check.",
+        "Check the white king with your knight (Nh5+). The king steps away (Kf2), and your bishop is now free to capture the unprotected white bishop (Bxb2)."
+      ]
+    },
+    "https://lichess.org/analysis/r4rk1/ppqbppbp/3p2p1/2p4n/3NPP2/2NPBRPP/PPPQ2B1/1R4K1%20b%20-%20-%200%2014": {
+      "answer": "cxd4, Nd5, dxe3, Nxc7, exd2",
+      "tags": [
+        "advantage",
+        "capture",
+        "fork",
+        "tactics",
+        "pawn-tension"
+      ],
+      "hints": [
+        "The opponent has jumped a minor piece forward into a tense central position where multiple captures are possible.",
+        "Initiate a sequence of captures. Even if the opponent tries a tricky intermediate move that forks your heavy pieces, your recaptures will leave you ahead in material.",
+        "Use your pawn to capture the advanced minor piece.",
+        "Capture the knight on d4 with your pawn (cxd4). White plays Nd5 to fork your queen and bishop. Ignore the queen and capture the bishop (dxe3). White captures your queen (Nxc7), and you capture theirs (exd2)!"
+      ]
+    },
+    "https://lichess.org/analysis/5r2/p1qr2pk/2pb2pp/4p3/4Q2B/3P3P/PPP2PP1/R4RK1%20b%20-%20-%200%2021": {
+      "answer": "Rf4, Bg3, Rxe4",
+      "tags": [
+        "advantage",
+        "pin",
+        "attack",
+        "win-material",
+        "heavy-pieces"
+      ],
+      "hints": [
+        "The opponent's most valuable piece and a minor piece are somewhat aligned on the same diagonal.",
+        "Attack the minor piece to exploit its awkward placement. If the opponent tries to defend it, they will accidentally leave their heaviest piece hanging.",
+        "Use your active rook to attack the minor piece.",
+        "Attack the white bishop with your rook (Rf4). When white plays Bg3 to defend and attack your rook, simply capture the hanging white queen (Rxe4)!"
+      ]
+    },
+    "https://lichess.org/analysis/r1b1r3/1p1n3k/p1p1p1qp/5n2/P2PB1Q1/2P5/1P3PPP/R3R1K1%20w%20-%20-%200%2020": {
+      "answer": "Bxf5, exf5, Qxg6+, Kxg6, Rxe8",
+      "tags": [
+        "advantage",
+        "pin",
+        "capture",
+        "simplification",
+        "trade"
+      ],
+      "hints": [
+        "An enemy minor piece is aggressively placed but is currently pinned to its heaviest piece.",
+        "Capture the pinned piece to force a trade of the heavy pieces, which ultimately wins a full piece at the end of the sequence.",
+        "Use your bishop to capture the pinned minor piece.",
+        "Capture the knight with your bishop (Bxf5). Black must recapture with the pawn (exf5). Trade queens with check (Qxg6+). After the king recaptures (Kxg6), capture the undefended rook (Rxe8)."
+      ]
+    },
+    "https://lichess.org/analysis/r5k1/3q3p/p2r4/1p3pQ1/3Np3/2P5/PP5R/R5K1%20b%20-%20-%200%2035": {
+      "answer": "Rg6, Rg2, Rxg5",
+      "tags": [
+        "advantage",
+        "pin",
+        "skewer",
+        "heavy-pieces",
+        "defense"
+      ],
+      "hints": [
+        "Your king is under attack by the opponent's heaviest piece, but you have a heavy piece ready to jump in the way.",
+        "Block the check with your heavy piece, creating a pin against the opponent's king that instantly wins their attacking piece.",
+        "Use your rook to step in front of the check and create the pin.",
+        "Block the check with your rook (Rg6). The white queen is now pinned to the king! White tries to defend with Rg2, but you simply capture the queen (Rxg5)."
+      ]
+    },
+    "https://lichess.org/analysis/r2qk1nr/ppp2ppp/2n5/1Q1P1b2/8/2P2p2/P4PPP/R1B1KB1R%20w%20KQkq%20-%200%2011": {
+      "answer": "dxc6, Ne7, cxb7+",
+      "tags": [
+        "advantage",
+        "passed-pawn",
+        "discovered-attack",
+        "capture",
+        "check"
+      ],
+      "hints": [
+        "Your advanced pawn is attacking a minor piece, but the opponent has created a complex situation on the queenside.",
+        "Capture the minor piece. When the opponent tries to defend, push the pawn again to deliver a discovered check and cause massive damage.",
+        "Use your advanced central pawn to make the first capture.",
+        "Capture the knight on c6 (dxc6). Black plays Ne7. Push the pawn again to capture on b7 with a discovered check (cxb7+) from your queen!"
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/pp2bNp1/2p1pn1p/2P4B/3P1P2/4B3/PP4PP/R2Q1RK1%20b%20-%20-%200%2015": {
+      "answer": "Rxf7, Bxf7+, Kxf7",
+      "tags": [
+        "advantage",
+        "trade",
+        "simplification",
+        "king-safety",
+        "capture"
+      ],
+      "hints": [
+        "The opponent has jumped a minor piece deep into your territory, attacking a heavy piece.",
+        "Capture the invading piece. The opponent will recapture with a check, but your king can safely step up to secure the material advantage.",
+        "Use your rook to capture the invading minor piece.",
+        "Capture the knight on f7 with your rook (Rxf7). White recaptures with check (Bxf7+), and your king safely captures the bishop (Kxf7)."
+      ]
+    },
+    "https://lichess.org/analysis/4r3/p5qp/2k3p1/5pB1/8/1B6/PP4PP/3R3K%20w%20-%20-%202%2029": {
+      "answer": "Ba4+, Kb7, Bxe8",
+      "tags": [
+        "advantage",
+        "skewer",
+        "check",
+        "win-material",
+        "minor-piece"
+      ],
+      "hints": [
+        "The opponent's king has wandered into the open and is lined up perfectly with one of their heavy pieces.",
+        "Deliver a long-range check to force the king to step away, leaving the heavy piece completely exposed to capture.",
+        "Use your light-squared bishop to deliver the forcing check.",
+        "Check the black king with Ba4+. The king must move to b7 (Kb7), allowing you to cleanly capture the undefended rook (Bxe8)."
+      ]
+    },
+    "https://lichess.org/analysis/rn1q2k1/pb1p3p/3N2p1/3P4/2p1r1P1/2Q4P/PP2BP2/R3K2R%20b%20KQ%20-%201%2019": {
+      "answer": "Rxe2+, Kxe2, Qe7+, Ne4, Qxe4+",
+      "tags": [
+        "advantage",
+        "sacrifice",
+        "fork",
+        "check",
+        "heavy-pieces"
+      ],
+      "hints": [
+        "The opponent's king is still uncastled, and an enemy minor piece is placed aggressively in your territory.",
+        "Sacrifice the exchange to expose the uncastled king, then deliver a powerful heavy piece fork to win back the material.",
+        "Use your active rook to sacrifice itself for a minor piece with check.",
+        "Sacrifice your rook on e2 with check (Rxe2+). The king recaptures (Kxe2). Now fork the king and the knight with Qe7+! White blocks with Ne4, and you capture it with Qxe4+."
+      ]
+    }
+  },
+  "crushing/all": {
+    "https://lichess.org/analysis/8/R7/8/5pp1/3k1r2/8/P3KP2/8%20w%20-%20-%200%2041": {
+      "answer": "Ra4+, Ke5, Rxf4",
+      "tags": [
+        "crushing",
+        "skewer",
+        "check",
+        "win-material",
+        "endgame"
+      ],
+      "hints": [
+        "The opponent's king and their heavy piece are placed on the same rank, creating a geometric vulnerability.",
+        "A long-range check forces the king to step away, leaving the heavy piece completely exposed to capture.",
+        "Use your active rook to deliver the forcing check.",
+        "Slide your rook to a4 for check (Ra4+). After the black king moves away, capture the undefended rook (Rxf4)."
+      ]
+    },
+    "https://lichess.org/analysis/8/6pk/2b4p/1p3N2/1Pp5/P7/2r2P1P/1R4K1%20w%20-%20-%200%2038": {
+      "answer": "Nd4, Be4, Nxc2",
+      "tags": [
+        "crushing",
+        "fork",
+        "attack",
+        "minor-piece",
+        "win-material"
+      ],
+      "hints": [
+        "The opponent has a heavy piece and a minor piece placed in a way that allows them to be attacked simultaneously.",
+        "Jump a minor piece forward to create a double attack on both enemy pieces, guaranteeing a material gain.",
+        "Use your knight to execute the double attack.",
+        "Jump your knight to d4 (Nd4), attacking both the bishop on c6 and the rook on c2. After the bishop moves (Be4), capture the rook (Nxc2)."
+      ]
+    },
+    "https://lichess.org/analysis/8/7p/p3k3/2b3P1/2pBK3/2P5/P7/8%20b%20-%20-%207%2043": {
+      "answer": "Bxd4, Kxd4, Kf5",
+      "tags": [
+        "crushing",
+        "endgame",
+        "pawn-race",
+        "trade",
+        "simplification"
+      ],
+      "hints": [
+        "The opponent's minor piece is centrally located, but trading it off transitions into a highly favorable pawn endgame.",
+        "Force a trade of minor pieces, then immediately use your active king to attack the opponent's pawn structure.",
+        "Use your dark-squared bishop to initiate the trade.",
+        "Capture the white bishop (Bxd4). After the white king recaptures (Kxd4), aggressively step your king to f5 (Kf5) to win the g5 pawn and secure the endgame."
+      ]
+    },
+    "https://lichess.org/analysis/8/8/2pk1p2/4p1p1/1pP1P1P1/2K2P2/8/8%20w%20-%20-%200%2038": {
+      "answer": "Kxb4, Kc7, Kc5, Kb7, Kd6",
+      "tags": [
+        "crushing",
+        "endgame",
+        "king-walk",
+        "opposition",
+        "capture"
+      ],
+      "hints": [
+        "The opponent has an undefended passed pawn, and the rest of the pawn structure is completely locked.",
+        "Capture the undefended pawn, then march your king aggressively to infiltrate the opponent's position and win the remaining pawns.",
+        "Use your king to eliminate the passed pawn.",
+        "Capture the b4 pawn with your king (Kxb4). The black king tries to defend (Kc7). Follow up with Kc5, and when black plays Kb7, march your king to d6 (Kd6) to dominate the position."
+      ]
+    },
+    "https://lichess.org/analysis/8/7k/2p1p3/2P1PqQp/7P/8/6PK/8%20b%20-%20-%200%2036": {
+      "answer": "Qxg5, hxg5, Kg6",
+      "tags": [
+        "crushing",
+        "endgame",
+        "queen-trade",
+        "simplification",
+        "passed-pawn"
+      ],
+      "hints": [
+        "The opponent's queen is centrally placed, creating tension, but simplifying the position reveals a distinct endgame advantage.",
+        "Initiate a queen trade. The resulting pawn structure allows your king to safely blockade and attack the newly created enemy pawn.",
+        "Use your queen to force the trade.",
+        "Capture the white queen (Qxg5). After white recaptures (hxg5), step your king to g6 (Kg6) to safely blockade the pawn and secure a winning endgame."
+      ]
+    },
+    "https://lichess.org/analysis/8/4b3/5kpp/1p1p1p2/1PpPRP1P/2P2KP1/3B4/8%20b%20-%20-%200%2036": {
+      "answer": "fxe4+, Kg4, h5+, Kh3, e3, Bxe3, Kf5, Bd2, Ke4",
+      "tags": [
+        "crushing",
+        "endgame",
+        "passed-pawn",
+        "king-walk",
+        "tactical-sequence"
+      ],
+      "hints": [
+        "Your pawn is attacking an enemy heavy piece, and the resulting structure can be exploited by an active king.",
+        "Capture the piece to force the enemy king to a bad square, then use checks and pawn pushes to create an unstoppable passed pawn while activating your own king.",
+        "Use your f-pawn to capture the heavy piece with check.",
+        "Capture the rook with check (fxe4+). The white king moves to g4. Check with your pawn (h5+). The king drops back (Kh3). Push your passed pawn (e3) to deflect the bishop (Bxe3). Then march your king in (Kf5, Ke4) to win."
+      ]
+    },
+    "https://lichess.org/analysis/4k3/p3bp2/1p5B/4PQ2/1Pq5/P6K/7P/8%20b%20-%20-%200%2036": {
+      "answer": "Qh4+, Kg2, Qxh6",
+      "tags": [
+        "crushing",
+        "check",
+        "win-material",
+        "fork",
+        "endgame"
+      ],
+      "hints": [
+        "The opponent's king and a minor piece are placed on the same file, making them vulnerable to a multi-purpose move.",
+        "Deliver a check that forces the king to move, leaving the minor piece completely undefended and ready to be captured.",
+        "Use your queen to deliver the forcing check.",
+        "Check the white king with your queen on h4 (Qh4+). The king must move to safety (Kg2), allowing you to cleanly capture the undefended bishop (Qxh6)."
+      ]
+    },
+    "https://lichess.org/analysis/8/p1p5/3R4/2p5/3p3P/1P5K/P1Pk4/8%20b%20-%20-%200%2045": {
+      "answer": "cxd6, h5, Kxc2, h6, d3, h7, d2, h8=Q, d1=Q",
+      "tags": [
+        "crushing",
+        "pawn-race",
+        "endgame",
+        "passed-pawn",
+        "capture"
+      ],
+      "hints": [
+        "The opponent has placed a heavy piece to stop your passed pawns, but it can simply be captured, triggering a pure pawn race.",
+        "Capture the blocking piece. Both sides will push their passed pawns to promote, but your king is perfectly placed to support your pawn while eliminating the opponent's remaining pawns.",
+        "Use your c-pawn to capture the blocking heavy piece.",
+        "Capture the rook (cxd6). White pushes their h-pawn (h5). You capture the c2 pawn (Kxc2). The race is on: h6, d3, h7, d2, h8=Q, d1=Q. The resulting queen endgame is completely winning for black due to the active king and pawns."
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/pppp1pp1/2n2n1p/2b5/3NP3/2N1B2P/PPP2PP1/R2QKB1R%20w%20KQ%20-%203%208": {
+      "answer": "Nxc6, bxc6, Bxc5",
+      "tags": [
+        "crushing",
+        "removal-of-defender",
+        "capture",
+        "minor-piece",
+        "win-material"
+      ],
+      "hints": [
+        "The opponent has an actively placed minor piece, but its only defender is currently under attack by your pieces.",
+        "Capture the defending piece. Once the opponent recaptures, their active minor piece is left completely undefended.",
+        "Use your advanced knight to capture the defending piece.",
+        "Capture the knight on c6 (Nxc6). Black is forced to recapture with their pawn (bxc6), which leaves the bishop on c5 undefended for you to capture (Bxc5)."
+      ]
+    }
+  },
+  "equality/all": {
+    "https://lichess.org/analysis/5k2/2p4p/pp3q2/3P1p1b/1PPQ1p2/P4NbP/4R1P1/7K%20b%20-%20-%2010%2033": {
+      "answer": "Qxd4, Nxd4, Bxe2",
+      "tags": [
+        "equality",
+        "removal-of-defender",
+        "trade",
+        "deflection",
+        "win-material"
+      ],
+      "hints": [
+        "The opponent has a minor piece defending both their heaviest piece and a heavy piece simultaneously.",
+        "Initiate a trade of the most valuable pieces. When the overworked defender recaptures, the other piece is left completely undefended.",
+        "Use your queen to capture the opponent's queen and initiate the sequence.",
+        "Capture the white queen with your queen (Qxd4). After the knight recaptures (Nxd4), it no longer defends the rook. Capture the rook with your bishop (Bxe2)!"
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk3/2pnn2p/1p2Q1p1/1p1p3r/3P4/P3BB2/1PP2PPP/R3K2R%20w%20KQq%20-%204%2020": {
+      "answer": "Bxh5",
+      "tags": [
+        "equality",
+        "capture",
+        "removal-of-defender",
+        "hanging-piece",
+        "simplification"
+      ],
+      "hints": [
+        "The opponent has an active heavy piece pushed far up the edge of the board, but its pawn defender is pinned.",
+        "Take advantage of the pinned pawn to simply capture the aggressive heavy piece for free.",
+        "Use your light-squared bishop to capture the overextended heavy piece.",
+        "Capture the black rook with your bishop (Bxh5). The g6 pawn cannot recapture because it is pinned by your queen!"
+      ]
+    },
+    "https://lichess.org/analysis/r4rk1/1p4pp/p2p2q1/2pP1pB1/P1P5/1P1Q1P1b/5P2/2R1R1K1%20w%20-%20-%203%2023": {
+      "answer": "f4",
+      "tags": [
+        "equality",
+        "pawn-push",
+        "defense",
+        "blocking",
+        "solidify"
+      ],
+      "hints": [
+        "Your minor piece is under intense pressure and in danger of being trapped by the opponent's pawns and heavy pieces.",
+        "Push a pawn forward to lock up the structure, defend your minor piece, and block the opponent's attacking ideas.",
+        "Use your f-pawn to step forward and secure your position.",
+        "Push your pawn to f4! This safely blunts the attack and perfectly defends your bishop on g5."
+      ]
+    },
+    "https://lichess.org/analysis/2bqr1k1/2b2pp1/p6N/1r5Q/1P6/P3P2P/1B3PP1/1R3RK1%20b%20-%20-%200%2028": {
+      "answer": "gxh6",
+      "tags": [
+        "equality",
+        "capture",
+        "simplification",
+        "defense",
+        "trade"
+      ],
+      "hints": [
+        "The opponent has sacrificed a minor piece to crash into your kingside pawn shield with a dangerous check.",
+        "Accept the sacrifice by capturing the invading piece. This neutralizes the immediate threat and leaves you perfectly fine.",
+        "Use your g-pawn to capture the invading minor piece.",
+        "Capture the white knight on h6 with your pawn (gxh6) to eliminate the attacker and equalize the position."
+      ]
+    },
+    "https://lichess.org/analysis/r4rk1/p3Bppp/1p2p3/3pP3/4n3/P1qQP3/5PPP/R4RK1%20w%20-%20-%200%2017": {
+      "answer": "Qxc3, Nxc3, Bxf8",
+      "tags": [
+        "equality",
+        "trade",
+        "discovered-attack",
+        "capture",
+        "simplification"
+      ],
+      "hints": [
+        "The opponent's most valuable piece is offering a trade, but your minor piece is simultaneously attacking one of their heavy pieces.",
+        "Accept the trade of the heaviest pieces first. Once the opponent recaptures, capture their heavy piece to secure an advantage.",
+        "Use your queen to capture the opponent's queen.",
+        "Capture the black queen (Qxc3). After black recaptures with the knight (Nxc3), capture the rook on f8 with your bishop (Bxf8)!"
+      ]
+    },
+    "https://lichess.org/analysis/r1b5/ppp1qp2/2np1Nk1/2b1p3/2B1P2P/3P3P/PPP2P2/R2QK2R%20b%20KQ%20-%200%2016": {
+      "answer": "Qxf6, Rg1+, Kh6",
+      "tags": [
+        "equality",
+        "capture",
+        "defense",
+        "king-safety",
+        "simplification"
+      ],
+      "hints": [
+        "The opponent has an extremely dangerous minor piece planted deep in your territory, right next to your king.",
+        "Eliminate the dangerous minor piece with your heaviest piece. When the opponent inevitably checks you, step your king away to a safe square.",
+        "Use your queen to capture the aggressive minor piece.",
+        "Capture the white knight with your queen (Qxf6). When white checks you with the rook (Rg1+), simply step your king to safety (Kh6)."
+      ]
+    },
+    "https://lichess.org/analysis/3q1rk1/1p1bnppp/4p3/pN1n4/r7/2P3P1/1PQ2PBP/3R1RK1%20w%20-%20-%200%2018": {
+      "answer": "Qxa4",
+      "tags": [
+        "equality",
+        "capture",
+        "hanging-piece",
+        "win-material",
+        "simplification"
+      ],
+      "hints": [
+        "The opponent has placed a heavy piece actively on your side of the board, but it is entirely unprotected.",
+        "Simply capture the undefended heavy piece to win material and relieve the pressure.",
+        "Use your queen to capture the hanging heavy piece.",
+        "Capture the undefended black rook on a4 with your queen (Qxa4)!"
+      ]
+    },
+    "https://lichess.org/analysis/3r1b2/pp1k4/3pQ1p1/2pq1p2/8/2P5/PP3PPP/R1B1R1K1%20b%20-%20-%203%2019": {
+      "answer": "Qxe6, Rxe6, Kxe6",
+      "tags": [
+        "equality",
+        "trade",
+        "simplification",
+        "endgame",
+        "king-walk"
+      ],
+      "hints": [
+        "Your king is in check by the opponent's most valuable piece, but you have the opportunity to force a massive simplification.",
+        "Trade off the heaviest pieces to remove the check and immediately transition into a safe endgame.",
+        "Use your queen to capture the attacking piece.",
+        "Capture the white queen with your own queen (Qxe6). White will recapture (Rxe6), and then you recapture with your king (Kxe6), equalizing the endgame."
+      ]
+    },
+    "https://lichess.org/analysis/8/8/5p2/2K1k2p/7P/5PP1/8/8%20b%20-%20-%202%2058": {
+      "answer": "f5, f4+, Ke4, Kd6, Kf3, Ke6, Kxg3, Kxf5, Kxh4",
+      "tags": [
+        "equality",
+        "pawn-endgame",
+        "king-walk",
+        "passed-pawn",
+        "tactics"
+      ],
+      "hints": [
+        "In this pure pawn endgame, the pawn structures are locked, but a timely pawn push can force weaknesses.",
+        "Push your pawn to force a confrontation. Navigate the resulting checks with your king to infiltrate the opponent's structure and win the remaining pawns.",
+        "Use your f-pawn to initiate the breakthrough.",
+        "Push your pawn to f5. White will respond with f4+. Step your king forward (Ke4). As the white king maneuvers (Kd6), infiltrate with your king (Kf3) and systematically capture the white pawns (Kxg3, Kxh4) to secure the draw or win!"
+      ]
+    }
+  },
+  "master/all": {
+    "https://lichess.org/analysis/r2q2k1/1p4b1/p2p4/2pPrb1p/P5pP/2NB2P1/1P3P2/R2QR1K1%20b%20-%20-%201%2022": {
+      "answer": "Rxe1+, Qxe1, Bxd3",
+      "tags": [
+        "master",
+        "trade",
+        "simplification",
+        "deflection",
+        "win-material"
+      ],
+      "hints": [
+        "The opponent has a minor piece defended by a heavy piece that is also involved in tension on an open file.",
+        "Resolve the tension on the open file with a forcing capture. Once the opponent recaptures, their minor piece will be left completely undefended.",
+        "Use your rook to initiate the trade on the open file.",
+        "Capture the rook with Rxe1+. The white queen must recapture (Qxe1), leaving the bishop undefended for you to cleanly capture (Bxd3)."
+      ]
+    },
+    "https://lichess.org/analysis/4r1k1/1N1n4/p1p3pb/2Pp3p/PP1Pp3/4P1q1/5RP1/1R1bQ1K1%20w%20-%20-%200%2027": {
+      "answer": "Rf8+, Rxf8, Qxg3",
+      "tags": [
+        "master",
+        "discovered-attack",
+        "deflection",
+        "sacrifice",
+        "heavy-pieces"
+      ],
+      "hints": [
+        "Your heaviest piece is staring directly at the opponent's heaviest piece, but your own heavy piece is blocking the attack.",
+        "Move the blocking piece with a forcing check to completely distract the opponent, revealing the attack on their most valuable piece.",
+        "Use your advanced rook to deliver the forcing check and clear the path.",
+        "Sacrifice your rook with Rf8+! Black must respond (e.g., Rxf8), and your queen is now free to capture their queen (Qxg3)."
+      ]
+    },
+    "https://lichess.org/analysis/8/8/pp5p/4K3/1pP3k1/P7/8/8%20w%20-%20-%200%2048": {
+      "answer": "axb4, h5, c5",
+      "tags": [
+        "master",
+        "pawn-endgame",
+        "passed-pawn",
+        "breakthrough",
+        "pawn-race"
+      ],
+      "hints": [
+        "In this pawn endgame, the opponent has a pawn structure that can be undermined to create an unstoppable passed pawn.",
+        "Initiate a pawn trade to break the opponent's structure. Once they begin their own pawn race, immediately push your freed pawn to victory.",
+        "Use your edge pawn to capture the opponent's advanced pawn.",
+        "Capture the pawn with axb4. Black will try to race with h5. Ignore it and push your c-pawn (c5) to create an unstoppable passed pawn!"
+      ]
+    },
+    "https://lichess.org/analysis/3k4/6R1/2KP2p1/4P3/1p1r4/1p3P2/5b2/8%20w%20-%20-%200%2047": {
+      "answer": "Rg8#",
+      "tags": [
+        "master",
+        "checkmate",
+        "mate-in-one",
+        "back-rank-mate",
+        "endgame"
+      ],
+      "hints": [
+        "The opponent's king is heavily restricted to the back rank by your active king and pawns.",
+        "A single heavy piece move to the back rank covers all remaining escape squares, ending the game instantly.",
+        "Use your active rook to deliver the final check.",
+        "Slide your rook to g8 for a sudden and unanswerable checkmate (Rg8#)!"
+      ]
+    },
+    "https://lichess.org/analysis/7k/5Qp1/1nq1p2p/8/7P/3B2P1/5P2/6K1%20w%20-%20-%202%2061": {
+      "answer": "Qf8#",
+      "tags": [
+        "master",
+        "checkmate",
+        "mate-in-one",
+        "queen-mate",
+        "supported-mate"
+      ],
+      "hints": [
+        "The enemy king is trapped in the corner, with its pawn shield effectively neutralized by your minor piece.",
+        "A single queen move to the back rank covers all escape squares, supported perfectly by your minor piece.",
+        "Use your queen to deliver the supported final blow.",
+        "Move your queen to f8 for an immediate and beautiful checkmate (Qf8#)!"
+      ]
+    },
+    "https://lichess.org/analysis/r5k1/pp3ppp/8/2p1r3/2P1P3/3B2qb/PP2Q1P1/R4RK1%20w%20-%20-%200%2022": {
+      "answer": "Rf3, Qxg2+, Qxg2, Bxg2, Kxg2",
+      "tags": [
+        "master",
+        "simplification",
+        "trade",
+        "attack",
+        "tactics"
+      ],
+      "hints": [
+        "The opponent's most valuable piece is aggressively positioned, but it is overworked trying to attack and defend simultaneously.",
+        "Attack the aggressive piece to force a massive simplification. In the resulting series of trades, you will emerge with an extra piece.",
+        "Use your active rook to attack the opponent's heaviest piece.",
+        "Attack the black queen with Rf3. Black must play Qxg2+. Recapture with your queen (Qxg2). After black captures the queen (Bxg2), capture the bishop with your king (Kxg2) to cleanly win the material!"
+      ]
+    },
+    "https://lichess.org/analysis/r4rk1/5ppp/ppb1p3/2pqQ3/4N3/3PR3/PPP2PPP/R5K1%20w%20-%20-%201%2018": {
+      "answer": "Nf6+, Kh8, Nxd5",
+      "tags": [
+        "master",
+        "discovered-attack",
+        "fork",
+        "win-material",
+        "tactics"
+      ],
+      "hints": [
+        "Your heaviest piece and the opponent's heaviest piece are facing each other, but the opponent's piece is defended.",
+        "Deliver a forcing minor piece check to disrupt the defense and uncover the attack, allowing you to win their heaviest piece.",
+        "Use your centralized knight to deliver the forcing check.",
+        "Jump your knight to f6 with check (Nf6+). The king steps aside to h8, and you cleanly capture the queen (Nxd5). Even if they capture the knight, your queen takes theirs!"
+      ]
+    },
+    "https://lichess.org/analysis/3r2k1/pp3p1p/5bp1/8/8/N1PRB1P1/Pr3PP1/1R3K2%20b%20-%20-%200%2022": {
+      "answer": "Rxb1+, Nxb1, Rxd3",
+      "tags": [
+        "master",
+        "trade",
+        "simplification",
+        "deflection",
+        "tactics"
+      ],
+      "hints": [
+        "You have tension between heavy pieces on two completely different sides of the board.",
+        "Initiate a trade with check on one side to force the opponent's recapture, leaving their other heavy piece completely undefended.",
+        "Use your advanced rook to initiate the trade with check.",
+        "Capture the b1 rook with check (Rxb1+). White must recapture with the knight (Nxb1), leaving the rook on d3 undefended for you to securely capture (Rxd3)!"
+      ]
+    },
+    "https://lichess.org/analysis/8/5pkp/R5p1/2N5/1P3p2/P5PP/4rn1K/6R1%20b%20-%20-%200%2046": {
+      "answer": "Ng4+, Kh1, Rh2#",
+      "tags": [
+        "master",
+        "checkmate",
+        "mating-net",
+        "knight-mate",
+        "forcing-sequence"
+      ],
+      "hints": [
+        "The opponent's king is restricted to the edge of the board by your active minor and heavy pieces.",
+        "A forcing minor piece check drives the king into the corner, allowing your heavy piece to deliver a supported checkmate.",
+        "Use your knight to deliver the forcing check.",
+        "Check the white king with your knight (Ng4+). The king must move into the corner (Kh1), allowing your rook to deliver checkmate on h2 (Rh2#)!"
+      ]
+    }
+  },
+  "mixed/all": {
+    "https://lichess.org/analysis/8/8/8/3k4/2nP2r1/1KP5/7R/8%20w%20-%20-%205%2060": {
+      "answer": "Rh5+, Ne5, Rxe5+",
+      "tags": [
+        "mixed",
+        "pin",
+        "check",
+        "win-material",
+        "endgame"
+      ],
+      "hints": [
+        "The opponent's king and a minor piece are somewhat aligned, making them vulnerable to a multi-purpose attack.",
+        "Deliver a long-range check to force the king's hand, exploiting the resulting pin to win the minor piece.",
+        "Use your active rook to deliver the forcing check.",
+        "Check the black king with your rook (Rh5+). Black must block with the knight (Ne5), allowing you to capture the pinned knight (Rxe5+)!"
+      ]
+    },
+    "https://lichess.org/analysis/5rk1/R4pb1/1p4p1/2p5/8/2N3PP/PP1rRP2/6K1%20b%20-%20-%202%2024": {
+      "answer": "Bxc3, Rxd2, Bxd2",
+      "tags": [
+        "mixed",
+        "removal-of-defender",
+        "trade",
+        "simplification",
+        "win-material"
+      ],
+      "hints": [
+        "The opponent's heavy piece is defended by a minor piece, but that minor piece is vulnerable.",
+        "Remove the key defender by capturing it. Even if the opponent initiates a trade of heavy pieces, you will come out a full piece ahead.",
+        "Use your dark-squared bishop to capture the defending minor piece.",
+        "Capture the white knight with your bishop (Bxc3). White tries to trade rooks (Rxd2), but your bishop can simply recapture (Bxd2)."
+      ]
+    },
+    "https://lichess.org/analysis/8/R7/8/8/1P6/5qk1/K7/8%20w%20-%20-%200%2049": {
+      "answer": "Ra3, Qxa3+, Kxa3",
+      "tags": [
+        "mixed",
+        "pin",
+        "skewer",
+        "simplification",
+        "endgame"
+      ],
+      "hints": [
+        "The opponent's king and their most valuable piece are lined up perfectly on the same rank.",
+        "Use your heavy piece to completely pin the most valuable piece to the king, forcing a highly favorable simplification into a winning pawn endgame.",
+        "Use your active rook to establish the devastating pin.",
+        "Move your rook to a3 (Ra3). The black queen is pinned to the king! Black must capture (Qxa3+), and you recapture (Kxa3) to secure the endgame win."
+      ]
+    },
+    "https://lichess.org/analysis/r2q1rk1/5ppb/1pp1p2p/p3P2P/1nP3P1/1Q6/PP1B2P1/2KR1B1R%20w%20-%20-%201%2019": {
+      "answer": "Bxb4, Qg5+, Bd2",
+      "tags": [
+        "mixed",
+        "capture",
+        "defense",
+        "blocking",
+        "simplification"
+      ],
+      "hints": [
+        "The opponent has an actively placed minor piece in your territory, but its position is slightly overextended.",
+        "Capture the active minor piece. Even if the opponent responds with a forcing check, you have a solid retreat that defends your king and keeps the material advantage.",
+        "Use your dark-squared bishop to capture the overextended minor piece.",
+        "Capture the knight with your bishop (Bxb4). Black will check with the queen (Qg5+), but you can simply retreat your bishop to block and defend (Bd2)."
+      ]
+    },
+    "https://lichess.org/analysis/r1bk3r/pppp1Bp1/8/4q1p1/1b1pP3/2P5/PP1N2PP/R1BQKR2%20b%20Q%20-%200%2012": {
+      "answer": "dxc3, Qc2, cxd2+",
+      "tags": [
+        "mixed",
+        "discovered-attack",
+        "check",
+        "passed-pawn",
+        "tactics"
+      ],
+      "hints": [
+        "The opponent's king is still uncastled, and your advanced pawn is putting serious pressure on their minor piece.",
+        "Capture the minor piece with your pawn. If the opponent tries to defend or escape, continue pushing the pawn to deliver a discovered check and win more material.",
+        "Use your advanced central pawn to make the initial capture.",
+        "Capture the white pawn (dxc3). White tries to run with the queen (Qc2). Push the pawn again to capture the knight with a discovered check (cxd2+)!"
+      ]
+    },
+    "https://lichess.org/analysis/r4rk1/1R2n1p1/pQnbp2p/3p1p2/3P3P/4BNP1/4qPB1/1R4K1%20w%20-%20-%200%2020": {
+      "answer": "Rxe7, Nxe7, Qxd6",
+      "tags": [
+        "mixed",
+        "removal-of-defender",
+        "exchange-sacrifice",
+        "win-material",
+        "tactics"
+      ],
+      "hints": [
+        "The opponent has an active minor piece defended by another minor piece, but the defender is overworked.",
+        "Remove the overworked defender by sacrificing the exchange, then capture the remaining minor piece to win two minor pieces for a rook.",
+        "Use your advanced rook to capture the defending minor piece.",
+        "Sacrifice the exchange by capturing the knight on e7 (Rxe7). Black must recapture (Nxe7), allowing you to cleanly capture the bishop on d6 with your queen (Qxd6)."
+      ]
+    },
+    "https://lichess.org/analysis/8/7k/7p/1R3pp1/5n2/1B5P/Pr4PK/8%20w%20-%20-%201%2054": {
+      "answer": "Bg8+, Kxg8, Rxb2",
+      "tags": [
+        "mixed",
+        "discovered-attack",
+        "check",
+        "deflection",
+        "clearance"
+      ],
+      "hints": [
+        "The opponent's heavy piece is completely undefended, but your own minor piece is currently blocking your heavy piece from capturing it.",
+        "Deliver a forcing check with your blocking minor piece to get it out of the way. Once the king deals with the check, you can cleanly capture the undefended heavy piece.",
+        "Use your light-squared bishop to deliver the forcing check.",
+        "Check the black king with your bishop (Bg8+). After the king captures (Kxg8), your rook is free to capture the undefended black rook (Rxb2)."
+      ]
+    },
+    "https://lichess.org/analysis/8/Np1k3p/8/PPP5/3K1p2/r7/7P/8%20w%20-%20-%201%2044": {
+      "answer": "c6+, bxc6, bxc6+, Ke7, c7",
+      "tags": [
+        "mixed",
+        "breakthrough",
+        "passed-pawn",
+        "sacrifice",
+        "endgame"
+      ],
+      "hints": [
+        "You have a pair of advanced pawns on the queenside, but they are blocked by the opponent's pawn structure and king.",
+        "Sacrifice one of the pawns with a check to break open the opponent's structure, allowing your other pawn to become an unstoppable passed pawn.",
+        "Push your c-pawn forward to deliver the forcing check.",
+        "Push c6+! Black must capture (bxc6). Push your other pawn with check (bxc6+). The king steps away (Ke7), and you can freely push your passed pawn (c7), which is unstoppable."
+      ]
+    },
+    "https://lichess.org/analysis/r6r/ppq2pk1/2p2nn1/3p2Q1/3P4/2PB1P1P/P1P2P2/R5RK%20w%20-%20-%204%2021": {
+      "answer": "Bxg6, Rxh3+, Kg2, fxg6, Kxh3, Rh8+, Kg2",
+      "tags": [
+        "mixed",
+        "king-walk",
+        "capture",
+        "defense",
+        "king-safety"
+      ],
+      "hints": [
+        "The opponent's king has a weakened pawn shield, but they also have a direct threat against your king.",
+        "Initiate a capture to tear apart the enemy king's pawn shield. Navigate the opponent's resulting checks by stepping your king to safety, leaving you up material.",
+        "Use your light-squared bishop to capture the defending minor piece near the king.",
+        "Capture the knight with your bishop (Bxg6). Black checks with Rxh3+. Step your king up to g2. Black captures your bishop (fxg6), and you capture the rook (Kxh3). Black checks again (Rh8+), and your king safely returns to g2 (Kg2), securing the material advantage."
+      ]
+    }
+  }
+}
