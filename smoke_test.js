@@ -355,6 +355,20 @@ async function main() {
       requireCheck('NEG no puzzle board before selection', !(await isVisibleFast(page.getByTestId('puzzle-index'))));
     }, results);
 
+    await runUseCase('Dictionary page opens from homepage', async ({ requireCheck }) => {
+      await page.getByTestId('open-dictionary-page').click();
+      await page.getByRole('heading', { name: 'Dictionary' }).waitFor({ timeout: 4000 });
+
+      const entryCount = await page.getByTestId('dictionary-entry').count();
+      requireCheck('dictionary entries visible', entryCount > 0, 'No dictionary entries rendered');
+
+      await page.getByTestId('dictionary-back-button').click();
+      await page.getByRole('heading', { name: 'Chess Puzzles' }).waitFor({ timeout: 4000 });
+
+      requireCheck('returned to homepage', true);
+      requireCheck('NEG no app crash banner', !(await hasErrorBanner(page)));
+    }, results);
+
     await runUseCase('Open first category puzzle', async ({ requireCheck }) => {
       await categoryButtons.first().click();
       await page.getByTestId('puzzle-index').waitFor({ timeout: 6000 });
@@ -362,20 +376,8 @@ async function main() {
 
       requireCheck('puzzle index visible', Boolean(index));
       requireCheck('board state text visible', await isVisibleFast(page.getByText(/White to move|Black to move|Partnered!|TRY AGAIN|CORRECT!/i).first()));
-      requireCheck('tags panel visible', await isVisibleFast(page.getByTestId('tags-panel')));
+      requireCheck('NEG tags panel removed', !(await isVisibleFast(page.getByTestId('tags-panel'))));
       requireCheck('NEG no category heading on puzzle screen', !(await isVisibleFast(page.getByRole('heading', { name: 'Chess Puzzles' }))));
-      requireCheck('NEG no app crash banner', !(await hasErrorBanner(page)));
-    }, results);
-
-    await runUseCase('Tags section is shown', async ({ requireCheck }) => {
-      await page.getByTestId('tags-panel').waitFor({ timeout: 4000 });
-      const chipCount = await page.getByTestId('tag-chip').count();
-      requireCheck('tag chips exist', chipCount > 0, 'No tag chips found');
-
-      const tagsLabel = await isVisibleFast(page.getByText('Tags', { exact: true }));
-      requireCheck('tags label visible', tagsLabel);
-
-      requireCheck('NEG no dictionary modal yet', !(await isVisibleFast(page.getByRole('button', { name: 'Close dictionary' }))));
       requireCheck('NEG no app crash banner', !(await hasErrorBanner(page)));
     }, results);
 
@@ -414,72 +416,6 @@ async function main() {
       requireCheck('NEG no app crash banner', !(await hasErrorBanner(page)));
     }, results);
 
-    await runUseCase('Tag dictionary popup opens', async ({ requireCheck, check }) => {
-      let opened = false;
-
-      for (let attempt = 0; attempt < 5 && !opened; attempt += 1) {
-        const chips = page.getByTestId('tag-chip');
-        const chipCount = await chips.count();
-        check(`tag scan attempt ${attempt + 1} chips > 0`, chipCount > 0);
-
-        for (let index = 0; index < chipCount; index += 1) {
-          await chips.nth(index).click();
-          const closeBtn = page.getByRole('button', { name: 'Close dictionary' });
-          if (await closeBtn.isVisible({ timeout: 600 }).catch(() => false)) {
-            opened = true;
-            await closeBtn.click();
-            break;
-          }
-        }
-
-        if (!opened) {
-          const moved = await goNextIfPossible(page);
-          if (!moved) break;
-        }
-      }
-
-      requireCheck('tag opens dictionary modal', opened, 'No tag chip opened a dictionary entry after scanning multiple puzzles');
-      requireCheck('NEG modal closes successfully', !(await isVisibleFast(page.getByRole('button', { name: 'Close dictionary' }))));
-      requireCheck('NEG no app crash banner', !(await hasErrorBanner(page)));
-    }, results);
-
-    await runUseCase('Mate-pattern tag does not overmatch', async ({ requireCheck, check }) => {
-      let foundMatePatternsTag = false;
-
-      for (let attempt = 0; attempt < 25 && !foundMatePatternsTag; attempt += 1) {
-        const chips = page.getByTestId('tag-chip');
-        const chipCount = await chips.count();
-
-        for (let index = 0; index < chipCount; index += 1) {
-          const chip = chips.nth(index);
-          const label = String(await chip.innerText()).trim().toLowerCase();
-          if (label === 'mate patterns') {
-            foundMatePatternsTag = true;
-            await chip.click();
-
-            const modalClose = page.getByRole('button', { name: 'Close dictionary' });
-            requireCheck('dictionary modal opened for mate patterns', await isVisibleFast(modalClose, 1200));
-
-            const smotheredVisible = await isVisibleFast(page.getByText('Smothered Mate', { exact: true }), 600);
-            requireCheck('NEG not mapped to Smothered Mate', !smotheredVisible, 'Mate patterns incorrectly mapped to Smothered Mate');
-
-            const fallbackTitleVisible = await isVisibleFast(page.getByText('mate patterns', { exact: true }), 600);
-            check('fallback tag title shown', fallbackTitleVisible);
-
-            await closeDictionaryModalIfOpen(page);
-            break;
-          }
-        }
-
-        if (!foundMatePatternsTag) {
-          const moved = await goNextIfPossible(page);
-          if (!moved) break;
-        }
-      }
-
-      requireCheck('found at least one mate patterns tag', foundMatePatternsTag, 'No mate patterns tag found while scanning puzzles');
-      requireCheck('NEG no app crash banner', !(await hasErrorBanner(page)));
-    }, results);
 
     await runUseCase('Incorrect move resets gracefully', async ({ requireCheck }) => {
       requireCheck('found puzzle with wrong-move branch', await preparePlayablePuzzle(page, true), 'Could not find puzzle with an incorrect-move branch');

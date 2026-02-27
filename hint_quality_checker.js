@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const inputPath = process.argv[2] || 'puzzles_with_hints.json';
+const inputPath = process.argv[2] || 'puzzles.json';
 const resolvedInput = path.resolve(process.cwd(), inputPath);
 const dictionaryPath = process.argv[3] || 'dictionary.json';
 const resolvedDictionary = path.resolve(process.cwd(), dictionaryPath);

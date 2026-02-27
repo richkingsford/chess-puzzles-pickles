@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Vite (game)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm run dev",
+      "cwd": "${workspaceFolder}/game"
+    },
+    {
+      "name": "Debug UI (Chrome @5173)",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/game"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Chess App (Vite + Chrome)",
+      "configurations": [
+        "Run Vite (game)",
+        "Debug UI (Chrome @5173)"
+      ],
+      "stopAll": true
+    }
+  ]
+}

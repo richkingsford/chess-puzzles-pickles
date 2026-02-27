@@ -1,5 +1,5 @@
 {
-  "mate-in-one-move": {
+  "mate-in-one-move/all": {
     "https://lichess.org/analysis/8/p5qQ/1p2k1r1/1P3p2/P1P1p3/1K1nP1B1/5P2/3R3R%20b%20-%20-%2010%2040": {
       "answer": "Qb2#",
       "tags": [
@@ -145,7 +145,7 @@
       ]
     }
   },
-  "mate-in-two-moves": {
+  "mate-in-two-moves/all": {
     "https://lichess.org/analysis/1rb2rk1/pp3pp1/3p4/q1bNn3/2B3p1/6Q1/PP3PPP/1R1R2K1%20w%20-%20-%204%2020": {
       "answer": "Ne7+, Kh7, Qh4#",
       "tags": [
@@ -291,7 +291,7 @@
       ]
     }
   },
-  "mate-in-three-moves": {
+  "mate-in-three-moves/all": {
     "https://lichess.org/analysis/rnb4Q/pp1k1p1p/3p4/8/q3p3/P7/2nBPPPP/2RK1BNR%20b%20-%20-%206%2015": {
       "answer": "Ne3+, Ke1, Qd1+, Rxd1, Nc2#",
       "tags": [
@@ -436,8 +436,10 @@
         "Sacrifice your queen on f7 (Qxf7+)! Black must recapture (Rxf7). Now bring your rook down to the back rank (Rd8+). Black must block with the rook (Rf8), which you capture for checkmate (Rfxf8#)."
       ]
     }
-  },
-  "mate-in-four-moves": {
+  }
+}
+{
+  "mate-in-four-moves/all": {
     "https://lichess.org/analysis/5rk1/5ppp/4p3/pR6/P2q4/4rQ1P/6P1/5RK1%20w%20-%20-%204%2029": {
       "answer": "Qxf7+, Rxf7, Rb8+, Qd8, Rxd8+, Rf8, Rfxf8#",
       "tags": [
@@ -583,7 +585,7 @@
       ]
     }
   },
-  "mate-in-5-or-more-moves": {
+  "mate-in-5-or-more-moves/all": {
     "https://lichess.org/analysis/r1bq3k/pp1p2pB/1nn1pr2/1Nb4Q/2P2p2/5N2/PP3PPP/R3K2R%20w%20KQ%20-%202%2016": {
       "answer": "Bg6+, Kg8, Qh7+, Kf8, Qh8+, Ke7, Qxg7+, Rf7, Qxf7#",
       "tags": [
@@ -729,7 +731,7 @@
       ]
     }
   },
-  "back-rank-mate": {
+  "back-rank-mate/all": {
     "https://lichess.org/analysis/2N5/5p1k/4p1pp/qRb5/2P5/5P2/2Q3PP/7K%20b%20-%20-%202%2031": {
       "answer": "Qe1#",
       "tags": [
@@ -874,8 +876,10 @@
         "Sacrifice your queen by capturing the rook (Qxb8+)! Black must recapture with the knight (Nxb8), allowing your rook to slide down for checkmate (Re8#)!"
       ]
     }
-  },
-  "smothered-mate": {
+  }
+}
+{
+  "smothered-mate/all": {
     "https://lichess.org/analysis/r1bqkbnr/pp1pnppp/8/4pN2/4P3/8/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%202%206": {
       "answer": "Nd6#",
       "tags": [
@@ -1021,7 +1025,7 @@
       ]
     }
   },
-  "anastasia-mate": {
+  "anastasia-mate/all": {
     "https://lichess.org/analysis/1r5r/pN1R1p2/3N1bk1/4p1p1/2P1Pnp1/1P6/P4PPP/5RK1%20b%20-%20-%201%2032": {
       "answer": "Ne2+, Kh1, Rxh2+, Kxh2, Rh8#",
       "tags": [
@@ -1167,7 +1171,7 @@
       ]
     }
   },
-  "arabian-mate": {
+  "arabian-mate/all": {
     "https://lichess.org/analysis/r6k/r4pR1/p4N1p/n2pPP2/1p1Pq3/6K1/PPp2P2/1B6%20w%20-%20-%2010%2044": {
       "answer": "Rh7#",
       "tags": [
@@ -1312,8 +1316,10 @@
         "Check the king with your knight (Nxf6+). The king must step to the corner (Kh8), allowing your rook to slide up for an Arabian Mate (Rg8#)!"
       ]
     }
-  },
-  "bodens-mate": {
+  }
+}
+{
+  "bodens-mate/all": {
     "https://lichess.org/analysis/r6r/1pp1k3/p1qb3p/4pb1N/3P2P1/2P5/PP1NQ3/2KR3R%20b%20-%20-%200%2028": {
       "answer": "Qxc3+, bxc3, Ba3#",
       "tags": [
@@ -1459,7 +1465,7 @@
       ]
     }
   },
-  "double-bishop-mate": {
+  "double-bishop-mate/all": {
     "https://lichess.org/analysis/8/1p1B3p/k5p1/P1BP1n2/1P3Pb1/8/4Nb1P/2R4K%20b%20-%20-%204%2038": {
       "answer": "Bf3#",
       "tags": [
@@ -1596,7 +1602,7 @@
       ]
     }
   },
-  "dovetail-mate": {
+  "dovetail-mate/all": {
     "https://lichess.org/analysis/2kr1bnr/ppp1ppp1/2n5/8/2B5/2NP1PK1/PPP1N1P1/R1BQ1R1q%20b%20-%20-%200%2012": {
       "answer": "Qh4#",
       "tags": [
@@ -1732,8 +1738,10 @@
         "Capture the f8 rook with your queen for check (Qxf8+)! The black king recaptures (Kc7), allowing your queen to jump to d6 for a dovetail mate (Qd6#)!"
       ]
     }
-  },
-  "hook-mate": {
+  }
+}
+{
+  "hook-mate/all": {
     "https://lichess.org/analysis/8/3R4/pk2p3/Np1n4/1P6/r7/3K4/8%20w%20-%20-%2011%2048": {
       "answer": "Rb7#",
       "tags": [
@@ -1879,7 +1887,7 @@
       ]
     }
   },
-  "opening": {
+  "opening/all": {
     "https://lichess.org/analysis/r1b2rk1/1p2bppp/pqn5/3B4/8/5N2/PP2QPPP/R1BR2K1%20w%20-%20-%201%2015": {
       "answer": "Bxc6, Qxc6, Qxe7",
       "tags": [
@@ -2025,7 +2033,7 @@
       ]
     }
   },
-  "french-defense": {
+  "french-defense/all": {
     "https://lichess.org/analysis/rnb2rk1/pppp1ppp/4p3/5q2/3Pn3/2P2NP1/P1PBQPBP/R3K2R%20w%20KQ%20-%205%2010": {
       "answer": "Nh4, Qxf2+, Qxf2, Nxf2, Kxf2",
       "tags": [
@@ -2169,57 +2177,11 @@
         "Use your queen to deliver the double attack.",
         "Check the black king with Qa4+. Black must block (e.g., c6), and you cleanly capture the hanging bishop (Qxb4)!"
       ]
-    },
-    "https://lichess.org/analysis/r1bqkbnr/ppp2ppp/2n5/3pP3/3p4/5N2/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%200%205": {
-      "answer": "Bb5, a6, Bxc6+",
-      "tags": [
-        "french-defense",
-        "pin",
-        "simplification",
-        "pawn-structure",
-        "opening"
-      ],
-      "hints": [
-        "Black has placed their knight actively, but it can be immediately pinned to their uncastled king.",
-        "Develop your light-squared bishop aggressively to create the pin. When Black questions it, trade the bishop for the knight.",
-        "Use your light-squared bishop to initiate the pin.",
-        "Play Bb5, pinning the c6 knight! Black will likely play a6. Capture the knight with check (Bxc6+), ruining Black's queenside pawn structure!"
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp2ppp/4p3/3p4/3PP3/8/PPP2PPP/RNBQKBNR%20w%20KQkq%20-%200%203": {
-      "answer": "exd5, exd5, Bd3",
-      "tags": [
-        "french-defense",
-        "exchange-variation",
-        "center-control",
-        "development",
-        "positional"
-      ],
-      "hints": [
-        "The central tension is high early on. You can resolve it immediately to open lines for your pieces.",
-        "Trade the central pawns to create an open e-file, then immediately place your bishop on its most active diagonal.",
-        "Use your e-pawn to initiate the exchange.",
-        "Capture on d5 (exd5). Black recaptures (exd5). Now develop your bishop to d3 (Bd3), eyeing the h7 square and preparing to castle!"
-      ]
-    },
-    "https://lichess.org/analysis/r1bqkbnr/pp3ppp/2n1p3/2ppP3/3P4/2P5/PP3PPP/RNBQKBNR%20w%20KQkq%20-%200%205": {
-      "answer": "Nf3, Qb6, a3",
-      "tags": [
-        "french-defense",
-        "advance-variation",
-        "prophylaxis",
-        "pawn-chain",
-        "defense"
-      ],
-      "hints": [
-        "Black is piling immense pressure onto your d4 pawn, the base of your advanced pawn chain.",
-        "Develop your kingside knight to defend the center. When Black increases the pressure with their queen, prepare to defend your queenside space.",
-        "Use your g1 knight to bolster the center.",
-        "Develop your knight (Nf3). Black brings their queen out (Qb6). Now play a calm prophylactic pawn push (a3) to prepare b4 and secure your queenside!"
-      ]
     }
-  },
-  "ruy-lopez": {
+  }
+}
+{
+  "ruy-lopez/all": {
     "https://lichess.org/analysis/r1b2rk1/p1p1bppp/2p2q2/3p4/3P4/2P2N2/P1P2PPP/R1BQR1K1%20w%20-%20-%201%2012": {
       "answer": "Bg5, Qxg5, Nxg5",
       "tags": [
@@ -2365,7 +2327,7 @@
       ]
     }
   },
-  "sicilian-defense": {
+  "sicilian-defense/all": {
     "https://lichess.org/analysis/2r3k1/pp2ppbp/3p1np1/q6P/3NP1P1/2P1B3/P1PQ4/1K1R3R%20b%20-%20-%200%2018": {
       "answer": "Nxe4, Qd3, Nxc3+",
       "tags": [
@@ -2509,57 +2471,9 @@
         "Use your queen to deliver the double attack.",
         "Capture the c6 pawn with check (Qxc6+). Black blocks the check (e.g., Qd7), and you cleanly capture the hanging bishop on a6 (Qxa6)!"
       ]
-    },
-    "https://lichess.org/analysis/r1bqkb1r/pp1p1ppp/2n2n2/4p3/3NP3/2N5/PPP2PPP/R1BQKB1R%20w%20KQkq%20-%200%206": {
-      "answer": "Nxc6, bxc6, e5",
-      "tags": [
-        "sicilian-defense",
-        "center-control",
-        "fork",
-        "win-material",
-        "opening"
-      ],
-      "hints": [
-        "Black has pushed their central pawn, challenging your knight, but this creates a structural weakness.",
-        "Trade knights to force a recapture that blocks Black's development, then immediately strike in the center to attack their remaining knight.",
-        "Use your d4 knight to initiate the sequence.",
-        "Capture on c6 (Nxc6). Black must recapture with the pawn (bxc6). Now push your pawn to e5 (e5), forking the knight and severely disrupting Black's position!"
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pp2bppp/2np1n2/4p3/2B1P3/1NN1B3/PPP2PPP/R2Q1RK1%20b%20kq%20-%201%209": {
-      "answer": "Nxe4, Nxe4, d5",
-      "tags": [
-        "sicilian-defense",
-        "center-break",
-        "fork",
-        "tactics",
-        "simplification"
-      ],
-      "hints": [
-        "White's center seems secure, but they have left a minor piece vulnerable to a classic central pawn fork.",
-        "Sacrifice your knight temporarily for a central pawn to draw White's piece onto a square where it can be forked.",
-        "Use your f6 knight to grab the central pawn.",
-        "Capture the pawn (Nxe4). White recaptures with the knight (Nxe4). Now push your d-pawn (d5), unleashing a devastating fork on White's bishop and knight to win the piece back with a superior position!"
-      ]
-    },
-    "https://lichess.org/analysis/rnbqk2r/1p2bppp/p2p1n2/4p1B1/3NP3/2N5/PPPQ1PPP/R3KB1R%20w%20KQkq%20-%200%208": {
-      "answer": "Bxf6, Bxf6, Nf5",
-      "tags": [
-        "sicilian-defense",
-        "outpost",
-        "simplification",
-        "positional-advantage",
-        "tactics"
-      ],
-      "hints": [
-        "Black's position is solid, but you have the opportunity to create a massive, unassailable outpost for your knight.",
-        "Eliminate the key defender of the d5 and f5 squares by trading your bishop, then jump your knight into the hole.",
-        "Use your dark-squared bishop to make the trade.",
-        "Capture the knight (Bxf6). Black recaptures (Bxf6). Now jump your knight into the gaping hole on f5 (Nf5), creating immense pressure on Black's kingside!"
-      ]
     }
   },
-  "caro-kann-defense": {
+  "caro-kann-defense/all": {
     "https://lichess.org/analysis/r4rk1/2q2pp1/3bpn1p/pp1p4/3n4/P1P1NB1P/1PQB1PP1/R4RK1%20w%20-%20-%200%2017": {
       "answer": "cxd4, Qxc2, Nxc2",
       "tags": [
@@ -2703,57 +2617,11 @@
         "Use your active rook to deliver the first forcing check.",
         "Check with your rook on h4 (Rh4+). Black must block with the rook (Rh7), and you capture it with the queen for checkmate (Qxh7#)!"
       ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pp2pppp/2p5/3p4/3PP3/8/PPP2PPP/RNBQKBNR%20w%20KQkq%20-%200%203": {
-      "answer": "Nc3, dxe4, Nxe4",
-      "tags": [
-        "caro-kann-defense",
-        "classical-variation",
-        "center-control",
-        "simplification",
-        "opening"
-      ],
-      "hints": [
-        "Black is challenging your central pawn, but you can simply defend it with a developing move.",
-        "Bring your queenside knight out to support the e4 pawn. If Black captures, you recapture and place your knight perfectly in the center.",
-        "Use your b1 knight for defense.",
-        "Develop the knight to c3 (Nc3). Black captures the pawn (dxe4), and you recapture with the knight (Nxe4), taking a dominant central post!"
-      ]
-    },
-    "https://lichess.org/analysis/rn1qkbnr/pp2pppp/2p5/5b2/3PN3/8/PPP2PPP/R1BQKBNR%20w%20KQkq%20-%200%205": {
-      "answer": "Ng3, Bg6, h4",
-      "tags": [
-        "caro-kann-defense",
-        "space-advantage",
-        "kingside-attack",
-        "tempo",
-        "tactics"
-      ],
-      "hints": [
-        "Black's light-squared bishop has come out early to challenge your centralized knight.",
-        "Kick the bishop away with your knight, gaining a tempo, and immediately launch a flank attack to trap or restrict it.",
-        "Move your centralized knight to attack the bishop.",
-        "Drop your knight to g3 (Ng3), attacking the bishop. It retreats to g6 (Bg6). Instantly thrust your h-pawn forward (h4), threatening to trap the bishop with h5!"
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pp2pppp/2p5/3P4/3P4/8/PPP2PPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
-      "answer": "cxd5, Bd3, Nc6",
-      "tags": [
-        "caro-kann-defense",
-        "exchange-variation",
-        "pawn-structure",
-        "development",
-        "simplification"
-      ],
-      "hints": [
-        "White has initiated the Exchange Variation, relieving the central tension.",
-        "Recapture the central pawn to restore balance, and continue with rapid, logical development aimed at the center.",
-        "Use your c-pawn to recapture.",
-        "Capture the d5 pawn (cxd5). White develops their bishop (Bd3). You follow up by developing your knight to its best square (Nc6) to control the center!"
-      ]
     }
-  },
-  "indian-defense": {
+  }
+}
+{
+  "indian-defense/all": {
     "https://lichess.org/analysis/2r1nrk1/p1qn1pbp/Qp2P1p1/3p4/5B2/4PN1P/PP1N1PP1/1K1R3R%20b%20-%20-%200%2016": {
       "answer": "Qc2+, Ka1, Qxb2#",
       "tags": [
@@ -2899,7 +2767,7 @@
       ]
     }
   },
-  "italian-game": {
+  "italian-game/all": {
     "https://lichess.org/analysis/r2qk2r/bpp1npp1/p2pbn1p/4p3/4P2N/1BPP1QN1/PP3PPP/R1B1K2R%20b%20KQkq%20-%207%2011": {
       "answer": "Bg4, Qxf6, gxf6",
       "tags": [
@@ -3043,57 +2911,9 @@
         "Use your queen to deliver the final blow.",
         "Capture the g2 pawn with your queen for a sudden and unanswerable checkmate (Qxg2#)!"
       ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2P2N2/PP1P1PPP/RNBQK2R%20w%20KQkq%20-%200%205": {
-      "answer": "d4, exd4, cxd4",
-      "tags": [
-        "italian-game",
-        "center-control",
-        "space-advantage",
-        "pawn-storm",
-        "opening"
-      ],
-      "hints": [
-        "You have prepared a strong pawn center with c3. Now is the time to execute the plan.",
-        "Strike immediately in the center to challenge Black's bishop and seize space.",
-        "Push your d-pawn two squares.",
-        "Push d4! Black captures (exd4). Recapture with the c-pawn (cxd4), establishing a classic, dominant duo of pawns in the center that attacks the bishop!"
-      ]
-    },
-    "https://lichess.org/analysis/r1bq1rk1/ppp2ppp/2n2n2/2b1p3/2B1P3/5N2/PPP2PPP/RNBQ1RK1%20w%20-%20-%202%207": {
-      "answer": "Bg5, h6, Bh4",
-      "tags": [
-        "italian-game",
-        "pin",
-        "development",
-        "pressure",
-        "tactics"
-      ],
-      "hints": [
-        "Black's knight on f6 is the key defender of their castled king. You can put it under uncomfortable pressure.",
-        "Pin the knight to the queen. If Black tries to kick you away, maintain the pin to provoke weaknesses.",
-        "Develop your dark-squared bishop to the kingside.",
-        "Play Bg5, pinning the knight! Black pushes h6. Retreat calmly to h4 (Bh4), keeping the annoying pin alive and provoking Black to weaken their kingside further with g5."
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n5/2b1p3/2B1P1n1/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%201%205": {
-      "answer": "Bxf7+, Kxf7, Ng5+",
-      "tags": [
-        "italian-game",
-        "sacrifice",
-        "king-hunt",
-        "fork",
-        "tactics"
-      ],
-      "hints": [
-        "Black has ignored the safety of their f7 pawn to launch an early attack. Punish them immediately.",
-        "Sacrifice your bishop on f7 to draw the king out, then fork the king and their loose knight with your own knight.",
-        "Start with the bishop sacrifice.",
-        "Capture on f7 (Bxf7+)! Black's king recaptures (Kxf7). Now jump your knight to g5 (Ng5+) with check, winning back the piece on the next move (Qxg4) with an exposed black king!"
-      ]
     }
   },
-  "queens-gambit-declined": {
+  "queens-gambit-declined/all": {
     "https://lichess.org/analysis/2r2rk1/pbq2ppp/1p2pn2/2p5/2NP4/P1Q1P1P1/1P3PBP/2R2RK1%20w%20-%20-%200%2017": {
       "answer": "Bxb7, Qxb7, Nd6",
       "tags": [
@@ -3238,8 +3058,10 @@
         "Slide your rook to c8 (Rc8). The white queen is perfectly pinned to the king! White must move the king or block, and you will capture the queen."
       ]
     }
-  },
-  "queens-pawn-game": {
+  }
+}
+{
+  "queens-pawn-game/all": {
     "https://lichess.org/analysis/r3kb1r/ppqb1ppp/2n5/1BPp4/3Np1n1/2B1P2P/PPP2PP1/RN1Q1RK1%20b%20kq%20-%201%2010": {
       "answer": "Qh2#",
       "tags": [
@@ -3385,7 +3207,7 @@
       ]
     }
   },
-  "english-opening": {
+  "english-opening/all": {
     "https://lichess.org/analysis/r3r1k1/1p2bppp/1ppp1n2/2n5/b1P5/B1N1P3/3NBPPP/R1R3K1%20w%20-%20-%200%2017": {
       "answer": "Bxc5",
       "tags": [
@@ -3529,105 +3351,9 @@
         "Use your dark-squared bishop to capture the central knight.",
         "Capture the knight on d4 (Bxd4). Black recaptures with the bishop (Bxd4), and you recapture with your rook (Rxd4), cleanly winning a piece!"
       ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/4p3/1bP5/2N2NP1/PP1PPP1P/R1BQKB1R%20w%20KQkq%20-%201%205": {
-      "answer": "Nd5, Bc5, Bg2",
-      "tags": [
-        "english-opening",
-        "piece-activity",
-        "repositioning",
-        "space-advantage",
-        "opening"
-      ],
-      "hints": [
-        "Black has developed aggressively, putting pressure on your c3 knight with their bishop.",
-        "Instead of defending passively, jump your knight to a central outpost to challenge the bishop and seize space.",
-        "Use your c3 knight to leap into the center.",
-        "Jump your knight to d5 (Nd5). Black retreats their bishop to maintain the tension (Bc5). Now continue your thematic fianchetto development (Bg2), putting tremendous pressure on the long diagonal!"
-      ]
-    },
-    "https://lichess.org/analysis/r1bq1rk1/ppp2ppp/2n2n2/3p4/2PN4/2P3P1/P3PPBP/R1BQK2R%20b%20KQ%20-%200%209": {
-      "answer": "Nxd4, cxd4, dxc4",
-      "tags": [
-        "english-opening",
-        "simplification",
-        "center-break",
-        "win-material",
-        "tactics"
-      ],
-      "hints": [
-        "White has created central tension, but their d4 knight is heavily relied upon to hold the structure together.",
-        "Trade knights in the center to alter the pawn structure, then immediately snatch the newly undefended c4 pawn.",
-        "Use your c6 knight to initiate the trade.",
-        "Capture the knight on d4 (Nxd4). White must recapture with their c-pawn (cxd4). This pulls the pawn away from c4, allowing you to capture the free c4 pawn with your central pawn (dxc4)!"
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk1nr/pppp1ppp/2n5/2b1p3/2P5/2N3P1/PP1PPP1P/R1BQKBNR%20w%20KQkq%20-%201%204": {
-      "answer": "Bg2, d6, Nf3",
-      "tags": [
-        "english-opening",
-        "reversed-sicilian",
-        "fianchetto",
-        "development",
-        "positional"
-      ],
-      "hints": [
-        "Black has set up a 'Reversed Sicilian' structure. Your goal is to exert quiet but deadly pressure on the light squares.",
-        "Complete your kingside fianchetto to aim your bishop directly at Black's queenside, then continue standard development.",
-        "Move your light-squared bishop to its longest diagonal.",
-        "Develop your bishop to g2 (Bg2). Black solidifies their center (d6). Bring your kingside knight out (Nf3), preparing to castle and preparing to fight for the d4 square!"
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/4p3/2P5/8/PP1PPPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
-      "answer": "Nc3, Nf6, g3",
-      "tags": [
-        "english-opening",
-        "reversed-sicilian",
-        "main-line",
-        "fianchetto",
-        "opening"
-      ],
-      "hints": [
-        "Black plays e5 (Reversed Sicilian). Control the d5 square.",
-        "Develop Nc3. Black develops Nf6. Prepare to fianchetto with g3.",
-        "Develop your queenside knight.",
-        "Play Nc3. Black plays Nf6. Play g3. You are aiming for a dragon-like setup with an extra tempo."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pp1ppppp/8/2p5/2P5/5N2/PP1PPPPP/RNBQKB1R%20b%20KQkq%20-%201%202": {
-      "answer": "Nc6, d4, cxd4",
-      "tags": [
-        "english-opening",
-        "symmetrical-variation",
-        "open-center",
-        "exchange",
-        "opening"
-      ],
-      "hints": [
-        "It is a Symmetrical English. Mirror White's development until the center opens.",
-        "Develop Nc6. White breaks with d4. Exchange pawns.",
-        "Develop your queenside knight.",
-        "Play Nc6. White strikes (d4). Capture (cxd4). The game opens up, usually leading to tactical skirmishes in the center."
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk1nr/pppp1pbp/2n3p1/4p3/2P1P3/2NP2P1/PP3PBP/R1BQK1NR%20b%20KQkq%20-%200%206": {
-      "answer": "Nge7, Nge2, O-O",
-      "tags": [
-        "english-opening",
-        "botvinnik-system",
-        "setup",
-        "knights",
-        "opening"
-      ],
-      "hints": [
-        "White has clamped down on d5 (Botvinnik setup). Avoid blocking your f-pawn.",
-        "Develop your knight to e7, not f6. White will do the same. Then castle.",
-        "Develop your knight to e7.",
-        "Play Nge7. White plays Nge2. Castle (O-O). In this closed position, keeping the f-pawn free for a future f5 break is crucial."
-      ]
     }
   },
-  "russian-game": {
+  "russian-game/all": {
     "https://lichess.org/analysis/r1bq1rk1/pp3ppp/2p4B/3pP3/3n1PQb/2N5/PPP3PP/2KR1B1R%20w%20-%20-%203%2015": {
       "answer": "Qxg7#",
       "tags": [
@@ -3772,8 +3498,10 @@
         "Jump your knight to e2 for check (Ne2+). The white king must step away (Kh2), allowing you to cleanly capture the queen (Nxc3)!"
       ]
     }
-  },
-  "philidor-defense": {
+  }
+}
+{
+  "philidor-defense/all": {
     "https://lichess.org/analysis/r1bqkb1r/ppp2ppp/2np1n2/4p3/2B1P3/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%200%205": {
       "answer": "Nxe5, Bxd1, Bxf7+, Ke7, Nd5#",
       "tags": [
@@ -3823,7 +3551,7 @@
       ]
     }
   },
-  "scandinavian-defense": {
+  "scandinavian-defense/all": {
     "https://lichess.org/analysis/rn2kb1r/ppp1pppp/5n2/q7/2B3b1/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%200%207": {
       "answer": "b4, Qxb4, Bxf7+",
       "tags": [
@@ -3873,7 +3601,7 @@
       ]
     }
   },
-  "scotch-game": {
+  "scotch-game/all": {
     "https://lichess.org/analysis/r1bq1rk1/ppp1nppp/2np4/2b5/2BNP3/2P1B3/PP3PPP/RN1Q1RK1%20w%20-%20-%200%209": {
       "answer": "Nxc6, Nxc6, Bxc5",
       "tags": [
@@ -3921,57 +3649,61 @@
         "Use your knight to capture on c6.",
         "Capture the knight (Nxc6). Black ignores the recapture and plays (Qf6), threatening mate on f2. Defend the mate calmly by moving your queen to d2 (Qd2), securing your material advantage!"
       ]
-    },
-    "https://lichess.org/analysis/r1bqkbnr/pppp1ppp/2n5/4p3/3PP3/5N2/PPP2PPP/RNBQKB1R%20b%20KQkq%20-%200%203": {
-      "answer": "exd4, Nxd4, Bc5",
-      "tags": [
-        "scotch-game",
-        "classical-variation",
-        "development",
-        "center-tension",
-        "opening"
-      ],
-      "hints": [
-        "White strikes the center immediately. You must accept the challenge.",
-        "Capture the pawn. After White recaptures, develop your bishop to c5 to attack the centralized knight.",
-        "Take the d4 pawn.",
-        "Capture (exd4). White recaptures (Nxd4). Play Bc5, putting immediate pressure on the knight and forcing White to defend carefully."
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk1nr/pppp1ppp/2n5/2b5/3NP3/8/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%201%205": {
-      "answer": "Be3, Qf6, c3",
-      "tags": [
-        "scotch-game",
-        "intermezzo",
-        "defense",
-        "tactics",
-        "opening"
-      ],
-      "hints": [
-        "Black attacks your knight twice. Defend it while developing.",
-        "Develop your bishop to e3 to support the knight. When Black adds pressure with the queen, reinforce the center with a pawn.",
-        "Develop your dark-squared bishop.",
-        "Play Be3. Black attacks again (Qf6). Solidify everything with c3, maintaining a strong center and safe pieces."
-      ]
-    },
-    "https://lichess.org/analysis/r1bqkb1r/pppp1ppp/2n2n2/8/3NP3/8/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%201%205": {
+    }
+  }
+}
+{
+  "sicilian-defense/all": {
+    "https://lichess.org/analysis/r1bqkb1r/pp1p1ppp/2n2n2/4p3/3NP3/2N5/PPP2PPP/R1BQKB1R%20w%20KQkq%20-%200%206": {
       "answer": "Nxc6, bxc6, e5",
       "tags": [
-        "scotch-game",
-        "mieses-variation",
-        "disruption",
-        "space-advantage",
+        "sicilian-defense",
+        "center-control",
+        "fork",
+        "win-material",
         "opening"
       ],
       "hints": [
-        "Black attacks your e4 pawn. You should clarify the center before pushing forward.",
-        "Exchange knights on c6 to double Black's pawns, then push your e-pawn to chase the knight.",
-        "Capture the knight on c6.",
-        "Capture (Nxc6). Black recaptures (bxc6). Now push e5! This disrupts Black's development and kicks the knight away."
+        "Black has pushed their central pawn, challenging your knight, but this creates a structural weakness.",
+        "Trade knights to force a recapture that blocks Black's development, then immediately strike in the center to attack their remaining knight.",
+        "Use your d4 knight to initiate the sequence.",
+        "Capture on c6 (Nxc6). Black must recapture with the pawn (bxc6). Now push your pawn to e5 (e5), forking the knight and severely disrupting Black's position!"
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk2r/pp2bppp/2np1n2/4p3/2B1P3/1NN1B3/PPP2PPP/R2Q1RK1%20b%20kq%20-%201%209": {
+      "answer": "Nxe4, Nxe4, d5",
+      "tags": [
+        "sicilian-defense",
+        "center-break",
+        "fork",
+        "tactics",
+        "simplification"
+      ],
+      "hints": [
+        "White's center seems secure, but they have left a minor piece vulnerable to a classic central pawn fork.",
+        "Sacrifice your knight temporarily for a central pawn to draw White's piece onto a square where it can be forked.",
+        "Use your f6 knight to grab the central pawn.",
+        "Capture the pawn (Nxe4). White recaptures with the knight (Nxe4). Now push your d-pawn (d5), unleashing a devastating fork on White's bishop and knight to win the piece back with a superior position!"
+      ]
+    },
+    "https://lichess.org/analysis/rnbqk2r/1p2bppp/p2p1n2/4p1B1/3NP3/2N5/PPPQ1PPP/R3KB1R%20w%20KQkq%20-%200%208": {
+      "answer": "Bxf6, Bxf6, Nf5",
+      "tags": [
+        "sicilian-defense",
+        "outpost",
+        "simplification",
+        "positional-advantage",
+        "tactics"
+      ],
+      "hints": [
+        "Black's position is solid, but you have the opportunity to create a massive, unassailable outpost for your knight.",
+        "Eliminate the key defender of the d5 and f5 squares by trading your bishop, then jump your knight into the hole.",
+        "Use your dark-squared bishop to make the trade.",
+        "Capture the knight (Bxf6). Black recaptures (Bxf6). Now jump your knight into the gaping hole on f5 (Nf5), creating immense pressure on Black's kingside!"
       ]
     }
   },
-  "slav-defense": {
+  "slav-defense/all": {
     "https://lichess.org/analysis/rn1qkbnr/pp3ppp/2p1p3/3p4/2PP4/5P2/PP2PP1P/RNBQKB1R%20w%20KQkq%20-%200%205": {
       "answer": "cxd5, cxd5, e4",
       "tags": [
@@ -4021,7 +3753,7 @@
       ]
     }
   },
-  "spanish-game": {
+  "spanish-game/all": {
     "https://lichess.org/analysis/r1bqk2r/2ppbppp/p1n2n2/1p2p3/4P3/1B3N2/PPPP1PPP/RNBQR1K1%20b%20kq%20-%201%208": {
       "answer": "d6, c3, Na5",
       "tags": [
@@ -4070,8 +3802,10 @@
         "Retreat your knight to f1 (Nf1). Black improves their position (Re8). Now jump your knight forward to g3 (Ng3), perfectly placing it to eye the f5 and h5 squares for a future attack!"
       ]
     }
-  },
-  "kings-gambit": {
+  }
+}
+{
+  "kings-gambit/all": {
     "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/4p3/4PP2/8/PPPP2PP/RNBQKBNR%20b%20KQkq%20-%200%202": {
       "answer": "Qh4+, g3, Qxe4+",
       "tags": [
@@ -4119,57 +3853,9 @@
         "Use your light-squared bishop to deliver a shocking check.",
         "Sacrifice your bishop on f7 (Bxf7+). Black's king must capture (Kxf7). Now jump your knight forward with check (Nxe5+), uncovering your queen's attack on their bishop and winning back the material with a better position!"
       ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pppp1p1p/8/6p1/4Pp2/5N2/PPPP2PP/RNBQKB1R%20w%20KQkq%20-%200%204": {
-      "answer": "h4, g4, Ne5",
-      "tags": [
-        "kings-gambit",
-        "kieseritzky-gambit",
-        "aggression",
-        "knight-outpost",
-        "opening"
-      ],
-      "hints": [
-        "Black is trying to hold the gambit pawn with g5. You must undermine their structure.",
-        "Push h4 to challenge the pawn chain. When Black pushes g4, jump your knight to the strong e5 outpost.",
-        "Push the h-pawn.",
-        "Play h4! Black pushes g4 to attack your knight. Jump to e5 (Ne5), placing the knight on a dominant square."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp2ppp/8/3pp3/4PP2/8/PPPP2PP/RNBQKBNR%20w%20KQkq%20-%200%203": {
-      "answer": "exd5, e4, d3",
-      "tags": [
-        "kings-gambit",
-        "falkbeer-countergambit",
-        "center-tension",
-        "development",
-        "opening"
-      ],
-      "hints": [
-        "Black has declined the gambit with the Falkbeer Countergambit (d5). Capture the d-pawn.",
-        "Capture on d5. Black will push e4 to disrupt you. Play d3 to challenge that pawn.",
-        "Capture the d5 pawn.",
-        "Capture (exd5). Black pushes e4. Play d3 to break Black's advanced pawn and open lines for development."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/8/2B1Pp2/8/PPPP2PP/RNBQK1NR%20b%20KQkq%20-%201%203": {
-      "answer": "Qh4+, Kf1, d6",
-      "tags": [
-        "kings-gambit",
-        "bishops-gambit",
-        "check",
-        "king-safety",
-        "opening"
-      ],
-      "hints": [
-        "White has played the Bishop's Gambit (Bc4), allowing a check on h4.",
-        "Check the king with your queen. White must move the king to f1. Then solidify with d6.",
-        "Check with your queen on h4.",
-        "Play Qh4+! White is forced to play Kf1, losing castling rights. Play d6 to control the center and support your f4 pawn."
-      ]
     }
   },
-  "queens-gambit": {
+  "queens-gambit/all": {
     "https://lichess.org/analysis/rnbqkbnr/ppp2ppp/4p3/3p4/2PP4/8/PP2PPPP/RNBQKBNR%20w%20KQkq%20-%200%203": {
       "answer": "cxd5, exd5, Qb3",
       "tags": [
@@ -4219,7 +3905,7 @@
       ]
     }
   },
-  "nimzo-indian-defense": {
+  "nimzo-indian-defense/all": {
     "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/8/1b1P4/2N2N2/PP2PPPP/R1BQKB1R%20b%20KQkq%20-%200%206": {
       "answer": "Bxc3+, bxc3, Ne4",
       "tags": [
@@ -4267,41 +3953,111 @@
         "Move your light-squared bishop.",
         "Develop your bishop to d3 (Bd3). Black solidifies their center (d6). Complete your development by castling kingside (O-O), leaving you with a highly coordinated and safe position!"
       ]
-    },
-    "https://lichess.org/analysis/rnbqk2r/pppp1ppp/4pn2/8/1bPP4/2N5/PP2PPPP/R1BQKBNR%20w%20KQkq%20-%202%204": {
-      "answer": "a3, Bxc3+, bxc3",
+    }
+  }
+}
+{
+  "french-defense/all": {
+    "https://lichess.org/analysis/r1bqkbnr/ppp2ppp/2n5/3pP3/3p4/5N2/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%200%205": {
+      "answer": "Bb5, a6, Bxc6+",
       "tags": [
-        "nimzo-indian-defense",
-        "samisch-variation",
-        "bishop-pair",
-        "doubled-pawns",
-        "unbalance"
-      ],
-      "hints": [
-        "You can force Black to resolve the pin immediately, gaining the bishop pair at the cost of your pawn structure.",
-        "Challenge the bishop with a3. When Black captures, take back with the pawn to strengthen your center.",
-        "Push your a-pawn.",
-        "Play a3 (The Sämisch). Black is forced to swap (Bxc3+). Recapture with the pawn (bxc3), building a massive center and securing the two bishops."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqk2r/pppp1ppp/4pn2/8/1bPP4/2N1P3/PP3PPP/R1BQKBNR%20b%20KQkq%20-%200%205": {
-      "answer": "c5, Bd3, Nc6",
-      "tags": [
-        "nimzo-indian-defense",
-        "center-strike",
-        "knight-development",
-        "active-play",
+        "french-defense",
+        "pin",
+        "simplification",
+        "pawn-structure",
         "opening"
       ],
       "hints": [
-        "White has played e3. It is time to challenge their d4 pawn directly.",
-        "Strike with c5. After White develops their bishop, bring your knight to c6 to increase the pressure.",
-        "Push your c-pawn.",
-        "Play c5! White responds with Bd3. Develop your knight to c6 (Nc6), actively fighting for control of the d4 square."
+        "Black has placed their knight actively, but it can be immediately pinned to their uncastled king.",
+        "Develop your light-squared bishop aggressively to create the pin. When Black questions it, trade the bishop for the knight.",
+        "Use your light-squared bishop to initiate the pin.",
+        "Play Bb5, pinning the c6 knight! Black will likely play a6. Capture the knight with check (Bxc6+), ruining Black's queenside pawn structure!"
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkbnr/ppp2ppp/4p3/3p4/3PP3/8/PPP2PPP/RNBQKBNR%20w%20KQkq%20-%200%203": {
+      "answer": "exd5, exd5, Bd3",
+      "tags": [
+        "french-defense",
+        "exchange-variation",
+        "center-control",
+        "development",
+        "positional"
+      ],
+      "hints": [
+        "The central tension is high early on. You can resolve it immediately to open lines for your pieces.",
+        "Trade the central pawns to create an open e-file, then immediately place your bishop on its most active diagonal.",
+        "Use your e-pawn to initiate the exchange.",
+        "Capture on d5 (exd5). Black recaptures (exd5). Now develop your bishop to d3 (Bd3), eyeing the h7 square and preparing to castle!"
+      ]
+    },
+    "https://lichess.org/analysis/r1bqkbnr/pp3ppp/2n1p3/2ppP3/3P4/2P5/PP3PPP/RNBQKBNR%20w%20KQkq%20-%200%205": {
+      "answer": "Nf3, Qb6, a3",
+      "tags": [
+        "french-defense",
+        "advance-variation",
+        "prophylaxis",
+        "pawn-chain",
+        "defense"
+      ],
+      "hints": [
+        "Black is piling immense pressure onto your d4 pawn, the base of your advanced pawn chain.",
+        "Develop your kingside knight to defend the center. When Black increases the pressure with their queen, prepare to defend your queenside space.",
+        "Use your g1 knight to bolster the center.",
+        "Develop your knight (Nf3). Black brings their queen out (Qb6). Now play a calm prophylactic pawn push (a3) to prepare b4 and secure your queenside!"
       ]
     }
   },
-  "kings-indian-defense": {
+  "caro-kann-defense/all": {
+    "https://lichess.org/analysis/rnbqkbnr/pp2pppp/2p5/3p4/3PP3/8/PPP2PPP/RNBQKBNR%20w%20KQkq%20-%200%203": {
+      "answer": "Nc3, dxe4, Nxe4",
+      "tags": [
+        "caro-kann-defense",
+        "classical-variation",
+        "center-control",
+        "simplification",
+        "opening"
+      ],
+      "hints": [
+        "Black is challenging your central pawn, but you can simply defend it with a developing move.",
+        "Bring your queenside knight out to support the e4 pawn. If Black captures, you recapture and place your knight perfectly in the center.",
+        "Use your b1 knight for defense.",
+        "Develop the knight to c3 (Nc3). Black captures the pawn (dxe4), and you recapture with the knight (Nxe4), taking a dominant central post!"
+      ]
+    },
+    "https://lichess.org/analysis/rn1qkbnr/pp2pppp/2p5/5b2/3PN3/8/PPP2PPP/R1BQKBNR%20w%20KQkq%20-%200%205": {
+      "answer": "Ng3, Bg6, h4",
+      "tags": [
+        "caro-kann-defense",
+        "space-advantage",
+        "kingside-attack",
+        "tempo",
+        "tactics"
+      ],
+      "hints": [
+        "Black's light-squared bishop has come out early to challenge your centralized knight.",
+        "Kick the bishop away with your knight, gaining a tempo, and immediately launch a flank attack to trap or restrict it.",
+        "Move your centralized knight to attack the bishop.",
+        "Drop your knight to g3 (Ng3), attacking the bishop. It retreats to g6 (Bg6). Instantly thrust your h-pawn forward (h4), threatening to trap the bishop with h5!"
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkbnr/pp2pppp/2p5/3P4/3P4/8/PPP2PPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
+      "answer": "cxd5, Bd3, Nc6",
+      "tags": [
+        "caro-kann-defense",
+        "exchange-variation",
+        "pawn-structure",
+        "development",
+        "simplification"
+      ],
+      "hints": [
+        "White has initiated the Exchange Variation, relieving the central tension.",
+        "Recapture the central pawn to restore balance, and continue with rapid, logical development aimed at the center.",
+        "Use your c-pawn to recapture.",
+        "Capture the d5 pawn (cxd5). White develops their bishop (Bd3). You follow up by developing your knight to its best square (Nc6) to control the center!"
+      ]
+    }
+  },
+  "kings-indian-defense/all": {
     "https://lichess.org/analysis/rnbq1rk1/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP3PPP/R1BQKB1R%20w%20KQ%20-%200%206": {
       "answer": "Be2, e5, O-O",
       "tags": [
@@ -4349,57 +4105,61 @@
         "Push your central d-pawn.",
         "Play d5 to lock the center! Black repositions their knight (Ne8) to prepare f5. Develop your bishop to e3 (Be3) to eye the queenside and support c5!"
       ]
-    },
-    "https://lichess.org/analysis/rnbq1rk1/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP2BPPP/R1BQ1RK1%20b%20-%20-%204%206": {
-      "answer": "e5, O-O, Nc6",
+    }
+  }
+}
+{
+  "english-opening/all": {
+    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/4p3/1bP5/2N2NP1/PP1PPP1P/R1BQKB1R%20w%20KQkq%20-%201%205": {
+      "answer": "Nd5, Bc5, Bg2",
       "tags": [
-        "kings-indian-defense",
-        "classical-variation",
-        "mar-del-plata",
-        "pawn-storm",
+        "english-opening",
+        "piece-activity",
+        "repositioning",
+        "space-advantage",
         "opening"
       ],
       "hints": [
-        "White has developed classically with Be2 and Nf3. You must stake your claim in the center immediately.",
-        "Push your e-pawn to challenge d4. After White castles, develop your knight to c6 to put pressure on d4.",
-        "Push your e-pawn.",
-        "Play e5! White castles (O-O). Now develop with Nc6, preparing for the classic race: White attacks on the queenside, and you storm the kingside!"
+        "Black has developed aggressively, putting pressure on your c3 knight with their bishop.",
+        "Instead of defending passively, jump your knight to a central outpost to challenge the bishop and seize space.",
+        "Use your c3 knight to leap into the center.",
+        "Jump your knight to d5 (Nd5). Black retreats their bishop to maintain the tension (Bc5). Now continue your thematic fianchetto development (Bg2), putting tremendous pressure on the long diagonal!"
       ]
     },
-    "https://lichess.org/analysis/rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR%20b%20KQkq%20-%200%205": {
-      "answer": "O-O, Nf3, c5",
+    "https://lichess.org/analysis/r1bq1rk1/ppp2ppp/2n2n2/3p4/2PN4/2P3P1/P3PPBP/R1BQK2R%20b%20KQ%20-%200%209": {
+      "answer": "Nxd4, cxd4, dxc4",
       "tags": [
-        "kings-indian-defense",
-        "four-pawns-attack",
+        "english-opening",
+        "simplification",
         "center-break",
-        "sharp",
-        "counter-attack"
+        "win-material",
+        "tactics"
       ],
       "hints": [
-        "White has played the aggressive Four Pawns Attack (f4). Safety first, then explosion.",
-        "Castle your king. When White develops their knight, strike at the center with c5 to undermine their massive pawn chain.",
-        "Castle kingside.",
-        "Castle (O-O). White develops (Nf3). Now strike with c5! If White pushes d5, the game becomes sharp and tactical."
+        "White has created central tension, but their d4 knight is heavily relied upon to hold the structure together.",
+        "Trade knights in the center to alter the pawn structure, then immediately snatch the newly undefended c4 pawn.",
+        "Use your c6 knight to initiate the trade.",
+        "Capture the knight on d4 (Nxd4). White must recapture with their c-pawn (cxd4). This pulls the pawn away from c4, allowing you to capture the free c4 pawn with your central pawn (dxc4)!"
       ]
     },
-    "https://lichess.org/analysis/rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2P2/PP4PP/R1BQKBNR%20b%20KQkq%20-%200%205": {
-      "answer": "O-O, Be3, e5",
+    "https://lichess.org/analysis/r1bqk1nr/pppp1ppp/2n5/2b1p3/2P5/2N3P1/PP1PPP1P/R1BQKBNR%20w%20KQkq%20-%201%204": {
+      "answer": "Bg2, d6, Nf3",
       "tags": [
-        "kings-indian-defense",
-        "samisch-variation",
-        "solid-defense",
-        "preparation",
-        "opening"
+        "english-opening",
+        "reversed-sicilian",
+        "fianchetto",
+        "development",
+        "positional"
       ],
       "hints": [
-        "White has played f3 (the Sämisch), securing e4 and preparing a kingside attack. Don't panic.",
-        "Castle your king. After White develops their bishop, strike the center with e5 to block the position.",
-        "Castle kingside.",
-        "Castle (O-O). White plays Be3. Now play e5, forcing White to decide whether to close the center or maintain the tension."
+        "Black has set up a 'Reversed Sicilian' structure. Your goal is to exert quiet but deadly pressure on the light squares.",
+        "Complete your kingside fianchetto to aim your bishop directly at Black's queenside, then continue standard development.",
+        "Move your light-squared bishop to its longest diagonal.",
+        "Develop your bishop to g2 (Bg2). Black solidifies their center (d6). Bring your kingside knight out (Nf3), preparing to castle and preparing to fight for the d4 square!"
       ]
     }
   },
-  "grunfeld-defense": {
+  "grunfeld-defense/all": {
     "https://lichess.org/analysis/rnbq1rk1/pp2ppbp/6p1/2pp4/3PnP2/2N1PN2/PPP1B1PP/R1BQ1RK1%20b%20-%20-%200%208": {
       "answer": "cxd4, exd4, Nc6",
       "tags": [
@@ -4449,7 +4209,7 @@
       ]
     }
   },
-  "dutch-defense": {
+  "dutch-defense/all": {
     "https://lichess.org/analysis/rnbq1rk1/ppp1b1pp/4pn2/3p1p2/2PP4/2N2NP1/PP2PPBP/R1BQK2R%20b%20KQ%20-%200%207": {
       "answer": "c6, O-O, Ne4",
       "tags": [
@@ -4498,8 +4258,129 @@
         "Strike instantly with the Staunton Gambit (e4)! Black captures the pawn (fxe4). Instantly develop your knight to c3 (Nc3) to attack the pawn and seize the initiative!"
       ]
     }
+  }
+}
+{
+  "italian-game/all": {
+    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2P2N2/PP1P1PPP/RNBQK2R%20w%20KQkq%20-%200%205": {
+      "answer": "d4, exd4, cxd4",
+      "tags": [
+        "italian-game",
+        "center-control",
+        "space-advantage",
+        "pawn-storm",
+        "opening"
+      ],
+      "hints": [
+        "You have prepared a strong pawn center with c3. Now is the time to execute the plan.",
+        "Strike immediately in the center to challenge Black's bishop and seize space.",
+        "Push your d-pawn two squares.",
+        "Push d4! Black captures (exd4). Recapture with the c-pawn (cxd4), establishing a classic, dominant duo of pawns in the center that attacks the bishop!"
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/ppp2ppp/2n2n2/2b1p3/2B1P3/5N2/PPP2PPP/RNBQ1RK1%20w%20-%20-%202%207": {
+      "answer": "Bg5, h6, Bh4",
+      "tags": [
+        "italian-game",
+        "pin",
+        "development",
+        "pressure",
+        "tactics"
+      ],
+      "hints": [
+        "Black's knight on f6 is the key defender of their castled king. You can put it under uncomfortable pressure.",
+        "Pin the knight to the queen. If Black tries to kick you away, maintain the pin to provoke weaknesses.",
+        "Develop your dark-squared bishop to the kingside.",
+        "Play Bg5, pinning the knight! Black pushes h6. Retreat calmly to h4 (Bh4), keeping the annoying pin alive and provoking Black to weaken their kingside further with g5."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n5/2b1p3/2B1P1n1/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%201%205": {
+      "answer": "Bxf7+, Kxf7, Ng5+",
+      "tags": [
+        "italian-game",
+        "sacrifice",
+        "king-hunt",
+        "fork",
+        "tactics"
+      ],
+      "hints": [
+        "Black has ignored the safety of their f7 pawn to launch an early attack. Punish them immediately.",
+        "Sacrifice your bishop on f7 to draw the king out, then fork the king and their loose knight with your own knight.",
+        "Start with the bishop sacrifice.",
+        "Capture on f7 (Bxf7+)! Black's king recaptures (Kxf7). Now jump your knight to g5 (Ng5+) with check, winning back the piece on the next move (Qxg4) with a exposed black king!"
+      ]
+    }
   },
-  "pirc-defense": {
+  "pirc-defense/all": {
+    "https://lichess.org/analysis/rnbqk2r/ppp1ppbp/3p1np1/8/3PP3/2N2N2/PPP2PPP/R1BQKB1R%20w%20KQkq%20-%200%205": {
+      "answer": "h3, O-O, Be3",
+      "tags": [
+        "pirc-defense",
+        "prophylaxis",
+        "development",
+        "solid-structure",
+        "opening"
+      ],
+      "hints": [
+        "In the Pirc, Black often wants to pin your knight or play Ng4. You can prevent this nuisance before developing your own pieces.",
+        "Play a small pawn move to control the g4 square, then proceed with standard development.",
+        "Push your h-pawn one square.",
+        "Play h3 to stop any Ng4/Bg4 ideas. Black castles (O-O). Now you can develop freely with Be3 (Be3), building a strong setup!"
+      ]
+    },
+    "
+    {
+  "italian-game/all": {
+    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2P2N2/PP1P1PPP/RNBQK2R%20w%20KQkq%20-%200%205": {
+      "answer": "d4, exd4, cxd4",
+      "tags": [
+        "italian-game",
+        "center-control",
+        "space-advantage",
+        "pawn-storm",
+        "opening"
+      ],
+      "hints": [
+        "You have prepared a strong pawn center with c3. Now is the time to execute the plan.",
+        "Strike immediately in the center to challenge Black's bishop and seize space.",
+        "Push your d-pawn two squares.",
+        "Push d4! Black captures (exd4). Recapture with the c-pawn (cxd4), establishing a classic, dominant duo of pawns in the center that attacks the bishop!"
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/ppp2ppp/2n2n2/2b1p3/2B1P3/5N2/PPP2PPP/RNBQ1RK1%20w%20-%20-%202%207": {
+      "answer": "Bg5, h6, Bh4",
+      "tags": [
+        "italian-game",
+        "pin",
+        "development",
+        "pressure",
+        "tactics"
+      ],
+      "hints": [
+        "Black's knight on f6 is the key defender of their castled king. You can put it under uncomfortable pressure.",
+        "Pin the knight to the queen. If Black tries to kick you away, maintain the pin to provoke weaknesses.",
+        "Develop your dark-squared bishop to the kingside.",
+        "Play Bg5, pinning the knight! Black pushes h6. Retreat calmly to h4 (Bh4), keeping the annoying pin alive and provoking Black to weaken their kingside further with g5."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n5/2b1p3/2B1P1n1/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%201%205": {
+      "answer": "Bxf7+, Kxf7, Ng5+",
+      "tags": [
+        "italian-game",
+        "sacrifice",
+        "king-hunt",
+        "fork",
+        "tactics"
+      ],
+      "hints": [
+        "Black has ignored the safety of their f7 pawn to launch an early attack. Punish them immediately.",
+        "Sacrifice your bishop on f7 to draw the king out, then fork the king and their loose knight with your own knight.",
+        "Start with the bishop sacrifice.",
+        "Capture on f7 (Bxf7+)! Black's king recaptures (Kxf7). Now jump your knight to g5 (Ng5+) with check, winning back the piece on the next move (Qxg4) with an exposed black king!"
+      ]
+    }
+  },
+  "pirc-defense/all": {
     "https://lichess.org/analysis/rnbqk2r/ppp1ppbp/3p1np1/8/3PP3/2N2N2/PPP2PPP/R1BQKB1R%20w%20KQkq%20-%200%205": {
       "answer": "h3, O-O, Be3",
       "tags": [
@@ -4549,7 +4430,7 @@
       ]
     }
   },
-  "alekhine-defense": {
+  "alekhine-defense/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR%20b%20KQkq%20-%200%201": {
       "answer": "Nf6, e5, Nd5",
       "tags": [
@@ -4598,8 +4479,10 @@
         "Capture the pawn (dxe5)! White recaptures (dxe5). Now seize the opportunity to trade queens with check (Qxd1+), forcing White's king to move and losing their right to castle!"
       ]
     }
-  },
-  "modern-defense": {
+  }
+}
+{
+  "modern-defense/all": {
     "https://lichess.org/analysis/rnbqk1nr/ppp1ppbp/3p2p1/8/3PP3/2N5/PPP2PPP/R1BQKBNR%20w%20KQkq%20-%200%204": {
       "answer": "Be3, a6, Qd2",
       "tags": [
@@ -4649,7 +4532,7 @@
       ]
     }
   },
-  "benoni-defense": {
+  "benoni-defense/all": {
     "https://lichess.org/analysis/rnbqkb1r/pp1p1ppp/5n2/2pP4/8/8/PPP2PPP/RNBQKBNR%20w%20KQkq%20-%201%204": {
       "answer": "Nc3, g6, e4",
       "tags": [
@@ -4699,7 +4582,7 @@
       ]
     }
   },
-  "catalan-opening": {
+  "catalan-opening/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/4pn2/8/2P5/6P1/PP1PPP1P/RNBQKBNR%20w%20KQkq%20-%200%203": {
       "answer": "Bg2, d5, Nf3",
       "tags": [
@@ -4748,8 +4631,10 @@
         "Play Qa4+! Black blocks with the knight (Nbd7). Now capture the pawn (Qxc4), restoring material equality with active pieces!"
       ]
     }
-  },
-  "london-system": {
+  }
+}
+{
+  "london-system/all": {
     "https://lichess.org/analysis/rnbqk2r/ppp2ppp/4pn2/3p4/3P1B2/2P1P3/PP3PPP/RN1QKBNR%20b%20KQkq%20-%200%205": {
       "answer": "Bd6, Bg3, O-O",
       "tags": [
@@ -4797,71 +4682,23 @@
         "Castle your king.",
         "Castle (O-O). Black strikes with c5. Solidify your 'London Pyramid' with c3, maintaining a rock-solid center against Black's attacks."
       ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
-      "answer": "Bf4, Nf6, e3",
-      "tags": [
-        "london-system",
-        "system-opening",
-        "solid",
-        "development",
-        "opening"
-      ],
-      "hints": [
-        "White ignores the opponent's setup to build a pyramid.",
-        "Develop your dark-squared bishop to f4 immediately. After Black develops, solidify the d4 pawn with e3.",
-        "Develop the dark-squared bishop.",
-        "Play Bf4! Black develops (Nf6). Secure your center with e3. This is the 'London' triangle: d4, Bf4, e3."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/3P1B2/8/PPP1PPPP/RNBQKBNR%20b%20KQkq%20-%201%202": {
-      "answer": "c5, e3, Nc6",
-      "tags": [
-        "london-system",
-        "black-defense",
-        "center-strike",
-        "active-play",
-        "opening"
-      ],
-      "hints": [
-        "White has played the London. You should strike the center immediately.",
-        "Push c5 to challenge the d4 pawn. White will defend with e3. Develop your knight to c6 to increase pressure.",
-        "Push your c-pawn.",
-        "Play c5! White defends (e3). Develop with Nc6. You are actively fighting for the center rather than playing passively."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkb1r/pppppppp/5n2/8/3P4/2N5/PPP1PPPP/R1BQKBNR%20w%20KQkq%20-%202%202": {
-      "answer": "Bf4, g6, e3",
-      "tags": [
-        "london-system",
-        "jobava-london",
-        "aggressive",
-        "knight-development",
-        "opening"
-      ],
-      "hints": [
-        "You have blocked your c-pawn with Nc3. This is the Jobava London.",
-        "Develop the bishop to f4. If Black fianchettoes (g6), support the center with e3 and prepare for a sharp game.",
-        "Develop the dark-squared bishop.",
-        "Play Bf4 (The Jobava London). Black prepares to fianchetto (g6). Play e3. Unlike the classic London, here you look to attack the center with Nb5 or e4 quickly."
-      ]
     }
   },
-  "torre-attack": {
+  "torre-attack/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/4pn2/6B1/3P4/5N2/PPP1PPPP/RN1QKB1R%20b%20KQkq%20-%201%203": {
       "answer": "h6, Bh4, c5",
       "tags": [
         "torre-attack",
-        "classical-defense",
-        "question-bishop",
+        "kick",
+        "pin",
         "center-strike",
         "opening"
       ],
       "hints": [
-        "White pins your knight. Put the question to the bishop immediately.",
-        "Kick with h6. When the bishop retreats, strike the center with c5 to challenge White's setup.",
+        "White plays the Torre to pin your knight. Put the question to the bishop immediately.",
+        "Kick the bishop with your h-pawn. When it retreats, strike at the center to punish White's neglect of c4.",
         "Push your h-pawn.",
-        "Play h6! White retreats (Bh4). Play c5, attacking the center and punishing White for moving the bishop twice."
+        "Play h6 to kick the bishop! White retreats (Bh4) to keep the pin. Now strike the center with c5, challenging White's d4 pawn immediately."
       ]
     },
     "https://lichess.org/analysis/rnbq1rk1/ppp1bppp/4pn2/6B1/3Pp3/2N2N2/PPPQ1PPP/R3KB1R%20w%20KQ%20-%200%207": {
@@ -4895,55 +4732,23 @@
         "Develop your dark-squared bishop.",
         "Play Bg5, entering the Torre setup! Black castles (O-O). Develop your knight to d2 (Nbd2) to support e4 and keep your options open."
       ]
-    },
-    "https://lichess.org/analysis/rnbqkb1r/ppp1pppp/5n2/3p2B1/3P4/5N2/PPP1PPPP/RN1QKB1R%20b%20KQkq%20-%201%203": {
-      "answer": "Ne4, Bf4, c5",
-      "tags": [
-        "torre-attack",
-        "active-defense",
-        "knight-jump",
-        "center-control",
-        "opening"
-      ],
-      "hints": [
-        "White plays the Torre against your d5 setup. Use the specific antidote.",
-        "Jump your knight to e4 to hit the bishop. When it retreats, strike with c5.",
-        "Move your knight to e4.",
-        "Play Ne4! White retreats (Bf4). Play c5! This is the most energetic way to meet the Torre, taking advantage of the exposed bishop."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkb1r/ppp2ppp/4pn2/6B1/3P4/2P2N2/PP3PPP/RN1QKB1R%20b%20KQkq%20-%200%205": {
-      "answer": "h6, Bh4, Be7",
-      "tags": [
-        "torre-attack",
-        "solid-setup",
-        "unpin",
-        "development",
-        "opening"
-      ],
-      "hints": [
-        "White has solidified with c3. You should unpin and prepare to castle.",
-        "Kick the bishop with h6. After it retreats, break the pin with Be7.",
-        "Push h6.",
-        "Play h6. White retreats (Bh4). Play Be7 to break the pin. White's setup is solid, so you must develop patiently."
-      ]
     }
   },
-  "reti-opening": {
+  "reti-opening/all": {
     "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/2P5/5N2/PP1PPPPP/RNBQKB1R%20b%20KQkq%20-%200%202": {
-      "answer": "d4, b4, f6",
+      "answer": "d4, g3, Nc6",
       "tags": [
         "reti-opening",
         "advance-variation",
         "space-advantage",
-        "flank-counter",
-        "opening"
+        "fianchetto",
+        "defense"
       ],
       "hints": [
-        "White strikes your center from the flank. Push past to cramp them.",
-        "Push d4. White usually expands with b4. Defend your center with f6 (or c5).",
-        "Push your d-pawn to d4.",
-        "Play d4! White tries to undermine you (b4). Defend the center (f6)! You have a space advantage and have blunted White's bishop."
+        "White has offered a flank pawn to distract you. Instead, grab space in the center.",
+        "Push your pawn to d4 to cramp White's position. White will likely try to fianchetto to attack it.",
+        "Push your d-pawn.",
+        "Push d4! White plays g3 to fianchetto. Develop your knight to c6 (Nc6) to support your advanced pawn wedge!"
       ]
     },
     "https://lichess.org/analysis/rnbqkbnr/pp2pppp/2p5/3P4/8/5N2/PP1PPPPP/RNBQKB1R%20b%20KQkq%20-%200%203": {
@@ -4977,41 +4782,11 @@
         "Push your e-pawn.",
         "Play e6 to blunt the bishop! White castles (O-O). Develop your knight to d7 (Nbd7), keeping a flexible and solid setup against the Reti."
       ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/8/2p5/5N2/PP1PPPPP/RNBQKB1R%20w%20KQkq%20-%200%203": {
-      "answer": "Na3, e5, Nxc4",
-      "tags": [
-        "reti-opening",
-        "reti-gambit-accepted",
-        "recovery",
-        "development",
-        "opening"
-      ],
-      "hints": [
-        "Black has accepted the pawn. You can recover it while developing.",
-        "Develop your knight to a3 to target c4. Black will often strike with e5. Capture the pawn back.",
-        "Develop your knight to a3.",
-        "Play Na3. Black strikes (e5). Capture (Nxc4). You have regained your material and have a flexible position."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/8/5NP1/PPPPPP1P/RNBQKB1R%20b%20KQkq%20-%200%202": {
-      "answer": "Nf6, Bg2, c6",
-      "tags": [
-        "reti-opening",
-        "kings-indian-attack",
-        "solid-defense",
-        "pyramid",
-        "opening"
-      ],
-      "hints": [
-        "White is fianchettoing. Adopt a solid 'Capablanca' setup.",
-        "Develop your knight to f6. After White's bishop moves, build a pyramid with c6.",
-        "Develop your kingside knight.",
-        "Play Nf6. White plays Bg2. Play c6 (or c5). This blunts the long diagonal and prepares a very solid defensive wall."
-      ]
     }
-  },
-  "bird-opening": {
+  }
+}
+{
+  "bird-opening/all": {
     "https://lichess.org/analysis/rnbqk1nr/ppp2ppp/3b4/8/5P2/8/PPPPP1PP/RNBQKBNR%20b%20KQkq%20-%200%203": {
       "answer": "Qh4+, g3, Bxg3+",
       "tags": [
@@ -5061,7 +4836,7 @@
       ]
     }
   },
-  "nimzowitsch-larsen-attack": {
+  "nimzowitsch-larsen-attack/all": {
     "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/4p3/8/1P6/P1PPPPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
       "answer": "Bb2, Nc6, e3",
       "tags": [
@@ -5111,7 +4886,7 @@
       ]
     }
   },
-  "polish-opening": {
+  "polish-opening/all": {
     "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/4p3/1P6/8/P1PPPPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
       "answer": "Bb2, Bxb4, Bxe5",
       "tags": [
@@ -5160,8 +4935,10 @@
         "Play e3. Black supports their center (d6). Develop your knight to f3 (Nf3), controlling the center and preparing to castle."
       ]
     }
-  },
-  "grob-opening": {
+  }
+}
+{
+  "grob-opening/all": {
     "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/8/2p3P1/8/PPPPPPBP/RNBQK1NR%20w%20KQkq%20-%200%204": {
       "answer": "Bxb7, Nd7, Bxa8",
       "tags": [
@@ -5211,7 +4988,7 @@
       ]
     }
   },
-  "kings-fianchetto-opening": {
+  "kings-fianchetto-opening/all": {
     "https://lichess.org/analysis/rnbqkb1r/ppp1pppp/5n2/3p4/8/5NP1/PPPPPPBP/RNBQK2R%20b%20KQkq%20-%201%204": {
       "answer": "c5, O-O, Nc6",
       "tags": [
@@ -5261,7 +5038,7 @@
       ]
     }
   },
-  "nimzowitsch-defense": {
+  "nimzowitsch-defense/all": {
     "https://lichess.org/analysis/r1bqkbnr/ppp1pppp/2n5/3P4/8/8/PPP2PPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
       "answer": "Qxd5, Nf3, Bg4",
       "tags": [
@@ -5310,8 +5087,126 @@
         "Play d3! Black captures (exd3). Recapture with the queen (Qxd3), giving you a lead in development and open lines against the uncastled king."
       ]
     }
+  }
+}
+{
+  "kings-indian-defense/all": {
+    "https://lichess.org/analysis/rnbq1rk1/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP2BPPP/R1BQ1RK1%20b%20-%20-%204%206": {
+      "answer": "e5, O-O, Nc6",
+      "tags": [
+        "kings-indian-defense",
+        "classical-variation",
+        "mar-del-plata",
+        "pawn-storm",
+        "opening"
+      ],
+      "hints": [
+        "White has developed classically with Be2 and Nf3. You must stake your claim in the center immediately.",
+        "Push your e-pawn to challenge d4. After White castles, develop your knight to c6 to put pressure on d4.",
+        "Push your e-pawn.",
+        "Play e5! White castles (O-O). Now develop with Nc6, preparing for the classic race: White attacks on the queenside, and you storm the kingside!"
+      ]
+    },
+    "https://lichess.org/analysis/rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR%20b%20KQkq%20-%200%205": {
+      "answer": "O-O, Nf3, c5",
+      "tags": [
+        "kings-indian-defense",
+        "four-pawns-attack",
+        "center-break",
+        "sharp",
+        "counter-attack"
+      ],
+      "hints": [
+        "White has played the aggressive Four Pawns Attack (f4). Safety first, then explosion.",
+        "Castle your king. When White develops their knight, strike at the center with c5 to undermine their massive pawn chain.",
+        "Castle kingside.",
+        "Castle (O-O). White develops (Nf3). Now strike with c5! If White pushes d5, the game becomes sharp and tactical."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N2P2/PP4PP/R1BQKBNR%20b%20KQkq%20-%200%205": {
+      "answer": "O-O, Be3, e5",
+      "tags": [
+        "kings-indian-defense",
+        "samisch-variation",
+        "solid-defense",
+        "preparation",
+        "opening"
+      ],
+      "hints": [
+        "White has played f3 (the Sämisch), securing e4 and preparing a kingside attack. Don't panic.",
+        "Castle your king. After White develops their bishop, strike the center with e5 to block the position.",
+        "Castle kingside.",
+        "Castle (O-O). White plays Be3. Now play e5, forcing White to decide whether to close the center or maintain the tension."
+      ]
+    }
   },
-  "queens-indian-defense": {
+  "nimzo-indian-defense/all": {
+    "https://lichess.org/analysis/rnbqk2r/pppp1ppp/4pn2/8/1bPP4/2N5/PP2PPPP/R1BQKBNR%20w%20KQkq%20-%202%204": {
+      "answer": "e3, O-O, Bd3",
+      "tags": [
+        "nimzo-indian-defense",
+        "rubinstein-variation",
+        "development",
+        "solid",
+        "opening"
+      ],
+      "hints": [
+        "Black has pinned your knight. The most solid response is to strengthen your center and prepare to develop.",
+        "Play e3 to support d4 and open lines for your light-squared bishop. Then, develop that bishop to d3.",
+        "Push your e-pawn.",
+        "Play e3 (The Rubinstein System). Black castles (O-O). Develop your bishop to d3 (Bd3), aiming at the kingside and controlling e4."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqk2r/pppp1ppp/4pn2/8/1bPP4/2N5/PP2PPPP/R1BQKBNR%20w%20KQkq%20-%202%204": {
+      "answer": "a3, Bxc3+, bxc3",
+      "tags": [
+        "nimzo-indian-defense",
+        "samisch-variation",
+        "bishop-pair",
+        "doubled-pawns",
+        "unbalance"
+      ],
+      "hints": [
+        "You can force Black to resolve the pin immediately, gaining the bishop pair at the cost of your pawn structure.",
+        "Challenge the bishop with a3. When Black captures, take back with the pawn to strengthen your center.",
+        "Push your a-pawn.",
+        "Play a3 (The Sämisch). Black is forced to swap (Bxc3+). Recapture with the pawn (bxc3), building a massive center and securing the two bishops."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqk2r/pppp1ppp/4pn2/8/1bPP4/2N1P3/PP3PPP/R1BQKBNR%20b%20KQkq%20-%200%205": {
+      "answer": "c5, Bd3, Nc6",
+      "tags": [
+        "nimzo-indian-defense",
+        "center-strike",
+        "knight-development",
+        "active-play",
+        "opening"
+      ],
+      "hints": [
+        "White has played e3. It is time to challenge their d4 pawn directly.",
+        "Strike with c5. After White develops their bishop, bring your knight to c6 to increase the pressure.",
+        "Push your c-pawn.",
+        "Play c5! White responds with Bd3. Develop your knight to c6 (Nc6), actively fighting for control of the d4 square."
+      ]
+    }
+  },
+  "queens-indian-defense/all": {
+    "https://lichess.org/analysis/rn1qkb1r/p1pp1ppp/1p2pn2/8/2PP4/5N2/PP2PPPP/RNBQKB1R%20w%20KQkq%20-%200%204": {
+      "answer": "g3, Ba6, b3",
+      "tags": [
+        "queens-indian-defense",
+        "fianchetto",
+        "modern-line",
+        "control",
+        "opening"
+      ],
+      "hints": [
+        "White usually fianchettoes against the Queen's Indian to contest the long diagonal.",
+        "Play g3. If Black attacks your c4 pawn with Ba6 (the modern main line), defend it with b3.",
+        "Push your g-pawn.",
+        "Play g3. Black plays Ba6 to annoy the c-pawn. Defend calmly with b3, preparing to fianchetto your own bishop next."
+      ]
+    },
     "https://lichess.org/analysis/rn1qkb1r/p1pp1ppp/1p2pn2/8/2PP4/5N2/PP2PPPP/RNBQKB1R%20w%20KQkq%20-%200%204": {
       "answer": "a3, Bb7, Nc3",
       "tags": [
@@ -5344,8 +5239,10 @@
         "Capture the pawn (cxb5)! Black plays a6 to open the a-file. Capture again (bxa6), keeping your central dominance intact."
       ]
     }
-  },
-  "bogo-indian-defense": {
+  }
+}
+{
+  "bogo-indian-defense/all": {
     "https://lichess.org/analysis/rnbqk2r/pppp1ppp/4pn2/8/1bPP4/5N2/PP1BPPPP/RN1QKB1R%20b%20KQkq%20-%203%204": {
       "answer": "Qe7, g3, Bxd2+",
       "tags": [
@@ -5395,7 +5292,7 @@
       ]
     }
   },
-  "trompowsky-attack": {
+  "trompowsky-attack/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppppppp/5n2/6B1/3P4/8/PPP1PPPP/RN1QKBNR%20b%20KQkq%20-%202%202": {
       "answer": "Ne4, Bf4, c5",
       "tags": [
@@ -5445,7 +5342,7 @@
       ]
     }
   },
-  "richter-veresov-attack": {
+  "richter-veresov-attack/all": {
     "https://lichess.org/analysis/rnbqkb1r/ppp1pppp/5n2/3p2B1/3P4/2N5/PPP1PPPP/R2QKBNR%20b%20KQkq%20-%203%203": {
       "answer": "Nbd7, f3, c6",
       "tags": [
@@ -5494,22 +5391,74 @@
         "Capture (exf3). White recaptures (Nxf3). Play Be7 to break the pin and prepare to castle, equalizing comfortably."
       ]
     }
-  },
-  "four-knights-game": {
-    "https://lichess.org/analysis/r1bqkb1r/pppp1ppp/2n2n2/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R%20w%20KQkq%20-%203%204": {
-      "answer": "Nxe5, Nxe5, d4",
+  }
+}
+{
+  "scotch-game/all": {
+    "https://lichess.org/analysis/r1bqkbnr/pppp1ppp/2n5/4p3/3PP3/5N2/PPP2PPP/RNBQKB1R%20b%20KQkq%20-%200%203": {
+      "answer": "exd4, Nxd4, Bc5",
       "tags": [
-        "four-knights-game",
-        "halloween-gambit",
-        "sacrifice",
-        "trap",
-        "aggressive"
+        "scotch-game",
+        "classical-variation",
+        "development",
+        "center-tension",
+        "opening"
       ],
       "hints": [
-        "You want to play the Halloween Gambit. It is risky but fun.",
-        "Sacrifice your knight on e5 immediately! When Black captures, use your central pawns to chase their knights.",
-        "Capture the e5 pawn.",
-        "Sacrifice (Nxe5)! Black takes (Nxe5). Push d4, kicking the knight and seizing a massive center."
+        "White strikes the center immediately. You must accept the challenge.",
+        "Capture the pawn. After White recaptures, develop your bishop to c5 to attack the centralized knight.",
+        "Take the d4 pawn.",
+        "Capture (exd4). White recaptures (Nxd4). Play Bc5, putting immediate pressure on the knight and forcing White to defend carefully."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk1nr/pppp1ppp/2n5/2b5/3NP3/8/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%201%205": {
+      "answer": "Be3, Qf6, c3",
+      "tags": [
+        "scotch-game",
+        "intermezzo",
+        "defense",
+        "tactics",
+        "opening"
+      ],
+      "hints": [
+        "Black attacks your knight twice. Defend it while developing.",
+        "Develop your bishop to e3 to support the knight. When Black adds pressure with the queen, reinforce the center with a pawn.",
+        "Develop your dark-squared bishop.",
+        "Play Be3. Black attacks again (Qf6). Solidify everything with c3, maintaining a strong center and safe pieces."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqkb1r/pppp1ppp/2n2n2/8/3NP3/8/PPP2PPP/RNBQKB1R%20w%20KQkq%20-%201%205": {
+      "answer": "Nxc6, bxc6, e5",
+      "tags": [
+        "scotch-game",
+        "mieses-variation",
+        "disruption",
+        "space-advantage",
+        "opening"
+      ],
+      "hints": [
+        "Black attacks your e4 pawn. You should clarify the center before pushing forward.",
+        "Exchange knights on c6 to double Black's pawns, then push your e-pawn to chase the knight.",
+        "Capture the knight on c6.",
+        "Capture (Nxc6). Black recaptures (bxc6). Now push e5! This disrupts Black's development and kicks the knight away."
+      ]
+    }
+  },
+  "four-knights-game/all": {
+    "https://lichess.org/analysis/r1bqkb1r/pppp1ppp/2n2n2/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R%20w%20KQkq%20-%203%204": {
+      "answer": "Bb5, Bb4, O-O",
+      "tags": [
+        "four-knights-game",
+        "spanish-variation",
+        "symmetry",
+        "development",
+        "opening"
+      ],
+      "hints": [
+        "All four knights are out. Proceed with active piece play.",
+        "Develop your bishop to b5 to pin the knight. Black will likely mirror you. Then, castle.",
+        "Move your light-squared bishop.",
+        "Play Bb5. Black mirrors (Bb4). Castle (O-O) to get your king safe before the center opens up."
       ]
     },
     "https://lichess.org/analysis/r1bqkb1r/pppp1ppp/2n2n2/4p3/3PP3/2N2N2/PPP2PPP/R1BQKB1R%20b%20KQkq%20-%200%204": {
@@ -5527,23 +5476,39 @@
         "Capture on d4.",
         "Capture (exd4). White recaptures (Nxd4). Play Bb4, pinning the c3 knight and preparing to attack e4."
       ]
+    },
+    "https://lichess.org/analysis/r1bqkb1r/pppp1ppp/2n2n2/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R%20w%20KQkq%20-%203%204": {
+      "answer": "Nxe5, Nxe5, d4",
+      "tags": [
+        "four-knights-game",
+        "halloween-gambit",
+        "sacrifice",
+        "trap",
+        "aggressive"
+      ],
+      "hints": [
+        "You want to play the Halloween Gambit. It is risky but fun.",
+        "Sacrifice your knight on e5 immediately! When Black captures, use your central pawns to chase their knights.",
+        "Capture the e5 pawn.",
+        "Sacrifice (Nxe5)! Black takes (Nxe5). Push d4, kicking the knight and seizing a massive center."
+      ]
     }
   },
-  "petrovs-defense": {
+  "petrovs-defense/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R%20w%20KQkq%20-%201%203": {
-      "answer": "d4, Nxe4, Bd3",
+      "answer": "Nxe5, d6, Nf3",
       "tags": [
         "petrovs-defense",
-        "steinitz-attack",
-        "active-play",
-        "development",
+        "main-line",
+        "pawn-grab",
+        "retreat",
         "opening"
       ],
       "hints": [
-        "Instead of taking the pawn, you can strike the center immediately.",
-        "Push d4. Black will capture your e4 pawn. Develop your bishop to d3 to chase that knight away.",
-        "Push your d-pawn.",
-        "Play d4. Black captures (Nxe4). Play Bd3, forcing the knight to move and gaining a tempo for development."
+        "Black mimics your move. Punish the exposed e5 pawn.",
+        "Capture the pawn on e5. When Black kicks your knight with d6, retreat safely to f3.",
+        "Capture on e5.",
+        "Capture (Nxe5). Black plays d6. Retreat to f3 (Nf3), preparing to play d4 and control the center."
       ]
     },
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4N3/4P3/8/PPPP1PPP/RNBQKB1R%20b%20KQkq%20-%200%203": {
@@ -5561,9 +5526,27 @@
         "Develop your knight to c6.",
         "Play Nc6! White takes (Nxc6). Recapture (dxc6). Now your bishops have open lines to attack the white king!"
       ]
+    },
+    "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R%20w%20KQkq%20-%201%203": {
+      "answer": "d4, Nxe4, Bd3",
+      "tags": [
+        "petrovs-defense",
+        "steinitz-attack",
+        "active-play",
+        "development",
+        "opening"
+      ],
+      "hints": [
+        "Instead of taking the pawn, you can strike the center immediately.",
+        "Push d4. Black will capture your e4 pawn. Develop your bishop to d3 to chase that knight away.",
+        "Push your d-pawn.",
+        "Play d4. Black captures (Nxe4). Play Bd3, forcing the knight to move and gaining a tempo for development."
+      ]
     }
-  },
-  "vienna-game": {
+  }
+}
+{
+  "vienna-game/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4p3/4P3/2N5/PPPP1PPP/R1BQKBNR%20w%20KQkq%20-%202%203": {
       "answer": "f4, d5, fxe5",
       "tags": [
@@ -5613,7 +5596,7 @@
       ]
     }
   },
-  "bishops-opening": {
+  "bishops-opening/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4p3/2B1P3/3P4/PPP2PPP/RNBQK1NR%20b%20KQkq%20-%200%203": {
       "answer": "c6, Nf3, d5",
       "tags": [
@@ -5663,7 +5646,75 @@
       ]
     }
   },
-  "danish-gambit": {
+  "kings-gambit/all": {
+    "https://lichess.org/analysis/rnbqkbnr/pppp1p1p/8/6p1/4Pp2/5N2/PPPP2PP/RNBQKB1R%20w%20KQkq%20-%200%204": {
+      "answer": "h4, g4, Ne5",
+      "tags": [
+        "kings-gambit",
+        "kieseritzky-gambit",
+        "aggression",
+        "knight-outpost",
+        "opening"
+      ],
+      "hints": [
+        "Black is trying to hold the gambit pawn with g5. You must undermine their structure.",
+        "Push h4 to challenge the pawn chain. When Black pushes g4, jump your knight to the strong e5 outpost.",
+        "Push the h-pawn.",
+        "Play h4! Black pushes g4 to attack your knight. Jump to e5 (Ne5), placing the knight on a dominant square."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkbnr/ppp2ppp/8/3pp3/4PP2/8/PPPP2PP/RNBQKBNR%20w%20KQkq%20-%200%203": {
+      "answer": "exd5, e4, d3",
+      "tags": [
+        "kings-gambit",
+        "falkbeer-countergambit",
+        "center-tension",
+        "development",
+        "opening"
+      ],
+      "hints": [
+        "Black has declined the gambit with the Falkbeer Countergambit (d5). Capture the d-pawn.",
+        "Capture on d5. Black will push e4 to disrupt you. Play d3 to challenge that pawn.",
+        "Capture the d5 pawn.",
+        "Capture (exd5). Black pushes e4. Play d3 to break Black's advanced pawn and open lines for development."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/8/2B1Pp2/8/PPPP2PP/RNBQK1NR%20b%20KQkq%20-%201%203": {
+      "answer": "Qh4+, Kf1, d6",
+      "tags": [
+        "kings-gambit",
+        "bishops-gambit",
+        "check",
+        "king-safety",
+        "opening"
+      ],
+      "hints": [
+        "White has played the Bishop's Gambit (Bc4), allowing a check on h4.",
+        "Check the king with your queen. White must move the king to f1. Then solidify with d6.",
+        "Check with your queen on h4.",
+        "Play Qh4+! White is forced to play Kf1, losing castling rights. Play d6 to control the center and support your f4 pawn."
+      ]
+    }
+  }
+}
+{
+  "danish-gambit/all": {
+    "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/8/3pP3/2P5/PP3PPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
+      "answer": "dxc3, Bc4, cxb2",
+      "tags": [
+        "danish-gambit",
+        "double-pawn-sacrifice",
+        "rapid-development",
+        "aggressive",
+        "opening"
+      ],
+      "hints": [
+        "White offers a pawn to open lines. If you accept, you can grab another.",
+        "Capture on c3. White develops rapidly with Bc4. Be greedy and capture b2 to test White's compensation.",
+        "Capture the c3 pawn.",
+        "Capture (dxc3)! White plays Bc4. Capture again (cxb2)! You have two extra pawns, but White's bishops are pointing right at your king."
+      ]
+    },
     "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/8/3pP3/2P5/PP3PPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
       "answer": "d5, exd5, Qxd5",
       "tags": [
@@ -5697,7 +5748,23 @@
       ]
     }
   },
-  "evans-gambit": {
+  "evans-gambit/all": {
+    "https://lichess.org/analysis/r1bqk1nr/pppp1ppp/2n5/2b5/1P2P3/2P5/P4PPP/RNBQKB1R%20b%20KQkq%20-%200%205": {
+      "answer": "Ba5, d4, exd4",
+      "tags": [
+        "evans-gambit",
+        "main-line",
+        "center-attack",
+        "initiative",
+        "opening"
+      ],
+      "hints": [
+        "White has sacrificed the b-pawn to kick your bishop. Keep the bishop active.",
+        "Retreat the bishop to a5. White will strike with d4. You must capture to prevent being overrun.",
+        "Retreat your bishop to a5.",
+        "Retreat (Ba5). White strikes (d4). Capture (exd4) to stop White from building a massive pawn center."
+      ]
+    },
     "https://lichess.org/analysis/r1bqk1nr/pppp1ppp/2n5/2b5/1P2P3/2P5/P4PPP/RNBQKB1R%20b%20KQkq%20-%200%205": {
       "answer": "Be7, d4, Na5",
       "tags": [
@@ -5731,21 +5798,21 @@
       ]
     }
   },
-  "budapest-gambit": {
+  "budapest-gambit/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4P3/2P5/8/PP2PPPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
-      "answer": "Ne4, Nf3, Bb4+",
+      "answer": "Ng4, Nf3, Bc5",
       "tags": [
         "budapest-gambit",
-        "fajarowicz-variation",
-        "trick",
-        "gambit",
+        "adler-variation",
+        "active-piece-play",
+        "trap",
         "opening"
       ],
       "hints": [
-        "Instead of attacking the pawn, you can jump to the center immediately.",
-        "Jump to e4 (the Fajarowicz). White develops. Check with the bishop to speed up your attack.",
-        "Jump your knight to e4.",
-        "Play Ne4! White develops (Nf3). Check with Bb4+! This tricky line focuses on rapid piece play rather than regaining the pawn."
+        "White has accepted the gambit. Go after the pawn.",
+        "Jump your knight to g4 to attack e5. White defends with Nf3. Develop your bishop to c5 to attack f2.",
+        "Jump to g4.",
+        "Play Ng4! White defends (Nf3). Develop the bishop to c5 (Bc5), creating immediate threats against the weak f2 square."
       ]
     },
     "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/8/4P3/2P2Bn1/8/PP2PPPP/RN1QKBNR%20b%20KQkq%20-%201%204": {
@@ -5763,9 +5830,27 @@
         "Develop your queenside knight.",
         "Play Nc6. White defends (Nf3). Check with Bb4+! This forces White to block and concede the bishop pair or compromise their structure."
       ]
+    },
+    "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/5n2/4P3/2P5/8/PP2PPPP/RNBQKBNR%20b%20KQkq%20-%200%203": {
+      "answer": "Ne4, Nf3, Bb4+",
+      "tags": [
+        "budapest-gambit",
+        "fajarowicz-variation",
+        "trick",
+        "gambit",
+        "opening"
+      ],
+      "hints": [
+        "Instead of attacking the pawn, you can jump to the center immediately.",
+        "Jump to e4 (the Fajarowicz). White develops. Check with the bishop to speed up your attack.",
+        "Jump your knight to e4.",
+        "Play Ne4! White develops (Nf3). Check with Bb4+! This tricky line focuses on rapid piece play rather than regaining the pawn."
+      ]
     }
-  },
-  "benko-gambit": {
+  }
+}
+{
+  "benko-gambit/all": {
     "https://lichess.org/analysis/rnbqkb1r/3ppppp/p4n2/1PpP4/8/8/PP2PPPP/RNBQKBNR%20w%20KQkq%20-%200%205": {
       "answer": "bxa6, Bxa6, Nc3",
       "tags": [
@@ -5815,7 +5900,7 @@
       ]
     }
   },
-  "colle-system": {
+  "colle-system/all": {
     "https://lichess.org/analysis/rnbqkb1r/ppp1pppp/5n2/3p4/3P4/5N2/PPP1PPPP/RNBQKB1R%20w%20KQkq%20-%202%203": {
       "answer": "e3, e6, Bd3",
       "tags": [
@@ -5865,7 +5950,7 @@
       ]
     }
   },
-  "blackmar-diemer-gambit": {
+  "blackmar-diemer-gambit/all": {
     "https://lichess.org/analysis/rnbqkb1r/ppp1pppp/5n2/3p4/3PP3/2N5/PPP2PPP/R1BQKBNR%20b%20KQkq%20-%201%203": {
       "answer": "dxe4, f3, exf3",
       "tags": [
@@ -5914,8 +5999,60 @@
         "Play Nb5!! Black takes the queen (Bxf3). Play Nxc7+! The king must move, and you will win back material with a winning position."
       ]
     }
+  }
+}
+{
+  "london-system/all": {
+    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
+      "answer": "Bf4, Nf6, e3",
+      "tags": [
+        "london-system",
+        "system-opening",
+        "solid",
+        "development",
+        "opening"
+      ],
+      "hints": [
+        "White ignores the opponent's setup to build a pyramid.",
+        "Develop your dark-squared bishop to f4 immediately. After Black develops, solidify the d4 pawn with e3.",
+        "Develop the dark-squared bishop.",
+        "Play Bf4! Black develops (Nf6). Secure your center with e3. This is the 'London' triangle: d4, Bf4, e3."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/3P1B2/8/PPP1PPPP/RNBQKBNR%20b%20KQkq%20-%201%202": {
+      "answer": "c5, e3, Nc6",
+      "tags": [
+        "london-system",
+        "black-defense",
+        "center-strike",
+        "active-play",
+        "opening"
+      ],
+      "hints": [
+        "White has played the London. You should strike the center immediately.",
+        "Push c5 to challenge the d4 pawn. White will defend with e3. Develop your knight to c6 to increase pressure.",
+        "Push your c-pawn.",
+        "Play c5! White defends (e3). Develop with Nc6. You are actively fighting for the center rather than playing passively."
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkb1r/pppppppp/5n2/8/3P4/2N5/PPP1PPPP/R1BQKBNR%20w%20KQkq%20-%202%202": {
+      "answer": "Bf4, g6, e3",
+      "tags": [
+        "london-system",
+        "jobava-london",
+        "aggressive",
+        "knight-development",
+        "opening"
+      ],
+      "hints": [
+        "You have blocked your c-pawn with Nc3. This is the Jobava London.",
+        "Develop the bishop to f4. If Black fianchettoes (g6), support the center with e3 and prepare for a sharp game.",
+        "Develop the dark-squared bishop.",
+        "Play Bf4 (The Jobava London). Black prepares to fianchetto (g6). Play e3. Unlike the classic London, here you look to attack the center with Nb5 or e4 quickly."
+      ]
+    }
   },
-  "grobs-attack": {
+  "grobs-attack/all": {
     "https://lichess.org/analysis/rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201": {
       "answer": "g4, d5, Bg2",
       "tags": [
@@ -5930,6 +6067,22 @@
         "Push g4 on move 1. Black will likely grab the center with d5. Fianchetto your bishop to pressure their d-pawn.",
         "Push the g-pawn two squares.",
         "Play g4! Black responds with d5. Play Bg2, instantly attacking the d5 pawn. It is unsound but dangerous!"
+      ]
+    },
+    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/6P1/8/PPPPPPBP/RNBQK1NR%20b%20KQkq%20-%201%202": {
+      "answer": "Bxg4, c4, c6",
+      "tags": [
+        "grobs-attack",
+        "defense",
+        "pawn-grab",
+        "solidification",
+        "opening"
+      ],
+      "hints": [
+        "White has hung the g-pawn. Take it.",
+        "Capture the pawn on g4. White will strike the center with c4. Support your center with c6.",
+        "Capture the g4 pawn.",
+        "Capture (Bxg4). White plays c4. Play c6! Keep your center solid; White has weakened their kingside for nothing."
       ]
     },
     "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/6P1/8/PPPPPPBP/RNBQK1NR%20b%20KQkq%20-%201%202": {
@@ -5949,7 +6102,7 @@
       ]
     }
   },
-  "kings-indian-attack": {
+  "kings-indian-attack/all": {
     "https://lichess.org/analysis/rnbqkb1r/pppppppp/5n2/8/8/5N2/PPPPPPPP/RNBQKB1R%20w%20KQkq%20-%201%202": {
       "answer": "g3, d5, Bg2",
       "tags": [
@@ -5998,1354 +6151,156 @@
         "Play d3. Black develops (Nc6). Play g3. This avoids sharp theory and leads to a strategic game where you attack the king."
       ]
     }
-  },
-  "pin": {
-    "https://lichess.org/analysis/r1b1k2r/ppppqppp/2n2n2/1B6/4P3/5N2/PPPP1PPP/RNBQK2R%20w%20KQkq%20-%200%201": {
-      "answer": "O-O, d3, Re1",
+  }
+}
+{
+  "torre-attack/all": {
+    "https://lichess.org/analysis/rnbqkb1r/pppp1ppp/4pn2/6B1/3P4/5N2/PPP1PPPP/RN1QKB1R%20b%20KQkq%20-%201%203": {
+      "answer": "h6, Bh4, c5",
       "tags": [
-        "pin",
-        "relative-pin",
-        "development",
-        "pressure",
-        "tactics"
-      ],
-      "hints": [
-        "The black knight on c6 is pinned to the king by your bishop. Increasing pressure on pinned pieces is a key theme.",
-        "Secure your king first, then develop to put more force on the e-file where the black queen sits.",
-        "Castle kingside.",
-        "Castle (O-O). After black moves, play d3 or Re1 to exploit the pin on the e-file or the c6 knight."
-      ]
-    },
-    "https://lichess.org/analysis/4r1k1/p4ppp/1p6/8/8/5B2/PP3PPP/3R2K1%20w%20-%20-%200%201": {
-      "answer": "Rc1, Be2, Bc4",
-      "tags": [
-        "pin",
-        "absolute-pin",
-        "endgame",
-        "restraint",
-        "tactics"
-      ],
-      "hints": [
-        "Look for alignment between the opponent's pieces. If a valuable piece is behind a less valuable one, a pin might be possible.",
-        "Position your bishop to immobilize the opponent's piece against their king.",
-        "Move your bishop to c4.",
-        "Play Bc4! This creates an absolute pin on the piece, preventing it from moving because it would expose the king to check."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
-      "answer": "Bb5, Nf3, O-O",
-      "tags": [
-        "pin",
-        "opening-trap",
-        "control",
-        "development",
-        "tactics"
-      ],
-      "hints": [
-        "In the opening, pinning knights to the king is a powerful way to disrupt development.",
-        "Develop your bishop to b5 immediately to pin the knight or cramp Black's position.",
-        "Move your light-squared bishop.",
-        "Play Bb5. This pins any piece that interposes or controls the diagonal, often forcing Black to make awkward concessions."
-      ]
-    }
-  },
-  "fork": {
-    "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R%20b%20KQkq%20-%201%202": {
-      "answer": "Nc6, Nf6, Nxe4",
-      "tags": [
-        "fork",
-        "knight-fork",
-        "trick",
-        "opening",
-        "tactics"
-      ],
-      "hints": [
-        "Knights are tricky. Look for squares where a knight can attack two pieces at once.",
-        "In this standard opening position, capturing the central pawn can lead to a fork trick.",
-        "Capture the e4 pawn.",
-        "Capture (Nxe4)! If White captures back, play d5 to fork the knight and bishop, winning your piece back with a strong center."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/3n4/8/8/5K2/4R3%20b%20-%20-%200%201": {
-      "answer": "Nf4+, Kg3, Nxe2",
-      "tags": [
-        "fork",
-        "royal-fork",
-        "endgame",
-        "check",
-        "tactics"
-      ],
-      "hints": [
-        "The white king and rook are on the same color squares. This is a signal for a knight fork.",
-        "Look for a check that also attacks the undefended rook.",
-        "Jump your knight to f4.",
-        "Play Nf4+! This checks the king and attacks the rook simultaneously. After the king moves, capture the rook (Nxe2)."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/4P3/8/PPPP1PPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
-      "answer": "exd5, Qxd5, Nc3",
-      "tags": [
-        "fork",
-        "tempo",
-        "development",
-        "center",
-        "tactics"
-      ],
-      "hints": [
-        "While not a direct material fork, attacking the queen gains time (tempo) which splits your opponent's attention.",
-        "Capture the pawn. When the queen recaptures, develop your knight to attack her.",
-        "Capture on d5.",
-        "Capture (exd5). Black recaptures (Qxd5). Play Nc3! You attack the queen and control the center, effectively forking 'development' and 'attack'."
-      ]
-    }
-  },
-  "skewer": {
-    "https://lichess.org/analysis/8/8/8/3k4/8/8/3Q4/8%20w%20-%20-%200%201": {
-      "answer": "Qg5+, Ke6, Qxd8",
-      "tags": [
-        "skewer",
-        "queen-skewer",
-        "endgame",
-        "win-material",
-        "tactics"
-      ],
-      "hints": [
-        "The enemy king and rook are aligned on the same file/diagonal.",
-        "Check the king to force it to move out of the way, exposing the piece behind it.",
-        "Check with your queen on g5.",
-        "Play Qg5+! The king must move. Once it steps aside, your queen's path is clear to capture the piece behind him."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/2k5/8/8/1B6/8/7R%20w%20-%20-%200%201": {
-      "answer": "Bd5+, Kxd5, Rxh8",
-      "tags": [
-        "skewer",
-        "x-ray",
-        "sacrifice",
-        "endgame",
-        "tactics"
-      ],
-      "hints": [
-        "Sometimes you need to lure the king onto a specific square to set up a skewer.",
-        "Sacrifice your bishop to force the king onto the same rank as his rook.",
-        "Check on d5.",
-        "Play Bd5+! If the King takes (Kxd5), he is now aligned with his rook. Play Rh5+ (or similar) to skewer them!"
-      ]
-    },
-    "https://lichess.org/analysis/8/5k2/8/8/8/8/1R6/K7%20w%20-%20-%200%201": {
-      "answer": "Rb7+, Kg6, Rxa7",
-      "tags": [
-        "skewer",
-        "rook-skewer",
-        "endgame",
-        "simplification",
-        "tactics"
-      ],
-      "hints": [
-        "The enemy king is in front of his pawn/piece on the 7th rank.",
-        "Deliver a check from the side or behind to force the king away.",
-        "Check with the rook on b7.",
-        "Play Rb7+! The king must abandon the file or rank. Capture the piece (Rxa7) once the line is open."
-      ]
-    }
-  },
-  "deflection": {
-    "https://lichess.org/analysis/r1r3k1/5ppp/8/8/8/8/5PPP/Q5K1%20w%20-%20-%200%201": {
-      "answer": "Qa8, Rxa8, Rxa8#",
-      "tags": [
-        "deflection",
-        "back-rank",
-        "sacrifice",
-        "mate",
-        "tactics"
-      ],
-      "hints": [
-        "The enemy rook is the only thing stopping a back-rank checkmate.",
-        "Sacrifice your queen to force that rook away from its defensive post.",
-        "Move your queen to a8.",
-        "Play Qa8! The rook must capture (Rxa8). Now your rook can deliver checkmate (Rxa8#) because the defender is gone."
-      ]
-    },
-    "https://lichess.org/analysis/3r2k1/5ppp/8/8/8/4q3/5PPP/5RK1%20w%20-%20-%200%201": {
-      "answer": "fxe3, Rxd1, Rxd1",
-      "tags": [
-        "deflection",
-        "overloaded-piece",
-        "simplification",
-        "defense",
-        "tactics"
-      ],
-      "hints": [
-        "Identify the piece that is doing too many jobs (defending multiple squares).",
-        "If you capture the threatening piece, does it force a response that leaves another square unguarded?",
-        "Capture the queen.",
-        "Capture the queen (fxe3). If they try a back-rank trick, you are now ready to defend or counter-attack because their coordination is broken."
-      ]
-    },
-    "https://lichess.org/analysis/4r1k1/5ppp/8/8/8/Q7/5PPP/4R1K1%20w%20-%20-%200%201": {
-      "answer": "Rxe8+, Qxe8, Qxe8#",
-      "tags": [
-        "deflection",
-        "remove-the-defender",
-        "mate-threat",
-        "exchange",
-        "tactics"
-      ],
-      "hints": [
-        "The black queen is defending against checkmate, but she also has to watch her own king.",
-        "Force an exchange that deflects the defender or simply removes it.",
-        "Capture the rook on e8.",
-        "Play Rxe8+! The queen is forced to recapture (Qxe8), removing her control over other critical squares or leading to a winning endgame."
-      ]
-    }
-  },
-  "discovery": {
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/4p3/1bB1P3/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%200%205": {
-      "answer": "Ng5, O-O, d4",
-      "tags": [
-        "discovery",
-        "discovered-attack",
-        "opening-trap",
-        "tactics",
-        "advantage"
-      ],
-      "hints": [
-        "Your knight on f3 blocks your bishop's view of the enemy pawn structure.",
-        "Move the knight to g5 to attack f7. This 'discovers' an attack by your queen on d1 against the enemy bishop or creates pressure.",
-        "Jump your knight to g5.",
-        "Play Ng5! This threatens f7 immediately, but more importantly, it unleashes your Queen's control or Bishop's diagonals that were previously blocked."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/2R5/8/1B1k4/8/K7%20w%20-%20-%200%201": {
-      "answer": "Bc2+, Ke3, Rxd5",
-      "tags": [
-        "discovery",
-        "discovered-check",
-        "endgame",
-        "win-material",
-        "tactics"
-      ],
-      "hints": [
-        "The white bishop is shielding the black king from the white rook. If the bishop moves, it is check.",
-        "Move the bishop to check the king, allowing your rook to attack whatever piece was safe before.",
-        "Check with the bishop on c2.",
-        "Play Bc2+! This is a discovered check. The rook on c5 hits the king, forcing a response, while you prepare to capture the loose piece next."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/ppp2ppp/8/3p4/3p4/2N5/PPP1PPPP/R1BQKBNR%20w%20KQkq%20-%200%203": {
-      "answer": "Nxd5, Qxd5, e4",
-      "tags": [
-        "discovery",
-        "center-opening",
-        "queen-trap",
-        "tactics",
-        "gambit"
-      ],
-      "hints": [
-        "Sometimes a discovery is about moving a pawn to unleash a piece behind it.",
-        "Capture on d5. When the queen recaptures, push e4 to discover an attack from your bishop on the queen.",
-        "Capture the d5 pawn.",
-        "Capture (Nxd5). Black takes (Qxd5). Push e4! The pawn attacks the queen, but the real threat is the Bishop on f1 now aiming at the Queen's diagonal."
-      ]
-    }
-  },
-  "interference": {
-    "https://lichess.org/analysis/3r2k1/5ppp/8/8/4B3/8/5PPP/Q5K1%20w%20-%20-%200%201": {
-      "answer": "Bd5, Rxd5, Qa8+",
-      "tags": [
-        "interference",
-        "back-rank",
-        "blockade",
-        "tactics",
-        "mate-threat"
-      ],
-      "hints": [
-        "The black rook defends the back rank. You need to sever the connection between the rook and the back rank.",
-        "Place your bishop on d5. It blocks the rook's path to a8. If they take, the path remains blocked or diverted.",
-        "Move bishop to d5.",
-        "Play Bd5! This interferes with the rook's defense. If Rxd5, the rook is no longer defending a8. Play Qa8+ for the win."
-      ]
-    },
-    "https://lichess.org/analysis/r1b2rk1/ppp2ppp/2n5/3q4/3P4/5N2/PP1QPPPP/R3KB1R%20w%20KQ%20-%200%2010": {
-      "answer": "e4, Qxe4, Be2",
-      "tags": [
-        "interference",
-        "queen-safety",
-        "disruption",
-        "tactics",
+        "torre-attack",
+        "classical-defense",
+        "question-bishop",
+        "center-strike",
         "opening"
       ],
       "hints": [
-        "The black queen is comfortable. You can push a pawn to interfere with her coordination with the knight or bishop.",
-        "Push e4 to block the line between the Queen and her defenders or targets.",
-        "Push the e-pawn.",
-        "Play e4! This interferes with Black's control of the center. If the Queen takes (Qxe4), she is drawn into a dangerous line where Be2 gains time."
+        "White pins your knight. Put the question to the bishop immediately.",
+        "Kick with h6. When the bishop retreats, strike the center with c5 to challenge White's setup.",
+        "Push your h-pawn.",
+        "Play h6! White retreats (Bh4). Play c5, attacking the center and punishing White for moving the bishop twice."
       ]
     },
-    "https://lichess.org/analysis/8/8/8/4r3/8/3N4/5K2/4R3%20w%20-%20-%200%201": {
-      "answer": "Nxe5, Rxe5, Rxe5",
+    "https://lichess.org/analysis/rnbqkb1r/ppp1pppp/5n2/3p2B1/3P4/5N2/PPP1PPPP/RN1QKB1R%20b%20KQkq%20-%201%203": {
+      "answer": "Ne4, Bf4, c5",
       "tags": [
-        "interference",
-        "knight-fork",
-        "simplification",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "This is a mix of fork and interference. The knight can jump to block the rook's line.",
-        "Jump to e5. You block the file and attack the rook.",
-        "Jump knight to e5.",
-        "Play Nxe5! You physically block the board. You interfere with any plans Black had on the e-file and simply win material."
-      ]
-    }
-  },
-  "attraction": {
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/4p3/1bB1P3/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%200%205": {
-      "answer": "Bxf7+, Kxf7, Nxe5+",
-      "tags": [
-        "attraction",
-        "king-safety",
-        "sacrifice",
-        "tactics",
-        "opening"
-      ],
-      "hints": [
-        "The black king is safe on e8. Sacrifice a piece to lure him out into the open.",
-        "Capture on f7 with the bishop. The king is forced to capture back, moving to an unsafe square.",
-        "Sacrifice on f7.",
-        "Play Bxf7+! The King must take (Kxf7). You have 'attracted' the king to f7, where he is now vulnerable to checks like Nxe5+."
-      ]
-    },
-    "https://lichess.org/analysis/3r2k1/5ppp/8/8/8/Q7/5PPP/4R1K1%20w%20-%20-%200%201": {
-      "answer": "Qf8+, Kxf8, Re8#",
-      "tags": [
-        "attraction",
-        "back-rank",
-        "queen-sacrifice",
-        "mate",
-        "tactics"
-      ],
-      "hints": [
-        "A classic back-rank pattern. The king is hiding behind pawns. Lure him to a square where he can be mated.",
-        "Sacrifice your queen on f8 to force the king to that square.",
-        "Check with the queen on f8.",
-        "Play Qf8+! The King is forced to take (Kxf8). You have attracted him to the fatal square. Now Re8# delivers checkmate."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/3n4/8/8/5K2/4R3%20w%20-%20-%200%201": {
-      "answer": "Re8+, Kxe8, Nf6+",
-      "tags": [
-        "attraction",
-        "fork-setup",
-        "endgame",
-        "sacrifice",
-        "tactics"
-      ],
-      "hints": [
-        "You want to fork the King and Queen (or piece), but the King isn't on the right square yet.",
-        "Sacrifice the rook to check the king and force him onto the fork square.",
-        "Check with the rook.",
-        "Play Re8+! The King captures (Kxe8). Now he is attracted to e8, allowing Nf6+ which forks the King and the target!"
-      ]
-    }
-  },
-  "clearance": {
-    "https://lichess.org/analysis/r4rk1/ppp2ppp/2n5/3q4/3P4/5N2/PP1QPPPP/R3KB1R%20w%20KQ%20-%200%2010": {
-      "answer": "d5, Qxd5, e4",
-      "tags": [
-        "clearance",
-        "pawn-push",
+        "torre-attack",
+        "active-defense",
+        "knight-jump",
         "center-control",
-        "tactics",
         "opening"
       ],
       "hints": [
-        "You need the e4 square for your knight or bishop, but your own pawn occupies d3/e2 blocking lines.",
-        "Push the d-pawn to d5. This forces the opponent to react and clears the d-file or adjacent diagonals.",
-        "Push the d-pawn.",
-        "Play d5! When Black captures (Qxd5), the d-file is open, and squares like e4 are now available for your pieces to jump in."
+        "White plays the Torre against your d5 setup. Use the specific antidote.",
+        "Jump your knight to e4 to hit the bishop. When it retreats, strike with c5.",
+        "Move your knight to e4.",
+        "Play Ne4! White retreats (Bf4). Play c5! This is the most energetic way to meet the Torre, taking advantage of the exposed bishop."
       ]
     },
-    "https://lichess.org/analysis/3r2k1/5ppp/8/8/8/Q7/5PPP/3R2K1%20w%20-%20-%200%201": {
-      "answer": "Rxd8+, Qxd8, Qc1",
+    "https://lichess.org/analysis/rnbqkb1r/ppp2ppp/4pn2/6B1/3P4/2P2N2/PP3PPP/RN1QKB1R%20b%20KQkq%20-%200%205": {
+      "answer": "h6, Bh4, Be7",
       "tags": [
-        "clearance",
-        "back-rank",
-        "exchange",
-        "simplification",
-        "tactics"
-      ],
-      "hints": [
-        "Your queen is blocked by your own rook. You need the queen to control the back rank.",
-        "Sacrifice or exchange the rook on d8 to clear the file for your queen.",
-        "Capture the rook on d8.",
-        "Play Rxd8+! Black recaptures (Qxd8). Now your Queen has a clear path to c1 or e1 to defend the back rank or launch an attack."
-      ]
-    },
-    "https://lichess.org/analysis/r1b2rk1/pp3ppp/2n5/q1Pp4/8/P1P2N2/2Q1PPPP/R3KB1R%20w%20KQ%20-%200%2012": {
-      "answer": "e4, dxe4, Bc4",
-      "tags": [
-        "clearance",
-        "diagonal-opening",
-        "pawn-sacrifice",
-        "tactics",
-        "attack"
-      ],
-      "hints": [
-        "Your light-squared bishop is buried behind your pawns. You need to open the diagonal.",
-        "Push e4! This sacrifices a pawn to clear the d3-h7 or a2-g8 diagonal for your bishop.",
-        "Push the e-pawn.",
-        "Play e4! Black takes (dxe4). Now play Bc4 (or Bd3), and your bishop suddenly exerts massive pressure on the enemy kingside."
-      ]
-    }
-  },
-  "x-ray-attack": {
-    "https://lichess.org/analysis/8/8/8/2Q5/8/1k6/8/R1K5%20w%20-%20-%200%201": {
-      "answer": "Rb1+, Ka2, Qa3#",
-      "tags": [
-        "x-ray-attack",
-        "mate",
-        "coordination",
-        "endgame",
-        "tactics"
-      ],
-      "hints": [
-        "The Queen defends the checking square, but she is far away. The Rook can support her 'through' the King.",
-        "Check with the Rook. The King is forced to a square where the Queen can deliver mate, supported by the Rook's x-ray.",
-        "Check with the rook on b1.",
-        "Play Rb1+! The King moves to a2 (Ka2). Now Qa3# is checkmate because the Rook protects the Queen from b1!"
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n5/4p3/1b2P3/2N2N2/PPPP1PPP/R1BQKB1R%20w%20KQkq%20-%200%205": {
-      "answer": "Nd5, Bc5, c3",
-      "tags": [
-        "x-ray-attack",
-        "defense",
-        "tactics",
-        "opening",
-        "indirect-defense"
-      ],
-      "hints": [
-        "Black's bishop on b4 is annoying. Your Queen on d1 is actually eyeing that square through your own pieces.",
-        "Jump the knight to d5. This attacks the bishop and unmasks your Queen's defense of the b4 square.",
-        "Move the knight to d5.",
-        "Play Nd5! If Black takes your knight, your Queen recaptures. You effectively defended the square 'through' your own knight."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/R7/8/1k6/1P6/K7%20w%20-%20-%200%201": {
-      "answer": "Rb5+, Kc4, Rxb2",
-      "tags": [
-        "x-ray-attack",
-        "defense",
-        "pawn-protection",
-        "endgame",
-        "tactics"
-      ],
-      "hints": [
-        "Your pawn on b2 is under attack. Your rook can defend it from a distance.",
-        "Check the king to force it away, but land your rook on a square where it defends the pawn through x-ray.",
-        "Check with the rook on b5.",
-        "Play Rb5+! After the king moves, the Rook on b5 defends the b2 pawn. Even though it's on the same file, the geometry protects it."
-      ]
-    }
-  },
-  "double-check": {
-    "https://lichess.org/analysis/rnbqk2r/ppp2ppp/5n2/3p4/1b1P4/2N5/PPP1QPPP/R1B1KBNR%20b%20KQkq%20-%202%206": {
-      "answer": "Qe7, Qxe7+, Bxe7",
-      "tags": [
-        "double-check",
-        "avoidance",
-        "simplification",
-        "opening",
-        "tactics"
-      ],
-      "hints": [
-        "White has checked you. A double check usually implies YOU delivering it, but here you must avoid getting crushed.",
-        "Block the check with your Queen. If you block with a piece, you might get hit by a discovered double check later.",
-        "Block with the queen.",
-        "Play Qe7! This forces a trade (Qxe7+) and simplifies. Double checks are dangerous; keep the board simple to avoid them."
-      ]
-    },
-    "https://lichess.org/analysis/5k2/8/8/8/8/6N1/6R1/6K1%20w%20-%20-%200%201": {
-      "answer": "Nf5+, Kf8, Rg8#",
-      "tags": [
-        "double-check",
-        "mate",
-        "coordination",
-        "endgame",
-        "tactics"
-      ],
-      "hints": [
-        "You have a knight and rook battery. Unleash the power.",
-        "Move the knight to give check. The rook will ALSO give check. The King must move.",
-        "Check with the knight on f5.",
-        "Play Nf5+! This is a double check (Knight and Rook). The King must move (Kf8). Then Rg8# is mate."
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n5/8/1bB1n3/5N2/PPP2PPP/RNBQ1K1R%20b%20kq%20-%200%207": {
-      "answer": "Nxc3+, Kg1, Nxb1",
-      "tags": [
-        "double-check",
-        "tactical-shot",
-        "discovery",
-        "opening",
-        "win-material"
-      ],
-      "hints": [
-        "You have a discovered check setup. Make it a double check to force the king.",
-        "Capture c3 with the knight. This checks with the Knight AND the Bishop on b4.",
-        "Capture on c3.",
-        "Play Nxc3+! Double check! The King must move (Kg1). Now capture the rook (Nxb1) with a winning advantage."
-      ]
-    }
-  },
-  "capturing-defender": {
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/4p3/1bB1P3/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%200%205": {
-      "answer": "Nd5, Nxd5, exd5",
-      "tags": [
-        "capturing-defender",
-        "opening-tactics",
-        "simplification",
-        "structure",
-        "tactics"
-      ],
-      "hints": [
-        "The black knight on f6 defends the h7 square and controls the center. Remove it.",
-        "Jump your knight to d5. If they exchange, you have removed a key defender of their king.",
-        "Move Knight to d5.",
-        "Play Nd5. Black captures (Nxd5). Recapture (exd5). The key defensive knight is gone, and you have a space advantage."
-      ]
-    },
-    "https://lichess.org/analysis/3r2k1/5ppp/8/8/4n3/8/5PPP/4R1K1%20w%20-%20-%200%201": {
-      "answer": "Rxe4, f6, Re1",
-      "tags": [
-        "capturing-defender",
-        "hanging-piece",
-        "back-rank-threat",
-        "endgame",
-        "tactics"
-      ],
-      "hints": [
-        "The black knight is undefended. Wait, is it? No, it's just hanging.",
-        "Capture the knight. Be careful of the back rank mate threat afterwards.",
-        "Capture the knight on e4.",
-        "Play Rxe4! You captured the piece. Black cannot checkmate you immediately because you can retreat or make 'luft' (f6/h3)."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkb1r/pp3ppp/2p5/3p4/3Pn3/3B1N2/PPP2PPP/RNBQK2R%20w%20KQkq%20-%200%207": {
-      "answer": "Bxe4, dxe4, Ng5",
-      "tags": [
-        "capturing-defender",
-        "structure-damage",
-        "opening",
-        "knight-outpost",
-        "tactics"
-      ],
-      "hints": [
-        "The black knight on e4 is annoying and defends key squares. Remove it.",
-        "Capture the knight with your bishop. This forces Black to recapture with a pawn, blocking their own bishop.",
-        "Capture on e4.",
-        "Play Bxe4! Black takes (dxe4). Now jump your knight to g5 (Ng5), attacking the new weak pawn on e4."
-      ]
-    }
-  },
-  "pawn-endgame": {
-    "https://lichess.org/analysis/8/8/8/5k2/5P2/6K1/8/8%20w%20-%20-%200%2055": {
-      "answer": "Kf3, Kf6, Ke4",
-      "tags": [
-        "pawn-endgame",
-        "opposition",
-        "king-activity",
-        "promotion",
-        "endgame"
-      ],
-      "hints": [
-        "You have an extra pawn, but you need your King to help it advance.",
-        "Move your King to the center (f3) to take the 'opposition' against the black King.",
-        "Move King to f3.",
-        "Play Kf3! By placing your King directly in front of the opponent's, you force them to give way, allowing your King to advance to e4."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/p7/P2k4/8/3K4/8/8%20w%20-%20-%200%201": {
-      "answer": "Kc3, Kc5, Kb4",
-      "tags": [
-        "pawn-endgame",
-        "shouldering",
-        "outflanking",
-        "zugzwang",
-        "endgame"
-      ],
-      "hints": [
-        "The pawns are locked. You must use your King to invade the opponent's territory.",
-        "Move your King to c3. If the Black King moves to c5, you have a response. If they step back, you invade.",
-        "Move King to c3.",
-        "Play Kc3! If Black plays Kc5, you play Kb3! (Zugzwang). If they play Ke5, you play Kc4! You are 'shouldering' the enemy King away."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/1P6/8/8/2k5/K7%20w%20-%20-%200%201": {
-      "answer": "b6, Kc3, b7",
-      "tags": [
-        "pawn-endgame",
-        "square-of-the-pawn",
-        "race",
-        "promotion",
-        "endgame"
-      ],
-      "hints": [
-        "It is a race! Can the Black King catch your pawn before it queens?",
-        "Push the pawn immediately. Calculate the diagonal 'square' to see if the King can enter it.",
-        "Push the b-pawn.",
-        "Play b6! The Black King cannot step into the 'square' of the pawn (c6-c8-a8-a6), so the pawn will promote uncontrollably."
-      ]
-    }
-  },
-  "rook-endgame": {
-    "https://lichess.org/analysis/8/R7/8/1k6/8/8/1r6/K7%20w%20-%20-%200%201": {
-      "answer": "Rb7+, Ka6, Rxb2",
-      "tags": [
-        "rook-endgame",
-        "skewer",
-        "simplification",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "The Black King and Rook are on the same file. Use this alignment to your advantage.",
-        "Deliver a check that forces the King to move away from the defense of his Rook.",
-        "Check with the rook on b7.",
-        "Play Rb7+! This is a skewer. The King must move (Ka6), leaving the Rook on b2 undefended for you to capture."
-      ]
-    },
-    "https://lichess.org/analysis/3k4/4P3/5K2/8/8/8/7R/8%20w%20-%20-%200%201": {
-      "answer": "Rh8+, Kd7, e8=Q+",
-      "tags": [
-        "rook-endgame",
-        "lucena-position",
-        "promotion",
-        "check",
-        "endgame"
-      ],
-      "hints": [
-        "You want to promote the e-pawn, but the Black King is blocking the promotion square.",
-        "Check the King from the side or back to force it away from the e8 square.",
-        "Check with the rook on h8.",
-        "Play Rh8+! The King is forced to move (Kd7). This unblocks the e8 square, allowing you to play e8=Q+ and win."
-      ]
-    },
-    "https://lichess.org/analysis/4k3/4r3/8/8/8/5P2/4R3/4K3%20w%20-%20-%200%201": {
-      "answer": "Rxe7+, Kxe7, Ke2",
-      "tags": [
-        "rook-endgame",
-        "simplification",
-        "transition",
-        "king-pawn-ending",
-        "endgame"
-      ],
-      "hints": [
-        "You have an extra pawn. The easiest way to win is to trade pieces and enter a winning King & Pawn endgame.",
-        "Capture the enemy Rook. The resulting endgame is strictly winning for you.",
-        "Capture on e7.",
-        "Play Rxe7+! After Kxe7, you simply bring your King to the center. A Rook endgame is tricky; a King & Pawn endgame is often mathematically solved."
-      ]
-    }
-  },
-  "knight-endgame": {
-    "https://lichess.org/analysis/8/8/8/1P6/8/1K6/2n5/k7%20b%20-%20-%200%201": {
-      "answer": "Nd4+, Ka4, Nxb5",
-      "tags": [
-        "knight-endgame",
-        "fork",
-        "defense",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "The white pawn is dangerous, but the White King and Pawn are close together.",
-        "Look for a knight check that attacks the King and the Pawn simultaneously.",
-        "Check on d4.",
-        "Play Nd4+! It is a Royal Fork. The King must move, and you capture the dangerous pawn (Nxb5) to secure a draw."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/4k3/2K5/5n2/1P6/8%20b%20-%20-%200%201": {
-      "answer": "Nd2+, Kc3, Nxb2",
-      "tags": [
-        "knight-endgame",
-        "fork",
-        "simplification",
-        "capture",
-        "endgame"
-      ],
-      "hints": [
-        "White has one pawn left. If you eliminate it, the game is a draw (insufficient material).",
-        "Find the square where your knight attacks both the King and the Pawn.",
-        "Check on d2.",
-        "Play Nd2+! This forks the King and Pawn. After Kc3, you capture Nxb2. With no pawns left, the game is a draw."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/4n3/8/2k5/1p6/1K6%20b%20-%20-%200%201": {
-      "answer": "Nc4, Ka2, Kc2",
-      "tags": [
-        "knight-endgame",
-        "escort",
-        "promotion",
-        "coordination",
-        "endgame"
-      ],
-      "hints": [
-        "Your pawn is one step from promotion, but the White King blocks b1. You need your Knight to control the b2 square.",
-        "Move the Knight to c4. From here, it can jump to a3 or d2 to assist the King.",
-        "Move Knight to c4.",
-        "Play Nc4! If White plays Ka2, you follow with Kc2! The Knight protects the promotion square or shields the King."
-      ]
-    }
-  },
-  "bishop-endgame": {
-    "https://lichess.org/analysis/8/8/8/3b4/8/8/1P6/K6B%20w%20-%20-%200%201": {
-      "answer": "b4+, Kb5, Bxh1",
-      "tags": [
-        "bishop-endgame",
-        "discovered-check",
-        "skewer",
-        "win-material",
-        "endgame"
-      ],
-      "hints": [
-        "Your King on a1 is masking your Bishop's attack on the enemy Bishop at h1.",
-        "Move the pawn to b4. This delivers a 'discovered check' from your Bishop on h1... wait, no, your King moves or Pawn moves?",
-        "Push the b-pawn with check.",
-        "Play b4+! This is a discovered check from the King... actually, it unblocks the line? No, it forces the King away so you can attack. Actually, play b4+! It reveals the attack or forces the King away."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/1p6/k7/2B5/1K6/8%20w%20-%20-%200%201": {
-      "answer": "Be1, b4, Bd2",
-      "tags": [
-        "bishop-endgame",
-        "zugzwang",
-        "waiting-move",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "The Black King is trapped on the edge. You need to force the pawn to move closer to be captured.",
-        "Play a waiting move with your Bishop. Maintain control of the long diagonal.",
-        "Move Bishop to e1.",
-        "Play Be1! This puts Black in Zugzwang. The King cannot move, so they must push b4. Then you can bring your King closer or set up a mate."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/3b4/8/P1k5/8/1K6%20b%20-%20-%200%201": {
-      "answer": "Kb3, Ka1, Kxa3",
-      "tags": [
-        "bishop-endgame",
-        "capture",
-        "simplification",
-        "insufficient-material",
-        "endgame"
-      ],
-      "hints": [
-        "The white a-pawn is the only winning chance for White. Remove it.",
-        "Bring your King to b3 to attack the pawn and the King.",
-        "Move King to b3.",
-        "Play Kb3! You threaten the pawn. White plays Ka1. You capture Kxa3. With just a Bishop left, the game is a draw."
-      ]
-    }
-  },
-  "queen-endgame": {
-    "https://lichess.org/analysis/8/3q4/8/3k4/8/8/8/Q6K%20w%20-%20-%200%201": {
-      "answer": "Qa2+, Kd6, Qa4+",
-      "tags": [
-        "queen-endgame",
-        "skewer",
-        "winning-the-queen",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "The Black King and Queen are dangerously aligned. You need to force the King onto the d-file or a diagonal.",
-        "Check with your Queen on a2. If the King moves to the c-file, look for a check that pierces through him.",
-        "Check on a2.",
-        "Play Qa2+! The King tries to stay close (Kd6). Now play Qa4+! This skewers the King and forces him to abandon the Queen on d7."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/8/2k5/8/1p6/Q5K1%20w%20-%20-%200%201": {
-      "answer": "Qa2+, Kc3, Qxb2",
-      "tags": [
-        "queen-endgame",
-        "promotion-defense",
-        "pin",
-        "simplification",
-        "endgame"
-      ],
-      "hints": [
-        "The Black pawn is one square away from promotion. You must stop it.",
-        "Check the King to force him in front of his own pawn.",
-        "Check on a2.",
-        "Play Qa2+! The King must block his pawn (Kc3) or step away. You can then capture the pawn (Qxb2) safely, winning the game."
-      ]
-    },
-    "https://lichess.org/analysis/8/5Q2/8/8/6k1/8/7q/K7%20b%20-%20-%200%201": {
-      "answer": "Qg1+, Kb2, Qf2+",
-      "tags": [
-        "queen-endgame",
-        "perpetual-check",
-        "defense",
-        "draw",
-        "endgame"
-      ],
-      "hints": [
-        "You are down in material or position, but your Queen is active. Look for a way to force a draw.",
-        "Check the White King continuously. If he tries to escape, force an exchange that leads to a stalemate or a King vs King draw.",
-        "Check on g1.",
-        "Play Qg1+! White plays Kb2. Now play Qf2+! forcing a trade of Queens (Qxf2 Kxf2) which leads to a drawn King & Pawn ending or stalemate."
-      ]
-    }
-  },
-  "queen-rook-endgame": {
-    "https://lichess.org/analysis/8/8/8/3k4/8/8/2r5/Q6K%20w%20-%20-%200%201": {
-      "answer": "Qd1+, Kc6, Qxc2",
-      "tags": [
-        "queen-rook-endgame",
-        "fork",
-        "winning-material",
-        "simplification",
-        "endgame"
-      ],
-      "hints": [
-        "The Black King and Rook are loose. The Queen is excellent at attacking two things at once.",
-        "Find a square where your Queen attacks the King (check) and the loose Rook simultaneously.",
-        "Check on d1.",
-        "Play Qd1+! This creates a fork. The King must move (Kc6), and you capture the Rook (Qxc2) for an easy win."
-      ]
-    },
-    "https://lichess.org/analysis/2r3k1/5ppp/8/8/8/Q7/8/3R2K1%20w%20-%20-%200%201": {
-      "answer": "Qd6, Re8, Qd8+",
-      "tags": [
-        "queen-rook-endgame",
-        "back-rank",
-        "mate-pattern",
-        "coordination",
-        "endgame"
-      ],
-      "hints": [
-        "Black's back rank is weak. Your Queen and Rook can coordinate to overwhelm the defense.",
-        "Move your Queen to d6 to threaten the back rank. If Black defends, sacrifice to force mate.",
-        "Move Queen to d6.",
-        "Play Qd6! You threaten Qd8+. If Black plays Re8 to defend, play Qd8+ anyway! Rxd8 Rxd8# is checkmate."
-      ]
-    },
-    "https://lichess.org/analysis/6k1/5p2/8/8/8/2R5/q7/6K1%20w%20-%20-%200%201": {
-      "answer": "Rg3+, Kf8, Qa8#",
-      "tags": [
-        "queen-rook-endgame",
-        "battery",
-        "mate",
-        "king-hunt",
-        "endgame"
-      ],
-      "hints": [
-        "Wait, this position seems to be missing a piece for White. Let's assume you have a Queen and Rook against a King.",
-        "Use your Rook to restrict the King to the edge, then deliver the final blow with the Queen.",
-        "Check with the Rook.",
-        "Play Rg3+! The King moves to f8. Now your Queen (assuming she is on a suitable square like a7) delivers Qa8#!"
-      ]
-    }
-  },
-  "endgame": {
-    "https://lichess.org/analysis/8/8/8/4k3/8/4K3/8/8%20w%20-%20-%200%201": {
-      "answer": "Kd3, Kd5, Ke3",
-      "tags": [
-        "endgame",
-        "opposition",
-        "king-activity",
-        "theory",
-        "fundamental"
-      ],
-      "hints": [
-        "This is the battle for 'Opposition'. You want to force the enemy King to step aside.",
-        "Actually, if you are defending, you just need to mirror the opponent's moves to prevent them from invading.",
-        "Step to d3.",
-        "Play Kd3. If Black plays Kd5, you play Ke3 (or similar). This concept of keeping the Kings facing each other is the key to holding draws or winning pawn endings."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/1P6/8/8/2k5/K7%20w%20-%20-%200%201": {
-      "answer": "b6, Kc3, b7",
-      "tags": [
-        "endgame",
-        "square-of-the-pawn",
-        "race",
-        "calculation",
-        "fundamental"
-      ],
-      "hints": [
-        "Can the Black King catch your pawn? Count the squares.",
-        "Push the pawn. If the King is outside the 'square' (draw a diagonal to the promotion square), he cannot catch you.",
-        "Push the b-pawn.",
-        "Play b6! The King is too far away. He moves to c3, but b7 and b8=Q are unstoppable."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/p7/P2k4/8/3K4/8/8%20w%20-%20-%200%201": {
-      "answer": "Kc3, Kc5, Kb3",
-      "tags": [
-        "endgame",
-        "triangulation",
-        "zugzwang",
-        "pawn-structure",
-        "fundamental"
-      ],
-      "hints": [
-        "You need to lose a tempo to put Black in Zugzwang (a position where any move is bad).",
-        "Do not step directly to opposition yet. Step to the side.",
-        "Move King to c3.",
-        "Play Kc3! If Black plays Kc5, you play Kb3! Now Black must move their King away (Kd5 or Kb5), allowing you to invade via b4 or d4."
-      ]
-    }
-  },
-  "advantage": {
-    "https://lichess.org/analysis/r1bqk2r/ppp2ppp/2n2n2/3pp3/1b2P3/2NP1N2/PPP1BPPP/R1BQ1RK1%20w%20-%20-%200%208": {
-      "answer": "exd5, Nxd5, Nxd5",
-      "tags": [
-        "advantage",
-        "simplification",
-        "center-control",
-        "tactics",
-        "opening"
-      ],
-      "hints": [
-        "You have tension in the center. Clarifying it will leave you with a solid position.",
-        "Capture the d5 pawn. When Black recaptures, exchange knights to remove their active piece.",
-        "Capture on d5.",
-        "Play exd5. Black takes (Nxd5). Capture (Nxd5). You have simplified the position and removed Black's best piece, securing a lasting advantage."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqk2r/ppp1bppp/5n2/3p4/3P4/2N2N2/PPP2PPP/R1BQKB1R%20b%20KQkq%20-%202%206": {
-      "answer": "c5, dxc5, Bxc5",
-      "tags": [
-        "advantage",
-        "isolani",
-        "active-play",
-        "structure",
-        "opening"
-      ],
-      "hints": [
-        "White has a solid center. You need to challenge it to gain activity.",
-        "Strike with c5! This challenges d4. If White takes, you develop your bishop with tempo.",
-        "Push c5.",
-        "Play c5! White takes (dxc5). Recapture (Bxc5). You have an active game and have successfully challenged White's central control."
-      ]
-    },
-    "https://lichess.org/analysis/2r3k1/1p3ppp/p3pn2/3p4/P2P4/1P1BPP2/5P1P/5RK1%20w%20-%20-%200%2022": {
-      "answer": "b4, Kf1, Ke2",
-      "tags": [
-        "advantage",
-        "space",
-        "endgame",
-        "minor-piece",
-        "strategy"
-      ],
-      "hints": [
-        "You have a bishop vs knight endgame with a better structure. Grab space.",
-        "Push your queenside pawns to restrict the knight, then bring your King to the center.",
-        "Push b4.",
-        "Play b4. Follow up with Kf1 and Ke2. Your space advantage and active King give you a winning long-term grind."
-      ]
-    }
-  },
-  "quiet-move": {
-    "https://lichess.org/analysis/r1b2rk1/pp3ppp/2n5/q7/8/P1P2N2/2Q1PPPP/R3KB1R%20w%20KQ%20-%200%2012": {
-      "answer": "h3, Re8, Be2",
-      "tags": [
-        "quiet-move",
-        "prophylaxis",
-        "luft",
-        "safety",
-        "middle-game"
-      ],
-      "hints": [
-        "There is no immediate tactic, but back-rank issues could arise later.",
-        "Make 'luft' (air) for your king. This quiet move prevents future mates and restricts Black's pieces.",
-        "Push h3.",
-        "Play h3. It attacks nothing, but it secures your King and denies the g4 square to Black pieces. A classic quiet improver."
-      ]
-    },
-    "https://lichess.org/analysis/6k1/5p2/6p1/4Q3/8/7P/5PPK/3q4%20w%20-%20-%200%2045": {
-      "answer": "Kg3, Kh7, f3",
-      "tags": [
-        "quiet-move",
-        "king-safety",
-        "positional",
-        "endgame",
-        "strategy"
-      ],
-      "hints": [
-        "Checking is tempting, but the Black King is safe. Improve your own King instead.",
-        "Move your King forward to g3. It supports your pawns and gets out of potential back-rank checks.",
-        "Move King to g3.",
-        "Play Kg3. A quiet move that improves your position. Checks run out, but good piece placement lasts forever."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/8/8/R7/2k5/p7/K7%20w%20-%20-%200%201": {
-      "answer": "Rh4, Kd3, Rh3+",
-      "tags": [
-        "quiet-move",
-        "waiting",
-        "cut-off",
-        "endgame",
-        "tactics"
-      ],
-      "hints": [
-        "You cannot take the pawn yet because of stalemate tricks. You must wait.",
-        "Move the rook along the rank. Wait for the King to reveal his intention.",
-        "Move Rook to h4.",
-        "Play Rh4! It's a quiet waiting move. If the King moves to d3, you check him. If he moves to b3, you are ready to capture."
-      ]
-    }
-  },
-  "sacrifice": {
-    "https://lichess.org/analysis/r1bqk2r/ppp2ppp/2n5/2bpp3/2B1n3/5N2/PPPP1PPP/RNBQ1RK1%20w%20KQkq%20-%200%206": {
-      "answer": "d4, exd4, O-O",
-      "tags": [
-        "sacrifice",
-        "center-break",
+        "torre-attack",
+        "solid-setup",
+        "unpin",
         "development",
-        "gambit",
         "opening"
       ],
       "hints": [
-        "Black has a strong center. You must break it, even at the cost of a pawn.",
-        "Push d4! This sacrifices the pawn to open lines for your pieces and disrupt Black's coordination.",
-        "Push d4.",
-        "Play d4! Black takes (exd4). Castling (O-O) gives you a lead in development and open lines for the price of one pawn."
+        "White has solidified with c3. You should unpin and prepare to castle.",
+        "Kick the bishop with h6. After it retreats, break the pin with Be7.",
+        "Push h6.",
+        "Play h6. White retreats (Bh4). Play Be7 to break the pin. White's setup is solid, so you must develop patiently."
+      ]
+    }
+  },
+  "reti-opening/all": {
+    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/2P5/5N2/PP1PPPPP/RNBQKB1R%20b%20KQkq%20-%200%202": {
+      "answer": "d4, b4, f6",
+      "tags": [
+        "reti-opening",
+        "advance-variation",
+        "space-advantage",
+        "flank-counter",
+        "opening"
+      ],
+      "hints": [
+        "White strikes your center from the flank. Push past to cramp them.",
+        "Push d4. White usually expands with b4. Defend your center with f6 (or c5).",
+        "Push your d-pawn to d4.",
+        "Play d4! White tries to undermine you (b4). Defend the center (f6)! You have a space advantage and have blunted White's bishop."
       ]
     },
-    "https://lichess.org/analysis/r1b2rk1/ppp2ppp/2n5/3q4/3P4/5N2/PP1QPPPP/R3KB1R%20w%20KQ%20-%200%2010": {
-      "answer": "e4, Qxe4, Be2",
+    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/8/2p5/5N2/PP1PPPPP/RNBQKB1R%20w%20KQkq%20-%200%203": {
+      "answer": "Na3, e5, Nxc4",
       "tags": [
-        "sacrifice",
-        "poisoned-pawn",
+        "reti-opening",
+        "reti-gambit-accepted",
+        "recovery",
         "development",
-        "tempo",
-        "tactics"
-      ],
-      "hints": [
-        "You want to develop your light-squared bishop, but e2 is blocked.",
-        "Sacrifice the e-pawn. If the Queen takes, you gain massive time attacking her.",
-        "Push e4.",
-        "Play e4! If Black captures (Qxe4), play Be2! You have sacrificed a pawn, but your Rooks will come to e1 and destroy the exposed Queen."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqk2r/pppp1ppp/5n2/8/1bB1P3/2N5/PB3PPP/R2QK1NR%20b%20KQkq%20-%201%206": {
-      "answer": "b5, Bxb5, c6",
-      "tags": [
-        "sacrifice",
-        "deflection",
-        "expansion",
-        "tactics",
         "opening"
       ],
       "hints": [
-        "White's bishop is strong on c4. Deflect it.",
-        "Sacrifice the b-pawn (b5). If the Bishop takes, you gain time and center control with c6.",
-        "Push b5.",
-        "Play b5! White takes (Bxb5). Push c6! You have sacrificed a wing pawn to build a massive center and push the Bishop back."
-      ]
-    }
-  },
-  "zugzwang": {
-    "https://lichess.org/analysis/8/8/8/5k2/5p2/5P2/5K2/8%20w%20-%20-%200%201": {
-      "answer": "Kf1, Ke5, Ke2",
-      "tags": [
-        "zugzwang",
-        "opposition",
-        "king-pawn",
-        "draw",
-        "endgame"
-      ],
-      "hints": [
-        "You need to hold the opposition. But you must be careful which square you step to.",
-        "Step back to f1. This creates a distant opposition. Any move Black makes allows you to meet it.",
-        "Move King to f1.",
-        "Play Kf1! If Black plays Ke5, you play Ke2! (Opposition). Black is in Zugzwang; they must step aside and let you hold the draw."
+        "Black has accepted the pawn. You can recover it while developing.",
+        "Develop your knight to a3 to target c4. Black will often strike with e5. Capture the pawn back.",
+        "Develop your knight to a3.",
+        "Play Na3. Black strikes (e5). Capture (Nxc4). You have regained your material and have a flexible position."
       ]
     },
-    "https://lichess.org/analysis/8/8/8/1p6/k7/2B5/1K6/8%20w%20-%20-%200%201": {
-      "answer": "Be1, b4, Bd2",
+    "https://lichess.org/analysis/rnbqkbnr/ppp1pppp/8/3p4/8/5NP1/PPPPPP1P/RNBQKB1R%20b%20KQkq%20-%200%202": {
+      "answer": "Nf6, Bg2, c6",
       "tags": [
-        "zugzwang",
-        "bishop-endgame",
-        "waiting",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "Black is stuck. The King cannot move. Only the pawn can move.",
-        "Make a waiting move with the Bishop to maintain the pin/blockade.",
-        "Move Bishop to e1.",
-        "Play Be1! Black is in Zugzwang. The King is trapped. He MUST play b4. This brings the pawn closer to where your King can stop it."
-      ]
-    },
-    "https://lichess.org/analysis/8/8/p7/P7/2k5/2P5/2K5/8%20w%20-%20-%200%201": {
-      "answer": "Kd2, Kb3, Kd3",
-      "tags": [
-        "zugzwang",
-        "mutual-zugzwang",
-        "pawn-endgame",
-        "calculation",
-        "endgame"
-      ],
-      "hints": [
-        "This is a tricky position. You want to defend your pawn.",
-        "Step to d2. Wait for the Black King to commit.",
-        "Move King to d2.",
-        "Play Kd2! If Black plays Kb3, you play Kd3! Now Black is in Zugzwang and must step away, losing the pawn or the game."
-      ]
-    }
-  },
-  "intermezzo": {
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n5/2b1P3/2B1n3/5N2/PPP2PPP/RNBQK2R%20w%20KQkq%20-%201%206": {
-      "answer": "Bxf7+, Kxf7, Qd5+",
-      "tags": [
-        "intermezzo",
-        "zwischenzug",
-        "king-hunt",
-        "tactics",
+        "reti-opening",
+        "kings-indian-attack",
+        "solid-defense",
+        "pyramid",
         "opening"
       ],
       "hints": [
-        "You could recapture a piece, or you could take something else with check first.",
-        "Sacrifice the Bishop on f7 to draw the King out. Then fork the King and Knight.",
-        "Capture f7 with check.",
-        "Play Bxf7+! The King must take (Kxf7). Now play the 'intermezzo' Qd5+! You check the King and win back the Knight on e4 next move."
-      ]
-    },
-    "https://lichess.org/analysis/r1b2rk1/ppp2ppp/2n5/3q4/3Pn3/5N2/PPP1BPPP/R2Q1RK1%20w%20-%20-%200%2010": {
-      "answer": "c4, Qd8, Qxe2",
-      "tags": [
-        "intermezzo",
-        "tempo",
-        "kick",
-        "tactics",
-        "middle-game"
-      ],
-      "hints": [
-        "Black has just captured a piece on e2? No, the position is tense. Use a pawn to kick the Queen before resolving the trade.",
-        "Kick the Queen with c4. She must move to safety. Then you can capture the piece you wanted.",
-        "Push c4.",
-        "Play c4! This is an intermezzo. You attack the Queen (tempo). After she retreats (Qd8), you then have time to capture the Knight or Bishop."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqk2r/pp3ppp/2p2n2/3P4/1b1P4/2N2N2/PPP2PPP/R1BQKB1R%20w%20KQkq%20-%200%206": {
-      "answer": "dxc6, Bxc3+, bxc3",
-      "tags": [
-        "intermezzo",
-        "trade-sequence",
-        "pawn-structure",
-        "tactics",
-        "opening"
-      ],
-      "hints": [
-        "Black has captured on d5? Or is threatening? You have a capture sequence available.",
-        "Capture the pawn on c6. If Black takes your Knight with check, you must recapture before continuing.",
-        "Capture on c6.",
-        "Play dxc6. Black plays the intermezzo Bxc3+. You must play bxc3 (recapture). Then Black can capture on c6. The sequence is defined by the 'in-between' check."
+        "White is fianchettoing. Adopt a solid 'Capablanca' setup.",
+        "Develop your knight to f6. After White's bishop moves, build a pyramid with c6.",
+        "Develop your kingside knight.",
+        "Play Nf6. White plays Bg2. Play c6 (or c5). This blunts the long diagonal and prepares a very solid defensive wall."
       ]
     }
   },
-  "hanging-piece": {
-    "https://lichess.org/analysis/r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R%20w%20KQkq%20-%202%203": {
-      "answer": "Nxe5, Nxe5, d4",
+  "english-opening/all": {
+    "https://lichess.org/analysis/rnbqkbnr/pppp1ppp/8/4p3/2P5/8/PP1PPPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
+      "answer": "Nc3, Nf6, g3",
       "tags": [
-        "hanging-piece",
-        "blunder-punishment",
-        "opening",
-        "tactics",
-        "center-fork"
-      ],
-      "hints": [
-        "Black has left the e5 pawn undefended. Wait, is it? No, but if you capture, you can regain material.",
-        "Actually, in this specific setup, just take the hanging pawn. If they recapture, you have a fork.",
-        "Capture e5.",
-        "Capture (Nxe5). If Black retakes (Nxe5), play d4! This forks the Knight and Bishop, regaining your piece with interest."
-      ]
-    },
-    "https://lichess.org/analysis/2r3k1/5ppp/8/8/4n3/8/2R2PPP/6K1%20w%20-%20-%200%201": {
-      "answer": "Rxc8#, Rxc8, Rxc8#",
-      "tags": [
-        "hanging-piece",
-        "back-rank",
-        "mate",
-        "tactics",
-        "endgame"
-      ],
-      "hints": [
-        "The Black Rook on c8 is hanging... or is it defending? Actually, look at the other Rook.",
-        "The opponent has left their back rank undefended. Capture the Rook.",
-        "Capture the rook on c8.",
-        "Play Rxc8#. The Rook was 'hanging' because its defender (if any) was overloaded or absent. It is simple checkmate."
-      ]
-    },
-    "https://lichess.org/analysis/rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R%20b%20KQkq%20-%201%202": {
-      "answer": "c4, b3, cxb3",
-      "tags": [
-        "hanging-piece",
-        "pawn-grab",
-        "opening",
-        "tactics",
-        "advantage"
-      ],
-      "hints": [
-        "White has played passively. You can grab space.",
-        "Actually, did White leave a piece hanging? No, but you can create a loose pawn.",
-        "Push c4.",
-        "Play c4. If White plays b3, capture it (cxb3). If they don't recapture, their pawn structure hangs."
-      ]
-    }
-  },
-  "trapped-piece": {
-    "https://lichess.org/analysis/rnbqkbnr/1ppp1ppp/p7/4p3/B3P3/8/PPPP1PPP/RNBQK1NR%20b%20KQkq%20-%201%204": {
-      "answer": "b5, Bb3, c5",
-      "tags": [
-        "trapped-piece",
-        "noahs-ark-trap",
-        "pawn-storm",
-        "opening",
-        "tactics"
-      ],
-      "hints": [
-        "The White Bishop is low on squares. You can surround it with pawns.",
-        "Push b5 to force the Bishop back. Then push c5 to threaten c4.",
-        "Push b5.",
-        "Play b5. White plays Bb3. Play c5! Next move you play c4, and the Bishop has nowhere to go. This is the 'Noah's Ark Trap'."
-      ]
-    },
-    "https://lichess.org/analysis/rnb1kbnr/pp3ppp/4p3/q1pp4/2PP4/2N2N2/PP2PPPP/R1BQKB1R%20w%20KQkq%20-%202%205": {
-      "answer": "b4, Qxb4, Rb1",
-      "tags": [
-        "trapped-piece",
-        "queen-trap",
-        "deflection",
-        "tactics",
-        "opening"
-      ],
-      "hints": [
-        "The Black Queen is aggressive but low on squares. Lure her in.",
-        "Sacrifice a pawn with b4. When she takes, harass her with the Rook.",
-        "Push b4.",
-        "Play b4! Black takes (Qxb4). Play Rb1 (or Nb5 depending on line). The Queen is getting surrounded by minor pieces and Rooks."
-      ]
-    },
-    "https://lichess.org/analysis/rn1qkbnr/p1pppppp/1p6/8/2P5/8/PP1PPPPP/RNBQKBNR%20w%20KQkq%20-%200%202": {
-      "answer": "g4, Bb7, Bg2",
-      "tags": [
-        "trapped-piece",
-        "bishop-trap",
+        "english-opening",
+        "reversed-sicilian",
+        "main-line",
         "fianchetto",
-        "tactics",
         "opening"
       ],
       "hints": [
-        "Wait, this isn't trapping yet. But if Black captures a certain pawn...",
-        "Offer the g-pawn? No, offer the h-pawn? Or Trap the Bishop if it takes on g2?",
-        "Play g4 (Grob).",
-        "Play g4. If Black plays d5 and captures freely, sometimes the Bishop gets trapped on g2 or h1 in specific lines."
-      ]
-    }
-  },
-  "exposed-king": {
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQ1RK1%20w%20kq%20-%204%205": {
-      "answer": "Bxf7+, Kxf7, Nxe5+",
-      "tags": [
-        "exposed-king",
-        "sacrifice",
-        "king-hunt",
-        "opening",
-        "tactics"
-      ],
-      "hints": [
-        "The Black King is safe, but you can sacrifice to drag him out.",
-        "Take on f7 with the Bishop. When the King recaptures, he is in the open.",
-        "Sacrifice Bishop on f7.",
-        "Play Bxf7+! King takes (Kxf7). Play Nxe5+! The King is now in the center of the board, exposed to your Queen and Knight."
+        "Black plays e5 (Reversed Sicilian). Control the d5 square.",
+        "Develop Nc3. Black develops Nf6. Prepare to fianchetto with g3.",
+        "Develop your queenside knight.",
+        "Play Nc3. Black plays Nf6. Play g3. You are aiming for a dragon-like setup with an extra tempo."
       ]
     },
-    "https://lichess.org/analysis/8/8/8/3k4/8/3K4/8/5Q2%20w%20-%20-%200%201": {
-      "answer": "Qf3+, Ke5, Qf5#",
+    "https://lichess.org/analysis/rnbqkbnr/pp1ppppp/8/2p5/2P5/5N2/PP1PPPPP/RNBQKB1R%20b%20KQkq%20-%201%202": {
+      "answer": "Nc6, d4, cxd4",
       "tags": [
-        "exposed-king",
-        "mate",
-        "endgame",
-        "queen-check",
-        "tactics"
-      ],
-      "hints": [
-        "The Black King is alone in the center. Use your Queen and King to confine him.",
-        "Check with the Queen to force the King back.",
-        "Check on f3.",
-        "Play Qf3+! The King moves. Follow up with checks until you deliver mate. An exposed King in the endgame is usually a win."
-      ]
-    },
-    "https://lichess.org/analysis/r1b1k2r/ppppqppp/2n5/4n3/2P5/P4N2/1P1NPPPP/R2QKB1R%20w%20KQkq%20-%201%209": {
-      "answer": "Nxe5, Nxe5, e3",
-      "tags": [
-        "exposed-king",
-        "safety",
-        "smothered-mate-threat",
-        "opening",
-        "tactics"
-      ],
-      "hints": [
-        "Be careful. Your own King is exposed to a knight trick if you aren't careful.",
-        "Trade Knights to reduce pressure. Then create 'luft' or space.",
-        "Capture on e5.",
-        "Play Nxe5. Black takes (Nxe5). Play e3! If you played something else, Nd3# might have been a smothered mate!"
-      ]
-    }
-  },
-  "very-long": {
-    "https://lichess.org/analysis/8/8/8/P7/8/1k6/8/K7%20w%20-%20-%200%201": {
-      "answer": "a6, Kc4, a7, Kb5, a8=Q",
-      "tags": [
-        "very-long",
-        "promotion",
-        "race",
-        "calculation",
-        "endgame"
-      ],
-      "hints": [
-        "A simple pawn race, but you must count every step.",
-        "Push the pawn. Count: 1, 2, 3 squares to promotion. Can the King catch it?",
-        "Push a6.",
-        "Play a6. The King chases (Kc4). Play a7. King chases (Kb5). Play a8=Q! You promote just in time to win."
-      ]
-    },
-    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/4p3/1bB1P3/2N2N2/PPPP1PPP/R1BQK2R%20w%20KQkq%20-%200%201": {
-      "answer": "Nd5, Nxd5, exd5, e4, dxc6",
-      "tags": [
-        "very-long",
-        "opening-theory",
-        "deep-calculation",
+        "english-opening",
+        "symmetrical-variation",
+        "open-center",
         "exchange",
-        "strategy"
+        "opening"
       ],
       "hints": [
-        "This is a theoretical line that requires multiple precise moves.",
-        "Jump Knight to d5. Exchanges will happen. Keep track of the center tension.",
-        "Move Knight to d5.",
-        "Play Nd5. Black takes (Nxd5). Recapture (exd5). Black pushes e4. Capture (dxc6). It is a long forcing sequence creating imbalance."
+        "It is a Symmetrical English. Mirror White's development until the center opens.",
+        "Develop Nc6. White breaks with d4. Exchange pawns.",
+        "Develop your queenside knight.",
+        "Play Nc6. White strikes (d4). Capture (cxd4). The game opens up, usually leading to tactical skirmishes in the center."
       ]
     },
-    "https://lichess.org/analysis/8/5k2/8/8/8/8/5Q2/6K1%20w%20-%20-%200%201": {
-      "answer": "Qf5+, Kg7, Qe6, Kh7, Qf7",
+    "https://lichess.org/analysis/r1bqk1nr/pppp1pbp/2n3p1/4p3/2P1P3/2NP2P1/PP3PBP/R1BQK1NR%20b%20KQkq%20-%200%206": {
+      "answer": "Nge7, Nge2, O-O",
       "tags": [
-        "very-long",
-        "mating-net",
-        "technique",
-        "queen-endgame",
-        "pattern"
+        "english-opening",
+        "botvinnik-system",
+        "setup",
+        "knights",
+        "opening"
       ],
       "hints": [
-        "Mating with Queen vs King takes a series of limiting moves.",
-        "Check the King, then place your Queen a knight's distance away to cut off the board.",
-        "Check on f5.",
-        "Play Qf5+. Then Qe6. Then cut the King to the corner. It takes many moves, but the pattern is forcing."
+        "White has clamped down on d5 (Botvinnik setup). Avoid blocking your f-pawn.",
+        "Develop your knight to e7, not f6. White will do the same. Then castle.",
+        "Develop your knight to e7.",
+        "Play Nge7. White plays Nge2. Castle (O-O). In this closed position, keeping the f-pawn free for a future f5 break is crucial."
       ]
     }
   }

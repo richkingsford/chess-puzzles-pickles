@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Chess } from 'chess.js';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight,
-  RotateCcw, ThumbsDown, AlertTriangle, XCircle,
-  CheckCircle, ArrowLeft, Download, Trash2
+  RotateCcw, ArrowLeft, Trash2, BookOpen
 } from 'lucide-react';
 import { usePuzzleGame } from './hooks/usePuzzleGame';
 import { parsePuzzleUrl } from './lib/utils';
@@ -39,7 +38,9 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts }) => {
+const formatCategoryLabel = (category) => String(category || '').replace(/-/g, ' ');
+
+const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts, onOpenDictionary, dictionaryEntryCount }) => {
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
       <h1 className="text-3xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500">
@@ -53,7 +54,7 @@ const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts }) => {
           className="w-full bg-slate-800 hover:bg-slate-700 active:bg-slate-600 transition-colors p-4 rounded-xl flex items-center justify-between border border-slate-700 shadow-lg group"
         >
           <span className="font-medium text-lg capitalize text-slate-200">
-            {cat.replace(/-/g, ' ')}
+            {formatCategoryLabel(cat)}
           </span>
           <div className="flex items-center gap-2">
             <span className="text-sm text-slate-400">
@@ -69,13 +70,21 @@ const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts }) => {
       ))}
 
       <div className="mt-8 pt-8 border-t border-slate-700">
-        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Settings</h2>
+        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Learn</h2>
         <button
-          onClick={() => window.downloadLogs()}
-          className="w-full mb-3 bg-slate-800 p-3 rounded-lg flex items-center justify-center gap-2 text-sm text-slate-300 hover:bg-slate-700"
+          type="button"
+          data-testid="open-dictionary-page"
+          onClick={onOpenDictionary}
+          className="w-full mb-4 bg-slate-800 p-3 rounded-lg flex items-center justify-between gap-3 text-sm text-slate-200 hover:bg-slate-700 border border-slate-700"
         >
-          <Download className="w-4 h-4" /> Download Feedback Logs
+          <span className="flex items-center gap-2">
+            <BookOpen className="w-4 h-4 text-yellow-400" />
+            Dictionary
+          </span>
+          <span className="text-xs text-slate-400">{dictionaryEntryCount} entries</span>
         </button>
+
+        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Settings</h2>
         <button
           onClick={() => window.resetProgress()}
           className="w-full bg-red-900/20 p-3 rounded-lg flex items-center justify-center gap-2 text-sm text-red-400 hover:bg-red-900/30 transition-colors"
@@ -88,30 +97,7 @@ const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts }) => {
 };
 
 const normalizeWord = (word) => word.toLowerCase().replace(/[^a-z-]/g, '');
-const normalizeTagTerm = (text) => String(text || '')
-  .toLowerCase()
-  .replace(/[^a-z\s-]/g, ' ')
-  .replace(/[-\s]+/g, ' ')
-  .trim();
-
-const dictionaryTypeClass = (type) => {
-  const key = String(type || '').toLowerCase();
-
-  if (key.includes('tactic') || key.includes('mate-pattern')) {
-    return 'text-sky-300 hover:text-sky-200';
-  }
-  if (key.includes('strategy') || key.includes('opening-principle')) {
-    return 'text-emerald-300 hover:text-emerald-200';
-  }
-  if (key.includes('endgame') || key.includes('method')) {
-    return 'text-purple-300 hover:text-purple-200';
-  }
-  if (key.includes('fundamental') || key.includes('board-concept') || key.includes('vocabulary')) {
-    return 'text-amber-300 hover:text-amber-200';
-  }
-
-  return 'text-sky-300 hover:text-sky-200';
-};
+const DICTIONARY_MATCH_THRESHOLD = 0.7;
 
 const dictionaryTypeBadgeClass = (type) => {
   const key = String(type || '').toLowerCase();
@@ -133,8 +119,8 @@ const dictionaryTypeBadgeClass = (type) => {
 };
 
 const buildDictionaryLookup = (dictionaryEntries) => {
-  const phraseMap = new Map();
-  const tagMap = new Map();
+  const phraseEntries = [];
+  const seen = new Set();
   let maxWords = 1;
 
   (dictionaryEntries || []).forEach((entry) => {
@@ -151,27 +137,54 @@ const buildDictionaryLookup = (dictionaryEntries) => {
       }
 
       const phraseKey = normalizedWords.join(' ');
-      const tagKey = normalizeTagTerm(term);
+      const dedupeKey = `${phraseKey}::${entry.name}`;
 
-      if (!phraseMap.has(phraseKey)) {
-        phraseMap.set(phraseKey, entry);
-      }
-
-      if (tagKey && !tagMap.has(tagKey)) {
-        tagMap.set(tagKey, entry);
+      if (!seen.has(dedupeKey)) {
+        phraseEntries.push({
+          entry,
+          phrase: phraseKey,
+          wordCount: normalizedWords.length
+        });
+        seen.add(dedupeKey);
       }
 
       maxWords = Math.max(maxWords, normalizedWords.length);
-
-      normalizedWords.forEach((part) => {
-        if (part.length >= 4 && !phraseMap.has(part)) {
-          phraseMap.set(part, entry);
-        }
-      });
     });
   });
 
-  return { phraseMap, tagMap, maxWords };
+  return { phraseEntries, maxWords };
+};
+
+const levenshteinDistance = (left, right) => {
+  const leftLen = left.length;
+  const rightLen = right.length;
+  const dp = Array.from({ length: leftLen + 1 }, () => Array(rightLen + 1).fill(0));
+
+  for (let i = 0; i <= leftLen; i += 1) dp[i][0] = i;
+  for (let j = 0; j <= rightLen; j += 1) dp[0][j] = j;
+
+  for (let i = 1; i <= leftLen; i += 1) {
+    for (let j = 1; j <= rightLen; j += 1) {
+      const substitutionCost = left[i - 1] === right[j - 1] ? 0 : 1;
+      dp[i][j] = Math.min(
+        dp[i - 1][j] + 1,
+        dp[i][j - 1] + 1,
+        dp[i - 1][j - 1] + substitutionCost
+      );
+    }
+  }
+
+  return dp[leftLen][rightLen];
+};
+
+const calculateSimilarity = (left, right) => {
+  if (!left && !right) return 1;
+  if (!left || !right) return 0;
+  if (left === right) return 1;
+
+  const longest = Math.max(left.length, right.length);
+  const distance = levenshteinDistance(left, right);
+  return 1 - (distance / longest);
 };
 
 const extractHintWords = (hint) => {
@@ -194,24 +207,57 @@ const extractHintWords = (hint) => {
 const findDictionaryMatches = (hint, dictionaryLookup) => {
   const words = extractHintWords(hint);
   const matches = [];
-  const { phraseMap, maxWords } = dictionaryLookup;
+  const { phraseEntries, maxWords } = dictionaryLookup;
 
   for (let wordIndex = 0; wordIndex < words.length; wordIndex += 1) {
     let found = null;
 
     for (let phraseLen = Math.min(maxWords, words.length - wordIndex); phraseLen >= 1; phraseLen -= 1) {
       const chunk = words.slice(wordIndex, wordIndex + phraseLen);
-      const key = chunk.map((word) => word.normalized).join(' ');
-      const entry = phraseMap.get(key);
+      const candidate = chunk.map((word) => word.normalized).filter(Boolean).join(' ');
 
-      if (entry) {
-        found = {
-          entry,
-          start: chunk[0].start,
-          end: chunk[chunk.length - 1].end,
-          wordCount: phraseLen
-        };
-        break;
+      if (!candidate) {
+        continue;
+      }
+
+      for (const phraseEntry of phraseEntries) {
+        if (phraseLen === 1 && phraseEntry.wordCount > 1) {
+          continue;
+        }
+
+        if (Math.abs(phraseEntry.wordCount - phraseLen) > 1) {
+          continue;
+        }
+
+        const similarity = calculateSimilarity(candidate, phraseEntry.phrase);
+
+        if (similarity < DICTIONARY_MATCH_THRESHOLD) {
+          continue;
+        }
+
+        // For single-word fuzzy matches, require a prefix relationship to avoid unrelated lookalikes.
+        if (
+          phraseLen === 1 &&
+          similarity < 1 &&
+          !candidate.startsWith(phraseEntry.phrase) &&
+          !phraseEntry.phrase.startsWith(candidate)
+        ) {
+          continue;
+        }
+
+        if (
+          !found ||
+          similarity > found.similarity ||
+          (similarity === found.similarity && phraseLen > found.wordCount)
+        ) {
+          found = {
+            entry: phraseEntry.entry,
+            start: chunk[0].start,
+            end: chunk[chunk.length - 1].end,
+            wordCount: phraseLen,
+            similarity
+          };
+        }
       }
     }
 
@@ -222,29 +268,6 @@ const findDictionaryMatches = (hint, dictionaryLookup) => {
   }
 
   return matches;
-};
-
-const findDictionaryEntryForTag = (tag, dictionaryLookup) => {
-  const normalizedTag = normalizeTagTerm(tag);
-
-  if (!normalizedTag) {
-    return null;
-  }
-
-  const exactMatch = dictionaryLookup.tagMap.get(normalizedTag);
-  if (exactMatch) {
-    return exactMatch;
-  }
-
-  const singularized = normalizedTag.replace(/\bpatterns\b/g, 'pattern').replace(/\bthemes\b/g, 'theme').trim();
-  if (singularized && singularized !== normalizedTag) {
-    const singularMatch = dictionaryLookup.tagMap.get(singularized);
-    if (singularMatch) {
-      return singularMatch;
-    }
-  }
-
-  return null;
 };
 
 const HintWithDictionary = ({ hint, dictionaryLookup, onWordTap }) => {
@@ -272,7 +295,7 @@ const HintWithDictionary = ({ hint, dictionaryLookup, onWordTap }) => {
         key={`dict-${index}`}
         type="button"
         onClick={() => onWordTap(match.entry)}
-        className={`underline decoration-dotted underline-offset-2 ${dictionaryTypeClass(match.entry.type)}`}
+        className="underline decoration-dotted underline-offset-2 text-slate-100 hover:text-white"
         title={`Tap to learn: ${match.entry.name}`}
       >
         {text.slice(match.start, match.end)}
@@ -295,6 +318,73 @@ const HintWithDictionary = ({ hint, dictionaryLookup, onWordTap }) => {
   );
 };
 
+const DictionaryPage = ({ entries, onBack }) => {
+  const sortedEntries = React.useMemo(
+    () => [...(entries || [])].sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''))),
+    [entries]
+  );
+
+  return (
+    <div className="min-h-screen bg-slate-900 text-slate-100">
+      <div className="max-w-3xl mx-auto p-4 sm:p-6">
+        <div className="mb-5 flex items-center justify-between gap-3">
+          <button
+            type="button"
+            data-testid="dictionary-back-button"
+            onClick={onBack}
+            className="inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-200 hover:bg-slate-700"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Home
+          </button>
+          <div className="text-xs text-slate-400">{sortedEntries.length} entries</div>
+        </div>
+
+        <div className="rounded-2xl border border-slate-700 bg-gradient-to-b from-slate-800 to-slate-900 p-5 shadow-xl">
+          <div className="flex items-center gap-3">
+            <div className="rounded-xl bg-yellow-500/10 border border-yellow-500/20 p-2">
+              <BookOpen className="w-5 h-5 text-yellow-400" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-yellow-300">Dictionary</h1>
+              <p className="text-sm text-slate-400">Every chess term used by the app, with definitions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div data-testid="dictionary-page" className="mt-5 space-y-3">
+          {sortedEntries.length === 0 ? (
+            <div className="rounded-xl border border-slate-700 bg-slate-800/60 p-4 text-sm text-slate-300">
+              Dictionary entries are not available right now.
+            </div>
+          ) : (
+            sortedEntries.map((entry) => (
+              <article
+                key={`${entry.name}-${entry.type}`}
+                data-testid="dictionary-entry"
+                className="rounded-xl border border-slate-700 bg-slate-800/60 p-4 shadow-lg"
+              >
+                <div className="flex flex-wrap items-center gap-2">
+                  <h2 className="text-base font-semibold text-slate-100">{entry.name}</h2>
+                  <span className={`px-2 py-0.5 text-[11px] uppercase tracking-wider border rounded ${dictionaryTypeBadgeClass(entry.type)}`}>
+                    {entry.type}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-slate-200">{entry.definition}</p>
+                {!!entry.aliases?.length && (
+                  <p className="mt-2 text-xs text-slate-400">
+                    Also called: {entry.aliases.join(', ')}
+                  </p>
+                )}
+              </article>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const PuzzleView = ({
   puzzle,
   initialFen,
@@ -307,10 +397,8 @@ const PuzzleView = ({
   hintsRevealed,
   isSolved: isPuzzleSolvedState,
   isFailed,
-  logFeedback,
-  lastFeedbackType,
-  downloadLogs,
   dictionaryEntries,
+  category,
   index,
   total
 }) => {
@@ -330,6 +418,7 @@ const PuzzleView = ({
   const [activeDictionaryEntry, setActiveDictionaryEntry] = useState(null);
   const [autoAdvanceCountdown, setAutoAdvanceCountdown] = useState(null);
   const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
+  const [lastMoveArrow, setLastMoveArrow] = useState(null);
 
   const dictionaryLookup = React.useMemo(
     () => buildDictionaryLookup(dictionaryEntries),
@@ -381,7 +470,10 @@ const PuzzleView = ({
 
             const gameWithOpponent = new Chess(gameCopy.fen());
             if (opponentReplySan) {
-              gameWithOpponent.move(opponentReplySan);
+              const opponentMove = gameWithOpponent.move(opponentReplySan);
+              if (opponentMove) {
+                setLastMoveArrow([opponentMove.from, opponentMove.to]);
+              }
             }
             setGame(gameWithOpponent);
             setCurrentMoveIndex(nextIndex + 1);
@@ -399,6 +491,7 @@ const PuzzleView = ({
             } catch (e) { }
           }
           setGame(resetGame);
+          setLastMoveArrow(null);
           setCurrentMoveIndex(0);
           setMoveStatus(null);
         }, 1000);
@@ -512,6 +605,12 @@ const PuzzleView = ({
 
   // Determine arrows to draw
   const customArrows = React.useMemo(() => {
+    const arrows = [];
+
+    if (lastMoveArrow) {
+      arrows.push(lastMoveArrow);
+    }
+
     if (isFailed && answerMoves.length > 0) {
       // We need to find the from/to for the correct move.
       // We can use a temporary chess instance to parse the SAN.
@@ -519,14 +618,14 @@ const PuzzleView = ({
         const tempGame = new Chess(game.fen());
         const move = tempGame.move(answerMoves[currentMoveIndex]);
         if (move) {
-          return [[move.from, move.to]];
+          arrows.push([move.from, move.to]);
         }
       } catch (e) {
         console.error("Failed to parse answer move for arrow", e);
       }
     }
-    return [];
-  }, [isFailed, answerMoves, currentMoveIndex, game]);
+    return arrows;
+  }, [isFailed, answerMoves, currentMoveIndex, game, lastMoveArrow]);
 
   return (
     <div className="flex flex-col h-screen max-w-md mx-auto bg-slate-900">
@@ -535,17 +634,24 @@ const PuzzleView = ({
         <button data-testid="back-button" onClick={onBack} className="p-2 hover:bg-slate-700 rounded-full">
           <ArrowLeft className="w-6 h-6" />
         </button>
-        <div data-testid="puzzle-index" className="font-mono text-slate-300">
-          {index + 1} / {total}
+        <div className="flex items-center gap-2 min-w-0 px-2">
+          <div
+            data-testid="puzzle-category"
+            className="max-w-[170px] truncate text-xs text-slate-400 capitalize"
+            title={formatCategoryLabel(category)}
+          >
+            {formatCategoryLabel(category)}
+          </div>
+          <div data-testid="puzzle-index" className="font-mono text-slate-300 whitespace-nowrap">
+            {index + 1} / {total}
+          </div>
         </div>
         <div className="flex items-center gap-1">
-          <button onClick={downloadLogs} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white" title="Download Feedback Logs">
-            <Download className="w-5 h-5" />
-          </button>
           <button data-testid="reset-button" onClick={() => {
             const newGame = new Chess();
             if (initialFen) try { newGame.load(initialFen); } catch (e) { }
             setGame(newGame);
+            setLastMoveArrow(null);
             setMoveStatus(null);
             setCurrentMoveIndex(0);
             setAutoAdvanceCountdown(null);
@@ -572,38 +678,6 @@ const PuzzleView = ({
           {/* No board overlays for cleaner UI */}
         </div>
 
-        {Array.isArray(puzzle.tags) && puzzle.tags.length > 0 && (
-          <div data-testid="tags-panel" className="w-full max-w-[400px] rounded-lg border border-slate-700 bg-slate-800/50 px-3 py-2">
-            <div className="text-[11px] uppercase tracking-wider text-slate-400 mb-2">Tags</div>
-            <div className="flex flex-wrap gap-2">
-              {puzzle.tags.map((tag) => (
-                <button
-                  key={tag}
-                  data-testid="tag-chip"
-                  type="button"
-                  onClick={() => {
-                    const entry = findDictionaryEntryForTag(tag, dictionaryLookup);
-                    if (entry) {
-                      setActiveDictionaryEntry(entry);
-                      return;
-                    }
-
-                    setActiveDictionaryEntry({
-                      name: String(tag).replace(/-/g, ' '),
-                      type: 'tag',
-                      definition: 'This puzzle tag is recognized, but a dictionary definition is not available yet.',
-                      aliases: []
-                    });
-                  }}
-                  className="px-2 py-0.5 rounded-full border border-slate-600 bg-slate-700/60 text-[11px] text-slate-200 hover:bg-slate-700 transition-colors"
-                  title={`Tap to learn: ${String(tag).replace(/-/g, ' ')}`}
-                >
-                  {String(tag).replace(/-/g, ' ')}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Controls & Hints */}
@@ -653,13 +727,6 @@ const PuzzleView = ({
 
         {/* Hints */}
         <div className="space-y-2">
-          <div className="rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-2 text-[11px] text-slate-300">
-            <span className="font-semibold text-slate-200 mr-2">Color key:</span>
-            <span className="mr-2 text-sky-300">● Tactic</span>
-            <span className="mr-2 text-emerald-300">● Strategy</span>
-            <span className="mr-2 text-purple-300">● Endgame/Method</span>
-            <span className="text-amber-300">● Basic word</span>
-          </div>
 
           {puzzle.hints.slice(0, hintsRevealed).map((hint, i) => (
             <div key={i} className="flex flex-col gap-2">
@@ -670,38 +737,6 @@ const PuzzleView = ({
                   dictionaryLookup={dictionaryLookup}
                   onWordTap={setActiveDictionaryEntry}
                 />
-              </div>
-              <div className="flex justify-start gap-2 px-1 relative">
-                <button
-                  onClick={() => logFeedback('too_generic', i)}
-                  className="px-2 py-1 bg-slate-800 border border-slate-700 text-[10px] rounded-md hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors"
-                >
-                  Too Generic
-                </button>
-                <button
-                  onClick={() => logFeedback('poorly_worded', i)}
-                  className="px-2 py-1 bg-slate-800 border border-slate-700 text-[10px] rounded-md hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors"
-                >
-                  Poorly Worded
-                </button>
-                <button
-                  onClick={() => logFeedback('irrelevant', i)}
-                  className="px-2 py-1 bg-slate-800 border border-slate-700 text-[10px] rounded-md hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors"
-                >
-                  Irrelevant
-                </button>
-                <button
-                  onClick={() => logFeedback('single_plural_confusion', i)}
-                  className="px-2 py-1 bg-slate-800 border border-slate-700 text-[10px] rounded-md hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors"
-                >
-                  Single/Plural Confusion
-                </button>
-
-                {lastFeedbackType && (
-                  <div className="absolute -top-6 left-0 bg-green-500 text-white text-[10px] px-2 py-0.5 rounded shadow-lg animate-bounce pointer-events-none">
-                    Feedback Captured!
-                  </div>
-                )}
               </div>
             </div>
           ))}
@@ -774,13 +809,11 @@ export default function App() {
     prevPuzzle,
     showNextHint,
     markSolved,
-    logFeedback,
-    lastFeedbackType,
-    resetAllProgress,
-    downloadLogs
+    resetAllProgress
   } = usePuzzleGame();
 
   const [dictionaryData, setDictionaryData] = useState({ entries: [] });
+  const [homeView, setHomeView] = useState('categories');
 
   useEffect(() => {
     fetch('/dictionary.json')
@@ -794,7 +827,6 @@ export default function App() {
 
   // Expose for the internal components to access if needed (hacky but works for the settings menu)
   window.resetProgress = resetAllProgress;
-  window.downloadLogs = downloadLogs;
 
   const initialFen = React.useMemo(() => {
     if (!currentPuzzle) return null;
@@ -845,11 +877,25 @@ export default function App() {
       return leftComplete ? 1 : -1;
     });
 
+    if (homeView === 'dictionary') {
+      return (
+        <DictionaryPage
+          entries={dictionaryData.entries || []}
+          onBack={() => setHomeView('categories')}
+        />
+      );
+    }
+
     return <CategoryList
       categories={sortedCategories}
-      onSelect={selectCategory}
+      onSelect={(category) => {
+        setHomeView('categories');
+        selectCategory(category);
+      }}
       solvedCounts={solvedCounts}
       totalCounts={totalCounts}
+      onOpenDictionary={() => setHomeView('dictionary')}
+      dictionaryEntryCount={(dictionaryData.entries || []).length}
     />;
   }
 
@@ -858,11 +904,15 @@ export default function App() {
       <PuzzleView
         key={currentPuzzle.url}
         puzzle={currentPuzzle}
+        category={currentCategory}
         initialFen={initialFen}
         orientation={puzzleOrientation}
         index={currentPuzzleIndex}
         total={totalPuzzles}
-        onBack={() => selectCategory(null)}
+        onBack={() => {
+          setHomeView('categories');
+          selectCategory(null);
+        }}
         onNext={nextPuzzle}
         onPrev={prevPuzzle}
         onSolved={markSolved}
@@ -870,9 +920,6 @@ export default function App() {
         hintsRevealed={hintsRevealed}
         isSolved={isSolved}
         isFailed={isFailed}
-        logFeedback={logFeedback}
-        lastFeedbackType={lastFeedbackType}
-        downloadLogs={downloadLogs}
         dictionaryEntries={dictionaryData.entries || []}
       />
     </ErrorBoundary>

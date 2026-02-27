@@ -1,6 +1,4 @@
-
 import { useState, useEffect, useMemo } from 'react';
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'; // Might need this later, but for now just standard state.
 
 // Helper to load from local storage
 const loadState = (key, defaultValue) => {
@@ -13,6 +11,28 @@ const loadState = (key, defaultValue) => {
     }
 };
 
+const normalizeCategoryKey = (category) => String(category || '').replace(/\/all$/i, '');
+
+const normalizeSolvedPuzzles = (solvedPuzzles) => {
+    if (!solvedPuzzles || typeof solvedPuzzles !== 'object') {
+        return {};
+    }
+
+    const normalized = {};
+
+    Object.entries(solvedPuzzles).forEach(([category, solvedUrls]) => {
+        if (!Array.isArray(solvedUrls)) {
+            return;
+        }
+
+        const normalizedCategory = normalizeCategoryKey(category);
+        const existing = normalized[normalizedCategory] || [];
+        normalized[normalizedCategory] = Array.from(new Set([...existing, ...solvedUrls]));
+    });
+
+    return normalized;
+};
+
 export const usePuzzleGame = () => {
     const [puzzlesData, setPuzzlesData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -23,11 +43,9 @@ export const usePuzzleGame = () => {
     const [hintsRevealed, setHintsRevealed] = useState(0);
     const [isSolved, setIsSolved] = useState(false);
     const [isFailed, setIsFailed] = useState(false); // If user gave up
-    const [lastFeedbackType, setLastFeedbackType] = useState(null);
 
     // Persistent State
-    const [solvedPuzzles, setSolvedPuzzles] = useState(() => loadState('solvedPuzzles', {})); // { category: [puzzleUrl1, puzzleUrl2] }
-    const [feedbackLogs, setFeedbackLogs] = useState(() => loadState('feedbackLogs', []));
+    const [solvedPuzzles, setSolvedPuzzles] = useState(() => normalizeSolvedPuzzles(loadState('solvedPuzzles', {}))); // { category: [puzzleUrl1, puzzleUrl2] }
 
     useEffect(() => {
         fetch('/puzzles.json')
@@ -45,10 +63,6 @@ export const usePuzzleGame = () => {
     useEffect(() => {
         localStorage.setItem('solvedPuzzles', JSON.stringify(solvedPuzzles));
     }, [solvedPuzzles]);
-
-    useEffect(() => {
-        localStorage.setItem('feedbackLogs', JSON.stringify(feedbackLogs));
-    }, [feedbackLogs]);
 
     // Derived state
     const currentCategoryPuzzles = useMemo(() => {
@@ -113,44 +127,13 @@ export const usePuzzleGame = () => {
         }
     };
 
-    const logFeedback = (type, hintIndex = null) => {
-        const log = {
-            timestamp: new Date().toISOString(),
-            type,
-            puzzleUrl: currentPuzzle.url,
-            category: currentCategory,
-            hintIndex: hintIndex !== null ? hintIndex : undefined,
-            puzzleDetails: {
-                fen: currentPuzzle.url.split('fen=')[1]?.split('&')[0] || '',
-                hints: currentPuzzle.hints,
-                answer: currentPuzzle.answer,
-                solution: currentPuzzle.solution
-            }
-        };
-        setFeedbackLogs(prev => [...prev, log]);
-        setLastFeedbackType(type);
-        // Clear after 2 seconds
-        setTimeout(() => setLastFeedbackType(null), 2000);
-    };
-
     const resetAllProgress = () => {
         if (confirm("Are you sure you want to reset all progress?")) {
             setSolvedPuzzles({});
-            setFeedbackLogs([]);
             localStorage.removeItem('solvedPuzzles');
             localStorage.removeItem('feedbackLogs');
             window.location.reload();
         }
-    };
-
-    const downloadLogs = () => {
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(feedbackLogs, null, 2));
-        const downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "puzzle_feedback_logs_with_details.json");
-        document.body.appendChild(downloadAnchorNode); // required for firefox
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
     };
 
     return {
@@ -164,14 +147,11 @@ export const usePuzzleGame = () => {
         isSolved,
         isFailed,
         solvedPuzzles,
-        lastFeedbackType,
         selectCategory,
         nextPuzzle,
         prevPuzzle,
         showNextHint,
         markSolved,
-        logFeedback,
-        resetAllProgress,
-        downloadLogs
+        resetAllProgress
     };
 };
