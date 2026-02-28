@@ -160,6 +160,36 @@ describe('App unit tests by area', () => {
       expect(screen.getByRole('button', { name: /mate set/i })).toBeInTheDocument();
       expect(screen.queryByRole('button', { name: /opening set/i })).not.toBeInTheDocument();
     });
+
+    test('random mode button selects a random category and puzzle index', async () => {
+      const randomSpy = vi.spyOn(Math, 'random')
+        .mockReturnValueOnce(0)   // category pick
+        .mockReturnValueOnce(0.9); // puzzle index pick
+
+      hookState = makeHookState({
+        puzzlesData: {
+          'set-one': {
+            one: makePuzzle(),
+            two: makePuzzle({ answer: 'e5' })
+          },
+          'set-two': {
+            three: makePuzzle({ answer: 'd4' })
+          }
+        },
+        solvedPuzzles: {
+          'set-one': [],
+          'set-two': []
+        }
+      });
+
+      render(<App />);
+
+      await user.click(screen.getByTestId('random-mode-button'));
+
+      expect(selectCategory).toHaveBeenCalledTimes(1);
+      expect(selectCategory).toHaveBeenCalledWith('set-one', 1);
+      randomSpy.mockRestore();
+    });
   });
 
   describe('Board setup', () => {
@@ -178,6 +208,47 @@ describe('App unit tests by area', () => {
       expect(screen.getByTestId('puzzle-index')).toHaveTextContent('1 / 3');
       expect(screen.getByTestId('tags-panel')).toBeInTheDocument();
       expect(screen.getByText(/White to move|Black to move/)).toBeInTheDocument();
+    });
+
+    test('masks category and tags in random mode until tapped', async () => {
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
+
+      hookState = makeHookState({
+        currentCategory: null,
+        puzzlesData: {
+          'set-one': {
+            one: makePuzzle({ tags: ['set-one', 'pin'] })
+          }
+        },
+        solvedPuzzles: {
+          'set-one': []
+        }
+      });
+
+      const { rerender } = render(<App />);
+
+      await user.click(screen.getByTestId('random-mode-button'));
+      expect(selectCategory).toHaveBeenCalledWith('set-one', 0);
+
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ tags: ['set-one', 'pin'] }),
+        totalPuzzles: 1,
+        currentPuzzleIndex: 0
+      });
+
+      rerender(<App />);
+
+      expect(screen.getByTestId('puzzle-category-mask')).toBeInTheDocument();
+      expect(screen.getByTestId('tags-mask-button')).toBeInTheDocument();
+
+      fireEvent.click(screen.getByTestId('puzzle-category-mask'));
+      expect(screen.getByTestId('puzzle-category')).toHaveTextContent('set one');
+
+      fireEvent.click(screen.getByTestId('tags-mask-button'));
+      expect(screen.getByRole('button', { name: 'set-one' })).toBeInTheDocument();
+
+      randomSpy.mockRestore();
     });
   });
 
@@ -232,6 +303,24 @@ describe('App unit tests by area', () => {
       expect(screen.getByTestId('mock-board').getAttribute('data-fen')).toBe(initialFen);
     });
 
+    test('accepts equivalent SAN when only check/mate suffix differs', async () => {
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ answer: 'e4+' }),
+        totalPuzzles: 1,
+        currentPuzzleIndex: 0
+      });
+
+      render(<App />);
+
+      act(() => {
+        fireEvent.click(screen.getByTestId('move-correct'));
+      });
+
+      expect(markSolved).toHaveBeenCalledTimes(1);
+      expect(screen.getByText('CORRECT!')).toBeInTheDocument();
+    });
+
     test('does not draw a last-move arrow for player move only', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
@@ -250,7 +339,7 @@ describe('App unit tests by area', () => {
       expect(arrows).toEqual([]);
     });
 
-    test('shows opponent last-move arrow on initial puzzle load when reply exists', async () => {
+    test('does not show last-move arrow on initial puzzle load', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
         currentPuzzle: makePuzzle({
@@ -265,7 +354,7 @@ describe('App unit tests by area', () => {
 
       await waitFor(() => {
         const arrows = JSON.parse(screen.getByTestId('mock-board').getAttribute('data-arrows') || '[]');
-        expect(arrows).toEqual([['e7', 'e5']]);
+        expect(arrows).toEqual([]);
       });
     });
 
@@ -402,6 +491,43 @@ describe('App unit tests by area', () => {
       expect(screen.getByText(/Category tag used in tests/i)).toBeInTheDocument();
     });
 
+    test('links dictionary terms inside dictionary definitions', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        json: async () => ({
+          entries: [
+            {
+              name: 'Pin',
+              type: 'tactic',
+              definition: 'A pin can overload a guard and win material.',
+              aliases: []
+            },
+            {
+              name: 'Guard',
+              type: 'vocabulary',
+              definition: 'A piece that protects another piece or key square.',
+              aliases: []
+            }
+          ]
+        })
+      });
+
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ hints: ['Pin now.'] }),
+        hintsRevealed: 1,
+        totalPuzzles: 1
+      });
+
+      render(<App />);
+
+      await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+      fireEvent.click(screen.getByRole('button', { name: 'Pin' }));
+      fireEvent.click(screen.getByRole('button', { name: 'guard' }));
+
+      expect(screen.getByRole('heading', { name: 'Guard' })).toBeInTheDocument();
+      expect(screen.getByText(/protects another piece or key square/i)).toBeInTheDocument();
+    });
+
     test('does not link weak partial matches while still linking strong phrase matches', async () => {
       global.fetch = vi.fn().mockResolvedValue({
         json: async () => ({
@@ -439,6 +565,41 @@ describe('App unit tests by area', () => {
       expect(screen.queryByRole('button', { name: /^Safety$/i })).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: /^squares$/i })).not.toBeInTheDocument();
       expect(screen.queryByRole('button', { name: /^piece$/i })).not.toBeInTheDocument();
+    });
+
+    test('does not fuzzy-link active minor to King Walk while still linking active king', async () => {
+      global.fetch = vi.fn().mockResolvedValue({
+        json: async () => ({
+          entries: [
+            {
+              name: 'King Walk',
+              type: 'endgame-technique',
+              definition: 'King activation in the endgame.',
+              aliases: ['active king']
+            },
+            {
+              name: 'minor-piece',
+              type: 'vocabulary',
+              definition: 'Knight or bishop.',
+              aliases: ['minor piece']
+            }
+          ]
+        })
+      });
+
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ hints: ['Use your active minor piece first, then your active king.'] }),
+        hintsRevealed: 1,
+        totalPuzzles: 1
+      });
+
+      render(<App />);
+
+      await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+      expect(screen.queryByRole('button', { name: 'active minor' })).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'minor piece' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'active king' })).toBeInTheDocument();
     });
   });
 });

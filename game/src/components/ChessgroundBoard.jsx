@@ -5,7 +5,7 @@ import 'chessground/assets/chessground.base.css';
 import 'chessground/assets/chessground.brown.css';
 import 'chessground/assets/chessground.cburnett.css';
 
-export function ChessgroundBoard({ fen, orientation, onMove, width, height, customArrows }) {
+export function ChessgroundBoard({ fen, orientation, onMove, width, height, customArrows, movableColor }) {
     const ref = useRef(null);
     const api = useRef(null);
     const onMoveRef = useRef(onMove);
@@ -39,14 +39,16 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
         }
     }, [fen, orientation]);
 
+    const activeMovableColor = movableColor || 'both';
+
     useEffect(() => {
         if (ref.current && !api.current) {
             const config = {
                 fen: fen,
                 orientation: orientation,
                 movable: {
-                    free: true, // Allow free movement to avoid blocking drag
-                    color: 'both', // Allow moving pieces of either color (logic handled in App)
+                    free: false,
+                    color: activeMovableColor,
                     dests: legalDests,
                     showDests: true,
                     events: {
@@ -82,6 +84,8 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
                 fen: fen,
                 orientation: orientation,
                 movable: {
+                    free: false,
+                    color: activeMovableColor,
                     dests: legalDests
                 },
                 drawable: {
@@ -96,7 +100,7 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
             // Critical: Force bounds recalculation to fix click offset
             api.current.set({});
         }
-    }, [fen, orientation, customArrows, legalDests]);
+    }, [fen, orientation, customArrows, legalDests, activeMovableColor]);
 
     // Secondary effect to ensure bounds are correct on mount, resize, and interaction
     useEffect(() => {

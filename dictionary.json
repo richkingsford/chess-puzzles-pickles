@@ -5,67 +5,67 @@
     {
       "name": "absolute-pin",
       "type": "tactic",
-      "definition": "A tactical motif centered on absolute pin.",
+      "definition": "A tactic where a piece cannot move because it would expose a more valuable piece or critical square. Attack what the pinned piece is forced to defend.",
       "aliases": []
     },
     {
       "name": "acceptance",
       "type": "strategy",
-      "definition": "A strategic theme focused on acceptance.",
+      "definition": "A strategic concept connected to acceptance. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "accepted",
       "type": "strategy",
-      "definition": "A strategic theme focused on accepted.",
+      "definition": "A strategic concept connected to accepted. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "active-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to active defense.",
+      "definition": "A structured opening setup for Black connected to active defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "active-play",
       "type": "strategy",
-      "definition": "A strategic theme focused on active play.",
+      "definition": "A strategic concept connected to active play. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "advance-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on advance variation.",
+      "definition": "A strategic concept connected to advance variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "advantage",
       "type": "strategy",
-      "definition": "A strategic theme focused on advantage.",
+      "definition": "A favorable imbalance in material, king safety, pawn structure, activity, or initiative. Conversion means improving while avoiding counterplay.",
       "aliases": []
     },
     {
       "name": "aggression",
       "type": "strategy",
-      "definition": "A strategic theme focused on aggression.",
+      "definition": "A strategic attacking plan built around aggression. Improve piece activity and open lines first, then convert the initiative with forcing tactics.",
       "aliases": []
     },
     {
       "name": "aggressive",
       "type": "strategy",
-      "definition": "A strategic theme focused on aggressive.",
+      "definition": "A strategic concept connected to aggressive. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "alekhine-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to alekhine defense.",
+      "definition": "A structured opening setup for Black connected to alekhine defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "Anastasia Mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern using rook/queen with knight support against a trapped king.",
+      "definition": "A classic mating pattern where a knight controls escape squares while a rook or queen delivers mate along the edge.",
       "aliases": [
         "anastasia"
       ]
@@ -73,13 +73,13 @@
     {
       "name": "anastasia-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving anastasia mate.",
+      "definition": "A classic mating pattern where a knight controls escape squares while a rook or queen delivers mate along the edge.",
       "aliases": []
     },
     {
       "name": "Arabian Mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern with rook and knight coordinating against a cornered king.",
+      "definition": "A checkmating pattern associated with arabian mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": [
         "arabian"
       ]
@@ -87,19 +87,19 @@
     {
       "name": "arabian-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving arabian mate.",
+      "definition": "A checkmating pattern associated with arabian mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "artificial-castling",
       "type": "strategy",
-      "definition": "A strategic theme focused on artificial castling.",
+      "definition": "A strategic concept connected to artificial castling. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on attack.",
+      "definition": "An attacking plan centered on attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
@@ -122,13 +122,13 @@
     {
       "name": "avoidance",
       "type": "strategy",
-      "definition": "A strategic theme focused on avoidance.",
+      "definition": "A strategic defensive concept related to avoidance. Neutralize immediate threats, coordinate defenders, and only then seek active counterplay.",
       "aliases": []
     },
     {
       "name": "back-rank",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving back rank.",
+      "definition": "A checkmating pattern associated with back rank. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
@@ -143,13 +143,13 @@
     {
       "name": "back-rank-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving back rank mate.",
+      "definition": "A mate pattern where the king is trapped on the back rank by its own pawns or pieces. Heavy pieces exploit that lack of luft.",
       "aliases": []
     },
     {
       "name": "back-rank-threat",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving back rank threat.",
+      "definition": "A checkmating pattern associated with back rank threat. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
@@ -172,25 +172,25 @@
     {
       "name": "benko-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to benko gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "benoni-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to benoni defense.",
+      "definition": "A structured opening setup for Black connected to benoni defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "berlin-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to berlin defense.",
+      "definition": "A structured opening setup for Black connected to berlin defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "bird-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to bird opening.",
+      "definition": "An opening idea linked to bird opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
@@ -204,67 +204,67 @@
     {
       "name": "bishop-endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving bishop endgame.",
+      "definition": "An endgame where bishops are the main minor pieces. Color-complex control and passed-pawn races often matter more than raw pawn count.",
       "aliases": []
     },
     {
       "name": "bishop-pair",
       "type": "strategy",
-      "definition": "A strategic theme focused on bishop pair.",
+      "definition": "A strategic concept connected to bishop pair. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "bishop-safety",
       "type": "strategy",
-      "definition": "A strategic theme focused on bishop safety.",
+      "definition": "A defensive plan emphasizing bishop safety. Neutralize immediate threats, improve coordination, and choose counterplay only after king safety is secure.",
       "aliases": []
     },
     {
       "name": "bishop-trade",
       "type": "strategy",
-      "definition": "A strategic theme focused on bishop trade.",
+      "definition": "A strategic exchange decision related to bishop trade. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
       "name": "bishop-trap",
       "type": "strategy",
-      "definition": "A strategic theme focused on bishop trap.",
+      "definition": "A strategic concept connected to bishop trap. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "bishops-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to bishops gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "bishops-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to bishops opening.",
+      "definition": "An opening idea linked to bishops opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "black-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to black defense.",
+      "definition": "A structured opening setup for Black connected to black defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "blackmar-diemer-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to blackmar diemer gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "blockade",
       "type": "strategy",
-      "definition": "A strategic theme focused on blockade.",
+      "definition": "A strategic concept connected to blockade. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "blunder-punishment",
       "type": "strategy",
-      "definition": "A strategic theme focused on blunder punishment.",
+      "definition": "A strategic concept connected to blunder punishment. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -278,31 +278,31 @@
     {
       "name": "bodens-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving bodens mate.",
+      "definition": "A checkmating pattern associated with bodens mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "bogo-indian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to bogo indian defense.",
+      "definition": "A structured opening setup for Black connected to bogo indian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "botvinnik-system",
       "type": "strategy",
-      "definition": "A strategic theme focused on botvinnik system.",
+      "definition": "A strategic concept connected to botvinnik system. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "budapest-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to budapest gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "calculation",
       "type": "strategy",
-      "definition": "A strategic theme focused on calculation.",
+      "definition": "A strategic concept connected to calculation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -317,13 +317,13 @@
     {
       "name": "capturing-defender",
       "type": "strategy",
-      "definition": "A strategic theme focused on capturing defender.",
+      "definition": "A tactic that removes a key defending piece so a target becomes loose or a mating line opens.",
       "aliases": []
     },
     {
       "name": "caro-kann-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to caro kann defense.",
+      "definition": "A structured opening setup for Black connected to caro kann defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -337,7 +337,7 @@
     {
       "name": "catalan-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to catalan opening.",
+      "definition": "An opening idea linked to catalan opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
@@ -360,67 +360,67 @@
     {
       "name": "center-break",
       "type": "board-concept",
-      "definition": "A board concept focused on center break.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-challenge",
       "type": "board-concept",
-      "definition": "A board concept focused on center challenge.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-control",
       "type": "board-concept",
-      "definition": "A board concept focused on center control.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-counter",
       "type": "board-concept",
-      "definition": "A board concept focused on center counter.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-expansion",
       "type": "board-concept",
-      "definition": "A board concept focused on center expansion.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-fork",
       "type": "tactic",
-      "definition": "A tactical motif centered on center fork.",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
       "aliases": []
     },
     {
       "name": "center-occupation",
       "type": "board-concept",
-      "definition": "A board concept focused on center occupation.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to center opening.",
+      "definition": "An opening idea linked to center opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "center-strike",
       "type": "board-concept",
-      "definition": "A board concept focused on center strike.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "center-tension",
       "type": "board-concept",
-      "definition": "A board concept focused on center tension.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "central-control",
       "type": "strategy",
-      "definition": "A strategic theme focused on central control.",
+      "definition": "A strategic concept connected to central control. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -442,25 +442,25 @@
     {
       "name": "checkmate-threat",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving checkmate threat.",
+      "definition": "A checkmating pattern associated with checkmate threat. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "checkmate-trap",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving checkmate trap.",
+      "definition": "A checkmating pattern associated with checkmate trap. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "classical-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to classical defense.",
+      "definition": "A structured opening setup for Black connected to classical defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "classical-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on classical variation.",
+      "definition": "A strategic concept connected to classical variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -484,31 +484,31 @@
     {
       "name": "closed-center",
       "type": "board-concept",
-      "definition": "A board concept focused on closed center.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "closed-sicilian",
       "type": "strategy",
-      "definition": "A strategic theme focused on closed sicilian.",
+      "definition": "A strategic concept connected to closed sicilian. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "colle-system",
       "type": "strategy",
-      "definition": "A strategic theme focused on colle system.",
+      "definition": "A strategic concept connected to colle system. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "colle-zukertort",
       "type": "strategy",
-      "definition": "A strategic theme focused on colle zukertort.",
+      "definition": "A strategic concept connected to colle zukertort. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "compensation",
       "type": "strategy",
-      "definition": "A strategic theme focused on compensation.",
+      "definition": "A strategic concept connected to compensation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -522,7 +522,7 @@
     {
       "name": "control",
       "type": "strategy",
-      "definition": "A strategic theme focused on control.",
+      "definition": "A strategic concept connected to control. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -537,31 +537,31 @@
     {
       "name": "counter-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on counter attack.",
+      "definition": "An attacking plan centered on counter attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "criss-cross",
       "type": "strategy",
-      "definition": "A strategic theme focused on criss cross.",
+      "definition": "A strategic concept connected to criss cross. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "cut-off",
       "type": "strategy",
-      "definition": "A strategic theme focused on cut off.",
+      "definition": "A strategic concept connected to cut off. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "danish-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to danish gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "declined",
       "type": "strategy",
-      "definition": "A strategic theme focused on declined.",
+      "definition": "A strategic concept connected to declined. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -576,7 +576,7 @@
     {
       "name": "deep-calculation",
       "type": "strategy",
-      "definition": "A strategic theme focused on deep calculation.",
+      "definition": "A strategic concept connected to deep calculation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -591,7 +591,7 @@
     {
       "name": "defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to defense.",
+      "definition": "A structured opening setup for Black connected to defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -622,7 +622,7 @@
     {
       "name": "diagonal-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to diagonal opening.",
+      "definition": "An opening idea linked to diagonal opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
@@ -645,19 +645,19 @@
     {
       "name": "discovered-attack",
       "type": "tactic",
-      "definition": "A tactical motif centered on discovered attack.",
+      "definition": "A tactic where moving one piece reveals an attack from a line piece behind it. Best when the move also creates a second threat.",
       "aliases": []
     },
     {
       "name": "discovered-check",
       "type": "tactic",
-      "definition": "A tactical motif centered on discovered check.",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
       "aliases": []
     },
     {
       "name": "disruption",
       "type": "strategy",
-      "definition": "A strategic theme focused on disruption.",
+      "definition": "A strategic concept connected to disruption. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -671,13 +671,13 @@
     {
       "name": "double-bishop-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving double bishop mate.",
+      "definition": "A checkmating pattern associated with double bishop mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "double-check",
       "type": "tactic",
-      "definition": "A tactical motif centered on double check.",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
       "aliases": []
     },
     {
@@ -691,7 +691,7 @@
     {
       "name": "doubled-pawns",
       "type": "strategy",
-      "definition": "A strategic theme focused on doubled pawns.",
+      "definition": "A pawn-structure idea involving doubled pawns. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
@@ -705,37 +705,37 @@
     {
       "name": "dovetail-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving dovetail mate.",
+      "definition": "A mating net where the checking piece is protected and the king is boxed in by its own men in a tight \"dovetail\" shape.",
       "aliases": []
     },
     {
       "name": "draw",
       "type": "strategy",
-      "definition": "A strategic theme focused on draw.",
+      "definition": "A strategic concept connected to draw. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "dutch-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to dutch defense.",
+      "definition": "A structured opening setup for Black connected to dutch defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "dutch-setup",
       "type": "strategy",
-      "definition": "A strategic theme focused on dutch setup.",
+      "definition": "A strategic concept connected to dutch setup. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving endgame.",
+      "definition": "The late phase with reduced material where king activity, pawn structure, and precise calculation decide conversion or drawing chances.",
       "aliases": []
     },
     {
       "name": "english-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to english opening.",
+      "definition": "An opening idea linked to english opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
@@ -749,31 +749,31 @@
     {
       "name": "escape-square",
       "type": "board-concept",
-      "definition": "A board concept focused on escape square.",
+      "definition": "A square the checked king can run to. Strong attacks remove escape squares first, then deliver the final check.",
       "aliases": []
     },
     {
       "name": "escort",
       "type": "strategy",
-      "definition": "A strategic theme focused on escort.",
+      "definition": "A strategic concept connected to escort. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "euwe-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to euwe defense.",
+      "definition": "A structured opening setup for Black connected to euwe defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "evans-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to evans gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "exchange",
       "type": "strategy",
-      "definition": "A strategic theme focused on exchange.",
+      "definition": "A strategic exchange decision related to exchange. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
@@ -787,31 +787,31 @@
     {
       "name": "exchange-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on exchange variation.",
+      "definition": "A strategic exchange decision related to exchange variation. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
       "name": "expansion",
       "type": "strategy",
-      "definition": "A strategic theme focused on expansion.",
+      "definition": "A strategic concept connected to expansion. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "exposed-king",
       "type": "strategy",
-      "definition": "A strategic theme focused on exposed king.",
+      "definition": "A strategic concept connected to exposed king. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "fajarowicz-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on fajarowicz variation.",
+      "definition": "A strategic concept connected to fajarowicz variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "falkbeer-countergambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to falkbeer countergambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
@@ -833,25 +833,25 @@
     {
       "name": "file-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to file opening.",
+      "definition": "An opening idea linked to file opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "flank-counter",
       "type": "strategy",
-      "definition": "A strategic theme focused on flank counter.",
+      "definition": "A strategic concept connected to flank counter. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "flank-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to flank opening.",
+      "definition": "An opening idea linked to flank opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "flexible",
       "type": "strategy",
-      "definition": "A strategic theme focused on flexible.",
+      "definition": "A strategic concept connected to flexible. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -865,7 +865,7 @@
     {
       "name": "forcing-sequence",
       "type": "tactic",
-      "definition": "A tactical motif centered on forcing sequence.",
+      "definition": "A line of checks, captures, and direct threats that limits the opponent's choices. Forcing sequences reduce calculation noise.",
       "aliases": []
     },
     {
@@ -880,7 +880,7 @@
     {
       "name": "fork-setup",
       "type": "tactic",
-      "definition": "A tactical motif centered on fork setup.",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
       "aliases": []
     },
     {
@@ -894,43 +894,43 @@
     {
       "name": "four-knights-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on four knights game.",
+      "definition": "A strategic concept connected to four knights game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "four-pawns-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on four pawns attack.",
+      "definition": "An attacking plan centered on four pawns attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "frankenstein-dracula",
       "type": "board-concept",
-      "definition": "A board concept focused on frankenstein dracula.",
+      "definition": "A line-control concept about frankenstein dracula. Open lines improve rook and bishop activity and create direct tactical access to targets.",
       "aliases": []
     },
     {
       "name": "french-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to french defense.",
+      "definition": "A structured opening setup for Black connected to french defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "froms-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to froms gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "gambit-refutation",
       "type": "opening-principle",
-      "definition": "An opening theme related to gambit refutation.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
@@ -945,25 +945,25 @@
     {
       "name": "grob-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to grob opening.",
+      "definition": "An opening idea linked to grob opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "grobs-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on grobs attack.",
+      "definition": "An attacking plan centered on grobs attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "grunfeld-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to grunfeld defense.",
+      "definition": "A structured opening setup for Black connected to grunfeld defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "grunfeld-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on grunfeld variation.",
+      "definition": "A strategic concept connected to grunfeld variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -978,25 +978,25 @@
     {
       "name": "halloween-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to halloween gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "halosar-trap",
       "type": "strategy",
-      "definition": "A strategic theme focused on halosar trap.",
+      "definition": "A strategic concept connected to halosar trap. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "hanging-piece",
       "type": "tactic",
-      "definition": "A tactical motif centered on hanging piece.",
+      "definition": "A piece with insufficient defense. Good tactics attack hanging pieces with tempo so the opponent cannot save everything.",
       "aliases": []
     },
     {
       "name": "heavy-pieces",
       "type": "strategy",
-      "definition": "A strategic theme focused on heavy pieces.",
+      "definition": "Queens and rooks. They dominate open files and ranks and are often the main attackers in king-side mating nets.",
       "aliases": []
     },
     {
@@ -1010,31 +1010,31 @@
     {
       "name": "hook-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving hook mate.",
+      "definition": "A checkmating pattern associated with hook mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "hypermodern",
       "type": "strategy",
-      "definition": "A strategic theme focused on hypermodern.",
+      "definition": "A strategic concept connected to hypermodern. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "imbalance",
       "type": "strategy",
-      "definition": "A strategic theme focused on imbalance.",
+      "definition": "A strategic concept connected to imbalance. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "indian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to indian defense.",
+      "definition": "A structured opening setup for Black connected to indian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "indirect-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to indirect defense.",
+      "definition": "A structured opening setup for Black connected to indirect defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -1057,7 +1057,7 @@
     {
       "name": "intermediate-move",
       "type": "strategy",
-      "definition": "A strategic theme focused on intermediate move.",
+      "definition": "A strategic concept connected to intermediate move. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1072,25 +1072,25 @@
     {
       "name": "italian-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on italian game.",
+      "definition": "A strategic concept connected to italian game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "jobava-london",
       "type": "strategy",
-      "definition": "A strategic theme focused on jobava london.",
+      "definition": "A strategic concept connected to jobava london. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "kick",
       "type": "strategy",
-      "definition": "A strategic theme focused on kick.",
+      "definition": "A strategic concept connected to kick. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "kieseritzky-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to kieseritzky gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
@@ -1121,121 +1121,121 @@
     {
       "name": "king-activity",
       "type": "strategy",
-      "definition": "A strategic theme focused on king activity.",
+      "definition": "A positional strategy around king activity. Better coordination and space should produce lasting pressure and tactical opportunities later.",
       "aliases": []
     },
     {
       "name": "king-hunt",
       "type": "strategy",
-      "definition": "A strategic theme focused on king hunt.",
+      "definition": "A strategic attacking plan built around king hunt. Improve piece activity and open lines first, then convert the initiative with forcing tactics.",
       "aliases": []
     },
     {
       "name": "king-pawn",
       "type": "strategy",
-      "definition": "A strategic theme focused on king pawn.",
+      "definition": "A pawn-structure idea involving king pawn. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "king-pawn-ending",
       "type": "strategy",
-      "definition": "A strategic theme focused on king pawn ending.",
+      "definition": "A pawn-structure idea involving king pawn ending. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "king-safety",
       "type": "board-concept",
-      "definition": "A board concept focused on king safety.",
+      "definition": "How secure the king is against direct threats. Pawn cover, piece coordination, and open lines usually decide king safety.",
       "aliases": []
     },
     {
       "name": "king-walk",
       "type": "strategy",
-      "definition": "A strategic theme focused on king walk.",
+      "definition": "A strategic concept connected to king walk. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "kings-fianchetto-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to kings fianchetto opening.",
+      "definition": "An opening idea linked to kings fianchetto opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "kings-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to kings gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "kings-indian-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on kings indian attack.",
+      "definition": "An attacking plan centered on kings indian attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "kings-indian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to kings indian defense.",
+      "definition": "A structured opening setup for Black connected to kings indian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "kingside-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on kingside attack.",
+      "definition": "An attacking plan centered on kingside attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "knight-development",
       "type": "board-concept",
-      "definition": "A board concept focused on knight development.",
+      "definition": "A positional board concept around knight development. It helps prioritize squares, lines, and piece placement in practical decision-making.",
       "aliases": []
     },
     {
       "name": "knight-endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving knight endgame.",
+      "definition": "An endgame where knights dominate piece play. Outposts, king support, and tempo races are critical because knights are short-range pieces.",
       "aliases": []
     },
     {
       "name": "knight-fork",
       "type": "tactic",
-      "definition": "A tactical motif centered on knight fork.",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
       "aliases": []
     },
     {
       "name": "knight-jump",
       "type": "strategy",
-      "definition": "A strategic theme focused on knight jump.",
+      "definition": "A strategic concept connected to knight jump. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "knight-maneuver",
       "type": "strategy",
-      "definition": "A strategic theme focused on knight maneuver.",
+      "definition": "A strategic concept connected to knight maneuver. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "knight-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving knight mate.",
+      "definition": "A checkmating pattern associated with knight mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "knight-outpost",
       "type": "board-concept",
-      "definition": "A board concept focused on knight outpost.",
+      "definition": "A square-control idea related to knight outpost. Dominating key squares can restrict enemy pieces and create stable long-term pressure.",
       "aliases": []
     },
     {
       "name": "knights",
       "type": "strategy",
-      "definition": "A strategic theme focused on knights.",
+      "definition": "A strategic concept connected to knights. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "koltanowski-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on koltanowski variation.",
+      "definition": "A strategic concept connected to koltanowski variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1257,7 +1257,7 @@
     {
       "name": "legalls-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving legalls mate.",
+      "definition": "A checkmating pattern associated with legalls mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
@@ -1279,7 +1279,7 @@
     {
       "name": "london-system",
       "type": "strategy",
-      "definition": "A strategic theme focused on london system.",
+      "definition": "A strategic concept connected to london system. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1293,7 +1293,7 @@
     {
       "name": "long-diagonal",
       "type": "board-concept",
-      "definition": "A board concept focused on long diagonal.",
+      "definition": "A line-control concept about long diagonal. Open lines improve rook and bishop activity and create direct tactical access to targets.",
       "aliases": []
     },
     {
@@ -1316,79 +1316,79 @@
     {
       "name": "luft",
       "type": "strategy",
-      "definition": "A strategic theme focused on luft.",
+      "definition": "A strategic concept connected to luft. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "main-line",
       "type": "strategy",
-      "definition": "A strategic theme focused on main line.",
+      "definition": "A strategic concept connected to main line. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "maneuver",
       "type": "strategy",
-      "definition": "A strategic theme focused on maneuver.",
+      "definition": "A strategic concept connected to maneuver. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "mar-del-plata",
       "type": "strategy",
-      "definition": "A strategic theme focused on mar del plata.",
+      "definition": "A strategic concept connected to mar del plata. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "mate-in-5-or-more-moves",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate in 5 or more moves.",
+      "definition": "A long forced mate sequence. Convert methodically by keeping checks and threats coordinated while denying practical defenses.",
       "aliases": []
     },
     {
       "name": "mate-in-four-moves",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate in four moves.",
+      "definition": "A forced checkmate in four moves that rewards deep calculation. Keep forcing moves first and avoid lines that give the king counterplay.",
       "aliases": []
     },
     {
       "name": "mate-in-one",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate in one.",
+      "definition": "A checkmating pattern associated with mate in one. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "mate-in-one-move",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate in one move.",
+      "definition": "A forced checkmate in one move. Start by checking every forcing check and choose the line that removes all escape squares.",
       "aliases": []
     },
     {
       "name": "mate-in-three-moves",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate in three moves.",
+      "definition": "A forced checkmate in three moves. Build a precise forcing sequence that keeps initiative and progressively removes escape squares.",
       "aliases": []
     },
     {
       "name": "mate-in-two-moves",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate in two moves.",
+      "definition": "A forced checkmate in two moves. The first move should be forcing and should limit the king so the mating follow-up is unavoidable.",
       "aliases": []
     },
     {
       "name": "mate-pattern",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate pattern.",
+      "definition": "A checkmating pattern associated with mate pattern. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "mate-patterns",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate patterns.",
+      "definition": "A checkmating pattern associated with mate patterns. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "mate-threat",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mate threat.",
+      "definition": "A checkmating pattern associated with mate threat. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
@@ -1403,19 +1403,19 @@
     {
       "name": "mating-net",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving mating net.",
+      "definition": "A coordinated attack that removes the king's safe squares move by move until checkmate becomes unavoidable.",
       "aliases": []
     },
     {
       "name": "middle-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on middle game.",
+      "definition": "A strategic concept connected to middle game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "mieses-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on mieses variation.",
+      "definition": "A strategic concept connected to mieses variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1429,49 +1429,49 @@
     {
       "name": "minor-piece",
       "type": "strategy",
-      "definition": "A strategic theme focused on minor piece.",
+      "definition": "A strategic concept connected to minor piece. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "modern-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to modern defense.",
+      "definition": "A structured opening setup for Black connected to modern defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "mutual-zugzwang",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving mutual zugzwang.",
+      "definition": "A mutual zugzwang position where whoever moves first worsens their game. Move order and triangulation become decisive resources.",
       "aliases": []
     },
     {
       "name": "nimzo-indian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to nimzo indian defense.",
+      "definition": "A structured opening setup for Black connected to nimzo indian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "nimzowitsch-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to nimzowitsch defense.",
+      "definition": "A structured opening setup for Black connected to nimzowitsch defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "nimzowitsch-larsen-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on nimzowitsch larsen attack.",
+      "definition": "An attacking plan centered on nimzowitsch larsen attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "nimzowitsch-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on nimzowitsch variation.",
+      "definition": "A strategic concept connected to nimzowitsch variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "noahs-ark-trap",
       "type": "strategy",
-      "definition": "A strategic theme focused on noahs ark trap.",
+      "definition": "A strategic concept connected to noahs ark trap. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1485,43 +1485,43 @@
     {
       "name": "open-center",
       "type": "board-concept",
-      "definition": "A board concept focused on open center.",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
     },
     {
       "name": "open-lines",
       "type": "strategy",
-      "definition": "A strategic theme focused on open lines.",
+      "definition": "A strategic concept connected to open lines. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to opening.",
+      "definition": "An opening idea linked to opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "opening-strategy",
       "type": "opening-principle",
-      "definition": "An opening theme related to opening strategy.",
+      "definition": "An opening idea linked to opening strategy. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "opening-tactics",
       "type": "opening-principle",
-      "definition": "An opening theme related to opening tactics.",
+      "definition": "An opening idea linked to opening tactics. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "opening-theory",
       "type": "opening-principle",
-      "definition": "An opening theme related to opening theory.",
+      "definition": "An opening idea linked to opening theory. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "opening-trap",
       "type": "opening-principle",
-      "definition": "An opening theme related to opening trap.",
+      "definition": "An opening idea linked to opening trap. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
@@ -1567,7 +1567,7 @@
     {
       "name": "overloaded-piece",
       "type": "strategy",
-      "definition": "A strategic theme focused on overloaded piece.",
+      "definition": "A strategic concept connected to overloaded piece. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1589,7 +1589,7 @@
     {
       "name": "pattern",
       "type": "strategy",
-      "definition": "A strategic theme focused on pattern.",
+      "definition": "A strategic concept connected to pattern. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1611,67 +1611,67 @@
     {
       "name": "pawn-chain",
       "type": "strategy",
-      "definition": "A strategic theme focused on pawn chain.",
+      "definition": "A pawn-structure idea involving pawn chain. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "pawn-check",
       "type": "tactic",
-      "definition": "A tactical motif centered on pawn check.",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
       "aliases": []
     },
     {
       "name": "pawn-endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving pawn endgame.",
+      "definition": "An endgame with only kings and pawns. Opposition, key squares, and exact tempo counting usually determine win, draw, or loss.",
       "aliases": []
     },
     {
       "name": "pawn-grab",
       "type": "strategy",
-      "definition": "A strategic theme focused on pawn grab.",
+      "definition": "A pawn-structure idea involving pawn grab. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "pawn-hunting",
       "type": "strategy",
-      "definition": "A strategic theme focused on pawn hunting.",
+      "definition": "A pawn-structure idea involving pawn hunting. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "pawn-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving pawn mate.",
+      "definition": "A checkmating pattern associated with pawn mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "pawn-protection",
       "type": "strategy",
-      "definition": "A strategic theme focused on pawn protection.",
+      "definition": "A pawn-structure idea involving pawn protection. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "pawn-push",
       "type": "strategy",
-      "definition": "A strategic theme focused on pawn push.",
+      "definition": "A pawn-structure idea involving pawn push. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "pawn-sacrifice",
       "type": "tactic",
-      "definition": "A tactical motif centered on pawn sacrifice.",
+      "definition": "A tactical investment of material to gain time, open lines, or expose the king. A sound sacrifice must lead to concrete compensation.",
       "aliases": []
     },
     {
       "name": "pawn-storm",
       "type": "strategy",
-      "definition": "A strategic theme focused on pawn storm.",
+      "definition": "A pawn-structure idea involving pawn storm. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "pawn-structure",
       "type": "board-concept",
-      "definition": "A board concept focused on pawn structure.",
+      "definition": "A positional board concept around pawn structure. It helps prioritize squares, lines, and piece placement in practical decision-making.",
       "aliases": []
     },
     {
@@ -1685,19 +1685,19 @@
     {
       "name": "perpetual-check",
       "type": "tactic",
-      "definition": "A tactical motif centered on perpetual check.",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
       "aliases": []
     },
     {
       "name": "petrosian-system",
       "type": "strategy",
-      "definition": "A strategic theme focused on petrosian system.",
+      "definition": "A strategic concept connected to petrosian system. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "petrovs-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to petrovs defense.",
+      "definition": "A structured opening setup for Black connected to petrovs defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -1711,7 +1711,7 @@
     {
       "name": "philidor-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to philidor defense.",
+      "definition": "A structured opening setup for Black connected to philidor defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -1726,7 +1726,7 @@
     {
       "name": "piece-activity",
       "type": "board-concept",
-      "definition": "A board concept focused on piece activity.",
+      "definition": "A positional board concept around piece activity. It helps prioritize squares, lines, and piece placement in practical decision-making.",
       "aliases": []
     },
     {
@@ -1741,49 +1741,49 @@
     {
       "name": "pirc-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to pirc defense.",
+      "definition": "A structured opening setup for Black connected to pirc defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "poisoned-pawn",
       "type": "strategy",
-      "definition": "A strategic theme focused on poisoned pawn.",
+      "definition": "A pawn-structure idea involving poisoned pawn. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "polish-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to polish opening.",
+      "definition": "An opening idea linked to polish opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "positional",
       "type": "strategy",
-      "definition": "A strategic theme focused on positional.",
+      "definition": "A strategic concept connected to positional. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "positional-advantage",
       "type": "strategy",
-      "definition": "A strategic theme focused on positional advantage.",
+      "definition": "A strategic concept connected to positional advantage. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "positional-sacrifice",
       "type": "tactic",
-      "definition": "A tactical motif centered on positional sacrifice.",
+      "definition": "A tactical investment of material to gain time, open lines, or expose the king. A sound sacrifice must lead to concrete compensation.",
       "aliases": []
     },
     {
       "name": "preparation",
       "type": "strategy",
-      "definition": "A strategic theme focused on preparation.",
+      "definition": "A strategic concept connected to preparation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "pressure",
       "type": "strategy",
-      "definition": "A strategic theme focused on pressure.",
+      "definition": "An attacking plan centered on pressure. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
@@ -1798,7 +1798,7 @@
     {
       "name": "promotion-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to promotion defense.",
+      "definition": "A structured opening setup for Black connected to promotion defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -1812,25 +1812,25 @@
     {
       "name": "provocation",
       "type": "strategy",
-      "definition": "A strategic theme focused on provocation.",
+      "definition": "A strategic concept connected to provocation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "pseudo-spanish",
       "type": "strategy",
-      "definition": "A strategic theme focused on pseudo spanish.",
+      "definition": "A strategic concept connected to pseudo spanish. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "pyramid",
       "type": "strategy",
-      "definition": "A strategic theme focused on pyramid.",
+      "definition": "A strategic concept connected to pyramid. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "pyramid-structure",
       "type": "strategy",
-      "definition": "A strategic theme focused on pyramid structure.",
+      "definition": "A pawn-structure idea involving pyramid structure. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
@@ -1844,97 +1844,97 @@
     {
       "name": "queen-check",
       "type": "tactic",
-      "definition": "A tactical motif centered on queen check.",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
       "aliases": []
     },
     {
       "name": "queen-endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving queen endgame.",
+      "definition": "An endgame with queens still on the board. Perpetual-check ideas, king safety, and precise checks often outweigh small material edges.",
       "aliases": []
     },
     {
       "name": "queen-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving queen mate.",
+      "definition": "A checkmating pattern associated with queen mate. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "queen-rook-endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving queen rook endgame.",
+      "definition": "A complex heavy-piece endgame with queen and rook. Active checks, king shelter, and coordination are more important than passive defense.",
       "aliases": []
     },
     {
       "name": "queen-sacrifice",
       "type": "tactic",
-      "definition": "A tactical motif centered on queen sacrifice.",
+      "definition": "A tactical investment of material to gain time, open lines, or expose the king. A sound sacrifice must lead to concrete compensation.",
       "aliases": []
     },
     {
       "name": "queen-safety",
       "type": "strategy",
-      "definition": "A strategic theme focused on queen safety.",
+      "definition": "A defensive plan emphasizing queen safety. Neutralize immediate threats, improve coordination, and choose counterplay only after king safety is secure.",
       "aliases": []
     },
     {
       "name": "queen-skewer",
       "type": "tactic",
-      "definition": "A tactical motif centered on queen skewer.",
+      "definition": "A line tactic where a valuable piece is attacked first and forced away, exposing a weaker piece behind it.",
       "aliases": []
     },
     {
       "name": "queen-sortie",
       "type": "strategy",
-      "definition": "A strategic theme focused on queen sortie.",
+      "definition": "A strategic concept connected to queen sortie. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "queen-trade",
       "type": "strategy",
-      "definition": "A strategic theme focused on queen trade.",
+      "definition": "A strategic exchange decision related to queen trade. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
       "name": "queen-trap",
       "type": "strategy",
-      "definition": "A strategic theme focused on queen trap.",
+      "definition": "A strategic concept connected to queen trap. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "queens-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to queens gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "queens-gambit-declined",
       "type": "opening-principle",
-      "definition": "An opening theme related to queens gambit declined.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "queens-indian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to queens indian defense.",
+      "definition": "A structured opening setup for Black connected to queens indian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "queens-pawn-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on queens pawn game.",
+      "definition": "A pawn-structure idea involving queens pawn game. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "queenside-pressure",
       "type": "strategy",
-      "definition": "A strategic theme focused on queenside pressure.",
+      "definition": "An attacking plan centered on queenside pressure. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "question-bishop",
       "type": "strategy",
-      "definition": "A strategic theme focused on question bishop.",
+      "definition": "A strategic concept connected to question bishop. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1949,19 +1949,19 @@
     {
       "name": "quiet-move",
       "type": "strategy",
-      "definition": "A strategic theme focused on quiet move.",
+      "definition": "A non-checking, non-capturing move that creates a hidden tactical threat. Quiet moves often decide complex combinations.",
       "aliases": []
     },
     {
       "name": "quiet-play",
       "type": "strategy",
-      "definition": "A strategic theme focused on quiet play.",
+      "definition": "A strategic concept connected to quiet play. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "race",
       "type": "strategy",
-      "definition": "A strategic theme focused on race.",
+      "definition": "A strategic concept connected to race. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -1975,25 +1975,25 @@
     {
       "name": "recover-material",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving recover material.",
+      "definition": "A checkmating pattern associated with recover material. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "recovery",
       "type": "strategy",
-      "definition": "A strategic theme focused on recovery.",
+      "definition": "A strategic concept connected to recovery. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "refutation",
       "type": "strategy",
-      "definition": "A strategic theme focused on refutation.",
+      "definition": "A strategic concept connected to refutation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "relative-pin",
       "type": "tactic",
-      "definition": "A tactical motif centered on relative pin.",
+      "definition": "A tactic where a piece cannot move because it would expose a more valuable piece or critical square. Attack what the pinned piece is forced to defend.",
       "aliases": []
     },
     {
@@ -2008,61 +2008,61 @@
     {
       "name": "removal-of-defender",
       "type": "strategy",
-      "definition": "A strategic theme focused on removal of defender.",
+      "definition": "A strategic concept connected to removal of defender. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "remove-the-defender",
       "type": "tactic",
-      "definition": "A tactical motif centered on remove the defender.",
+      "definition": "A concrete tactical motif around remove the defender. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
       "aliases": []
     },
     {
       "name": "repositioning",
       "type": "strategy",
-      "definition": "A strategic theme focused on repositioning.",
+      "definition": "A strategic concept connected to repositioning. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "restraint",
       "type": "strategy",
-      "definition": "A strategic theme focused on restraint.",
+      "definition": "A strategic concept connected to restraint. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "reti-gambit-accepted",
       "type": "opening-principle",
-      "definition": "An opening theme related to reti gambit accepted.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "reti-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to reti opening.",
+      "definition": "An opening idea linked to reti opening. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
       "name": "retreat",
       "type": "strategy",
-      "definition": "A strategic theme focused on retreat.",
+      "definition": "A strategic concept connected to retreat. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "reversed-sicilian",
       "type": "strategy",
-      "definition": "A strategic theme focused on reversed sicilian.",
+      "definition": "A strategic concept connected to reversed sicilian. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "richter-veresov-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on richter veresov attack.",
+      "definition": "An attacking plan centered on richter veresov attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "romford-countergambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to romford countergambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
@@ -2084,37 +2084,37 @@
     {
       "name": "rook-endgame",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving rook endgame.",
+      "definition": "An endgame where rooks are central pieces. Activate king and rook, and place rooks behind passed pawns whenever possible.",
       "aliases": []
     },
     {
       "name": "rook-skewer",
       "type": "tactic",
-      "definition": "A tactical motif centered on rook skewer.",
+      "definition": "A line tactic where a valuable piece is attacked first and forced away, exposing a weaker piece behind it.",
       "aliases": []
     },
     {
       "name": "royal-fork",
       "type": "tactic",
-      "definition": "A tactical motif centered on royal fork.",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
       "aliases": []
     },
     {
       "name": "rubinstein-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on rubinstein variation.",
+      "definition": "A strategic concept connected to rubinstein variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "russian-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on russian game.",
+      "definition": "A strategic concept connected to russian game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "ruy-lopez",
       "type": "strategy",
-      "definition": "A strategic theme focused on ruy lopez.",
+      "definition": "A strategic concept connected to ruy lopez. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -2129,31 +2129,31 @@
     {
       "name": "safety",
       "type": "strategy",
-      "definition": "A strategic theme focused on safety.",
+      "definition": "A defensive plan emphasizing safety. Neutralize immediate threats, improve coordination, and choose counterplay only after king safety is secure.",
       "aliases": []
     },
     {
       "name": "samisch-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on samisch variation.",
+      "definition": "A strategic concept connected to samisch variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "scandinavian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to scandinavian defense.",
+      "definition": "A structured opening setup for Black connected to scandinavian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "scandinavian-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on scandinavian variation.",
+      "definition": "A strategic concept connected to scandinavian variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "schlechter-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to schlechter defense.",
+      "definition": "A structured opening setup for Black connected to schlechter defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -2167,13 +2167,13 @@
     {
       "name": "scotch-four-knights",
       "type": "strategy",
-      "definition": "A strategic theme focused on scotch four knights.",
+      "definition": "A strategic concept connected to scotch four knights. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "scotch-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on scotch game.",
+      "definition": "A strategic concept connected to scotch game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -2187,31 +2187,31 @@
     {
       "name": "setup",
       "type": "strategy",
-      "definition": "A strategic theme focused on setup.",
+      "definition": "A strategic concept connected to setup. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "sharp",
       "type": "strategy",
-      "definition": "A strategic theme focused on sharp.",
+      "definition": "A strategic concept connected to sharp. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "shouldering",
       "type": "endgame-technique",
-      "definition": "An endgame technique or theme involving shouldering.",
+      "definition": "An endgame king technique that uses body-blocking to deny the opposing king key squares and escort a pawn to promotion.",
       "aliases": []
     },
     {
       "name": "sicilian-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to sicilian defense.",
+      "definition": "A structured opening setup for Black connected to sicilian defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "simplification",
       "type": "strategy",
-      "definition": "A strategic theme focused on simplification.",
+      "definition": "A strategic exchange decision related to simplification. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
@@ -2225,7 +2225,7 @@
     {
       "name": "slav-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to slav defense.",
+      "definition": "A structured opening setup for Black connected to slav defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -2239,55 +2239,55 @@
     {
       "name": "smothered-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving smothered mate.",
+      "definition": "A mate pattern where the king is boxed in by its own pieces, often finished by a knight. Remove escape squares before the final blow.",
       "aliases": []
     },
     {
       "name": "smothered-mate-threat",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving smothered mate threat.",
+      "definition": "A checkmating pattern associated with smothered mate threat. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "solid",
       "type": "strategy",
-      "definition": "A strategic theme focused on solid.",
+      "definition": "A strategic concept connected to solid. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "solid-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to solid defense.",
+      "definition": "A structured opening setup for Black connected to solid defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
       "name": "solid-play",
       "type": "strategy",
-      "definition": "A strategic theme focused on solid play.",
+      "definition": "A strategic concept connected to solid play. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "solid-setup",
       "type": "strategy",
-      "definition": "A strategic theme focused on solid setup.",
+      "definition": "A strategic concept connected to solid setup. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "solid-structure",
       "type": "strategy",
-      "definition": "A strategic theme focused on solid structure.",
+      "definition": "A pawn-structure idea involving solid structure. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "solid-triangle",
       "type": "strategy",
-      "definition": "A strategic theme focused on solid triangle.",
+      "definition": "A strategic concept connected to solid triangle. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "sorensen-defense",
       "type": "opening-principle",
-      "definition": "An opening theme related to sorensen defense.",
+      "definition": "A structured opening setup for Black connected to sorensen defense. The plan is to contest central space while completing development and keeping king safety intact.",
       "aliases": []
     },
     {
@@ -2301,31 +2301,31 @@
     {
       "name": "space-advantage",
       "type": "board-concept",
-      "definition": "A board concept focused on space advantage.",
+      "definition": "A positional board concept around space advantage. It helps prioritize squares, lines, and piece placement in practical decision-making.",
       "aliases": []
     },
     {
       "name": "space-control",
       "type": "board-concept",
-      "definition": "A board concept focused on space control.",
+      "definition": "A positional board concept around space control. It helps prioritize squares, lines, and piece placement in practical decision-making.",
       "aliases": []
     },
     {
       "name": "spanish-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on spanish game.",
+      "definition": "A strategic concept connected to spanish game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "square-of-the-pawn",
       "type": "board-concept",
-      "definition": "A board concept focused on square of the pawn.",
+      "definition": "A square-control idea related to square of the pawn. Dominating key squares can restrict enemy pieces and create stable long-term pressure.",
       "aliases": []
     },
     {
       "name": "stafford-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to stafford gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
@@ -2339,109 +2339,109 @@
     {
       "name": "standard",
       "type": "strategy",
-      "definition": "A strategic theme focused on standard.",
+      "definition": "A strategic concept connected to standard. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "standard-setup",
       "type": "strategy",
-      "definition": "A strategic theme focused on standard setup.",
+      "definition": "A strategic concept connected to standard setup. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "staunton-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to staunton gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "steinitz-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on steinitz attack.",
+      "definition": "An attacking plan centered on steinitz attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "stonewall-formation",
       "type": "strategy",
-      "definition": "A strategic theme focused on stonewall formation.",
+      "definition": "A strategic concept connected to stonewall formation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "stonewall-setup",
       "type": "strategy",
-      "definition": "A strategic theme focused on stonewall setup.",
+      "definition": "A strategic concept connected to stonewall setup. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "structure",
       "type": "strategy",
-      "definition": "A strategic theme focused on structure.",
+      "definition": "A pawn-structure idea involving structure. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "structure-damage",
       "type": "strategy",
-      "definition": "A strategic theme focused on structure damage.",
+      "definition": "A pawn-structure idea involving structure damage. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
       "aliases": []
     },
     {
       "name": "supported-mate",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving supported mate.",
+      "definition": "A checkmate where the mating piece is protected, preventing capture as a defense. Confirm support before committing.",
       "aliases": []
     },
     {
       "name": "surprise",
       "type": "strategy",
-      "definition": "A strategic theme focused on surprise.",
+      "definition": "A strategic concept connected to surprise. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "symmetrical",
       "type": "strategy",
-      "definition": "A strategic theme focused on symmetrical.",
+      "definition": "A strategic concept connected to symmetrical. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "symmetrical-variation",
       "type": "strategy",
-      "definition": "A strategic theme focused on symmetrical variation.",
+      "definition": "A strategic concept connected to symmetrical variation. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "symmetry",
       "type": "strategy",
-      "definition": "A strategic theme focused on symmetry.",
+      "definition": "A strategic concept connected to symmetry. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "system-opening",
       "type": "opening-principle",
-      "definition": "An opening theme related to system opening.",
+      "definition": "A setup-based opening plan associated with system opening. Move order is often flexible, but piece coordination and central control remain the strategic priorities.",
       "aliases": []
     },
     {
       "name": "tactic",
       "type": "tactic",
-      "definition": "A tactical motif centered on tactic.",
+      "definition": "A concrete tactical motif around tactic. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
       "aliases": []
     },
     {
       "name": "tactical-shot",
       "type": "tactic",
-      "definition": "A tactical motif centered on tactical shot.",
+      "definition": "A concrete tactical motif around tactical shot. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
       "aliases": []
     },
     {
       "name": "tactical-trap",
       "type": "tactic",
-      "definition": "A tactical motif centered on tactical trap.",
+      "definition": "A concrete tactical motif around tactical trap. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
       "aliases": []
     },
     {
       "name": "tactics",
       "type": "tactic",
-      "definition": "A tactical motif centered on tactics.",
+      "definition": "A concrete tactical motif around tactics. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
       "aliases": []
     },
     {
@@ -2464,19 +2464,19 @@
     {
       "name": "tension",
       "type": "strategy",
-      "definition": "A strategic theme focused on tension.",
+      "definition": "A position where opposing pieces or pawns attack each other and captures are possible, but neither side has committed. Keeping tension can preserve options and force mistakes; releasing it should be timed to win space, activity, or concrete tactics.",
       "aliases": []
     },
     {
       "name": "the-spike",
       "type": "strategy",
-      "definition": "A strategic theme focused on the spike.",
+      "definition": "A strategic concept connected to the spike. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "theory",
       "type": "opening-principle",
-      "definition": "An opening theme related to theory.",
+      "definition": "An opening idea linked to theory. The practical goals are rapid development, king safety, and useful central control before tactical operations begin.",
       "aliases": []
     },
     {
@@ -2490,37 +2490,37 @@
     {
       "name": "torre-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on torre attack.",
+      "definition": "An attacking plan centered on torre attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
       "name": "trade",
       "type": "strategy",
-      "definition": "A strategic theme focused on trade.",
+      "definition": "A strategic exchange decision related to trade. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
       "name": "trade-sequence",
       "type": "strategy",
-      "definition": "A strategic theme focused on trade sequence.",
+      "definition": "A strategic exchange decision related to trade sequence. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
     },
     {
       "name": "transposition",
       "type": "strategy",
-      "definition": "A strategic theme focused on transposition.",
+      "definition": "A strategic concept connected to transposition. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "trap",
       "type": "strategy",
-      "definition": "A strategic theme focused on trap.",
+      "definition": "A strategic concept connected to trap. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "trapped-piece",
       "type": "tactic",
-      "definition": "A tactical motif centered on trapped piece.",
+      "definition": "A piece with no safe escape squares. Restrict exits first, then win material with forcing play.",
       "aliases": []
     },
     {
@@ -2534,13 +2534,13 @@
     {
       "name": "trick",
       "type": "strategy",
-      "definition": "A strategic theme focused on trick.",
+      "definition": "A strategic concept connected to trick. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "trompowsky-attack",
       "type": "strategy",
-      "definition": "A strategic theme focused on trompowsky attack.",
+      "definition": "An attacking plan centered on trompowsky attack. Coordinate pieces first, open lines at the right moment, and convert initiative with forcing moves.",
       "aliases": []
     },
     {
@@ -2555,43 +2555,43 @@
     {
       "name": "unpin",
       "type": "tactic",
-      "definition": "A tactical motif centered on unpin.",
+      "definition": "A tactic where a piece cannot move because it would expose a more valuable piece or critical square. Attack what the pinned piece is forced to defend.",
       "aliases": []
     },
     {
       "name": "urussov-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to urussov gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "very-long",
       "type": "strategy",
-      "definition": "A strategic theme focused on very long.",
+      "definition": "A deep calculation category requiring long forcing lines and accurate move order. Practical success comes from candidate-move discipline.",
       "aliases": []
     },
     {
       "name": "vienna-gambit",
       "type": "opening-principle",
-      "definition": "An opening theme related to vienna gambit.",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
     },
     {
       "name": "vienna-game",
       "type": "strategy",
-      "definition": "A strategic theme focused on vienna game.",
+      "definition": "A strategic concept connected to vienna game. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "waiting",
       "type": "strategy",
-      "definition": "A strategic theme focused on waiting.",
+      "definition": "A strategic concept connected to waiting. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "waiting-move",
       "type": "strategy",
-      "definition": "A strategic theme focused on waiting move.",
+      "definition": "A strategic concept connected to waiting move. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -2615,19 +2615,19 @@
     {
       "name": "white-setup",
       "type": "strategy",
-      "definition": "A strategic theme focused on white setup.",
+      "definition": "A strategic concept connected to white setup. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
       "name": "win-material",
       "type": "mate-pattern",
-      "definition": "A mating pattern or forcing mate theme involving win material.",
+      "definition": "A checkmating pattern associated with win material. The method is to remove escape squares and coordinate checks so every defensive reply fails.",
       "aliases": []
     },
     {
       "name": "winning-the-queen",
       "type": "strategy",
-      "definition": "A strategic theme focused on winning the queen.",
+      "definition": "A strategic concept connected to winning the queen. Typical play improves the worst-placed piece, fixes a target, and converts only when concrete tactics support the plan.",
       "aliases": []
     },
     {
@@ -2642,7 +2642,7 @@
     {
       "name": "x-ray-attack",
       "type": "tactic",
-      "definition": "A tactical motif centered on x ray attack.",
+      "definition": "Pressure that works through an intervening piece along a file, rank, or diagonal. If the front piece moves, the rear target is hit.",
       "aliases": []
     },
     {

@@ -6,7 +6,8 @@
     "start": "node open_title.js",
     "build:app": "npm --prefix game run build",
     "deploy:prod": "npm run build:app && netlify deploy --prod --dir game/dist",
-    "deploy:prod:ci": "node deploy_prod.js"
+    "deploy:prod:ci": "node deploy_prod.js",
+    "analyze:puzzles": "node analyze_puzzles.js puzzles.json"
   },
   "dependencies": {
     "playwright": "^1.58.1"

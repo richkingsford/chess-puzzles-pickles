@@ -3,7 +3,7 @@ import { Chess } from 'chess.js';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight,
-  RotateCcw, ArrowLeft, Trash2, BookOpen
+  RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle
 } from 'lucide-react';
 import { usePuzzleGame } from './hooks/usePuzzleGame';
 import { parsePuzzleUrl } from './lib/utils';
@@ -152,13 +152,29 @@ const CategoryList = ({
   typeFilters,
   selectedType,
   onSelectType,
-  typeCounts
+  typeCounts,
+  onStartRandomMode,
+  isRandomModeActive
 }) => {
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
       <h1 className="text-3xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500">
         Chess Puzzles
       </h1>
+
+      <button
+        type="button"
+        data-testid="random-mode-button"
+        onClick={onStartRandomMode}
+        className={`w-full rounded-xl border p-3 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
+          isRandomModeActive
+            ? 'border-teal-500 bg-teal-500/20 text-teal-200'
+            : 'border-teal-700 bg-teal-900/30 text-teal-200 hover:bg-teal-900/40'
+        }`}
+      >
+        <Shuffle className="w-4 h-4" />
+        Random Mode
+      </button>
 
       <div data-testid="category-type-filters" className="rounded-xl border border-slate-700 bg-slate-800/70 p-3">
         <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
@@ -237,10 +253,22 @@ const CategoryList = ({
   );
 };
 
-const normalizeWord = (word) => word.toLowerCase().replace(/[^a-z-]/g, '');
+const normalizeWord = (word) => word.toLowerCase().replace(/[^a-z0-9-]/g, '');
 const DICTIONARY_MATCH_THRESHOLD = 0.7;
+const TOKEN_SIMILARITY_THRESHOLD = 0.88;
+const SINGLE_WORD_MIN_LENGTH = 4;
+const DICTIONARY_STOPWORDS = new Set([
+  'a', 'an', 'the', 'and', 'or', 'but', 'if', 'then', 'than',
+  'to', 'of', 'in', 'on', 'at', 'by', 'for', 'from', 'with',
+  'into', 'onto', 'over', 'under', 'through', 'across', 'around',
+  'up', 'down', 'out', 'off', 'as', 'is', 'are', 'was', 'were',
+  'be', 'been', 'being', 'this', 'that', 'these', 'those', 'it',
+  'its', 'your', 'yours', 'our', 'ours', 'their', 'theirs', 'my', 'mine',
+  'his', 'her', 'hers', 'them', 'they', 'you', 'we', 'he', 'she'
+]);
 const SAN_IN_TEXT_REGEX = /(?:\(|\b)(O-O-O|O-O|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?[+#]?|[a-h]x[a-h][1-8](?:=[QRBN])?[+#]?|[a-h][1-8](?:=[QRBN])?[+#]?)(?:\)|\b)/g;
 const UCI_IN_TEXT_REGEX = /\b([a-h][1-8][a-h][1-8][qrbn]?)\b/g;
+const PROMOTION_SAN_REGEX = /=([QRBN])/i;
 
 const dictionaryTypeBadgeClass = (type) => {
   const key = String(type || '').toLowerCase();
@@ -263,6 +291,7 @@ const dictionaryTypeBadgeClass = (type) => {
 
 const buildDictionaryLookup = (dictionaryEntries) => {
   const phraseEntries = [];
+  const exactPhraseMap = new Map();
   const exactTermMap = new Map();
   const seen = new Set();
   let maxWords = 1;
@@ -276,32 +305,44 @@ const buildDictionaryLookup = (dictionaryEntries) => {
         exactTermMap.set(rawTerm.toLowerCase(), entry);
       }
 
-      const normalizedWords = String(term || '')
-        .split(/\s+/)
-        .map(normalizeWord)
-        .filter(Boolean);
-
-      if (!normalizedWords.length) {
-        return;
+      const variants = [rawTerm];
+      if (rawTerm.includes('-')) {
+        variants.push(rawTerm.replace(/-/g, ' '));
       }
 
-      const phraseKey = normalizedWords.join(' ');
-      const dedupeKey = `${phraseKey}::${entry.name}`;
+      variants.forEach((variant) => {
+        const normalizedWords = String(variant || '')
+          .split(/\s+/)
+          .map(normalizeWord)
+          .filter(Boolean);
 
-      if (!seen.has(dedupeKey)) {
-        phraseEntries.push({
-          entry,
-          phrase: phraseKey,
-          wordCount: normalizedWords.length
-        });
-        seen.add(dedupeKey);
-      }
+        if (!normalizedWords.length) {
+          return;
+        }
 
-      maxWords = Math.max(maxWords, normalizedWords.length);
+        const phraseKey = normalizedWords.join(' ');
+        const dedupeKey = `${phraseKey}::${entry.name}`;
+
+        if (!seen.has(dedupeKey)) {
+          phraseEntries.push({
+            entry,
+            phrase: phraseKey,
+            wordCount: normalizedWords.length
+          });
+          seen.add(dedupeKey);
+        }
+
+        const existingEntries = exactPhraseMap.get(phraseKey) || [];
+        if (!existingEntries.includes(entry)) {
+          exactPhraseMap.set(phraseKey, [...existingEntries, entry]);
+        }
+
+        maxWords = Math.max(maxWords, normalizedWords.length);
+      });
     });
   });
 
-  return { phraseEntries, maxWords, exactTermMap };
+  return { phraseEntries, exactPhraseMap, maxWords, exactTermMap };
 };
 
 const levenshteinDistance = (left, right) => {
@@ -336,9 +377,108 @@ const calculateSimilarity = (left, right) => {
   return 1 - (distance / longest);
 };
 
+const normalizeSanForCompare = (san) => String(san || '')
+  .replace(/[+#?!]/g, '')
+  .replace(/\s+/g, '');
+
+const stemWord = (word) => {
+  const normalized = normalizeWord(word);
+  if (normalized.length <= 3) return normalized;
+
+  if (normalized.endsWith('ies') && normalized.length > 4) {
+    return `${normalized.slice(0, -3)}y`;
+  }
+  if (normalized.endsWith('ing') && normalized.length > 5) {
+    return normalized.slice(0, -3);
+  }
+  if (normalized.endsWith('edly') && normalized.length > 6) {
+    return normalized.slice(0, -4);
+  }
+  if (normalized.endsWith('ly') && normalized.length > 4) {
+    return normalized.slice(0, -2);
+  }
+  if (normalized.endsWith('ed') && normalized.length > 4) {
+    return normalized.slice(0, -2);
+  }
+  if (normalized.endsWith('es') && normalized.length > 4) {
+    return normalized.slice(0, -2);
+  }
+  if (normalized.endsWith('s') && normalized.length > 3) {
+    return normalized.slice(0, -1);
+  }
+
+  return normalized;
+};
+
+const splitWords = (text) => String(text || '')
+  .split(/\s+/)
+  .map(normalizeWord)
+  .filter(Boolean);
+
+const removeStopWords = (words) => words.filter((word) => !DICTIONARY_STOPWORDS.has(word));
+
+const tokenMatches = (left, right) => {
+  const leftWord = normalizeWord(left);
+  const rightWord = normalizeWord(right);
+
+  if (!leftWord || !rightWord) return false;
+  if (leftWord === rightWord) return true;
+
+  const leftStem = stemWord(leftWord);
+  const rightStem = stemWord(rightWord);
+  if (leftStem && leftStem === rightStem && leftStem.length >= 3) {
+    return true;
+  }
+
+  if (
+    leftWord.length >= SINGLE_WORD_MIN_LENGTH &&
+    rightWord.length >= SINGLE_WORD_MIN_LENGTH &&
+    (leftWord.startsWith(rightWord) || rightWord.startsWith(leftWord))
+  ) {
+    return true;
+  }
+
+  return (
+    Math.min(leftWord.length, rightWord.length) >= SINGLE_WORD_MIN_LENGTH &&
+    calculateSimilarity(leftWord, rightWord) >= TOKEN_SIMILARITY_THRESHOLD
+  );
+};
+
+const computeTokenOverlapScore = (candidateWordsRaw, phraseWordsRaw) => {
+  const candidateWords = candidateWordsRaw.map(normalizeWord).filter(Boolean);
+  const phraseWords = phraseWordsRaw.map(normalizeWord).filter(Boolean);
+  const candidateCore = removeStopWords(candidateWords);
+  const phraseCore = removeStopWords(phraseWords);
+
+  const left = candidateCore.length ? candidateCore : candidateWords;
+  const right = phraseCore.length ? phraseCore : phraseWords;
+
+  if (!left.length || !right.length) {
+    return { matched: 0, ratio: 0, leftCount: left.length, rightCount: right.length };
+  }
+
+  const consumed = new Set();
+  let matched = 0;
+
+  for (const token of left) {
+    const idx = right.findIndex((candidate, i) => !consumed.has(i) && tokenMatches(token, candidate));
+    if (idx !== -1) {
+      consumed.add(idx);
+      matched += 1;
+    }
+  }
+
+  return {
+    matched,
+    ratio: matched / Math.max(left.length, right.length),
+    leftCount: left.length,
+    rightCount: right.length
+  };
+};
+
 const extractHintWords = (hint) => {
   const words = [];
-  const regex = /[A-Za-z-']+/g;
+  const regex = /[A-Za-z0-9-']+/g;
   let match;
 
   while ((match = regex.exec(hint)) !== null) {
@@ -364,6 +504,7 @@ const findDictionaryMatches = (hint, dictionaryLookup) => {
     for (let phraseLen = Math.min(maxWords, words.length - wordIndex); phraseLen >= 1; phraseLen -= 1) {
       const chunk = words.slice(wordIndex, wordIndex + phraseLen);
       const candidate = chunk.map((word) => word.normalized).filter(Boolean).join(' ');
+      const candidateWords = chunk.map((word) => word.normalized).filter(Boolean);
 
       if (!candidate) {
         continue;
@@ -385,13 +526,31 @@ const findDictionaryMatches = (hint, dictionaryLookup) => {
         }
 
         // For single-word fuzzy matches, require a prefix relationship to avoid unrelated lookalikes.
-        if (
-          phraseLen === 1 &&
-          similarity < 1 &&
-          !candidate.startsWith(phraseEntry.phrase) &&
-          !phraseEntry.phrase.startsWith(candidate)
-        ) {
-          continue;
+        const phraseWords = splitWords(phraseEntry.phrase);
+        const overlap = computeTokenOverlapScore(candidateWords, phraseWords);
+
+        if (phraseLen === 1) {
+          const candidateWord = candidateWords[0] || '';
+          const phraseWord = phraseWords[0] || '';
+          const isExact = candidateWord === phraseWord;
+          const isRootMatch = tokenMatches(candidateWord, phraseWord);
+          const minWordLength = Math.min(candidateWord.length, phraseWord.length);
+
+          if (!isExact && (!isRootMatch || minWordLength < SINGLE_WORD_MIN_LENGTH)) {
+            continue;
+          }
+        } else {
+          const requiredRatio = Math.max(0.75, 1 - (Math.max(phraseLen, phraseEntry.wordCount) - 2) * 0.1);
+          if (overlap.ratio < requiredRatio) {
+            continue;
+          }
+
+          if (
+            Math.min(overlap.leftCount, overlap.rightCount) >= 2 &&
+            overlap.matched < 2
+          ) {
+            continue;
+          }
         }
 
         if (
@@ -417,6 +576,114 @@ const findDictionaryMatches = (hint, dictionaryLookup) => {
   }
 
   return matches;
+};
+
+const findDictionaryExactMatches = (text, dictionaryLookup, excludedEntry = null) => {
+  const words = extractHintWords(text);
+  const matches = [];
+  const { exactPhraseMap, maxWords } = dictionaryLookup;
+
+  for (let wordIndex = 0; wordIndex < words.length; wordIndex += 1) {
+    let found = null;
+
+    for (let phraseLen = Math.min(maxWords, words.length - wordIndex); phraseLen >= 1; phraseLen -= 1) {
+      const chunk = words.slice(wordIndex, wordIndex + phraseLen);
+      const candidate = chunk.map((word) => word.normalized).filter(Boolean).join(' ');
+
+      if (!candidate) {
+        continue;
+      }
+
+      const candidateEntries = exactPhraseMap.get(candidate) || [];
+      const matchedEntry = candidateEntries.find((entry) => entry !== excludedEntry);
+
+      if (!matchedEntry) {
+        continue;
+      }
+
+      found = {
+        entry: matchedEntry,
+        start: chunk[0].start,
+        end: chunk[chunk.length - 1].end,
+        wordCount: phraseLen
+      };
+      break;
+    }
+
+    if (found) {
+      matches.push(found);
+      wordIndex += found.wordCount - 1;
+    }
+  }
+
+  return matches;
+};
+
+const DictionaryTextWithLinks = ({
+  text,
+  dictionaryLookup,
+  onWordTap,
+  exact = false,
+  excludedEntry = null,
+  plainClassName = '',
+  linkedClassName = 'underline decoration-dotted underline-offset-2'
+}) => {
+  const content = String(text || '');
+  const matches = React.useMemo(() => (
+    exact
+      ? findDictionaryExactMatches(content, dictionaryLookup, excludedEntry)
+      : findDictionaryMatches(content, dictionaryLookup)
+  ), [content, dictionaryLookup, exact, excludedEntry]);
+
+  if (!matches.length) {
+    return <span className={plainClassName}>{content}</span>;
+  }
+
+  const rendered = [];
+  let cursor = 0;
+
+  matches.forEach((match, index) => {
+    if (match.start > cursor) {
+      rendered.push(
+        <React.Fragment key={`plain-${index}`}>
+          <span className={plainClassName}>{content.slice(cursor, match.start)}</span>
+        </React.Fragment>
+      );
+    }
+
+    const linkedText = content.slice(match.start, match.end);
+    if (onWordTap) {
+      rendered.push(
+        <button
+          key={`dict-${index}`}
+          type="button"
+          onClick={() => onWordTap(match.entry)}
+          className={linkedClassName}
+          title={`Tap to learn: ${match.entry.name}`}
+        >
+          {linkedText}
+        </button>
+      );
+    } else {
+      rendered.push(
+        <span key={`dict-${index}`} className={linkedClassName}>
+          {linkedText}
+        </span>
+      );
+    }
+
+    cursor = match.end;
+  });
+
+  if (cursor < content.length) {
+    rendered.push(
+      <React.Fragment key="plain-tail">
+        <span className={plainClassName}>{content.slice(cursor)}</span>
+      </React.Fragment>
+    );
+  }
+
+  return <>{rendered}</>;
 };
 
 const extractMoveTokensFromHint = (hintText) => {
@@ -483,50 +750,15 @@ const deriveArrowFromHintText = (fen, hintText) => {
 };
 
 const HintWithDictionary = ({ hint, dictionaryLookup, onWordTap }) => {
-  const text = String(hint || '');
-  const matches = findDictionaryMatches(text, dictionaryLookup);
-
-  if (!matches.length) {
-    return <>{text}</>;
-  }
-
-  const rendered = [];
-  let cursor = 0;
-
-  matches.forEach((match, index) => {
-    if (match.start > cursor) {
-      rendered.push(
-        <React.Fragment key={`plain-${index}`}>
-          {text.slice(cursor, match.start)}
-        </React.Fragment>
-      );
-    }
-
-    rendered.push(
-      <button
-        key={`dict-${index}`}
-        type="button"
-        onClick={() => onWordTap(match.entry)}
-        className="underline decoration-dotted underline-offset-2 text-slate-100 hover:text-white"
-        title={`Tap to learn: ${match.entry.name}`}
-      >
-        {text.slice(match.start, match.end)}
-      </button>
-    );
-
-    cursor = match.end;
-  });
-
-  if (cursor < text.length) {
-    rendered.push(
-      <React.Fragment key="plain-tail">
-        {text.slice(cursor)}
-      </React.Fragment>
-    );
-  }
-
   return (
-    <>{rendered}</>
+    <DictionaryTextWithLinks
+      text={hint}
+      dictionaryLookup={dictionaryLookup}
+      onWordTap={onWordTap}
+      exact={false}
+      plainClassName="text-slate-200"
+      linkedClassName="underline decoration-dotted underline-offset-2 text-slate-100 hover:text-white"
+    />
   );
 };
 
@@ -534,6 +766,10 @@ const DictionaryPage = ({ entries, onBack }) => {
   const sortedEntries = React.useMemo(
     () => [...(entries || [])].sort((a, b) => String(a.name || '').localeCompare(String(b.name || ''))),
     [entries]
+  );
+  const dictionaryLookup = React.useMemo(
+    () => buildDictionaryLookup(sortedEntries),
+    [sortedEntries]
   );
 
   return (
@@ -582,7 +818,16 @@ const DictionaryPage = ({ entries, onBack }) => {
                     {entry.type}
                   </span>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-slate-200">{entry.definition}</p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-200">
+                  <DictionaryTextWithLinks
+                    text={entry.definition}
+                    dictionaryLookup={dictionaryLookup}
+                    exact
+                    excludedEntry={entry}
+                    plainClassName="text-slate-200"
+                    linkedClassName="underline decoration-dotted underline-offset-2 text-slate-100"
+                  />
+                </p>
                 {!!entry.aliases?.length && (
                   <p className="mt-2 text-xs text-slate-400">
                     Also called: {entry.aliases.join(', ')}
@@ -595,29 +840,6 @@ const DictionaryPage = ({ entries, onBack }) => {
       </div>
     </div>
   );
-};
-
-const deriveInitialOpponentArrow = (initialFen, answerMoves) => {
-  if (!initialFen || !Array.isArray(answerMoves) || answerMoves.length < 2) {
-    return null;
-  }
-
-  try {
-    const tempGame = new Chess(initialFen);
-    const firstMove = tempGame.move(answerMoves[0]);
-    if (!firstMove) {
-      return null;
-    }
-
-    const opponentMove = tempGame.move(answerMoves[1]);
-    if (!opponentMove) {
-      return null;
-    }
-
-    return [opponentMove.from, opponentMove.to];
-  } catch (e) {
-    return null;
-  }
 };
 
 const PuzzleView = ({
@@ -635,7 +857,8 @@ const PuzzleView = ({
   dictionaryEntries,
   category,
   index,
-  total
+  total,
+  isRandomMode
 }) => {
   const [game, setGame] = useState(() => {
     const newGame = new Chess();
@@ -655,6 +878,8 @@ const PuzzleView = ({
   const [autoAdvanceCountdown, setAutoAdvanceCountdown] = useState(null);
   const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
   const [lastMoveArrow, setLastMoveArrow] = useState(null);
+  const [isCategoryMasked, setIsCategoryMasked] = useState(Boolean(isRandomMode));
+  const [areTagsMasked, setAreTagsMasked] = useState(Boolean(isRandomMode));
 
   const dictionaryLookup = React.useMemo(
     () => buildDictionaryLookup(dictionaryEntries),
@@ -683,11 +908,6 @@ const PuzzleView = ({
     return puzzle.answer.split(', ');
   }, [puzzle]);
 
-  const initialOpponentArrow = React.useMemo(
-    () => deriveInitialOpponentArrow(initialFen, answerMoves),
-    [initialFen, answerMoves]
-  );
-
   const latestHintText = hintsRevealed > 0 ? puzzle.hints[hintsRevealed - 1] : null;
   const hintArrow = React.useMemo(
     () => deriveArrowFromHintText(game.fen(), latestHintText),
@@ -695,19 +915,60 @@ const PuzzleView = ({
   );
 
   useEffect(() => {
-    setLastMoveArrow(initialOpponentArrow);
-  }, [initialOpponentArrow]);
+    const isJsdom =
+      typeof navigator !== 'undefined' &&
+      /jsdom/i.test(String(navigator.userAgent || ''));
+
+    if (isJsdom) {
+      return;
+    }
+
+    if (typeof window.scrollTo === 'function') {
+      window.scrollTo(0, 0);
+    }
+  }, [puzzle?.url, index]);
+
+  useEffect(() => {
+    const masked = Boolean(isRandomMode);
+    setIsCategoryMasked(masked);
+    setAreTagsMasked(masked);
+  }, [isRandomMode, puzzle?.url, category]);
+
+  const getPromotionPieceForMove = React.useCallback((gameState, sourceSquare, targetSquare, expectedMoveSan) => {
+    const piece = gameState.get(sourceSquare);
+
+    if (!piece || piece.type !== 'p') {
+      return null;
+    }
+
+    const targetRank = String(targetSquare || '').slice(1);
+    if (targetRank !== '1' && targetRank !== '8') {
+      return null;
+    }
+
+    const expectedPromotion = String(expectedMoveSan || '').match(PROMOTION_SAN_REGEX)?.[1]?.toLowerCase();
+    return expectedPromotion || 'q';
+  }, []);
 
   const onDrop = (sourceSquare, targetSquare) => {
     if (isPuzzleSolvedState || isFailed || moveStatus || autoAdvanceCountdown !== null || pendingOpponentMove) return false;
+    const playerColor = orientation === 'white' ? 'w' : 'b';
+    const sourcePiece = game.get(sourceSquare);
+
+    // Never allow moving the opponent's piece or moving when it's not the player's turn.
+    if (!sourcePiece || sourcePiece.color !== playerColor || game.turn() !== playerColor) {
+      return false;
+    }
 
     // Tentative move - Use a clone to avoid state mutation
     try {
       const gameCopy = new Chess(game.fen());
+      const expectedMoveSan = answerMoves[currentMoveIndex];
+      const promotionPiece = getPromotionPieceForMove(gameCopy, sourceSquare, targetSquare, expectedMoveSan);
       const move = gameCopy.move({
         from: sourceSquare,
         to: targetSquare,
-        promotion: 'q'
+        ...(promotionPiece ? { promotion: promotionPiece } : {})
       });
 
       if (move === null) return false;
@@ -716,9 +977,7 @@ const PuzzleView = ({
       setGame(gameCopy);
 
       // Check if correct
-      const expectedMoveSan = answerMoves[currentMoveIndex];
-
-      if (move.san === expectedMoveSan) {
+      if (normalizeSanForCompare(move.san) === normalizeSanForCompare(expectedMoveSan)) {
         setMoveStatus('correct');
 
         if (currentMoveIndex === answerMoves.length - 1) {
@@ -750,16 +1009,21 @@ const PuzzleView = ({
       } else {
         setMoveStatus('incorrect');
         setPendingOpponentMove(null);
+        const previousFen = game.fen();
         setTimeout(() => {
-          const resetGame = new Chess();
-          if (initialFen) {
-            try {
-              resetGame.load(initialFen);
-            } catch (e) { }
+          const rewindGame = new Chess();
+          try {
+            rewindGame.load(previousFen);
+            setGame(rewindGame);
+          } catch (e) {
+            if (initialFen) {
+              try {
+                rewindGame.load(initialFen);
+                setGame(rewindGame);
+                setCurrentMoveIndex(0);
+              } catch (innerError) { }
+            }
           }
-          setGame(resetGame);
-          setLastMoveArrow(initialOpponentArrow);
-          setCurrentMoveIndex(0);
           setMoveStatus(null);
         }, 1000);
       }
@@ -906,14 +1170,26 @@ const PuzzleView = ({
           <ArrowLeft className="w-6 h-6" />
         </button>
         <div className="flex items-center gap-2 min-w-0 px-2">
-          <div
-            data-testid="puzzle-category"
-            className="max-w-[170px] truncate text-xs text-slate-400 capitalize"
-            title={formatCategoryLabel(category)}
-          >
-            {formatCategoryLabel(category)}
-          </div>
-          <div data-testid="puzzle-index" className="font-mono text-slate-300 whitespace-nowrap">
+          {isCategoryMasked ? (
+            <button
+              type="button"
+              data-testid="puzzle-category-mask"
+              onClick={() => setIsCategoryMasked(false)}
+              className="max-w-[170px] truncate rounded border border-slate-600 bg-slate-700/70 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-slate-200 hover:bg-slate-600/80"
+              title="Tap to reveal category"
+            >
+              Tap To Reveal
+            </button>
+          ) : (
+            <div
+              data-testid="puzzle-category"
+              className="max-w-[170px] truncate text-sm font-medium text-slate-300 capitalize"
+              title={formatCategoryLabel(category)}
+            >
+              {formatCategoryLabel(category)}
+            </div>
+          )}
+          <div data-testid="puzzle-index" className="text-sm font-medium text-slate-300 whitespace-nowrap">
             {index + 1} / {total}
           </div>
         </div>
@@ -922,7 +1198,7 @@ const PuzzleView = ({
             const newGame = new Chess();
             if (initialFen) try { newGame.load(initialFen); } catch (e) { }
             setGame(newGame);
-            setLastMoveArrow(initialOpponentArrow);
+            setLastMoveArrow(null);
             setMoveStatus(null);
             setCurrentMoveIndex(0);
             setAutoAdvanceCountdown(null);
@@ -1012,28 +1288,6 @@ const PuzzleView = ({
             </div>
           ))}
 
-          {!!puzzle.tags?.length && (
-            <div data-testid="tags-panel" className="rounded-lg border border-slate-700 bg-slate-800/60 p-3">
-              <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
-                Tags
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {puzzle.tags.map((tag) => (
-                  <button
-                    key={tag}
-                    type="button"
-                    data-testid="tag-chip"
-                    onClick={() => openDictionaryByExactTerm(tag)}
-                    className="rounded-full border border-slate-600 bg-slate-700/70 px-2.5 py-1 text-xs text-slate-100 hover:bg-slate-600/80"
-                    title={`Open dictionary: ${tag}`}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
           {!isPuzzleSolvedState && !isFailed && (
             <button
               onClick={onShowHint}
@@ -1042,6 +1296,39 @@ const PuzzleView = ({
               <HelpCircle className="w-5 h-5" />
               {hintsRevealed < puzzle.hints.length ? "Reveal Hint" : "Show Answer (Give Up)"}
             </button>
+          )}
+
+          {!!puzzle.tags?.length && (
+            <div data-testid="tags-panel" className="rounded-lg border border-slate-700 bg-slate-800/60 p-3">
+              <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                Tags
+              </div>
+              {areTagsMasked ? (
+                <button
+                  type="button"
+                  data-testid="tags-mask-button"
+                  onClick={() => setAreTagsMasked(false)}
+                  className="w-full rounded border border-slate-600 bg-slate-700/70 px-3 py-2 text-sm font-medium text-slate-200 hover:bg-slate-600/80"
+                >
+                  Tap to reveal tags
+                </button>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {puzzle.tags.map((tag) => (
+                    <button
+                      key={tag}
+                      type="button"
+                      data-testid="tag-chip"
+                      onClick={() => openDictionaryByExactTerm(tag)}
+                      className="rounded-full border border-slate-600 bg-slate-700/70 px-2.5 py-1 text-xs text-slate-100 hover:bg-slate-600/80"
+                      title={`Open dictionary: ${tag}`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           )}
         </div>
 
@@ -1080,7 +1367,17 @@ const PuzzleView = ({
                 X
               </button>
             </div>
-            <p className="mt-3 text-sm text-slate-200 leading-relaxed">{activeDictionaryEntry.definition}</p>
+            <p className="mt-3 text-sm text-slate-200 leading-relaxed">
+              <DictionaryTextWithLinks
+                text={activeDictionaryEntry.definition}
+                dictionaryLookup={dictionaryLookup}
+                exact
+                excludedEntry={activeDictionaryEntry}
+                onWordTap={(entry) => openDictionaryEntry(entry, entry?.name)}
+                plainClassName="text-slate-200"
+                linkedClassName="underline decoration-dotted underline-offset-2 text-slate-100 hover:text-white"
+              />
+            </p>
             {!!activeDictionaryEntry.aliases?.length && (
               <p className="mt-3 text-xs text-slate-400">
                 Also called: {activeDictionaryEntry.aliases.join(', ')}
@@ -1117,6 +1414,7 @@ export default function App() {
   const [dictionaryData, setDictionaryData] = useState({ entries: [] });
   const [homeView, setHomeView] = useState('categories');
   const [selectedCategoryType, setSelectedCategoryType] = useState('All');
+  const [isRandomMode, setIsRandomMode] = useState(false);
 
   useEffect(() => {
     fetch('/dictionary.json')
@@ -1167,10 +1465,11 @@ export default function App() {
     Object.keys(puzzlesData).forEach((cat) => {
       const categoryData = puzzlesData[cat];
       const puzzleMap = getCategoryPuzzlesMap(categoryData);
+      const puzzleUrls = new Set(Object.keys(puzzleMap));
       totalCounts[cat] = Object.keys(puzzleMap).length;
-      // Count how many keys in solvedPuzzles[cat] match keys in puzzlesData[cat]
+      // Count only solved URLs that still exist in this category's puzzle map.
       const solvedInCategory = solvedPuzzles[cat] || [];
-      solvedCounts[cat] = solvedInCategory.length;
+      solvedCounts[cat] = solvedInCategory.filter((url) => puzzleUrls.has(url)).length;
       categoryTypeMap[cat] = getCategoryType(cat, categoryData);
     });
 
@@ -1228,8 +1527,25 @@ export default function App() {
       categories={visibleCategories}
       onSelect={(category) => {
         setHomeView('categories');
+        setIsRandomMode(false);
         selectCategory(category);
       }}
+      onStartRandomMode={() => {
+        const selectableCategories = visibleCategories.filter((cat) => (totalCounts[cat] || 0) > 0);
+
+        if (!selectableCategories.length) {
+          return;
+        }
+
+        const randomCategory = selectableCategories[Math.floor(Math.random() * selectableCategories.length)];
+        const puzzleCount = totalCounts[randomCategory] || 0;
+        const randomIndex = puzzleCount > 1 ? Math.floor(Math.random() * puzzleCount) : 0;
+
+        setHomeView('categories');
+        setIsRandomMode(true);
+        selectCategory(randomCategory, randomIndex);
+      }}
+      isRandomModeActive={isRandomMode}
       solvedCounts={solvedCounts}
       totalCounts={totalCounts}
       onOpenDictionary={() => setHomeView('dictionary')}
@@ -1263,6 +1579,7 @@ export default function App() {
         isSolved={isSolved}
         isFailed={isFailed}
         dictionaryEntries={dictionaryData.entries || []}
+        isRandomMode={isRandomMode}
       />
     </ErrorBoundary>
   );
