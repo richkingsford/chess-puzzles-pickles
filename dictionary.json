@@ -3,12 +3,465 @@
   "description": "Chess learning library used for hint coverage scoring.",
   "entries": [
     {
-      "name": "Line",
-      "type": "vocabulary",
-      "definition": "A path of squares in one direction, like a file, rank, or diagonal.",
+      "name": "absolute-pin",
+      "type": "tactic",
+      "definition": "A tactical motif centered on absolute pin.",
+      "aliases": []
+    },
+    {
+      "name": "acceptance",
+      "type": "strategy",
+      "definition": "A strategic theme focused on acceptance.",
+      "aliases": []
+    },
+    {
+      "name": "accepted",
+      "type": "strategy",
+      "definition": "A strategic theme focused on accepted.",
+      "aliases": []
+    },
+    {
+      "name": "active-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to active defense.",
+      "aliases": []
+    },
+    {
+      "name": "active-play",
+      "type": "strategy",
+      "definition": "A strategic theme focused on active play.",
+      "aliases": []
+    },
+    {
+      "name": "advance-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on advance variation.",
+      "aliases": []
+    },
+    {
+      "name": "advantage",
+      "type": "strategy",
+      "definition": "A strategic theme focused on advantage.",
+      "aliases": []
+    },
+    {
+      "name": "aggression",
+      "type": "strategy",
+      "definition": "A strategic theme focused on aggression.",
+      "aliases": []
+    },
+    {
+      "name": "aggressive",
+      "type": "strategy",
+      "definition": "A strategic theme focused on aggressive.",
+      "aliases": []
+    },
+    {
+      "name": "alekhine-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to alekhine defense.",
+      "aliases": []
+    },
+    {
+      "name": "Anastasia Mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern using rook/queen with knight support against a trapped king.",
       "aliases": [
-        "lines"
+        "anastasia"
       ]
+    },
+    {
+      "name": "anastasia-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving anastasia mate.",
+      "aliases": []
+    },
+    {
+      "name": "Arabian Mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern with rook and knight coordinating against a cornered king.",
+      "aliases": [
+        "arabian"
+      ]
+    },
+    {
+      "name": "arabian-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving arabian mate.",
+      "aliases": []
+    },
+    {
+      "name": "artificial-castling",
+      "type": "strategy",
+      "definition": "A strategic theme focused on artificial castling.",
+      "aliases": []
+    },
+    {
+      "name": "attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on attack.",
+      "aliases": []
+    },
+    {
+      "name": "Attacker",
+      "type": "fundamental",
+      "definition": "A piece actively creating pressure or direct threats.",
+      "aliases": [
+        "attacking piece"
+      ]
+    },
+    {
+      "name": "Attraction",
+      "type": "tactic",
+      "definition": "A piece is lured to a square where it can be exploited.",
+      "aliases": [
+        "lure",
+        "attract"
+      ]
+    },
+    {
+      "name": "avoidance",
+      "type": "strategy",
+      "definition": "A strategic theme focused on avoidance.",
+      "aliases": []
+    },
+    {
+      "name": "back-rank",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving back rank.",
+      "aliases": []
+    },
+    {
+      "name": "Back-Rank Mate",
+      "type": "mate-pattern",
+      "definition": "Mate delivered on the back rank when the king has no escape squares.",
+      "aliases": [
+        "back rank",
+        "backrank mate"
+      ]
+    },
+    {
+      "name": "back-rank-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving back rank mate.",
+      "aliases": []
+    },
+    {
+      "name": "back-rank-threat",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving back rank threat.",
+      "aliases": []
+    },
+    {
+      "name": "Backward Pawn",
+      "type": "strategy",
+      "definition": "A pawn that cannot safely advance and often needs protection.",
+      "aliases": [
+        "backward-pawn"
+      ]
+    },
+    {
+      "name": "Battery",
+      "type": "method",
+      "definition": "Two aligned pieces support each other on the same line of attack.",
+      "aliases": [
+        "queen bishop battery",
+        "rook battery"
+      ]
+    },
+    {
+      "name": "benko-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to benko gambit.",
+      "aliases": []
+    },
+    {
+      "name": "benoni-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to benoni defense.",
+      "aliases": []
+    },
+    {
+      "name": "berlin-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to berlin defense.",
+      "aliases": []
+    },
+    {
+      "name": "bird-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to bird opening.",
+      "aliases": []
+    },
+    {
+      "name": "Bishop Pair",
+      "type": "strategy",
+      "definition": "Having both bishops often gives strong long-range control.",
+      "aliases": [
+        "two bishops"
+      ]
+    },
+    {
+      "name": "bishop-endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving bishop endgame.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-pair",
+      "type": "strategy",
+      "definition": "A strategic theme focused on bishop pair.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-safety",
+      "type": "strategy",
+      "definition": "A strategic theme focused on bishop safety.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-trade",
+      "type": "strategy",
+      "definition": "A strategic theme focused on bishop trade.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-trap",
+      "type": "strategy",
+      "definition": "A strategic theme focused on bishop trap.",
+      "aliases": []
+    },
+    {
+      "name": "bishops-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to bishops gambit.",
+      "aliases": []
+    },
+    {
+      "name": "bishops-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to bishops opening.",
+      "aliases": []
+    },
+    {
+      "name": "black-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to black defense.",
+      "aliases": []
+    },
+    {
+      "name": "blackmar-diemer-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to blackmar diemer gambit.",
+      "aliases": []
+    },
+    {
+      "name": "blockade",
+      "type": "strategy",
+      "definition": "A strategic theme focused on blockade.",
+      "aliases": []
+    },
+    {
+      "name": "blunder-punishment",
+      "type": "strategy",
+      "definition": "A strategic theme focused on blunder punishment.",
+      "aliases": []
+    },
+    {
+      "name": "Boden Mate",
+      "type": "mate-pattern",
+      "definition": "Mate delivered by crossing bishops controlling escape squares.",
+      "aliases": [
+        "boden"
+      ]
+    },
+    {
+      "name": "bodens-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving bodens mate.",
+      "aliases": []
+    },
+    {
+      "name": "bogo-indian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to bogo indian defense.",
+      "aliases": []
+    },
+    {
+      "name": "botvinnik-system",
+      "type": "strategy",
+      "definition": "A strategic theme focused on botvinnik system.",
+      "aliases": []
+    },
+    {
+      "name": "budapest-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to budapest gambit.",
+      "aliases": []
+    },
+    {
+      "name": "calculation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on calculation.",
+      "aliases": []
+    },
+    {
+      "name": "Capture",
+      "type": "fundamental",
+      "definition": "Removing an enemy piece by moving onto its square.",
+      "aliases": [
+        "take",
+        "wins material"
+      ]
+    },
+    {
+      "name": "capturing-defender",
+      "type": "strategy",
+      "definition": "A strategic theme focused on capturing defender.",
+      "aliases": []
+    },
+    {
+      "name": "caro-kann-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to caro kann defense.",
+      "aliases": []
+    },
+    {
+      "name": "Castling",
+      "type": "opening-principle",
+      "definition": "A king safety move that also develops the rook.",
+      "aliases": [
+        "castle"
+      ]
+    },
+    {
+      "name": "catalan-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to catalan opening.",
+      "aliases": []
+    },
+    {
+      "name": "Center",
+      "type": "board-concept",
+      "definition": "The central squares and surrounding area that influence piece activity.",
+      "aliases": [
+        "middle squares"
+      ]
+    },
+    {
+      "name": "Center Control",
+      "type": "opening-principle",
+      "definition": "Influencing key central squares to gain mobility and space.",
+      "aliases": [
+        "center",
+        "central control"
+      ]
+    },
+    {
+      "name": "center-break",
+      "type": "board-concept",
+      "definition": "A board concept focused on center break.",
+      "aliases": []
+    },
+    {
+      "name": "center-challenge",
+      "type": "board-concept",
+      "definition": "A board concept focused on center challenge.",
+      "aliases": []
+    },
+    {
+      "name": "center-control",
+      "type": "board-concept",
+      "definition": "A board concept focused on center control.",
+      "aliases": []
+    },
+    {
+      "name": "center-counter",
+      "type": "board-concept",
+      "definition": "A board concept focused on center counter.",
+      "aliases": []
+    },
+    {
+      "name": "center-expansion",
+      "type": "board-concept",
+      "definition": "A board concept focused on center expansion.",
+      "aliases": []
+    },
+    {
+      "name": "center-fork",
+      "type": "tactic",
+      "definition": "A tactical motif centered on center fork.",
+      "aliases": []
+    },
+    {
+      "name": "center-occupation",
+      "type": "board-concept",
+      "definition": "A board concept focused on center occupation.",
+      "aliases": []
+    },
+    {
+      "name": "center-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to center opening.",
+      "aliases": []
+    },
+    {
+      "name": "center-strike",
+      "type": "board-concept",
+      "definition": "A board concept focused on center strike.",
+      "aliases": []
+    },
+    {
+      "name": "center-tension",
+      "type": "board-concept",
+      "definition": "A board concept focused on center tension.",
+      "aliases": []
+    },
+    {
+      "name": "central-control",
+      "type": "strategy",
+      "definition": "A strategic theme focused on central control.",
+      "aliases": []
+    },
+    {
+      "name": "Check",
+      "type": "fundamental",
+      "definition": "A direct attack on the king that must be answered immediately.",
+      "aliases": [
+        "giving check"
+      ]
+    },
+    {
+      "name": "Checkmate",
+      "type": "fundamental",
+      "definition": "The king is in check and has no legal escape.",
+      "aliases": [
+        "mate"
+      ]
+    },
+    {
+      "name": "checkmate-threat",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving checkmate threat.",
+      "aliases": []
+    },
+    {
+      "name": "checkmate-trap",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving checkmate trap.",
+      "aliases": []
+    },
+    {
+      "name": "classical-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to classical defense.",
+      "aliases": []
+    },
+    {
+      "name": "classical-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on classical variation.",
+      "aliases": []
     },
     {
       "name": "Clear",
@@ -20,56 +473,157 @@
       ]
     },
     {
-      "name": "Guard",
-      "type": "vocabulary",
-      "definition": "A piece that protects another piece or square.",
-      "aliases": [
-        "guards",
-        "guarding"
-      ]
-    },
-    {
-      "name": "Loose Piece",
-      "type": "vocabulary",
-      "definition": "A piece that is not defended and can often be won.",
-      "aliases": [
-        "loose",
-        "hanging"
-      ]
-    },
-    {
-      "name": "Tempo Move",
-      "type": "vocabulary",
-      "definition": "A move that improves your position while forcing a reply.",
-      "aliases": [
-        "tempo"
-      ]
-    },
-    {
-      "name": "Pin",
+      "name": "Clearance",
       "type": "tactic",
-      "definition": "A piece cannot move because moving would expose a more valuable piece behind it.",
+      "definition": "A piece moves away to clear a line or square for another piece.",
       "aliases": [
-        "pinned piece",
-        "pin tactic"
+        "clearance sacrifice",
+        "clear line"
       ]
     },
     {
-      "name": "Fork",
-      "type": "tactic",
-      "definition": "One move attacks two or more enemy targets at the same time.",
+      "name": "closed-center",
+      "type": "board-concept",
+      "definition": "A board concept focused on closed center.",
+      "aliases": []
+    },
+    {
+      "name": "closed-sicilian",
+      "type": "strategy",
+      "definition": "A strategic theme focused on closed sicilian.",
+      "aliases": []
+    },
+    {
+      "name": "colle-system",
+      "type": "strategy",
+      "definition": "A strategic theme focused on colle system.",
+      "aliases": []
+    },
+    {
+      "name": "colle-zukertort",
+      "type": "strategy",
+      "definition": "A strategic theme focused on colle zukertort.",
+      "aliases": []
+    },
+    {
+      "name": "compensation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on compensation.",
+      "aliases": []
+    },
+    {
+      "name": "Connected Passed Pawns",
+      "type": "endgame-technique",
+      "definition": "Adjacent passed pawns that support each other's advance.",
       "aliases": [
-        "double attack",
-        "fork tactic"
+        "connected passers"
       ]
     },
     {
-      "name": "Skewer",
-      "type": "tactic",
-      "definition": "A more valuable piece is attacked and must move, exposing a less valuable piece behind it.",
+      "name": "control",
+      "type": "strategy",
+      "definition": "A strategic theme focused on control.",
+      "aliases": []
+    },
+    {
+      "name": "Coordination",
+      "type": "strategy",
+      "definition": "How well your pieces support each other.",
       "aliases": [
-        "skewer tactic"
+        "piece coordination",
+        "teamwork"
       ]
+    },
+    {
+      "name": "counter-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on counter attack.",
+      "aliases": []
+    },
+    {
+      "name": "criss-cross",
+      "type": "strategy",
+      "definition": "A strategic theme focused on criss cross.",
+      "aliases": []
+    },
+    {
+      "name": "cut-off",
+      "type": "strategy",
+      "definition": "A strategic theme focused on cut off.",
+      "aliases": []
+    },
+    {
+      "name": "danish-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to danish gambit.",
+      "aliases": []
+    },
+    {
+      "name": "declined",
+      "type": "strategy",
+      "definition": "A strategic theme focused on declined.",
+      "aliases": []
+    },
+    {
+      "name": "Decoy",
+      "type": "tactic",
+      "definition": "A piece is tempted to move to a bad square by bait.",
+      "aliases": [
+        "bait",
+        "decoy tactic"
+      ]
+    },
+    {
+      "name": "deep-calculation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on deep calculation.",
+      "aliases": []
+    },
+    {
+      "name": "Defender",
+      "type": "fundamental",
+      "definition": "A piece that protects a square, piece, or king.",
+      "aliases": [
+        "guard",
+        "protector"
+      ]
+    },
+    {
+      "name": "defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to defense.",
+      "aliases": []
+    },
+    {
+      "name": "Deflection",
+      "type": "tactic",
+      "definition": "A defending piece is forced away from an important square or duty.",
+      "aliases": [
+        "deflect",
+        "deflecting"
+      ]
+    },
+    {
+      "name": "Development",
+      "type": "opening-principle",
+      "definition": "Bringing pieces from their starting squares to active squares.",
+      "aliases": [
+        "develop pieces"
+      ]
+    },
+    {
+      "name": "Diagonal",
+      "type": "board-concept",
+      "definition": "A line of same-colored squares connected corner to corner.",
+      "aliases": [
+        "diagonal line"
+      ]
+    },
+    {
+      "name": "diagonal-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to diagonal opening.",
+      "aliases": []
     },
     {
       "name": "Discovered Attack",
@@ -89,6 +643,24 @@
       ]
     },
     {
+      "name": "discovered-attack",
+      "type": "tactic",
+      "definition": "A tactical motif centered on discovered attack.",
+      "aliases": []
+    },
+    {
+      "name": "discovered-check",
+      "type": "tactic",
+      "definition": "A tactical motif centered on discovered check.",
+      "aliases": []
+    },
+    {
+      "name": "disruption",
+      "type": "strategy",
+      "definition": "A strategic theme focused on disruption.",
+      "aliases": []
+    },
+    {
       "name": "Double Check",
       "type": "tactic",
       "definition": "The king is checked by two pieces at once.",
@@ -97,39 +669,380 @@
       ]
     },
     {
-      "name": "X-Ray Attack",
+      "name": "double-bishop-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving double bishop mate.",
+      "aliases": []
+    },
+    {
+      "name": "double-check",
       "type": "tactic",
-      "definition": "Pressure passes through a piece to attack a target behind it.",
+      "definition": "A tactical motif centered on double check.",
+      "aliases": []
+    },
+    {
+      "name": "Doubled Pawns",
+      "type": "strategy",
+      "definition": "Two pawns of the same side on one file.",
       "aliases": [
-        "x ray",
-        "x-ray"
+        "double pawns"
       ]
     },
     {
-      "name": "Deflection",
-      "type": "tactic",
-      "definition": "A defending piece is forced away from an important square or duty.",
+      "name": "doubled-pawns",
+      "type": "strategy",
+      "definition": "A strategic theme focused on doubled pawns.",
+      "aliases": []
+    },
+    {
+      "name": "Dovetail Mate",
+      "type": "mate-pattern",
+      "definition": "A queen mates the king while two adjacent escape squares are blocked.",
       "aliases": [
-        "deflect",
-        "deflecting"
+        "dovetail"
       ]
     },
     {
-      "name": "Attraction",
-      "type": "tactic",
-      "definition": "A piece is lured to a square where it can be exploited.",
+      "name": "dovetail-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving dovetail mate.",
+      "aliases": []
+    },
+    {
+      "name": "draw",
+      "type": "strategy",
+      "definition": "A strategic theme focused on draw.",
+      "aliases": []
+    },
+    {
+      "name": "dutch-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to dutch defense.",
+      "aliases": []
+    },
+    {
+      "name": "dutch-setup",
+      "type": "strategy",
+      "definition": "A strategic theme focused on dutch setup.",
+      "aliases": []
+    },
+    {
+      "name": "endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving endgame.",
+      "aliases": []
+    },
+    {
+      "name": "english-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to english opening.",
+      "aliases": []
+    },
+    {
+      "name": "Escape Square",
+      "type": "fundamental",
+      "definition": "A legal square the king can move to avoid danger.",
       "aliases": [
-        "lure",
-        "attract"
+        "flight square"
       ]
     },
     {
-      "name": "Decoy",
+      "name": "escape-square",
+      "type": "board-concept",
+      "definition": "A board concept focused on escape square.",
+      "aliases": []
+    },
+    {
+      "name": "escort",
+      "type": "strategy",
+      "definition": "A strategic theme focused on escort.",
+      "aliases": []
+    },
+    {
+      "name": "euwe-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to euwe defense.",
+      "aliases": []
+    },
+    {
+      "name": "evans-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to evans gambit.",
+      "aliases": []
+    },
+    {
+      "name": "exchange",
+      "type": "strategy",
+      "definition": "A strategic theme focused on exchange.",
+      "aliases": []
+    },
+    {
+      "name": "Exchange Sacrifice",
       "type": "tactic",
-      "definition": "A piece is tempted to move to a bad square by bait.",
+      "definition": "A rook is given for a minor piece to gain initiative or position.",
       "aliases": [
-        "bait",
-        "decoy tactic"
+        "exchange sac"
+      ]
+    },
+    {
+      "name": "exchange-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on exchange variation.",
+      "aliases": []
+    },
+    {
+      "name": "expansion",
+      "type": "strategy",
+      "definition": "A strategic theme focused on expansion.",
+      "aliases": []
+    },
+    {
+      "name": "exposed-king",
+      "type": "strategy",
+      "definition": "A strategic theme focused on exposed king.",
+      "aliases": []
+    },
+    {
+      "name": "fajarowicz-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on fajarowicz variation.",
+      "aliases": []
+    },
+    {
+      "name": "falkbeer-countergambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to falkbeer countergambit.",
+      "aliases": []
+    },
+    {
+      "name": "Fianchetto",
+      "type": "opening-principle",
+      "definition": "Developing a bishop to the long diagonal after moving the adjacent pawn.",
+      "aliases": [
+        "fianchetto bishop"
+      ]
+    },
+    {
+      "name": "File",
+      "type": "board-concept",
+      "definition": "A vertical column of squares on the chessboard.",
+      "aliases": [
+        "column"
+      ]
+    },
+    {
+      "name": "file-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to file opening.",
+      "aliases": []
+    },
+    {
+      "name": "flank-counter",
+      "type": "strategy",
+      "definition": "A strategic theme focused on flank counter.",
+      "aliases": []
+    },
+    {
+      "name": "flank-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to flank opening.",
+      "aliases": []
+    },
+    {
+      "name": "flexible",
+      "type": "strategy",
+      "definition": "A strategic theme focused on flexible.",
+      "aliases": []
+    },
+    {
+      "name": "Fool's Mate",
+      "type": "mate-pattern",
+      "definition": "The fastest possible checkmate after severe opening weakening.",
+      "aliases": [
+        "fools mate"
+      ]
+    },
+    {
+      "name": "forcing-sequence",
+      "type": "tactic",
+      "definition": "A tactical motif centered on forcing sequence.",
+      "aliases": []
+    },
+    {
+      "name": "Fork",
+      "type": "tactic",
+      "definition": "One move attacks two or more enemy targets at the same time.",
+      "aliases": [
+        "double attack",
+        "fork tactic"
+      ]
+    },
+    {
+      "name": "fork-setup",
+      "type": "tactic",
+      "definition": "A tactical motif centered on fork setup.",
+      "aliases": []
+    },
+    {
+      "name": "Fortress",
+      "type": "endgame-technique",
+      "definition": "A defensive setup that cannot be broken despite material deficit.",
+      "aliases": [
+        "fortress defense"
+      ]
+    },
+    {
+      "name": "four-knights-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on four knights game.",
+      "aliases": []
+    },
+    {
+      "name": "four-pawns-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on four pawns attack.",
+      "aliases": []
+    },
+    {
+      "name": "frankenstein-dracula",
+      "type": "board-concept",
+      "definition": "A board concept focused on frankenstein dracula.",
+      "aliases": []
+    },
+    {
+      "name": "french-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to french defense.",
+      "aliases": []
+    },
+    {
+      "name": "froms-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to froms gambit.",
+      "aliases": []
+    },
+    {
+      "name": "gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to gambit.",
+      "aliases": []
+    },
+    {
+      "name": "gambit-refutation",
+      "type": "opening-principle",
+      "definition": "An opening theme related to gambit refutation.",
+      "aliases": []
+    },
+    {
+      "name": "Greek Gift Sacrifice",
+      "type": "tactic",
+      "definition": "A bishop sacrifice on the king-side to open a king attack.",
+      "aliases": [
+        "bishop sacrifice on h7",
+        "bishop sacrifice on b2"
+      ]
+    },
+    {
+      "name": "grob-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to grob opening.",
+      "aliases": []
+    },
+    {
+      "name": "grobs-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on grobs attack.",
+      "aliases": []
+    },
+    {
+      "name": "grunfeld-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to grunfeld defense.",
+      "aliases": []
+    },
+    {
+      "name": "grunfeld-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on grunfeld variation.",
+      "aliases": []
+    },
+    {
+      "name": "Guard",
+      "type": "vocabulary",
+      "definition": "A piece that protects another piece or square.",
+      "aliases": [
+        "guards",
+        "guarding"
+      ]
+    },
+    {
+      "name": "halloween-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to halloween gambit.",
+      "aliases": []
+    },
+    {
+      "name": "halosar-trap",
+      "type": "strategy",
+      "definition": "A strategic theme focused on halosar trap.",
+      "aliases": []
+    },
+    {
+      "name": "hanging-piece",
+      "type": "tactic",
+      "definition": "A tactical motif centered on hanging piece.",
+      "aliases": []
+    },
+    {
+      "name": "heavy-pieces",
+      "type": "strategy",
+      "definition": "A strategic theme focused on heavy pieces.",
+      "aliases": []
+    },
+    {
+      "name": "Hook Mate",
+      "type": "mate-pattern",
+      "definition": "A king trapped near a pawn structure is mated by heavy-piece coordination.",
+      "aliases": [
+        "hook"
+      ]
+    },
+    {
+      "name": "hook-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving hook mate.",
+      "aliases": []
+    },
+    {
+      "name": "hypermodern",
+      "type": "strategy",
+      "definition": "A strategic theme focused on hypermodern.",
+      "aliases": []
+    },
+    {
+      "name": "imbalance",
+      "type": "strategy",
+      "definition": "A strategic theme focused on imbalance.",
+      "aliases": []
+    },
+    {
+      "name": "indian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to indian defense.",
+      "aliases": []
+    },
+    {
+      "name": "indirect-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to indirect defense.",
+      "aliases": []
+    },
+    {
+      "name": "Initiative",
+      "type": "strategy",
+      "definition": "The ability to force the opponent to react to your threats.",
+      "aliases": [
+        "take the initiative"
       ]
     },
     {
@@ -142,140 +1055,188 @@
       ]
     },
     {
-      "name": "Clearance",
+      "name": "intermediate-move",
+      "type": "strategy",
+      "definition": "A strategic theme focused on intermediate move.",
+      "aliases": []
+    },
+    {
+      "name": "Isolated Pawn",
+      "type": "strategy",
+      "definition": "A pawn with no friendly pawns on adjacent files.",
+      "aliases": [
+        "isolani",
+        "isolated queen pawn"
+      ]
+    },
+    {
+      "name": "italian-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on italian game.",
+      "aliases": []
+    },
+    {
+      "name": "jobava-london",
+      "type": "strategy",
+      "definition": "A strategic theme focused on jobava london.",
+      "aliases": []
+    },
+    {
+      "name": "kick",
+      "type": "strategy",
+      "definition": "A strategic theme focused on kick.",
+      "aliases": []
+    },
+    {
+      "name": "kieseritzky-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to kieseritzky gambit.",
+      "aliases": []
+    },
+    {
+      "name": "King and Pawn Endgame",
+      "type": "endgame-technique",
+      "definition": "A pure endgame where king activity and pawn races are central.",
+      "aliases": [
+        "pawn ending"
+      ]
+    },
+    {
+      "name": "King Safety",
+      "type": "strategy",
+      "definition": "The security of the king from immediate and long-term threats.",
+      "aliases": [
+        "safe king",
+        "king shelter"
+      ]
+    },
+    {
+      "name": "King Walk",
+      "type": "method",
+      "definition": "An endgame king march to support pawns or invade key squares.",
+      "aliases": [
+        "active king"
+      ]
+    },
+    {
+      "name": "king-activity",
+      "type": "strategy",
+      "definition": "A strategic theme focused on king activity.",
+      "aliases": []
+    },
+    {
+      "name": "king-hunt",
+      "type": "strategy",
+      "definition": "A strategic theme focused on king hunt.",
+      "aliases": []
+    },
+    {
+      "name": "king-pawn",
+      "type": "strategy",
+      "definition": "A strategic theme focused on king pawn.",
+      "aliases": []
+    },
+    {
+      "name": "king-pawn-ending",
+      "type": "strategy",
+      "definition": "A strategic theme focused on king pawn ending.",
+      "aliases": []
+    },
+    {
+      "name": "king-safety",
+      "type": "board-concept",
+      "definition": "A board concept focused on king safety.",
+      "aliases": []
+    },
+    {
+      "name": "king-walk",
+      "type": "strategy",
+      "definition": "A strategic theme focused on king walk.",
+      "aliases": []
+    },
+    {
+      "name": "kings-fianchetto-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to kings fianchetto opening.",
+      "aliases": []
+    },
+    {
+      "name": "kings-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to kings gambit.",
+      "aliases": []
+    },
+    {
+      "name": "kings-indian-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on kings indian attack.",
+      "aliases": []
+    },
+    {
+      "name": "kings-indian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to kings indian defense.",
+      "aliases": []
+    },
+    {
+      "name": "kingside-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on kingside attack.",
+      "aliases": []
+    },
+    {
+      "name": "knight-development",
+      "type": "board-concept",
+      "definition": "A board concept focused on knight development.",
+      "aliases": []
+    },
+    {
+      "name": "knight-endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving knight endgame.",
+      "aliases": []
+    },
+    {
+      "name": "knight-fork",
       "type": "tactic",
-      "definition": "A piece moves away to clear a line or square for another piece.",
-      "aliases": [
-        "clearance sacrifice",
-        "clear line"
-      ]
+      "definition": "A tactical motif centered on knight fork.",
+      "aliases": []
     },
     {
-      "name": "Removal of Defender",
-      "type": "tactic",
-      "definition": "A key defending piece is removed so a target becomes vulnerable.",
-      "aliases": [
-        "capturing defender",
-        "remove defender"
-      ]
+      "name": "knight-jump",
+      "type": "strategy",
+      "definition": "A strategic theme focused on knight jump.",
+      "aliases": []
     },
     {
-      "name": "Overloading",
-      "type": "tactic",
-      "definition": "A defender is forced to guard too many threats at once.",
-      "aliases": [
-        "overloaded piece"
-      ]
+      "name": "knight-maneuver",
+      "type": "strategy",
+      "definition": "A strategic theme focused on knight maneuver.",
+      "aliases": []
     },
     {
-      "name": "Zwischenzug",
-      "type": "tactic",
-      "definition": "An in-between move is played before the expected move.",
-      "aliases": [
-        "intermezzo",
-        "in-between move"
-      ]
-    },
-    {
-      "name": "Quiet Move",
-      "type": "tactic",
-      "definition": "A non-forcing move that creates a hidden or stronger threat.",
-      "aliases": [
-        "quiet tactic",
-        "prophylactic move"
-      ]
-    },
-    {
-      "name": "Sacrifice",
-      "type": "tactic",
-      "definition": "Material is given up to gain a bigger strategic or tactical reward.",
-      "aliases": [
-        "sac",
-        "material sacrifice"
-      ]
-    },
-    {
-      "name": "Exchange Sacrifice",
-      "type": "tactic",
-      "definition": "A rook is given for a minor piece to gain initiative or position.",
-      "aliases": [
-        "exchange sac"
-      ]
-    },
-    {
-      "name": "Greek Gift Sacrifice",
-      "type": "tactic",
-      "definition": "A bishop sacrifice on the king-side to open a king attack.",
-      "aliases": [
-        "bishop sacrifice on h7",
-        "bishop sacrifice on b2"
-      ]
-    },
-    {
-      "name": "Smothered Mate",
+      "name": "knight-mate",
       "type": "mate-pattern",
-      "definition": "Checkmate where the king is trapped by its own pieces, often by a knight.",
-      "aliases": [
-        "smother mate"
-      ]
+      "definition": "A mating pattern or forcing mate theme involving knight mate.",
+      "aliases": []
     },
     {
-      "name": "Back-Rank Mate",
-      "type": "mate-pattern",
-      "definition": "Mate delivered on the back rank when the king has no escape squares.",
-      "aliases": [
-        "back rank",
-        "backrank mate"
-      ]
+      "name": "knight-outpost",
+      "type": "board-concept",
+      "definition": "A board concept focused on knight outpost.",
+      "aliases": []
     },
     {
-      "name": "Anastasia Mate",
-      "type": "mate-pattern",
-      "definition": "A mating pattern using rook/queen with knight support against a trapped king.",
-      "aliases": [
-        "anastasia"
-      ]
+      "name": "knights",
+      "type": "strategy",
+      "definition": "A strategic theme focused on knights.",
+      "aliases": []
     },
     {
-      "name": "Arabian Mate",
-      "type": "mate-pattern",
-      "definition": "A mating pattern with rook and knight coordinating against a cornered king.",
-      "aliases": [
-        "arabian"
-      ]
-    },
-    {
-      "name": "Boden Mate",
-      "type": "mate-pattern",
-      "definition": "Mate delivered by crossing bishops controlling escape squares.",
-      "aliases": [
-        "boden"
-      ]
-    },
-    {
-      "name": "Dovetail Mate",
-      "type": "mate-pattern",
-      "definition": "A queen mates the king while two adjacent escape squares are blocked.",
-      "aliases": [
-        "dovetail"
-      ]
-    },
-    {
-      "name": "Hook Mate",
-      "type": "mate-pattern",
-      "definition": "A king trapped near a pawn structure is mated by heavy-piece coordination.",
-      "aliases": [
-        "hook"
-      ]
-    },
-    {
-      "name": "Mating Net",
-      "type": "mate-pattern",
-      "definition": "A setup where the king is gradually stripped of all escape squares.",
-      "aliases": [
-        "mate net",
-        "net"
-      ]
+      "name": "koltanowski-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on koltanowski variation.",
+      "aliases": []
     },
     {
       "name": "Ladder Mate",
@@ -294,45 +1255,305 @@
       ]
     },
     {
-      "name": "Fool's Mate",
+      "name": "legalls-mate",
       "type": "mate-pattern",
-      "definition": "The fastest possible checkmate after severe opening weakening.",
+      "definition": "A mating pattern or forcing mate theme involving legalls mate.",
+      "aliases": []
+    },
+    {
+      "name": "Line",
+      "type": "vocabulary",
+      "definition": "A path of squares in one direction, like a file, rank, or diagonal.",
       "aliases": [
-        "fools mate"
+        "lines"
       ]
     },
     {
-      "name": "Scholar's Mate",
+      "name": "Line Opening",
+      "type": "method",
+      "definition": "Opening files or diagonals to activate pieces and launch tactics.",
+      "aliases": [
+        "open lines"
+      ]
+    },
+    {
+      "name": "london-system",
+      "type": "strategy",
+      "definition": "A strategic theme focused on london system.",
+      "aliases": []
+    },
+    {
+      "name": "Long Diagonal",
+      "type": "board-concept",
+      "definition": "A diagonal that stretches across much of the board and boosts bishop power.",
+      "aliases": [
+        "big diagonal"
+      ]
+    },
+    {
+      "name": "long-diagonal",
+      "type": "board-concept",
+      "definition": "A board concept focused on long diagonal.",
+      "aliases": []
+    },
+    {
+      "name": "Loose Piece",
+      "type": "vocabulary",
+      "definition": "A piece that is not defended and can often be won.",
+      "aliases": [
+        "loose",
+        "hanging"
+      ]
+    },
+    {
+      "name": "Lucena Position",
+      "type": "endgame-technique",
+      "definition": "A key rook endgame winning method with a bridge-building maneuver.",
+      "aliases": [
+        "lucena"
+      ]
+    },
+    {
+      "name": "luft",
+      "type": "strategy",
+      "definition": "A strategic theme focused on luft.",
+      "aliases": []
+    },
+    {
+      "name": "main-line",
+      "type": "strategy",
+      "definition": "A strategic theme focused on main line.",
+      "aliases": []
+    },
+    {
+      "name": "maneuver",
+      "type": "strategy",
+      "definition": "A strategic theme focused on maneuver.",
+      "aliases": []
+    },
+    {
+      "name": "mar-del-plata",
+      "type": "strategy",
+      "definition": "A strategic theme focused on mar del plata.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-5-or-more-moves",
       "type": "mate-pattern",
-      "definition": "A beginner mating attack on the weak f7/f2 square.",
+      "definition": "A mating pattern or forcing mate theme involving mate in 5 or more moves.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-four-moves",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate in four moves.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-one",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate in one.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-one-move",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate in one move.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-three-moves",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate in three moves.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-two-moves",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate in two moves.",
+      "aliases": []
+    },
+    {
+      "name": "mate-pattern",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate pattern.",
+      "aliases": []
+    },
+    {
+      "name": "mate-patterns",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate patterns.",
+      "aliases": []
+    },
+    {
+      "name": "mate-threat",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mate threat.",
+      "aliases": []
+    },
+    {
+      "name": "Mating Net",
+      "type": "mate-pattern",
+      "definition": "A setup where the king is gradually stripped of all escape squares.",
       "aliases": [
-        "scholars mate"
+        "mate net",
+        "net"
       ]
     },
     {
-      "name": "Underpromotion",
+      "name": "mating-net",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving mating net.",
+      "aliases": []
+    },
+    {
+      "name": "middle-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on middle game.",
+      "aliases": []
+    },
+    {
+      "name": "mieses-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on mieses variation.",
+      "aliases": []
+    },
+    {
+      "name": "Minor Piece Endgame",
       "type": "endgame-technique",
-      "definition": "Promoting a pawn to a piece other than a queen for tactical reasons.",
+      "definition": "An endgame where bishops and/or knights decide key plans.",
       "aliases": [
-        "under promote",
-        "underpromotion tactic"
+        "minor-piece endgame"
       ]
     },
     {
-      "name": "Promotion",
+      "name": "minor-piece",
+      "type": "strategy",
+      "definition": "A strategic theme focused on minor piece.",
+      "aliases": []
+    },
+    {
+      "name": "modern-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to modern defense.",
+      "aliases": []
+    },
+    {
+      "name": "mutual-zugzwang",
       "type": "endgame-technique",
-      "definition": "A pawn reaches the last rank and becomes another piece.",
+      "definition": "An endgame technique or theme involving mutual zugzwang.",
+      "aliases": []
+    },
+    {
+      "name": "nimzo-indian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to nimzo indian defense.",
+      "aliases": []
+    },
+    {
+      "name": "nimzowitsch-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to nimzowitsch defense.",
+      "aliases": []
+    },
+    {
+      "name": "nimzowitsch-larsen-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on nimzowitsch larsen attack.",
+      "aliases": []
+    },
+    {
+      "name": "nimzowitsch-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on nimzowitsch variation.",
+      "aliases": []
+    },
+    {
+      "name": "noahs-ark-trap",
+      "type": "strategy",
+      "definition": "A strategic theme focused on noahs ark trap.",
+      "aliases": []
+    },
+    {
+      "name": "Open File",
+      "type": "strategy",
+      "definition": "A file with no pawns, ideal for rook or queen activity.",
       "aliases": [
-        "pawn promotion",
-        "promote"
+        "open-file"
       ]
     },
     {
-      "name": "Passed Pawn",
+      "name": "open-center",
+      "type": "board-concept",
+      "definition": "A board concept focused on open center.",
+      "aliases": []
+    },
+    {
+      "name": "open-lines",
+      "type": "strategy",
+      "definition": "A strategic theme focused on open lines.",
+      "aliases": []
+    },
+    {
+      "name": "opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to opening.",
+      "aliases": []
+    },
+    {
+      "name": "opening-strategy",
+      "type": "opening-principle",
+      "definition": "An opening theme related to opening strategy.",
+      "aliases": []
+    },
+    {
+      "name": "opening-tactics",
+      "type": "opening-principle",
+      "definition": "An opening theme related to opening tactics.",
+      "aliases": []
+    },
+    {
+      "name": "opening-theory",
+      "type": "opening-principle",
+      "definition": "An opening theme related to opening theory.",
+      "aliases": []
+    },
+    {
+      "name": "opening-trap",
+      "type": "opening-principle",
+      "definition": "An opening theme related to opening trap.",
+      "aliases": []
+    },
+    {
+      "name": "Opposite-Colored Bishops",
       "type": "endgame-technique",
-      "definition": "A pawn with no opposing pawns in front of it on its file or adjacent files.",
+      "definition": "Bishops on different colors often increase drawing chances.",
       "aliases": [
-        "passed-pawn"
+        "opposite bishops"
+      ]
+    },
+    {
+      "name": "Opposite-Side Castling",
+      "type": "opening-principle",
+      "definition": "Both kings castle on opposite wings, often leading to sharp attacks.",
+      "aliases": [
+        "castling opposite sides"
+      ]
+    },
+    {
+      "name": "Opposition",
+      "type": "endgame-technique",
+      "definition": "Kings face each other with one square between; one side controls key entry.",
+      "aliases": [
+        "king opposition"
+      ]
+    },
+    {
+      "name": "Outpost",
+      "type": "strategy",
+      "definition": "A protected square in enemy territory where a piece cannot be chased by pawns.",
+      "aliases": [
+        "outpost square"
       ]
     },
     {
@@ -344,12 +1565,32 @@
       ]
     },
     {
-      "name": "Connected Passed Pawns",
-      "type": "endgame-technique",
-      "definition": "Adjacent passed pawns that support each other's advance.",
+      "name": "overloaded-piece",
+      "type": "strategy",
+      "definition": "A strategic theme focused on overloaded piece.",
+      "aliases": []
+    },
+    {
+      "name": "Overloading",
+      "type": "tactic",
+      "definition": "A defender is forced to guard too many threats at once.",
       "aliases": [
-        "connected passers"
+        "overloaded piece"
       ]
+    },
+    {
+      "name": "Passed Pawn",
+      "type": "endgame-technique",
+      "definition": "A pawn with no opposing pawns in front of it on its file or adjacent files.",
+      "aliases": [
+        "passed-pawn"
+      ]
+    },
+    {
+      "name": "pattern",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pattern.",
+      "aliases": []
     },
     {
       "name": "Pawn Break",
@@ -368,37 +1609,572 @@
       ]
     },
     {
-      "name": "Isolated Pawn",
+      "name": "pawn-chain",
       "type": "strategy",
-      "definition": "A pawn with no friendly pawns on adjacent files.",
+      "definition": "A strategic theme focused on pawn chain.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-check",
+      "type": "tactic",
+      "definition": "A tactical motif centered on pawn check.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving pawn endgame.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-grab",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pawn grab.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-hunting",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pawn hunting.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving pawn mate.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-protection",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pawn protection.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-push",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pawn push.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-sacrifice",
+      "type": "tactic",
+      "definition": "A tactical motif centered on pawn sacrifice.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-storm",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pawn storm.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-structure",
+      "type": "board-concept",
+      "definition": "A board concept focused on pawn structure.",
+      "aliases": []
+    },
+    {
+      "name": "Perpetual Check",
+      "type": "endgame-technique",
+      "definition": "Repeated checks force a draw because escape is impossible.",
       "aliases": [
-        "isolani",
-        "isolated queen pawn"
+        "repetition by check"
       ]
     },
     {
-      "name": "Doubled Pawns",
+      "name": "perpetual-check",
+      "type": "tactic",
+      "definition": "A tactical motif centered on perpetual check.",
+      "aliases": []
+    },
+    {
+      "name": "petrosian-system",
       "type": "strategy",
-      "definition": "Two pawns of the same side on one file.",
+      "definition": "A strategic theme focused on petrosian system.",
+      "aliases": []
+    },
+    {
+      "name": "petrovs-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to petrovs defense.",
+      "aliases": []
+    },
+    {
+      "name": "Philidor Position",
+      "type": "endgame-technique",
+      "definition": "A key rook endgame drawing method by active rook defense.",
       "aliases": [
-        "double pawns"
+        "philidor endgame"
       ]
     },
     {
-      "name": "Backward Pawn",
+      "name": "philidor-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to philidor defense.",
+      "aliases": []
+    },
+    {
+      "name": "Piece Activity",
       "type": "strategy",
-      "definition": "A pawn that cannot safely advance and often needs protection.",
+      "definition": "How effectively pieces control squares and create threats.",
       "aliases": [
-        "backward-pawn"
+        "active piece",
+        "activity"
       ]
     },
     {
-      "name": "Open File",
-      "type": "strategy",
-      "definition": "A file with no pawns, ideal for rook or queen activity.",
+      "name": "piece-activity",
+      "type": "board-concept",
+      "definition": "A board concept focused on piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "Pin",
+      "type": "tactic",
+      "definition": "A piece cannot move because moving would expose a more valuable piece behind it.",
       "aliases": [
-        "open-file"
+        "pinned piece",
+        "pin tactic"
       ]
+    },
+    {
+      "name": "pirc-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to pirc defense.",
+      "aliases": []
+    },
+    {
+      "name": "poisoned-pawn",
+      "type": "strategy",
+      "definition": "A strategic theme focused on poisoned pawn.",
+      "aliases": []
+    },
+    {
+      "name": "polish-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to polish opening.",
+      "aliases": []
+    },
+    {
+      "name": "positional",
+      "type": "strategy",
+      "definition": "A strategic theme focused on positional.",
+      "aliases": []
+    },
+    {
+      "name": "positional-advantage",
+      "type": "strategy",
+      "definition": "A strategic theme focused on positional advantage.",
+      "aliases": []
+    },
+    {
+      "name": "positional-sacrifice",
+      "type": "tactic",
+      "definition": "A tactical motif centered on positional sacrifice.",
+      "aliases": []
+    },
+    {
+      "name": "preparation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on preparation.",
+      "aliases": []
+    },
+    {
+      "name": "pressure",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pressure.",
+      "aliases": []
+    },
+    {
+      "name": "Promotion",
+      "type": "endgame-technique",
+      "definition": "A pawn reaches the last rank and becomes another piece.",
+      "aliases": [
+        "pawn promotion",
+        "promote"
+      ]
+    },
+    {
+      "name": "promotion-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to promotion defense.",
+      "aliases": []
+    },
+    {
+      "name": "Prophylaxis",
+      "type": "strategy",
+      "definition": "Preventing the opponent's plan before it becomes dangerous.",
+      "aliases": [
+        "preventive move"
+      ]
+    },
+    {
+      "name": "provocation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on provocation.",
+      "aliases": []
+    },
+    {
+      "name": "pseudo-spanish",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pseudo spanish.",
+      "aliases": []
+    },
+    {
+      "name": "pyramid",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pyramid.",
+      "aliases": []
+    },
+    {
+      "name": "pyramid-structure",
+      "type": "strategy",
+      "definition": "A strategic theme focused on pyramid structure.",
+      "aliases": []
+    },
+    {
+      "name": "Queen Endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame where queens remain and perpetual threats are common.",
+      "aliases": [
+        "queen ending"
+      ]
+    },
+    {
+      "name": "queen-check",
+      "type": "tactic",
+      "definition": "A tactical motif centered on queen check.",
+      "aliases": []
+    },
+    {
+      "name": "queen-endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving queen endgame.",
+      "aliases": []
+    },
+    {
+      "name": "queen-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving queen mate.",
+      "aliases": []
+    },
+    {
+      "name": "queen-rook-endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving queen rook endgame.",
+      "aliases": []
+    },
+    {
+      "name": "queen-sacrifice",
+      "type": "tactic",
+      "definition": "A tactical motif centered on queen sacrifice.",
+      "aliases": []
+    },
+    {
+      "name": "queen-safety",
+      "type": "strategy",
+      "definition": "A strategic theme focused on queen safety.",
+      "aliases": []
+    },
+    {
+      "name": "queen-skewer",
+      "type": "tactic",
+      "definition": "A tactical motif centered on queen skewer.",
+      "aliases": []
+    },
+    {
+      "name": "queen-sortie",
+      "type": "strategy",
+      "definition": "A strategic theme focused on queen sortie.",
+      "aliases": []
+    },
+    {
+      "name": "queen-trade",
+      "type": "strategy",
+      "definition": "A strategic theme focused on queen trade.",
+      "aliases": []
+    },
+    {
+      "name": "queen-trap",
+      "type": "strategy",
+      "definition": "A strategic theme focused on queen trap.",
+      "aliases": []
+    },
+    {
+      "name": "queens-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to queens gambit.",
+      "aliases": []
+    },
+    {
+      "name": "queens-gambit-declined",
+      "type": "opening-principle",
+      "definition": "An opening theme related to queens gambit declined.",
+      "aliases": []
+    },
+    {
+      "name": "queens-indian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to queens indian defense.",
+      "aliases": []
+    },
+    {
+      "name": "queens-pawn-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on queens pawn game.",
+      "aliases": []
+    },
+    {
+      "name": "queenside-pressure",
+      "type": "strategy",
+      "definition": "A strategic theme focused on queenside pressure.",
+      "aliases": []
+    },
+    {
+      "name": "question-bishop",
+      "type": "strategy",
+      "definition": "A strategic theme focused on question bishop.",
+      "aliases": []
+    },
+    {
+      "name": "Quiet Move",
+      "type": "tactic",
+      "definition": "A non-forcing move that creates a hidden or stronger threat.",
+      "aliases": [
+        "quiet tactic",
+        "prophylactic move"
+      ]
+    },
+    {
+      "name": "quiet-move",
+      "type": "strategy",
+      "definition": "A strategic theme focused on quiet move.",
+      "aliases": []
+    },
+    {
+      "name": "quiet-play",
+      "type": "strategy",
+      "definition": "A strategic theme focused on quiet play.",
+      "aliases": []
+    },
+    {
+      "name": "race",
+      "type": "strategy",
+      "definition": "A strategic theme focused on race.",
+      "aliases": []
+    },
+    {
+      "name": "Rank",
+      "type": "board-concept",
+      "definition": "A horizontal row of squares on the chessboard.",
+      "aliases": [
+        "row"
+      ]
+    },
+    {
+      "name": "recover-material",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving recover material.",
+      "aliases": []
+    },
+    {
+      "name": "recovery",
+      "type": "strategy",
+      "definition": "A strategic theme focused on recovery.",
+      "aliases": []
+    },
+    {
+      "name": "refutation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on refutation.",
+      "aliases": []
+    },
+    {
+      "name": "relative-pin",
+      "type": "tactic",
+      "definition": "A tactical motif centered on relative pin.",
+      "aliases": []
+    },
+    {
+      "name": "Removal of Defender",
+      "type": "tactic",
+      "definition": "A key defending piece is removed so a target becomes vulnerable.",
+      "aliases": [
+        "capturing defender",
+        "remove defender"
+      ]
+    },
+    {
+      "name": "removal-of-defender",
+      "type": "strategy",
+      "definition": "A strategic theme focused on removal of defender.",
+      "aliases": []
+    },
+    {
+      "name": "remove-the-defender",
+      "type": "tactic",
+      "definition": "A tactical motif centered on remove the defender.",
+      "aliases": []
+    },
+    {
+      "name": "repositioning",
+      "type": "strategy",
+      "definition": "A strategic theme focused on repositioning.",
+      "aliases": []
+    },
+    {
+      "name": "restraint",
+      "type": "strategy",
+      "definition": "A strategic theme focused on restraint.",
+      "aliases": []
+    },
+    {
+      "name": "reti-gambit-accepted",
+      "type": "opening-principle",
+      "definition": "An opening theme related to reti gambit accepted.",
+      "aliases": []
+    },
+    {
+      "name": "reti-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to reti opening.",
+      "aliases": []
+    },
+    {
+      "name": "retreat",
+      "type": "strategy",
+      "definition": "A strategic theme focused on retreat.",
+      "aliases": []
+    },
+    {
+      "name": "reversed-sicilian",
+      "type": "strategy",
+      "definition": "A strategic theme focused on reversed sicilian.",
+      "aliases": []
+    },
+    {
+      "name": "richter-veresov-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on richter veresov attack.",
+      "aliases": []
+    },
+    {
+      "name": "romford-countergambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to romford countergambit.",
+      "aliases": []
+    },
+    {
+      "name": "Rook Endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame where rooks are the main active pieces.",
+      "aliases": [
+        "rook ending"
+      ]
+    },
+    {
+      "name": "Rook Lift",
+      "type": "method",
+      "definition": "Moving a rook up a file then across a rank to join an attack.",
+      "aliases": [
+        "lift"
+      ]
+    },
+    {
+      "name": "rook-endgame",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving rook endgame.",
+      "aliases": []
+    },
+    {
+      "name": "rook-skewer",
+      "type": "tactic",
+      "definition": "A tactical motif centered on rook skewer.",
+      "aliases": []
+    },
+    {
+      "name": "royal-fork",
+      "type": "tactic",
+      "definition": "A tactical motif centered on royal fork.",
+      "aliases": []
+    },
+    {
+      "name": "rubinstein-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on rubinstein variation.",
+      "aliases": []
+    },
+    {
+      "name": "russian-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on russian game.",
+      "aliases": []
+    },
+    {
+      "name": "ruy-lopez",
+      "type": "strategy",
+      "definition": "A strategic theme focused on ruy lopez.",
+      "aliases": []
+    },
+    {
+      "name": "Sacrifice",
+      "type": "tactic",
+      "definition": "Material is given up to gain a bigger strategic or tactical reward.",
+      "aliases": [
+        "sac",
+        "material sacrifice"
+      ]
+    },
+    {
+      "name": "safety",
+      "type": "strategy",
+      "definition": "A strategic theme focused on safety.",
+      "aliases": []
+    },
+    {
+      "name": "samisch-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on samisch variation.",
+      "aliases": []
+    },
+    {
+      "name": "scandinavian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to scandinavian defense.",
+      "aliases": []
+    },
+    {
+      "name": "scandinavian-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on scandinavian variation.",
+      "aliases": []
+    },
+    {
+      "name": "schlechter-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to schlechter defense.",
+      "aliases": []
+    },
+    {
+      "name": "Scholar's Mate",
+      "type": "mate-pattern",
+      "definition": "A beginner mating attack on the weak f7/f2 square.",
+      "aliases": [
+        "scholars mate"
+      ]
+    },
+    {
+      "name": "scotch-four-knights",
+      "type": "strategy",
+      "definition": "A strategic theme focused on scotch four knights.",
+      "aliases": []
+    },
+    {
+      "name": "scotch-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on scotch game.",
+      "aliases": []
     },
     {
       "name": "Semi-Open File",
@@ -409,12 +2185,414 @@
       ]
     },
     {
-      "name": "Outpost",
+      "name": "setup",
       "type": "strategy",
-      "definition": "A protected square in enemy territory where a piece cannot be chased by pawns.",
+      "definition": "A strategic theme focused on setup.",
+      "aliases": []
+    },
+    {
+      "name": "sharp",
+      "type": "strategy",
+      "definition": "A strategic theme focused on sharp.",
+      "aliases": []
+    },
+    {
+      "name": "shouldering",
+      "type": "endgame-technique",
+      "definition": "An endgame technique or theme involving shouldering.",
+      "aliases": []
+    },
+    {
+      "name": "sicilian-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to sicilian defense.",
+      "aliases": []
+    },
+    {
+      "name": "simplification",
+      "type": "strategy",
+      "definition": "A strategic theme focused on simplification.",
+      "aliases": []
+    },
+    {
+      "name": "Skewer",
+      "type": "tactic",
+      "definition": "A more valuable piece is attacked and must move, exposing a less valuable piece behind it.",
       "aliases": [
-        "outpost square"
+        "skewer tactic"
       ]
+    },
+    {
+      "name": "slav-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to slav defense.",
+      "aliases": []
+    },
+    {
+      "name": "Smothered Mate",
+      "type": "mate-pattern",
+      "definition": "Checkmate where the king is trapped by its own pieces, often by a knight.",
+      "aliases": [
+        "smother mate"
+      ]
+    },
+    {
+      "name": "smothered-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving smothered mate.",
+      "aliases": []
+    },
+    {
+      "name": "smothered-mate-threat",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving smothered mate threat.",
+      "aliases": []
+    },
+    {
+      "name": "solid",
+      "type": "strategy",
+      "definition": "A strategic theme focused on solid.",
+      "aliases": []
+    },
+    {
+      "name": "solid-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to solid defense.",
+      "aliases": []
+    },
+    {
+      "name": "solid-play",
+      "type": "strategy",
+      "definition": "A strategic theme focused on solid play.",
+      "aliases": []
+    },
+    {
+      "name": "solid-setup",
+      "type": "strategy",
+      "definition": "A strategic theme focused on solid setup.",
+      "aliases": []
+    },
+    {
+      "name": "solid-structure",
+      "type": "strategy",
+      "definition": "A strategic theme focused on solid structure.",
+      "aliases": []
+    },
+    {
+      "name": "solid-triangle",
+      "type": "strategy",
+      "definition": "A strategic theme focused on solid triangle.",
+      "aliases": []
+    },
+    {
+      "name": "sorensen-defense",
+      "type": "opening-principle",
+      "definition": "An opening theme related to sorensen defense.",
+      "aliases": []
+    },
+    {
+      "name": "Space Advantage",
+      "type": "strategy",
+      "definition": "Having more room for your pieces, often restricting opponent movement.",
+      "aliases": [
+        "space"
+      ]
+    },
+    {
+      "name": "space-advantage",
+      "type": "board-concept",
+      "definition": "A board concept focused on space advantage.",
+      "aliases": []
+    },
+    {
+      "name": "space-control",
+      "type": "board-concept",
+      "definition": "A board concept focused on space control.",
+      "aliases": []
+    },
+    {
+      "name": "spanish-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on spanish game.",
+      "aliases": []
+    },
+    {
+      "name": "square-of-the-pawn",
+      "type": "board-concept",
+      "definition": "A board concept focused on square of the pawn.",
+      "aliases": []
+    },
+    {
+      "name": "stafford-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to stafford gambit.",
+      "aliases": []
+    },
+    {
+      "name": "Stalemate",
+      "type": "endgame-technique",
+      "definition": "Side to move has no legal moves and is not in check, resulting in a draw.",
+      "aliases": [
+        "stalemate trap"
+      ]
+    },
+    {
+      "name": "standard",
+      "type": "strategy",
+      "definition": "A strategic theme focused on standard.",
+      "aliases": []
+    },
+    {
+      "name": "standard-setup",
+      "type": "strategy",
+      "definition": "A strategic theme focused on standard setup.",
+      "aliases": []
+    },
+    {
+      "name": "staunton-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to staunton gambit.",
+      "aliases": []
+    },
+    {
+      "name": "steinitz-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on steinitz attack.",
+      "aliases": []
+    },
+    {
+      "name": "stonewall-formation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on stonewall formation.",
+      "aliases": []
+    },
+    {
+      "name": "stonewall-setup",
+      "type": "strategy",
+      "definition": "A strategic theme focused on stonewall setup.",
+      "aliases": []
+    },
+    {
+      "name": "structure",
+      "type": "strategy",
+      "definition": "A strategic theme focused on structure.",
+      "aliases": []
+    },
+    {
+      "name": "structure-damage",
+      "type": "strategy",
+      "definition": "A strategic theme focused on structure damage.",
+      "aliases": []
+    },
+    {
+      "name": "supported-mate",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving supported mate.",
+      "aliases": []
+    },
+    {
+      "name": "surprise",
+      "type": "strategy",
+      "definition": "A strategic theme focused on surprise.",
+      "aliases": []
+    },
+    {
+      "name": "symmetrical",
+      "type": "strategy",
+      "definition": "A strategic theme focused on symmetrical.",
+      "aliases": []
+    },
+    {
+      "name": "symmetrical-variation",
+      "type": "strategy",
+      "definition": "A strategic theme focused on symmetrical variation.",
+      "aliases": []
+    },
+    {
+      "name": "symmetry",
+      "type": "strategy",
+      "definition": "A strategic theme focused on symmetry.",
+      "aliases": []
+    },
+    {
+      "name": "system-opening",
+      "type": "opening-principle",
+      "definition": "An opening theme related to system opening.",
+      "aliases": []
+    },
+    {
+      "name": "tactic",
+      "type": "tactic",
+      "definition": "A tactical motif centered on tactic.",
+      "aliases": []
+    },
+    {
+      "name": "tactical-shot",
+      "type": "tactic",
+      "definition": "A tactical motif centered on tactical shot.",
+      "aliases": []
+    },
+    {
+      "name": "tactical-trap",
+      "type": "tactic",
+      "definition": "A tactical motif centered on tactical trap.",
+      "aliases": []
+    },
+    {
+      "name": "tactics",
+      "type": "tactic",
+      "definition": "A tactical motif centered on tactics.",
+      "aliases": []
+    },
+    {
+      "name": "Tempo",
+      "type": "strategy",
+      "definition": "A single move; gaining tempo means improving while forcing the opponent.",
+      "aliases": [
+        "gain tempo",
+        "with tempo"
+      ]
+    },
+    {
+      "name": "Tempo Move",
+      "type": "vocabulary",
+      "definition": "A move that improves your position while forcing a reply.",
+      "aliases": [
+        "tempo"
+      ]
+    },
+    {
+      "name": "tension",
+      "type": "strategy",
+      "definition": "A strategic theme focused on tension.",
+      "aliases": []
+    },
+    {
+      "name": "the-spike",
+      "type": "strategy",
+      "definition": "A strategic theme focused on the spike.",
+      "aliases": []
+    },
+    {
+      "name": "theory",
+      "type": "opening-principle",
+      "definition": "An opening theme related to theory.",
+      "aliases": []
+    },
+    {
+      "name": "Threat",
+      "type": "fundamental",
+      "definition": "A move that creates a future danger the opponent must respect.",
+      "aliases": [
+        "create a threat"
+      ]
+    },
+    {
+      "name": "torre-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on torre attack.",
+      "aliases": []
+    },
+    {
+      "name": "trade",
+      "type": "strategy",
+      "definition": "A strategic theme focused on trade.",
+      "aliases": []
+    },
+    {
+      "name": "trade-sequence",
+      "type": "strategy",
+      "definition": "A strategic theme focused on trade sequence.",
+      "aliases": []
+    },
+    {
+      "name": "transposition",
+      "type": "strategy",
+      "definition": "A strategic theme focused on transposition.",
+      "aliases": []
+    },
+    {
+      "name": "trap",
+      "type": "strategy",
+      "definition": "A strategic theme focused on trap.",
+      "aliases": []
+    },
+    {
+      "name": "trapped-piece",
+      "type": "tactic",
+      "definition": "A tactical motif centered on trapped piece.",
+      "aliases": []
+    },
+    {
+      "name": "Triangulation",
+      "type": "endgame-technique",
+      "definition": "A maneuver to lose a tempo and transfer move obligation to the opponent.",
+      "aliases": [
+        "triangulate"
+      ]
+    },
+    {
+      "name": "trick",
+      "type": "strategy",
+      "definition": "A strategic theme focused on trick.",
+      "aliases": []
+    },
+    {
+      "name": "trompowsky-attack",
+      "type": "strategy",
+      "definition": "A strategic theme focused on trompowsky attack.",
+      "aliases": []
+    },
+    {
+      "name": "Underpromotion",
+      "type": "endgame-technique",
+      "definition": "Promoting a pawn to a piece other than a queen for tactical reasons.",
+      "aliases": [
+        "under promote",
+        "underpromotion tactic"
+      ]
+    },
+    {
+      "name": "unpin",
+      "type": "tactic",
+      "definition": "A tactical motif centered on unpin.",
+      "aliases": []
+    },
+    {
+      "name": "urussov-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to urussov gambit.",
+      "aliases": []
+    },
+    {
+      "name": "very-long",
+      "type": "strategy",
+      "definition": "A strategic theme focused on very long.",
+      "aliases": []
+    },
+    {
+      "name": "vienna-gambit",
+      "type": "opening-principle",
+      "definition": "An opening theme related to vienna gambit.",
+      "aliases": []
+    },
+    {
+      "name": "vienna-game",
+      "type": "strategy",
+      "definition": "A strategic theme focused on vienna game.",
+      "aliases": []
+    },
+    {
+      "name": "waiting",
+      "type": "strategy",
+      "definition": "A strategic theme focused on waiting.",
+      "aliases": []
+    },
+    {
+      "name": "waiting-move",
+      "type": "strategy",
+      "definition": "A strategic theme focused on waiting move.",
+      "aliases": []
     },
     {
       "name": "Weak Square",
@@ -435,121 +2613,37 @@
       ]
     },
     {
-      "name": "Initiative",
+      "name": "white-setup",
       "type": "strategy",
-      "definition": "The ability to force the opponent to react to your threats.",
-      "aliases": [
-        "take the initiative"
-      ]
+      "definition": "A strategic theme focused on white setup.",
+      "aliases": []
     },
     {
-      "name": "Tempo",
+      "name": "win-material",
+      "type": "mate-pattern",
+      "definition": "A mating pattern or forcing mate theme involving win material.",
+      "aliases": []
+    },
+    {
+      "name": "winning-the-queen",
       "type": "strategy",
-      "definition": "A single move; gaining tempo means improving while forcing the opponent.",
+      "definition": "A strategic theme focused on winning the queen.",
+      "aliases": []
+    },
+    {
+      "name": "X-Ray Attack",
+      "type": "tactic",
+      "definition": "Pressure passes through a piece to attack a target behind it.",
       "aliases": [
-        "gain tempo",
-        "with tempo"
+        "x ray",
+        "x-ray"
       ]
     },
     {
-      "name": "Prophylaxis",
-      "type": "strategy",
-      "definition": "Preventing the opponent's plan before it becomes dangerous.",
-      "aliases": [
-        "preventive move"
-      ]
-    },
-    {
-      "name": "Piece Activity",
-      "type": "strategy",
-      "definition": "How effectively pieces control squares and create threats.",
-      "aliases": [
-        "active piece",
-        "activity"
-      ]
-    },
-    {
-      "name": "Coordination",
-      "type": "strategy",
-      "definition": "How well your pieces support each other.",
-      "aliases": [
-        "piece coordination",
-        "teamwork"
-      ]
-    },
-    {
-      "name": "King Safety",
-      "type": "strategy",
-      "definition": "The security of the king from immediate and long-term threats.",
-      "aliases": [
-        "safe king",
-        "king shelter"
-      ]
-    },
-    {
-      "name": "Development",
-      "type": "opening-principle",
-      "definition": "Bringing pieces from their starting squares to active squares.",
-      "aliases": [
-        "develop pieces"
-      ]
-    },
-    {
-      "name": "Center Control",
-      "type": "opening-principle",
-      "definition": "Influencing key central squares to gain mobility and space.",
-      "aliases": [
-        "center",
-        "central control"
-      ]
-    },
-    {
-      "name": "Space Advantage",
-      "type": "strategy",
-      "definition": "Having more room for your pieces, often restricting opponent movement.",
-      "aliases": [
-        "space"
-      ]
-    },
-    {
-      "name": "Opposite-Side Castling",
-      "type": "opening-principle",
-      "definition": "Both kings castle on opposite wings, often leading to sharp attacks.",
-      "aliases": [
-        "castling opposite sides"
-      ]
-    },
-    {
-      "name": "Castling",
-      "type": "opening-principle",
-      "definition": "A king safety move that also develops the rook.",
-      "aliases": [
-        "castle"
-      ]
-    },
-    {
-      "name": "Fianchetto",
-      "type": "opening-principle",
-      "definition": "Developing a bishop to the long diagonal after moving the adjacent pawn.",
-      "aliases": [
-        "fianchetto bishop"
-      ]
-    },
-    {
-      "name": "Opposition",
-      "type": "endgame-technique",
-      "definition": "Kings face each other with one square between; one side controls key entry.",
-      "aliases": [
-        "king opposition"
-      ]
-    },
-    {
-      "name": "Triangulation",
-      "type": "endgame-technique",
-      "definition": "A maneuver to lose a tempo and transfer move obligation to the opponent.",
-      "aliases": [
-        "triangulate"
-      ]
+      "name": "x-ray-attack",
+      "type": "tactic",
+      "definition": "A tactical motif centered on x ray attack.",
+      "aliases": []
     },
     {
       "name": "Zugzwang",
@@ -560,222 +2654,12 @@
       ]
     },
     {
-      "name": "Fortress",
-      "type": "endgame-technique",
-      "definition": "A defensive setup that cannot be broken despite material deficit.",
+      "name": "Zwischenzug",
+      "type": "tactic",
+      "definition": "An in-between move is played before the expected move.",
       "aliases": [
-        "fortress defense"
-      ]
-    },
-    {
-      "name": "Perpetual Check",
-      "type": "endgame-technique",
-      "definition": "Repeated checks force a draw because escape is impossible.",
-      "aliases": [
-        "repetition by check"
-      ]
-    },
-    {
-      "name": "Stalemate",
-      "type": "endgame-technique",
-      "definition": "Side to move has no legal moves and is not in check, resulting in a draw.",
-      "aliases": [
-        "stalemate trap"
-      ]
-    },
-    {
-      "name": "Opposite-Colored Bishops",
-      "type": "endgame-technique",
-      "definition": "Bishops on different colors often increase drawing chances.",
-      "aliases": [
-        "opposite bishops"
-      ]
-    },
-    {
-      "name": "Lucena Position",
-      "type": "endgame-technique",
-      "definition": "A key rook endgame winning method with a bridge-building maneuver.",
-      "aliases": [
-        "lucena"
-      ]
-    },
-    {
-      "name": "Philidor Position",
-      "type": "endgame-technique",
-      "definition": "A key rook endgame drawing method by active rook defense.",
-      "aliases": [
-        "philidor endgame"
-      ]
-    },
-    {
-      "name": "Check",
-      "type": "fundamental",
-      "definition": "A direct attack on the king that must be answered immediately.",
-      "aliases": [
-        "giving check"
-      ]
-    },
-    {
-      "name": "Checkmate",
-      "type": "fundamental",
-      "definition": "The king is in check and has no legal escape.",
-      "aliases": [
-        "mate"
-      ]
-    },
-    {
-      "name": "Capture",
-      "type": "fundamental",
-      "definition": "Removing an enemy piece by moving onto its square.",
-      "aliases": [
-        "take",
-        "wins material"
-      ]
-    },
-    {
-      "name": "Threat",
-      "type": "fundamental",
-      "definition": "A move that creates a future danger the opponent must respect.",
-      "aliases": [
-        "create a threat"
-      ]
-    },
-    {
-      "name": "Defender",
-      "type": "fundamental",
-      "definition": "A piece that protects a square, piece, or king.",
-      "aliases": [
-        "guard",
-        "protector"
-      ]
-    },
-    {
-      "name": "Attacker",
-      "type": "fundamental",
-      "definition": "A piece actively creating pressure or direct threats.",
-      "aliases": [
-        "attacking piece"
-      ]
-    },
-    {
-      "name": "Escape Square",
-      "type": "fundamental",
-      "definition": "A legal square the king can move to avoid danger.",
-      "aliases": [
-        "flight square"
-      ]
-    },
-    {
-      "name": "File",
-      "type": "board-concept",
-      "definition": "A vertical column of squares on the chessboard.",
-      "aliases": [
-        "column"
-      ]
-    },
-    {
-      "name": "Rank",
-      "type": "board-concept",
-      "definition": "A horizontal row of squares on the chessboard.",
-      "aliases": [
-        "row"
-      ]
-    },
-    {
-      "name": "Diagonal",
-      "type": "board-concept",
-      "definition": "A line of same-colored squares connected corner to corner.",
-      "aliases": [
-        "diagonal line"
-      ]
-    },
-    {
-      "name": "Center",
-      "type": "board-concept",
-      "definition": "The central squares and surrounding area that influence piece activity.",
-      "aliases": [
-        "middle squares"
-      ]
-    },
-    {
-      "name": "Long Diagonal",
-      "type": "board-concept",
-      "definition": "A diagonal that stretches across much of the board and boosts bishop power.",
-      "aliases": [
-        "big diagonal"
-      ]
-    },
-    {
-      "name": "Line Opening",
-      "type": "method",
-      "definition": "Opening files or diagonals to activate pieces and launch tactics.",
-      "aliases": [
-        "open lines"
-      ]
-    },
-    {
-      "name": "King Walk",
-      "type": "method",
-      "definition": "An endgame king march to support pawns or invade key squares.",
-      "aliases": [
-        "active king"
-      ]
-    },
-    {
-      "name": "Rook Lift",
-      "type": "method",
-      "definition": "Moving a rook up a file then across a rank to join an attack.",
-      "aliases": [
-        "lift"
-      ]
-    },
-    {
-      "name": "Battery",
-      "type": "method",
-      "definition": "Two aligned pieces support each other on the same line of attack.",
-      "aliases": [
-        "queen bishop battery",
-        "rook battery"
-      ]
-    },
-    {
-      "name": "Bishop Pair",
-      "type": "strategy",
-      "definition": "Having both bishops often gives strong long-range control.",
-      "aliases": [
-        "two bishops"
-      ]
-    },
-    {
-      "name": "Minor Piece Endgame",
-      "type": "endgame-technique",
-      "definition": "An endgame where bishops and/or knights decide key plans.",
-      "aliases": [
-        "minor-piece endgame"
-      ]
-    },
-    {
-      "name": "Rook Endgame",
-      "type": "endgame-technique",
-      "definition": "An endgame where rooks are the main active pieces.",
-      "aliases": [
-        "rook ending"
-      ]
-    },
-    {
-      "name": "Queen Endgame",
-      "type": "endgame-technique",
-      "definition": "An endgame where queens remain and perpetual threats are common.",
-      "aliases": [
-        "queen ending"
-      ]
-    },
-    {
-      "name": "King and Pawn Endgame",
-      "type": "endgame-technique",
-      "definition": "A pure endgame where king activity and pawn races are central.",
-      "aliases": [
-        "pawn ending"
+        "intermezzo",
+        "in-between move"
       ]
     }
   ]

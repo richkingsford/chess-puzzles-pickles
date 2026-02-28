@@ -33,6 +33,23 @@ const normalizeSolvedPuzzles = (solvedPuzzles) => {
     return normalized;
 };
 
+const getCategoryPuzzlesMap = (categoryData) => {
+    if (!categoryData || typeof categoryData !== 'object' || Array.isArray(categoryData)) {
+        return {};
+    }
+
+    if (
+        categoryData.puzzles &&
+        typeof categoryData.puzzles === 'object' &&
+        !Array.isArray(categoryData.puzzles)
+    ) {
+        return categoryData.puzzles;
+    }
+
+    const { type: _ignoredType, ...legacyPuzzleMap } = categoryData;
+    return legacyPuzzleMap;
+};
+
 export const usePuzzleGame = () => {
     const [puzzlesData, setPuzzlesData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -67,10 +84,30 @@ export const usePuzzleGame = () => {
     // Derived state
     const currentCategoryPuzzles = useMemo(() => {
         if (!puzzlesData || !currentCategory) return [];
-        return Object.entries(puzzlesData[currentCategory] || {}).map(([url, data]) => ({
-            url,
-            ...data
-        }));
+        return Object.entries(getCategoryPuzzlesMap(puzzlesData[currentCategory])).map(([url, data]) => {
+            if (typeof data === 'string') {
+                return {
+                    url,
+                    answer: data,
+                    tags: [],
+                    hints: []
+                };
+            }
+
+            if (!data || typeof data !== 'object' || Array.isArray(data)) {
+                return {
+                    url,
+                    answer: '',
+                    tags: [],
+                    hints: []
+                };
+            }
+
+            return {
+                url,
+                ...data
+            };
+        });
     }, [puzzlesData, currentCategory]);
 
     const currentPuzzle = currentCategoryPuzzles[currentPuzzleIndex];

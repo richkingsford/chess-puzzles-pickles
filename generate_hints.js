@@ -830,6 +830,57 @@ function deriveTags(pageName, analysis, tactic) {
   return Array.from(tags);
 }
 
+function getCategoryPuzzleMap(categoryData) {
+  if (
+    categoryData &&
+    typeof categoryData === 'object' &&
+    !Array.isArray(categoryData) &&
+    categoryData.puzzles &&
+    typeof categoryData.puzzles === 'object' &&
+    !Array.isArray(categoryData.puzzles)
+  ) {
+    return categoryData.puzzles;
+  }
+
+  if (categoryData && typeof categoryData === 'object' && !Array.isArray(categoryData)) {
+    const { type: _ignoredType, ...legacyPuzzleMap } = categoryData;
+    return legacyPuzzleMap;
+  }
+
+  return {};
+}
+
+function getCategoryType(categoryData) {
+  if (
+    categoryData &&
+    typeof categoryData === 'object' &&
+    !Array.isArray(categoryData) &&
+    typeof categoryData.type === 'string' &&
+    categoryData.type.trim()
+  ) {
+    return categoryData.type.trim();
+  }
+
+  return 'Misc';
+}
+
+function getPuzzleAnswer(puzzleValue) {
+  if (typeof puzzleValue === 'string') {
+    return puzzleValue;
+  }
+
+  if (
+    puzzleValue &&
+    typeof puzzleValue === 'object' &&
+    !Array.isArray(puzzleValue) &&
+    typeof puzzleValue.answer === 'string'
+  ) {
+    return puzzleValue.answer;
+  }
+
+  return '';
+}
+
 (async () => {
   console.log('Reading puzzles.json...');
 
@@ -843,11 +894,13 @@ function deriveTags(pageName, analysis, tactic) {
   let totalHinted = 0;
 
   for (const pageName of Object.keys(puzzles)) {
-    const pageData = puzzles[pageName];
+    const categoryData = puzzles[pageName];
+    const pageType = getCategoryType(categoryData);
+    const pageData = getCategoryPuzzleMap(categoryData);
     const pageWithHints = {};
 
     for (const lichessUrl of Object.keys(pageData)) {
-      const answer = pageData[lichessUrl];
+      const answer = getPuzzleAnswer(pageData[lichessUrl]);
       const analysis = analyzeSequence(answer);
       const tactic = inferTactic(pageName, analysis);
       const tags = deriveTags(pageName, analysis, tactic);
@@ -862,7 +915,10 @@ function deriveTags(pageName, analysis, tactic) {
       totalHinted += 1;
     }
 
-    puzzlesWithHints[pageName] = pageWithHints;
+    puzzlesWithHints[pageName] = {
+      type: pageType,
+      puzzles: pageWithHints
+    };
   }
 
   const outputFile = 'puzzles_with_hints.json';

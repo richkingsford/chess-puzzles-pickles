@@ -116,10 +116,30 @@ function scoreToGrade(score) {
   return 'F';
 }
 
+function getCategoryPuzzleMap(categoryData) {
+  if (
+    categoryData &&
+    typeof categoryData === 'object' &&
+    !Array.isArray(categoryData) &&
+    categoryData.puzzles &&
+    typeof categoryData.puzzles === 'object' &&
+    !Array.isArray(categoryData.puzzles)
+  ) {
+    return categoryData.puzzles;
+  }
+
+  if (categoryData && typeof categoryData === 'object' && !Array.isArray(categoryData)) {
+    const { type: _ignoredType, ...legacyPuzzleMap } = categoryData;
+    return legacyPuzzleMap;
+  }
+
+  return {};
+}
+
 function flattenPuzzles(data) {
   const rows = [];
   for (const category of Object.keys(data)) {
-    const puzzles = data[category] || {};
+    const puzzles = getCategoryPuzzleMap(data[category]);
     for (const url of Object.keys(puzzles)) {
       const row = puzzles[url] || {};
       rows.push({

@@ -40,12 +40,153 @@ class ErrorBoundary extends React.Component {
 
 const formatCategoryLabel = (category) => String(category || '').replace(/-/g, ' ');
 
-const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts, onOpenDictionary, dictionaryEntryCount }) => {
+const CATEGORY_TYPE_ORDER = ['Mate', 'Tactics', 'Opening', 'Defense', 'Endgame', 'Misc'];
+
+const normalizeCategoryType = (value) => {
+  const key = String(value || '').trim().toLowerCase();
+
+  if (!key) return 'Misc';
+  if (['mate', 'mates', 'mating'].includes(key)) return 'Mate';
+  if (['tactic', 'tactics'].includes(key)) return 'Tactics';
+  if (['opening', 'openings'].includes(key)) return 'Opening';
+  if (['defense', 'defenses', 'defence', 'defences'].includes(key)) return 'Defense';
+  if (['endgame', 'endgames'].includes(key)) return 'Endgame';
+  if (['misc', 'miscellaneous', 'other', 'others'].includes(key)) return 'Misc';
+
+  return key.charAt(0).toUpperCase() + key.slice(1);
+};
+
+const inferCategoryTypeFromName = (category) => {
+  const key = String(category || '').toLowerCase();
+
+  if (key.includes('mate')) return 'Mate';
+  if (key.includes('defense')) return 'Defense';
+  if (key.includes('endgame') || key === 'zugzwang') return 'Endgame';
+
+  const openingLike = [
+    'opening',
+    'gambit',
+    'game',
+    'system'
+  ];
+
+  const namedOpeningAttacks = new Set([
+    'torre-attack',
+    'trompowsky-attack',
+    'richter-veresov-attack',
+    'nimzowitsch-larsen-attack',
+    'grobs-attack',
+    'kings-indian-attack'
+  ]);
+
+  if (key === 'ruy-lopez' || openingLike.some((word) => key.includes(word)) || namedOpeningAttacks.has(key)) {
+    return 'Opening';
+  }
+
+  const tacticalLike = new Set([
+    'pin',
+    'fork',
+    'skewer',
+    'deflection',
+    'discovery',
+    'interference',
+    'attraction',
+    'clearance',
+    'x-ray-attack',
+    'double-check',
+    'capturing-defender',
+    'quiet-move',
+    'sacrifice',
+    'intermezzo',
+    'hanging-piece',
+    'trapped-piece',
+    'exposed-king'
+  ]);
+
+  if (tacticalLike.has(key)) {
+    return 'Tactics';
+  }
+
+  return 'Misc';
+};
+
+const getCategoryPuzzlesMap = (categoryData) => {
+  if (!categoryData || typeof categoryData !== 'object' || Array.isArray(categoryData)) {
+    return {};
+  }
+
+  if (
+    categoryData.puzzles &&
+    typeof categoryData.puzzles === 'object' &&
+    !Array.isArray(categoryData.puzzles)
+  ) {
+    return categoryData.puzzles;
+  }
+
+  const { type: _ignoredType, ...legacyPuzzleMap } = categoryData;
+  return legacyPuzzleMap;
+};
+
+const getCategoryType = (category, categoryData) => {
+  if (
+    categoryData &&
+    typeof categoryData === 'object' &&
+    !Array.isArray(categoryData) &&
+    categoryData.puzzles &&
+    typeof categoryData.puzzles === 'object' &&
+    !Array.isArray(categoryData.puzzles)
+  ) {
+    return normalizeCategoryType(categoryData.type);
+  }
+
+  return inferCategoryTypeFromName(category);
+};
+
+const CategoryList = ({
+  categories,
+  onSelect,
+  solvedCounts,
+  totalCounts,
+  onOpenDictionary,
+  dictionaryEntryCount,
+  typeFilters,
+  selectedType,
+  onSelectType,
+  typeCounts
+}) => {
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
       <h1 className="text-3xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500">
         Chess Puzzles
       </h1>
+
+      <div data-testid="category-type-filters" className="rounded-xl border border-slate-700 bg-slate-800/70 p-3">
+        <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Filter By Type
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {typeFilters.map((type) => {
+            const isActive = selectedType === type;
+            const count = typeCounts[type] || 0;
+
+            return (
+              <button
+                key={type}
+                type="button"
+                data-testid="type-filter-button"
+                onClick={() => onSelectType(type)}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  isActive
+                    ? 'border-yellow-500 bg-yellow-500/20 text-yellow-300'
+                    : 'border-slate-600 bg-slate-700/70 text-slate-200 hover:bg-slate-600/80'
+                }`}
+              >
+                {type} ({count})
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {categories.map(cat => (
         <button
@@ -98,6 +239,8 @@ const CategoryList = ({ categories, onSelect, solvedCounts, totalCounts, onOpenD
 
 const normalizeWord = (word) => word.toLowerCase().replace(/[^a-z-]/g, '');
 const DICTIONARY_MATCH_THRESHOLD = 0.7;
+const SAN_IN_TEXT_REGEX = /(?:\(|\b)(O-O-O|O-O|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?[+#]?|[a-h]x[a-h][1-8](?:=[QRBN])?[+#]?|[a-h][1-8](?:=[QRBN])?[+#]?)(?:\)|\b)/g;
+const UCI_IN_TEXT_REGEX = /\b([a-h][1-8][a-h][1-8][qrbn]?)\b/g;
 
 const dictionaryTypeBadgeClass = (type) => {
   const key = String(type || '').toLowerCase();
@@ -120,6 +263,7 @@ const dictionaryTypeBadgeClass = (type) => {
 
 const buildDictionaryLookup = (dictionaryEntries) => {
   const phraseEntries = [];
+  const exactTermMap = new Map();
   const seen = new Set();
   let maxWords = 1;
 
@@ -127,6 +271,11 @@ const buildDictionaryLookup = (dictionaryEntries) => {
     const terms = [entry.name, ...(entry.aliases || [])];
 
     terms.forEach((term) => {
+      const rawTerm = String(term || '').trim();
+      if (rawTerm && !exactTermMap.has(rawTerm.toLowerCase())) {
+        exactTermMap.set(rawTerm.toLowerCase(), entry);
+      }
+
       const normalizedWords = String(term || '')
         .split(/\s+/)
         .map(normalizeWord)
@@ -152,7 +301,7 @@ const buildDictionaryLookup = (dictionaryEntries) => {
     });
   });
 
-  return { phraseEntries, maxWords };
+  return { phraseEntries, maxWords, exactTermMap };
 };
 
 const levenshteinDistance = (left, right) => {
@@ -270,6 +419,69 @@ const findDictionaryMatches = (hint, dictionaryLookup) => {
   return matches;
 };
 
+const extractMoveTokensFromHint = (hintText) => {
+  const text = String(hintText || '');
+  const tokens = [];
+  const seen = new Set();
+  const sanRegex = new RegExp(SAN_IN_TEXT_REGEX.source, 'g');
+  const uciRegex = new RegExp(UCI_IN_TEXT_REGEX.source, 'g');
+
+  for (const match of text.matchAll(sanRegex)) {
+    const token = String(match[1] || '').trim();
+    if (!token || seen.has(`san:${token}`)) {
+      continue;
+    }
+
+    seen.add(`san:${token}`);
+    tokens.push({ type: 'san', token });
+  }
+
+  for (const match of text.matchAll(uciRegex)) {
+    const token = String(match[1] || '').trim();
+    if (!token || seen.has(`uci:${token}`)) {
+      continue;
+    }
+
+    seen.add(`uci:${token}`);
+    tokens.push({ type: 'uci', token });
+  }
+
+  return tokens;
+};
+
+const deriveArrowFromHintText = (fen, hintText) => {
+  if (!fen || !hintText) {
+    return null;
+  }
+
+  const candidates = extractMoveTokensFromHint(hintText);
+
+  for (const candidate of candidates) {
+    const probeGame = new Chess(fen);
+
+    try {
+      if (candidate.type === 'san') {
+        const move = probeGame.move(candidate.token);
+        if (move) {
+          return [move.from, move.to];
+        }
+      } else if (candidate.type === 'uci') {
+        const from = candidate.token.slice(0, 2);
+        const to = candidate.token.slice(2, 4);
+        const promotion = candidate.token.length > 4 ? candidate.token[4] : 'q';
+        const move = probeGame.move({ from, to, promotion });
+        if (move) {
+          return [move.from, move.to];
+        }
+      }
+    } catch (e) {
+      // Ignore parse failures and try the next candidate token.
+    }
+  }
+
+  return null;
+};
+
 const HintWithDictionary = ({ hint, dictionaryLookup, onWordTap }) => {
   const text = String(hint || '');
   const matches = findDictionaryMatches(text, dictionaryLookup);
@@ -385,6 +597,29 @@ const DictionaryPage = ({ entries, onBack }) => {
   );
 };
 
+const deriveInitialOpponentArrow = (initialFen, answerMoves) => {
+  if (!initialFen || !Array.isArray(answerMoves) || answerMoves.length < 2) {
+    return null;
+  }
+
+  try {
+    const tempGame = new Chess(initialFen);
+    const firstMove = tempGame.move(answerMoves[0]);
+    if (!firstMove) {
+      return null;
+    }
+
+    const opponentMove = tempGame.move(answerMoves[1]);
+    if (!opponentMove) {
+      return null;
+    }
+
+    return [opponentMove.from, opponentMove.to];
+  } catch (e) {
+    return null;
+  }
+};
+
 const PuzzleView = ({
   puzzle,
   initialFen,
@@ -416,6 +651,7 @@ const PuzzleView = ({
   const [moveStatus, setMoveStatus] = useState(null);
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
   const [activeDictionaryEntry, setActiveDictionaryEntry] = useState(null);
+  const [activeDictionaryLabel, setActiveDictionaryLabel] = useState(null);
   const [autoAdvanceCountdown, setAutoAdvanceCountdown] = useState(null);
   const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
   const [lastMoveArrow, setLastMoveArrow] = useState(null);
@@ -425,11 +661,42 @@ const PuzzleView = ({
     [dictionaryEntries]
   );
 
+  const openDictionaryEntry = React.useCallback((entry, label = null) => {
+    if (!entry) {
+      return;
+    }
+    setActiveDictionaryEntry(entry);
+    setActiveDictionaryLabel(label || entry.name);
+  }, []);
+
+  const openDictionaryByExactTerm = React.useCallback((term) => {
+    const entry = dictionaryLookup.exactTermMap.get(String(term || '').toLowerCase());
+    if (!entry) {
+      return;
+    }
+    openDictionaryEntry(entry, term);
+  }, [dictionaryLookup, openDictionaryEntry]);
+
   // Answer sequence
   const answerMoves = React.useMemo(() => {
     if (!puzzle) return [];
     return puzzle.answer.split(', ');
   }, [puzzle]);
+
+  const initialOpponentArrow = React.useMemo(
+    () => deriveInitialOpponentArrow(initialFen, answerMoves),
+    [initialFen, answerMoves]
+  );
+
+  const latestHintText = hintsRevealed > 0 ? puzzle.hints[hintsRevealed - 1] : null;
+  const hintArrow = React.useMemo(
+    () => deriveArrowFromHintText(game.fen(), latestHintText),
+    [game, latestHintText]
+  );
+
+  useEffect(() => {
+    setLastMoveArrow(initialOpponentArrow);
+  }, [initialOpponentArrow]);
 
   const onDrop = (sourceSquare, targetSquare) => {
     if (isPuzzleSolvedState || isFailed || moveStatus || autoAdvanceCountdown !== null || pendingOpponentMove) return false;
@@ -491,7 +758,7 @@ const PuzzleView = ({
             } catch (e) { }
           }
           setGame(resetGame);
-          setLastMoveArrow(null);
+          setLastMoveArrow(initialOpponentArrow);
           setCurrentMoveIndex(0);
           setMoveStatus(null);
         }, 1000);
@@ -607,6 +874,10 @@ const PuzzleView = ({
   const customArrows = React.useMemo(() => {
     const arrows = [];
 
+    if (hintArrow) {
+      arrows.push(hintArrow);
+    }
+
     if (lastMoveArrow) {
       arrows.push(lastMoveArrow);
     }
@@ -625,7 +896,7 @@ const PuzzleView = ({
       }
     }
     return arrows;
-  }, [isFailed, answerMoves, currentMoveIndex, game, lastMoveArrow]);
+  }, [isFailed, answerMoves, currentMoveIndex, game, hintArrow, lastMoveArrow]);
 
   return (
     <div className="flex flex-col h-screen max-w-md mx-auto bg-slate-900">
@@ -651,7 +922,7 @@ const PuzzleView = ({
             const newGame = new Chess();
             if (initialFen) try { newGame.load(initialFen); } catch (e) { }
             setGame(newGame);
-            setLastMoveArrow(null);
+            setLastMoveArrow(initialOpponentArrow);
             setMoveStatus(null);
             setCurrentMoveIndex(0);
             setAutoAdvanceCountdown(null);
@@ -735,11 +1006,33 @@ const PuzzleView = ({
                 <HintWithDictionary
                   hint={hint}
                   dictionaryLookup={dictionaryLookup}
-                  onWordTap={setActiveDictionaryEntry}
+                  onWordTap={(entry) => openDictionaryEntry(entry, entry?.name)}
                 />
               </div>
             </div>
           ))}
+
+          {!!puzzle.tags?.length && (
+            <div data-testid="tags-panel" className="rounded-lg border border-slate-700 bg-slate-800/60 p-3">
+              <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                Tags
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {puzzle.tags.map((tag) => (
+                  <button
+                    key={tag}
+                    type="button"
+                    data-testid="tag-chip"
+                    onClick={() => openDictionaryByExactTerm(tag)}
+                    className="rounded-full border border-slate-600 bg-slate-700/70 px-2.5 py-1 text-xs text-slate-100 hover:bg-slate-600/80"
+                    title={`Open dictionary: ${tag}`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {!isPuzzleSolvedState && !isFailed && (
             <button
@@ -757,25 +1050,34 @@ const PuzzleView = ({
       </div>
 
       {activeDictionaryEntry && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55" onClick={() => setActiveDictionaryEntry(null)}>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/55"
+          onClick={() => {
+            setActiveDictionaryEntry(null);
+            setActiveDictionaryLabel(null);
+          }}
+        >
           <div
             className="w-full max-w-sm rounded-xl border border-slate-600 bg-slate-800 p-4 text-left shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-2">
               <div>
-                <h3 className="text-lg font-bold text-yellow-400">{activeDictionaryEntry.name}</h3>
+                <h3 className="text-lg font-bold text-yellow-400">{activeDictionaryLabel || activeDictionaryEntry.name}</h3>
                 <p className={`inline-block mt-2 px-2 py-0.5 text-xs uppercase tracking-wider border rounded ${dictionaryTypeBadgeClass(activeDictionaryEntry.type)}`}>
                   {activeDictionaryEntry.type}
                 </p>
               </div>
               <button
                 type="button"
-                onClick={() => setActiveDictionaryEntry(null)}
+                onClick={() => {
+                  setActiveDictionaryEntry(null);
+                  setActiveDictionaryLabel(null);
+                }}
                 className="text-slate-400 hover:text-slate-200"
                 aria-label="Close dictionary"
               >
-                ✕
+                X
               </button>
             </div>
             <p className="mt-3 text-sm text-slate-200 leading-relaxed">{activeDictionaryEntry.definition}</p>
@@ -814,6 +1116,7 @@ export default function App() {
 
   const [dictionaryData, setDictionaryData] = useState({ entries: [] });
   const [homeView, setHomeView] = useState('categories');
+  const [selectedCategoryType, setSelectedCategoryType] = useState('All');
 
   useEffect(() => {
     fetch('/dictionary.json')
@@ -859,11 +1162,16 @@ export default function App() {
     // Calculate stats
     const solvedCounts = {};
     const totalCounts = {};
-    Object.keys(puzzlesData).forEach(cat => {
-      totalCounts[cat] = Object.keys(puzzlesData[cat]).length;
+    const categoryTypeMap = {};
+
+    Object.keys(puzzlesData).forEach((cat) => {
+      const categoryData = puzzlesData[cat];
+      const puzzleMap = getCategoryPuzzlesMap(categoryData);
+      totalCounts[cat] = Object.keys(puzzleMap).length;
       // Count how many keys in solvedPuzzles[cat] match keys in puzzlesData[cat]
       const solvedInCategory = solvedPuzzles[cat] || [];
       solvedCounts[cat] = solvedInCategory.length;
+      categoryTypeMap[cat] = getCategoryType(cat, categoryData);
     });
 
     const sortedCategories = Object.keys(puzzlesData).sort((left, right) => {
@@ -871,11 +1179,41 @@ export default function App() {
       const rightComplete = (solvedCounts[right] || 0) >= (totalCounts[right] || 0) && (totalCounts[right] || 0) > 0;
 
       if (leftComplete === rightComplete) {
-        return 0;
+        return left.localeCompare(right);
       }
 
       return leftComplete ? 1 : -1;
     });
+
+    const discoveredTypes = Array.from(new Set(Object.values(categoryTypeMap)));
+    const orderedTypes = discoveredTypes.sort((left, right) => {
+      const leftIndex = CATEGORY_TYPE_ORDER.indexOf(left);
+      const rightIndex = CATEGORY_TYPE_ORDER.indexOf(right);
+      const safeLeft = leftIndex === -1 ? Number.MAX_SAFE_INTEGER : leftIndex;
+      const safeRight = rightIndex === -1 ? Number.MAX_SAFE_INTEGER : rightIndex;
+
+      if (safeLeft === safeRight) {
+        return left.localeCompare(right);
+      }
+
+      return safeLeft - safeRight;
+    });
+
+    const typeFilters = ['All', ...orderedTypes];
+    const activeType = typeFilters.includes(selectedCategoryType) ? selectedCategoryType : 'All';
+
+    const typeCounts = {
+      All: sortedCategories.length
+    };
+
+    sortedCategories.forEach((category) => {
+      const type = categoryTypeMap[category] || 'Misc';
+      typeCounts[type] = (typeCounts[type] || 0) + 1;
+    });
+
+    const visibleCategories = sortedCategories.filter((category) => (
+      activeType === 'All' || categoryTypeMap[category] === activeType
+    ));
 
     if (homeView === 'dictionary') {
       return (
@@ -887,7 +1225,7 @@ export default function App() {
     }
 
     return <CategoryList
-      categories={sortedCategories}
+      categories={visibleCategories}
       onSelect={(category) => {
         setHomeView('categories');
         selectCategory(category);
@@ -896,6 +1234,10 @@ export default function App() {
       totalCounts={totalCounts}
       onOpenDictionary={() => setHomeView('dictionary')}
       dictionaryEntryCount={(dictionaryData.entries || []).length}
+      typeFilters={typeFilters}
+      selectedType={activeType}
+      onSelectType={setSelectedCategoryType}
+      typeCounts={typeCounts}
     />;
   }
 
@@ -925,3 +1267,4 @@ export default function App() {
     </ErrorBoundary>
   );
 }
+

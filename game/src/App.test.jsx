@@ -18,6 +18,7 @@ const makePuzzle = (overrides = {}) => ({
   url: 'https://example.com/not-lichess-analysis',
   answer: 'e4',
   hints: ['Pin the guard first.'],
+  tags: ['set-one', 'pin'],
   ...overrides
 });
 
@@ -88,6 +89,12 @@ describe('App unit tests by area', () => {
             type: 'vocabulary',
             definition: 'A piece protecting another piece or square.',
             aliases: ['defender']
+          },
+          {
+            name: 'set-one',
+            type: 'vocabulary',
+            definition: 'Category tag used in tests.',
+            aliases: ['set-two']
           }
         ]
       })
@@ -120,13 +127,46 @@ describe('App unit tests by area', () => {
       expect(screen.getByTestId('open-dictionary-page')).toBeInTheDocument();
       expect(firstButton.compareDocumentPosition(secondButton) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
     });
+
+    test('filters categories by puzzle type', async () => {
+      hookState = makeHookState({
+        puzzlesData: {
+          'mate-set': {
+            type: 'Mate',
+            puzzles: {
+              one: makePuzzle()
+            }
+          },
+          'opening-set': {
+            type: 'Opening',
+            puzzles: {
+              two: makePuzzle({ answer: 'e3' })
+            }
+          }
+        },
+        solvedPuzzles: {
+          'mate-set': [],
+          'opening-set': []
+        }
+      });
+
+      render(<App />);
+
+      expect(screen.getByRole('button', { name: /mate set/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /opening set/i })).toBeInTheDocument();
+
+      await user.click(screen.getByRole('button', { name: /Mate \(1\)/i }));
+
+      expect(screen.getByRole('button', { name: /mate set/i })).toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: /opening set/i })).not.toBeInTheDocument();
+    });
   });
 
   describe('Board setup', () => {
     test('renders puzzle board with index and side-to-move status', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
-        currentPuzzle: makePuzzle(),
+        currentPuzzle: makePuzzle({ tags: ['set-one', 'pin'] }),
         totalPuzzles: 3,
         currentPuzzleIndex: 0
       });
@@ -136,7 +176,7 @@ describe('App unit tests by area', () => {
       await waitFor(() => expect(screen.getByTestId('mock-board')).toBeInTheDocument());
       expect(screen.getByTestId('puzzle-category')).toHaveTextContent('set one');
       expect(screen.getByTestId('puzzle-index')).toHaveTextContent('1 / 3');
-      expect(screen.queryByTestId('tags-panel')).not.toBeInTheDocument();
+      expect(screen.getByTestId('tags-panel')).toBeInTheDocument();
       expect(screen.getByText(/White to move|Black to move/)).toBeInTheDocument();
     });
   });
@@ -210,6 +250,25 @@ describe('App unit tests by area', () => {
       expect(arrows).toEqual([]);
     });
 
+    test('shows opponent last-move arrow on initial puzzle load when reply exists', async () => {
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({
+          url: 'https://lichess.org/analysis/rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR%20w%20KQkq%20-%200%201',
+          answer: 'e4, e5, Nf3'
+        }),
+        totalPuzzles: 1,
+        currentPuzzleIndex: 0
+      });
+
+      render(<App />);
+
+      await waitFor(() => {
+        const arrows = JSON.parse(screen.getByTestId('mock-board').getAttribute('data-arrows') || '[]');
+        expect(arrows).toEqual([['e7', 'e5']]);
+      });
+    });
+
     test('holds briefly after CORRECT on non-final step and shows opponent reply note', async () => {
       vi.useFakeTimers();
       user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
@@ -270,6 +329,23 @@ describe('App unit tests by area', () => {
       expect(screen.getByText(/Hint 1:/i)).toBeInTheDocument();
       expect(screen.getByText(/Pin the guard first\./i)).toBeInTheDocument();
     });
+
+    test('draws an arrow when revealed hint includes move notation', () => {
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({
+          answer: 'e4',
+          hints: ['Play the center break now (e4).']
+        }),
+        hintsRevealed: 1,
+        totalPuzzles: 1
+      });
+
+      render(<App />);
+
+      const arrows = JSON.parse(screen.getByTestId('mock-board').getAttribute('data-arrows') || '[]');
+      expect(arrows).toEqual([['e2', 'e4']]);
+    });
   });
 
   describe('Dictionary', () => {
@@ -307,6 +383,23 @@ describe('App unit tests by area', () => {
 
       expect(screen.getByRole('heading', { name: 'Pin' })).toBeInTheDocument();
       expect(screen.getByText(/moving it loses something more valuable/i)).toBeInTheDocument();
+    });
+
+    test('opens dictionary modal from tag chip with exact term label', async () => {
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ tags: ['set-one', 'pin'] }),
+        hintsRevealed: 0,
+        totalPuzzles: 1
+      });
+
+      render(<App />);
+
+      await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+      fireEvent.click(screen.getByRole('button', { name: 'set-one' }));
+
+      expect(screen.getByRole('heading', { name: 'set-one' })).toBeInTheDocument();
+      expect(screen.getByText(/Category tag used in tests/i)).toBeInTheDocument();
     });
 
     test('does not link weak partial matches while still linking strong phrase matches', async () => {
