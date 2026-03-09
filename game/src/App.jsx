@@ -40,6 +40,23 @@ class ErrorBoundary extends React.Component {
 
 const formatCategoryLabel = (category) => String(category || '').replace(/-/g, ' ');
 
+const formatCompletionRecord = (completedAt) => {
+  if (!completedAt) {
+    return 'Completed locally';
+  }
+
+  const parsed = new Date(completedAt);
+  if (Number.isNaN(parsed.getTime())) {
+    return 'Completed locally';
+  }
+
+  return `Completed locally ${new Intl.DateTimeFormat(undefined, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(parsed)}`;
+};
+
 const CATEGORY_TYPE_ORDER = ['Mate', 'Tactics', 'Opening', 'Defense', 'Endgame', 'Misc'];
 
 const normalizeCategoryType = (value) => {
@@ -858,7 +875,9 @@ const PuzzleView = ({
   category,
   index,
   total,
-  isRandomMode
+  isRandomMode,
+  isCompleted,
+  completedAt
 }) => {
   const [game, setGame] = useState(() => {
     const newGame = new Chess();
@@ -905,7 +924,10 @@ const PuzzleView = ({
   // Answer sequence
   const answerMoves = React.useMemo(() => {
     if (!puzzle) return [];
-    return puzzle.answer.split(', ');
+    return String(puzzle.answer || '')
+      .split(',')
+      .map((move) => move.trim())
+      .filter(Boolean);
   }, [puzzle]);
 
   const latestHintText = hintsRevealed > 0 ? puzzle.hints[hintsRevealed - 1] : null;
@@ -1220,6 +1242,7 @@ const PuzzleView = ({
             width="100%"
             height="100%"
             customArrows={customArrows}
+            movableColor={orientation}
           />
 
           {/* No board overlays for cleaner UI */}
@@ -1236,6 +1259,15 @@ const PuzzleView = ({
           </button>
 
           <div className="text-center min-w-[120px]">
+            {isCompleted && (
+              <div
+                data-testid="completion-record"
+                className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-300"
+                title={completedAt || 'Completed locally'}
+              >
+                {formatCompletionRecord(completedAt)}
+              </div>
+            )}
             {moveStatus === 'correct' ? (
               <div>
                 <div className="text-green-500 font-black text-xl animate-bounce">CORRECT!</div>
@@ -1403,6 +1435,8 @@ export default function App() {
     isSolved,
     isFailed,
     solvedPuzzles,
+    isCurrentPuzzleCompleted,
+    currentPuzzleCompletedAt,
     selectCategory,
     nextPuzzle,
     prevPuzzle,
@@ -1580,6 +1614,8 @@ export default function App() {
         isFailed={isFailed}
         dictionaryEntries={dictionaryData.entries || []}
         isRandomMode={isRandomMode}
+        isCompleted={isCurrentPuzzleCompleted}
+        completedAt={currentPuzzleCompletedAt}
       />
     </ErrorBoundary>
   );

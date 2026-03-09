@@ -43,6 +43,9 @@ const makeHookState = (overrides = {}) => ({
     'set-one': [],
     'set-two': []
   },
+  completedPuzzleRecords: {},
+  isCurrentPuzzleCompleted: false,
+  currentPuzzleCompletedAt: null,
   selectCategory,
   nextPuzzle,
   prevPuzzle,
@@ -208,6 +211,21 @@ describe('App unit tests by area', () => {
       expect(screen.getByTestId('puzzle-index')).toHaveTextContent('1 / 3');
       expect(screen.getByTestId('tags-panel')).toBeInTheDocument();
       expect(screen.getByText(/White to move|Black to move/)).toBeInTheDocument();
+    });
+
+    test('shows a local completion record for completed puzzles', async () => {
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ tags: ['set-one', 'pin'] }),
+        totalPuzzles: 1,
+        isCurrentPuzzleCompleted: true,
+        currentPuzzleCompletedAt: '2026-03-08T12:00:00.000Z'
+      });
+
+      render(<App />);
+
+      await waitFor(() => expect(screen.getByTestId('mock-board')).toBeInTheDocument());
+      expect(screen.getByTestId('completion-record')).toHaveTextContent(/Completed locally/i);
     });
 
     test('masks category and tags in random mode until tapped', async () => {
