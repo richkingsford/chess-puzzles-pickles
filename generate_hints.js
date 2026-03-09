@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function splitMoves(moveSequence) {
   if (!moveSequence) return [];
@@ -882,14 +883,17 @@ function getPuzzleAnswer(puzzleValue) {
 }
 
 (async () => {
-  console.log('Reading puzzles.json...');
+  const inputPath = process.argv[2] || path.join('game', 'public', 'puzzles.json');
+  const outputPath = process.argv[3] || inputPath;
 
-  if (!fs.existsSync('puzzles.json')) {
-    console.error('Error: puzzles.json not found');
+  console.log(`Reading ${inputPath}...`);
+
+  if (!fs.existsSync(inputPath)) {
+    console.error(`Error: ${inputPath} not found`);
     process.exit(1);
   }
 
-  const puzzles = JSON.parse(fs.readFileSync('puzzles.json', 'utf-8'));
+  const puzzles = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));
   const puzzlesWithHints = {};
   let totalHinted = 0;
 
@@ -921,8 +925,8 @@ function getPuzzleAnswer(puzzleValue) {
     };
   }
 
-  const outputFile = 'puzzles_with_hints.json';
-  fs.writeFileSync(outputFile, JSON.stringify(puzzlesWithHints, null, 2));
+  fs.writeFileSync(outputPath, JSON.stringify(puzzlesWithHints, null, 2));
+  const outputFile = outputPath;
 
   console.log(`✓ Generated hints for ${totalHinted} puzzles`);
   console.log(`✓ Saved to ${outputFile}`);

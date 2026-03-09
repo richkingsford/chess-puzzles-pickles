@@ -8,20 +8,13 @@ const loadJson = (relativePath) => JSON.parse(
 
 describe('Puzzle dataset audit', () => {
   test('every puzzle is player-ready and tag-clean', () => {
-    const rootPuzzles = loadJson('../../puzzles.json');
-    const audit = auditPuzzlesData(rootPuzzles);
+    const publicPuzzles = loadJson('../public/puzzles.json');
+    const audit = auditPuzzlesData(publicPuzzles);
 
     expect(audit.summary.totalPuzzles).toBeGreaterThan(0);
 
     if (audit.failures.length) {
       throw new Error(formatAuditFailures(audit.failures, 50));
     }
-  });
-
-  test('public puzzle payload stays in sync with the root dataset', () => {
-    const rootPuzzles = loadJson('../../puzzles.json');
-    const publicPuzzles = loadJson('../public/puzzles.json');
-
-    expect(publicPuzzles).toEqual(rootPuzzles);
   });
 });

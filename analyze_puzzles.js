@@ -489,7 +489,7 @@ function printTextReport(filePath, report) {
 
 function main() {
   const args = process.argv.slice(2);
-  const fileArg = args.find((arg) => !arg.startsWith('--')) || 'puzzles.json';
+  const fileArg = args.find((arg) => !arg.startsWith('--')) || 'game/public/puzzles.json';
   const asJson = args.includes('--json');
   const resolved = path.resolve(process.cwd(), fileArg);
 

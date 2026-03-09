@@ -14,22 +14,19 @@ function safeReadJson(filePath) {
 }
 
 async function main() {
-  const rootPath = path.resolve(__dirname, 'puzzles.json');
-  const publicPath = path.resolve(__dirname, 'game', 'public', 'puzzles.json');
+  const datasetPath = path.resolve(__dirname, 'game', 'public', 'puzzles.json');
   const auditModulePath = path.resolve(__dirname, 'game', 'src', 'lib', 'puzzleAudit.js');
   const auditModule = await import(pathToFileURL(auditModulePath).href);
 
-  const rootData = safeReadJson(rootPath);
-  const publicData = safeReadJson(publicPath);
-  const audit = auditModule.auditPuzzlesData(rootData);
-  const datasetsMatch = JSON.stringify(rootData) === JSON.stringify(publicData);
+  const dataset = safeReadJson(datasetPath);
+  const audit = auditModule.auditPuzzlesData(dataset);
 
   console.log('Puzzle Audit');
+  console.log(`- Dataset: ${path.relative(__dirname, datasetPath)}`);
   console.log(`- Total puzzles: ${audit.summary.totalPuzzles}`);
   console.log(`- Failures: ${audit.summary.failureCount}`);
   console.log(`- White to move: ${audit.summary.sideToMoveCounts.w}`);
   console.log(`- Black to move: ${audit.summary.sideToMoveCounts.b}`);
-  console.log(`- Root/public match: ${datasetsMatch ? 'yes' : 'no'}`);
 
   const failureEntries = Object.entries(audit.summary.failureCounts)
     .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]));
@@ -41,17 +38,12 @@ async function main() {
     });
   }
 
-  if (!datasetsMatch) {
-    console.error('');
-    console.error('Root puzzles.json and game/public/puzzles.json differ.');
-  }
-
   if (audit.failures.length) {
     console.error('');
     console.error(auditModule.formatAuditFailures(audit.failures, 30));
   }
 
-  if (!datasetsMatch || audit.failures.length) {
+  if (audit.failures.length) {
     process.exit(1);
   }
 }

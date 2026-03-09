@@ -7,7 +7,7 @@
     "build:app": "npm --prefix game run build",
     "deploy:prod": "npm run build:app && netlify deploy --prod --dir game/dist",
     "deploy:prod:ci": "node deploy_prod.js",
-    "analyze:puzzles": "node analyze_puzzles.js puzzles.json",
+    "analyze:puzzles": "node analyze_puzzles.js game/public/puzzles.json",
     "audit:puzzles": "node audit_puzzles.js",
     "test:puzzles": "npm --prefix game run test:puzzles"
   },

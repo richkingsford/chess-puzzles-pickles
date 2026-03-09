@@ -192,7 +192,7 @@ async function scrapePage(url, topic) {
   }
 
   // Write results
-  const outputFile = 'puzzles.json';
+  const outputFile = 'game/public/puzzles.json';
   fs.writeFileSync(outputFile, JSON.stringify(allPuzzles, null, 2));
   
   console.log(`\n✓ Saved to ${outputFile}`);
