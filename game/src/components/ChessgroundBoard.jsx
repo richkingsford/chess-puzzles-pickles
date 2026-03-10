@@ -5,7 +5,27 @@ import 'chessground/assets/chessground.base.css';
 import 'chessground/assets/chessground.brown.css';
 import 'chessground/assets/chessground.cburnett.css';
 
+const FILES = 'abcdefgh';
+
+const getSquareOverlayStyle = (square, orientation) => {
+    const fileIndex = FILES.indexOf(String(square || '').charAt(0));
+    const rank = Number(String(square || '').charAt(1));
+
+    if (fileIndex === -1 || Number.isNaN(rank) || rank < 1 || rank > 8) {
+        return null;
+    }
+
+    const left = orientation === 'black' ? (7 - fileIndex) * 12.5 : fileIndex * 12.5;
+    const top = orientation === 'black' ? (rank - 1) * 12.5 : (8 - rank) * 12.5;
+
+    return {
+        left: `${left}%`,
+        top: `${top}%`
+    };
+};
+
 export function ChessgroundBoard({ fen, orientation, onMove, width, height, customArrows, movableColor }) {
+    const wrapperRef = useRef(null);
     const ref = useRef(null);
     const api = useRef(null);
     const onMoveRef = useRef(onMove);
@@ -40,12 +60,28 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
     }, [fen, orientation]);
 
     const activeMovableColor = movableColor || 'both';
+    const isPlayerTurn = activeMovableColor !== 'both' && sideToMove === activeMovableColor;
+    const highlightedSourceSquares = useMemo(() => {
+        if (!isPlayerTurn) {
+            return [];
+        }
+
+        return Array.from(legalDests.keys());
+    }, [isPlayerTurn, legalDests]);
+    const boardClassName = [
+        'cg-wrap',
+        'puzzle-chessboard',
+        activeMovableColor === 'white' ? 'player-white' : '',
+        activeMovableColor === 'black' ? 'player-black' : '',
+        isPlayerTurn ? 'is-player-turn' : 'is-opponent-turn'
+    ].filter(Boolean).join(' ');
 
     useEffect(() => {
         if (ref.current && !api.current) {
             const config = {
                 fen: fen,
                 orientation: orientation,
+                turnColor: sideToMove,
                 movable: {
                     free: false,
                     color: activeMovableColor,
@@ -83,6 +119,7 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
             api.current.set({
                 fen: fen,
                 orientation: orientation,
+                turnColor: sideToMove,
                 movable: {
                     free: false,
                     color: activeMovableColor,
@@ -100,16 +137,31 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
             // Critical: Force bounds recalculation to fix click offset
             api.current.set({});
         }
-    }, [fen, orientation, customArrows, legalDests, activeMovableColor]);
+    }, [fen, orientation, sideToMove, customArrows, legalDests, activeMovableColor]);
 
     // Secondary effect to ensure bounds are correct on mount, resize, and interaction
     useEffect(() => {
-        if (!api.current || !ref.current) return;
+        if (!api.current || !ref.current || !wrapperRef.current) return;
 
         const handleSync = () => {
             if (api.current) {
                 api.current.set({});
             }
+
+            const boardElement = ref.current?.querySelector('cg-board');
+            const wrapperElement = wrapperRef.current;
+
+            if (!boardElement || !wrapperElement) {
+                return;
+            }
+
+            const wrapperRect = wrapperElement.getBoundingClientRect();
+            const boardRect = boardElement.getBoundingClientRect();
+
+            wrapperElement.style.setProperty('--cg-board-offset-left', `${boardRect.left - wrapperRect.left}px`);
+            wrapperElement.style.setProperty('--cg-board-offset-top', `${boardRect.top - wrapperRect.top}px`);
+            wrapperElement.style.setProperty('--cg-board-width', `${boardRect.width}px`);
+            wrapperElement.style.setProperty('--cg-board-height', `${boardRect.height}px`);
         };
 
         window.addEventListener('resize', handleSync);
@@ -132,12 +184,35 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
     }, []);
 
     return (
-        <div className="cg-wrap" style={{ width: width || '100%', height: height || '100%', position: 'relative' }}>
+        <div
+            ref={wrapperRef}
+            className={boardClassName}
+            style={{ width: width || '100%', height: height || '100%', position: 'relative' }}
+        >
             <div
                 ref={ref}
                 style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
                 className="brown cburnett"
             />
+            {highlightedSourceSquares.length > 0 && (
+                <div className="movable-source-layer" aria-hidden="true">
+                    {highlightedSourceSquares.map((square) => {
+                        const style = getSquareOverlayStyle(square, orientation);
+
+                        if (!style) {
+                            return null;
+                        }
+
+                        return (
+                            <div
+                                key={square}
+                                className="movable-source-highlight"
+                                style={style}
+                            />
+                        );
+                    })}
+                </div>
+            )}
         </div>
     );
 }

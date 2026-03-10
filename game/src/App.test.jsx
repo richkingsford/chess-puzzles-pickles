@@ -60,12 +60,13 @@ vi.mock('./hooks/usePuzzleGame', () => ({
 }));
 
 vi.mock('./components/ChessgroundBoard', () => ({
-  ChessgroundBoard: ({ onMove, fen, orientation, customArrows }) => (
+  ChessgroundBoard: ({ onMove, fen, orientation, customArrows, movableColor }) => (
     <div
       data-testid="mock-board"
       data-fen={fen}
       data-orientation={orientation}
       data-arrows={JSON.stringify(customArrows || [])}
+      data-movable-color={movableColor}
     >
       <button data-testid="move-correct" onClick={() => onMove('e2', 'e4')}>Move Correct</button>
       <button data-testid="move-wrong" onClick={() => onMove('e2', 'e3')}>Move Wrong</button>
@@ -83,19 +84,16 @@ describe('App unit tests by area', () => {
         entries: [
           {
             name: 'Pin',
-            type: 'tactic',
             definition: 'A piece is stuck because moving it loses something more valuable.',
             aliases: ['pin tactic']
           },
           {
             name: 'Guard',
-            type: 'vocabulary',
             definition: 'A piece protecting another piece or square.',
             aliases: ['defender']
           },
           {
             name: 'set-one',
-            type: 'vocabulary',
             definition: 'Category tag used in tests.',
             aliases: ['set-two']
           }
@@ -196,7 +194,7 @@ describe('App unit tests by area', () => {
   });
 
   describe('Board setup', () => {
-    test('renders puzzle board with index and side-to-move status', async () => {
+    test('renders puzzle board with index and clear player-turn indicators', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
         currentPuzzle: makePuzzle({ tags: ['set-one', 'pin'] }),
@@ -210,7 +208,27 @@ describe('App unit tests by area', () => {
       expect(screen.getByTestId('puzzle-category')).toHaveTextContent('set one');
       expect(screen.getByTestId('puzzle-index')).toHaveTextContent('1 / 3');
       expect(screen.getByTestId('tags-panel')).toBeInTheDocument();
-      expect(screen.getByText(/White to move|Black to move/)).toBeInTheDocument();
+      expect(screen.getByTestId('mock-board')).toHaveAttribute('data-movable-color', 'white');
+      expect(screen.getByText('White to move')).toBeInTheDocument();
+    });
+
+    test('shows black-side indicators for black-to-move puzzles', async () => {
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({
+          url: 'https://lichess.org/analysis/rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR_b_KQkq_-_0_1',
+          tags: ['set-one', 'pin']
+        }),
+        totalPuzzles: 1,
+        currentPuzzleIndex: 0
+      });
+
+      render(<App />);
+
+      await waitFor(() => expect(screen.getByTestId('mock-board')).toBeInTheDocument());
+      expect(screen.getByTestId('mock-board')).toHaveAttribute('data-orientation', 'black');
+      expect(screen.getByTestId('mock-board')).toHaveAttribute('data-movable-color', 'black');
+      expect(screen.getByText('Black to move')).toBeInTheDocument();
     });
 
     test('shows a local completion record for completed puzzles', async () => {
@@ -474,6 +492,38 @@ describe('App unit tests by area', () => {
       expect(screen.getByRole('heading', { name: /Chess Puzzles/i })).toBeInTheDocument();
     });
 
+    test('does not show dictionary type labels on the page or modal', async () => {
+      hookState = makeHookState({
+        currentCategory: null
+      });
+
+      const { unmount } = render(<App />);
+
+      await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+      await user.click(screen.getByTestId('open-dictionary-page'));
+
+      expect(screen.queryByText(/^tactic$/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/^vocabulary$/i)).not.toBeInTheDocument();
+
+      unmount();
+
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ hints: ['Pin the guard now.'] }),
+        hintsRevealed: 1,
+        totalPuzzles: 1
+      });
+
+      render(<App />);
+
+      await waitFor(() => expect(global.fetch).toHaveBeenCalled());
+      fireEvent.click(screen.getByRole('button', { name: 'Pin' }));
+
+      expect(screen.getByRole('heading', { name: 'Pin' })).toBeInTheDocument();
+      expect(screen.queryByText(/^tactic$/i)).not.toBeInTheDocument();
+      expect(screen.queryByText(/^vocabulary$/i)).not.toBeInTheDocument();
+    });
+
     test('opens dictionary modal from hint term tap', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
@@ -515,13 +565,11 @@ describe('App unit tests by area', () => {
           entries: [
             {
               name: 'Pin',
-              type: 'tactic',
               definition: 'A pin can overload a guard and win material.',
               aliases: []
             },
             {
               name: 'Guard',
-              type: 'vocabulary',
               definition: 'A piece that protects another piece or key square.',
               aliases: []
             }
@@ -552,17 +600,14 @@ describe('App unit tests by area', () => {
           entries: [
             {
               name: 'King Safety',
-              type: 'strategy',
               definition: 'Keeping the king secure.'
             },
             {
               name: 'Center',
-              type: 'board-concept',
               definition: 'Central squares and influence.'
             },
             {
               name: 'Loose Piece',
-              type: 'vocabulary',
               definition: 'A piece that is undefended.'
             }
           ]
@@ -591,13 +636,11 @@ describe('App unit tests by area', () => {
           entries: [
             {
               name: 'King Walk',
-              type: 'endgame-technique',
               definition: 'King activation in the endgame.',
               aliases: ['active king']
             },
             {
               name: 'minor-piece',
-              type: 'vocabulary',
               definition: 'Knight or bishop.',
               aliases: ['minor piece']
             }

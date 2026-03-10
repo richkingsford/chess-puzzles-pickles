@@ -287,25 +287,6 @@ const SAN_IN_TEXT_REGEX = /(?:\(|\b)(O-O-O|O-O|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](
 const UCI_IN_TEXT_REGEX = /\b([a-h][1-8][a-h][1-8][qrbn]?)\b/g;
 const PROMOTION_SAN_REGEX = /=([QRBN])/i;
 
-const dictionaryTypeBadgeClass = (type) => {
-  const key = String(type || '').toLowerCase();
-
-  if (key.includes('tactic') || key.includes('mate-pattern')) {
-    return 'bg-sky-500/20 text-sky-300 border-sky-500/30';
-  }
-  if (key.includes('strategy') || key.includes('opening-principle')) {
-    return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30';
-  }
-  if (key.includes('endgame') || key.includes('method')) {
-    return 'bg-purple-500/20 text-purple-300 border-purple-500/30';
-  }
-  if (key.includes('fundamental') || key.includes('board-concept') || key.includes('vocabulary')) {
-    return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
-  }
-
-  return 'bg-sky-500/20 text-sky-300 border-sky-500/30';
-};
-
 const buildDictionaryLookup = (dictionaryEntries) => {
   const phraseEntries = [];
   const exactPhraseMap = new Map();
@@ -825,15 +806,12 @@ const DictionaryPage = ({ entries, onBack }) => {
           ) : (
             sortedEntries.map((entry) => (
               <article
-                key={`${entry.name}-${entry.type}`}
+                key={entry.name}
                 data-testid="dictionary-entry"
                 className="rounded-xl border border-slate-700 bg-slate-800/60 p-4 shadow-lg"
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <h2 className="text-base font-semibold text-slate-100">{entry.name}</h2>
-                  <span className={`px-2 py-0.5 text-[11px] uppercase tracking-wider border rounded ${dictionaryTypeBadgeClass(entry.type)}`}>
-                    {entry.type}
-                  </span>
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-slate-200">
                   <DictionaryTextWithLinks
@@ -1184,8 +1162,10 @@ const PuzzleView = ({
     return arrows;
   }, [isFailed, answerMoves, currentMoveIndex, game, hintArrow, lastMoveArrow]);
 
+  const isPlayersTurn = game.turn() === (orientation === 'white' ? 'w' : 'b');
+
   return (
-    <div className="flex flex-col h-screen max-w-md mx-auto bg-slate-900">
+    <div className="flex min-h-screen flex-col max-w-md mx-auto bg-slate-900 pt-40">
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-slate-800 shadow-md">
         <button data-testid="back-button" onClick={onBack} className="p-2 hover:bg-slate-700 rounded-full">
@@ -1234,7 +1214,9 @@ const PuzzleView = ({
 
       {/* Board */}
       <div className="flex-grow flex items-center justify-center p-2 bg-slate-900/50 flex-col gap-8">
-        <div className="w-full aspect-square max-w-[400px] shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700 relative bg-[#302e2c]">
+        <div className={`w-full aspect-square max-w-[420px] shadow-2xl rounded-lg overflow-hidden border-4 relative bg-[#302e2c] ${
+          isPlayersTurn ? 'border-emerald-400/55 ring-2 ring-emerald-300/15' : 'border-slate-700'
+        }`}>
           <ChessgroundBoard
             fen={game.fen()}
             orientation={orientation}
@@ -1247,7 +1229,6 @@ const PuzzleView = ({
 
           {/* No board overlays for cleaner UI */}
         </div>
-
       </div>
 
       {/* Controls & Hints */}
@@ -1383,9 +1364,6 @@ const PuzzleView = ({
             <div className="flex items-start justify-between gap-2">
               <div>
                 <h3 className="text-lg font-bold text-yellow-400">{activeDictionaryLabel || activeDictionaryEntry.name}</h3>
-                <p className={`inline-block mt-2 px-2 py-0.5 text-xs uppercase tracking-wider border rounded ${dictionaryTypeBadgeClass(activeDictionaryEntry.type)}`}>
-                  {activeDictionaryEntry.type}
-                </p>
               </div>
               <button
                 type="button"
