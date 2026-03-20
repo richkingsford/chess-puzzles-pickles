@@ -7,6 +7,19 @@ import 'chessground/assets/chessground.cburnett.css';
 
 const FILES = 'abcdefgh';
 
+const extractClientPoint = (event) => {
+    if (typeof event?.clientX === 'number' && typeof event?.clientY === 'number') {
+        return { x: event.clientX, y: event.clientY };
+    }
+
+    const touch = event?.touches?.[0] || event?.changedTouches?.[0];
+    if (touch && typeof touch.clientX === 'number' && typeof touch.clientY === 'number') {
+        return { x: touch.clientX, y: touch.clientY };
+    }
+
+    return null;
+};
+
 const getSquareOverlayStyle = (square, orientation) => {
     const fileIndex = FILES.indexOf(String(square || '').charAt(0));
     const rank = Number(String(square || '').charAt(1));
@@ -24,16 +37,21 @@ const getSquareOverlayStyle = (square, orientation) => {
     };
 };
 
-export function ChessgroundBoard({ fen, orientation, onMove, width, height, customArrows, movableColor }) {
+export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, width, height, customArrows, movableColor }) {
     const wrapperRef = useRef(null);
     const ref = useRef(null);
     const api = useRef(null);
     const onMoveRef = useRef(onMove);
+    const onInteractionRef = useRef(onInteraction);
 
     // Keep the callback ref updated
     useEffect(() => {
         onMoveRef.current = onMove;
     }, [onMove]);
+
+    useEffect(() => {
+        onInteractionRef.current = onInteraction;
+    }, [onInteraction]);
 
     // Calculate legal moves for Chessground
     const legalDests = useMemo(() => {
@@ -169,16 +187,23 @@ export function ChessgroundBoard({ fen, orientation, onMove, width, height, cust
         observer.observe(ref.current);
 
         const el = ref.current;
-        el.addEventListener('mousedown', handleSync);
-        el.addEventListener('touchstart', handleSync, { passive: true });
+        const handlePointerDown = (event) => {
+            handleSync();
+
+            const point = extractClientPoint(event);
+            if (point && onInteractionRef.current) {
+                onInteractionRef.current(point);
+            }
+        };
+
+        el.addEventListener('pointerdown', handlePointerDown, { passive: true });
 
         const t = setTimeout(handleSync, 200);
 
         return () => {
             window.removeEventListener('resize', handleSync);
             observer.disconnect();
-            el.removeEventListener('mousedown', handleSync);
-            el.removeEventListener('touchstart', handleSync);
+            el.removeEventListener('pointerdown', handlePointerDown);
             clearTimeout(t);
         };
     }, []);

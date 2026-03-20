@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Chess } from 'chess.js';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
 import {
@@ -40,24 +40,20 @@ class ErrorBoundary extends React.Component {
 
 const formatCategoryLabel = (category) => String(category || '').replace(/-/g, ' ');
 
-const formatCompletionRecord = (completedAt) => {
-  if (!completedAt) {
-    return 'Completed locally';
-  }
-
-  const parsed = new Date(completedAt);
-  if (Number.isNaN(parsed.getTime())) {
-    return 'Completed locally';
-  }
-
-  return `Completed locally ${new Intl.DateTimeFormat(undefined, {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  }).format(parsed)}`;
-};
-
 const CATEGORY_TYPE_ORDER = ['Mate', 'Tactics', 'Opening', 'Defense', 'Endgame', 'Misc'];
+
+const WIN_CONFETTI_PARTICLES = [
+  { dx: -38, dy: -26, rotation: '-120deg', delay: '0ms', color: '#fbbf24' },
+  { dx: -18, dy: -42, rotation: '-70deg', delay: '40ms', color: '#f59e0b' },
+  { dx: 8, dy: -48, rotation: '50deg', delay: '10ms', color: '#fde68a' },
+  { dx: 30, dy: -34, rotation: '110deg', delay: '60ms', color: '#fb7185' },
+  { dx: 46, dy: -10, rotation: '140deg', delay: '20ms', color: '#f97316' },
+  { dx: 34, dy: 22, rotation: '200deg', delay: '80ms', color: '#2dd4bf' },
+  { dx: 10, dy: 42, rotation: '230deg', delay: '35ms', color: '#22c55e' },
+  { dx: -14, dy: 36, rotation: '-220deg', delay: '70ms', color: '#38bdf8' },
+  { dx: -34, dy: 18, rotation: '-180deg', delay: '25ms', color: '#f472b6' },
+  { dx: 0, dy: 18, rotation: '260deg', delay: '50ms', color: '#a3e635' }
+];
 
 const normalizeCategoryType = (value) => {
   const key = String(value || '').trim().toLowerCase();
@@ -877,6 +873,10 @@ const PuzzleView = ({
   const [lastMoveArrow, setLastMoveArrow] = useState(null);
   const [isCategoryMasked, setIsCategoryMasked] = useState(Boolean(isRandomMode));
   const [areTagsMasked, setAreTagsMasked] = useState(Boolean(isRandomMode));
+  const [confettiBurst, setConfettiBurst] = useState(null);
+  const boardShellRef = useRef(null);
+  const confettiTimerRef = useRef(null);
+  const lastInteractionPointRef = useRef(null);
 
   const dictionaryLookup = React.useMemo(
     () => buildDictionaryLookup(dictionaryEntries),
@@ -898,6 +898,59 @@ const PuzzleView = ({
     }
     openDictionaryEntry(entry, term);
   }, [dictionaryLookup, openDictionaryEntry]);
+
+  const clearConfettiTimer = React.useCallback(() => {
+    if (confettiTimerRef.current) {
+      clearTimeout(confettiTimerRef.current);
+      confettiTimerRef.current = null;
+    }
+  }, []);
+
+  const getConfettiOrigin = React.useCallback(() => {
+    if (
+      Number.isFinite(lastInteractionPointRef.current?.x) &&
+      Number.isFinite(lastInteractionPointRef.current?.y)
+    ) {
+      return lastInteractionPointRef.current;
+    }
+
+    const boardRect = boardShellRef.current?.getBoundingClientRect();
+    if (boardRect) {
+      return {
+        x: boardRect.left + (boardRect.width / 2),
+        y: boardRect.top + (boardRect.height / 2)
+      };
+    }
+
+    return {
+      x: (typeof window !== 'undefined' ? window.innerWidth : 0) / 2,
+      y: (typeof window !== 'undefined' ? window.innerHeight : 0) / 2
+    };
+  }, []);
+
+  const triggerWinConfetti = React.useCallback(() => {
+    const origin = getConfettiOrigin();
+
+    clearConfettiTimer();
+    setConfettiBurst({
+      id: Date.now(),
+      x: origin.x,
+      y: origin.y
+    });
+
+    confettiTimerRef.current = setTimeout(() => {
+      setConfettiBurst(null);
+      confettiTimerRef.current = null;
+    }, 1100);
+  }, [clearConfettiTimer, getConfettiOrigin]);
+
+  const handleBoardInteraction = React.useCallback((point) => {
+    if (!point) {
+      return;
+    }
+
+    lastInteractionPointRef.current = point;
+  }, []);
 
   // Answer sequence
   const answerMoves = React.useMemo(() => {
@@ -933,6 +986,16 @@ const PuzzleView = ({
     setIsCategoryMasked(masked);
     setAreTagsMasked(masked);
   }, [isRandomMode, puzzle?.url, category]);
+
+  useEffect(() => {
+    setConfettiBurst(null);
+    lastInteractionPointRef.current = null;
+    clearConfettiTimer();
+  }, [puzzle?.url, clearConfettiTimer]);
+
+  useEffect(() => () => {
+    clearConfettiTimer();
+  }, [clearConfettiTimer]);
 
   const getPromotionPieceForMove = React.useCallback((gameState, sourceSquare, targetSquare, expectedMoveSan) => {
     const piece = gameState.get(sourceSquare);
@@ -982,6 +1045,7 @@ const PuzzleView = ({
 
         if (currentMoveIndex === answerMoves.length - 1) {
           setPendingOpponentMove(null);
+          triggerWinConfetti();
           onSolved();
           if (index < total - 1) {
             setAutoAdvanceCountdown(3);
@@ -1214,13 +1278,14 @@ const PuzzleView = ({
 
       {/* Board */}
       <div className="flex-grow flex items-center justify-center p-2 bg-slate-900/50 flex-col gap-8">
-        <div className={`w-full aspect-square max-w-[420px] shadow-2xl rounded-lg overflow-hidden border-4 relative bg-[#302e2c] ${
+        <div ref={boardShellRef} className={`w-full aspect-square max-w-[420px] shadow-2xl rounded-lg overflow-hidden border-4 relative bg-[#302e2c] ${
           isPlayersTurn ? 'border-emerald-400/55 ring-2 ring-emerald-300/15' : 'border-slate-700'
         }`}>
           <ChessgroundBoard
             fen={game.fen()}
             orientation={orientation}
             onMove={onDrop}
+            onInteraction={handleBoardInteraction}
             width="100%"
             height="100%"
             customArrows={customArrows}
@@ -1243,10 +1308,11 @@ const PuzzleView = ({
             {isCompleted && (
               <div
                 data-testid="completion-record"
-                className="mb-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-300"
-                title={completedAt || 'Completed locally'}
+                className="mb-1 inline-flex h-6 w-6 items-center justify-center rounded-full border border-emerald-500/60 bg-emerald-500/15 text-emerald-300"
+                title="Completed"
+                aria-label="Completed"
               >
-                {formatCompletionRecord(completedAt)}
+                ✓
               </div>
             )}
             {moveStatus === 'correct' ? (
@@ -1394,6 +1460,32 @@ const PuzzleView = ({
               </p>
             )}
           </div>
+        </div>
+      )}
+
+      {confettiBurst && (
+        <div
+          data-testid="win-confetti-burst"
+          className="win-confetti-burst"
+          style={{
+            '--confetti-origin-x': `${confettiBurst.x}px`,
+            '--confetti-origin-y': `${confettiBurst.y}px`
+          }}
+        >
+          <div className="win-confetti-core" />
+          {WIN_CONFETTI_PARTICLES.map((particle, particleIndex) => (
+            <span
+              key={`${confettiBurst.id}-${particleIndex}`}
+              className="win-confetti-piece"
+              style={{
+                '--confetti-dx': `${particle.dx}px`,
+                '--confetti-dy': `${particle.dy}px`,
+                '--confetti-rotation': particle.rotation,
+                '--confetti-delay': particle.delay,
+                '--confetti-color': particle.color
+              }}
+            />
+          ))}
         </div>
       )}
     </div>

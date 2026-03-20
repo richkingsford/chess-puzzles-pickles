@@ -12,6 +12,24 @@ export const GENERIC_TAGS = new Set([
   'defense'
 ]);
 
+export const STRICTLY_GENERIC_TAGS = new Set([
+  ...GENERIC_TAGS,
+  'mate-pattern',
+  'win-material',
+  'end-game'
+]);
+
+export const NEAR_EDGE_GENERIC_TAGS = new Set([
+  'king-safety-issue',
+  'weak-square-theme',
+  'pawn-structure-shift',
+  'tempo-gain-sequence',
+  'piece-activity-swing',
+  'initiative-pressure'
+]);
+
+export const MIN_TAGS_PER_PUZZLE = 3;
+
 const CANONICAL_TAG_ALIASES = new Map([
   ['opening-tactic', 'opening-tactics'],
   ['king-side-attack', 'kingside-attack']
@@ -61,6 +79,26 @@ export const normalizeTag = (tag) => {
   return CANONICAL_TAG_ALIASES.get(normalized) || normalized;
 };
 
+export const normalizeTagKey = (tag) => String(tag || '')
+  .toLowerCase()
+  .trim()
+  .replace(/[\s_]+/g, '-')
+  .replace(/-+/g, '-');
+
+export const buildTagDefinitionIndex = (dictionaryData) => {
+  const index = new Set();
+  const entries = Array.isArray(dictionaryData?.entries) ? dictionaryData.entries : [];
+
+  entries.forEach((entry) => {
+    index.add(normalizeTagKey(entry?.name));
+
+    const aliases = Array.isArray(entry?.aliases) ? entry.aliases : [];
+    aliases.forEach((alias) => index.add(normalizeTagKey(alias)));
+  });
+
+  return index;
+};
+
 export const getAllPuzzleEntries = (puzzlesData) => {
   if (!puzzlesData || typeof puzzlesData !== 'object' || Array.isArray(puzzlesData)) {
     return [];
@@ -82,7 +120,7 @@ const createFailure = (entry, code, details = {}) => ({
   ...details
 });
 
-export const auditPuzzleEntry = (entry) => {
+export const auditPuzzleEntry = (entry, options = {}) => {
   const failures = [];
 
   if (!PUZZLE_URL_REGEX.test(entry.url)) {
@@ -171,6 +209,21 @@ export const auditPuzzleEntry = (entry) => {
     ? entry.puzzleData.tags.filter((tag) => typeof tag === 'string')
     : [];
 
+  const minTags = Number.isInteger(options.minTagsPerPuzzle)
+    ? options.minTagsPerPuzzle
+    : MIN_TAGS_PER_PUZZLE;
+
+  if (tags.length < minTags) {
+    failures.push(createFailure(entry, 'insufficient-tags', {
+      tagCount: tags.length,
+      minTags
+    }));
+  }
+
+  const tagDefinitionIndex = options.tagDefinitionIndex instanceof Set
+    ? options.tagDefinitionIndex
+    : null;
+
   const seenTags = new Set();
 
   tags.forEach((tag) => {
@@ -186,29 +239,37 @@ export const auditPuzzleEntry = (entry) => {
       }));
     }
 
-    const normalizedKey = canonicalTag.toLowerCase();
+    const normalizedKey = normalizeTagKey(canonicalTag);
     if (seenTags.has(normalizedKey)) {
       failures.push(createFailure(entry, 'duplicate-tag', { tag: canonicalTag }));
     } else {
       seenTags.add(normalizedKey);
     }
 
-    if (GENERIC_TAGS.has(normalizedKey)) {
+    if (STRICTLY_GENERIC_TAGS.has(normalizedKey)) {
       failures.push(createFailure(entry, 'generic-tag', { tag: canonicalTag }));
+    }
+
+    if (NEAR_EDGE_GENERIC_TAGS.has(normalizedKey)) {
+      failures.push(createFailure(entry, 'near-generic-tag', { tag: canonicalTag }));
+    }
+
+    if (tagDefinitionIndex && !tagDefinitionIndex.has(normalizedKey)) {
+      failures.push(createFailure(entry, 'undefined-tag', { tag: canonicalTag }));
     }
   });
 
   return { failures, sideToMove };
 };
 
-export const auditPuzzlesData = (puzzlesData) => {
+export const auditPuzzlesData = (puzzlesData, options = {}) => {
   const entries = getAllPuzzleEntries(puzzlesData);
   const failures = [];
   const sideToMoveCounts = { w: 0, b: 0 };
   const failureCounts = {};
 
   entries.forEach((entry) => {
-    const result = auditPuzzleEntry(entry);
+    const result = auditPuzzleEntry(entry, options);
 
     if (result.sideToMove === 'w' || result.sideToMove === 'b') {
       sideToMoveCounts[result.sideToMove] += 1;
@@ -253,6 +314,12 @@ export const formatAuditFailure = (failure) => {
   }
   if (failure.message) {
     bits.push(`message=${failure.message}`);
+  }
+  if (Number.isInteger(failure.tagCount)) {
+    bits.push(`tagCount=${failure.tagCount}`);
+  }
+  if (Number.isInteger(failure.minTags)) {
+    bits.push(`minTags=${failure.minTags}`);
   }
 
   return bits.join(' | ');

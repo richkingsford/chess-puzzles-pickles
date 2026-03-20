@@ -60,7 +60,7 @@ vi.mock('./hooks/usePuzzleGame', () => ({
 }));
 
 vi.mock('./components/ChessgroundBoard', () => ({
-  ChessgroundBoard: ({ onMove, fen, orientation, customArrows, movableColor }) => (
+  ChessgroundBoard: ({ onMove, onInteraction, fen, orientation, customArrows, movableColor }) => (
     <div
       data-testid="mock-board"
       data-fen={fen}
@@ -68,8 +68,24 @@ vi.mock('./components/ChessgroundBoard', () => ({
       data-arrows={JSON.stringify(customArrows || [])}
       data-movable-color={movableColor}
     >
-      <button data-testid="move-correct" onClick={() => onMove('e2', 'e4')}>Move Correct</button>
-      <button data-testid="move-wrong" onClick={() => onMove('e2', 'e3')}>Move Wrong</button>
+      <button
+        data-testid="move-correct"
+        onClick={() => {
+          onInteraction?.({ x: 120, y: 160 });
+          onMove('e2', 'e4');
+        }}
+      >
+        Move Correct
+      </button>
+      <button
+        data-testid="move-wrong"
+        onClick={() => {
+          onInteraction?.({ x: 80, y: 140 });
+          onMove('e2', 'e3');
+        }}
+      >
+        Move Wrong
+      </button>
     </div>
   )
 }));
@@ -231,7 +247,7 @@ describe('App unit tests by area', () => {
       expect(screen.getByText('Black to move')).toBeInTheDocument();
     });
 
-    test('shows a local completion record for completed puzzles', async () => {
+    test('shows a green checkmark for completed puzzles', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
         currentPuzzle: makePuzzle({ tags: ['set-one', 'pin'] }),
@@ -243,7 +259,9 @@ describe('App unit tests by area', () => {
       render(<App />);
 
       await waitFor(() => expect(screen.getByTestId('mock-board')).toBeInTheDocument());
-      expect(screen.getByTestId('completion-record')).toHaveTextContent(/Completed locally/i);
+      const completionBadge = screen.getByTestId('completion-record');
+      expect(completionBadge).toHaveTextContent('✓');
+      expect(completionBadge).toHaveAttribute('aria-label', 'Completed');
     });
 
     test('masks category and tags in random mode until tapped', async () => {
@@ -306,6 +324,10 @@ describe('App unit tests by area', () => {
       expect(screen.getByText('CORRECT!')).toBeInTheDocument();
       expect(screen.getByTestId('next-countdown')).toHaveTextContent('Next in 3');
       expect(markSolved).toHaveBeenCalledTimes(1);
+
+      const confettiBurst = screen.getByTestId('win-confetti-burst');
+      expect(confettiBurst.style.getPropertyValue('--confetti-origin-x')).toBe('120px');
+      expect(confettiBurst.style.getPropertyValue('--confetti-origin-y')).toBe('160px');
 
       await waitFor(() => expect(nextPuzzle).toHaveBeenCalledTimes(1), { timeout: 4500 });
     }, 8000);
