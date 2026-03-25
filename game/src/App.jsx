@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Chess } from 'chess.js';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
+import BattleScene from './components/BattleScene';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight,
   RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle
 } from 'lucide-react';
 import { usePuzzleGame } from './hooks/usePuzzleGame';
+import { useBattleState } from './hooks/useBattleState';
 import { parsePuzzleUrl } from './lib/utils';
 
 // --- Components ---
@@ -851,7 +853,8 @@ const PuzzleView = ({
   total,
   isRandomMode,
   isCompleted,
-  completedAt
+  completedAt,
+  battle
 }) => {
   const [game, setGame] = useState(() => {
     const newGame = new Chess();
@@ -874,6 +877,7 @@ const PuzzleView = ({
   const [isCategoryMasked, setIsCategoryMasked] = useState(Boolean(isRandomMode));
   const [areTagsMasked, setAreTagsMasked] = useState(Boolean(isRandomMode));
   const [confettiBurst, setConfettiBurst] = useState(null);
+  const prevHintsRevealedRef = useRef(hintsRevealed);
   const boardShellRef = useRef(null);
   const confettiTimerRef = useRef(null);
   const lastInteractionPointRef = useRef(null);
@@ -991,7 +995,16 @@ const PuzzleView = ({
     setConfettiBurst(null);
     lastInteractionPointRef.current = null;
     clearConfettiTimer();
+    prevHintsRevealedRef.current = 0;
   }, [puzzle?.url, clearConfettiTimer]);
+
+  // Track hint reveals and fire battle damage
+  useEffect(() => {
+    if (hintsRevealed > prevHintsRevealedRef.current && battle) {
+      battle.onHintUsed(hintsRevealed);
+    }
+    prevHintsRevealedRef.current = hintsRevealed;
+  }, [hintsRevealed, battle]);
 
   useEffect(() => () => {
     clearConfettiTimer();
@@ -1046,11 +1059,13 @@ const PuzzleView = ({
         if (currentMoveIndex === answerMoves.length - 1) {
           setPendingOpponentMove(null);
           triggerWinConfetti();
+          if (battle) battle.onCorrectMove();
           onSolved();
           if (index < total - 1) {
             setAutoAdvanceCountdown(3);
           }
         } else {
+          if (battle) battle.onCorrectMove();
           const nextIndex = currentMoveIndex + 1;
           const opponentReplySan = answerMoves[nextIndex];
           setPendingOpponentMove(opponentReplySan || null);
@@ -1229,7 +1244,21 @@ const PuzzleView = ({
   const isPlayersTurn = game.turn() === (orientation === 'white' ? 'w' : 'b');
 
   return (
-    <div className="flex min-h-screen flex-col max-w-md mx-auto bg-slate-900 pt-40">
+    <div className="flex min-h-screen flex-col max-w-md mx-auto bg-slate-900">
+      {/* Battle Scene */}
+      {battle && (
+        <div className="bg-slate-900 pt-2">
+          <BattleScene
+            playerHp={battle.playerHp}
+            enemyHp={battle.enemyHp}
+            maxHp={battle.maxHp}
+            playerHit={battle.playerHit}
+            enemyHit={battle.enemyHit}
+            playerAttacking={battle.playerAttacking}
+          />
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-slate-800 shadow-md">
         <button data-testid="back-button" onClick={onBack} className="p-2 hover:bg-slate-700 rounded-full">
@@ -1519,6 +1548,7 @@ export default function App() {
   const [homeView, setHomeView] = useState('categories');
   const [selectedCategoryType, setSelectedCategoryType] = useState('All');
   const [isRandomMode, setIsRandomMode] = useState(false);
+  const battle = useBattleState();
 
   useEffect(() => {
     fetch('/dictionary.json')
@@ -1632,6 +1662,7 @@ export default function App() {
       onSelect={(category) => {
         setHomeView('categories');
         setIsRandomMode(false);
+        battle.reset();
         selectCategory(category);
       }}
       onStartRandomMode={() => {
@@ -1647,6 +1678,7 @@ export default function App() {
 
         setHomeView('categories');
         setIsRandomMode(true);
+        battle.reset();
         selectCategory(randomCategory, randomIndex);
       }}
       isRandomModeActive={isRandomMode}
@@ -1673,6 +1705,7 @@ export default function App() {
         total={totalPuzzles}
         onBack={() => {
           setHomeView('categories');
+          battle.reset();
           selectCategory(null);
         }}
         onNext={nextPuzzle}
@@ -1686,6 +1719,7 @@ export default function App() {
         isRandomMode={isRandomMode}
         isCompleted={isCurrentPuzzleCompleted}
         completedAt={currentPuzzleCompletedAt}
+        battle={battle}
       />
     </ErrorBoundary>
   );

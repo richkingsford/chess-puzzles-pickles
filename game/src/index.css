@@ -187,3 +187,144 @@
     transform: translate(-50%, -50%) scale(2.6);
   }
 }
+
+
+/* ===== Battle Scene ===== */
+
+.battle-scene {
+  width: 100%;
+  padding: 6px 0 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.battle-vs {
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(251, 191, 36, 0.7);
+  align-self: center;
+  margin-bottom: 18px;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.3);
+  animation: battle-vs-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes battle-vs-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.battle-character {
+  width: 72px;
+  height: 72px;
+  position: relative;
+  transition: transform 0.15s ease-out;
+}
+
+.battle-flip {
+  transform: scaleX(-1);
+}
+
+.battle-sprite-frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Idle breathing */
+.battle-character:not(.battle-hit):not(.battle-attack) {
+  animation: battle-idle 3s ease-in-out infinite;
+}
+
+@keyframes battle-idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+.battle-flip:not(.battle-hit):not(.battle-attack) {
+  animation: battle-idle-flip 3s ease-in-out infinite;
+}
+
+@keyframes battle-idle-flip {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50% { transform: scaleX(-1) translateY(-2px); }
+}
+
+/* Attack lunge */
+.battle-attack {
+  animation: battle-lunge 0.35s ease-out forwards !important;
+}
+
+.battle-flip.battle-attack {
+  animation: battle-lunge-flip 0.35s ease-out forwards !important;
+}
+
+@keyframes battle-lunge {
+  0% { transform: translateX(0); }
+  40% { transform: translateX(18px) translateY(-4px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes battle-lunge-flip {
+  0% { transform: scaleX(-1) translateX(0); }
+  40% { transform: scaleX(-1) translateX(18px) translateY(-4px); }
+  100% { transform: scaleX(-1) translateX(0); }
+}
+
+/* Hit shake + red flash */
+.battle-hit {
+  animation: battle-shake 0.4s ease-out forwards !important;
+}
+
+.battle-flip.battle-hit {
+  animation: battle-shake-flip 0.4s ease-out forwards !important;
+}
+
+@keyframes battle-shake {
+  0% { transform: translateX(0); }
+  15% { transform: translateX(-6px); }
+  30% { transform: translateX(5px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(3px); }
+  75% { transform: translateX(-1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes battle-shake-flip {
+  0% { transform: scaleX(-1) translateX(0); }
+  15% { transform: scaleX(-1) translateX(-6px); }
+  30% { transform: scaleX(-1) translateX(5px); }
+  45% { transform: scaleX(-1) translateX(-4px); }
+  60% { transform: scaleX(-1) translateX(3px); }
+  75% { transform: scaleX(-1) translateX(-1px); }
+  100% { transform: scaleX(-1) translateX(0); }
+}
+
+.battle-hit .battle-sprite-frame {
+  animation: battle-flash-red 0.4s ease-out;
+}
+
+@keyframes battle-flash-red {
+  0%, 100% { filter: none; }
+  20% { filter: brightness(1.5) sepia(1) hue-rotate(-30deg) saturate(3); }
+  50% { filter: brightness(1.2) sepia(0.5) hue-rotate(-20deg) saturate(2); }
+}
+
+/* Enemy defeated */
+.battle-character.battle-defeated {
+  animation: none !important;
+  opacity: 0.35;
+  filter: grayscale(0.8);
+  transform: translateY(4px);
+  transition: all 0.6s ease-out;
+}
+
+.battle-flip.battle-defeated {
+  transform: scaleX(-1) translateY(4px);
+}
