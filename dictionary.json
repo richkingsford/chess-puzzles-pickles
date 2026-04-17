@@ -160,6 +160,13 @@
       ]
     },
     {
+      "name": "Battery alignment",
+      "definition": "Two long-range pieces aligned to increase pressure on a file, rank, or diagonal.",
+      "aliases": [
+        "battery-alignment"
+      ]
+    },
+    {
       "name": "benko-gambit",
       "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
       "aliases": []
@@ -178,6 +185,13 @@
       "name": "bird-opening",
       "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
       "aliases": []
+    },
+    {
+      "name": "Bishop blocked by own pawns",
+      "definition": "A bishop whose own pawns restrict its diagonal scope, reducing coordination and activity.",
+      "aliases": [
+        "bishop-blocked-by-own-pawns"
+      ]
     },
     {
       "name": "Bishop Pair",
@@ -396,6 +410,13 @@
       ]
     },
     {
+      "name": "Checkable king",
+      "definition": "A king position where immediate checks are available. Forcing checks can drive tactics and mating nets.",
+      "aliases": [
+        "checkable-king"
+      ]
+    },
+    {
       "name": "Checkmate",
       "definition": "The king is in check and has no legal escape.",
       "aliases": [
@@ -587,6 +608,13 @@
       "aliases": [
         "discovery",
         "discovered tactic"
+      ]
+    },
+    {
+      "name": "Discovered attack potential",
+      "definition": "A concealed line attack that appears when the front piece moves with tempo.",
+      "aliases": [
+        "discovered-attack-potential"
       ]
     },
     {
@@ -829,6 +857,13 @@
       "name": "fork-setup",
       "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
       "aliases": []
+    },
+    {
+      "name": "Forkable alignment",
+      "definition": "Piece placement that allows one move to attack multiple targets at once.",
+      "aliases": [
+        "forkable-alignment"
+      ]
     },
     {
       "name": "Fortress",
@@ -1106,6 +1141,13 @@
       "aliases": []
     },
     {
+      "name": "Knight on rim",
+      "definition": "A knight on the edge usually has fewer active squares and reduced tactical influence.",
+      "aliases": [
+        "knight-on-rim"
+      ]
+    },
+    {
       "name": "knight-development",
       "definition": "A positional board concept around knight development. It helps prioritize squares, lines, and piece placement in practical decision-making.",
       "aliases": []
@@ -1216,6 +1258,20 @@
       "aliases": []
     },
     {
+      "name": "Loose back-rank",
+      "definition": "A king trapped on the home rank with limited luft. Back-rank tactics become a recurring threat.",
+      "aliases": [
+        "loose-back-rank"
+      ]
+    },
+    {
+      "name": "Loose pawn",
+      "definition": "An undefended pawn that can be won or used as a tactical hook.",
+      "aliases": [
+        "loose-pawn"
+      ]
+    },
+    {
       "name": "Loose Piece",
       "definition": "A piece that is not defended and can often be won.",
       "aliases": [
@@ -1249,6 +1305,13 @@
       "name": "mar-del-plata",
       "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
       "aliases": []
+    },
+    {
+      "name": "Mate-in-1 threat available",
+      "definition": "A position with an immediate mating threat that demands urgent defense.",
+      "aliases": [
+        "mate-in-1-threat-available"
+      ]
     },
     {
       "name": "mate-in-5-or-more-moves",
@@ -1393,6 +1456,13 @@
       ]
     },
     {
+      "name": "Open line toward king",
+      "definition": "An open file or diagonal toward the king that allows direct piece pressure and forcing play.",
+      "aliases": [
+        "open-line-toward-king"
+      ]
+    },
+    {
       "name": "open-center",
       "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
       "aliases": []
@@ -1461,10 +1531,24 @@
       ]
     },
     {
+      "name": "Outpost square available",
+      "definition": "A square, often in enemy territory, that can host a piece with limited pawn challenge.",
+      "aliases": [
+        "outpost-square-available"
+      ]
+    },
+    {
       "name": "Outside Passed Pawn",
       "definition": "A passed pawn far from the king-side action used as a distraction.",
       "aliases": [
         "outside passer"
+      ]
+    },
+    {
+      "name": "Overloaded defender",
+      "definition": "A defender responsible for too many duties and likely to fail under forcing play.",
+      "aliases": [
+        "overloaded-defender"
       ]
     },
     {
@@ -1496,6 +1580,13 @@
       "definition": "A pawn push or exchange designed to open lines and change structure.",
       "aliases": [
         "breakthrough pawn move"
+      ]
+    },
+    {
+      "name": "Pawn break available",
+      "definition": "A pawn capture or thrust that can open lines, damage structure, or create a passed pawn.",
+      "aliases": [
+        "pawn-break-available"
       ]
     },
     {
@@ -1641,6 +1732,13 @@
       ]
     },
     {
+      "name": "Pinned defender of king-side square",
+      "definition": "A defender that cannot move without exposing king safety, making key squares vulnerable.",
+      "aliases": [
+        "pinned-defender-of-king-side-square"
+      ]
+    },
+    {
       "name": "pirc-defense",
       "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
       "aliases": []
@@ -1686,6 +1784,13 @@
       "aliases": [
         "pawn promotion",
         "promote"
+      ]
+    },
+    {
+      "name": "Promotion square weakly defended",
+      "definition": "A queening square that lacks enough control, making promotion tactics more likely.",
+      "aliases": [
+        "promotion-square-weakly-defended"
       ]
     },
     {
@@ -1945,6 +2050,13 @@
       ]
     },
     {
+      "name": "Rook penetration threat",
+      "definition": "A rook poised to invade through an open line into weak entry squares in the enemy camp.",
+      "aliases": [
+        "rook-penetration-threat"
+      ]
+    },
+    {
       "name": "rook-endgame",
       "definition": "An endgame where rooks are central pieces. Activate king and rook, and place rooks behind passed pawns whenever possible.",
       "aliases": []
@@ -2075,6 +2187,13 @@
       "name": "simplification",
       "definition": "A strategic exchange decision related to simplification. Trade when it improves structure, piece quality, or king safety.",
       "aliases": []
+    },
+    {
+      "name": "Single-defender pieces",
+      "definition": "Pieces protected by only one unit. Removing or deflecting that defender often wins material.",
+      "aliases": [
+        "single-defender-pieces"
+      ]
     },
     {
       "name": "Skewer",
@@ -2339,7 +2458,9 @@
     {
       "name": "trapped-piece",
       "definition": "A piece with no safe escape squares. Restrict exits first, then win material with forcing play.",
-      "aliases": []
+      "aliases": [
+        "Trapped piece"
+      ]
     },
     {
       "name": "Triangulation",
@@ -2357,6 +2478,13 @@
       "name": "trompowsky-attack",
       "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
       "aliases": []
+    },
+    {
+      "name": "Undefended pieces",
+      "definition": "Pieces with no friendly defender. Loose targets are often tactical entry points for forks, pins, and captures.",
+      "aliases": [
+        "undefended-pieces"
+      ]
     },
     {
       "name": "under-promotion",
@@ -2412,6 +2540,13 @@
       "aliases": [
         "hole",
         "weak point"
+      ]
+    },
+    {
+      "name": "Weak squares around king",
+      "definition": "Squares near the king that are attacked but not adequately defended, creating tactical access points.",
+      "aliases": [
+        "weak-squares-around-king"
       ]
     },
     {

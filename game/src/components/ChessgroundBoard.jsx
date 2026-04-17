@@ -37,7 +37,7 @@ const getSquareOverlayStyle = (square, orientation) => {
     };
 };
 
-export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, width, height, customArrows, movableColor }) {
+export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, width, height, customArrows, movableColor, highlights = [], enemyHighlights = [] }) {
     const wrapperRef = useRef(null);
     const ref = useRef(null);
     const api = useRef(null);
@@ -128,6 +128,7 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
                         brush: 'green'
                     })) : []
                 },
+                classes: new Map(highlights.map(square => [square, 'visual-highlight'])),
                 premovable: { enabled: false }
             };
 
@@ -149,13 +150,14 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
                         dest: a[1],
                         brush: 'green'
                     })) : []
-                }
+                },
+                classes: new Map(highlights.map(square => [square, 'visual-highlight']))
             });
 
             // Critical: Force bounds recalculation to fix click offset
             api.current.set({});
         }
-    }, [fen, orientation, sideToMove, customArrows, legalDests, activeMovableColor]);
+    }, [fen, orientation, sideToMove, customArrows, legalDests, activeMovableColor, highlights]);
 
     // Secondary effect to ensure bounds are correct on mount, resize, and interaction
     useEffect(() => {
@@ -232,6 +234,40 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
                             <div
                                 key={square}
                                 className="movable-source-highlight"
+                                style={style}
+                            />
+                        );
+                    })}
+                </div>
+            )}
+            {(highlights.length > 0 || enemyHighlights.length > 0) && (
+                <div className="motif-highlight-layer" aria-hidden="true">
+                    {highlights.map((square) => {
+                        const style = getSquareOverlayStyle(square, orientation);
+
+                        if (!style) {
+                            return null;
+                        }
+
+                        return (
+                            <div
+                                key={`own-${square}`}
+                                className="visual-motif-highlight"
+                                style={style}
+                            />
+                        );
+                    })}
+                    {enemyHighlights.map((square) => {
+                        const style = getSquareOverlayStyle(square, orientation);
+
+                        if (!style) {
+                            return null;
+                        }
+
+                        return (
+                            <div
+                                key={`enemy-${square}`}
+                                className="visual-motif-highlight visual-motif-highlight--enemy"
                                 style={style}
                             />
                         );

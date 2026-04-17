@@ -119,6 +119,43 @@
   opacity: 0.95;
 }
 
+.puzzle-chessboard .motif-highlight-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.puzzle-chessboard .visual-motif-highlight {
+  position: absolute;
+  width: 12.5%;
+  height: 12.5%;
+  box-sizing: border-box;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.puzzle-chessboard .visual-motif-highlight::before {
+  content: "";
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.5);
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
+}
+
+.puzzle-chessboard .visual-motif-highlight::after {
+  display: none;
+}
+
+.puzzle-chessboard .visual-motif-highlight--enemy::before {
+  background: rgba(239, 68, 68, 0.5);
+  box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.35);
+}
+
+
 .win-confetti-burst {
   position: fixed;
   inset: 0;

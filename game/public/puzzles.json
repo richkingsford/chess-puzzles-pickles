@@ -2796,6 +2796,81 @@
         "Bring your queen out to execute a classic double attack.",
         "Move your queen to a5 to give check, and on your next turn, simply capture the undefended bishop on g5."
       ]
+    },
+    "https://lichess.org/analysis/rnbq1rk1/pp2ppbp/6p1/2pn4/3P4/5NP1/PP2PPBP/RNBQ1RK1%20w%20-%20-%200%207": {
+      "answer": "dxc5, Nxc3, Nxc3",
+      "tags": [
+        "indian-defense",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The opponent has placed a knight aggressively in the center, but it relies on a pawn that can be challenged.",
+        "Capture the supporting pawn first. The knight must then recapture on a square where it can be easily eliminated.",
+        "A simple pawn capture removes the support of the centralized knight, forcing it into a trade that favors you.",
+        "Use your d-pawn to capture the supporting pawn.",
+        "Capture the c5 pawn with your d-pawn. The knight must recapture on c3, and you simply take it back with your own knight."
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/pppn1pbp/3p1np1/4p3/2PPP3/2N2N2/PP2BPPP/R1BQ1RK1%20w%20-%20-%200%208": {
+      "answer": "d5, Nc5, Qc2",
+      "tags": [
+        "indian-defense",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The center is tense, and a well-timed pawn push can seize space and restrict the opponent's minor pieces.",
+        "Closing the center with d5 locks in the knight and gives you a clear plan on the queenside.",
+        "Push your central pawn to grab space and restrict the opponent's pieces, then reposition your queen to support the queenside advance.",
+        "Use your d-pawn to seize the center.",
+        "Push d5 to lock the center. Black plays Nc5. Follow up with Qc2 to prepare b4 and a queenside expansion."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk2r/ppp2ppp/2n2n2/3pp1B1/1bPP4/2N2N2/PP2PPPP/R2QKB1R%20w%20KQkq%20-%204%206": {
+      "answer": "cxd5, Nxd5, Nxd5, Qxd5, Bxf6",
+      "tags": [
+        "indian-defense",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The opponent has created central tension, but their pieces are slightly uncoordinated after the pawn exchanges.",
+        "Resolve the central tension on your terms. The resulting trades leave one of their pieces undefended.",
+        "Initiate a sequence of central captures. After the trades, the opponent's minor piece is left without protection.",
+        "Use your c-pawn to start the exchange sequence.",
+        "Capture on d5 with your c-pawn. Black recaptures with the knight. Take the knight with yours. After their queen recaptures, your bishop captures the undefended knight on f6."
+      ]
+    },
+    "https://lichess.org/analysis/rnbq1rk1/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR%20w%20KQ%20-%200%205": {
+      "answer": "e5, dxe5, dxe5, Qxd1+, Kxd1",
+      "tags": [
+        "indian-defense",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The opponent has fianchettoed their bishop, but your central pawns are ready to strike and open lines.",
+        "A central pawn thrust challenges the opponent's setup and forces a queen trade that leaves you with a strong center.",
+        "Push your e-pawn to open the center. The resulting exchanges lead to a favorable endgame with a powerful pawn structure.",
+        "Use your e-pawn to break open the center.",
+        "Push e5 to challenge the center. Black captures (dxe5). Recapture (dxe5). Black trades queens (Qxd1+), and you recapture with your king (Kxd1), maintaining a strong central pawn."
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/pp1nppbp/2pp1np1/8/2PPP3/2N1BN2/PP3PPP/R2QKB1R%20w%20KQ%20-%200%207": {
+      "answer": "Be2, e5, dxe5, dxe5, Ng4",
+      "tags": [
+        "indian-defense",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The opponent is preparing a central break, and you need to develop calmly while maintaining your center.",
+        "Develop your bishop to a safe square first. When the opponent breaks in the center, the resulting exchanges create tactical opportunities.",
+        "Complete your development. When the opponent pushes in the center, the exchanges will leave a minor piece vulnerable to attack.",
+        "Use your light-squared bishop to complete development.",
+        "Develop with Be2. Black pushes e5. After dxe5, dxe5, the knight jumps to g4 attacking your bishop, but your central control gives you the advantage."
+      ]
     }
   },
   "italian-game": {
@@ -2917,6 +2992,21 @@
         "A direct, supported strike right into the heart of the enemy camp will end the game instantly.",
         "Bring your queen directly to the target square to deliver the final blow.",
         "Capture the pawn directly in front of the white king with your queen, safely supported by your knight, for a one-move checkmate."
+      ]
+    },
+    "https://lichess.org/analysis/r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R%20w%20KQkq%20-%204%204": {
+      "answer": "d3, d6, O-O",
+      "tags": [
+        "italian-game",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The position is a classic Italian Game setup where both sides are developing rapidly.",
+        "Solid development and king safety are more important than immediate tactics in this position.",
+        "Support your center pawn, prepare to castle, and complete your development before launching any attack.",
+        "Use your d-pawn to support the center.",
+        "Play d3 to solidify your center. After Black plays d6, castle kingside (O-O) to secure your king and connect your rooks."
       ]
     }
   },
@@ -4409,6 +4499,21 @@
         "The supposedly safe minor piece is actually completely undefended and ripe for the taking.",
         "Use your active rook to grab the free piece in the center.",
         "Capture the unprotected white knight on e5 with your rook."
+      ]
+    },
+    "https://lichess.org/analysis/r1bq1rk1/ppp1ppbp/3p1np1/n7/3PP3/2N2N1P/PPP1BPP1/R1BQ1RK1%20w%20-%20-%200%208": {
+      "answer": "e5, dxe5, Nxe5",
+      "tags": [
+        "pirc-defense",
+        "opening-tactics",
+        "opening-themes"
+      ],
+      "hints": [
+        "The opponent has fianchettoed their bishop and placed a knight on the rim, leaving the center vulnerable to a pawn thrust.",
+        "The center is ready to be opened. A pawn push challenges the opponent's setup and wins a tempo on the knight.",
+        "Push your central pawn to open lines and exploit the opponent's offside knight placement.",
+        "Use your e-pawn to strike in the center.",
+        "Push e5 to challenge the center. Black captures (dxe5). Recapture with your knight (Nxe5), establishing a powerful centralized piece while the black knight on a5 is out of play."
       ]
     }
   },

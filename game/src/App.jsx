@@ -44,6 +44,39 @@ const formatCategoryLabel = (category) => String(category || '').replace(/-/g, '
 
 const CATEGORY_TYPE_ORDER = ['Mate', 'Tactics', 'Opening', 'Defense', 'Endgame', 'Misc'];
 
+const VISUAL_MOTIFS = [
+  // Existing
+  'Undefended pieces',
+  'Single-defender pieces',
+  'Checkable king',
+  // King-safety
+  'Loose back-rank',
+  'Weak squares around king',
+  'Pinned defender of king-side square',
+  // Piece-coordination
+  'Battery alignment',
+  'X-ray attack',
+  'Discovered attack potential',
+  'Forkable alignment',
+  // Pawn-structure
+  'Loose pawn',
+  'Backward pawn',
+  'Passed pawn',
+  'Pawn break available',
+  // Square-control
+  'Outpost square available',
+  'Promotion square weakly defended',
+  // Tactical-trigger
+  'Pinned piece',
+  'Overloaded defender',
+  'Trapped piece',
+  'Mate-in-1 threat available',
+  // Development / initiative
+  'Rook penetration threat',
+  'Knight on rim',
+  'Bishop blocked by own pawns',
+];
+
 const WIN_CONFETTI_PARTICLES = [
   { dx: -38, dy: -26, rotation: '-120deg', delay: '0ms', color: '#fbbf24' },
   { dx: -18, dy: -42, rotation: '-70deg', delay: '40ms', color: '#f59e0b' },
@@ -169,7 +202,8 @@ const CategoryList = ({
   onSelectType,
   typeCounts,
   onStartRandomMode,
-  isRandomModeActive
+  isRandomModeActive,
+  onStartVisualMotifTest
 }) => {
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
@@ -189,6 +223,15 @@ const CategoryList = ({
       >
         <Shuffle className="w-4 h-4" />
         Random Mode
+      </button>
+
+      <button
+        type="button"
+        data-testid="visual-motif-test-button"
+        onClick={onStartVisualMotifTest}
+        className="w-full rounded-xl border border-slate-700 bg-slate-800/80 p-3 text-sm font-semibold transition-colors text-slate-200 hover:bg-slate-700"
+      >
+        Visual Motif Test
       </button>
 
       <div data-testid="category-type-filters" className="rounded-xl border border-slate-700 bg-slate-800/70 p-3">
@@ -854,7 +897,11 @@ const PuzzleView = ({
   isRandomMode,
   isCompleted,
   completedAt,
-  battle
+  battle,
+  activeVisualMotifs,
+  onToggleVisualMotif,
+  onSelectVisualMotif,
+  showVisualMotifButton
 }) => {
   const [game, setGame] = useState(() => {
     const newGame = new Chess();
@@ -881,6 +928,7 @@ const PuzzleView = ({
   const boardShellRef = useRef(null);
   const confettiTimerRef = useRef(null);
   const lastInteractionPointRef = useRef(null);
+  const pendingOverlayAdvanceRef = useRef(null);
 
   const dictionaryLookup = React.useMemo(
     () => buildDictionaryLookup(dictionaryEntries),
@@ -902,6 +950,35 @@ const PuzzleView = ({
     }
     openDictionaryEntry(entry, term);
   }, [dictionaryLookup, openDictionaryEntry]);
+
+  const selectedVisualMotif = React.useMemo(
+    () => VISUAL_MOTIFS.find((motif) => activeVisualMotifs.has(motif)) || '',
+    [activeVisualMotifs]
+  );
+
+  const openMotifDefinition = React.useCallback((motif) => {
+    const motifEntry = dictionaryLookup.exactTermMap.get(String(motif).toLowerCase());
+    const motifDefinition = motifEntry?.definition || 'Definition unavailable.';
+    if (motifEntry) {
+      openDictionaryEntry(motifEntry, motif);
+      return;
+    }
+    // Reuse the existing dictionary modal flow even if this term is missing from the fetched lookup.
+    openDictionaryEntry({ name: motif, definition: motifDefinition, aliases: [] }, motif);
+  }, [dictionaryLookup, openDictionaryEntry]);
+
+  const handleAdvanceOverlay = React.useCallback(() => {
+    if (!VISUAL_MOTIFS.length) return;
+    const currentIndex = selectedVisualMotif ? VISUAL_MOTIFS.indexOf(selectedVisualMotif) : -1;
+    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % VISUAL_MOTIFS.length;
+
+    pendingOverlayAdvanceRef.current = {
+      attempts: 0,
+      maxAttempts: VISUAL_MOTIFS.length - 1
+    };
+
+    onSelectVisualMotif(VISUAL_MOTIFS[nextIndex]);
+  }, [onSelectVisualMotif, selectedVisualMotif]);
 
   const clearConfettiTimer = React.useCallback(() => {
     if (confettiTimerRef.current) {
@@ -1243,6 +1320,1245 @@ const PuzzleView = ({
 
   const isPlayersTurn = game.turn() === (orientation === 'white' ? 'w' : 'b');
 
+  const { highlightedSquares, enemyHighlightedSquares } = React.useMemo(() => {
+    const empty = { highlightedSquares: [], enemyHighlightedSquares: [] };
+    if (!showVisualMotifButton || activeVisualMotifs.size === 0) return empty;
+
+    const tempGame = new Chess(game.fen());
+    const turn = tempGame.turn();
+    const opponent = turn === 'w' ? 'b' : 'w';
+    const legalMoves = tempGame.moves({ verbose: true });
+
+    const ownPieceSquares = [];
+    const enemyPieceSquares = [];
+
+    const board = tempGame.board();
+    for (let rank = 0; rank < 8; rank++) {
+      for (let file = 0; file < 8; file++) {
+        const piece = board[rank][file];
+        if (!piece) continue;
+        const square = String.fromCharCode(97 + file) + (8 - rank);
+        if (piece.color === turn) {
+          ownPieceSquares.push({ square, piece });
+        } else {
+          enemyPieceSquares.push({ square, piece });
+        }
+      }
+    }
+
+    // Compute own-side check dests
+    const ownCheckDests = new Set();
+
+    legalMoves.forEach((move) => {
+      if (move.color !== turn || !move.to) return;
+      try {
+        const testGame = new Chess(game.fen());
+        testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+        if (testGame.inCheck()) ownCheckDests.add(move.to);
+      } catch (e) { /* ignore */ }
+    });
+
+    // Compute opponent check dests by flipping turn
+    const enemyCheckDests = new Set();
+
+    // Build a FEN with the opponent to move by swapping the active color
+    const fenParts = game.fen().split(' ');
+    fenParts[1] = opponent;
+    try {
+      const oppGame = new Chess(fenParts.join(' '));
+      const oppMoves = oppGame.moves({ verbose: true });
+      oppMoves.forEach((move) => {
+        if (!move.to) return;
+        try {
+          const testGame = new Chess(fenParts.join(' '));
+          testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+          if (testGame.inCheck()) enemyCheckDests.add(move.to);
+        } catch (e) { /* ignore */ }
+      });
+    } catch (e) { /* ignore invalid flipped FEN */ }
+
+    const ownSet = new Set();
+    const enemySet = new Set();
+    const addAll = (set, arr) => arr.forEach((sq) => set.add(sq));
+
+    if (activeVisualMotifs.has('Undefended pieces')) {
+      addAll(ownSet, ownPieceSquares.filter((p) => p.piece.type !== 'k' && !tempGame.isAttacked(p.square, turn)).map((p) => p.square));
+      addAll(enemySet, enemyPieceSquares.filter((p) => p.piece.type !== 'k' && !tempGame.isAttacked(p.square, opponent)).map((p) => p.square));
+    }
+
+    if (activeVisualMotifs.has('Single-defender pieces')) {
+      addAll(ownSet, ownPieceSquares.filter((p) => p.piece.type !== 'k' && tempGame.attackers(p.square, turn).length === 1).map((p) => p.square));
+      addAll(enemySet, enemyPieceSquares.filter((p) => p.piece.type !== 'k' && tempGame.attackers(p.square, opponent).length === 1).map((p) => p.square));
+    }
+
+    // King-safety: Loose back-rank — no practical king escape and enemy heavy-piece check potential exists.
+    if (activeVisualMotifs.has('Loose back-rank')) {
+      const getLooseBackRank = (pieces, enemyPieces, color, enemyColor) => {
+        const king = pieces.find((p) => p.piece.type === 'k');
+        const homeRank = color === 'w' ? 1 : 8;
+        if (!king || Number(king.square[1]) !== homeRank) return [];
+
+        const kingFile = king.square.charCodeAt(0) - 97;
+        const escapeRank = color === 'w' ? 2 : 7;
+        const escapeSquares = [];
+        const blockers = [];
+
+        // Squares in front/around the king that typically provide back-rank luft.
+        for (let df = -1; df <= 1; df++) {
+          const f = kingFile + df;
+          if (f < 0 || f > 7) continue;
+          const sq = String.fromCharCode(97 + f) + escapeRank;
+          escapeSquares.push(sq);
+          const occupant = tempGame.get(sq);
+          if (occupant && occupant.color === color) {
+            blockers.push(sq);
+          }
+        }
+
+        // Legal king-move check: if king can legally leave the back rank, this is not a true back-rank bind.
+        const kingEscapeExists = (() => {
+          const fenParts = tempGame.fen().split(' ');
+          fenParts[1] = color;
+          try {
+            const sideGame = new Chess(fenParts.join(' '));
+            const legalKingMoves = sideGame
+              .moves({ verbose: true })
+              .filter((move) => move.piece === 'k' && move.from === king.square);
+            return legalKingMoves.some((move) => {
+              if (Number(move.to[1]) !== homeRank) {
+                const toSq = move.to;
+                return !tempGame.isAttacked(toSq, enemyColor);
+              }
+              return false;
+            });
+          } catch (e) {
+            return false;
+          }
+        })();
+
+        if (kingEscapeExists) return [];
+
+        const enemyHeavyPieces = enemyPieces.filter((p) => p.piece.type === 'r' || p.piece.type === 'q');
+        if (!enemyHeavyPieces.length) return [];
+
+        // Require concrete heavy-piece checking potential, not just a boxed king shape.
+        const heavyCheckThreatSquares = (() => {
+          const fenParts = tempGame.fen().split(' ');
+          fenParts[1] = enemyColor;
+          try {
+            const enemyTurnGame = new Chess(fenParts.join(' '));
+            const threatSquares = [];
+            enemyTurnGame.moves({ verbose: true }).forEach((move) => {
+              if (!['r', 'q'].includes(move.piece)) return;
+              try {
+                const testGame = new Chess(enemyTurnGame.fen());
+                testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+                if (testGame.isAttacked(king.square, enemyColor)) {
+                  threatSquares.push(move.to);
+                }
+              } catch (e) {
+                // Ignore illegal/transient simulations.
+              }
+            });
+            return threatSquares;
+          } catch (e) {
+            return [];
+          }
+        })();
+
+        if (!heavyCheckThreatSquares.length) return [];
+
+        return [
+          king.square,
+          ...blockers,
+          ...heavyCheckThreatSquares
+        ];
+      };
+
+      addAll(ownSet, getLooseBackRank(ownPieceSquares, enemyPieceSquares, turn, opponent));
+      addAll(enemySet, getLooseBackRank(enemyPieceSquares, ownPieceSquares, opponent, turn));
+    }
+
+    // King-safety: Weak squares around king — under-defended king-ring squares with concrete enemy access.
+    if (activeVisualMotifs.has('Weak squares around king')) {
+      const getWeakKingSquares = (pieces, friendlyColor, enemyColor) => {
+        const king = pieces.find((p) => p.piece.type === 'k');
+        if (!king) return [];
+
+        const enemyAccessMap = (() => {
+          const map = new Map();
+          const fenParts = tempGame.fen().split(' ');
+          fenParts[1] = enemyColor;
+          try {
+            const enemyTurnGame = new Chess(fenParts.join(' '));
+            enemyTurnGame.moves({ verbose: true }).forEach((move) => {
+              const key = move.to;
+              if (!key) return;
+              const forcingByNature = Boolean(move.captured) || move.piece !== 'p';
+              let forcingByCheck = false;
+              try {
+                const t = new Chess(enemyTurnGame.fen());
+                t.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+                forcingByCheck = t.isAttacked(king.square, enemyColor);
+              } catch (e) {
+                // Ignore transient simulation failures.
+              }
+
+              if (forcingByNature || forcingByCheck) {
+                const existing = map.get(key) || [];
+                existing.push(move.from);
+                map.set(key, existing);
+              }
+            });
+          } catch (e) {
+            return new Map();
+          }
+          return map;
+        })();
+
+        const kFile = king.square.charCodeAt(0) - 97;
+        const kRank = Number(king.square[1]);
+        const weak = [];
+        for (let df = -1; df <= 1; df++) {
+          for (let dr = -1; dr <= 1; dr++) {
+            if (df === 0 && dr === 0) continue;
+            const f = kFile + df;
+            const r = kRank + dr;
+            if (f < 0 || f > 7 || r < 1 || r > 8) continue;
+            const sq = String.fromCharCode(97 + f) + r;
+
+            const enemyAttackers = tempGame.attackers(sq, enemyColor);
+            const friendlyAttackers = tempGame.attackers(sq, friendlyColor);
+            if (!enemyAttackers.length) continue;
+
+            // Require true under-defense, not just nominal attack.
+            if (friendlyAttackers.length >= enemyAttackers.length) continue;
+
+            const concreteEnemyAccess = enemyAccessMap.get(sq) || [];
+            if (!concreteEnemyAccess.length) continue;
+
+            weak.push(sq, ...concreteEnemyAccess.slice(0, 2));
+          }
+        }
+        return weak;
+      };
+      addAll(ownSet, getWeakKingSquares(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getWeakKingSquares(enemyPieceSquares, opponent, turn));
+    }
+
+    // King-safety merged into Checkable king:
+    // direct checking moves plus open-line slider pressure/check potential.
+    if (activeVisualMotifs.has('Checkable king')) {
+      addAll(ownSet, ownCheckDests);
+      addAll(enemySet, enemyCheckDests);
+
+      const getOpenLineSquares = (pieces, enemyPieces, color, enemyColor) => {
+        const king = pieces.find((p) => p.piece.type === 'k');
+        if (!king) return [];
+
+        const sliderTypeByDir = [
+          { df: 1, dr: 0, types: new Set(['r', 'q']) },
+          { df: -1, dr: 0, types: new Set(['r', 'q']) },
+          { df: 0, dr: 1, types: new Set(['r', 'q']) },
+          { df: 0, dr: -1, types: new Set(['r', 'q']) },
+          { df: 1, dr: 1, types: new Set(['b', 'q']) },
+          { df: 1, dr: -1, types: new Set(['b', 'q']) },
+          { df: -1, dr: 1, types: new Set(['b', 'q']) },
+          { df: -1, dr: -1, types: new Set(['b', 'q']) }
+        ];
+
+        const kingFile = king.square.charCodeAt(0) - 97;
+        const kingRank = Number(king.square[1]);
+        const directPressureSquares = [];
+
+        sliderTypeByDir.forEach(({ df, dr, types }) => {
+          let f = kingFile + df;
+          let r = kingRank + dr;
+          const ray = [];
+
+          while (f >= 0 && f <= 7 && r >= 1 && r <= 8) {
+            const sq = String.fromCharCode(97 + f) + r;
+            const occ = tempGame.get(sq);
+            if (!occ) {
+              ray.push(sq);
+              f += df;
+              r += dr;
+              continue;
+            }
+
+            if (occ.color === enemyColor && types.has(occ.type)) {
+              directPressureSquares.push(king.square, sq, ...ray.slice(0, 2));
+            }
+            break;
+          }
+        });
+
+        const sliderCheckSquares = (() => {
+          const fenParts = tempGame.fen().split(' ');
+          fenParts[1] = enemyColor;
+          try {
+            const enemyTurnGame = new Chess(fenParts.join(' '));
+            const threats = [];
+            enemyTurnGame.moves({ verbose: true }).forEach((move) => {
+              if (!['r', 'b', 'q'].includes(move.piece)) return;
+              try {
+                const testGame = new Chess(enemyTurnGame.fen());
+                testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+                if (testGame.isAttacked(king.square, enemyColor)) {
+                  threats.push(move.to);
+                }
+              } catch (e) {
+                // Ignore transient simulation failures.
+              }
+            });
+            return threats;
+          } catch (e) {
+            return [];
+          }
+        })();
+
+        if (!directPressureSquares.length && !sliderCheckSquares.length) {
+          return [];
+        }
+
+        return [
+          ...directPressureSquares,
+          ...sliderCheckSquares
+        ];
+      };
+
+      addAll(ownSet, getOpenLineSquares(ownPieceSquares, enemyPieceSquares, turn, opponent));
+      addAll(enemySet, getOpenLineSquares(enemyPieceSquares, ownPieceSquares, opponent, turn));
+    }
+
+    // King-safety: Pinned defender of king-side square — piece that if moved would expose king to attack
+    if (activeVisualMotifs.has('Pinned defender of king-side square')) {
+      const getPinnedDefenders = (pieces, color, enemyColor) => {
+        const results = [];
+        for (const { square, piece } of pieces) {
+          if (piece.type === 'k') continue;
+          // Try removing the piece and see if king becomes attacked
+          const fenCopy = tempGame.fen();
+          try {
+            const testGame = new Chess(fenCopy);
+            // Place nothing on that square by removing the piece
+            testGame.remove(square);
+            const king = pieces.find((p) => p.piece.type === 'k');
+            if (king && testGame.isAttacked(king.square, enemyColor)) {
+              results.push(square);
+            }
+          } catch (e) { /* ignore */ }
+        }
+        return results;
+      };
+      addAll(ownSet, getPinnedDefenders(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getPinnedDefenders(enemyPieceSquares, opponent, turn));
+    }
+
+    // Piece-coordination: Battery alignment — aligned long-range pair with clear spacing and pressure toward enemy king.
+    if (activeVisualMotifs.has('Battery alignment')) {
+      const getBatterySquares = (pieces, enemyPieces, enemyColor) => {
+        const results = [];
+        const enemyKing = enemyPieces.find((p) => p.piece.type === 'k');
+        if (!enemyKing) return results;
+
+        const byType = {};
+        pieces.forEach((p) => {
+          byType[p.piece.type] = byType[p.piece.type] || [];
+          byType[p.piece.type].push(p);
+        });
+
+        const queens = byType.q || [];
+        const rooks = byType.r || [];
+        const bishops = byType.b || [];
+
+        const inBounds = (f, r) => f >= 0 && f <= 7 && r >= 1 && r <= 8;
+        const sqToCoords = (sq) => ({ f: sq.charCodeAt(0) - 97, r: Number(sq[1]) });
+        const step = (a, b) => {
+          const df = b.f - a.f;
+          const dr = b.r - a.r;
+          if (df === 0 && dr === 0) return null;
+          const sf = df === 0 ? 0 : (df > 0 ? 1 : -1);
+          const sr = dr === 0 ? 0 : (dr > 0 ? 1 : -1);
+          if (!(df === 0 || dr === 0 || Math.abs(df) === Math.abs(dr))) return null;
+          return { sf, sr };
+        };
+
+        const clearBetween = (fromSq, toSq) => {
+          const a = sqToCoords(fromSq);
+          const b = sqToCoords(toSq);
+          const d = step(a, b);
+          if (!d) return false;
+          let f = a.f + d.sf;
+          let r = a.r + d.sr;
+          while (f !== b.f || r !== b.r) {
+            const sq = String.fromCharCode(97 + f) + r;
+            if (tempGame.get(sq)) return false;
+            f += d.sf;
+            r += d.sr;
+          }
+          return true;
+        };
+
+        const linePressesKing = (backSq, frontSq) => {
+          const back = sqToCoords(backSq);
+          const front = sqToCoords(frontSq);
+          const king = sqToCoords(enemyKing.square);
+          const d = step(back, front);
+          if (!d) return false;
+          let f = front.f + d.sf;
+          let r = front.r + d.sr;
+          let enemyBlockers = 0;
+
+          while (inBounds(f, r)) {
+            const sq = String.fromCharCode(97 + f) + r;
+            const occ = tempGame.get(sq);
+            if (sq === enemyKing.square) {
+              return enemyBlockers <= 1;
+            }
+            if (occ) {
+              if (occ.color !== enemyColor) return false;
+              enemyBlockers += 1;
+              if (enemyBlockers > 1) return false;
+            }
+            f += d.sf;
+            r += d.sr;
+          }
+
+          return false;
+        };
+
+        const pairs = [];
+        queens.forEach((q) => bishops.forEach((b) => pairs.push([q, b])));
+        for (let i = 0; i < rooks.length; i += 1) {
+          for (let j = i + 1; j < rooks.length; j += 1) {
+            pairs.push([rooks[i], rooks[j]]);
+          }
+        }
+        queens.forEach((q) => rooks.forEach((r) => pairs.push([q, r])));
+
+        pairs.forEach(([aPiece, bPiece]) => {
+          const a = sqToCoords(aPiece.square);
+          const b = sqToCoords(bPiece.square);
+          const alignedOrth = a.f === b.f || a.r === b.r;
+          const alignedDiag = Math.abs(a.f - b.f) === Math.abs(a.r - b.r);
+
+          const orthoOnly = ['r', 'q'].includes(aPiece.piece.type) && ['r', 'q'].includes(bPiece.piece.type);
+          const diagPair = (aPiece.piece.type === 'q' && bPiece.piece.type === 'b') || (aPiece.piece.type === 'b' && bPiece.piece.type === 'q');
+
+          if ((orthoOnly && !alignedOrth) || (diagPair && !alignedDiag)) return;
+          if (!clearBetween(aPiece.square, bPiece.square)) return;
+
+          const forwardA = linePressesKing(aPiece.square, bPiece.square);
+          const forwardB = linePressesKing(bPiece.square, aPiece.square);
+
+          if (forwardA || forwardB) {
+            results.push(aPiece.square, bPiece.square, enemyKing.square);
+          }
+        });
+
+        return results;
+      };
+
+      addAll(ownSet, getBatterySquares(ownPieceSquares, enemyPieceSquares, opponent));
+      addAll(enemySet, getBatterySquares(enemyPieceSquares, ownPieceSquares, turn));
+    }
+
+    // Piece-coordination: X-ray attack — sliding piece attacks through another piece to a target behind it
+    if (activeVisualMotifs.has('X-ray attack')) {
+      const getXraySquares = (pieces, enemyPieces) => {
+        const results = [];
+        const slidingDirs = { 'r': [[0,1],[0,-1],[1,0],[-1,0]], 'b': [[1,1],[1,-1],[-1,1],[-1,-1]], 'q': [[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]] };
+        for (const { square, piece } of pieces) {
+          const dirs = slidingDirs[piece.type];
+          if (!dirs) continue;
+          const sf = square.charCodeAt(0) - 97, sr = Number(square[1]);
+          for (const [df, dr] of dirs) {
+            let f = sf + df, r = sr + dr;
+            let firstPiece = null;
+            while (f >= 0 && f <= 7 && r >= 1 && r <= 8) {
+              const sq = String.fromCharCode(97 + f) + r;
+              const p = tempGame.get(sq);
+              if (p) {
+                if (!firstPiece) {
+                  firstPiece = { sq, p };
+                } else {
+                  // Found second piece behind the first — x-ray if it's an enemy piece
+                  if (p.color !== piece.color) {
+                    results.push(square, firstPiece.sq, sq);
+                  }
+                  break;
+                }
+              }
+              f += df;
+              r += dr;
+            }
+          }
+        }
+        return results;
+      };
+      addAll(ownSet, getXraySquares(ownPieceSquares, enemyPieceSquares));
+      addAll(enemySet, getXraySquares(enemyPieceSquares, ownPieceSquares));
+    }
+
+    // Piece-coordination: Discovered attack potential — piece can move to reveal an attack from a piece behind it
+    if (activeVisualMotifs.has('Discovered attack potential')) {
+      const getDiscoveredSquares = (pieces, color, enemyColor) => {
+        const results = [];
+        const slidingDirs = { 'r': [[0,1],[0,-1],[1,0],[-1,0]], 'b': [[1,1],[1,-1],[-1,1],[-1,-1]], 'q': [[0,1],[0,-1],[1,0],[-1,0],[1,1],[1,-1],[-1,1],[-1,-1]] };
+        // For each friendly sliding piece, look along its rays
+        for (const { square: sliderSq, piece: slider } of pieces) {
+          const dirs = slidingDirs[slider.type];
+          if (!dirs) continue;
+          const sf = sliderSq.charCodeAt(0) - 97, sr = Number(sliderSq[1]);
+          for (const [df, dr] of dirs) {
+            let f = sf + df, r = sr + dr;
+            let blocker = null;
+            while (f >= 0 && f <= 7 && r >= 1 && r <= 8) {
+              const sq = String.fromCharCode(97 + f) + r;
+              const p = tempGame.get(sq);
+              if (p) {
+                if (!blocker) {
+                  // First piece in the way — potential blocker that can move to discover
+                  if (p.color === color && p.type !== 'k') {
+                    blocker = { sq, p };
+                  } else {
+                    break; // enemy piece or king blocks, no discovery
+                  }
+                } else {
+                  // Second piece — if enemy, the blocker can discover an attack
+                  if (p.color === enemyColor) {
+                    results.push(blocker.sq);
+                  }
+                  break;
+                }
+              }
+              f += df;
+              r += dr;
+            }
+          }
+        }
+        return results;
+      };
+      addAll(ownSet, getDiscoveredSquares(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getDiscoveredSquares(enemyPieceSquares, opponent, turn));
+    }
+
+    // Piece-coordination: Forkable alignment — legal knight move that creates a concrete fork on quality targets.
+    if (activeVisualMotifs.has('Forkable alignment')) {
+      const KNIGHT_OFFSETS = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]];
+      const pieceValue = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 100 };
+
+      const getForkableSquares = (color, enemyColor) => {
+        const results = [];
+
+        const fenParts = tempGame.fen().split(' ');
+        fenParts[1] = color;
+
+        try {
+          const sideGame = new Chess(fenParts.join(' '));
+          const legalKnightMoves = sideGame.moves({ verbose: true }).filter((move) => move.piece === 'n');
+
+          legalKnightMoves.forEach((move) => {
+            const testGame = new Chess(sideGame.fen());
+            testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+
+            const toFile = move.to.charCodeAt(0) - 97;
+            const toRank = Number(move.to[1]);
+            const attackedTargets = [];
+
+            KNIGHT_OFFSETS.forEach(([df, dr]) => {
+              const tf = toFile + df;
+              const tr = toRank + dr;
+              if (tf < 0 || tf > 7 || tr < 1 || tr > 8) return;
+              const sq = String.fromCharCode(97 + tf) + tr;
+              const occ = testGame.get(sq);
+              if (!occ || occ.color !== enemyColor) return;
+              if (occ.type === 'p') return;
+              attackedTargets.push({ square: sq, value: pieceValue[occ.type] || 0, type: occ.type });
+            });
+
+            if (attackedTargets.length < 2) return;
+
+            const hasHighValueTarget = attackedTargets.some((target) => target.value >= 5 || target.type === 'k');
+            if (!hasHighValueTarget) return;
+
+            const friendlySupport = testGame.attackers(move.to, color).length;
+            const enemyPressure = testGame.attackers(move.to, enemyColor).length;
+            if (enemyPressure > friendlySupport + 1) return;
+
+            results.push(move.from, move.to, ...attackedTargets.slice(0, 3).map((target) => target.square));
+          });
+        } catch (e) {
+          return [];
+        }
+
+        return results;
+      };
+      addAll(ownSet, getForkableSquares(turn, opponent));
+      addAll(enemySet, getForkableSquares(opponent, turn));
+    }
+
+    // Pawn-structure: Loose pawn — pawn not defended by any friendly piece
+    if (activeVisualMotifs.has('Loose pawn')) {
+      addAll(ownSet, ownPieceSquares.filter((p) => p.piece.type === 'p' && !tempGame.isAttacked(p.square, turn)).map((p) => p.square));
+      addAll(enemySet, enemyPieceSquares.filter((p) => p.piece.type === 'p' && !tempGame.isAttacked(p.square, opponent)).map((p) => p.square));
+    }
+
+    // Pawn-structure: Backward pawn — no adjacent pawn support, blocked/unsafe advance square, and enemy pawn pressure.
+    if (activeVisualMotifs.has('Backward pawn')) {
+      const getBackwardPawns = (pieces, color, enemyColor) => {
+        const dir = color === 'w' ? 1 : -1;
+        const pawns = pieces.filter((p) => p.piece.type === 'p');
+        const results = [];
+
+        const enemyPawnControls = (square) => tempGame
+          .attackers(square, enemyColor)
+          .filter((sq) => tempGame.get(sq)?.type === 'p');
+
+        const friendlyPawnControls = (square) => tempGame
+          .attackers(square, color)
+          .filter((sq) => tempGame.get(sq)?.type === 'p');
+
+        for (const p of pawns) {
+          const f = p.square.charCodeAt(0) - 97;
+          const r = Number(p.square[1]);
+
+          // Backward-pawn candidates need to be away from start squares and not already near promotion.
+          if ((color === 'w' && (r <= 2 || r >= 7)) || (color === 'b' && (r >= 7 || r <= 2))) continue;
+
+          const frontR = r + dir;
+          if (frontR < 1 || frontR > 8) continue;
+          const frontSq = String.fromCharCode(97 + f) + frontR;
+
+          const frontOccupant = tempGame.get(frontSq);
+          if (frontOccupant?.color === color) continue;
+
+          // A non-backward pawn normally has neighboring pawn support on the same/advanced rank.
+          const hasAdjacentSupport = pawns.some((other) => {
+            if (other.square === p.square) return false;
+            const of = other.square.charCodeAt(0) - 97;
+            const or = Number(other.square[1]);
+            if (Math.abs(of - f) !== 1) return false;
+            return color === 'w' ? or > r : or < r;
+          });
+          if (hasAdjacentSupport) continue;
+
+          const enemyPawnPressure = enemyPawnControls(frontSq);
+          if (!enemyPawnPressure.length) continue;
+
+          const friendlyPawnSupport = friendlyPawnControls(frontSq);
+          // If friendly pawn support is at least equal, it's likely not a true backward weakness.
+          if (friendlyPawnSupport.length >= enemyPawnPressure.length) continue;
+
+          // Strong backward signal: advance is blocked OR materially unsafe for pawn structure.
+          const blockedAdvance = Boolean(frontOccupant);
+          const unsafeAdvance = enemyPawnPressure.length > friendlyPawnSupport.length;
+          if (!blockedAdvance && !unsafeAdvance) continue;
+
+          results.push(p.square, frontSq, ...enemyPawnPressure.slice(0, 2));
+        }
+        return results;
+      };
+      addAll(ownSet, getBackwardPawns(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getBackwardPawns(enemyPieceSquares, opponent, turn));
+    }
+
+    // Pawn-structure: Passed pawn — pawn with no enemy pawns on same or adjacent files ahead of it
+    if (activeVisualMotifs.has('Passed pawn')) {
+      const getPassedPawns = (pieces, color, enemyPieces) => {
+        const dir = color === 'w' ? 1 : -1;
+        const pawns = pieces.filter((p) => p.piece.type === 'p');
+        const enemyPawns = enemyPieces.filter((p) => p.piece.type === 'p');
+        const results = [];
+        for (const p of pawns) {
+          const f = p.square.charCodeAt(0) - 97;
+          const r = Number(p.square[1]);
+          let passed = true;
+          for (const ep of enemyPawns) {
+            const ef = ep.square.charCodeAt(0) - 97;
+            const er = Number(ep.square[1]);
+            if (Math.abs(ef - f) > 1) continue;
+            if (dir === 1 ? er > r : er < r) { passed = false; break; }
+          }
+          if (passed) results.push(p.square);
+        }
+        return results;
+      };
+      addAll(ownSet, getPassedPawns(ownPieceSquares, turn, enemyPieceSquares));
+      addAll(enemySet, getPassedPawns(enemyPieceSquares, opponent, ownPieceSquares));
+    }
+
+    // Pawn-structure: Pawn break available — friendly pawn can capture an enemy pawn diagonally
+    if (activeVisualMotifs.has('Pawn break available')) {
+      const getLeverPawns = (pieces, color) => {
+        const dir = color === 'w' ? 1 : -1;
+        const results = [];
+        for (const p of pieces) {
+          if (p.piece.type !== 'p') continue;
+          const f = p.square.charCodeAt(0) - 97;
+          const r = Number(p.square[1]);
+          const captureR = r + dir;
+          if (captureR < 1 || captureR > 8) continue;
+          for (const df of [-1, 1]) {
+            const cf = f + df;
+            if (cf < 0 || cf > 7) continue;
+            const sq = String.fromCharCode(97 + cf) + captureR;
+            const target = tempGame.get(sq);
+            if (target && target.type === 'p' && target.color !== color) {
+              results.push(p.square, sq);
+            }
+          }
+        }
+        return results;
+      };
+      addAll(ownSet, getLeverPawns(ownPieceSquares, turn));
+      addAll(enemySet, getLeverPawns(enemyPieceSquares, opponent));
+    }
+
+    // Development / initiative: Rook penetration threat — legal rook infiltration into enemy camp with viable safety/pressure.
+    if (activeVisualMotifs.has('Rook penetration threat')) {
+      const getRookPenetrationSquares = (pieces, color, enemyColor) => {
+        const results = [];
+
+        const fenParts = tempGame.fen().split(' ');
+        fenParts[1] = color;
+
+        try {
+          const sideGame = new Chess(fenParts.join(' '));
+          const rookMoves = sideGame.moves({ verbose: true }).filter((move) => move.piece === 'r');
+
+          rookMoves.forEach((move) => {
+            const fromF = move.from.charCodeAt(0) - 97;
+            const fromR = Number(move.from[1]);
+            const toF = move.to.charCodeAt(0) - 97;
+            const toR = Number(move.to[1]);
+
+            // Penetration should move forward and reach enemy territory.
+            const isForward = color === 'w' ? toR > fromR : toR < fromR;
+            const inEnemyCamp = color === 'w' ? toR >= 6 : toR <= 3;
+            if (!isForward || !inEnemyCamp) return;
+
+            // Prefer open/semi-open files (no friendly pawns on the file).
+            let hasFriendlyPawnOnFile = false;
+            for (let rank = 1; rank <= 8; rank += 1) {
+              const sq = String.fromCharCode(97 + toF) + rank;
+              const occ = tempGame.get(sq);
+              if (occ?.type === 'p' && occ.color === color) {
+                hasFriendlyPawnOnFile = true;
+                break;
+              }
+            }
+            if (hasFriendlyPawnOnFile) return;
+
+            // Validate that the destination is not tactically suicidal.
+            const testGame = new Chess(sideGame.fen());
+            testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+
+            const friendlyAttackers = testGame.attackers(move.to, color).length;
+            const enemyAttackers = testGame.attackers(move.to, enemyColor).length;
+            if (enemyAttackers > friendlyAttackers + 1) return;
+
+            // Require immediate pressure after penetration (king line or attack on enemy piece).
+            let createsPressure = false;
+            const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+            for (const [df, dr] of dirs) {
+              let f = toF + df;
+              let r = toR + dr;
+              while (f >= 0 && f <= 7 && r >= 1 && r <= 8) {
+                const sq = String.fromCharCode(97 + f) + r;
+                const occ = testGame.get(sq);
+                if (!occ) {
+                  f += df;
+                  r += dr;
+                  continue;
+                }
+                if (occ.color === enemyColor) {
+                  createsPressure = true;
+                }
+                break;
+              }
+              if (createsPressure) break;
+            }
+
+            if (!createsPressure) return;
+
+            results.push(move.from, move.to);
+          });
+        } catch (e) {
+          return [];
+        }
+
+        return results;
+      };
+      addAll(ownSet, getRookPenetrationSquares(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getRookPenetrationSquares(enemyPieceSquares, opponent, turn));
+    }
+
+    // Development / initiative: Knight on rim — edge knight with concretely limited legal mobility.
+    if (activeVisualMotifs.has('Knight on rim')) {
+      const getKnightOnRimSquares = (pieces, color) => {
+        const results = [];
+        const knights = pieces.filter((p) => p.piece.type === 'n');
+        if (!knights.length) return results;
+
+        const fenParts = tempGame.fen().split(' ');
+        fenParts[1] = color;
+
+        try {
+          const sideGame = new Chess(fenParts.join(' '));
+          knights.forEach(({ square }) => {
+            const file = square.charCodeAt(0) - 97;
+            if (file !== 0 && file !== 7) return;
+
+            const legalKnightMoves = sideGame
+              .moves({ verbose: true })
+              .filter((move) => move.piece === 'n' && move.from === square);
+
+            const mobility = legalKnightMoves.length;
+            const centralReach = legalKnightMoves.filter((move) => {
+              const f = move.to.charCodeAt(0) - 97;
+              const r = Number(move.to[1]);
+              return f >= 2 && f <= 5 && r >= 3 && r <= 6;
+            }).length;
+
+            // Mark only when the rim knight is genuinely constrained.
+            if (mobility <= 3 || centralReach === 0) {
+              results.push(square, ...legalKnightMoves.slice(0, 2).map((move) => move.to));
+            }
+          });
+        } catch (e) {
+          return [];
+        }
+
+        return results;
+      };
+
+      addAll(ownSet, getKnightOnRimSquares(ownPieceSquares, turn));
+      addAll(enemySet, getKnightOnRimSquares(enemyPieceSquares, opponent));
+    }
+
+    // Development / initiative: Bishop blocked by own pawns — own pawn chain restricts bishop mobility.
+    if (activeVisualMotifs.has('Bishop blocked by own pawns')) {
+      const getBlockedBishopSquares = (pieces, color) => {
+        const results = [];
+        const bishops = pieces.filter((p) => p.piece.type === 'b');
+        if (!bishops.length) return results;
+
+        const dirs = [[1, 1], [1, -1], [-1, 1], [-1, -1]];
+
+        bishops.forEach(({ square }) => {
+          const file = square.charCodeAt(0) - 97;
+          const rank = Number(square[1]);
+          let mobility = 0;
+          const ownPawnBlockers = [];
+
+          dirs.forEach(([df, dr]) => {
+            let f = file + df;
+            let r = rank + dr;
+            while (f >= 0 && f <= 7 && r >= 1 && r <= 8) {
+              const sq = String.fromCharCode(97 + f) + r;
+              const occ = tempGame.get(sq);
+              if (!occ) {
+                mobility += 1;
+                f += df;
+                r += dr;
+                continue;
+              }
+              if (occ.color === color && occ.type === 'p') {
+                ownPawnBlockers.push(sq);
+              }
+              break;
+            }
+          });
+
+          const forwardDirs = color === 'w' ? [[-1, 1], [1, 1]] : [[-1, -1], [1, -1]];
+          const immediateForwardPawnBlocks = forwardDirs.filter(([df, dr]) => {
+            const f = file + df;
+            const r = rank + dr;
+            if (f < 0 || f > 7 || r < 1 || r > 8) return false;
+            const sq = String.fromCharCode(97 + f) + r;
+            const occ = tempGame.get(sq);
+            return Boolean(occ && occ.color === color && occ.type === 'p');
+          });
+
+          // Strong blocked-bishop signal: low mobility and pawn-chain blockers in key diagonals.
+          if (mobility <= 4 && ownPawnBlockers.length >= 2 && immediateForwardPawnBlocks.length >= 1) {
+            results.push(square, ...ownPawnBlockers.slice(0, 2));
+          }
+        });
+
+        return results;
+      };
+
+      addAll(ownSet, getBlockedBishopSquares(ownPieceSquares, turn));
+      addAll(enemySet, getBlockedBishopSquares(enemyPieceSquares, opponent));
+    }
+
+    // Piece-placement: Outpost square available — enemy-territory square immune to pawn attack with occupation potential.
+    if (activeVisualMotifs.has('Outpost square available')) {
+      const getOutpostSquares = (pieces, color, enemyColor, enemyPieces) => {
+        const results = [];
+        const dir = color === 'w' ? 1 : -1;
+        const startRank = color === 'w' ? 5 : 4;
+        const endRank = color === 'w' ? 8 : 1;
+
+        // Enemy pawn control squares: squares that enemy pawns attack
+        const enemyPawnControls = new Set();
+        enemyPieces.forEach(({ square, piece }) => {
+          if (piece.type !== 'p') return;
+          const file = square.charCodeAt(0) - 97;
+          const rank = Number(square[1]);
+          const pawnDir = enemyColor === 'w' ? 1 : -1;
+          for (const df of [-1, 1]) {
+            const cf = file + df;
+            const cr = rank + pawnDir;
+            if (cf < 0 || cf > 7 || cr < 1 || cr > 8) continue;
+            enemyPawnControls.add(String.fromCharCode(97 + cf) + cr);
+          }
+        });
+
+        // Scan for outpost squares: advanced, immune to pawns, can be occupied
+        for (let rank = startRank; rank !== endRank + dir; rank += dir) {
+          for (let file = 0; file < 8; file += 1) {
+            const sq = String.fromCharCode(97 + file) + rank;
+
+            // Skip if controlled by enemy pawn
+            if (enemyPawnControls.has(sq)) continue;
+
+            // Skip if occupied
+            if (tempGame.get(sq)) continue;
+
+            // Skip if friendly piece can't realistically occupy it
+            const canOccupy = pieces.some((p) => {
+              const pf = p.square.charCodeAt(0) - 97;
+              const pr = Number(p.square[1]);
+              if (p.piece.type === 'n') {
+                // Knight can reach in principle
+                const df = Math.abs(pf - file);
+                const dr = Math.abs(pr - rank);
+                return (df === 2 && dr === 1) || (df === 1 && dr === 2);
+              }
+              if (p.piece.type === 'b') {
+                // Bishop on same color
+                const sameColor = (pf + pr) % 2 === (file + rank) % 2;
+                return sameColor;
+              }
+              if (p.piece.type === 'r' || p.piece.type === 'q') {
+                // Rook/Queen can potentially reach
+                return pf === file || pr === rank;
+              }
+              return false;
+            });
+
+            if (!canOccupy) continue;
+
+            // Require it's truly a strong outpost: enemy pressure on it (makes occupation valuable).
+            const enemyAttackers = tempGame.attackers(sq, enemyColor);
+            const friendlyAttackers = tempGame.attackers(sq, color);
+            if (enemyAttackers.length === 0) continue;
+            if (friendlyAttackers.length < 1) continue;
+
+            results.push(sq, ...friendlyAttackers.slice(0, 2));
+          }
+        }
+        return results;
+      };
+      addAll(ownSet, getOutpostSquares(ownPieceSquares, turn, opponent, enemyPieceSquares));
+      addAll(enemySet, getOutpostSquares(enemyPieceSquares, opponent, turn, ownPieceSquares));
+    }
+
+    // Pawn-structure: Promotion square weakly defended — target promotion rank square with inadequate defender coverage.
+    if (activeVisualMotifs.has('Promotion square weakly defended')) {
+      const getWeakPromotionSquares = (pieces, color, enemyColor, enemyPieces) => {
+        const results = [];
+        const promoteRank = color === 'w' ? 8 : 1;
+        const advanceDir = color === 'w' ? 1 : -1;
+
+        // Find friendly pawns that can push toward promotion
+        const advancingPawns = pieces.filter((p) => {
+          if (p.piece.type !== 'p') return false;
+          const rank = Number(p.square[1]);
+          if (color === 'w' && rank < 5) return false;
+          if (color === 'b' && rank > 4) return false;
+          return true;
+        });
+
+        if (!advancingPawns.length) return results;
+
+        // For each promotion-rank square adjacent to advancing pawns
+        const allPawnFiles = advancingPawns.map((p) => p.square.charCodeAt(0) - 97);
+        const promotionCandidates = new Set();
+        allPawnFiles.forEach((f) => {
+          for (const df of [-1, 0, 1]) {
+            const cf = f + df;
+            if (cf < 0 || cf > 7) continue;
+            const sq = String.fromCharCode(97 + cf) + promoteRank;
+            promotionCandidates.add(sq);
+          }
+        });
+
+        for (const sq of promotionCandidates) {
+          // Skip if occupied by own piece
+          const occ = tempGame.get(sq);
+          if (occ && occ.color === color) continue;
+
+          // Evaluate defense weakness
+          const defenders = tempGame.attackers(sq, color).filter((attSq) => {
+            const att = tempGame.get(attSq);
+            // Exclude pawns as defenders on promotion rank (they're captured)
+            return att.type !== 'p';
+          });
+          const attackers = tempGame.attackers(sq, enemyColor);
+
+          // Weak if: significantly outnumbered or very few defenders and enemy pressure
+          const isWeak =
+            (defenders.length === 0 && attackers.length > 0) ||
+            (defenders.length <= 1 && attackers.length >= 2);
+
+          if (!isWeak) continue;
+
+          results.push(sq, ...defenders.slice(0, 1), ...attackers.slice(0, 2));
+        }
+        return results;
+      };
+      addAll(ownSet, getWeakPromotionSquares(ownPieceSquares, turn, opponent, enemyPieceSquares));
+      addAll(enemySet, getWeakPromotionSquares(enemyPieceSquares, opponent, turn, ownPieceSquares));
+    }
+
+    // Tactical: Pinned piece — piece that cannot move without exposing the king to check from an attacking line.
+    if (activeVisualMotifs.has('Pinned piece')) {
+      const getPinnedPieces = (pieces, color, enemyColor) => {
+        const results = [];
+        const king = pieces.find((p) => p.piece.type === 'k');
+        if (!king) return results;
+
+        // For each friendly piece, check if it's pinned
+        for (const { square, piece } of pieces) {
+          if (piece.type === 'k') continue;
+
+          // Try removing the piece to see if king becomes attacked
+          try {
+            const testFen = tempGame.fen();
+            const testGame = new Chess(testFen);
+            testGame.remove(square);
+
+            // Check if king is now attacked without this piece
+            if (testGame.isAttacked(king.square, enemyColor)) {
+              // Now verify it's a true pin: the attacking piece is behind it on a line
+              const pinnerSquares = testGame.attackers(king.square, enemyColor);
+              let hasPinner = false;
+
+              for (const pinnerSq of pinnerSquares) {
+                const pinner = testGame.get(pinnerSq);
+                if (!pinner || !['r', 'b', 'q'].includes(pinner.type)) continue;
+
+                // Check if the piece is actually blocking the pin
+                const pf = pinnerSq.charCodeAt(0) - 97;
+                const pr = Number(pinnerSq[1]);
+                const sf = square.charCodeAt(0) - 97;
+                const sr = Number(square[1]);
+                const kf = king.square.charCodeAt(0) - 97;
+                const kr = Number(king.square[1]);
+
+                // Must be on same rank/file/diagonal
+                if (pf === sf && sf === kf) {
+                  hasPinner = true;
+                  break;
+                }
+                if (pr === sr && sr === kr) {
+                  hasPinner = true;
+                  break;
+                }
+                if (Math.abs(pf - sf) === Math.abs(pr - sr) && Math.abs(sf - kf) === Math.abs(sr - kr)) {
+                  const dfp = pf > sf ? 1 : pf < sf ? -1 : 0;
+                  const drp = pr > sr ? 1 : pr < sr ? -1 : 0;
+                  const dfs = sf > kf ? 1 : sf < kf ? -1 : 0;
+                  const drs = sr > kr ? 1 : sr < kr ? -1 : 0;
+                  if (dfp === dfs && drp === drs) {
+                    hasPinner = true;
+                    break;
+                  }
+                }
+              }
+
+              if (hasPinner) {
+                results.push(square, king.square);
+              }
+            }
+          } catch (e) {
+            // Ignore errors in test positions
+          }
+        }
+        return results;
+      };
+      addAll(ownSet, getPinnedPieces(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getPinnedPieces(enemyPieceSquares, opponent, turn));
+    }
+
+    // Tactical: Overloaded defender — piece defending multiple targets; removal would cause multiple hangs.
+    if (activeVisualMotifs.has('Overloaded defender')) {
+      const pieceValue = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 100 };
+
+      const getOverloadedDefenders = (pieces, enemyPieces, color, enemyColor) => {
+        const results = [];
+
+        // For each friendly piece, check what it's defending
+        for (const { square: defenderSq, piece: defender } of pieces) {
+          if (defender.type === 'k') continue;
+
+          const defendedTargets = [];
+          const defenderValue = pieceValue[defender.type] || 0;
+
+          // Find all pieces this defender is protecting
+          for (const { square: targetSq, piece: target } of pieces) {
+            if (targetSq === defenderSq) continue;
+            if (target.type === 'k') continue;
+
+            // Is this piece defending the target?
+            const targetAttackers = tempGame.attackers(targetSq, color);
+            if (!targetAttackers.includes(defenderSq)) continue;
+
+            const targetValue = pieceValue[target.type] || 0;
+            defendedTargets.push({ square: targetSq, value: targetValue, type: target.type });
+          }
+
+          // Require at least 2 defended targets
+          if (defendedTargets.length < 2) continue;
+
+          // Require at least one of them is valuable (worth more than a pawn or equal to the defender)
+          const hasValuableTarget = defendedTargets.some((t) => t.value >= 3 || t.value >= defenderValue);
+          if (!hasValuableTarget) continue;
+
+          // Verify that removing the defender would create hangs
+          let hangsAfterCapture = 0;
+          for (const { square: targetSq } of defendedTargets) {
+            const remainingDefenders = tempGame.attackers(targetSq, color).filter((sq) => sq !== defenderSq);
+            const attackers = tempGame.attackers(targetSq, enemyColor);
+            if (remainingDefenders.length < attackers.length) {
+              hangsAfterCapture += 1;
+            }
+          }
+
+          if (hangsAfterCapture >= 2) {
+            results.push(defenderSq, ...defendedTargets.slice(0, 3).map((t) => t.square));
+          }
+        }
+        return results;
+      };
+      addAll(ownSet, getOverloadedDefenders(ownPieceSquares, enemyPieceSquares, turn, opponent));
+      addAll(enemySet, getOverloadedDefenders(enemyPieceSquares, ownPieceSquares, opponent, turn));
+    }
+
+    // Tactical: Trapped piece — piece with minimal/no legal moves in a restricted tactical position.
+    if (activeVisualMotifs.has('Trapped piece')) {
+      const getTrappedPieces = (pieces, color, enemyColor) => {
+        const results = [];
+
+        const fenParts = tempGame.fen().split(' ');
+        fenParts[1] = color;
+
+        try {
+          const sideGame = new Chess(fenParts.join(' '));
+
+          for (const { square, piece } of pieces) {
+            if (piece.type === 'k' || piece.type === 'p') continue;
+
+            const pieceMoves = sideGame.moves({ verbose: true }).filter((m) => m.from === square);
+            if (pieceMoves.length > 1) continue;
+
+            // Require the piece is under attack or has genuinely restricted mobility
+            const attackers = tempGame.attackers(square, enemyColor);
+            if (attackers.length === 0) continue;
+
+            // Verify it's truly trapped: no good escape squares or would move into danger
+            let hasEscapeSquare = false;
+            for (const move of pieceMoves) {
+              try {
+                const testGame = new Chess(sideGame.fen());
+                testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+                const friendlyAttackers = testGame.attackers(move.to, color);
+                const enemyAttackers = testGame.attackers(move.to, enemyColor);
+                if (friendlyAttackers.length >= enemyAttackers.length) {
+                  hasEscapeSquare = true;
+                }
+              } catch (e) {
+                // Ignore
+              }
+            }
+
+            if (!hasEscapeSquare) {
+              results.push(square, ...attackers.slice(0, 2));
+            }
+          }
+        } catch (e) {
+          return [];
+        }
+
+        return results;
+      };
+      addAll(ownSet, getTrappedPieces(ownPieceSquares, turn, opponent));
+      addAll(enemySet, getTrappedPieces(enemyPieceSquares, opponent, turn));
+    }
+
+    // Tactical: Mate-in-1 threat available — friendly move delivers immediate checkmate.
+    if (activeVisualMotifs.has('Mate-in-1 threat available')) {
+      const getMate1Squares = (color) => {
+        const results = [];
+
+        const fenParts = tempGame.fen().split(' ');
+        fenParts[1] = color;
+
+        try {
+          const sideGame = new Chess(fenParts.join(' '));
+          const allMoves = sideGame.moves({ verbose: true });
+
+          for (const move of allMoves) {
+            try {
+              const testGame = new Chess(sideGame.fen());
+              testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
+
+              if (testGame.isCheckmate()) {
+                results.push(move.from, move.to);
+              }
+            } catch (e) {
+              // Ignore
+            }
+          }
+        } catch (e) {
+          return [];
+        }
+
+        return results;
+      };
+      addAll(ownSet, getMate1Squares(turn));
+      addAll(enemySet, getMate1Squares(opponent));
+    }
+
+    return { highlightedSquares: Array.from(ownSet), enemyHighlightedSquares: Array.from(enemySet) };
+  }, [game, activeVisualMotifs, showVisualMotifButton]);
+
+  useEffect(() => {
+    if (!pendingOverlayAdvanceRef.current) return;
+
+    const hasVisibleDots = (highlightedSquares.length + enemyHighlightedSquares.length) > 0;
+    if (hasVisibleDots) {
+      pendingOverlayAdvanceRef.current = null;
+      return;
+    }
+
+    const advanceState = pendingOverlayAdvanceRef.current;
+    if (advanceState.attempts >= advanceState.maxAttempts) {
+      pendingOverlayAdvanceRef.current = null;
+      return;
+    }
+
+    const currentIndex = selectedVisualMotif ? VISUAL_MOTIFS.indexOf(selectedVisualMotif) : -1;
+    const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % VISUAL_MOTIFS.length;
+    advanceState.attempts += 1;
+    onSelectVisualMotif(VISUAL_MOTIFS[nextIndex]);
+  }, [enemyHighlightedSquares.length, highlightedSquares.length, onSelectVisualMotif, selectedVisualMotif]);
+
   return (
     <div className="flex min-h-screen flex-col max-w-md mx-auto bg-slate-900">
       {/* Battle Scene */}
@@ -1319,6 +2635,8 @@ const PuzzleView = ({
             height="100%"
             customArrows={customArrows}
             movableColor={orientation}
+            highlights={highlightedSquares}
+            enemyHighlights={enemyHighlightedSquares}
           />
 
           {/* No board overlays for cleaner UI */}
@@ -1382,6 +2700,51 @@ const PuzzleView = ({
 
         {/* Hints */}
         <div className="space-y-2">
+
+          {showVisualMotifButton && (
+            <div className="rounded-2xl border border-slate-700 bg-slate-800/80 p-3 space-y-1.5">
+              <div className="mb-2 flex items-center justify-between">
+                <div className="text-xs uppercase tracking-wider text-slate-400">Opportunity Overlay</div>
+                <button
+                  type="button"
+                  data-testid="visual-motif-next"
+                  onClick={handleAdvanceOverlay}
+                  aria-label="Next opportunity overlay"
+                  title="Next opportunity overlay"
+                  className="rounded-md border border-slate-600 bg-slate-700/80 p-1 text-slate-200 transition-colors hover:bg-slate-600/80 focus:outline-none focus:ring-2 focus:ring-slate-400"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <select
+                  data-testid="visual-motif-dropdown"
+                  value={selectedVisualMotif}
+                  onChange={(event) => onSelectVisualMotif(event.target.value)}
+                  className="flex-1 rounded-md border border-slate-600 bg-slate-800 px-2.5 py-2 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400"
+                >
+                  <option value="">None</option>
+                  {VISUAL_MOTIFS.map((motif) => (
+                    <option key={`dropdown-${motif}`} value={motif}>{motif}</option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  data-testid="visual-motif-dropdown-definition"
+                  disabled={!selectedVisualMotif}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    if (!selectedVisualMotif) return;
+                    openMotifDefinition(selectedVisualMotif);
+                  }}
+                  aria-label={selectedVisualMotif ? `Open definition for ${selectedVisualMotif}` : 'Select a motif first'}
+                  className="h-4 w-4 shrink-0 rounded-full bg-sky-500 text-white text-[10px] font-bold leading-none shadow-sm transition-colors hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-300 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  i
+                </button>
+              </div>
+            </div>
+          )}
 
           {puzzle.hints.slice(0, hintsRevealed).map((hint, i) => (
             <div key={i} className="flex flex-col gap-2">
@@ -1548,6 +2911,8 @@ export default function App() {
   const [homeView, setHomeView] = useState('categories');
   const [selectedCategoryType, setSelectedCategoryType] = useState('All');
   const [isRandomMode, setIsRandomMode] = useState(false);
+  const [activeVisualMotifs, setActiveVisualMotifs] = useState(new Set());
+  const [showVisualMotifButton, setShowVisualMotifButton] = useState(false);
   const battle = useBattleState();
 
   useEffect(() => {
@@ -1567,6 +2932,24 @@ export default function App() {
     if (!currentPuzzle) return null;
     return parsePuzzleUrl(currentPuzzle.url);
   }, [currentPuzzle]);
+
+  const handleToggleVisualMotif = (motif) => setActiveVisualMotifs((prev) => {
+    if (!motif) {
+      return new Set();
+    }
+    if (prev.has(motif) && prev.size === 1) {
+      return new Set();
+    }
+    return new Set([motif]);
+  });
+
+  const handleSelectVisualMotif = React.useCallback((motif) => {
+    if (!motif) {
+      setActiveVisualMotifs(new Set());
+      return;
+    }
+    setActiveVisualMotifs(new Set([motif]));
+  }, []);
 
   const puzzleOrientation = React.useMemo(() => {
     const tempGame = new Chess();
@@ -1648,6 +3031,19 @@ export default function App() {
       activeType === 'All' || categoryTypeMap[category] === activeType
     ));
 
+    const handleStartVisualMotifTest = () => {
+      const selectableCategories = visibleCategories.filter((cat) => (totalCounts[cat] || 0) > 0);
+      if (!selectableCategories.length) return;
+      const randomCategory = selectableCategories[Math.floor(Math.random() * selectableCategories.length)];
+      const puzzleCount = totalCounts[randomCategory] || 0;
+      const randomIndex = puzzleCount > 1 ? Math.floor(Math.random() * puzzleCount) : 0;
+      setHomeView('categories');
+      setIsRandomMode(true);
+      setShowVisualMotifButton(true);
+      battle.reset();
+      selectCategory(randomCategory, randomIndex);
+    };
+
     if (homeView === 'dictionary') {
       return (
         <DictionaryPage
@@ -1662,6 +3058,7 @@ export default function App() {
       onSelect={(category) => {
         setHomeView('categories');
         setIsRandomMode(false);
+        setShowVisualMotifButton(false);
         battle.reset();
         selectCategory(category);
       }}
@@ -1678,6 +3075,8 @@ export default function App() {
 
         setHomeView('categories');
         setIsRandomMode(true);
+        setShowVisualMotifButton(true);
+        setActiveVisualMotifs(new Set());
         battle.reset();
         selectCategory(randomCategory, randomIndex);
       }}
@@ -1690,6 +3089,7 @@ export default function App() {
       selectedType={activeType}
       onSelectType={setSelectedCategoryType}
       typeCounts={typeCounts}
+      onStartVisualMotifTest={handleStartVisualMotifTest}
     />;
   }
 
@@ -1720,6 +3120,10 @@ export default function App() {
         isCompleted={isCurrentPuzzleCompleted}
         completedAt={currentPuzzleCompletedAt}
         battle={battle}
+        activeVisualMotifs={activeVisualMotifs}
+        onToggleVisualMotif={handleToggleVisualMotif}
+        onSelectVisualMotif={handleSelectVisualMotif}
+        showVisualMotifButton={showVisualMotifButton}
       />
     </ErrorBoundary>
   );
