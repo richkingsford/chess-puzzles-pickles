@@ -274,6 +274,12 @@
   user-select: none;
 }
 
+.battle-character-self .battle-sprite-frame {
+  box-shadow:
+    0 0 0 2px rgba(110, 231, 183, 0.75),
+    0 0 22px rgba(16, 185, 129, 0.42);
+}
+
 /* Idle breathing */
 .battle-character:not(.battle-hit):not(.battle-attack) {
   animation: battle-idle 3s ease-in-out infinite;

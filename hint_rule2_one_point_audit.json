@@ -1,0 +1,122 @@
+{
+  "inputFile": "C:\\dev\\chess-puzzles-pickles\\chess-puzzles-pickles\\game\\public\\puzzles.json",
+  "outputFile": "C:\\dev\\chess-puzzles-pickles\\chess-puzzles-pickles\\hint_rule2_one_point_audit.json",
+  "evaluatedAt": "2026-05-15T01:57:06.136Z",
+  "auditVersion": 1,
+  "rule": {
+    "id": "rule-2-one-hint-one-point",
+    "name": "One Hint = One Point",
+    "description": "Each hint should be one compact sentence and communicate exactly one instructional point."
+  },
+  "subchecks": {
+    "multipleSentences": "Flags hints with more than one sentence-ending mark.",
+    "moveSequenceInSingleHint": "Flags hints with multiple SAN/move-notation tokens.",
+    "chainedInstructions": "Flags clause markers plus multiple action words.",
+    "forcedReplySequence": "Flags opponent-response plus continuation wording.",
+    "notCompact": "Flags hints longer than 18 words.",
+    "overpackedBeforeFinalStage": "Flags early hints combining piece, tactic, and move/action guidance.",
+    "multiConceptDensity": "Flags hints dense with multiple tactical/action concepts.",
+    "andJoinedActions": "Flags likely two-action hints joined by \"and\"."
+  },
+  "batchSizeHints": 500,
+  "puzzleCount": 694,
+  "hintCount": 3470,
+  "violationCount": 0,
+  "summary": {
+    "byCheck": {},
+    "bySeverity": {}
+  },
+  "batches": [
+    {
+      "batchIndex": 0,
+      "hintStart": 0,
+      "hintEnd": 499,
+      "hintCount": 500,
+      "puzzleCountTouched": 100,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    },
+    {
+      "batchIndex": 1,
+      "hintStart": 500,
+      "hintEnd": 999,
+      "hintCount": 500,
+      "puzzleCountTouched": 100,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    },
+    {
+      "batchIndex": 2,
+      "hintStart": 1000,
+      "hintEnd": 1499,
+      "hintCount": 500,
+      "puzzleCountTouched": 100,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    },
+    {
+      "batchIndex": 3,
+      "hintStart": 1500,
+      "hintEnd": 1999,
+      "hintCount": 500,
+      "puzzleCountTouched": 100,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    },
+    {
+      "batchIndex": 4,
+      "hintStart": 2000,
+      "hintEnd": 2499,
+      "hintCount": 500,
+      "puzzleCountTouched": 100,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    },
+    {
+      "batchIndex": 5,
+      "hintStart": 2500,
+      "hintEnd": 2999,
+      "hintCount": 500,
+      "puzzleCountTouched": 100,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    },
+    {
+      "batchIndex": 6,
+      "hintStart": 3000,
+      "hintEnd": 3469,
+      "hintCount": 470,
+      "puzzleCountTouched": 94,
+      "violationCount": 0,
+      "summary": {
+        "byCheck": {},
+        "bySeverity": {}
+      },
+      "violations": []
+    }
+  ]
+}

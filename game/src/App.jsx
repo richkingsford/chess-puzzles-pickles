@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Chess } from 'chess.js';
+import QRCode from 'qrcode';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
 import BattleScene from './components/BattleScene';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight,
-  RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle
+  RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle,
+  Users, QrCode, Link as LinkIcon, LogOut
 } from 'lucide-react';
 import { usePuzzleGame } from './hooks/usePuzzleGame';
 import { useBattleState } from './hooks/useBattleState';
+import { useRoomMultiplayer } from './hooks/useRoomMultiplayer';
+import { normalizeRoomCode } from './lib/roomCodes';
 import { parsePuzzleUrl } from './lib/utils';
 
 // --- Components ---
@@ -89,6 +93,201 @@ const WIN_CONFETTI_PARTICLES = [
   { dx: -34, dy: 18, rotation: '-180deg', delay: '25ms', color: '#f472b6' },
   { dx: 0, dy: 18, rotation: '260deg', delay: '50ms', color: '#a3e635' }
 ];
+
+const MultiplayerPanel = ({
+  multiplayer,
+  onHostRoom,
+  onJoinRoom,
+  onLeaveRoom
+}) => {
+  const [joinCode, setJoinCode] = useState('');
+  const [qrDataUrl, setQrDataUrl] = useState('');
+  const [copyState, setCopyState] = useState('idle');
+  const room = multiplayer.room;
+  const players = room?.players || [];
+  const isConnecting = multiplayer.status === 'connecting';
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!multiplayer.roomUrl) {
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    QRCode.toDataURL(multiplayer.roomUrl, {
+      margin: 1,
+      width: 168,
+      color: {
+        dark: '#0f172a',
+        light: '#f8fafc'
+      }
+    }).then((dataUrl) => {
+      if (!cancelled) {
+        setQrDataUrl(dataUrl);
+      }
+    }).catch(() => {
+      if (!cancelled) {
+        setQrDataUrl('');
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [multiplayer.roomUrl]);
+
+  useEffect(() => {
+    if (copyState !== 'copied') return undefined;
+    const timer = setTimeout(() => setCopyState('idle'), 1400);
+    return () => clearTimeout(timer);
+  }, [copyState]);
+
+  const handleSubmitJoin = (event) => {
+    event.preventDefault();
+    onJoinRoom(joinCode);
+  };
+
+  const handleCopyLink = async () => {
+    if (!multiplayer.roomUrl) return;
+
+    try {
+      await navigator.clipboard.writeText(multiplayer.roomUrl);
+      setCopyState('copied');
+    } catch {
+      setCopyState('failed');
+    }
+  };
+
+  if (room) {
+    return (
+      <section data-testid="multiplayer-room-panel" className="rounded-xl border border-cyan-700/70 bg-cyan-950/25 p-3 text-slate-100 shadow-lg">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-cyan-200">
+              <Users className="h-4 w-4" />
+              Room
+            </div>
+            <div data-testid="room-code" className="mt-1 font-mono text-2xl font-black tracking-[0.24em] text-white">
+              {room.code}
+            </div>
+          </div>
+          <div className="rounded-full border border-cyan-500/40 bg-cyan-500/15 px-2.5 py-1 text-xs font-bold text-cyan-100">
+            {players.length}/2
+          </div>
+        </div>
+
+        <div className="grid grid-cols-[auto_1fr] items-center gap-3">
+          <div className="flex h-[116px] w-[116px] items-center justify-center rounded-lg border border-slate-600 bg-slate-100 p-1">
+            {qrDataUrl ? (
+              <img
+                src={qrDataUrl}
+                alt={`Room ${room.code} invite`}
+                className="h-full w-full"
+              />
+            ) : (
+              <QrCode className="h-12 w-12 text-slate-700" />
+            )}
+          </div>
+
+          <div className="min-w-0 space-y-2">
+            <div className="grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                data-testid="copy-room-link-button"
+                onClick={handleCopyLink}
+                className="flex min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-600 bg-slate-800 px-2 text-xs font-semibold text-slate-100 hover:bg-slate-700"
+              >
+                <LinkIcon className="h-4 w-4" />
+                {copyState === 'copied' ? 'Copied' : 'Copy'}
+              </button>
+              <button
+                type="button"
+                data-testid="leave-room-button"
+                onClick={onLeaveRoom}
+                className="flex min-h-10 items-center justify-center gap-2 rounded-lg border border-red-700/60 bg-red-950/35 px-2 text-xs font-semibold text-red-100 hover:bg-red-900/45"
+              >
+                <LogOut className="h-4 w-4" />
+                Leave
+              </button>
+            </div>
+
+            <div className="space-y-1">
+              {players.map((player) => (
+                <div
+                  key={player.id}
+                  className={`flex items-center justify-between rounded-md border px-2 py-1.5 text-xs ${
+                    player.id === multiplayer.playerId
+                      ? 'border-emerald-400/70 bg-emerald-400/10 text-emerald-100 shadow-[0_0_18px_rgba(52,211,153,0.18)]'
+                      : 'border-slate-700 bg-slate-800/60 text-slate-200'
+                  }`}
+                >
+                  <span className="truncate font-semibold">{player.name}</span>
+                  <span className={player.connected ? 'text-cyan-200' : 'text-slate-500'}>
+                    {player.connected ? 'Ready' : 'Away'}
+                  </span>
+                </div>
+              ))}
+              {players.length < 2 && (
+                <div className="rounded-md border border-dashed border-slate-600 px-2 py-1.5 text-xs font-semibold text-slate-400">
+                  Waiting
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {multiplayer.error && (
+          <div data-testid="room-error" className="mt-2 text-xs font-semibold text-red-300">
+            {multiplayer.error}
+          </div>
+        )}
+      </section>
+    );
+  }
+
+  return (
+    <section data-testid="multiplayer-panel" className="rounded-xl border border-cyan-800 bg-cyan-950/20 p-3 text-slate-100 shadow-lg">
+      <button
+        type="button"
+        data-testid="host-room-button"
+        onClick={onHostRoom}
+        disabled={isConnecting}
+        className="mb-2 flex w-full min-h-11 items-center justify-center gap-2 rounded-lg border border-cyan-500/50 bg-cyan-500/20 px-3 text-sm font-bold text-cyan-100 transition-colors hover:bg-cyan-500/30 disabled:cursor-wait disabled:opacity-70"
+      >
+        <Users className="h-4 w-4" />
+        {isConnecting ? 'Connecting' : 'Host Room'}
+      </button>
+
+      <form onSubmit={handleSubmitJoin} className="grid grid-cols-[1fr_auto] gap-2">
+        <input
+          data-testid="join-room-code-input"
+          aria-label="Room code"
+          value={joinCode}
+          onChange={(event) => setJoinCode(normalizeRoomCode(event.target.value))}
+          maxLength={4}
+          placeholder="CODE"
+          className="min-h-10 rounded-lg border border-slate-600 bg-slate-900 px-3 font-mono text-sm font-bold uppercase tracking-[0.2em] text-white outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20"
+        />
+        <button
+          type="submit"
+          data-testid="join-room-button"
+          disabled={isConnecting || joinCode.length !== 4}
+          className="min-h-10 rounded-lg border border-slate-600 bg-slate-800 px-3 text-sm font-semibold text-slate-100 hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Join
+        </button>
+      </form>
+
+      {multiplayer.error && (
+        <div data-testid="room-error" className="mt-2 text-xs font-semibold text-red-300">
+          {multiplayer.error}
+        </div>
+      )}
+    </section>
+  );
+};
 
 const normalizeCategoryType = (value) => {
   const key = String(value || '').trim().toLowerCase();
@@ -190,6 +389,49 @@ const getCategoryType = (category, categoryData) => {
   return inferCategoryTypeFromName(category);
 };
 
+const buildCategoryStats = (puzzlesData, solvedPuzzles) => {
+  if (!puzzlesData) {
+    return {
+      solvedCounts: {},
+      totalCounts: {},
+      categoryTypeMap: {},
+      sortedCategories: []
+    };
+  }
+
+  const solvedCounts = {};
+  const totalCounts = {};
+  const categoryTypeMap = {};
+
+  Object.keys(puzzlesData).forEach((cat) => {
+    const categoryData = puzzlesData[cat];
+    const puzzleMap = getCategoryPuzzlesMap(categoryData);
+    const puzzleUrls = new Set(Object.keys(puzzleMap));
+    totalCounts[cat] = Object.keys(puzzleMap).length;
+    const solvedInCategory = solvedPuzzles[cat] || [];
+    solvedCounts[cat] = solvedInCategory.filter((url) => puzzleUrls.has(url)).length;
+    categoryTypeMap[cat] = getCategoryType(cat, categoryData);
+  });
+
+  const sortedCategories = Object.keys(puzzlesData).sort((left, right) => {
+    const leftComplete = (solvedCounts[left] || 0) >= (totalCounts[left] || 0) && (totalCounts[left] || 0) > 0;
+    const rightComplete = (solvedCounts[right] || 0) >= (totalCounts[right] || 0) && (totalCounts[right] || 0) > 0;
+
+    if (leftComplete === rightComplete) {
+      return left.localeCompare(right);
+    }
+
+    return leftComplete ? 1 : -1;
+  });
+
+  return {
+    solvedCounts,
+    totalCounts,
+    categoryTypeMap,
+    sortedCategories
+  };
+};
+
 const CategoryList = ({
   categories,
   onSelect,
@@ -203,110 +445,154 @@ const CategoryList = ({
   typeCounts,
   onStartRandomMode,
   isRandomModeActive,
-  onStartVisualMotifTest
+  onStartVisualMotifTest,
+  multiplayer,
+  onHostRoom,
+  onJoinRoom,
+  onLeaveRoom,
+  selectedHomeTab,
+  onSelectHomeTab
 }) => {
+  const homeTabs = [
+    { id: 'single', label: 'Single Player' },
+    { id: 'multiplayer', label: '2 Player' }
+  ];
+
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
       <h1 className="text-3xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-yellow-500">
         Chess Puzzles
       </h1>
 
-      <button
-        type="button"
-        data-testid="random-mode-button"
-        onClick={onStartRandomMode}
-        className={`w-full rounded-xl border p-3 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
-          isRandomModeActive
-            ? 'border-teal-500 bg-teal-500/20 text-teal-200'
-            : 'border-teal-700 bg-teal-900/30 text-teal-200 hover:bg-teal-900/40'
-        }`}
-      >
-        <Shuffle className="w-4 h-4" />
-        Random Mode
-      </button>
+      <div className="grid grid-cols-2 gap-2 rounded-xl border border-slate-700 bg-slate-900 p-1">
+        {homeTabs.map((tab) => {
+          const isActive = selectedHomeTab === tab.id;
 
-      <button
-        type="button"
-        data-testid="visual-motif-test-button"
-        onClick={onStartVisualMotifTest}
-        className="w-full rounded-xl border border-slate-700 bg-slate-800/80 p-3 text-sm font-semibold transition-colors text-slate-200 hover:bg-slate-700"
-      >
-        Visual Motif Test
-      </button>
-
-      <div data-testid="category-type-filters" className="rounded-xl border border-slate-700 bg-slate-800/70 p-3">
-        <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-          Filter By Type
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {typeFilters.map((type) => {
-            const isActive = selectedType === type;
-            const count = typeCounts[type] || 0;
-
-            return (
-              <button
-                key={type}
-                type="button"
-                data-testid="type-filter-button"
-                onClick={() => onSelectType(type)}
-                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
-                  isActive
-                    ? 'border-yellow-500 bg-yellow-500/20 text-yellow-300'
-                    : 'border-slate-600 bg-slate-700/70 text-slate-200 hover:bg-slate-600/80'
-                }`}
-              >
-                {type} ({count})
-              </button>
-            );
-          })}
-        </div>
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              data-testid={`home-tab-${tab.id}`}
+              onClick={() => onSelectHomeTab(tab.id)}
+              className={`min-h-14 rounded-lg border px-2 text-base font-black transition-colors ${
+                isActive
+                  ? 'border-yellow-400 bg-yellow-400/15 text-yellow-100 shadow-[0_0_18px_rgba(250,204,21,0.12)]'
+                  : 'border-transparent bg-slate-800/70 text-slate-300 hover:bg-slate-700'
+              }`}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
       </div>
 
-      {categories.map(cat => (
-        <button
-          key={cat}
-          onClick={() => onSelect(cat)}
-          className="w-full bg-slate-800 hover:bg-slate-700 active:bg-slate-600 transition-colors p-4 rounded-xl flex items-center justify-between border border-slate-700 shadow-lg group"
-        >
-          <span className="font-medium text-lg capitalize text-slate-200">
-            {formatCategoryLabel(cat)}
-          </span>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-slate-400">
-              {solvedCounts[cat] || 0} / {totalCounts[cat]}
-            </span>
-            {solvedCounts[cat] === totalCounts[cat] && totalCounts[cat] > 0 ? (
-              <Trophy className="w-5 h-5 text-yellow-400" />
-            ) : (
-              <div className="w-5 h-5 rounded-full border-2 border-slate-600 group-hover:border-slate-500" />
-            )}
+      {selectedHomeTab === 'multiplayer' ? (
+        <MultiplayerPanel
+          multiplayer={multiplayer}
+          onHostRoom={onHostRoom}
+          onJoinRoom={onJoinRoom}
+          onLeaveRoom={onLeaveRoom}
+        />
+      ) : (
+        <>
+          <button
+            type="button"
+            data-testid="random-mode-button"
+            onClick={onStartRandomMode}
+            className={`w-full rounded-xl border p-3 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
+              isRandomModeActive
+                ? 'border-teal-500 bg-teal-500/20 text-teal-200'
+                : 'border-teal-700 bg-teal-900/30 text-teal-200 hover:bg-teal-900/40'
+            }`}
+          >
+            <Shuffle className="w-4 h-4" />
+            Random Mode
+          </button>
+
+          <button
+            type="button"
+            data-testid="visual-motif-test-button"
+            onClick={onStartVisualMotifTest}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800/80 p-3 text-sm font-semibold transition-colors text-slate-200 hover:bg-slate-700"
+          >
+            Visual Motif Test
+          </button>
+
+          <div data-testid="category-type-filters" className="rounded-xl border border-slate-700 bg-slate-800/70 p-3">
+            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
+              Filter By Type
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {typeFilters.map((type) => {
+                const isActive = selectedType === type;
+                const count = typeCounts[type] || 0;
+
+                return (
+                  <button
+                    key={type}
+                    type="button"
+                    data-testid="type-filter-button"
+                    onClick={() => onSelectType(type)}
+                    className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                      isActive
+                        ? 'border-yellow-500 bg-yellow-500/20 text-yellow-300'
+                        : 'border-slate-600 bg-slate-700/70 text-slate-200 hover:bg-slate-600/80'
+                    }`}
+                  >
+                    {type} ({count})
+                  </button>
+                );
+              })}
+            </div>
           </div>
-        </button>
-      ))}
 
-      <div className="mt-8 pt-8 border-t border-slate-700">
-        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Learn</h2>
-        <button
-          type="button"
-          data-testid="open-dictionary-page"
-          onClick={onOpenDictionary}
-          className="w-full mb-4 bg-slate-800 p-3 rounded-lg flex items-center justify-between gap-3 text-sm text-slate-200 hover:bg-slate-700 border border-slate-700"
-        >
-          <span className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-yellow-400" />
-            Dictionary
-          </span>
-          <span className="text-xs text-slate-400">{dictionaryEntryCount} entries</span>
-        </button>
+          {categories.map(cat => (
+            <button
+              key={cat}
+              onClick={() => onSelect(cat)}
+              className="w-full bg-slate-800 hover:bg-slate-700 active:bg-slate-600 transition-colors p-4 rounded-xl flex items-center justify-between border border-slate-700 shadow-lg group"
+            >
+              <span className="font-medium text-lg capitalize text-slate-200">
+                {formatCategoryLabel(cat)}
+              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-slate-400">
+                  {solvedCounts[cat] || 0} / {totalCounts[cat]}
+                </span>
+                {solvedCounts[cat] === totalCounts[cat] && totalCounts[cat] > 0 ? (
+                  <Trophy className="w-5 h-5 text-yellow-400" />
+                ) : (
+                  <div className="w-5 h-5 rounded-full border-2 border-slate-600 group-hover:border-slate-500" />
+                )}
+              </div>
+            </button>
+          ))}
 
-        <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Settings</h2>
-        <button
-          onClick={() => window.resetProgress()}
-          className="w-full bg-red-900/20 p-3 rounded-lg flex items-center justify-center gap-2 text-sm text-red-400 hover:bg-red-900/30 transition-colors"
-        >
-          <Trash2 className="w-4 h-4" /> Reset All Progress
-        </button>
-      </div>
+          <div className="mt-8 pt-8 border-t border-slate-700">
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Learn</h2>
+            <button
+              type="button"
+              data-testid="open-dictionary-page"
+              onClick={onOpenDictionary}
+              className="w-full mb-4 bg-slate-800 p-3 rounded-lg flex items-center justify-between gap-3 text-sm text-slate-200 hover:bg-slate-700 border border-slate-700"
+            >
+              <span className="flex items-center gap-2">
+                <BookOpen className="w-4 h-4 text-yellow-400" />
+                Dictionary
+              </span>
+              <span className="text-xs text-slate-400">{dictionaryEntryCount} entries</span>
+            </button>
+
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Settings</h2>
+            <button
+              onClick={() => window.resetProgress()}
+              className="w-full bg-red-900/20 p-3 rounded-lg flex items-center justify-center gap-2 text-sm text-red-400 hover:bg-red-900/30 transition-colors"
+            >
+              <Trash2 className="w-4 h-4" /> Reset All Progress
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
@@ -901,7 +1187,8 @@ const PuzzleView = ({
   activeVisualMotifs,
   onToggleVisualMotif,
   onSelectVisualMotif,
-  showVisualMotifButton
+  showVisualMotifButton,
+  multiplayer
 }) => {
   const [game, setGame] = useState(() => {
     const newGame = new Chess();
@@ -925,6 +1212,8 @@ const PuzzleView = ({
   const [areTagsMasked, setAreTagsMasked] = useState(Boolean(isRandomMode));
   const [confettiBurst, setConfettiBurst] = useState(null);
   const prevHintsRevealedRef = useRef(hintsRevealed);
+  const puzzleStartedAtRef = useRef(0);
+  const puzzleMistakesRef = useRef(0);
   const boardShellRef = useRef(null);
   const confettiTimerRef = useRef(null);
   const lastInteractionPointRef = useRef(null);
@@ -1073,6 +1362,8 @@ const PuzzleView = ({
     lastInteractionPointRef.current = null;
     clearConfettiTimer();
     prevHintsRevealedRef.current = 0;
+    puzzleStartedAtRef.current = Date.now();
+    puzzleMistakesRef.current = 0;
   }, [puzzle?.url, clearConfettiTimer]);
 
   // Track hint reveals and fire battle damage
@@ -1080,8 +1371,11 @@ const PuzzleView = ({
     if (hintsRevealed > prevHintsRevealedRef.current && battle) {
       battle.onHintUsed(hintsRevealed);
     }
+    if (hintsRevealed > prevHintsRevealedRef.current && multiplayer?.isInRoom) {
+      multiplayer.recordHint();
+    }
     prevHintsRevealedRef.current = hintsRevealed;
-  }, [hintsRevealed, battle]);
+  }, [hintsRevealed, battle, multiplayer]);
 
   useEffect(() => () => {
     clearConfettiTimer();
@@ -1137,12 +1431,23 @@ const PuzzleView = ({
           setPendingOpponentMove(null);
           triggerWinConfetti();
           if (battle) battle.onCorrectMove();
+          if (multiplayer?.isInRoom) {
+            multiplayer.recordCorrectMove();
+            multiplayer.recordPuzzleSolved({
+              elapsedMs: Date.now() - puzzleStartedAtRef.current,
+              hints: hintsRevealed,
+              mistakes: puzzleMistakesRef.current
+            });
+          }
           onSolved();
           if (index < total - 1) {
             setAutoAdvanceCountdown(3);
           }
         } else {
           if (battle) battle.onCorrectMove();
+          if (multiplayer?.isInRoom) {
+            multiplayer.recordCorrectMove();
+          }
           const nextIndex = currentMoveIndex + 1;
           const opponentReplySan = answerMoves[nextIndex];
           setPendingOpponentMove(opponentReplySan || null);
@@ -1164,6 +1469,10 @@ const PuzzleView = ({
         }
       } else {
         setMoveStatus('incorrect');
+        puzzleMistakesRef.current += 1;
+        if (multiplayer?.isInRoom) {
+          multiplayer.recordMistake();
+        }
         setPendingOpponentMove(null);
         const previousFen = game.fen();
         setTimeout(() => {
@@ -2566,11 +2875,16 @@ const PuzzleView = ({
         <div className="bg-slate-900 pt-2">
           <BattleScene
             playerHp={battle.playerHp}
-            enemyHp={battle.enemyHp}
-            maxHp={battle.maxHp}
+            enemyHp={multiplayer?.isInRoom ? multiplayer.room.enemyHp : battle.enemyHp}
+            maxHp={multiplayer?.isInRoom ? multiplayer.room.enemyMaxHp : battle.maxHp}
             playerHit={battle.playerHit}
-            enemyHit={battle.enemyHit}
+            enemyHit={multiplayer?.isInRoom ? multiplayer.enemyHit : battle.enemyHit}
             playerAttacking={battle.playerAttacking}
+            allies={multiplayer?.isInRoom ? multiplayer.room.players : null}
+            localPlayerId={multiplayer?.playerId}
+            activeAttackPlayerId={multiplayer?.activeAttackPlayerId}
+            roomStatus={multiplayer?.room?.status}
+            localPlayerName={multiplayer?.localPlayerName}
           />
         </div>
       )}
@@ -2909,11 +3223,44 @@ export default function App() {
 
   const [dictionaryData, setDictionaryData] = useState({ entries: [] });
   const [homeView, setHomeView] = useState('categories');
+  const [homeTab, setHomeTab] = useState('single');
   const [selectedCategoryType, setSelectedCategoryType] = useState('All');
   const [isRandomMode, setIsRandomMode] = useState(false);
   const [activeVisualMotifs, setActiveVisualMotifs] = useState(new Set());
   const [showVisualMotifButton, setShowVisualMotifButton] = useState(false);
   const battle = useBattleState();
+  const multiplayer = useRoomMultiplayer();
+  const multiplayerStartedRoomRef = useRef(null);
+  const autoJoinRoomRef = useRef(null);
+
+  const categoryStats = React.useMemo(
+    () => buildCategoryStats(puzzlesData, solvedPuzzles),
+    [puzzlesData, solvedPuzzles]
+  );
+  const connectedRoomPlayerCount = React.useMemo(
+    () => (multiplayer.room?.players || []).filter((player) => player.connected).length,
+    [multiplayer.room?.players]
+  );
+
+  const startRandomPuzzleFromCategories = React.useCallback((categories) => {
+    const selectableCategories = categories.filter((cat) => (categoryStats.totalCounts[cat] || 0) > 0);
+
+    if (!selectableCategories.length) {
+      return false;
+    }
+
+    const randomCategory = selectableCategories[Math.floor(Math.random() * selectableCategories.length)];
+    const puzzleCount = categoryStats.totalCounts[randomCategory] || 0;
+    const randomIndex = puzzleCount > 1 ? Math.floor(Math.random() * puzzleCount) : 0;
+
+    setHomeView('categories');
+    setIsRandomMode(true);
+    setShowVisualMotifButton(true);
+    setActiveVisualMotifs(new Set());
+    battle.reset();
+    selectCategory(randomCategory, randomIndex);
+    return true;
+  }, [battle, categoryStats.totalCounts, selectCategory]);
 
   useEffect(() => {
     fetch('/dictionary.json')
@@ -2927,6 +3274,78 @@ export default function App() {
 
   // Expose for the internal components to access if needed (hacky but works for the settings menu)
   window.resetProgress = resetAllProgress;
+
+  useEffect(() => {
+    if (!puzzlesData || multiplayer.isInRoom || autoJoinRoomRef.current) {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const roomCode = normalizeRoomCode(params.get('room'));
+    if (!roomCode) {
+      return;
+    }
+
+    setHomeTab('multiplayer');
+    autoJoinRoomRef.current = roomCode;
+    multiplayer.joinRoom(roomCode).catch((error) => {
+      console.error('Failed to join room from link', error);
+    });
+  }, [multiplayer, puzzlesData]);
+
+  useEffect(() => {
+    if (!puzzlesData || !multiplayer.room?.code) {
+      multiplayerStartedRoomRef.current = null;
+      return;
+    }
+
+    setHomeTab('multiplayer');
+
+    if (connectedRoomPlayerCount < 2) {
+      return;
+    }
+
+    if (multiplayerStartedRoomRef.current === multiplayer.room.code) {
+      return;
+    }
+
+    multiplayerStartedRoomRef.current = multiplayer.room.code;
+    startRandomPuzzleFromCategories(categoryStats.sortedCategories);
+  }, [
+    categoryStats.sortedCategories,
+    connectedRoomPlayerCount,
+    multiplayer.room?.code,
+    puzzlesData,
+    startRandomPuzzleFromCategories
+  ]);
+
+  const handleHostRoom = React.useCallback(() => {
+    setHomeTab('multiplayer');
+    multiplayer.hostRoom().catch((error) => {
+      console.error('Failed to host room', error);
+    });
+  }, [multiplayer]);
+
+  const handleJoinRoom = React.useCallback((roomCode) => {
+    setHomeTab('multiplayer');
+    multiplayer.joinRoom(roomCode).catch((error) => {
+      console.error('Failed to join room', error);
+    });
+  }, [multiplayer]);
+
+  const handleLeaveRoom = React.useCallback(() => {
+    multiplayer.leaveRoom();
+    multiplayerStartedRoomRef.current = null;
+    autoJoinRoomRef.current = null;
+    setHomeTab('single');
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('room')) {
+      params.delete('room');
+      const nextSearch = params.toString();
+      window.history.replaceState(null, '', `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ''}`);
+    }
+  }, [multiplayer]);
 
   const initialFen = React.useMemo(() => {
     if (!currentPuzzle) return null;
@@ -2974,33 +3393,7 @@ export default function App() {
   }
 
   if (!currentCategory) {
-    // Calculate stats
-    const solvedCounts = {};
-    const totalCounts = {};
-    const categoryTypeMap = {};
-
-    Object.keys(puzzlesData).forEach((cat) => {
-      const categoryData = puzzlesData[cat];
-      const puzzleMap = getCategoryPuzzlesMap(categoryData);
-      const puzzleUrls = new Set(Object.keys(puzzleMap));
-      totalCounts[cat] = Object.keys(puzzleMap).length;
-      // Count only solved URLs that still exist in this category's puzzle map.
-      const solvedInCategory = solvedPuzzles[cat] || [];
-      solvedCounts[cat] = solvedInCategory.filter((url) => puzzleUrls.has(url)).length;
-      categoryTypeMap[cat] = getCategoryType(cat, categoryData);
-    });
-
-    const sortedCategories = Object.keys(puzzlesData).sort((left, right) => {
-      const leftComplete = (solvedCounts[left] || 0) >= (totalCounts[left] || 0) && (totalCounts[left] || 0) > 0;
-      const rightComplete = (solvedCounts[right] || 0) >= (totalCounts[right] || 0) && (totalCounts[right] || 0) > 0;
-
-      if (leftComplete === rightComplete) {
-        return left.localeCompare(right);
-      }
-
-      return leftComplete ? 1 : -1;
-    });
-
+    const { solvedCounts, totalCounts, categoryTypeMap, sortedCategories } = categoryStats;
     const discoveredTypes = Array.from(new Set(Object.values(categoryTypeMap)));
     const orderedTypes = discoveredTypes.sort((left, right) => {
       const leftIndex = CATEGORY_TYPE_ORDER.indexOf(left);
@@ -3032,16 +3425,7 @@ export default function App() {
     ));
 
     const handleStartVisualMotifTest = () => {
-      const selectableCategories = visibleCategories.filter((cat) => (totalCounts[cat] || 0) > 0);
-      if (!selectableCategories.length) return;
-      const randomCategory = selectableCategories[Math.floor(Math.random() * selectableCategories.length)];
-      const puzzleCount = totalCounts[randomCategory] || 0;
-      const randomIndex = puzzleCount > 1 ? Math.floor(Math.random() * puzzleCount) : 0;
-      setHomeView('categories');
-      setIsRandomMode(true);
-      setShowVisualMotifButton(true);
-      battle.reset();
-      selectCategory(randomCategory, randomIndex);
+      startRandomPuzzleFromCategories(visibleCategories);
     };
 
     if (homeView === 'dictionary') {
@@ -3063,22 +3447,7 @@ export default function App() {
         selectCategory(category);
       }}
       onStartRandomMode={() => {
-        const selectableCategories = visibleCategories.filter((cat) => (totalCounts[cat] || 0) > 0);
-
-        if (!selectableCategories.length) {
-          return;
-        }
-
-        const randomCategory = selectableCategories[Math.floor(Math.random() * selectableCategories.length)];
-        const puzzleCount = totalCounts[randomCategory] || 0;
-        const randomIndex = puzzleCount > 1 ? Math.floor(Math.random() * puzzleCount) : 0;
-
-        setHomeView('categories');
-        setIsRandomMode(true);
-        setShowVisualMotifButton(true);
-        setActiveVisualMotifs(new Set());
-        battle.reset();
-        selectCategory(randomCategory, randomIndex);
+        startRandomPuzzleFromCategories(visibleCategories);
       }}
       isRandomModeActive={isRandomMode}
       solvedCounts={solvedCounts}
@@ -3090,6 +3459,12 @@ export default function App() {
       onSelectType={setSelectedCategoryType}
       typeCounts={typeCounts}
       onStartVisualMotifTest={handleStartVisualMotifTest}
+      multiplayer={multiplayer}
+      onHostRoom={handleHostRoom}
+      onJoinRoom={handleJoinRoom}
+      onLeaveRoom={handleLeaveRoom}
+      selectedHomeTab={homeTab}
+      onSelectHomeTab={setHomeTab}
     />;
   }
 
@@ -3105,6 +3480,7 @@ export default function App() {
         total={totalPuzzles}
         onBack={() => {
           setHomeView('categories');
+          setHomeTab(multiplayer.isInRoom ? 'multiplayer' : 'single');
           battle.reset();
           selectCategory(null);
         }}
@@ -3124,6 +3500,7 @@ export default function App() {
         onToggleVisualMotif={handleToggleVisualMotif}
         onSelectVisualMotif={handleSelectVisualMotif}
         showVisualMotifButton={showVisualMotifButton}
+        multiplayer={multiplayer}
       />
     </ErrorBoundary>
   );
