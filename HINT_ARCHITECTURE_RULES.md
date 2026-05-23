@@ -1,69 +1,158 @@
-# Hint Architecture & Design Rules
+# Hint Architecture Rules
 
-This file defines permanent rules for puzzle hint generation.
+This file is the source of truth for chess puzzle hint writing and review.
+The current migration target is move-scoped hints: three hints for every player
+move in a puzzle.
 
-## Rule: Subtle → Obvious Progression
+Existing puzzle data still uses the legacy flat `hints` array. Do not rewrite
+that content until weak categories have been trimmed and the remaining set is
+ready for regeneration.
 
-### Definition
-Hints must reveal information in layers, from least direct to most direct, without skipping ahead.
+## Current Target Shape
 
-### Required 4-step sequence
-1. **Hint 1 (Subtle):** Identify only the board weakness or pattern context.
-2. **Hint 2 (Concept):** Name the tactical idea (e.g., fork, pin, mating net).
-3. **Hint 3 (Starter):** Indicate which piece begins the plan.
-4. **Hint 4 (Obvious):** Give a near-direct nudge about the first move type.
+Use `moveHints` for new or regenerated hint content:
 
-## Rule: One Hint = One Point
+```json
+{
+  "answer": "e4, e5, Nf3",
+  "moveHints": [
+    ["Move 1 hint 1", "Move 1 hint 2", "Move 1 hint 3"],
+    ["Move 2 hint 1", "Move 2 hint 2", "Move 2 hint 3"]
+  ]
+}
+```
 
-### Definition
+`answer` starts with the player's move and then alternates opponent replies and
+player moves. Player moves are therefore answer indices `0`, `2`, `4`, and so
+on. Each player move must have exactly one `moveHints` group with exactly three
+hints.
+
+The app remains backward-compatible: when `moveHints` is absent, the legacy
+flat `hints` array keeps its current puzzle-level behavior.
+
+## Rule 1: Three Hints Per Player Move
+
+Every player move in the answer line gets its own three-hint group.
+
+- Do not stop after the first move in a multi-move puzzle.
+- Do not write hints for opponent replies.
+- The number of `moveHints` groups must equal the number of player moves.
+- Each group must contain exactly three hint strings.
+
+Validator: `game/src/lib/puzzleAudit.js` checks `moveHints` shape when the field
+exists.
+
+## Rule 2: Per-Move Progression
+
+Each three-hint group should reveal one player move in layers.
+
+1. **Hint 1 - Context:** identify the local weakness, tactical pattern, or
+   decision point for this move. Do not name the piece to be moved, and do not
+   give notation. Describe only the opponent's pieces, weakness, or opportunity.
+2. **Hint 2 - Direction:** name the piece to be moved and the tactical idea
+   without giving the exact move.
+3. **Hint 3 - Near-direct:** give a clear nudge toward the move type or key
+   square. This is the only hint in the group that may give the exact move id.
+
+The progression resets for each player move. A later move's first hint can be
+subtle again because it belongs to a new board position.
+
+## Rule 3: One Hint = One Point
+
 Each hint should communicate exactly one instructional point.
 
-### Constraints
-- Keep each hint to one sentence.
-- Avoid chaining multiple instructions in one hint.
-- Avoid combining piece selection, tactic naming, and move type in the same hint unless it is the final (Hint 4) stage.
-- Keep wording compact and readable; rely on dictionary term taps for definitions.
+- Use one compact sentence.
+- Do not chain multiple instructions into one hint.
+- Do not include a move sequence in a single hint.
+- Avoid opponent-response-plus-follow-up wording in one hint.
 
-## Rule: Early Hints Avoid Square IDs
+Legacy validator: `audit_rule2_one_point.js`
 
-### Definition
-Early hints should avoid naming exact board coordinates such as e4, h7, or a8.
+## Rule 4: Early Hints Avoid Exact Notation
 
-### Constraints
-- Hint 1 should not include square IDs.
-- Hint 2 should usually avoid square IDs unless the concept is impossible to express clearly without one.
-- Reserve exact square IDs for Hint 3 or Hint 4 when the hint is intentionally becoming more direct.
+The first hints inside each player-move group should avoid exact board
+coordinates and SAN notation.
 
-## Rule: No Redundant Hints Within a Puzzle
+- Hint 1 should not include square IDs such as `e4`, `h7`, or `a8`.
+- Hint 2 should usually avoid square IDs unless the concept is unclear without
+  one.
+- Hint 3 may use a square or move type when the hint is intentionally direct.
 
-### Definition
-Hints in the same puzzle should each add new useful information.
+Legacy validator: `audit_rule3_early_square_ids.js`
 
-### Constraints
-- Do not repeat the same concept, target, weakness, or tactical idea in multiple hints unless the later hint adds a clearly more specific layer.
-- Avoid rephrasing the same advice with different words.
-- If two hints communicate the same instructional point, merge or replace one so the progression keeps moving forward.
-- Redundancy should be checked within each puzzle, not only across the full dataset.
+## Rule 5: No Redundant Hints Within a Move
 
-## Rule: Canonical Dictionary Alignment
-- `dictionary.json` is the single source of truth for learning terms, aliases, and definitions.
-- All tag alignment, hint term linking, and coverage scoring should reference `dictionary.json`.
-- Do not maintain a parallel taxonomy file unless there is a strict runtime need.
+The three hints for one player move should each add useful information.
 
-## Rule: Clear, Short Phrasing
+- Do not repeat the same concept, target, weakness, or advice.
+- Do not rephrase the same hint with different words.
+- Repeated concepts are only acceptable when the later hint adds a clearly more
+  specific layer.
 
-### Definition
-Hints should be beginner-readable, compact, and free of dense explanation.
+Legacy validator: `audit_rule4_no_redundant_hints.js`
 
-### Constraints
+## Rule 6: Dictionary / Taxonomy Alignment
+
+`dictionary.json` is the single source of truth for learning terms, aliases,
+and definitions.
+
+- Puzzle tags must resolve to a canonical dictionary term or alias.
+- Explicit hint concepts using `The key concept is ...` must resolve to a
+  canonical dictionary term or alias.
+- Hint term linking and coverage scoring should reference `dictionary.json`.
+- Do not maintain a parallel taxonomy file unless there is a strict runtime
+  need.
+
+Legacy validator: `audit_rule5_dictionary_alignment.js`
+
+## Rule 7: Clear, Short Phrasing
+
+Hints should be beginner-readable, compact, and easy to scan during play.
+
 - Prefer plain phrasing over abstract or heavily qualified explanation.
-- Avoid generic filler such as "find the best move" or "look carefully".
-- Avoid semicolons, parenthetical explanations, and comma-heavy clauses.
-- Keep each stage short enough that the hint can be scanned quickly during play.
+- Avoid generic filler such as `find the best move`, `look carefully`, or
+  `strong move here`.
+- Avoid semicolons, colons, parenthetical explanations, dash-heavy phrasing,
+  comma-heavy clauses, and dense connectors such as `because`, `although`,
+  `however`, and `therefore`.
+- Use one sentence.
 
-## Implementation Guidance
-- Preserve the stage order even when adding or inserting hints.
-- If extra hints are ever added, they must still preserve monotonic reveal (never less subtle after a more obvious hint).
+Legacy validator: `audit_rule6_clear_short_phrasing.js`
 
-## Why this exists
-These constraints improve beginner comprehension, reduce cognitive load, and keep hint progression predictable.
+## Category Trimming Before Regeneration
+
+Before regenerating `moveHints`, trim categories that are weak, redundant, too
+generic, or expensive to support for low instructional value. Use the category
+trim candidate report to guide that pass:
+
+```sh
+node audit_category_trim_candidates.js
+```
+
+The report is a starting point for editorial review, not an automatic delete
+list.
+
+## Audit Commands
+
+Run the focused legacy validators from the repo root:
+
+```sh
+node audit_rule1_progression.js
+node audit_rule2_one_point.js
+node audit_rule3_early_square_ids.js
+node audit_rule4_no_redundant_hints.js
+node audit_rule5_dictionary_alignment.js
+node audit_rule6_clear_short_phrasing.js
+```
+
+Run the app/data audit, including optional `moveHints` shape validation:
+
+```sh
+npm run audit:puzzles
+```
+
+## Why These Rules Exist
+
+The hint system is for beginners. The rules keep hints available throughout a
+multi-move solution, reduce cognitive load, and make every reveal feel earned
+instead of abrupt.

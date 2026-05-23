@@ -37,6 +37,39 @@ const getSquareOverlayStyle = (square, orientation) => {
     };
 };
 
+const normalizeMotifHighlight = (highlight) => {
+    if (typeof highlight === 'string') {
+        return {
+            square: highlight,
+            type: '',
+            symbol: ''
+        };
+    }
+
+    return {
+        square: String(highlight?.square || ''),
+        type: String(highlight?.type || ''),
+        symbol: String(highlight?.symbol || '')
+    };
+};
+
+const normalizeArrowShape = (arrow) => {
+    if (Array.isArray(arrow)) {
+        return {
+            orig: arrow[0],
+            dest: arrow[1],
+            brush: arrow[2] || 'green'
+        };
+    }
+
+    return {
+        orig: arrow?.orig || arrow?.from,
+        dest: arrow?.dest || arrow?.to,
+        brush: arrow?.brush || 'green',
+        modifiers: arrow?.modifiers
+    };
+};
+
 export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, width, height, customArrows, movableColor, highlights = [], enemyHighlights = [] }) {
     const wrapperRef = useRef(null);
     const ref = useRef(null);
@@ -78,6 +111,18 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
     }, [fen, orientation]);
 
     const activeMovableColor = movableColor || 'both';
+    const normalizedHighlights = useMemo(
+        () => highlights.map(normalizeMotifHighlight).filter((highlight) => highlight.square),
+        [highlights]
+    );
+    const normalizedEnemyHighlights = useMemo(
+        () => enemyHighlights.map(normalizeMotifHighlight).filter((highlight) => highlight.square),
+        [enemyHighlights]
+    );
+    const normalizedArrows = useMemo(
+        () => (customArrows || []).map(normalizeArrowShape).filter((arrow) => arrow.orig && arrow.dest),
+        [customArrows]
+    );
     const isPlayerTurn = activeMovableColor !== 'both' && sideToMove === activeMovableColor;
     const highlightedSourceSquares = useMemo(() => {
         if (!isPlayerTurn) {
@@ -122,13 +167,9 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
                 },
                 drawable: {
                     enabled: true,
-                    shapes: customArrows ? customArrows.map(a => ({
-                        orig: a[0],
-                        dest: a[1],
-                        brush: 'green'
-                    })) : []
+                    shapes: normalizedArrows
                 },
-                classes: new Map(highlights.map(square => [square, 'visual-highlight'])),
+                classes: new Map(normalizedHighlights.map(({ square }) => [square, 'visual-highlight'])),
                 premovable: { enabled: false }
             };
 
@@ -145,19 +186,15 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
                     dests: legalDests
                 },
                 drawable: {
-                    shapes: customArrows ? customArrows.map(a => ({
-                        orig: a[0],
-                        dest: a[1],
-                        brush: 'green'
-                    })) : []
+                    shapes: normalizedArrows
                 },
-                classes: new Map(highlights.map(square => [square, 'visual-highlight']))
+                classes: new Map(normalizedHighlights.map(({ square }) => [square, 'visual-highlight']))
             });
 
             // Critical: Force bounds recalculation to fix click offset
             api.current.set({});
         }
-    }, [fen, orientation, sideToMove, customArrows, legalDests, activeMovableColor, highlights]);
+    }, [fen, orientation, sideToMove, normalizedArrows, legalDests, activeMovableColor, normalizedHighlights]);
 
     // Secondary effect to ensure bounds are correct on mount, resize, and interaction
     useEffect(() => {
@@ -240,10 +277,10 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
                     })}
                 </div>
             )}
-            {(highlights.length > 0 || enemyHighlights.length > 0) && (
+            {(normalizedHighlights.length > 0 || normalizedEnemyHighlights.length > 0) && (
                 <div className="motif-highlight-layer" aria-hidden="true">
-                    {highlights.map((square) => {
-                        const style = getSquareOverlayStyle(square, orientation);
+                    {normalizedHighlights.map((highlight, index) => {
+                        const style = getSquareOverlayStyle(highlight.square, orientation);
 
                         if (!style) {
                             return null;
@@ -251,14 +288,19 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
 
                         return (
                             <div
-                                key={`own-${square}`}
-                                className="visual-motif-highlight"
+                                key={`own-${highlight.square}-${highlight.type}-${index}`}
+                                className={[
+                                    'visual-motif-highlight',
+                                    highlight.type ? 'visual-motif-highlight--fork' : '',
+                                    highlight.type ? `visual-motif-highlight--${highlight.type}` : ''
+                                ].filter(Boolean).join(' ')}
+                                data-symbol={highlight.symbol}
                                 style={style}
                             />
                         );
                     })}
-                    {enemyHighlights.map((square) => {
-                        const style = getSquareOverlayStyle(square, orientation);
+                    {normalizedEnemyHighlights.map((highlight, index) => {
+                        const style = getSquareOverlayStyle(highlight.square, orientation);
 
                         if (!style) {
                             return null;
@@ -266,8 +308,14 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
 
                         return (
                             <div
-                                key={`enemy-${square}`}
-                                className="visual-motif-highlight visual-motif-highlight--enemy"
+                                key={`enemy-${highlight.square}-${highlight.type}-${index}`}
+                                className={[
+                                    'visual-motif-highlight',
+                                    'visual-motif-highlight--enemy',
+                                    highlight.type ? 'visual-motif-highlight--fork' : '',
+                                    highlight.type ? `visual-motif-highlight--${highlight.type}` : ''
+                                ].filter(Boolean).join(' ')}
+                                data-symbol={highlight.symbol}
                                 style={style}
                             />
                         );

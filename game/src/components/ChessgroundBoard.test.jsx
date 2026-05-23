@@ -52,4 +52,32 @@ describe('ChessgroundBoard', () => {
     expect(config.turnColor).toBe('black');
     expect(config.movable.color).toBe('black');
   });
+
+  test('passes typed overlay arrows through to Chessground', async () => {
+    render(
+      <ChessgroundBoard
+        fen="8/8/8/8/8/8/8/4K3 w - - 0 1"
+        orientation="white"
+        movableColor="white"
+        onMove={() => {}}
+        width="100%"
+        height="100%"
+        customArrows={[
+          ['e2', 'e4'],
+          { orig: 'e4', dest: 'e8', brush: 'yellow' },
+          { orig: 'e4', dest: 'a4', brush: 'red' }
+        ]}
+      />
+    );
+
+    await waitFor(() => expect(chessgroundFactory).toHaveBeenCalledTimes(1));
+
+    const [, config] = chessgroundFactory.mock.calls[0];
+
+    expect(config.drawable.shapes).toEqual([
+      { orig: 'e2', dest: 'e4', brush: 'green' },
+      { orig: 'e4', dest: 'e8', brush: 'yellow', modifiers: undefined },
+      { orig: 'e4', dest: 'a4', brush: 'red', modifiers: undefined }
+    ]);
+  });
 });

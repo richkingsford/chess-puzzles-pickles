@@ -77,4 +77,43 @@ describe('usePuzzleGame', () => {
       expect(solvedMap['set-one']).toContain(puzzleOneUrl);
     });
   });
+
+  test('showNextHint tracks reveal counts by player move when moveHints exists', async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      json: async () => ({
+        'set-one': {
+          type: 'Tactics',
+          puzzles: {
+            [puzzleOneUrl]: {
+              answer: 'e4, e5, Nf3',
+              tags: ['opening-tactic'],
+              moveHints: [
+                ['First setup.', 'First piece.', 'First action.'],
+                ['Second setup.', 'Second piece.', 'Second action.']
+              ]
+            }
+          }
+        }
+      })
+    });
+
+    const { result } = renderHook(() => usePuzzleGame());
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+
+    act(() => {
+      result.current.selectCategory('set-one', 0);
+    });
+
+    act(() => {
+      result.current.showNextHint({ answerMoveIndex: 0 });
+      result.current.showNextHint({ answerMoveIndex: 2 });
+    });
+
+    await waitFor(() => {
+      expect(result.current.hintRevealCountsByMove).toEqual({ 0: 1, 1: 1 });
+      expect(result.current.hintsRevealed).toBe(2);
+      expect(result.current.isFailed).toBe(false);
+    });
+  });
 });

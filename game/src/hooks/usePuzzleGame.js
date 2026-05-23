@@ -1,6 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Chess } from 'chess.js';
 import { parsePuzzleUrl } from '../lib/utils';
+import {
+    getHintRevealCountForAnswerMove,
+    getHintsForAnswerMove,
+    getTotalHintRevealCount,
+    hasStructuredMoveHints,
+    revealNextHintForAnswerMove
+} from '../lib/puzzleHints';
 
 // Helper to load from local storage
 const loadState = (key, defaultValue) => {
@@ -384,7 +391,7 @@ export const usePuzzleGame = () => {
     // Game State
     const [currentCategory, setCurrentCategory] = useState(null);
     const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0);
-    const [hintsRevealed, setHintsRevealed] = useState(0);
+    const [hintRevealCountsByMove, setHintRevealCountsByMove] = useState({});
     const [isSolved, setIsSolved] = useState(false);
     const [isFailed, setIsFailed] = useState(false); // If user gave up
 
@@ -440,6 +447,10 @@ export const usePuzzleGame = () => {
 
     const currentPuzzle = currentCategoryPuzzles[currentPuzzleIndex];
     const currentPuzzleCompletion = currentPuzzle ? completedPuzzleRecords[currentPuzzle.url] || null : null;
+    const hintsRevealed = useMemo(
+        () => getTotalHintRevealCount(hintRevealCountsByMove),
+        [hintRevealCountsByMove]
+    );
 
     // Actions
     const selectCategory = (category, startIndex = null) => {
@@ -462,7 +473,7 @@ export const usePuzzleGame = () => {
     };
 
     const resetPuzzleState = () => {
-        setHintsRevealed(0);
+        setHintRevealCountsByMove({});
         setIsSolved(false);
         setIsFailed(false);
     };
@@ -503,17 +514,30 @@ export const usePuzzleGame = () => {
                 currentPuzzleIndex
             );
             setCurrentPuzzleIndex(fallbackIndex);
-            setHintsRevealed(0);
+            setHintRevealCountsByMove({});
             setIsSolved(false);
             setIsFailed(false);
         }
     }, [currentCategory, currentCategoryPuzzles, currentPuzzleIndex, solvedPuzzles]);
 
-    const showNextHint = () => {
-        if (currentPuzzle && hintsRevealed < currentPuzzle.hints.length) {
-            setHintsRevealed(prev => prev + 1);
-        } else if (currentPuzzle && hintsRevealed >= currentPuzzle.hints.length) {
-            // Show answer (give up)
+    const showNextHint = (options = {}) => {
+        if (!currentPuzzle) {
+            return;
+        }
+
+        const requestedAnswerMoveIndex =
+            typeof options === 'number'
+                ? options
+                : Number.isInteger(options?.answerMoveIndex)
+                    ? options.answerMoveIndex
+                    : 0;
+        const answerMoveIndex = hasStructuredMoveHints(currentPuzzle) ? requestedAnswerMoveIndex : 0;
+        const currentHints = getHintsForAnswerMove(currentPuzzle, answerMoveIndex);
+        const revealedForMove = getHintRevealCountForAnswerMove(hintRevealCountsByMove, answerMoveIndex);
+
+        if (revealedForMove < currentHints.length) {
+            setHintRevealCountsByMove((prev) => revealNextHintForAnswerMove(prev, currentPuzzle, answerMoveIndex));
+        } else {
             setIsFailed(true);
         }
     };
@@ -560,6 +584,7 @@ export const usePuzzleGame = () => {
         currentPuzzleIndex,
         totalPuzzles: currentCategoryPuzzles.length,
         hintsRevealed,
+        hintRevealCountsByMove,
         isSolved,
         isFailed,
         solvedPuzzles,

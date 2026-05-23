@@ -1,5 +1,6 @@
 import { Chess } from 'chess.js';
 import { parsePuzzleUrl } from './utils.js';
+import { auditMoveHintGroups } from './puzzleHints.js';
 
 export const PUZZLE_URL_REGEX = /^https?:\/\/lichess\.org\/analysis\//i;
 
@@ -220,6 +221,10 @@ export const auditPuzzleEntry = (entry, options = {}) => {
     }));
   }
 
+  auditMoveHintGroups(entry.puzzleData).forEach((hintFailure) => {
+    failures.push(createFailure(entry, hintFailure.code, hintFailure));
+  });
+
   const tagDefinitionIndex = options.tagDefinitionIndex instanceof Set
     ? options.tagDefinitionIndex
     : null;
@@ -303,8 +308,14 @@ export const formatAuditFailure = (failure) => {
   if (failure.tag) {
     bits.push(`tag=${failure.tag}`);
   }
-  if (failure.expected) {
+  if (failure.expected !== undefined) {
     bits.push(`expected=${failure.expected}`);
+  }
+  if (Number.isInteger(failure.actual)) {
+    bits.push(`actual=${failure.actual}`);
+  }
+  if (Number.isInteger(failure.playerMoveIndex)) {
+    bits.push(`playerMoveIndex=${failure.playerMoveIndex}`);
   }
   if (Number.isInteger(failure.moveIndex)) {
     bits.push(`moveIndex=${failure.moveIndex}`);

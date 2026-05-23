@@ -6,13 +6,20 @@ import BattleScene from './components/BattleScene';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight,
   RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle,
-  Users, QrCode, Link as LinkIcon, LogOut
+  Users, QrCode, Link as LinkIcon, LogOut, MoreVertical, Download, Filter
 } from 'lucide-react';
 import { usePuzzleGame } from './hooks/usePuzzleGame';
 import { useBattleState } from './hooks/useBattleState';
 import { useRoomMultiplayer } from './hooks/useRoomMultiplayer';
 import { normalizeRoomCode } from './lib/roomCodes';
 import { parsePuzzleUrl } from './lib/utils';
+import {
+  getHintRevealCountForAnswerMove,
+  getHintsForAnswerMove,
+  getPlayerMoveCountFromAnswer,
+  getPlayerMoveNumberForAnswerMove,
+  hasStructuredMoveHints
+} from './lib/puzzleHints';
 
 // --- Components ---
 
@@ -46,9 +53,97 @@ class ErrorBoundary extends React.Component {
 
 const formatCategoryLabel = (category) => String(category || '').replace(/-/g, ' ');
 
-const CATEGORY_TYPE_ORDER = ['Mate', 'Tactics', 'Opening', 'Defense', 'Endgame', 'Misc'];
+const CATEGORY_FEEDBACK_STORAGE_KEY = 'categoryFeedback';
+const CATEGORY_FEEDBACK_FILE_NAME = 'chess-puzzles-feedback.json';
+const HINT_FEEDBACK_TAGS = ['Confusing', 'Too Subtle', 'Too Blatant', 'ID Usage'];
+const VISUAL_MOTIF_DICTIONARY_LOOKUP = {
+  Forks: 'Fork'
+};
+
+const makeEmptyCategoryFeedback = () => ({
+  version: 1,
+  createdAt: new Date().toISOString(),
+  updatedAt: null,
+  categories: {},
+  hints: {}
+});
+
+const normalizeCategoryFeedback = (feedback) => {
+  const fallback = makeEmptyCategoryFeedback();
+
+  if (!feedback || typeof feedback !== 'object' || Array.isArray(feedback)) {
+    return fallback;
+  }
+
+  const categories =
+    feedback.categories &&
+    typeof feedback.categories === 'object' &&
+    !Array.isArray(feedback.categories)
+      ? feedback.categories
+      : {};
+  const hints =
+    feedback.hints &&
+    typeof feedback.hints === 'object' &&
+    !Array.isArray(feedback.hints)
+      ? feedback.hints
+      : {};
+
+  return {
+    ...fallback,
+    ...feedback,
+    version: 1,
+    createdAt: typeof feedback.createdAt === 'string' ? feedback.createdAt : fallback.createdAt,
+    updatedAt: typeof feedback.updatedAt === 'string' ? feedback.updatedAt : null,
+    categories,
+    hints
+  };
+};
+
+const readStoredCategoryFeedback = () => {
+  try {
+    const storedFeedback = localStorage.getItem(CATEGORY_FEEDBACK_STORAGE_KEY);
+
+    if (!storedFeedback) {
+      return makeEmptyCategoryFeedback();
+    }
+
+    return normalizeCategoryFeedback(JSON.parse(storedFeedback));
+  } catch {
+    return makeEmptyCategoryFeedback();
+  }
+};
+
+const writeStoredCategoryFeedback = (feedback) => {
+  try {
+    localStorage.setItem(CATEGORY_FEEDBACK_STORAGE_KEY, JSON.stringify(feedback));
+  } catch (error) {
+    console.error('Failed to save category feedback', error);
+  }
+};
+
+const downloadJsonFile = (filename, data) => {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+};
+
+const makeHintFeedbackKey = ({ category, puzzleUrl, answerMoveIndex, hintIndex }) => (
+  [category || 'unknown-category', puzzleUrl || 'unknown-puzzle', answerMoveIndex, hintIndex]
+    .map((part) => encodeURIComponent(String(part)))
+    .join('|')
+);
+
+const CATEGORY_TYPE_ORDER = ['Mate', 'Tactics', 'Opening', 'Defense', 'Endgame'];
 
 const VISUAL_MOTIFS = [
+  'Forks',
   // Existing
   'Undefended pieces',
   'Single-defender pieces',
@@ -61,7 +156,6 @@ const VISUAL_MOTIFS = [
   'Battery alignment',
   'X-ray attack',
   'Discovered attack potential',
-  'Forkable alignment',
   // Pawn-structure
   'Loose pawn',
   'Backward pawn',
@@ -292,13 +386,13 @@ const MultiplayerPanel = ({
 const normalizeCategoryType = (value) => {
   const key = String(value || '').trim().toLowerCase();
 
-  if (!key) return 'Misc';
+  if (!key) return 'Tactics';
   if (['mate', 'mates', 'mating'].includes(key)) return 'Mate';
   if (['tactic', 'tactics'].includes(key)) return 'Tactics';
   if (['opening', 'openings'].includes(key)) return 'Opening';
   if (['defense', 'defenses', 'defence', 'defences'].includes(key)) return 'Defense';
   if (['endgame', 'endgames'].includes(key)) return 'Endgame';
-  if (['misc', 'miscellaneous', 'other', 'others'].includes(key)) return 'Misc';
+  if (['misc', 'miscellaneous', 'other', 'others'].includes(key)) return 'Tactics';
 
   return key.charAt(0).toUpperCase() + key.slice(1);
 };
@@ -308,7 +402,13 @@ const inferCategoryTypeFromName = (category) => {
 
   if (key.includes('mate')) return 'Mate';
   if (key.includes('defense')) return 'Defense';
-  if (key.includes('endgame') || key === 'zugzwang') return 'Endgame';
+  const endgameLike = new Set([
+    'advanced-pawn',
+    'under-promotion',
+    'zugzwang'
+  ]);
+
+  if (key.includes('endgame') || endgameLike.has(key)) return 'Endgame';
 
   const openingLike = [
     'opening',
@@ -326,7 +426,12 @@ const inferCategoryTypeFromName = (category) => {
     'kings-indian-attack'
   ]);
 
-  if (key === 'ruy-lopez' || openingLike.some((word) => key.includes(word)) || namedOpeningAttacks.has(key)) {
+  if (
+    key === 'castling' ||
+    key === 'ruy-lopez' ||
+    openingLike.some((word) => key.includes(word)) ||
+    namedOpeningAttacks.has(key)
+  ) {
     return 'Opening';
   }
 
@@ -345,6 +450,8 @@ const inferCategoryTypeFromName = (category) => {
     'quiet-move',
     'sacrifice',
     'intermezzo',
+    'en-passant',
+    'attacking-f2-f7',
     'hanging-piece',
     'trapped-piece',
     'exposed-king'
@@ -354,7 +461,7 @@ const inferCategoryTypeFromName = (category) => {
     return 'Tactics';
   }
 
-  return 'Misc';
+  return 'Tactics';
 };
 
 const getCategoryPuzzlesMap = (categoryData) => {
@@ -445,18 +552,24 @@ const CategoryList = ({
   typeCounts,
   onStartRandomMode,
   isRandomModeActive,
-  onStartVisualMotifTest,
   multiplayer,
   onHostRoom,
   onJoinRoom,
   onLeaveRoom,
   selectedHomeTab,
-  onSelectHomeTab
+  onSelectHomeTab,
+  categoryFeedback,
+  onToggleCategoryGarbage,
+  onDownloadFeedback
 }) => {
+  const [openCategoryMenu, setOpenCategoryMenu] = useState(null);
+  const [isTypeFilterOpen, setIsTypeFilterOpen] = useState(false);
   const homeTabs = [
     { id: 'single', label: 'Single Player' },
     { id: 'multiplayer', label: '2 Player' }
   ];
+  const feedbackCategories = categoryFeedback?.categories || {};
+  const garbageCategoryCount = Object.values(feedbackCategories).filter((entry) => entry?.garbage).length;
 
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
@@ -495,78 +608,151 @@ const CategoryList = ({
         />
       ) : (
         <>
-          <button
-            type="button"
-            data-testid="random-mode-button"
-            onClick={onStartRandomMode}
-            className={`w-full rounded-xl border p-3 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
-              isRandomModeActive
-                ? 'border-teal-500 bg-teal-500/20 text-teal-200'
-                : 'border-teal-700 bg-teal-900/30 text-teal-200 hover:bg-teal-900/40'
-            }`}
-          >
-            <Shuffle className="w-4 h-4" />
-            Random Mode
-          </button>
+          <div className="relative flex items-stretch gap-2">
+            <button
+              type="button"
+              data-testid="random-mode-button"
+              onClick={onStartRandomMode}
+              className={`min-h-12 flex-1 rounded-xl border p-3 text-sm font-semibold transition-colors flex items-center justify-center gap-2 ${
+                isRandomModeActive
+                  ? 'border-teal-500 bg-teal-500/20 text-teal-200'
+                  : 'border-teal-700 bg-teal-900/30 text-teal-200 hover:bg-teal-900/40'
+              }`}
+            >
+              <Shuffle className="w-4 h-4" />
+              Random Mode
+            </button>
 
-          <button
-            type="button"
-            data-testid="visual-motif-test-button"
-            onClick={onStartVisualMotifTest}
-            className="w-full rounded-xl border border-slate-700 bg-slate-800/80 p-3 text-sm font-semibold transition-colors text-slate-200 hover:bg-slate-700"
-          >
-            Visual Motif Test
-          </button>
+            <button
+              type="button"
+              data-testid="category-filter-button"
+              aria-label={`Filter categories by type${selectedType !== 'All' ? `: ${selectedType}` : ''}`}
+              aria-haspopup="menu"
+              aria-expanded={isTypeFilterOpen}
+              title="Filter categories by type"
+              onClick={() => setIsTypeFilterOpen((isOpen) => !isOpen)}
+              className={`relative flex min-h-12 w-12 shrink-0 items-center justify-center rounded-xl border transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 ${
+                selectedType !== 'All'
+                  ? 'border-yellow-500/70 bg-yellow-500/15 text-yellow-200'
+                  : 'border-slate-700 bg-slate-800/80 text-slate-300 hover:bg-slate-700'
+              }`}
+            >
+              <Filter className="h-4 w-4" />
+              {selectedType !== 'All' && (
+                <span className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-yellow-300" />
+              )}
+            </button>
 
-          <div data-testid="category-type-filters" className="rounded-xl border border-slate-700 bg-slate-800/70 p-3">
-            <div className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Filter By Type
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {typeFilters.map((type) => {
-                const isActive = selectedType === type;
-                const count = typeCounts[type] || 0;
+            {isTypeFilterOpen && (
+              <div
+                role="menu"
+                data-testid="category-type-filters"
+                className="absolute right-0 top-[calc(100%+0.375rem)] z-20 w-64 rounded-lg border border-slate-600 bg-slate-900 p-2 shadow-2xl"
+              >
+                <div className="mb-1 px-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                  Type
+                </div>
+                <div className="grid grid-cols-2 gap-1">
+                  {typeFilters.map((type) => {
+                    const isActive = selectedType === type;
+                    const count = typeCounts[type] || 0;
 
-                return (
-                  <button
-                    key={type}
-                    type="button"
-                    data-testid="type-filter-button"
-                    onClick={() => onSelectType(type)}
-                    className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
-                      isActive
-                        ? 'border-yellow-500 bg-yellow-500/20 text-yellow-300'
-                        : 'border-slate-600 bg-slate-700/70 text-slate-200 hover:bg-slate-600/80'
-                    }`}
-                  >
-                    {type} ({count})
-                  </button>
-                );
-              })}
-            </div>
+                    return (
+                      <button
+                        key={type}
+                        type="button"
+                        role="menuitem"
+                        data-testid="type-filter-button"
+                        onClick={() => {
+                          onSelectType(type);
+                          setIsTypeFilterOpen(false);
+                        }}
+                        className={`rounded-md border px-2 py-2 text-left text-xs font-medium transition-colors ${
+                          isActive
+                            ? 'border-yellow-500 bg-yellow-500/20 text-yellow-200'
+                            : 'border-transparent text-slate-200 hover:bg-slate-800'
+                        }`}
+                      >
+                        {type} ({count})
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
 
-          {categories.map(cat => (
-            <button
-              key={cat}
-              onClick={() => onSelect(cat)}
-              className="w-full bg-slate-800 hover:bg-slate-700 active:bg-slate-600 transition-colors p-4 rounded-xl flex items-center justify-between border border-slate-700 shadow-lg group"
-            >
-              <span className="font-medium text-lg capitalize text-slate-200">
-                {formatCategoryLabel(cat)}
-              </span>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-slate-400">
-                  {solvedCounts[cat] || 0} / {totalCounts[cat]}
-                </span>
-                {solvedCounts[cat] === totalCounts[cat] && totalCounts[cat] > 0 ? (
-                  <Trophy className="w-5 h-5 text-yellow-400" />
-                ) : (
-                  <div className="w-5 h-5 rounded-full border-2 border-slate-600 group-hover:border-slate-500" />
-                )}
+          {categories.map(cat => {
+            const isMarkedGarbage = Boolean(feedbackCategories[cat]?.garbage);
+
+            return (
+              <div
+                key={cat}
+                className="relative flex w-full items-stretch rounded-xl border border-slate-700 bg-slate-800 shadow-lg transition-colors group hover:bg-slate-700 active:bg-slate-600"
+              >
+                <button
+                  type="button"
+                  onClick={() => {
+                    setOpenCategoryMenu(null);
+                    onSelect(cat);
+                  }}
+                  className="flex min-w-0 flex-1 items-center justify-between gap-3 p-4 text-left"
+                >
+                  <span className="min-w-0 truncate font-medium text-lg capitalize text-slate-200">
+                    {formatCategoryLabel(cat)}
+                  </span>
+                  <div className="flex shrink-0 items-center gap-2">
+                    <span className="text-sm text-slate-400">
+                      {solvedCounts[cat] || 0} / {totalCounts[cat]}
+                    </span>
+                    {solvedCounts[cat] === totalCounts[cat] && totalCounts[cat] > 0 ? (
+                      <Trophy className="w-5 h-5 text-yellow-400" />
+                    ) : (
+                      <div className="w-5 h-5 rounded-full border-2 border-slate-600 group-hover:border-slate-500" />
+                    )}
+                  </div>
+                </button>
+                <div className="relative flex items-center border-l border-slate-700/70">
+                  <button
+                    type="button"
+                    data-testid="category-options-button"
+                    aria-label="Category options"
+                    aria-haspopup="menu"
+                    aria-expanded={openCategoryMenu === cat}
+                    title={`Options for ${formatCategoryLabel(cat)}`}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setOpenCategoryMenu((current) => (current === cat ? null : cat));
+                    }}
+                    className="flex h-full min-h-14 w-10 items-center justify-center text-slate-500 transition-colors hover:bg-slate-700/80 hover:text-slate-200 focus:outline-none focus:ring-2 focus:ring-slate-400"
+                  >
+                    <MoreVertical className="h-4 w-4" />
+                  </button>
+                  {openCategoryMenu === cat && (
+                    <div
+                      role="menu"
+                      data-testid="category-options-menu"
+                      className="absolute right-0 top-[calc(100%+0.25rem)] z-20 w-48 rounded-lg border border-slate-600 bg-slate-900 p-1 shadow-2xl"
+                    >
+                      <button
+                        type="button"
+                        role="menuitem"
+                        data-testid="mark-category-garbage"
+                        onClick={() => {
+                          onToggleCategoryGarbage(cat);
+                          setOpenCategoryMenu(null);
+                        }}
+                        className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-xs font-semibold text-slate-200 hover:bg-slate-800"
+                      >
+                        <Trash2 className={`h-4 w-4 ${isMarkedGarbage ? 'text-yellow-300' : 'text-slate-400'}`} />
+                        {isMarkedGarbage ? 'Unmark garbage' : 'Mark as garbage'}
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
-            </button>
-          ))}
+            );
+          })}
 
           <div className="mt-8 pt-8 border-t border-slate-700">
             <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Learn</h2>
@@ -584,6 +770,18 @@ const CategoryList = ({
             </button>
 
             <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">Settings</h2>
+            <button
+              type="button"
+              data-testid="download-feedback-file"
+              onClick={onDownloadFeedback}
+              className="mb-4 w-full bg-slate-800 p-3 rounded-lg flex items-center justify-between gap-3 text-sm text-slate-200 hover:bg-slate-700 border border-slate-700"
+            >
+              <span className="flex items-center gap-2">
+                <Download className="w-4 h-4 text-teal-300" />
+                Download feedback file
+              </span>
+              <span className="text-xs text-slate-400">{garbageCategoryCount} marked</span>
+            </button>
             <button
               onClick={() => window.resetProgress()}
               className="w-full bg-red-900/20 p-3 rounded-lg flex items-center justify-center gap-2 text-sm text-red-400 hover:bg-red-900/30 transition-colors"
@@ -1174,6 +1372,7 @@ const PuzzleView = ({
   onSolved,
   onShowHint,
   hintsRevealed,
+  hintRevealCountsByMove,
   isSolved: isPuzzleSolvedState,
   isFailed,
   dictionaryEntries,
@@ -1188,7 +1387,9 @@ const PuzzleView = ({
   onToggleVisualMotif,
   onSelectVisualMotif,
   showVisualMotifButton,
-  multiplayer
+  multiplayer,
+  feedbackData,
+  onToggleHintFeedbackTag
 }) => {
   const [game, setGame] = useState(() => {
     const newGame = new Chess();
@@ -1211,6 +1412,7 @@ const PuzzleView = ({
   const [isCategoryMasked, setIsCategoryMasked] = useState(Boolean(isRandomMode));
   const [areTagsMasked, setAreTagsMasked] = useState(Boolean(isRandomMode));
   const [confettiBurst, setConfettiBurst] = useState(null);
+  const [openHintFeedbackKey, setOpenHintFeedbackKey] = useState(null);
   const prevHintsRevealedRef = useRef(hintsRevealed);
   const puzzleStartedAtRef = useRef(0);
   const puzzleMistakesRef = useRef(0);
@@ -1246,7 +1448,8 @@ const PuzzleView = ({
   );
 
   const openMotifDefinition = React.useCallback((motif) => {
-    const motifEntry = dictionaryLookup.exactTermMap.get(String(motif).toLowerCase());
+    const lookupTerm = VISUAL_MOTIF_DICTIONARY_LOOKUP[motif] || motif;
+    const motifEntry = dictionaryLookup.exactTermMap.get(String(lookupTerm).toLowerCase());
     const motifDefinition = motifEntry?.definition || 'Definition unavailable.';
     if (motifEntry) {
       openDictionaryEntry(motifEntry, motif);
@@ -1331,7 +1534,24 @@ const PuzzleView = ({
       .filter(Boolean);
   }, [puzzle]);
 
-  const latestHintText = hintsRevealed > 0 ? puzzle.hints[hintsRevealed - 1] : null;
+  const structuredMoveHints = hasStructuredMoveHints(puzzle);
+  const hintAnswerMoveIndex = structuredMoveHints ? currentMoveIndex : 0;
+  const currentMoveHints = React.useMemo(
+    () => getHintsForAnswerMove(puzzle, hintAnswerMoveIndex),
+    [puzzle, hintAnswerMoveIndex]
+  );
+  const currentMoveHintsRevealed = hintRevealCountsByMove
+    ? getHintRevealCountForAnswerMove(hintRevealCountsByMove, hintAnswerMoveIndex)
+    : hintsRevealed;
+  const visibleCurrentMoveHints = currentMoveHints.slice(0, currentMoveHintsRevealed);
+  const currentPlayerMoveNumber = getPlayerMoveNumberForAnswerMove(currentMoveIndex);
+  const playerMoveCount = React.useMemo(
+    () => getPlayerMoveCountFromAnswer(puzzle?.answer),
+    [puzzle?.answer]
+  );
+  const latestHintText = currentMoveHintsRevealed > 0
+    ? currentMoveHints[currentMoveHintsRevealed - 1]
+    : null;
   const hintArrow = React.useMemo(
     () => deriveArrowFromHintText(game.fen(), latestHintText),
     [game, latestHintText]
@@ -1440,9 +1660,7 @@ const PuzzleView = ({
             });
           }
           onSolved();
-          if (index < total - 1) {
-            setAutoAdvanceCountdown(3);
-          }
+          setAutoAdvanceCountdown(index < total - 1 ? 3 : 4);
         } else {
           if (battle) battle.onCorrectMove();
           if (multiplayer?.isInRoom) {
@@ -1508,6 +1726,8 @@ const PuzzleView = ({
       setAutoAdvanceCountdown(null);
       if (index < total - 1) {
         onNext();
+      } else {
+        onBack();
       }
       return;
     }
@@ -1517,7 +1737,7 @@ const PuzzleView = ({
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [autoAdvanceCountdown, index, total, onNext]);
+  }, [autoAdvanceCountdown, index, total, onBack, onNext]);
 
   useEffect(() => {
     const canPlaySanByDrop = (san) => {
@@ -1629,8 +1849,8 @@ const PuzzleView = ({
 
   const isPlayersTurn = game.turn() === (orientation === 'white' ? 'w' : 'b');
 
-  const { highlightedSquares, enemyHighlightedSquares } = React.useMemo(() => {
-    const empty = { highlightedSquares: [], enemyHighlightedSquares: [] };
+  const { highlightedSquares, enemyHighlightedSquares, motifArrows } = React.useMemo(() => {
+    const empty = { highlightedSquares: [], enemyHighlightedSquares: [], motifArrows: [] };
     if (!showVisualMotifButton || activeVisualMotifs.size === 0) return empty;
 
     const tempGame = new Chess(game.fen());
@@ -1686,9 +1906,21 @@ const PuzzleView = ({
       });
     } catch (e) { /* ignore invalid flipped FEN */ }
 
-    const ownSet = new Set();
-    const enemySet = new Set();
-    const addAll = (set, arr) => arr.forEach((sq) => set.add(sq));
+    const ownSet = new Map();
+    const enemySet = new Map();
+    const motifArrowMap = new Map();
+    const getHighlightKey = (highlight) => (
+      typeof highlight === 'string'
+        ? highlight
+        : `${highlight.square}|${highlight.type || ''}|${highlight.symbol || ''}`
+    );
+    const addAll = (set, arr) => arr.forEach((highlight) => {
+      set.set(getHighlightKey(highlight), highlight);
+    });
+    const addMotifArrow = (arrow) => {
+      if (!arrow?.orig || !arrow?.dest) return;
+      motifArrowMap.set(`${arrow.orig}|${arrow.dest}|${arrow.brush || 'yellow'}`, arrow);
+    };
 
     if (activeVisualMotifs.has('Undefended pieces')) {
       addAll(ownSet, ownPieceSquares.filter((p) => p.piece.type !== 'k' && !tempGame.isAttacked(p.square, turn)).map((p) => p.square));
@@ -2153,12 +2385,71 @@ const PuzzleView = ({
       addAll(enemySet, getDiscoveredSquares(enemyPieceSquares, opponent, turn));
     }
 
-    // Piece-coordination: Forkable alignment — legal knight move that creates a concrete fork on quality targets.
-    if (activeVisualMotifs.has('Forkable alignment')) {
+    // Piece-coordination: Forks - legal moves that create concrete forks on quality targets.
+    if (activeVisualMotifs.has('Forks')) {
       const KNIGHT_OFFSETS = [[-2, -1], [-2, 1], [-1, -2], [-1, 2], [1, -2], [1, 2], [2, -1], [2, 1]];
       const pieceValue = { p: 1, n: 3, b: 3, r: 5, q: 9, k: 100 };
+      const slidingAxes = {
+        diagonal: [[1, 1], [1, -1], [-1, 1], [-1, -1]],
+        horizontal: [[1, 0], [-1, 0]],
+        vertical: [[0, 1], [0, -1]]
+      };
 
-      const getForkableSquares = (color, enemyColor) => {
+      const isQualityForkTargets = (targets) => (
+        targets.length >= 2 &&
+        targets.some((target) => target.value >= 5 || target.type === 'k')
+      );
+
+      const addForkPattern = (results, move, targets, brush) => {
+        if (!isQualityForkTargets(targets)) return;
+
+        const selectedTargets = [...targets]
+          .sort((left, right) => right.value - left.value)
+          .slice(0, 3);
+
+        selectedTargets.forEach((target) => {
+          results.push({
+            orig: move.to,
+            dest: target.square,
+            brush
+          });
+        });
+      };
+
+      const getSlidingTargets = (boardState, fromSquare, enemyColor, dirs) => {
+        const targets = [];
+        const fromFile = fromSquare.charCodeAt(0) - 97;
+        const fromRank = Number(fromSquare[1]);
+
+        dirs.forEach(([df, dr]) => {
+          let file = fromFile + df;
+          let rank = fromRank + dr;
+
+          while (file >= 0 && file <= 7 && rank >= 1 && rank <= 8) {
+            const square = String.fromCharCode(97 + file) + rank;
+            const occupant = boardState.get(square);
+
+            if (!occupant) {
+              file += df;
+              rank += dr;
+              continue;
+            }
+
+            if (occupant.color === enemyColor && occupant.type !== 'p') {
+              targets.push({
+                square,
+                value: pieceValue[occupant.type] || 0,
+                type: occupant.type
+              });
+            }
+            break;
+          }
+        });
+
+        return targets;
+      };
+
+      const getForkableArrows = (color, enemyColor, brush) => {
         const results = [];
 
         const fenParts = tempGame.fen().split(' ');
@@ -2166,37 +2457,56 @@ const PuzzleView = ({
 
         try {
           const sideGame = new Chess(fenParts.join(' '));
-          const legalKnightMoves = sideGame.moves({ verbose: true }).filter((move) => move.piece === 'n');
+          const legalForkMoves = sideGame
+            .moves({ verbose: true })
+            .filter((move) => ['n', 'b', 'r', 'q'].includes(move.piece));
 
-          legalKnightMoves.forEach((move) => {
+          legalForkMoves.forEach((move) => {
             const testGame = new Chess(sideGame.fen());
             testGame.move({ from: move.from, to: move.to, promotion: move.promotion || 'q' });
-
-            const toFile = move.to.charCodeAt(0) - 97;
-            const toRank = Number(move.to[1]);
-            const attackedTargets = [];
-
-            KNIGHT_OFFSETS.forEach(([df, dr]) => {
-              const tf = toFile + df;
-              const tr = toRank + dr;
-              if (tf < 0 || tf > 7 || tr < 1 || tr > 8) return;
-              const sq = String.fromCharCode(97 + tf) + tr;
-              const occ = testGame.get(sq);
-              if (!occ || occ.color !== enemyColor) return;
-              if (occ.type === 'p') return;
-              attackedTargets.push({ square: sq, value: pieceValue[occ.type] || 0, type: occ.type });
-            });
-
-            if (attackedTargets.length < 2) return;
-
-            const hasHighValueTarget = attackedTargets.some((target) => target.value >= 5 || target.type === 'k');
-            if (!hasHighValueTarget) return;
 
             const friendlySupport = testGame.attackers(move.to, color).length;
             const enemyPressure = testGame.attackers(move.to, enemyColor).length;
             if (enemyPressure > friendlySupport + 1) return;
 
-            results.push(move.from, move.to, ...attackedTargets.slice(0, 3).map((target) => target.square));
+            if (move.piece === 'n') {
+              const toFile = move.to.charCodeAt(0) - 97;
+              const toRank = Number(move.to[1]);
+              const attackedTargets = [];
+
+              KNIGHT_OFFSETS.forEach(([df, dr]) => {
+                const targetFile = toFile + df;
+                const targetRank = toRank + dr;
+                if (targetFile < 0 || targetFile > 7 || targetRank < 1 || targetRank > 8) return;
+                const square = String.fromCharCode(97 + targetFile) + targetRank;
+                const occupant = testGame.get(square);
+                if (!occupant || occupant.color !== enemyColor || occupant.type === 'p') return;
+                attackedTargets.push({ square, value: pieceValue[occupant.type] || 0, type: occupant.type });
+              });
+
+              addForkPattern(results, move, attackedTargets, brush);
+              return;
+            }
+
+            const axisTargets = {};
+            if (move.piece === 'b' || move.piece === 'q') {
+              axisTargets.diagonal = getSlidingTargets(testGame, move.to, enemyColor, slidingAxes.diagonal);
+              addForkPattern(results, move, axisTargets.diagonal, brush);
+            }
+            if (move.piece === 'r' || move.piece === 'q') {
+              axisTargets.horizontal = getSlidingTargets(testGame, move.to, enemyColor, slidingAxes.horizontal);
+              axisTargets.vertical = getSlidingTargets(testGame, move.to, enemyColor, slidingAxes.vertical);
+              addForkPattern(results, move, axisTargets.horizontal, brush);
+              addForkPattern(results, move, axisTargets.vertical, brush);
+            }
+
+            const groupedForkExists = Object.values(axisTargets).some(isQualityForkTargets);
+            if (groupedForkExists) return;
+
+            const mixedTargets = Object.values(axisTargets).flat();
+            if (!isQualityForkTargets(mixedTargets)) return;
+
+            addForkPattern(results, move, mixedTargets, brush);
           });
         } catch (e) {
           return [];
@@ -2204,8 +2514,8 @@ const PuzzleView = ({
 
         return results;
       };
-      addAll(ownSet, getForkableSquares(turn, opponent));
-      addAll(enemySet, getForkableSquares(opponent, turn));
+      getForkableArrows(turn, opponent, 'yellow').forEach(addMotifArrow);
+      getForkableArrows(opponent, turn, 'red').forEach(addMotifArrow);
     }
 
     // Pawn-structure: Loose pawn — pawn not defended by any friendly piece
@@ -2844,13 +3154,17 @@ const PuzzleView = ({
       addAll(enemySet, getMate1Squares(opponent));
     }
 
-    return { highlightedSquares: Array.from(ownSet), enemyHighlightedSquares: Array.from(enemySet) };
+    return {
+      highlightedSquares: Array.from(ownSet.values()),
+      enemyHighlightedSquares: Array.from(enemySet.values()),
+      motifArrows: Array.from(motifArrowMap.values())
+    };
   }, [game, activeVisualMotifs, showVisualMotifButton]);
 
   useEffect(() => {
     if (!pendingOverlayAdvanceRef.current) return;
 
-    const hasVisibleDots = (highlightedSquares.length + enemyHighlightedSquares.length) > 0;
+    const hasVisibleDots = (highlightedSquares.length + enemyHighlightedSquares.length + motifArrows.length) > 0;
     if (hasVisibleDots) {
       pendingOverlayAdvanceRef.current = null;
       return;
@@ -2866,7 +3180,12 @@ const PuzzleView = ({
     const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % VISUAL_MOTIFS.length;
     advanceState.attempts += 1;
     onSelectVisualMotif(VISUAL_MOTIFS[nextIndex]);
-  }, [enemyHighlightedSquares.length, highlightedSquares.length, onSelectVisualMotif, selectedVisualMotif]);
+  }, [enemyHighlightedSquares.length, highlightedSquares.length, motifArrows.length, onSelectVisualMotif, selectedVisualMotif]);
+
+  const boardArrows = React.useMemo(
+    () => [...customArrows, ...motifArrows],
+    [customArrows, motifArrows]
+  );
 
   return (
     <div className="flex min-h-screen flex-col max-w-md mx-auto bg-slate-900">
@@ -2947,7 +3266,7 @@ const PuzzleView = ({
             onInteraction={handleBoardInteraction}
             width="100%"
             height="100%"
-            customArrows={customArrows}
+            customArrows={boardArrows}
             movableColor={orientation}
             highlights={highlightedSquares}
             enemyHighlights={enemyHighlightedSquares}
@@ -2986,7 +3305,7 @@ const PuzzleView = ({
                 )}
                 {autoAdvanceCountdown !== null && (
                   <div data-testid="next-countdown" className="mt-1 text-xs font-semibold text-emerald-300 animate-pulse">
-                    Next in {autoAdvanceCountdown}...
+                    {index < total - 1 ? 'Next' : 'Home'} in {autoAdvanceCountdown}...
                   </div>
                 )}
               </div>
@@ -3060,26 +3379,102 @@ const PuzzleView = ({
             </div>
           )}
 
-          {puzzle.hints.slice(0, hintsRevealed).map((hint, i) => (
-            <div key={i} className="flex flex-col gap-2">
-              <div className="p-3 bg-slate-700/50 rounded-lg text-sm text-slate-200 border-l-4 border-yellow-500">
-                <span className="font-bold text-yellow-500 mr-2">Hint {i + 1}:</span>
-                <HintWithDictionary
-                  hint={hint}
-                  dictionaryLookup={dictionaryLookup}
-                  onWordTap={(entry) => openDictionaryEntry(entry, entry?.name)}
-                />
+          {visibleCurrentMoveHints.map((hint, i) => {
+            const hintFeedbackKey = makeHintFeedbackKey({
+              category,
+              puzzleUrl: puzzle?.url,
+              answerMoveIndex: hintAnswerMoveIndex,
+              hintIndex: i
+            });
+            const selectedHintFeedbackTags = new Set(feedbackData?.hints?.[hintFeedbackKey]?.tags || []);
+
+            return (
+              <div key={`${currentPlayerMoveNumber}-${i}`} className="flex flex-col gap-2">
+                <div className="relative p-3 pr-11 bg-slate-700/50 rounded-lg text-sm text-slate-200 border-l-4 border-yellow-500">
+                  <button
+                    type="button"
+                    data-testid="hint-feedback-options-button"
+                    aria-label="Hint feedback options"
+                    aria-haspopup="menu"
+                    aria-expanded={openHintFeedbackKey === hintFeedbackKey}
+                    title="Hint feedback"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setOpenHintFeedbackKey((current) => (
+                        current === hintFeedbackKey ? null : hintFeedbackKey
+                      ));
+                    }}
+                    className="absolute right-1.5 top-1.5 flex h-8 w-8 items-center justify-center rounded-md text-slate-400 transition-colors hover:bg-slate-600/70 hover:text-slate-100 focus:outline-none focus:ring-2 focus:ring-slate-400"
+                  >
+                    <MoreVertical className="h-4 w-4" />
+                  </button>
+
+                  <span className="font-bold text-yellow-500 mr-2">
+                    {structuredMoveHints ? `Move ${currentPlayerMoveNumber} Hint ${i + 1}:` : `Hint ${i + 1}:`}
+                  </span>
+                  <HintWithDictionary
+                    hint={hint}
+                    dictionaryLookup={dictionaryLookup}
+                    onWordTap={(entry) => openDictionaryEntry(entry, entry?.name)}
+                  />
+
+                  {openHintFeedbackKey === hintFeedbackKey && (
+                    <div
+                      role="menu"
+                      data-testid="hint-feedback-menu"
+                      className="absolute right-1.5 top-10 z-20 w-44 rounded-lg border border-slate-600 bg-slate-900 p-1 shadow-2xl"
+                    >
+                      <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                        Feedback
+                      </div>
+                      <div className="space-y-1">
+                        {HINT_FEEDBACK_TAGS.map((tag) => {
+                          const isSelected = selectedHintFeedbackTags.has(tag);
+
+                          return (
+                            <button
+                              key={tag}
+                              type="button"
+                              role="menuitem"
+                              data-testid="hint-feedback-tag"
+                              aria-pressed={isSelected}
+                              onClick={() => onToggleHintFeedbackTag({
+                                category,
+                                puzzleUrl: puzzle?.url,
+                                puzzleAnswer: puzzle?.answer,
+                                answerMoveIndex: hintAnswerMoveIndex,
+                                moveNumber: currentPlayerMoveNumber,
+                                hintIndex: i,
+                                hintText: hint,
+                                tag
+                              })}
+                              className={`w-full rounded-md px-3 py-2 text-left text-xs font-semibold transition-colors ${
+                                isSelected
+                                  ? 'bg-yellow-500/20 text-yellow-200'
+                                  : 'text-slate-200 hover:bg-slate-800'
+                              }`}
+                            >
+                              {tag}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {!isPuzzleSolvedState && !isFailed && (
             <button
-              onClick={onShowHint}
+              onClick={() => onShowHint({ answerMoveIndex: hintAnswerMoveIndex })}
               className="w-full py-3 px-4 bg-yellow-600/20 text-yellow-400 rounded-lg hover:bg-yellow-600/30 transition-colors flex items-center justify-center gap-2 font-medium"
             >
               <HelpCircle className="w-5 h-5" />
-              {hintsRevealed < puzzle.hints.length ? "Reveal Hint" : "Show Answer (Give Up)"}
+              {currentMoveHintsRevealed < currentMoveHints.length
+                ? `Reveal Hint${structuredMoveHints && playerMoveCount > 1 ? ` for Move ${currentPlayerMoveNumber}` : ''}`
+                : "Show Answer (Give Up)"}
             </button>
           )}
 
@@ -3208,6 +3603,7 @@ export default function App() {
     currentPuzzleIndex,
     totalPuzzles,
     hintsRevealed,
+    hintRevealCountsByMove,
     isSolved,
     isFailed,
     solvedPuzzles,
@@ -3222,6 +3618,7 @@ export default function App() {
   } = usePuzzleGame();
 
   const [dictionaryData, setDictionaryData] = useState({ entries: [] });
+  const [categoryFeedback, setCategoryFeedback] = useState(readStoredCategoryFeedback);
   const [homeView, setHomeView] = useState('categories');
   const [homeTab, setHomeTab] = useState('single');
   const [selectedCategoryType, setSelectedCategoryType] = useState('All');
@@ -3237,6 +3634,124 @@ export default function App() {
     () => buildCategoryStats(puzzlesData, solvedPuzzles),
     [puzzlesData, solvedPuzzles]
   );
+
+  const handleToggleCategoryGarbage = React.useCallback((category) => {
+    const markedAt = new Date().toISOString();
+
+    setCategoryFeedback((previousFeedback) => {
+      const normalizedFeedback = normalizeCategoryFeedback(previousFeedback);
+      const existingEntry = normalizedFeedback.categories[category] || {};
+      const isGarbage = !existingEntry.garbage;
+
+      return {
+        ...normalizedFeedback,
+        updatedAt: markedAt,
+        categories: {
+          ...normalizedFeedback.categories,
+          [category]: {
+            ...existingEntry,
+            category,
+            label: formatCategoryLabel(category),
+            type: categoryStats.categoryTypeMap[category] || null,
+            puzzleCount: categoryStats.totalCounts[category] || 0,
+            garbage: isGarbage,
+            updatedAt: markedAt,
+            events: [
+              ...(Array.isArray(existingEntry.events) ? existingEntry.events : []),
+              {
+                type: isGarbage ? 'marked_garbage' : 'unmarked_garbage',
+                createdAt: markedAt
+              }
+            ]
+          }
+        }
+      };
+    });
+  }, [categoryStats.categoryTypeMap, categoryStats.totalCounts]);
+
+  const handleToggleHintFeedbackTag = React.useCallback(({
+    category,
+    puzzleUrl,
+    puzzleAnswer,
+    answerMoveIndex,
+    moveNumber,
+    hintIndex,
+    hintText,
+    tag
+  }) => {
+    if (!HINT_FEEDBACK_TAGS.includes(tag)) {
+      return;
+    }
+
+    const updatedAt = new Date().toISOString();
+    const hintFeedbackKey = makeHintFeedbackKey({
+      category,
+      puzzleUrl,
+      answerMoveIndex,
+      hintIndex
+    });
+
+    setCategoryFeedback((previousFeedback) => {
+      const normalizedFeedback = normalizeCategoryFeedback(previousFeedback);
+      const existingEntry = normalizedFeedback.hints[hintFeedbackKey] || {};
+      const existingTags = Array.isArray(existingEntry.tags) ? existingEntry.tags : [];
+      const nextTagSet = new Set(existingTags);
+      const isAdding = !nextTagSet.has(tag);
+
+      if (isAdding) {
+        nextTagSet.add(tag);
+      } else {
+        nextTagSet.delete(tag);
+      }
+
+      const nextTags = HINT_FEEDBACK_TAGS.filter((feedbackTag) => nextTagSet.has(feedbackTag));
+
+      return {
+        ...normalizedFeedback,
+        updatedAt,
+        hints: {
+          ...normalizedFeedback.hints,
+          [hintFeedbackKey]: {
+            ...existingEntry,
+            category,
+            categoryLabel: formatCategoryLabel(category),
+            puzzleUrl,
+            puzzleAnswer,
+            answerMoveIndex,
+            moveNumber,
+            hintIndex,
+            hintNumber: hintIndex + 1,
+            hintText,
+            tags: nextTags,
+            updatedAt,
+            events: [
+              ...(Array.isArray(existingEntry.events) ? existingEntry.events : []),
+              {
+                type: isAdding ? 'tag_added' : 'tag_removed',
+                tag,
+                createdAt: updatedAt
+              }
+            ]
+          }
+        }
+      };
+    });
+  }, []);
+
+  const handleDownloadFeedback = React.useCallback(() => {
+    const normalizedFeedback = normalizeCategoryFeedback(categoryFeedback);
+
+    downloadJsonFile(CATEGORY_FEEDBACK_FILE_NAME, {
+      ...normalizedFeedback,
+      exportedAt: new Date().toISOString(),
+      source: {
+        app: 'chess-puzzles-pickles',
+        href: window.location.href,
+        userAgent: navigator.userAgent
+      }
+    });
+  }, [categoryFeedback]);
+
   const connectedRoomPlayerCount = React.useMemo(
     () => (multiplayer.room?.players || []).filter((player) => player.connected).length,
     [multiplayer.room?.players]
@@ -3271,6 +3786,10 @@ export default function App() {
         setDictionaryData({ entries: [] });
       });
   }, []);
+
+  useEffect(() => {
+    writeStoredCategoryFeedback(categoryFeedback);
+  }, [categoryFeedback]);
 
   // Expose for the internal components to access if needed (hacky but works for the settings menu)
   window.resetProgress = resetAllProgress;
@@ -3416,17 +3935,13 @@ export default function App() {
     };
 
     sortedCategories.forEach((category) => {
-      const type = categoryTypeMap[category] || 'Misc';
+      const type = categoryTypeMap[category] || 'Tactics';
       typeCounts[type] = (typeCounts[type] || 0) + 1;
     });
 
     const visibleCategories = sortedCategories.filter((category) => (
       activeType === 'All' || categoryTypeMap[category] === activeType
     ));
-
-    const handleStartVisualMotifTest = () => {
-      startRandomPuzzleFromCategories(visibleCategories);
-    };
 
     if (homeView === 'dictionary') {
       return (
@@ -3458,13 +3973,15 @@ export default function App() {
       selectedType={activeType}
       onSelectType={setSelectedCategoryType}
       typeCounts={typeCounts}
-      onStartVisualMotifTest={handleStartVisualMotifTest}
       multiplayer={multiplayer}
       onHostRoom={handleHostRoom}
       onJoinRoom={handleJoinRoom}
       onLeaveRoom={handleLeaveRoom}
       selectedHomeTab={homeTab}
       onSelectHomeTab={setHomeTab}
+      categoryFeedback={categoryFeedback}
+      onToggleCategoryGarbage={handleToggleCategoryGarbage}
+      onDownloadFeedback={handleDownloadFeedback}
     />;
   }
 
@@ -3489,6 +4006,7 @@ export default function App() {
         onSolved={markSolved}
         onShowHint={showNextHint}
         hintsRevealed={hintsRevealed}
+        hintRevealCountsByMove={hintRevealCountsByMove}
         isSolved={isSolved}
         isFailed={isFailed}
         dictionaryEntries={dictionaryData.entries || []}
@@ -3501,6 +4019,8 @@ export default function App() {
         onSelectVisualMotif={handleSelectVisualMotif}
         showVisualMotifButton={showVisualMotifButton}
         multiplayer={multiplayer}
+        feedbackData={categoryFeedback}
+        onToggleHintFeedbackTag={handleToggleHintFeedbackTag}
       />
     </ErrorBoundary>
   );

@@ -1,0 +1,1494 @@
+{
+  "generatedAt": "2026-05-21T16:35:03.369Z",
+  "dataset": "game\\public\\puzzles.json",
+  "dictionary": "dictionary.json",
+  "note": "Editorial review list only. Do not delete categories automatically from this report.",
+  "summary": {
+    "categoryCount": 57,
+    "puzzleCount": 523,
+    "totalMoveHintCost": 3270,
+    "existingDataFailureCount": 0,
+    "topTrimCandidates": [
+      "clearance",
+      "kings-gambit-accepted",
+      "zugzwang",
+      "attraction",
+      "pawn-endgame",
+      "skewer",
+      "fork",
+      "knight-endgame",
+      "promotion",
+      "rapport-jobava-system",
+      "scotch-game",
+      "x-ray-attack",
+      "capturing-defender",
+      "damiano-defense",
+      "deflection",
+      "double-check",
+      "four-knights-defense",
+      "interference",
+      "queen-rook-endgame",
+      "discovered-attack"
+    ]
+  },
+  "categories": [
+    {
+      "category": "clearance",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 75,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.78
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "kings-gambit-accepted",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 69,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.56
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "zugzwang",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 69,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.56
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "attraction",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 66,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.44
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "pawn-endgame",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 66,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.44
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "skewer",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 66,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.44
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "fork",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 63,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.33
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "knight-endgame",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 63,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.33
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "promotion",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 63,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 4,
+        "average": 2.33
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "rapport-jobava-system",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 63,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.33
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "scotch-game",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 63,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.33
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "x-ray-attack",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 63,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.33
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "capturing-defender",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "damiano-defense",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "deflection",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "double-check",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "four-knights-defense",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "interference",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "queen-rook-endgame",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 5,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "discovered-attack",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "intermezzo",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "queens-gambit-declined",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "queens-pawn-game",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "russian-game",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "trapped-piece",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "vienna-game",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "advanced-pawn",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 54,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 2,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "english-opening",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 54,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "italian-game",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 54,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "philidor-defense",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 54,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "queen-side-attack",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 54,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "king-side-attack",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 51,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 1.89
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "pirc-defense",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 51,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 1.89
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "queen-endgame",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 51,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 4,
+        "average": 1.89
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "scandinavian-defense",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 51,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 1.89
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "castling",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 48,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 1.78
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "modern-defense",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 48,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.78
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "en-passant",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 45,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.67
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "hanging-piece",
+      "type": null,
+      "puzzleCount": 9,
+      "moveHintCost": 45,
+      "trimScore": 3,
+      "reasons": [
+        "small category",
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.67
+      },
+      "tagSignals": {
+        "tagCount": 27,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "anastasia-mate",
+      "type": "Mate",
+      "puzzleCount": 8,
+      "moveHintCost": 57,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.38
+      },
+      "tagSignals": {
+        "tagCount": 32,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "bodens-mate",
+      "type": "Mate",
+      "puzzleCount": 8,
+      "moveHintCost": 48,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 32,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "double-bishop-mate",
+      "type": "Mate",
+      "puzzleCount": 8,
+      "moveHintCost": 36,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.5
+      },
+      "tagSignals": {
+        "tagCount": 32,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "back-rank-mate",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 66,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.44
+      },
+      "tagSignals": {
+        "tagCount": 35,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "ruy-lopez",
+      "type": "Opening",
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 4,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 33,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "smothered-mate",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 60,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.22
+      },
+      "tagSignals": {
+        "tagCount": 36,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "opening",
+      "type": "Opening",
+      "puzzleCount": 9,
+      "moveHintCost": 57,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.11
+      },
+      "tagSignals": {
+        "tagCount": 34,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "mate-in-two-moves",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 54,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 2,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 32,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "dovetail-mate",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 45,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.67
+      },
+      "tagSignals": {
+        "tagCount": 36,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "arabian-mate",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 42,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.56
+      },
+      "tagSignals": {
+        "tagCount": 36,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "hook-mate",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 36,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 2,
+        "average": 1.33
+      },
+      "tagSignals": {
+        "tagCount": 33,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "mate-in-one-move",
+      "type": "Mate",
+      "puzzleCount": 9,
+      "moveHintCost": 27,
+      "trimScore": 2,
+      "reasons": [
+        "small category"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 1,
+        "average": 1
+      },
+      "tagSignals": {
+        "tagCount": 31,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "under-promotion",
+      "type": null,
+      "puzzleCount": 10,
+      "moveHintCost": 48,
+      "trimScore": 1,
+      "reasons": [
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 1.6
+      },
+      "tagSignals": {
+        "tagCount": 30,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "sacrifice",
+      "type": null,
+      "puzzleCount": 11,
+      "moveHintCost": 84,
+      "trimScore": 1,
+      "reasons": [
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 4,
+        "average": 2.55
+      },
+      "tagSignals": {
+        "tagCount": 43,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "pin",
+      "type": null,
+      "puzzleCount": 11,
+      "moveHintCost": 63,
+      "trimScore": 1,
+      "reasons": [
+        "missing category type"
+      ],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 1.91
+      },
+      "tagSignals": {
+        "tagCount": 34,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "sicilian-defense",
+      "type": "Defense",
+      "puzzleCount": 11,
+      "moveHintCost": 66,
+      "trimScore": 0,
+      "reasons": [],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2
+      },
+      "tagSignals": {
+        "tagCount": 44,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "french-defense",
+      "type": "Defense",
+      "puzzleCount": 12,
+      "moveHintCost": 78,
+      "trimScore": 0,
+      "reasons": [],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 2,
+        "max": 3,
+        "average": 2.17
+      },
+      "tagSignals": {
+        "tagCount": 43,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    },
+    {
+      "category": "caro-kann-defense",
+      "type": "Defense",
+      "puzzleCount": 12,
+      "moveHintCost": 75,
+      "trimScore": 0,
+      "reasons": [],
+      "categoryInDictionary": true,
+      "playerMoves": {
+        "min": 1,
+        "max": 3,
+        "average": 2.08
+      },
+      "tagSignals": {
+        "tagCount": 46,
+        "genericTagCount": 0,
+        "nearGenericTagCount": 0,
+        "undefinedTagCount": 0,
+        "genericTagRate": 0,
+        "undefinedTagRate": 0
+      },
+      "dataFailures": {}
+    }
+  ]
+}
