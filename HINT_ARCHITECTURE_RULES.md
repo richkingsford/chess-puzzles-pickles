@@ -46,11 +46,22 @@ exists.
 
 Each three-hint group should reveal one player move in layers.
 
-1. **Hint 1 - Context:** identify the local weakness, tactical pattern, or
-   decision point for this move. Do not name the piece to be moved, and do not
-   give notation. Describe only the opponent's pieces, weakness, or opportunity.
-2. **Hint 2 - Direction:** name the piece to be moved and the tactical idea
-   without giving the exact move.
+1. **Hint 1 - Named vulnerability plus board clue:** give roughly two-fifths
+   of the idea. Name the opponent-side vulnerability type, such as a pin, fork,
+   skewer, discovery, check danger, mate net, overload, loose defender, trapped
+   king, loose target, timing problem, or structural issue. Add one visible
+   clue that helps the child look at the right part of the board, such as an
+   enemy line, trapped king, crowded targets, weak shelter, loose guard, pawn
+   race, or unfinished development. Do not mention our pieces, name candidate
+   moves, give notation, or tell the player what move to play.
+2. **Hint 2 - Pattern mechanism:** give roughly three-fifths of the idea while
+   still preserving the solve. Repeat or clearly imply the vulnerability type,
+   then describe the mechanism to search for: a checking idea, capture, waiting
+   resource, promotion choice, line opener, escape-square clamp, defender
+   removal, or tempo gain. Do not mention which of our pieces to inspect, do not
+   name our piece types, and do not include square IDs or SAN notation. It is
+   acceptable to describe the weak enemy unit as a king, defender, blocker,
+   target, shield, pawn, or loose unit.
 3. **Hint 3 - Near-direct:** give a clear nudge toward the move type or key
    square. This is the only hint in the group that may give the exact move id.
 
@@ -73,9 +84,8 @@ Legacy validator: `audit_rule2_one_point.js`
 The first hints inside each player-move group should avoid exact board
 coordinates and SAN notation.
 
-- Hint 1 should not include square IDs such as `e4`, `h7`, or `a8`.
-- Hint 2 should usually avoid square IDs unless the concept is unclear without
-  one.
+- Hint 1 must not include square IDs such as `e4`, `h7`, or `a8`.
+- Hint 2 must not include square IDs or SAN notation.
 - Hint 3 may use a square or move type when the hint is intentionally direct.
 
 Legacy validator: `audit_rule3_early_square_ids.js`
@@ -110,6 +120,14 @@ Legacy validator: `audit_rule5_dictionary_alignment.js`
 Hints should be beginner-readable, compact, and easy to scan during play.
 
 - Prefer plain phrasing over abstract or heavily qualified explanation.
+- Write for an 8-year-old learner: concrete, vivid, and friendly, with enough
+  texture to make the position feel memorable.
+- Prefer helpful over coy. A hint can point at the shape of the tactic without
+  giving away the mover or square.
+- Brevity is good, but early hints should still teach. Avoid tiny hints that
+  name only a theme and leave the player with no picture.
+- Dictionary linking can define terms, so hints do not need to explain every
+  chess word, but they should still point to a visible board clue.
 - Avoid generic filler such as `find the best move`, `look carefully`, or
   `strong move here`.
 - Avoid semicolons, colons, parenthetical explanations, dash-heavy phrasing,
