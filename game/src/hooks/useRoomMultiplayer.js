@@ -24,10 +24,10 @@ const getClientId = () => {
 
 const getDefaultRoomApiUrl = () => {
   if (typeof window === 'undefined') {
-    return '/api/rooms';
+    return '/.netlify/functions/rooms';
   }
 
-  return new URL('/api/rooms', window.location.origin).toString();
+  return new URL('/.netlify/functions/rooms', window.location.origin).toString();
 };
 
 const getPublicAppBaseUrl = () => {

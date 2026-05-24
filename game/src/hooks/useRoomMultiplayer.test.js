@@ -61,7 +61,7 @@ describe('useRoomMultiplayer', () => {
       await result.current.hostRoom();
     });
 
-    expect(fetch.mock.calls[0][0]).toContain('/api/rooms');
+    expect(fetch.mock.calls[0][0]).toContain('/.netlify/functions/rooms');
     expect(fetch.mock.calls[0][1]).toEqual(expect.objectContaining({
       method: 'POST'
     }));

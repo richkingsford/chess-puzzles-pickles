@@ -9,10 +9,6 @@ const ENEMY_MAX_HP = 240;
 const CORRECT_MOVE_DAMAGE = 4;
 const STORE_NAME = 'pickle-rooms';
 
-export const config = {
-  path: '/api/rooms'
-};
-
 const now = () => Date.now();
 
 const roomKey = (code) => `room-${code}`;
@@ -354,6 +350,13 @@ const handleLeave = async (message) => {
 export default async (request) => {
   if (request.method === 'OPTIONS') {
     return new Response(null, { status: 204 });
+  }
+
+  if (request.method === 'GET' || request.method === 'HEAD') {
+    return json({
+      ok: true,
+      service: 'pickle-rooms'
+    });
   }
 
   if (request.method !== 'POST') {
