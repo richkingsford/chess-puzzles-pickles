@@ -4,6 +4,12 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/api/rooms"
+  to = "/.netlify/functions/rooms"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

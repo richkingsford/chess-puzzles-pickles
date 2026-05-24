@@ -4,6 +4,8 @@ import { getOrCreatePlayerName } from '../lib/playerNames';
 
 const CLIENT_ID_KEY = 'pickle-room-client-id';
 const ATTACK_FLASH_MS = 520;
+const POLL_INTERVAL_MS = 1500;
+const ROOM_REQUEST_TIMEOUT_MS = 6000;
 
 const getClientId = () => {
   try {
@@ -20,13 +22,12 @@ const getClientId = () => {
   }
 };
 
-const getDefaultRoomServerUrl = () => {
+const getDefaultRoomApiUrl = () => {
   if (typeof window === 'undefined') {
-    return 'ws://localhost:8787';
+    return '/api/rooms';
   }
 
-  const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  return `${protocol}//${window.location.hostname}:8787`;
+  return new URL('/api/rooms', window.location.origin).toString();
 };
 
 const getPublicAppBaseUrl = () => {
@@ -50,7 +51,6 @@ export const useRoomMultiplayer = () => {
   const [activeAttackPlayerId, setActiveAttackPlayerId] = useState(null);
   const [enemyHit, setEnemyHit] = useState(false);
   const [localPlayerName] = useState(() => getOrCreatePlayerName());
-  const socketRef = useRef(null);
   const clientIdRef = useRef(null);
   const roomRef = useRef(null);
   const playerIdRef = useRef(null);
@@ -64,8 +64,8 @@ export const useRoomMultiplayer = () => {
     playerIdRef.current = playerId;
   }, [playerId]);
 
-  const roomServerUrl = useMemo(
-    () => import.meta.env.VITE_ROOM_SERVER_URL || getDefaultRoomServerUrl(),
+  const roomApiUrl = useMemo(
+    () => import.meta.env.VITE_ROOM_API_URL || getDefaultRoomApiUrl(),
     []
   );
 
@@ -102,19 +102,14 @@ export const useRoomMultiplayer = () => {
     });
   }, []);
 
-  const handleMessage = useCallback((event) => {
-    let message;
-
-    try {
-      message = JSON.parse(event.data);
-    } catch {
-      return;
-    }
-
+  const applyRoomMessage = useCallback((message) => {
     if (message.type === 'room_joined') {
       setStatus('joined');
       setPlayerId(message.playerId);
       setError(null);
+      if (message.room) {
+        handleSnapshot(message.room);
+      }
       return;
     }
 
@@ -125,85 +120,66 @@ export const useRoomMultiplayer = () => {
       return;
     }
 
+    if (message.type === 'room_left') {
+      return;
+    }
+
     if (message.type === 'room_error') {
       setError(message.message || 'Room error.');
       setStatus(roomRef.current ? 'joined' : 'error');
     }
   }, [handleSnapshot]);
 
-  const connect = useCallback(() => new Promise((resolve, reject) => {
-    if (socketRef.current?.readyState === WebSocket.OPEN) {
-      resolve(socketRef.current);
-      return;
-    }
+  const requestRoom = useCallback(async (payload, { silent = false } = {}) => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), ROOM_REQUEST_TIMEOUT_MS);
 
-    if (socketRef.current) {
-      socketRef.current.close();
-    }
+    try {
+      const response = await fetch(roomApiUrl, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
+      const message = await response.json().catch(() => ({
+        type: 'room_error',
+        message: 'Room service returned an invalid response.'
+      }));
 
-    setStatus('connecting');
-    setError(null);
-
-    const socket = new WebSocket(roomServerUrl);
-    socketRef.current = socket;
-
-    const timeout = setTimeout(() => {
-      reject(new Error('Room service did not respond.'));
-      socket.close();
-      setStatus('error');
-      setError('Room service did not respond.');
-    }, 4000);
-
-    socket.onopen = () => {
-      clearTimeout(timeout);
-      resolve(socket);
-    };
-
-    socket.onerror = () => {
-      clearTimeout(timeout);
-      reject(new Error('Room service unavailable.'));
-      setStatus('error');
-      setError('Room service unavailable.');
-    };
-
-    socket.onclose = () => {
-      if (roomRef.current) {
-        setRoom((currentRoom) => currentRoom
-          ? {
-              ...currentRoom,
-              players: currentRoom.players.map((player) => (
-                player.id === playerIdRef.current ? { ...player, connected: false } : player
-              ))
-            }
-          : currentRoom);
+      if (!response.ok || message.type === 'room_error') {
+        throw new Error(message.message || 'Room service unavailable.');
       }
-      setStatus((currentStatus) => (currentStatus === 'joined' ? 'idle' : currentStatus));
-    };
 
-    socket.onmessage = handleMessage;
-  }), [handleMessage, roomServerUrl]);
-
-  const send = useCallback((payload) => {
-    const socket = socketRef.current;
-    if (!socket || socket.readyState !== WebSocket.OPEN) {
-      return false;
+      applyRoomMessage(message);
+      return message;
+    } catch (requestError) {
+      if (!silent) {
+        const message = requestError.name === 'AbortError'
+          ? 'Room service did not respond.'
+          : requestError.message || 'Room service unavailable.';
+        setError(message);
+        setStatus(roomRef.current ? 'joined' : 'error');
+      }
+      throw requestError;
+    } finally {
+      clearTimeout(timeout);
     }
-
-    socket.send(JSON.stringify(payload));
-    return true;
-  }, []);
+  }, [applyRoomMessage, roomApiUrl]);
 
   const hostRoom = useCallback(async () => {
     clientIdRef.current = clientIdRef.current || getClientId();
-    const socket = await connect();
+    setStatus('connecting');
+    setError(null);
 
-    socket.send(JSON.stringify({
+    await requestRoom({
       type: 'host',
       clientId: clientIdRef.current,
       name: localPlayerName,
       characterId: 'character1'
-    }));
-  }, [connect, localPlayerName]);
+    });
+  }, [localPlayerName, requestRoom]);
 
   const joinRoom = useCallback(async (code) => {
     const safeCode = normalizeRoomCode(code);
@@ -215,21 +191,31 @@ export const useRoomMultiplayer = () => {
     }
 
     clientIdRef.current = clientIdRef.current || getClientId();
-    const socket = await connect();
+    setStatus('connecting');
+    setError(null);
 
-    socket.send(JSON.stringify({
+    await requestRoom({
       type: 'join',
       code: safeCode,
       clientId: clientIdRef.current,
       name: localPlayerName,
       characterId: 'character2'
-    }));
-  }, [connect, localPlayerName]);
+    });
+  }, [localPlayerName, requestRoom]);
 
   const leaveRoom = useCallback(() => {
-    send({ type: 'leave' });
-    socketRef.current?.close();
-    socketRef.current = null;
+    const code = roomRef.current?.code;
+    const currentPlayerId = playerIdRef.current;
+
+    if (code && currentPlayerId) {
+      requestRoom({
+        type: 'leave',
+        code,
+        playerId: currentPlayerId,
+        clientId: clientIdRef.current
+      }, { silent: true }).catch(() => {});
+    }
+
     roomRef.current = null;
     playerIdRef.current = null;
     clearTimeout(attackTimerRef.current);
@@ -239,18 +225,26 @@ export const useRoomMultiplayer = () => {
     setError(null);
     setActiveAttackPlayerId(null);
     setEnemyHit(false);
-  }, [send]);
+  }, [requestRoom]);
 
   const sendProgress = useCallback((payload) => {
-    if (!roomRef.current?.code || !playerIdRef.current) {
+    const code = roomRef.current?.code;
+    const currentPlayerId = playerIdRef.current;
+
+    if (!code || !currentPlayerId) {
       return;
     }
 
-    send({
+    requestRoom({
       type: 'progress',
+      code,
+      playerId: currentPlayerId,
+      clientId: clientIdRef.current,
       ...payload
+    }, { silent: true }).catch(() => {
+      setError('Room sync hiccup. Still trying.');
     });
-  }, [send]);
+  }, [requestRoom]);
 
   const recordCorrectMove = useCallback(() => {
     sendProgress({ action: 'correct_move' });
@@ -273,16 +267,45 @@ export const useRoomMultiplayer = () => {
     sendProgress({ action: 'hint' });
   }, [sendProgress]);
 
+  useEffect(() => {
+    if (!room?.code || !playerId) {
+      return undefined;
+    }
+
+    let isStopped = false;
+
+    const pollRoom = async () => {
+      try {
+        await requestRoom({
+          type: 'snapshot',
+          code: room.code,
+          playerId,
+          clientId: clientIdRef.current
+        }, { silent: true });
+      } catch {
+        if (!isStopped) {
+          setError('Room sync hiccup. Still trying.');
+        }
+      }
+    };
+
+    const interval = setInterval(pollRoom, POLL_INTERVAL_MS);
+    return () => {
+      isStopped = true;
+      clearInterval(interval);
+    };
+  }, [playerId, requestRoom, room?.code]);
+
   useEffect(() => () => {
     clearTimeout(attackTimerRef.current);
-    socketRef.current?.close();
   }, []);
 
   return {
     status,
     room,
     roomUrl,
-    roomServerUrl,
+    roomServerUrl: roomApiUrl,
+    roomApiUrl,
     playerId,
     localPlayerName,
     error,
