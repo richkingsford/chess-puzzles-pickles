@@ -99,6 +99,12 @@ const normalizeCategoryFeedback = (feedback) => {
   };
 };
 
+const getVisibleHomeCategories = (categories, categoryFeedback) => {
+  const feedbackCategories = normalizeCategoryFeedback(categoryFeedback).categories;
+
+  return categories.filter((category) => !feedbackCategories[category]?.garbage);
+};
+
 const readStoredCategoryFeedback = () => {
   try {
     const storedFeedback = localStorage.getItem(CATEGORY_FEEDBACK_STORAGE_KEY);
@@ -3422,7 +3428,7 @@ const PuzzleView = ({
                     <div
                       role="menu"
                       data-testid="hint-feedback-menu"
-                      className="absolute right-1.5 top-10 z-20 w-44 rounded-lg border border-slate-600 bg-slate-900 p-1 shadow-2xl"
+                      className="absolute right-1.5 bottom-10 z-20 max-h-[calc(100dvh-6rem)] w-44 overflow-y-auto rounded-lg border border-slate-600 bg-slate-900 p-1 shadow-2xl"
                     >
                       <div className="px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
                         Feedback
@@ -3635,6 +3641,11 @@ export default function App() {
     [puzzlesData, solvedPuzzles]
   );
 
+  const visibleHomeCategories = React.useMemo(
+    () => getVisibleHomeCategories(categoryStats.sortedCategories, categoryFeedback),
+    [categoryFeedback, categoryStats.sortedCategories]
+  );
+
   const handleToggleCategoryGarbage = React.useCallback((category) => {
     const markedAt = new Date().toISOString();
 
@@ -3829,13 +3840,13 @@ export default function App() {
     }
 
     multiplayerStartedRoomRef.current = multiplayer.room.code;
-    startRandomPuzzleFromCategories(categoryStats.sortedCategories);
+    startRandomPuzzleFromCategories(visibleHomeCategories);
   }, [
-    categoryStats.sortedCategories,
     connectedRoomPlayerCount,
     multiplayer.room?.code,
     puzzlesData,
-    startRandomPuzzleFromCategories
+    startRandomPuzzleFromCategories,
+    visibleHomeCategories
   ]);
 
   const handleHostRoom = React.useCallback(() => {
@@ -3912,8 +3923,10 @@ export default function App() {
   }
 
   if (!currentCategory) {
-    const { solvedCounts, totalCounts, categoryTypeMap, sortedCategories } = categoryStats;
-    const discoveredTypes = Array.from(new Set(Object.values(categoryTypeMap)));
+    const { solvedCounts, totalCounts, categoryTypeMap } = categoryStats;
+    const discoveredTypes = Array.from(new Set(
+      visibleHomeCategories.map((category) => categoryTypeMap[category] || 'Tactics')
+    ));
     const orderedTypes = discoveredTypes.sort((left, right) => {
       const leftIndex = CATEGORY_TYPE_ORDER.indexOf(left);
       const rightIndex = CATEGORY_TYPE_ORDER.indexOf(right);
@@ -3931,15 +3944,15 @@ export default function App() {
     const activeType = typeFilters.includes(selectedCategoryType) ? selectedCategoryType : 'All';
 
     const typeCounts = {
-      All: sortedCategories.length
+      All: visibleHomeCategories.length
     };
 
-    sortedCategories.forEach((category) => {
+    visibleHomeCategories.forEach((category) => {
       const type = categoryTypeMap[category] || 'Tactics';
       typeCounts[type] = (typeCounts[type] || 0) + 1;
     });
 
-    const visibleCategories = sortedCategories.filter((category) => (
+    const visibleCategories = visibleHomeCategories.filter((category) => (
       activeType === 'All' || categoryTypeMap[category] === activeType
     ));
 

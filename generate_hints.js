@@ -1,5 +1,15 @@
 const fs = require('fs');
 const path = require('path');
+const { Chess } = require('./game/node_modules/chess.js');
+
+const PIECE_NAMES = {
+  p: 'pawn',
+  n: 'knight',
+  b: 'bishop',
+  r: 'rook',
+  q: 'queen',
+  k: 'king'
+};
 
 function splitMoves(moveSequence) {
   if (!moveSequence) return [];
@@ -7,6 +17,23 @@ function splitMoves(moveSequence) {
     .split(',')
     .map((move) => move.trim())
     .filter(Boolean);
+}
+
+function parseFenFromLichessUrl(url) {
+  try {
+    const marker = 'lichess.org/analysis/';
+    const markerIndex = String(url || '').indexOf(marker);
+    if (markerIndex === -1) return null;
+
+    let fen = String(url).slice(markerIndex + marker.length).split('?')[0];
+    if (fen.startsWith('standard/')) {
+      fen = fen.slice('standard/'.length);
+    }
+
+    return decodeURIComponent(fen).replace(/_/g, ' ').trim();
+  } catch {
+    return null;
+  }
 }
 
 function getPrimaryPieceFromSan(san) {
@@ -51,6 +78,10 @@ function hashString(input) {
 
 function pickVariant(seed, list, salt = 0) {
   return list[(seed + salt) % list.length];
+}
+
+function pieceName(pieceCode) {
+  return PIECE_NAMES[String(pieceCode || '').toLowerCase()] || 'piece';
 }
 
 function tacticText(tactic) {
@@ -684,6 +715,374 @@ function generateHints(pageName, lichessUrl, moveSequence) {
   return coreHints;
 }
 
+function isCheck(game) {
+  return typeof game?.isCheck === 'function' ? game.isCheck() : false;
+}
+
+function isCheckmate(game) {
+  return typeof game?.isCheckmate === 'function' ? game.isCheckmate() : false;
+}
+
+function tacticLabelForMove(pageName, tactic) {
+  const key = normalizeTag(pageName);
+  const normalizedTactic = normalizeTag(tactic);
+
+  if (key.includes('back-rank')) return 'Back-rank pressure';
+  if (key.includes('smothered')) return 'Smothered-mate pressure';
+  if (key.includes('anastasia')) return 'Anastasia-mate pressure';
+  if (key.includes('arabian')) return 'Arabian-mate pressure';
+  if (key.includes('boden')) return 'Boden-mate pressure';
+  if (key.includes('dovetail')) return 'Dovetail-mate pressure';
+  if (key.includes('hook')) return 'Hook-mate pressure';
+  if (key.includes('double-check')) return 'Double-check pressure';
+  if (key.includes('x-ray')) return 'X-ray pressure';
+  if (key.includes('capturing-defender')) return 'Defender-removal pressure';
+  if (key.includes('hanging-piece')) return 'Loose-piece pressure';
+  if (key.includes('trapped-piece')) return 'Trapped-piece pressure';
+  if (key.includes('promotion') || key.includes('advanced-pawn')) return 'Promotion pressure';
+  if (key.includes('endgame') || key.includes('equality')) return 'Endgame pressure';
+  if (key.includes('opening') || key.includes('defense') || key.includes('gambit')) return 'Opening pressure';
+  if (normalizedTactic) {
+    return `${tacticText(tactic).replace(/\b\w/g, (letter) => letter.toUpperCase())} pressure`;
+  }
+
+  return 'Tactical pressure';
+}
+
+function isEndgameCategory(pageName, tactic) {
+  const key = normalizeTag(pageName);
+  return key.includes('endgame') || key.includes('equality') || normalizeTag(tactic).includes('zugzwang');
+}
+
+function getMoveFeature(context) {
+  const flags = String(context.move.flags || '');
+  if (context.move.promotion || context.san.includes('=')) return 'promotion';
+  if (context.isMate) return 'mate';
+  if (context.givesCheck) return 'check';
+  if (flags.includes('k') || flags.includes('q') || /^O-O/.test(context.san)) return 'castling';
+  if (context.move.captured) return 'capture';
+  if (context.isEndgame) return 'endgame';
+  return 'quiet';
+}
+
+function isSameFile(from, to) {
+  return String(from || '')[0] === String(to || '')[0];
+}
+
+function isDiagonalMove(from, to) {
+  const fileDelta = Math.abs(String(from || '').charCodeAt(0) - String(to || '').charCodeAt(0));
+  const rankDelta = Math.abs(Number(String(from || '')[1]) - Number(String(to || '')[1]));
+  return fileDelta > 0 && fileDelta === rankDelta;
+}
+
+function getMovePieceCue(context) {
+  const flags = String(context.move.flags || '');
+  const piece = String(context.move.piece || '').toLowerCase();
+
+  if (context.move.promotion || context.san.includes('=')) {
+    return 'passed-pawn choice';
+  }
+
+  if (flags.includes('k') || flags.includes('q') || /^O-O/.test(context.san)) {
+    return 'castling resource';
+  }
+
+  if (piece === 'q') {
+    return isDiagonalMove(context.move.from, context.move.to) ? 'queen diagonal' : 'queen line';
+  }
+
+  if (piece === 'r') {
+    return isSameFile(context.move.from, context.move.to) ? 'rook file' : 'rook rank';
+  }
+
+  if (piece === 'b') return 'bishop diagonal';
+  if (piece === 'n') return 'knight jump';
+  if (piece === 'k') return 'king step';
+  if (piece === 'p') return context.move.captured ? 'pawn lever' : 'pawn push';
+
+  return 'piece route';
+}
+
+function buildSecondMoveHint(context, feature, seed) {
+  const cue = getMovePieceCue(context);
+  const captured = pieceName(context.move.captured);
+  const captures = Boolean(context.move.captured);
+
+  const opportunities = {
+    mate: captures
+      ? [
+        'captures and shuts every king escape',
+        'removes the guard and leaves the king boxed in',
+        'lands with mate before the shelter can reopen'
+      ]
+      : [
+        'shuts every king escape square',
+        'leaves the king boxed in',
+        'closes the last flight path'
+      ],
+    check: captures
+      ? [
+        'captures with check before the defense settles',
+        `removes the loose ${captured} with check`,
+        'wins tempo by checking and taking'
+      ]
+      : [
+        'checks before the defense can settle',
+        'keeps the king reacting with tempo',
+        'forces the king to answer now'
+      ],
+    promotion: [
+      'promotes and controls the key replies',
+      'keeps the pawn race too fast to stop',
+      'chooses the promotion that covers the reply'
+    ],
+    castling: [
+      'tucks the king away and wakes the rook',
+      'connects king safety with new rook pressure',
+      'turns safety into a quick attacking resource'
+    ],
+    capture: [
+      `removes the loose ${captured} with tempo`,
+      `wins the vulnerable ${captured} before it escapes`,
+      `takes the overloaded ${captured} out of the defense`
+    ],
+    endgame: [
+      'wins tempo against the stretched defender',
+      'turns the pawn race into a practical problem',
+      'makes the defender choose between two weaknesses'
+    ],
+    quiet: [
+      'creates a threat the defense cannot ignore',
+      'adds pressure before the defense can settle',
+      'sets up the forcing idea without giving tempo'
+    ]
+  };
+
+  const opportunity = pickVariant(seed, opportunities[feature], 53);
+  return cleanHint(`Find a ${cue} that ${opportunity}.`);
+}
+
+function buildMoveScopedHintPair(context, variantOffset = 0) {
+  const seed = hashString([
+    context.pageName,
+    context.lichessUrl,
+    context.answer,
+    context.playerMoveIndex,
+    context.san,
+    context.beforeFen
+  ].join('|'));
+  const feature = getMoveFeature(context);
+
+  const banks = {
+    mate: [
+      [
+        'Mate-net pressure is current as escape routes are nearly gone.',
+        'Find the forcing check that keeps every escape square under control.'
+      ],
+      [
+        'Checkmate danger is sharper now as the shelter is collapsing.',
+        'Search for the final checking idea that leaves the king boxed in.'
+      ],
+      [
+        'A final checking pattern is close as safe exits are scarce.',
+        'The right check must keep the king from finding any doorway.'
+      ]
+    ],
+    check: [
+      [
+        'A forcing check is available now and should gain tempo.',
+        'Find the checking idea that keeps the defense reacting this turn.'
+      ],
+      [
+        'Current safety gaps make a checking resource more urgent right now.',
+        'Search for the forcing check that improves the attack with tempo.'
+      ],
+      [
+        'Immediate check pressure can keep the defense responding right now.',
+        'The key is a check that does not let the defense settle.'
+      ]
+    ],
+    promotion: [
+      [
+        'Promotion danger is urgent and the race can be decided now.',
+        'Find the promotion choice that controls the important reply squares.'
+      ],
+      [
+        'The current race is close to promotion and needs forcing play.',
+        'Search for the pawn advance that keeps the defense too slow.'
+      ],
+      [
+        'Promotion threats are growing and one precise choice matters now.',
+        'The plan is to promote with tempo before the defense stabilizes.'
+      ]
+    ],
+    castling: [
+      [
+        'Safety and coordination can improve with one forcing resource now.',
+        'Find the castling resource that brings the pieces into coordination.'
+      ],
+      [
+        'Castling can turn safety into active pressure right now quickly.',
+        'Search for the king safety move that activates the rook too.'
+      ],
+      [
+        'Development is unfinished and one resource improves safety with tempo.',
+        'The plan is to tuck the king away and connect pressure.'
+      ]
+    ],
+    capture: [
+      [
+        'A loose target can be won right now with tempo.',
+        'Find the forcing capture that removes the loose target with tempo.'
+      ],
+      [
+        'A vulnerable target is hanging as the defense is overloaded.',
+        'Search for the capture that makes the overloaded defense fail.'
+      ],
+      [
+        'The current opportunity is a forcing capture on a loose target.',
+        'The key is taking the loose unit before it can escape.'
+      ]
+    ],
+    endgame: [
+      [
+        'Endgame tempo is current and the race can swing now.',
+        'Find the tempo resource that makes the defender choose badly.'
+      ],
+      [
+        'A precise endgame resource can create two weaknesses right now.',
+        'Search for the endgame tactic that turns one weakness decisive.'
+      ],
+      [
+        'The defense lacks time, so the current tempo matters more.',
+        'The key is improving pressure while the defender has no comfort.'
+      ]
+    ],
+    quiet: [
+      [
+        'A quiet forcing resource can create a hard threat now.',
+        'Find the quiet resource that creates pressure before the defense settles.'
+      ],
+      [
+        'The current position has a tactical target hiding in plain sight.',
+        'Search for the tempo move that makes the threat impossible to ignore.'
+      ],
+      [
+        'A quiet pressure idea is current as the defense lacks coordination.',
+        'The key idea improves pressure without giving the defense a pause.'
+      ]
+    ]
+  };
+
+  const firstHint = pickVariant(seed + variantOffset, banks[feature], 37)[0];
+  return [
+    cleanHint(firstHint),
+    buildSecondMoveHint(context, feature, seed + variantOffset)
+  ];
+}
+
+function sameHintPair(left, right) {
+  if (!left || !right) return false;
+  return normalizeLoose(left[0]) === normalizeLoose(right[0]) &&
+    normalizeLoose(left[1]) === normalizeLoose(right[1]);
+}
+
+function fallbackMoveHints(pageName, lichessUrl, moveSequence) {
+  const analysis = analyzeSequence(moveSequence);
+  const tactic = inferTactic(pageName, analysis);
+  const label = tacticLabelForMove(pageName, tactic);
+
+  return splitMoves(moveSequence)
+    .filter((_, index) => index % 2 === 0)
+    .map((san, playerMoveIndex) => {
+      const seed = hashString(`${pageName}|${lichessUrl}|${moveSequence}|${san}|${playerMoveIndex}`);
+      const [first, second] = pickVariant(seed, [
+        [
+          `${label} is current as the defense has one loose detail.`,
+          'Find the forcing resource that keeps the defense reacting this turn.'
+        ],
+        [
+          'The current position has a tactical target hiding in plain sight.',
+          'Search for the tempo idea that makes the threat impossible to ignore.'
+        ],
+        [
+          'A fresh tactical clue is current as the defense lacks coordination.',
+          'The key idea improves pressure without giving the defense a pause.'
+        ]
+      ], 41).map(cleanHint);
+
+      return [first, second, `Play ${san}.`];
+    });
+}
+
+function generateMoveHints(pageName, lichessUrl, moveSequence) {
+  const fen = parseFenFromLichessUrl(lichessUrl);
+  const answerMoves = splitMoves(moveSequence);
+
+  if (!fen || !answerMoves.length) {
+    return fallbackMoveHints(pageName, lichessUrl, moveSequence);
+  }
+
+  const fullAnalysis = analyzeSequence(moveSequence);
+  const tactic = inferTactic(pageName, fullAnalysis);
+  const tacticLabel = tacticLabelForMove(pageName, tactic);
+  const moveHints = [];
+
+  let game;
+  try {
+    game = new Chess(fen);
+  } catch {
+    return fallbackMoveHints(pageName, lichessUrl, moveSequence);
+  }
+
+  for (let answerMoveIndex = 0; answerMoveIndex < answerMoves.length; answerMoveIndex += 1) {
+    const san = answerMoves[answerMoveIndex];
+    const beforeFen = game.fen();
+    let move;
+
+    try {
+      move = game.move(san);
+    } catch {
+      return fallbackMoveHints(pageName, lichessUrl, moveSequence);
+    }
+
+    if (!move) {
+      return fallbackMoveHints(pageName, lichessUrl, moveSequence);
+    }
+
+    if (answerMoveIndex % 2 === 0) {
+      const context = {
+        pageName,
+        lichessUrl,
+        answer: moveSequence,
+        playerMoveIndex: answerMoveIndex / 2,
+        answerMoveIndex,
+        san,
+        move,
+        beforeFen,
+        tactic,
+        tacticLabel,
+        isMate: isCheckmate(game),
+        givesCheck: isCheck(game),
+        isEndgame: isEndgameCategory(pageName, tactic)
+      };
+      let hintPair = buildMoveScopedHintPair(context);
+
+      for (let offset = 1; sameHintPair(hintPair, moveHints.at(-1)); offset += 1) {
+        hintPair = buildMoveScopedHintPair(context, offset);
+        if (offset > 4) break;
+      }
+
+      moveHints.push([
+        ...hintPair,
+        `Play ${san}.`
+      ]);
+    }
+  }
+
+  return moveHints;
+}
+
 function normalizeTag(value) {
   return String(value || '')
     .trim()
@@ -904,16 +1303,30 @@ function getPuzzleAnswer(puzzleValue) {
     const pageWithHints = {};
 
     for (const lichessUrl of Object.keys(pageData)) {
+      const existingPuzzle = (
+        pageData[lichessUrl] &&
+        typeof pageData[lichessUrl] === 'object' &&
+        !Array.isArray(pageData[lichessUrl])
+      )
+        ? pageData[lichessUrl]
+        : {};
       const answer = getPuzzleAnswer(pageData[lichessUrl]);
       const analysis = analyzeSequence(answer);
       const tactic = inferTactic(pageName, analysis);
-      const tags = deriveTags(pageName, analysis, tactic);
-      const hints = generateHints(pageName, lichessUrl, answer);
+      const tags = Array.isArray(existingPuzzle.tags)
+        ? existingPuzzle.tags
+        : deriveTags(pageName, analysis, tactic);
+      const hints = Array.isArray(existingPuzzle.hints)
+        ? existingPuzzle.hints
+        : generateHints(pageName, lichessUrl, answer);
+      const moveHints = generateMoveHints(pageName, lichessUrl, answer);
 
       pageWithHints[lichessUrl] = {
+        ...existingPuzzle,
         answer,
         tags,
-        hints
+        hints,
+        moveHints
       };
 
       totalHinted += 1;
@@ -928,6 +1341,6 @@ function getPuzzleAnswer(puzzleValue) {
   fs.writeFileSync(outputPath, JSON.stringify(puzzlesWithHints, null, 2));
   const outputFile = outputPath;
 
-  console.log(`✓ Generated hints for ${totalHinted} puzzles`);
-  console.log(`✓ Saved to ${outputFile}`);
+  console.log(`Generated hints for ${totalHinted} puzzles`);
+  console.log(`Saved to ${outputFile}`);
 })();

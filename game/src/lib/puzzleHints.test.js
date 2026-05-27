@@ -3,6 +3,7 @@ import {
   HINTS_PER_PLAYER_MOVE,
   auditMoveHintGroups,
   getHintsForAnswerMove,
+  getPlayerAnswerMoves,
   getPlayerMoveCountFromAnswer,
   getPlayerMoveIndexForAnswerMove,
   getTotalHintRevealCount,
@@ -19,6 +20,7 @@ describe('puzzle hint model', () => {
 
     expect(hasStructuredMoveHints(puzzle)).toBe(false);
     expect(getPlayerMoveCountFromAnswer(puzzle.answer)).toBe(2);
+    expect(getPlayerAnswerMoves(puzzle.answer)).toEqual(['e4', 'Nf3']);
     expect(getHintsForAnswerMove(puzzle, 0)).toEqual(puzzle.hints);
     expect(getHintsForAnswerMove(puzzle, 2)).toEqual(puzzle.hints);
   });
@@ -75,6 +77,63 @@ describe('puzzle hint model', () => {
           code: 'move-hint-count-mismatch',
           expected: HINTS_PER_PLAYER_MOVE,
           actual: 1
+        })
+      ])
+    );
+  });
+
+  test('audits current-move relevance for structured hints', () => {
+    const failures = auditMoveHintGroups({
+      answer: 'Qh5+, g6, Qxg6#',
+      moveHints: [
+        [
+          'Start with your queen to force the issue.',
+          'Find the best move.',
+          'Play Qxg6#.'
+        ],
+        [
+          'Start with your queen to force the issue.',
+          'Find the best move.',
+          'Play Qh5+.'
+        ]
+      ]
+    });
+
+    expect(failures).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          code: 'move-hint-final-move-mismatch',
+          playerMoveIndex: 0,
+          expectedSan: 'Qh5+'
+        }),
+        expect.objectContaining({
+          code: 'move-hint-references-other-answer-move',
+          playerMoveIndex: 0,
+          actualSan: 'Qxg6#'
+        }),
+        expect.objectContaining({
+          code: 'move-hint-too-vague',
+          playerMoveIndex: 0
+        }),
+        expect.objectContaining({
+          code: 'move-hint-first-names-piece',
+          playerMoveIndex: 0,
+          hintIndex: 0
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-missing-piece-cue',
+          playerMoveIndex: 0,
+          hintIndex: 1
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-missing-opportunity-cue',
+          playerMoveIndex: 0,
+          hintIndex: 1
+        }),
+        expect.objectContaining({
+          code: 'move-hint-repeated-opening-pair',
+          playerMoveIndex: 1,
+          comparedWithPlayerMoveIndex: 0
         })
       ])
     );

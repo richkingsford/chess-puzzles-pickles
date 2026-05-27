@@ -46,22 +46,20 @@ exists.
 
 Each three-hint group should reveal one player move in layers.
 
-1. **Hint 1 - Named vulnerability plus board clue:** give roughly two-fifths
-   of the idea. Name the opponent-side vulnerability type, such as a pin, fork,
-   skewer, discovery, check danger, mate net, overload, loose defender, trapped
-   king, loose target, timing problem, or structural issue. Add one visible
-   clue that helps the child look at the right part of the board, such as an
-   enemy line, trapped king, crowded targets, weak shelter, loose guard, pawn
-   race, or unfinished development. Do not mention our pieces, name candidate
-   moves, give notation, or tell the player what move to play.
-2. **Hint 2 - Pattern mechanism:** give roughly three-fifths of the idea while
-   still preserving the solve. Repeat or clearly imply the vulnerability type,
-   then describe the mechanism to search for: a checking idea, capture, waiting
-   resource, promotion choice, line opener, escape-square clamp, defender
-   removal, or tempo gain. Do not mention which of our pieces to inspect, do not
-   name our piece types, and do not include square IDs or SAN notation. It is
-   acceptable to describe the weak enemy unit as a king, defender, blocker,
-   target, shield, pawn, or loose unit.
+1. **Hint 1 - Blunt opportunity without piece names:** give roughly half of
+   the idea. Name the current opportunity type, such as mate-net pressure,
+   forcing check, loose target, promotion danger, safety resource, endgame
+   tempo, or quiet pressure. Add one board-state clue such as scarce exits,
+   collapsing shelter, overloaded defense, urgent race, unfinished development,
+   or poor coordination. Do not mention any piece type, name candidate moves,
+   give notation, or tell the player what move to play.
+2. **Hint 2 - Piece-shaped opportunity:** give roughly three-fifths of the idea
+   while still preserving the solve. Suggest the mover through movement shape or
+   piece family, such as queen line, rook file, bishop diagonal, knight jump,
+   pawn lever, passed-pawn choice, king step, or castling resource. Pair that
+   clue with the current opportunity: check, capture, promotion, mate-net clamp,
+   defender removal, tempo gain, or quiet pressure. Do not include square IDs,
+   SAN notation, or direct phrasing such as `play your queen`.
 3. **Hint 3 - Near-direct:** give a clear nudge toward the move type or key
    square. This is the only hint in the group that may give the exact move id.
 
@@ -136,6 +134,20 @@ Hints should be beginner-readable, compact, and easy to scan during play.
 - Use one sentence.
 
 Legacy validator: `audit_rule6_clear_short_phrasing.js`
+
+## Rule 8: Current-Move Relevancy
+
+Structured `moveHints` must describe the board before that specific player
+move, not just the puzzle's opening position or category.
+
+- Recompute the board for each player move before writing its hint group.
+- The final hint in each group must name that move's SAN, not a later or
+  earlier player move.
+- Do not reuse the same first two hints for consecutive player moves.
+- Avoid generic filler such as `force the issue`, `big clue`, or `best move`.
+
+Validator: `game/src/lib/puzzleHints.js` checks structured `moveHints` for
+wrong SAN references, repeated opening pairs, and known vague phrasing.
 
 ## Category Trimming Before Regeneration
 

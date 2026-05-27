@@ -317,11 +317,26 @@ export const formatAuditFailure = (failure) => {
   if (Number.isInteger(failure.playerMoveIndex)) {
     bits.push(`playerMoveIndex=${failure.playerMoveIndex}`);
   }
+  if (Number.isInteger(failure.comparedWithPlayerMoveIndex)) {
+    bits.push(`comparedWithPlayerMoveIndex=${failure.comparedWithPlayerMoveIndex}`);
+  }
+  if (Number.isInteger(failure.hintIndex)) {
+    bits.push(`hintIndex=${failure.hintIndex}`);
+  }
   if (Number.isInteger(failure.moveIndex)) {
     bits.push(`moveIndex=${failure.moveIndex}`);
   }
+  if (failure.expectedSan) {
+    bits.push(`expectedSan=${failure.expectedSan}`);
+  }
+  if (failure.actualSan) {
+    bits.push(`actualSan=${failure.actualSan}`);
+  }
   if (failure.san) {
     bits.push(`san=${failure.san}`);
+  }
+  if (failure.hintText) {
+    bits.push(`hint=${failure.hintText}`);
   }
   if (failure.message) {
     bits.push(`message=${failure.message}`);

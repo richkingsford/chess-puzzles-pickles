@@ -226,6 +226,46 @@ describe('App unit tests by area', () => {
       randomSpy.mockRestore();
     });
 
+    test('random mode skips categories marked as garbage', async () => {
+      const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
+
+      localStorage.setItem('categoryFeedback', JSON.stringify({
+        version: 1,
+        categories: {
+          'set-one': {
+            category: 'set-one',
+            garbage: true
+          }
+        }
+      }));
+
+      hookState = makeHookState({
+        puzzlesData: {
+          'set-one': {
+            one: makePuzzle()
+          },
+          'set-two': {
+            two: makePuzzle({ answer: 'e3' })
+          }
+        },
+        solvedPuzzles: {
+          'set-one': [],
+          'set-two': []
+        }
+      });
+
+      render(<App />);
+
+      expect(screen.queryByRole('button', { name: /set one/i })).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /set two/i })).toBeInTheDocument();
+
+      await user.click(screen.getByTestId('random-mode-button'));
+
+      expect(selectCategory).toHaveBeenCalledTimes(1);
+      expect(selectCategory).toHaveBeenCalledWith('set-two', 0);
+      randomSpy.mockRestore();
+    });
+
     test('marks a category as garbage from the category overflow menu', async () => {
       hookState = makeHookState();
 
@@ -247,10 +287,8 @@ describe('App unit tests by area', () => {
       });
 
       expect(screen.getByText('1 marked')).toBeInTheDocument();
-
-      await user.click(screen.getAllByTestId('category-options-button')[0]);
-
-      expect(screen.getByRole('menuitem', { name: /unmark garbage/i })).toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: /set one/i })).not.toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /set two/i })).toBeInTheDocument();
     });
 
     test('downloads the stored category feedback as a json file', async () => {
@@ -613,6 +651,7 @@ describe('App unit tests by area', () => {
 
       await user.click(screen.getByTestId('hint-feedback-options-button'));
 
+      expect(screen.getByTestId('hint-feedback-menu')).toHaveClass('bottom-10');
       expect(screen.getAllByTestId('hint-feedback-tag').map((button) => button.textContent)).toEqual([
         'Confusing',
         'Too Subtle',
