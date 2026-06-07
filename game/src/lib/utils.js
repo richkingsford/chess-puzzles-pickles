@@ -31,6 +31,14 @@ export function parsePuzzleUrl(url) {
     }
 }
 
+export function getPublicAssetUrl(path) {
+    const base = import.meta.env.BASE_URL || '/';
+    const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+    const normalizedPath = String(path || '').replace(/^\/+/, '');
+
+    return `${normalizedBase}${normalizedPath}`;
+}
+
 export function formatPGN(moves) {
     // Simple formatter if needed, but we might just use the moves array directly
     return moves;
