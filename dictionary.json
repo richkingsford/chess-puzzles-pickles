@@ -1,0 +1,2838 @@
+{
+  "version": 1,
+  "description": "Chess learning library used for hint coverage scoring.",
+  "entries": [
+    {
+      "name": "absolute-pin",
+      "definition": "A tactic where a piece cannot move because it would expose a more valuable piece or critical square. Attack what the pinned piece is forced to defend.",
+      "aliases": []
+    },
+    {
+      "name": "acceptance",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "accepted",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "active-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "active-play",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "advance-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "advanced-pawn",
+      "definition": "A far-advanced pawn that creates promotion threats, space gains, or tactical targets for both sides.",
+      "aliases": []
+    },
+    {
+      "name": "advantage",
+      "definition": "A favorable imbalance in material, king safety, pawn structure, activity, or initiative. Conversion means improving while avoiding counterplay.",
+      "aliases": []
+    },
+    {
+      "name": "aggression",
+      "definition": "A strategic attacking plan built around aggression. Improve piece activity and open lines first, then convert the initiative with forcing tactics.",
+      "aliases": []
+    },
+    {
+      "name": "aggressive",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "alekhine-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "alignment-and-double-attacks",
+      "definition": "A tactical pattern where aligned pieces are hit by forks, skewers, or discovered threats to win material or force mate.",
+      "aliases": []
+    },
+    {
+      "name": "Anastasia Mate",
+      "definition": "A classic mating pattern where a knight controls escape squares while a rook or queen delivers mate along the edge.",
+      "aliases": [
+        "anastasia"
+      ]
+    },
+    {
+      "name": "anastasia-mate",
+      "definition": "A classic mating pattern where a knight controls escape squares while a rook or queen delivers mate along the edge.",
+      "aliases": []
+    },
+    {
+      "name": "Arabian Mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": [
+        "arabian"
+      ]
+    },
+    {
+      "name": "arabian-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "artificial-castling",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "Attacker",
+      "definition": "A piece actively creating pressure or direct threats.",
+      "aliases": [
+        "attacking piece"
+      ]
+    },
+    {
+      "name": "attacking-f2-f7",
+      "definition": "A tactical focus on the f2/f7 weak point near the king, often using bishop-queen coordination and forcing checks.",
+      "aliases": []
+    },
+    {
+      "name": "Attraction",
+      "definition": "A piece is lured to a square where it can be exploited.",
+      "aliases": [
+        "lure",
+        "attract"
+      ]
+    },
+    {
+      "name": "avoidance",
+      "definition": "A strategic defensive concept related to avoidance. Neutralize immediate threats, coordinate defenders, and only then seek active counterplay.",
+      "aliases": []
+    },
+    {
+      "name": "back-rank",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "Back-Rank Mate",
+      "definition": "Mate delivered on the back rank when the king has no escape squares.",
+      "aliases": [
+        "back rank",
+        "backrank mate"
+      ]
+    },
+    {
+      "name": "back-rank-mate",
+      "definition": "A mate pattern where the king is trapped on the back rank by its own pawns or pieces. Heavy pieces exploit that lack of luft.",
+      "aliases": []
+    },
+    {
+      "name": "back-rank-threat",
+      "definition": "A mating threat where one side creates a near-forced mate and compels immediate, precise defense.",
+      "aliases": []
+    },
+    {
+      "name": "Backward Pawn",
+      "definition": "A pawn that cannot safely advance and often needs protection.",
+      "aliases": [
+        "backward-pawn"
+      ]
+    },
+    {
+      "name": "backward-pawn-target",
+      "definition": "A pawn that cannot safely advance because enemy pawns control the square in front of it, leaving it fixed and targetable by heavy pieces on the semi-open file.",
+      "aliases": [
+        "backward pawn weakness",
+        "fixed backward pawn"
+      ]
+    },
+    {
+      "name": "Battery",
+      "definition": "Two aligned pieces support each other on the same line of attack.",
+      "aliases": [
+        "queen bishop battery",
+        "rook battery"
+      ]
+    },
+    {
+      "name": "Battery alignment",
+      "definition": "Two long-range pieces aligned to increase pressure on a file, rank, or diagonal.",
+      "aliases": [
+        "battery-alignment"
+      ]
+    },
+    {
+      "name": "battery-alignment",
+      "definition": "Two pieces are aligned on the same file, rank, or diagonal so they reinforce each other's attack, such as queen-plus-bishop on a diagonal or doubled rooks on a file.",
+      "aliases": [
+        "queen bishop battery",
+        "doubled rooks",
+        "piece battery"
+      ]
+    },
+    {
+      "name": "benko-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "benoni-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "berlin-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "bird-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "Bishop blocked by own pawns",
+      "definition": "A bishop whose own pawns restrict its diagonal scope, reducing coordination and activity.",
+      "aliases": [
+        "bishop-blocked-by-own-pawns"
+      ]
+    },
+    {
+      "name": "Bishop Pair",
+      "definition": "Having both bishops often gives strong long-range control.",
+      "aliases": [
+        "two bishops"
+      ]
+    },
+    {
+      "name": "bishop-blocked-by-pawns",
+      "definition": "A bishop whose own pawn chain sits on the same color squares, severely limiting its mobility and making it a passive, ineffective piece.",
+      "aliases": [
+        "bad bishop",
+        "bishop behind pawn chain",
+        "blocked bishop"
+      ]
+    },
+    {
+      "name": "bishop-endgame",
+      "definition": "An endgame where bishops are the main minor pieces. Color-complex control and passed-pawn races often matter more than raw pawn count.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-pair",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-safety",
+      "definition": "A defensive plan emphasizing bishop safety. Neutralize immediate threats, improve coordination, and choose counterplay only after king safety is secure.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-trade",
+      "definition": "A strategic exchange decision related to bishop trade. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "bishop-trap",
+      "definition": "A tactical trap that invites a natural-looking move and punishes it with a forcing sequence.",
+      "aliases": []
+    },
+    {
+      "name": "bishops-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "bishops-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "black-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "blackmar-diemer-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "block",
+      "definition": "A tactical blocking move that cuts a line, interrupts coordination, or prevents a key defensive resource.",
+      "aliases": []
+    },
+    {
+      "name": "blockade",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "blunder-punishment",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Boden Mate",
+      "definition": "Mate delivered by crossing bishops controlling escape squares.",
+      "aliases": [
+        "boden"
+      ]
+    },
+    {
+      "name": "bodens-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "bogo-indian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "botvinnik-system",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "breakthrough",
+      "definition": "A strategic-tactical rupture that breaks through a defensive structure to create decisive threats.",
+      "aliases": []
+    },
+    {
+      "name": "budapest-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "calculation",
+      "definition": "A calculation theme: compare candidate moves, analyze forcing lines first, and verify the resulting position before committing.",
+      "aliases": []
+    },
+    {
+      "name": "calculation-and-tempo",
+      "definition": "Calculation that values move order and tempo, choosing lines where every move carries a direct threat or gain in initiative.",
+      "aliases": []
+    },
+    {
+      "name": "Capture",
+      "definition": "Removing an enemy piece by moving onto its square.",
+      "aliases": [
+        "take",
+        "wins material"
+      ]
+    },
+    {
+      "name": "capturing-defender",
+      "definition": "A tactic that removes a key defending piece so a target becomes loose or a mating line opens.",
+      "aliases": []
+    },
+    {
+      "name": "caro-kann-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Castling",
+      "definition": "A king safety move that also develops the rook.",
+      "aliases": [
+        "castle"
+      ]
+    },
+    {
+      "name": "catalan-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "Center",
+      "definition": "The central squares and surrounding area that influence piece activity.",
+      "aliases": [
+        "middle squares"
+      ]
+    },
+    {
+      "name": "Center Control",
+      "definition": "Influencing key central squares to gain mobility and space.",
+      "aliases": [
+        "center",
+        "central control"
+      ]
+    },
+    {
+      "name": "center-break",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-challenge",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-control",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-counter",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-expansion",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-fork",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
+      "aliases": []
+    },
+    {
+      "name": "center-occupation",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "center-strike",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "center-tension",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "central-control",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Check",
+      "definition": "A direct attack on the king that must be answered immediately.",
+      "aliases": [
+        "giving check"
+      ]
+    },
+    {
+      "name": "Checkable king",
+      "definition": "A king position where immediate checks are available. Forcing checks can drive tactics and mating nets.",
+      "aliases": [
+        "checkable-king"
+      ]
+    },
+    {
+      "name": "Checkmate",
+      "definition": "The king is in check and has no legal escape.",
+      "aliases": [
+        "mate"
+      ]
+    },
+    {
+      "name": "checkmate-threat",
+      "definition": "A mating threat where one side creates a near-forced mate and compels immediate, precise defense.",
+      "aliases": []
+    },
+    {
+      "name": "checkmate-trap",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "classical-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "classical-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "Clear",
+      "definition": "To move a piece away so another piece has room to attack.",
+      "aliases": [
+        "cleared",
+        "clearing"
+      ]
+    },
+    {
+      "name": "Clearance",
+      "definition": "A piece moves away to clear a line or square for another piece.",
+      "aliases": [
+        "clearance sacrifice",
+        "clear line"
+      ]
+    },
+    {
+      "name": "closed-center",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "closed-sicilian",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "colle-system",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "colle-zukertort",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "compensation",
+      "definition": "Compensation is non-material advantage (initiative, activity, structure, or king exposure) that can justify a pawn or exchange deficit.",
+      "aliases": []
+    },
+    {
+      "name": "Connected Passed Pawns",
+      "definition": "Adjacent passed pawns that support each other's advance.",
+      "aliases": [
+        "connected passers"
+      ]
+    },
+    {
+      "name": "control",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Coordination",
+      "definition": "How well your pieces support each other.",
+      "aliases": [
+        "piece coordination",
+        "teamwork"
+      ]
+    },
+    {
+      "name": "counter-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "criss-cross",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "crushing",
+      "definition": "A practical theme where advantage comes from concrete calculation, active piece placement, and restricting the opponent's counterplay.",
+      "aliases": []
+    },
+    {
+      "name": "cut-off",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "damiano-defense",
+      "definition": "The Damiano Defense (1.e4 e5 2.Nf3 f6?!) is a dubious early pawn push that weakens Black's king and e6-g8 dark squares, often allowing tactical punishment such as Nxe5.",
+      "aliases": []
+    },
+    {
+      "name": "danish-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "declined",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Decoy",
+      "definition": "A piece is tempted to move to a bad square by bait.",
+      "aliases": [
+        "bait",
+        "decoy tactic"
+      ]
+    },
+    {
+      "name": "deep-calculation",
+      "definition": "A calculation theme: compare candidate moves, analyze forcing lines first, and verify the resulting position before committing.",
+      "aliases": []
+    },
+    {
+      "name": "Defender",
+      "definition": "A piece that protects a square, piece, or king.",
+      "aliases": [
+        "guard",
+        "protector"
+      ]
+    },
+    {
+      "name": "defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "defensive-move",
+      "definition": "A precise defensive resource that neutralizes an immediate threat while preserving tactical or positional balance.",
+      "aliases": []
+    },
+    {
+      "name": "Deflection",
+      "definition": "A defending piece is forced away from an important square or duty.",
+      "aliases": [
+        "deflect",
+        "deflecting"
+      ]
+    },
+    {
+      "name": "deflection-and-line-control",
+      "definition": "A tactical theme that deflects key defenders and then exploits newly opened or weakened files, ranks, and diagonals.",
+      "aliases": []
+    },
+    {
+      "name": "Development",
+      "definition": "Bringing pieces from their starting squares to active squares.",
+      "aliases": [
+        "develop pieces"
+      ]
+    },
+    {
+      "name": "Diagonal",
+      "definition": "A line of same-colored squares connected corner to corner.",
+      "aliases": [
+        "diagonal line"
+      ]
+    },
+    {
+      "name": "diagonal-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "Discovered Attack",
+      "definition": "Moving one piece reveals an attack from another piece behind it.",
+      "aliases": [
+        "discovery",
+        "discovered tactic"
+      ]
+    },
+    {
+      "name": "Discovered attack potential",
+      "definition": "A concealed line attack that appears when the front piece moves with tempo.",
+      "aliases": [
+        "discovered-attack-potential"
+      ]
+    },
+    {
+      "name": "Discovered Check",
+      "definition": "A discovered attack where the revealed attack is on the king.",
+      "aliases": [
+        "discovered king attack"
+      ]
+    },
+    {
+      "name": "discovered-attack",
+      "definition": "A tactic where moving one piece reveals an attack from a line piece behind it. Best when the move also creates a second threat.",
+      "aliases": []
+    },
+    {
+      "name": "discovered-attack-potential",
+      "definition": "A piece can move to reveal an attack from a line piece behind it, creating a double threat where both the moving piece and the unmasked piece attack simultaneously.",
+      "aliases": [
+        "discovery potential",
+        "unmasking threat"
+      ]
+    },
+    {
+      "name": "discovered-check",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
+      "aliases": []
+    },
+    {
+      "name": "disruption",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Double Check",
+      "definition": "The king is checked by two pieces at once.",
+      "aliases": [
+        "two checks"
+      ]
+    },
+    {
+      "name": "double-bishop-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "double-check",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
+      "aliases": []
+    },
+    {
+      "name": "Doubled Pawns",
+      "definition": "Two pawns of the same side on one file.",
+      "aliases": [
+        "double pawns"
+      ]
+    },
+    {
+      "name": "doubled-pawns",
+      "definition": "A pawn-structure idea involving doubled pawns. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "Dovetail Mate",
+      "definition": "A queen mates the king while two adjacent escape squares are blocked.",
+      "aliases": [
+        "dovetail"
+      ]
+    },
+    {
+      "name": "dovetail-mate",
+      "definition": "A mating net where the checking piece is protected and the king is boxed in by its own men in a tight \"dovetail\" shape.",
+      "aliases": []
+    },
+    {
+      "name": "draw",
+      "definition": "A drawing concept based on reducing risk, neutralizing threats, and using perpetual check, fortress, or simplification resources.",
+      "aliases": []
+    },
+    {
+      "name": "dutch-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "dutch-setup",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "en-passant",
+      "definition": "A special pawn capture that can be a tactical resource, often opening lines or changing key pawn-structure dynamics.",
+      "aliases": []
+    },
+    {
+      "name": "endgame",
+      "definition": "The late phase with reduced material where king activity, pawn structure, and precise calculation decide conversion or drawing chances.",
+      "aliases": []
+    },
+    {
+      "name": "endgame-squeeze",
+      "definition": "A conversion method that gradually tightens piece and pawn restrictions until tactical gain or zugzwang appears.",
+      "aliases": []
+    },
+    {
+      "name": "endgame-technique",
+      "definition": "Practical endgame method: improve king activity, restrict counterplay, and convert advantages without allowing tricks.",
+      "aliases": []
+    },
+    {
+      "name": "english-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "equality",
+      "definition": "A balancing resource that neutralizes disadvantage and reaches an objectively equal position through precise play.",
+      "aliases": []
+    },
+    {
+      "name": "Escape Square",
+      "definition": "A legal square the king can move to avoid danger.",
+      "aliases": [
+        "flight square"
+      ]
+    },
+    {
+      "name": "escape-square",
+      "definition": "A square the checked king can run to. Strong attacks remove escape squares first, then deliver the final check.",
+      "aliases": []
+    },
+    {
+      "name": "escort",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "euwe-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "evans-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "exchange",
+      "definition": "A strategic exchange decision related to exchange. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "Exchange Sacrifice",
+      "definition": "A rook is given for a minor piece to gain initiative or position.",
+      "aliases": [
+        "exchange sac"
+      ]
+    },
+    {
+      "name": "exchange-variation",
+      "definition": "A strategic exchange decision related to exchange variation. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "expansion",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "exposed-king",
+      "definition": "An exposed king is vulnerable to checks and tactical blows; priority shifts to opening lines and coordinating forcing threats.",
+      "aliases": []
+    },
+    {
+      "name": "fajarowicz-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "falkbeer-countergambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "Fianchetto",
+      "definition": "Developing a bishop to the long diagonal after moving the adjacent pawn.",
+      "aliases": [
+        "fianchetto bishop"
+      ]
+    },
+    {
+      "name": "File",
+      "definition": "A vertical column of squares on the chessboard.",
+      "aliases": [
+        "column"
+      ]
+    },
+    {
+      "name": "file-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "flank-counter",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "flank-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "flexible",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Fool's Mate",
+      "definition": "The fastest possible checkmate after severe opening weakening.",
+      "aliases": [
+        "fools mate"
+      ]
+    },
+    {
+      "name": "forcing-attacks",
+      "definition": "Attacking sequences driven by checks, captures, and immediate threats that severely limit defensive options.",
+      "aliases": []
+    },
+    {
+      "name": "forcing-check-sequence",
+      "definition": "A forcing sequence where consecutive checks constrain replies and drive the position toward a tactical goal.",
+      "aliases": []
+    },
+    {
+      "name": "forcing-sequence",
+      "definition": "A line of checks, captures, and direct threats that limits the opponent's choices. Forcing sequences reduce calculation noise.",
+      "aliases": []
+    },
+    {
+      "name": "Fork",
+      "definition": "One move attacks two or more enemy targets at the same time.",
+      "aliases": [
+        "double attack",
+        "fork tactic"
+      ]
+    },
+    {
+      "name": "fork-setup",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
+      "aliases": []
+    },
+    {
+      "name": "Forkable alignment",
+      "definition": "Piece placement that allows one move to attack multiple targets at once.",
+      "aliases": [
+        "forkable-alignment"
+      ]
+    },
+    {
+      "name": "forkable-alignment",
+      "definition": "Two enemy pieces sit on the same rank, file, or diagonal such that a single piece can jump to a square attacking both at once.",
+      "aliases": [
+        "fork geometry",
+        "double-attack alignment"
+      ]
+    },
+    {
+      "name": "Fortress",
+      "definition": "A defensive setup that cannot be broken despite material deficit.",
+      "aliases": [
+        "fortress defense"
+      ]
+    },
+    {
+      "name": "four-knights-defense",
+      "definition": "An opening setup from the Four Knights family where Black prioritizes solid development and central control before tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "four-knights-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "four-pawns-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "frankenstein-dracula",
+      "definition": "A line-control theme in which files, ranks, or diagonals are opened or dominated to increase piece activity and create direct tactical access to targets.",
+      "aliases": []
+    },
+    {
+      "name": "french-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "froms-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "gambit-refutation",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "Greek Gift Sacrifice",
+      "definition": "A bishop sacrifice on the king-side to open a king attack.",
+      "aliases": [
+        "bishop sacrifice on h7",
+        "bishop sacrifice on b2"
+      ]
+    },
+    {
+      "name": "greek-gift",
+      "definition": "The classic bishop sacrifice on h7/h2 to drag the king into the open and launch a forcing kingside attack.",
+      "aliases": []
+    },
+    {
+      "name": "grob-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "grobs-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "grunfeld-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "grunfeld-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "Guard",
+      "definition": "A piece that protects another piece or square.",
+      "aliases": [
+        "guards",
+        "guarding"
+      ]
+    },
+    {
+      "name": "halloween-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "halosar-trap",
+      "definition": "A tactical trap that invites a natural-looking move and punishes it with a forcing sequence.",
+      "aliases": []
+    },
+    {
+      "name": "hanging-pawns",
+      "definition": "Two adjacent pawns on the fourth rank with no friendly pawn support on either side, creating both dynamic potential and structural vulnerability.",
+      "aliases": [
+        "hanging pawn pair",
+        "unsupported pawn duo"
+      ]
+    },
+    {
+      "name": "hanging-piece",
+      "definition": "A piece with insufficient defense. Good tactics attack hanging pieces with tempo so the opponent cannot save everything.",
+      "aliases": []
+    },
+    {
+      "name": "heavy-pieces",
+      "definition": "Queens and rooks. They dominate open files and ranks and are often the main attackers in king-side mating nets.",
+      "aliases": []
+    },
+    {
+      "name": "Hook Mate",
+      "definition": "A king trapped near a pawn structure is mated by heavy-piece coordination.",
+      "aliases": [
+        "hook"
+      ]
+    },
+    {
+      "name": "hook-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "hypermodern",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "imbalance",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "indian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "indirect-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Initiative",
+      "definition": "The ability to force the opponent to react to your threats.",
+      "aliases": [
+        "take the initiative"
+      ]
+    },
+    {
+      "name": "Interference",
+      "definition": "A line between defending pieces is blocked so they cannot support each other.",
+      "aliases": [
+        "interpose tactic",
+        "blocking line"
+      ]
+    },
+    {
+      "name": "intermediate-move",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Isolated Pawn",
+      "definition": "A pawn with no friendly pawns on adjacent files.",
+      "aliases": [
+        "isolani",
+        "isolated queen pawn"
+      ]
+    },
+    {
+      "name": "italian-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "jobava-london",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "kick",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "kieseritzky-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "King and Pawn Endgame",
+      "definition": "A pure endgame where king activity and pawn races are central.",
+      "aliases": [
+        "pawn ending"
+      ]
+    },
+    {
+      "name": "King Safety",
+      "definition": "The security of the king from immediate and long-term threats.",
+      "aliases": [
+        "safe king",
+        "king shelter"
+      ]
+    },
+    {
+      "name": "King Walk",
+      "definition": "An endgame king march to support pawns or invade key squares.",
+      "aliases": [
+        "active king"
+      ]
+    },
+    {
+      "name": "king-activity",
+      "definition": "A positional strategy around king activity. Better coordination and space should produce lasting pressure and tactical opportunities later.",
+      "aliases": []
+    },
+    {
+      "name": "king-hunt",
+      "definition": "A strategic attacking plan built around king hunt. Improve piece activity and open lines first, then convert the initiative with forcing tactics.",
+      "aliases": []
+    },
+    {
+      "name": "king-pawn",
+      "definition": "A pawn-structure idea involving king pawn. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "king-pawn-ending",
+      "definition": "A pawn-structure idea involving king pawn ending. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "king-safety",
+      "definition": "How secure the king is against direct threats. Pawn cover, piece coordination, and open lines usually decide king safety.",
+      "aliases": []
+    },
+    {
+      "name": "king-side-attack",
+      "definition": "A practical theme where advantage comes from concrete calculation, active piece placement, and restricting the opponent's counterplay.",
+      "aliases": []
+    },
+    {
+      "name": "king-walk",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "kings-fianchetto-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "kings-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "kings-gambit-accepted",
+      "definition": "An opening where Black accepts White's gambit pawn and must balance material gain against rapid attacking play.",
+      "aliases": []
+    },
+    {
+      "name": "kings-indian-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "kings-indian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "kingside-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "Knight on rim",
+      "definition": "A knight on the edge usually has fewer active squares and reduced tactical influence.",
+      "aliases": [
+        "knight-on-rim"
+      ]
+    },
+    {
+      "name": "knight-development",
+      "definition": "A positional board concept around knight development. It helps prioritize squares, lines, and piece placement in practical decision-making.",
+      "aliases": []
+    },
+    {
+      "name": "knight-endgame",
+      "definition": "An endgame where knights dominate piece play. Outposts, king support, and tempo races are critical because knights are short-range pieces.",
+      "aliases": []
+    },
+    {
+      "name": "knight-fork",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
+      "aliases": []
+    },
+    {
+      "name": "knight-jump",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "knight-maneuver",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "knight-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "knight-on-rim",
+      "definition": "A knight placed on the edge of the board where it controls far fewer squares than from a central post, reducing its mobility and tactical potential.",
+      "aliases": [
+        "rim knight",
+        "knight on the edge",
+        "knight on rim is dim"
+      ]
+    },
+    {
+      "name": "knight-outpost",
+      "definition": "A square-control idea related to knight outpost. Dominating key squares can restrict enemy pieces and create stable long-term pressure.",
+      "aliases": []
+    },
+    {
+      "name": "knight-promotion",
+      "definition": "A promotion tactic where choosing a knight creates immediate forks, mating nets, or avoids stalemate issues.",
+      "aliases": []
+    },
+    {
+      "name": "knights",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "koltanowski-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "Ladder Mate",
+      "definition": "Two major pieces force the king to the edge rank by rank.",
+      "aliases": [
+        "staircase mate"
+      ]
+    },
+    {
+      "name": "Legal's Mate",
+      "definition": "A classic opening trap where a queen sacrifice enables a mating attack.",
+      "aliases": [
+        "legals mate"
+      ]
+    },
+    {
+      "name": "legalls-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "Line",
+      "definition": "A path of squares in one direction, like a file, rank, or diagonal.",
+      "aliases": [
+        "lines"
+      ]
+    },
+    {
+      "name": "Line Opening",
+      "definition": "Opening files or diagonals to activate pieces and launch tactics.",
+      "aliases": [
+        "open lines"
+      ]
+    },
+    {
+      "name": "london-system",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "long",
+      "definition": "A multi-move tactical sequence requiring deeper calculation and sustained accuracy to convert the position.",
+      "aliases": []
+    },
+    {
+      "name": "Long Diagonal",
+      "definition": "A diagonal that stretches across much of the board and boosts bishop power.",
+      "aliases": [
+        "big diagonal"
+      ]
+    },
+    {
+      "name": "long-combo",
+      "definition": "An extended tactical combination requiring accurate move-by-move calculation across several forcing turns.",
+      "aliases": []
+    },
+    {
+      "name": "long-diagonal",
+      "definition": "A line-control theme in which files, ranks, or diagonals are opened or dominated to increase piece activity and create direct tactical access to targets.",
+      "aliases": []
+    },
+    {
+      "name": "Loose back-rank",
+      "definition": "A king trapped on the home rank with limited luft. Back-rank tactics become a recurring threat.",
+      "aliases": [
+        "loose-back-rank"
+      ]
+    },
+    {
+      "name": "Loose pawn",
+      "definition": "An undefended pawn that can be won or used as a tactical hook.",
+      "aliases": [
+        "loose-pawn"
+      ]
+    },
+    {
+      "name": "Loose Piece",
+      "definition": "A piece that is not defended and can often be won.",
+      "aliases": [
+        "loose",
+        "hanging"
+      ]
+    },
+    {
+      "name": "loose-back-rank",
+      "definition": "The king is boxed in on the back rank by its own pawns with no luft, making it vulnerable to heavy-piece invasion along the first or eighth rank.",
+      "aliases": [
+        "back-rank weakness",
+        "no luft"
+      ]
+    },
+    {
+      "name": "loose-central-square",
+      "definition": "A key square in the center of the board (d4, d5, e4, e5) is not controlled by pawns and can be occupied or exploited by enemy pieces.",
+      "aliases": [
+        "weak center square",
+        "central hole"
+      ]
+    },
+    {
+      "name": "loose-major-piece",
+      "definition": "A queen or rook is positioned with few or no safe escape squares, making it vulnerable to being trapped or won through forcing moves.",
+      "aliases": [
+        "trapped queen",
+        "trapped rook",
+        "major piece with no escape"
+      ]
+    },
+    {
+      "name": "loose-pawn",
+      "definition": "A pawn that has no pawn or piece defending it, making it a free target for enemy pieces to attack and win material.",
+      "aliases": [
+        "undefended pawn",
+        "hanging pawn target"
+      ]
+    },
+    {
+      "name": "Lucena Position",
+      "definition": "A key rook endgame winning method with a bridge-building maneuver.",
+      "aliases": [
+        "lucena"
+      ]
+    },
+    {
+      "name": "luft",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "main-line",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "maneuver",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "mar-del-plata",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Mate-in-1 threat available",
+      "definition": "A position with an immediate mating threat that demands urgent defense.",
+      "aliases": [
+        "mate-in-1-threat-available"
+      ]
+    },
+    {
+      "name": "mate-in-1-threat",
+      "definition": "A position where checkmate in one move is available or can be created, forcing the opponent into an immediate and often costly defensive response.",
+      "aliases": [
+        "mate threat",
+        "one-move mate available"
+      ]
+    },
+    {
+      "name": "mate-in-5-or-more-moves",
+      "definition": "A long forced mate sequence. Convert methodically by keeping checks and threats coordinated while denying practical defenses.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-four-moves",
+      "definition": "A forced checkmate in four moves that rewards deep calculation. Keep forcing moves first and avoid lines that give the king counterplay.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-one",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-one-move",
+      "definition": "A forced checkmate in one move. Start by checking every forcing check and choose the line that removes all escape squares.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-three-moves",
+      "definition": "A forced checkmate in three moves. Build a precise forcing sequence that keeps initiative and progressively removes escape squares.",
+      "aliases": []
+    },
+    {
+      "name": "mate-in-two-moves",
+      "definition": "A forced checkmate in two moves. The first move should be forcing and should limit the king so the mating follow-up is unavoidable.",
+      "aliases": []
+    },
+    {
+      "name": "mate-pattern",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "mate-patterns",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "mate-threat",
+      "definition": "A mating threat where one side creates a near-forced mate and compels immediate, precise defense.",
+      "aliases": []
+    },
+    {
+      "name": "Mating Net",
+      "definition": "A setup where the king is gradually stripped of all escape squares.",
+      "aliases": [
+        "mate net",
+        "net"
+      ]
+    },
+    {
+      "name": "mating-attack",
+      "definition": "A coordinated attacking sequence aimed directly at checkmate through open lines and forcing continuations.",
+      "aliases": []
+    },
+    {
+      "name": "mating-net",
+      "definition": "A coordinated attack that removes the king's safe squares move by move until checkmate becomes unavoidable.",
+      "aliases": []
+    },
+    {
+      "name": "middle-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "mieses-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "Minor Piece Endgame",
+      "definition": "An endgame where bishops and/or knights decide key plans.",
+      "aliases": [
+        "minor-piece endgame"
+      ]
+    },
+    {
+      "name": "minor-piece",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "minor-piece-mate",
+      "definition": "A mating pattern where a bishop or knight plays a direct role in controlling key escape squares.",
+      "aliases": []
+    },
+    {
+      "name": "mixed",
+      "definition": "A puzzle combining tactical and positional elements where conversion depends on both concrete calculation and strategic judgement.",
+      "aliases": []
+    },
+    {
+      "name": "modern-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "mutual-zugzwang",
+      "definition": "A mutual zugzwang position where whoever moves first worsens their game. Move order and triangulation become decisive resources.",
+      "aliases": []
+    },
+    {
+      "name": "nimzo-indian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "nimzowitsch-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "nimzowitsch-larsen-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "nimzowitsch-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "noahs-ark-trap",
+      "definition": "A tactical trap that invites a natural-looking move and punishes it with a forcing sequence.",
+      "aliases": []
+    },
+    {
+      "name": "one-move",
+      "definition": "A puzzle solved by a single best move that immediately wins material, delivers mate, or secures decisive advantage.",
+      "aliases": []
+    },
+    {
+      "name": "Open File",
+      "definition": "A file with no pawns, ideal for rook or queen activity.",
+      "aliases": [
+        "open-file"
+      ]
+    },
+    {
+      "name": "Open line toward king",
+      "definition": "An open file or diagonal toward the king that allows direct piece pressure and forcing play.",
+      "aliases": [
+        "open-line-toward-king"
+      ]
+    },
+    {
+      "name": "open-center",
+      "definition": "Central squares are strategic real estate. Strong center control improves piece mobility and often enables both tactical and endgame advantages.",
+      "aliases": []
+    },
+    {
+      "name": "open-file-toward-king",
+      "definition": "An open or semi-open file points directly at the enemy king, giving rooks and queens a highway for infiltration and heavy-piece pressure.",
+      "aliases": [
+        "file toward king",
+        "open file on king"
+      ]
+    },
+    {
+      "name": "open-lines",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "opening-strategy",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "opening-tactics",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "opening-themes",
+      "definition": "Recurring opening motifs such as development lead, king safety timing, and central control targets that guide tactical choices.",
+      "aliases": []
+    },
+    {
+      "name": "opening-theory",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "opening-trap",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "Opposite-Colored Bishops",
+      "definition": "Bishops on different colors often increase drawing chances.",
+      "aliases": [
+        "opposite bishops"
+      ]
+    },
+    {
+      "name": "Opposite-Side Castling",
+      "definition": "Both kings castle on opposite wings, often leading to sharp attacks.",
+      "aliases": [
+        "castling opposite sides"
+      ]
+    },
+    {
+      "name": "Opposition",
+      "definition": "Kings face each other with one square between; one side controls key entry.",
+      "aliases": [
+        "king opposition"
+      ]
+    },
+    {
+      "name": "Outpost",
+      "definition": "A protected square in enemy territory where a piece cannot be chased by pawns.",
+      "aliases": [
+        "outpost square"
+      ]
+    },
+    {
+      "name": "outpost-available",
+      "definition": "A protected square in enemy territory where a knight or bishop can be planted and cannot be challenged by enemy pawns, creating lasting pressure.",
+      "aliases": [
+        "knight outpost",
+        "bishop outpost",
+        "outpost square available"
+      ]
+    },
+    {
+      "name": "Outside Passed Pawn",
+      "definition": "A passed pawn far from the king-side action used as a distraction.",
+      "aliases": [
+        "outside passer"
+      ]
+    },
+    {
+      "name": "Overloaded defender",
+      "definition": "A defender responsible for too many duties and likely to fail under forcing play.",
+      "aliases": [
+        "overloaded-defender"
+      ]
+    },
+    {
+      "name": "overloaded-defender",
+      "definition": "A single piece is responsible for defending two or more targets simultaneously and cannot handle both duties, so attacking one target forces the other to fall.",
+      "aliases": [
+        "overloaded piece",
+        "overworked defender"
+      ]
+    },
+    {
+      "name": "overloaded-piece",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Overloading",
+      "definition": "A defender is forced to guard too many threats at once.",
+      "aliases": [
+        "overloaded piece"
+      ]
+    },
+    {
+      "name": "Passed Pawn",
+      "definition": "A pawn with no opposing pawns in front of it on its file or adjacent files.",
+      "aliases": [
+        "passed-pawn"
+      ]
+    },
+    {
+      "name": "passed-pawn-advance",
+      "definition": "A pawn with no opposing pawns blocking or guarding its path to promotion, creating a powerful advancing threat that ties down enemy pieces.",
+      "aliases": [
+        "advancing passed pawn",
+        "passed pawn threat"
+      ]
+    },
+    {
+      "name": "pattern",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Pawn Break",
+      "definition": "A pawn push or exchange designed to open lines and change structure.",
+      "aliases": [
+        "breakthrough pawn move"
+      ]
+    },
+    {
+      "name": "Pawn Structure",
+      "definition": "The arrangement of pawns, which defines strengths, weaknesses, and plans.",
+      "aliases": [
+        "pawn formation"
+      ]
+    },
+    {
+      "name": "pawn-breakthrough",
+      "definition": "A pawn sacrifice or sequence that creates a passed pawn by breaking the opposing pawn chain.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-capture",
+      "definition": "A pawn capture used to open lines, remove key defenders, or improve the pawn structure for the resulting position.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-chain",
+      "definition": "A pawn-structure idea involving pawn chain. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-check",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-endgame",
+      "definition": "An endgame with only kings and pawns. Opposition, key squares, and exact tempo counting usually determine win, draw, or loss.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-grab",
+      "definition": "A pawn-structure idea involving pawn grab. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-hunting",
+      "definition": "A pawn-structure idea involving pawn hunting. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-lever",
+      "definition": "A pawn break exists where one pawn can capture or challenge an adjacent enemy pawn to open lines, change the structure, or create tactical opportunities.",
+      "aliases": [
+        "pawn break available",
+        "lever"
+      ]
+    },
+    {
+      "name": "pawn-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-pin",
+      "definition": "A pin motif where a pawn cannot move without exposing a more valuable piece, king safety weakness, or tactical loss.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-protection",
+      "definition": "A pawn-structure idea involving pawn protection. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-push",
+      "definition": "A pawn-structure idea involving pawn push. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-race",
+      "definition": "An endgame theme where both sides push passed pawns and tempo accuracy decides who queens first.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-sacrifice",
+      "definition": "A tactical investment of material to gain time, open lines, or expose the king. A sound sacrifice must lead to concrete compensation.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-storm",
+      "definition": "A pawn-structure idea involving pawn storm. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "pawn-structure",
+      "definition": "A positional board concept around pawn structure. It helps prioritize squares, lines, and piece placement in practical decision-making.",
+      "aliases": []
+    },
+    {
+      "name": "Perpetual Check",
+      "definition": "Repeated checks force a draw because escape is impossible.",
+      "aliases": [
+        "repetition by check"
+      ]
+    },
+    {
+      "name": "perpetual-check",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
+      "aliases": []
+    },
+    {
+      "name": "petrosian-system",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "petrovs-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Philidor Position",
+      "definition": "A key rook endgame drawing method by active rook defense.",
+      "aliases": [
+        "philidor endgame"
+      ]
+    },
+    {
+      "name": "philidor-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Piece Activity",
+      "definition": "How effectively pieces control squares and create threats.",
+      "aliases": [
+        "active piece",
+        "activity"
+      ]
+    },
+    {
+      "name": "piece-activity",
+      "definition": "A positional board concept around piece activity. It helps prioritize squares, lines, and piece placement in practical decision-making.",
+      "aliases": []
+    },
+    {
+      "name": "piece-winning-tactics",
+      "definition": "Concrete tactical lines that win a piece through forks, pins, skewers, overload, or trapped-piece motifs.",
+      "aliases": []
+    },
+    {
+      "name": "Pin",
+      "definition": "A piece cannot move because moving would expose a more valuable piece behind it.",
+      "aliases": [
+        "pinned piece",
+        "pin tactic"
+      ]
+    },
+    {
+      "name": "Pinned defender of king-side square",
+      "definition": "A defender that cannot move without exposing king safety, making key squares vulnerable.",
+      "aliases": [
+        "pinned-defender-of-king-side-square"
+      ]
+    },
+    {
+      "name": "pinned-king-defender",
+      "definition": "A piece defending a critical square near the king is pinned and cannot move, leaving that square functionally unguarded and ripe for tactical exploitation.",
+      "aliases": [
+        "pinned defender of king",
+        "pinned kingside defender"
+      ]
+    },
+    {
+      "name": "pinned-piece-motif",
+      "definition": "A piece is immobilized along a line because moving it would expose a more valuable piece or the king behind it, creating tactical opportunities against the pinned piece.",
+      "aliases": [
+        "pin motif",
+        "absolute pin",
+        "relative pin"
+      ]
+    },
+    {
+      "name": "pirc-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "poisoned-pawn",
+      "definition": "A pawn-structure idea involving poisoned pawn. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "polish-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "positional",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "positional-advantage",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "positional-sacrifice",
+      "definition": "A tactical investment of material to gain time, open lines, or expose the king. A sound sacrifice must lead to concrete compensation.",
+      "aliases": []
+    },
+    {
+      "name": "preparation",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "pressure",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "Promotion",
+      "definition": "A pawn reaches the last rank and becomes another piece.",
+      "aliases": [
+        "pawn promotion",
+        "promote"
+      ]
+    },
+    {
+      "name": "Promotion square weakly defended",
+      "definition": "A queening square that lacks enough control, making promotion tactics more likely.",
+      "aliases": [
+        "promotion-square-weakly-defended"
+      ]
+    },
+    {
+      "name": "promotion-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "promotion-tactic",
+      "definition": "A tactical sequence where promotion threats decide the game by forcing concessions or creating an unstoppable new piece.",
+      "aliases": []
+    },
+    {
+      "name": "Prophylaxis",
+      "definition": "Preventing the opponent's plan before it becomes dangerous.",
+      "aliases": [
+        "preventive move"
+      ]
+    },
+    {
+      "name": "provocation",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "pseudo-spanish",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "pyramid",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "pyramid-structure",
+      "definition": "A pawn-structure idea involving pyramid structure. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "Queen Endgame",
+      "definition": "An endgame where queens remain and perpetual threats are common.",
+      "aliases": [
+        "queen ending"
+      ]
+    },
+    {
+      "name": "queen-check",
+      "definition": "A forcing tactical sequence built around checks and direct threats that leaves the opponent with only a few defensive choices.",
+      "aliases": []
+    },
+    {
+      "name": "queen-endgame",
+      "definition": "An endgame with queens still on the board. Perpetual-check ideas, king safety, and precise checks often outweigh small material edges.",
+      "aliases": []
+    },
+    {
+      "name": "queen-mate",
+      "definition": "A mating pattern where escape squares are removed and the attacking pieces coordinate forcing checks until every defense fails.",
+      "aliases": []
+    },
+    {
+      "name": "queen-rook-endgame",
+      "definition": "A complex heavy-piece endgame with queen and rook. Active checks, king shelter, and coordination are more important than passive defense.",
+      "aliases": []
+    },
+    {
+      "name": "queen-sacrifice",
+      "definition": "A tactical investment of material to gain time, open lines, or expose the king. A sound sacrifice must lead to concrete compensation.",
+      "aliases": []
+    },
+    {
+      "name": "queen-safety",
+      "definition": "A defensive plan emphasizing queen safety. Neutralize immediate threats, improve coordination, and choose counterplay only after king safety is secure.",
+      "aliases": []
+    },
+    {
+      "name": "queen-side-attack",
+      "definition": "An attacking plan focused on creating targets and open lines on the queenside through pawn breaks and piece pressure.",
+      "aliases": []
+    },
+    {
+      "name": "queen-skewer",
+      "definition": "A line tactic where a valuable piece is attacked first and forced away, exposing a weaker piece behind it.",
+      "aliases": []
+    },
+    {
+      "name": "queen-sortie",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "queen-trade",
+      "definition": "A strategic exchange decision related to queen trade. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "queen-trap",
+      "definition": "A tactical trap that invites a natural-looking move and punishes it with a forcing sequence.",
+      "aliases": []
+    },
+    {
+      "name": "queens-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "queens-gambit-declined",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "queens-indian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "queens-pawn-game",
+      "definition": "A pawn-structure idea involving queens pawn game. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "queenside-pressure",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "question-bishop",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Quiet Move",
+      "definition": "A non-forcing move that creates a hidden or stronger threat.",
+      "aliases": [
+        "quiet tactic",
+        "prophylactic move"
+      ]
+    },
+    {
+      "name": "quiet-move",
+      "definition": "A non-checking, non-capturing move that creates a hidden tactical threat. Quiet moves often decide complex combinations.",
+      "aliases": []
+    },
+    {
+      "name": "quiet-play",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "race",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Rank",
+      "definition": "A horizontal row of squares on the chessboard.",
+      "aliases": [
+        "row"
+      ]
+    },
+    {
+      "name": "rapport-jobava-system",
+      "definition": "A dynamic opening system with an early Nc3 and Bf4, aiming for initiative, flexible pawn structures, and tactical pressure.",
+      "aliases": []
+    },
+    {
+      "name": "recover-material",
+      "definition": "A tactical sequence aimed at winning or recovering material through forcing moves, often by deflecting, overloading, or pinning a key defender.",
+      "aliases": []
+    },
+    {
+      "name": "recovery",
+      "definition": "A material recovery theme that uses forcing tactics to regain losses or convert tactical pressure into net material gain.",
+      "aliases": []
+    },
+    {
+      "name": "refutation",
+      "definition": "A refutation is a concrete line that demonstrates why an idea is unsound by force or by clear strategic drawback.",
+      "aliases": []
+    },
+    {
+      "name": "relative-pin",
+      "definition": "A tactic where a piece cannot move because it would expose a more valuable piece or critical square. Attack what the pinned piece is forced to defend.",
+      "aliases": []
+    },
+    {
+      "name": "Removal of Defender",
+      "definition": "A key defending piece is removed so a target becomes vulnerable.",
+      "aliases": [
+        "capturing defender",
+        "remove defender"
+      ]
+    },
+    {
+      "name": "removal-of-defender",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "remove-the-defender",
+      "definition": "A concrete tactical motif around remove the defender. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
+      "aliases": []
+    },
+    {
+      "name": "repositioning",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "restraint",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "reti-gambit-accepted",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "reti-opening",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "retreat",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "reversed-sicilian",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "richter-veresov-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "romford-countergambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "Rook Endgame",
+      "definition": "An endgame where rooks are the main active pieces.",
+      "aliases": [
+        "rook ending"
+      ]
+    },
+    {
+      "name": "Rook Lift",
+      "definition": "Moving a rook up a file then across a rank to join an attack.",
+      "aliases": [
+        "lift"
+      ]
+    },
+    {
+      "name": "Rook penetration threat",
+      "definition": "A rook poised to invade through an open line into weak entry squares in the enemy camp.",
+      "aliases": [
+        "rook-penetration-threat"
+      ]
+    },
+    {
+      "name": "rook-endgame",
+      "definition": "An endgame where rooks are central pieces. Activate king and rook, and place rooks behind passed pawns whenever possible.",
+      "aliases": []
+    },
+    {
+      "name": "rook-mate",
+      "definition": "A checkmating pattern where a rook delivers mate by controlling rank or file escape squares, often with support from another piece.",
+      "aliases": []
+    },
+    {
+      "name": "rook-on-open-file",
+      "definition": "A rook placed on a file with no pawns, giving it maximum range and the ability to penetrate into the enemy position or support passed pawns.",
+      "aliases": [
+        "active rook file",
+        "rook file control"
+      ]
+    },
+    {
+      "name": "rook-promotion",
+      "definition": "A rare promotion choice to a rook used to avoid stalemate or preserve precise checking geometry.",
+      "aliases": []
+    },
+    {
+      "name": "rook-skewer",
+      "definition": "A line tactic where a valuable piece is attacked first and forced away, exposing a weaker piece behind it.",
+      "aliases": []
+    },
+    {
+      "name": "royal-fork",
+      "definition": "A tactic where one move attacks multiple targets at once. Forks are strongest when both threats are forcing or high-value.",
+      "aliases": []
+    },
+    {
+      "name": "rubinstein-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "russian-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "ruy-lopez",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "Sacrifice",
+      "definition": "Material is given up to gain a bigger strategic or tactical reward.",
+      "aliases": [
+        "sac",
+        "material sacrifice"
+      ]
+    },
+    {
+      "name": "safety",
+      "definition": "A defensive plan emphasizing safety. Neutralize immediate threats, improve coordination, and choose counterplay only after king safety is secure.",
+      "aliases": []
+    },
+    {
+      "name": "samisch-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "scandinavian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "scandinavian-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "schlechter-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Scholar's Mate",
+      "definition": "A beginner mating attack on the weak f7/f2 square.",
+      "aliases": [
+        "scholars mate"
+      ]
+    },
+    {
+      "name": "scotch-four-knights",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "scotch-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "Semi-Open File",
+      "definition": "A file with no friendly pawns but enemy pawns still present.",
+      "aliases": [
+        "semi open file"
+      ]
+    },
+    {
+      "name": "setup",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "sharp",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "short",
+      "definition": "A concise tactical sequence solved in a small number of forcing moves with limited branching.",
+      "aliases": []
+    },
+    {
+      "name": "short-combo",
+      "definition": "A brief tactical combination with forcing moves that quickly wins decisive material or reaches mate.",
+      "aliases": []
+    },
+    {
+      "name": "shouldering",
+      "definition": "An endgame king technique that uses body-blocking to deny the opposing king key squares and escort a pawn to promotion.",
+      "aliases": []
+    },
+    {
+      "name": "sicilian-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "simplification",
+      "definition": "A strategic exchange decision related to simplification. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "Single-defender pieces",
+      "definition": "Pieces protected by only one unit. Removing or deflecting that defender often wins material.",
+      "aliases": [
+        "single-defender-pieces"
+      ]
+    },
+    {
+      "name": "Skewer",
+      "definition": "A more valuable piece is attacked and must move, exposing a less valuable piece behind it.",
+      "aliases": [
+        "skewer tactic"
+      ]
+    },
+    {
+      "name": "skewerable-alignment",
+      "definition": "A high-value piece stands in front of a lower-value piece along a line, so a long-range attacker can force the valuable piece to move and win the piece behind it.",
+      "aliases": [
+        "skewer geometry",
+        "skewer lineup"
+      ]
+    },
+    {
+      "name": "slav-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Smothered Mate",
+      "definition": "Checkmate where the king is trapped by its own pieces, often by a knight.",
+      "aliases": [
+        "smother mate"
+      ]
+    },
+    {
+      "name": "smothered-mate",
+      "definition": "A mate pattern where the king is boxed in by its own pieces, often finished by a knight. Remove escape squares before the final blow.",
+      "aliases": []
+    },
+    {
+      "name": "smothered-mate-threat",
+      "definition": "A mating threat where one side creates a near-forced mate and compels immediate, precise defense.",
+      "aliases": []
+    },
+    {
+      "name": "solid",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "solid-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "solid-play",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "solid-setup",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "solid-structure",
+      "definition": "A pawn-structure idea involving solid structure. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "solid-triangle",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "sorensen-defense",
+      "definition": "A Black opening setup focused on sound development, central counterplay, and king safety before committing to concrete tactical operations.",
+      "aliases": []
+    },
+    {
+      "name": "Space Advantage",
+      "definition": "Having more room for your pieces, often restricting opponent movement.",
+      "aliases": [
+        "space"
+      ]
+    },
+    {
+      "name": "space-advantage",
+      "definition": "A positional board concept around space advantage. It helps prioritize squares, lines, and piece placement in practical decision-making.",
+      "aliases": []
+    },
+    {
+      "name": "space-control",
+      "definition": "A positional board concept around space control. It helps prioritize squares, lines, and piece placement in practical decision-making.",
+      "aliases": []
+    },
+    {
+      "name": "spanish-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "square-of-the-pawn",
+      "definition": "A square-control idea related to square of the pawn. Dominating key squares can restrict enemy pieces and create stable long-term pressure.",
+      "aliases": []
+    },
+    {
+      "name": "stafford-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "Stalemate",
+      "definition": "Side to move has no legal moves and is not in check, resulting in a draw.",
+      "aliases": [
+        "stalemate trap"
+      ]
+    },
+    {
+      "name": "stalemate-avoidance",
+      "definition": "A conversion motif where the winning side avoids stalemate traps while preserving a forced win.",
+      "aliases": []
+    },
+    {
+      "name": "standard",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "standard-setup",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "staunton-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "steinitz-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "stonewall-formation",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "stonewall-setup",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "structure",
+      "definition": "A pawn-structure idea involving structure. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "structure-damage",
+      "definition": "A pawn-structure idea involving structure damage. Time pawn breaks carefully, then place pieces to attack the weak squares and fixed targets that result.",
+      "aliases": []
+    },
+    {
+      "name": "supported-mate",
+      "definition": "A checkmate where the mating piece is protected, preventing capture as a defense. Confirm support before committing.",
+      "aliases": []
+    },
+    {
+      "name": "surprise",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "symmetrical",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "symmetrical-variation",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "symmetry",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "system-opening",
+      "definition": "A setup-based opening approach with flexible move order, where piece coordination and central control matter more than memorizing exact sequences.",
+      "aliases": []
+    },
+    {
+      "name": "tactic",
+      "definition": "A concrete tactical motif around tactic. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
+      "aliases": []
+    },
+    {
+      "name": "tactical-shot",
+      "definition": "A concrete tactical motif around tactical shot. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
+      "aliases": []
+    },
+    {
+      "name": "tactical-trap",
+      "definition": "A concrete tactical motif around tactical trap. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
+      "aliases": []
+    },
+    {
+      "name": "tactics",
+      "definition": "A concrete tactical motif around tactics. Calculate forcing moves first and verify whether the line wins material, initiative, or checkmate.",
+      "aliases": []
+    },
+    {
+      "name": "Tempo",
+      "definition": "A single move; gaining tempo means improving while forcing the opponent.",
+      "aliases": [
+        "gain tempo",
+        "with tempo"
+      ]
+    },
+    {
+      "name": "Tempo Move",
+      "definition": "A move that improves your position while forcing a reply.",
+      "aliases": [
+        "tempo"
+      ]
+    },
+    {
+      "name": "tempo-gain-available",
+      "definition": "A developing move that simultaneously attacks an enemy piece, gaining time by forcing the opponent to respond defensively while you improve your position.",
+      "aliases": [
+        "develop with tempo",
+        "attack while developing",
+        "tempo move available"
+      ]
+    },
+    {
+      "name": "tension",
+      "definition": "A position where opposing pieces or pawns attack each other and captures are possible, but neither side has committed. Keeping tension can preserve options and force mistakes; releasing it should be timed to win space, activity, or concrete tactics.",
+      "aliases": []
+    },
+    {
+      "name": "the-spike",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "theory",
+      "definition": "An opening plan that emphasizes rapid development, king safety, and central influence, with tactics arising from improved piece activity.",
+      "aliases": []
+    },
+    {
+      "name": "Threat",
+      "definition": "A move that creates a future danger the opponent must respect.",
+      "aliases": [
+        "create a threat"
+      ]
+    },
+    {
+      "name": "torre-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "trade",
+      "definition": "A strategic exchange decision related to trade. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "trade-sequence",
+      "definition": "A strategic exchange decision related to trade sequence. Trade when it improves structure, piece quality, or king safety.",
+      "aliases": []
+    },
+    {
+      "name": "transposition",
+      "definition": "A transposition reaches a familiar position through a different move order, so understanding structures and plans matters more than strict sequence.",
+      "aliases": []
+    },
+    {
+      "name": "trap",
+      "definition": "A tactical trap that invites a natural-looking move and punishes it with a forcing sequence.",
+      "aliases": []
+    },
+    {
+      "name": "trapped-piece",
+      "definition": "A piece with no safe escape squares. Restrict exits first, then win material with forcing play.",
+      "aliases": [
+        "Trapped piece"
+      ]
+    },
+    {
+      "name": "trapped-piece-motif",
+      "definition": "A piece has no safe squares to retreat to and can be won by restricting its remaining escape routes and then capturing it.",
+      "aliases": [
+        "piece with no escape",
+        "boxed-in piece"
+      ]
+    },
+    {
+      "name": "Triangulation",
+      "definition": "A maneuver to lose a tempo and transfer move obligation to the opponent.",
+      "aliases": [
+        "triangulate"
+      ]
+    },
+    {
+      "name": "trick",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "trompowsky-attack",
+      "definition": "An attacking plan that builds pressure through piece coordination and open lines, then converts the initiative with forcing moves once calculation confirms it.",
+      "aliases": []
+    },
+    {
+      "name": "Undefended pieces",
+      "definition": "Pieces with no friendly defender. Loose targets are often tactical entry points for forks, pins, and captures.",
+      "aliases": [
+        "undefended-pieces"
+      ]
+    },
+    {
+      "name": "under-defended-square",
+      "definition": "A critical square has fewer defenders than attackers, or could easily become loose, making it a target for piece invasion or tactical strikes.",
+      "aliases": [
+        "under-defended",
+        "weakly defended square"
+      ]
+    },
+    {
+      "name": "under-promotion",
+      "definition": "Promoting to a knight, rook, or bishop instead of a queen to force a precise tactical or mating result.",
+      "aliases": []
+    },
+    {
+      "name": "Underpromotion",
+      "definition": "Promoting a pawn to a piece other than a queen for tactical reasons.",
+      "aliases": [
+        "under promote",
+        "underpromotion tactic"
+      ]
+    },
+    {
+      "name": "undeveloped-piece-blocking",
+      "definition": "A piece remains on its starting square and blocks a rook from connecting or entering the game, reducing overall coordination and activity.",
+      "aliases": [
+        "piece blocking rook",
+        "undeveloped minor piece"
+      ]
+    },
+    {
+      "name": "unobstructed-diagonal-toward-king",
+      "definition": "A clear diagonal leads straight to the enemy king with no blocking pawns or pieces, giving bishops and queens direct attacking access.",
+      "aliases": [
+        "open diagonal on king",
+        "diagonal toward king"
+      ]
+    },
+    {
+      "name": "unpin",
+      "definition": "A tactic where a piece cannot move because it would expose a more valuable piece or critical square. Attack what the pinned piece is forced to defend.",
+      "aliases": []
+    },
+    {
+      "name": "urussov-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "very-long",
+      "definition": "A deep calculation category requiring long forcing lines and accurate move order. Practical success comes from candidate-move discipline.",
+      "aliases": []
+    },
+    {
+      "name": "vienna-gambit",
+      "definition": "An opening line in which material is offered for development, center control, or initiative. Success depends on active piece play, not on recovering material immediately.",
+      "aliases": []
+    },
+    {
+      "name": "vienna-game",
+      "definition": "An opening family where understanding development priorities, pawn structures, and recurring tactical motifs is more important than rote memorization.",
+      "aliases": []
+    },
+    {
+      "name": "waiting",
+      "definition": "A waiting concept uses a useful pass move to preserve flexibility and provoke a concession in positions where tempo matters.",
+      "aliases": []
+    },
+    {
+      "name": "waiting-move",
+      "definition": "A waiting concept uses a useful pass move to preserve flexibility and provoke a concession in positions where tempo matters.",
+      "aliases": []
+    },
+    {
+      "name": "Weak Square",
+      "definition": "A square that cannot be controlled by pawns and can be occupied by pieces.",
+      "aliases": [
+        "hole",
+        "weak point"
+      ]
+    },
+    {
+      "name": "Weak squares around king",
+      "definition": "Squares near the king that are attacked but not adequately defended, creating tactical access points.",
+      "aliases": [
+        "weak-squares-around-king"
+      ]
+    },
+    {
+      "name": "weak-entry-square",
+      "definition": "A square on an open file or rank where an enemy rook or queen can penetrate into the position with little resistance, often on the seventh or eighth rank.",
+      "aliases": [
+        "rook entry point",
+        "invasion square"
+      ]
+    },
+    {
+      "name": "weak-king-squares",
+      "definition": "Dark or light squares around the king lack pawn protection, creating holes that enemy pieces can exploit for attacks or mating nets.",
+      "aliases": [
+        "weak dark squares",
+        "weak light squares",
+        "king-square weakness"
+      ]
+    },
+    {
+      "name": "weak-promotion-square",
+      "definition": "The queening square of a passed pawn is poorly defended, making it difficult to stop the pawn from promoting.",
+      "aliases": [
+        "unguarded promotion square",
+        "promotion threat"
+      ]
+    },
+    {
+      "name": "Weakness",
+      "definition": "A target in the position such as a loose piece, weak pawn, or exposed king.",
+      "aliases": [
+        "soft spot",
+        "target"
+      ]
+    },
+    {
+      "name": "white-setup",
+      "definition": "A strategic theme that rewards accurate evaluation: improve the least active piece, limit counterplay, and convert only when concrete tactics justify it.",
+      "aliases": []
+    },
+    {
+      "name": "win-material",
+      "definition": "A tactical sequence aimed at winning or recovering material through forcing moves, often by deflecting, overloading, or pinning a key defender.",
+      "aliases": []
+    },
+    {
+      "name": "winning-the-queen",
+      "definition": "A material recovery theme that uses forcing tactics to regain losses or convert tactical pressure into net material gain.",
+      "aliases": []
+    },
+    {
+      "name": "X-Ray Attack",
+      "definition": "Pressure passes through a piece to attack a target behind it.",
+      "aliases": [
+        "x ray",
+        "x-ray"
+      ]
+    },
+    {
+      "name": "x-ray-attack",
+      "definition": "Pressure that works through an intervening piece along a file, rank, or diagonal. If the front piece moves, the rear target is hit.",
+      "aliases": []
+    },
+    {
+      "name": "x-ray-attack-motif",
+      "definition": "A piece exerts pressure through an intervening piece along a line. If the front piece moves or is captured, the rear target is hit.",
+      "aliases": [
+        "x-ray pressure",
+        "through-piece attack"
+      ]
+    },
+    {
+      "name": "Zugzwang",
+      "definition": "Any legal move worsens the player's position.",
+      "aliases": [
+        "zugzwang tactic"
+      ]
+    },
+    {
+      "name": "Zwischenzug",
+      "definition": "An in-between move is played before the expected move.",
+      "aliases": [
+        "intermezzo",
+        "in-between move"
+      ]
+    }
+  ]
+}
