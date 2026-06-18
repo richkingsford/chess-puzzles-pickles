@@ -39,6 +39,26 @@ export function getPublicAssetUrl(path) {
     return `${normalizedBase}${normalizedPath}`;
 }
 
+function getCurrentBundleVersion() {
+    if (typeof document === 'undefined') {
+        return '';
+    }
+
+    const bundleScript = document.querySelector('script[type="module"][src*="/assets/index-"]');
+    const bundleSrc = bundleScript?.getAttribute('src') || '';
+    const bundleHash = bundleSrc.match(/\/assets\/index-([^/?#]+)\.js/)?.[1];
+
+    return bundleHash || '';
+}
+
+export function getVersionedPublicAssetUrl(path) {
+    const assetUrl = getPublicAssetUrl(path);
+    const version = getCurrentBundleVersion() || import.meta.env.MODE || 'dev';
+    const separator = assetUrl.includes('?') ? '&' : '?';
+
+    return `${assetUrl}${separator}v=${encodeURIComponent(version)}`;
+}
+
 export function formatPGN(moves) {
     // Simple formatter if needed, but we might just use the moves array directly
     return moves;

@@ -12,7 +12,7 @@ import { usePuzzleGame } from './hooks/usePuzzleGame';
 import { useBattleState } from './hooks/useBattleState';
 import { useRoomMultiplayer } from './hooks/useRoomMultiplayer';
 import { normalizeRoomCode } from './lib/roomCodes';
-import { getPublicAssetUrl, parsePuzzleUrl } from './lib/utils';
+import { getVersionedPublicAssetUrl, parsePuzzleUrl } from './lib/utils';
 import {
   getHintRevealCountForAnswerMove,
   getHintsForAnswerMove,
@@ -3789,7 +3789,7 @@ export default function App() {
   }, [battle, categoryStats.totalCounts, selectCategory]);
 
   useEffect(() => {
-    fetch(getPublicAssetUrl('dictionary.json'))
+    fetch(getVersionedPublicAssetUrl('dictionary.json'))
       .then((response) => response.json())
       .then((data) => setDictionaryData(data))
       .catch((error) => {

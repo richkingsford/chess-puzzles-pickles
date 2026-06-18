@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { Chess } from 'chess.js';
-import { getPublicAssetUrl, parsePuzzleUrl } from '../lib/utils';
+import { getVersionedPublicAssetUrl, parsePuzzleUrl } from '../lib/utils';
 import {
     getHintRevealCountForAnswerMove,
     getHintsForAnswerMove,
@@ -410,7 +410,7 @@ export const usePuzzleGame = () => {
     );
 
     useEffect(() => {
-        fetch(getPublicAssetUrl('puzzles.json'))
+        fetch(getVersionedPublicAssetUrl('puzzles.json'))
             .then(res => res.json())
             .then(data => {
                 const { data: sanitizedData, stats } = sanitizePuzzlesData(data);
