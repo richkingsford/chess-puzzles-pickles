@@ -266,6 +266,44 @@ describe('App unit tests by area', () => {
       randomSpy.mockRestore();
     });
 
+    test('stars a category as favorite and promotes it above normal order', async () => {
+      hookState = makeHookState({
+        solvedPuzzles: {
+          'set-one': ['one'],
+          'set-two': []
+        }
+      });
+
+      render(<App />);
+
+      let firstButton = screen.getByRole('button', { name: /set two/i });
+      let secondButton = screen.getByRole('button', { name: /set one/i });
+
+      expect(firstButton.compareDocumentPosition(secondButton) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+
+      await user.click(screen.getByTestId('favorite-category-set-one'));
+
+      await waitFor(() => {
+        const feedback = JSON.parse(localStorage.getItem('categoryFeedback') || '{}');
+
+        expect(feedback.categories['set-one']).toMatchObject({
+          category: 'set-one',
+          label: 'set one',
+          favorite: true,
+          puzzleCount: 1
+        });
+        expect(feedback.categories['set-one'].events[0].type).toBe('marked_favorite');
+      });
+
+      expect(screen.getByTestId('favorite-category-set-one')).toHaveAttribute('aria-pressed', 'true');
+      expect(screen.getByText('1 starred, 0 hidden')).toBeInTheDocument();
+
+      firstButton = screen.getByRole('button', { name: /set one/i });
+      secondButton = screen.getByRole('button', { name: /set two/i });
+
+      expect(firstButton.compareDocumentPosition(secondButton) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    });
+
     test('marks a category as garbage from the category overflow menu', async () => {
       hookState = makeHookState();
 
@@ -286,7 +324,7 @@ describe('App unit tests by area', () => {
         expect(feedback.categories['set-one'].events[0].type).toBe('marked_garbage');
       });
 
-      expect(screen.getByText('1 marked')).toBeInTheDocument();
+      expect(screen.getByText('0 starred, 1 hidden')).toBeInTheDocument();
       expect(screen.queryByRole('button', { name: /set one/i })).not.toBeInTheDocument();
       expect(screen.getByRole('button', { name: /set two/i })).toBeInTheDocument();
     });

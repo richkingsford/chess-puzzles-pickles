@@ -6,7 +6,7 @@ import BattleScene from './components/BattleScene';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight,
   RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle,
-  Users, QrCode, Link as LinkIcon, LogOut, MoreVertical, Download, Filter
+  Users, QrCode, Link as LinkIcon, LogOut, MoreVertical, Download, Filter, Star
 } from 'lucide-react';
 import { usePuzzleGame } from './hooks/usePuzzleGame';
 import { useBattleState } from './hooks/useBattleState';
@@ -102,7 +102,18 @@ const normalizeCategoryFeedback = (feedback) => {
 const getVisibleHomeCategories = (categories, categoryFeedback) => {
   const feedbackCategories = normalizeCategoryFeedback(categoryFeedback).categories;
 
-  return categories.filter((category) => !feedbackCategories[category]?.garbage);
+  return categories
+    .filter((category) => !feedbackCategories[category]?.garbage)
+    .sort((left, right) => {
+      const leftFavorite = Boolean(feedbackCategories[left]?.favorite);
+      const rightFavorite = Boolean(feedbackCategories[right]?.favorite);
+
+      if (leftFavorite === rightFavorite) {
+        return 0;
+      }
+
+      return leftFavorite ? -1 : 1;
+    });
 };
 
 const readStoredCategoryFeedback = () => {
@@ -565,6 +576,7 @@ const CategoryList = ({
   selectedHomeTab,
   onSelectHomeTab,
   categoryFeedback,
+  onToggleCategoryFavorite,
   onToggleCategoryGarbage,
   onDownloadFeedback
 }) => {
@@ -576,6 +588,7 @@ const CategoryList = ({
   ];
   const feedbackCategories = categoryFeedback?.categories || {};
   const garbageCategoryCount = Object.values(feedbackCategories).filter((entry) => entry?.garbage).length;
+  const favoriteCategoryCount = Object.values(feedbackCategories).filter((entry) => entry?.favorite).length;
 
   return (
     <div className="p-4 space-y-4 max-w-md mx-auto">
@@ -690,6 +703,7 @@ const CategoryList = ({
 
           {categories.map(cat => {
             const isMarkedGarbage = Boolean(feedbackCategories[cat]?.garbage);
+            const isFavorite = Boolean(feedbackCategories[cat]?.favorite);
 
             return (
               <div
@@ -719,6 +733,25 @@ const CategoryList = ({
                   </div>
                 </button>
                 <div className="relative flex items-center border-l border-slate-700/70">
+                  <button
+                    type="button"
+                    data-testid={`favorite-category-${cat}`}
+                    aria-label={isFavorite ? 'Unmark favorite' : 'Mark as favorite'}
+                    aria-pressed={isFavorite}
+                    title={isFavorite ? `Unstar ${formatCategoryLabel(cat)}` : `Star ${formatCategoryLabel(cat)}`}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      setOpenCategoryMenu(null);
+                      onToggleCategoryFavorite(cat);
+                    }}
+                    className={`flex h-full min-h-14 w-10 items-center justify-center transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-300 ${
+                      isFavorite
+                        ? 'bg-yellow-500/10 text-yellow-300 hover:bg-yellow-500/20'
+                        : 'text-slate-500 hover:bg-slate-700/80 hover:text-yellow-200'
+                    }`}
+                  >
+                    <Star className={`h-4 w-4 ${isFavorite ? 'fill-yellow-300' : ''}`} />
+                  </button>
                   <button
                     type="button"
                     data-testid="category-options-button"
@@ -786,7 +819,9 @@ const CategoryList = ({
                 <Download className="w-4 h-4 text-teal-300" />
                 Download feedback file
               </span>
-              <span className="text-xs text-slate-400">{garbageCategoryCount} marked</span>
+              <span className="text-xs text-slate-400">
+                {favoriteCategoryCount} starred, {garbageCategoryCount} hidden
+              </span>
             </button>
             <button
               onClick={() => window.resetProgress()}
@@ -3646,6 +3681,40 @@ export default function App() {
     [categoryFeedback, categoryStats.sortedCategories]
   );
 
+  const handleToggleCategoryFavorite = React.useCallback((category) => {
+    const updatedAt = new Date().toISOString();
+
+    setCategoryFeedback((previousFeedback) => {
+      const normalizedFeedback = normalizeCategoryFeedback(previousFeedback);
+      const existingEntry = normalizedFeedback.categories[category] || {};
+      const isFavorite = !existingEntry.favorite;
+
+      return {
+        ...normalizedFeedback,
+        updatedAt,
+        categories: {
+          ...normalizedFeedback.categories,
+          [category]: {
+            ...existingEntry,
+            category,
+            label: formatCategoryLabel(category),
+            type: categoryStats.categoryTypeMap[category] || null,
+            puzzleCount: categoryStats.totalCounts[category] || 0,
+            favorite: isFavorite,
+            updatedAt,
+            events: [
+              ...(Array.isArray(existingEntry.events) ? existingEntry.events : []),
+              {
+                type: isFavorite ? 'marked_favorite' : 'unmarked_favorite',
+                createdAt: updatedAt
+              }
+            ]
+          }
+        }
+      };
+    });
+  }, [categoryStats.categoryTypeMap, categoryStats.totalCounts]);
+
   const handleToggleCategoryGarbage = React.useCallback((category) => {
     const markedAt = new Date().toISOString();
 
@@ -3993,6 +4062,7 @@ export default function App() {
       selectedHomeTab={homeTab}
       onSelectHomeTab={setHomeTab}
       categoryFeedback={categoryFeedback}
+      onToggleCategoryFavorite={handleToggleCategoryFavorite}
       onToggleCategoryGarbage={handleToggleCategoryGarbage}
       onDownloadFeedback={handleDownloadFeedback}
     />;
