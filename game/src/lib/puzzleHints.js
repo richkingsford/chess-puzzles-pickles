@@ -11,29 +11,56 @@ const VAGUE_MOVE_HINT_PATTERNS = [
   /\bbest move\b/i,
   /\bright move\b/i,
   /\bstrong move here\b/i,
-  /\btactical idea\b/i
+  /\btactical idea\b/i,
+  /\bmaterial weaknesses matter when one target lacks steady support\b/i,
+  /\bloose targets become vulnerable when their guards are stretched thin\b/i,
+  /\ba hanging target is vulnerable when nearby cover is unreliable\b/i,
+  /\btrapped kings become vulnerable when escape routes are sealed\b/i,
+  /\bback-line shelter becomes fragile when flight squares disappear\b/i,
+  /\ba cramped king is vulnerable when nearby cover blocks escape\b/i,
+  /\bking safety becomes vulnerable when the shelter has loose cover\b/i,
+  /\bforcing threats matter when the king has little room\b/i,
+  /\ba king under thin cover is vulnerable to tempo pressure\b/i,
+  /\brace positions become vulnerable when the defender is one step late\b/i,
+  /\bopening coordination is vulnerable when the back line is unsettled\b/i,
+  /\bking safety turns fragile when the center is still loose\b/i,
+  /\bendgame balance breaks when two weaknesses stretch one side\b/i,
+  /\bendgames turn fragile when one defender lacks a spare tempo\b/i,
+  /\bpromotion races become vulnerable when the back line is late\b/i,
+  /\bunfinished development is vulnerable when central cover is thin\b/i,
+  /\badvanced passers become dangerous when the defense lacks time\b/i,
+  /\ba queening race turns fragile when the stopper is stretched\b/i,
+  /\btactical weaknesses grow when loose cover surrounds a target\b/i,
+  /\bshared lines become fragile when defenders depend on one path\b/i,
+  /\bquiet positions become fragile when one area lacks steady support\b/i,
+  /\bweak coordination becomes vulnerable when defenders cannot share duties\b/i,
+  /\blimited exits become vulnerable when retreat squares disappear\b/i,
+  /\bpinned lines become vulnerable when a guard cannot freely leave\b/i,
+  /\ba front target becomes fragile when another target waits behind it\b/i,
+  /\bline control matters when a thin cover piece blocks pressure\b/i,
+  /\bhidden lines become vulnerable when only one blocker remains\b/i,
+  /\ba trapped unit is fragile when every escape path is watched\b/i,
+  /\ba tied defender becomes fragile when something valuable sits behind it\b/i,
+  /\bline pressure matters when one defender is stuck in place\b/i,
+  /\bpoor mobility becomes a weakness when the edges close in\b/i,
+  /\bcrowded targets become vulnerable when spacing disappears\b/i,
+  /\bfork patterns grow from targets that cannot both stay safe\b/i,
+  /\bclustered valuables become fragile when one tempo can touch both\b/i,
+  /\bstacked targets become vulnerable when the front one must move\b/i,
+  /\bskewer patterns appear when valuables share the same line\b/i,
+  /\boverloaded guards become vulnerable when one defender has too many jobs\b/i,
+  /\ba key guard turns fragile when several duties pull on it\b/i,
+  /\bdefensive balance breaks when one guard protects too much\b/i
 ];
 
-const FIRST_HINT_PIECE_PATTERN = /\b(?:king|queen|rook|bishop|knight|pawn|piece|pieces)\b/i;
-
-const PIECE_CUE_PATTERNS = {
-  queen: /\bqueen\b/i,
-  rook: /\b(?:rook|file|rank)\b/i,
-  bishop: /\b(?:bishop|diagonal)\b/i,
-  knight: /\b(?:knight|jump)\b/i,
-  king: /\b(?:king|opposition|triangulation)\b/i,
-  pawn: /\b(?:pawn|passed|lever|push|promotion|promote)\b/i,
-  castle: /\b(?:castle|castling|king safety|rook)\b/i
-};
-
-const OPPORTUNITY_PATTERNS = {
-  mate: /\b(?:mate|king|escape|boxed|flight|shelter)\b/i,
-  check: /\b(?:check\w*|king|tempo|reacting|answer)\b/i,
-  capture: /\b(?:captur\w*|tak\w*|removes|loose|vulnerable|target|guard|defender|wins)\b/i,
-  promotion: /\b(?:promotion|promote|promotes|passed|pawn race|choice)\b/i,
-  castle: /\b(?:castle|castling|king safety|rook|safety)\b/i,
-  quiet: /\b(?:threat|pressure|tempo|resource|forcing|defense|pawn race|weakness|weaknesses|guard|problem)\b/i
-};
+const SQUARE_ID_PATTERN = /\b[a-h][1-8]\b/i;
+const FIRST_HINT_OWN_SIDE_PATTERN = /\b(?:your|our|my)\b/i;
+const FIRST_HINT_DIRECTIVE_PATTERN = /\b(?:find|play|try|start|begin|use|search|look for)\b/i;
+const SECOND_HINT_OWN_SIDE_PATTERN = FIRST_HINT_OWN_SIDE_PATTERN;
+const SECOND_HINT_DIRECTIVE_PATTERN = /\b(?:find|play|move|try|start|begin|use|search|look for)\b/i;
+const SECOND_HINT_PIECE_NAME_PATTERN = /\b(?:king|queen|rook|bishop|knight|pawn)\b/i;
+const SECOND_HINT_SAN_PATTERN = /\b(?:O-O(?:-O)?|[KQRBN]?[a-h]?[1-8]?x?[a-h][1-8](?:=[QRBN])?[+#]?|[a-h][1-8]=[QRBN][+#]?)\b/;
+const SECOND_HINT_MIGRATED_PATTERN = /\bthe (?:(?:next|later|finishing|follow-up) )?opportunity is\b/i;
 
 export const splitAnswerMoves = (answer) => String(answer || '')
   .split(',')
@@ -209,30 +236,31 @@ const isVagueMoveHint = (hint) => (
   VAGUE_MOVE_HINT_PATTERNS.some((pattern) => pattern.test(String(hint || '')))
 );
 
-const namesPieceInFirstHint = (hint) => FIRST_HINT_PIECE_PATTERN.test(String(hint || ''));
+const countSentences = (hint) => (
+  String(hint || '')
+    .split(/[.!?]+/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .length
+);
 
-const getExpectedMovePieceCuePattern = (san) => {
-  const move = String(san || '').trim();
-  if (/^O-O/.test(move)) return PIECE_CUE_PATTERNS.castle;
+const firstHintPointsAtOwnSide = (hint) => FIRST_HINT_OWN_SIDE_PATTERN.test(String(hint || ''));
 
-  const first = move[0];
-  if (first === 'Q') return PIECE_CUE_PATTERNS.queen;
-  if (first === 'R') return PIECE_CUE_PATTERNS.rook;
-  if (first === 'B') return PIECE_CUE_PATTERNS.bishop;
-  if (first === 'N') return PIECE_CUE_PATTERNS.knight;
-  if (first === 'K') return PIECE_CUE_PATTERNS.king;
-  return PIECE_CUE_PATTERNS.pawn;
-};
+const firstHintDirectsPlayer = (hint) => FIRST_HINT_DIRECTIVE_PATTERN.test(String(hint || ''));
 
-const getExpectedOpportunityPattern = (san) => {
-  const move = String(san || '').trim();
-  if (move.includes('=')) return OPPORTUNITY_PATTERNS.promotion;
-  if (move.includes('#')) return OPPORTUNITY_PATTERNS.mate;
-  if (move.includes('+')) return OPPORTUNITY_PATTERNS.check;
-  if (/^O-O/.test(move)) return OPPORTUNITY_PATTERNS.castle;
-  if (move.includes('x')) return OPPORTUNITY_PATTERNS.capture;
-  return OPPORTUNITY_PATTERNS.quiet;
-};
+const firstHintUsesSquareId = (hint) => SQUARE_ID_PATTERN.test(String(hint || ''));
+
+const secondHintLooksMigrated = (hint) => SECOND_HINT_MIGRATED_PATTERN.test(String(hint || ''));
+
+const secondHintUsesSquareId = (hint) => SQUARE_ID_PATTERN.test(String(hint || ''));
+
+const secondHintNamesPiece = (hint) => SECOND_HINT_PIECE_NAME_PATTERN.test(String(hint || ''));
+
+const secondHintPointsAtOwnSide = (hint) => SECOND_HINT_OWN_SIDE_PATTERN.test(String(hint || ''));
+
+const secondHintDirectsPlayer = (hint) => SECOND_HINT_DIRECTIVE_PATTERN.test(String(hint || ''));
+
+const secondHintUsesSan = (hint) => SECOND_HINT_SAN_PATTERN.test(String(hint || ''));
 
 export const auditMoveHintGroups = (puzzle) => {
   if (!hasStructuredMoveHints(puzzle)) {
@@ -284,9 +312,36 @@ export const auditMoveHintGroups = (puzzle) => {
     const finalHint = group.hints[DIRECT_MOVE_HINT_INDEX];
     const secondHint = group.hints[SECOND_HINT_INDEX];
 
-    if (typeof firstHint === 'string' && namesPieceInFirstHint(firstHint)) {
+    if (typeof firstHint === 'string' && countSentences(firstHint) !== 2) {
       failures.push({
-        code: 'move-hint-first-names-piece',
+        code: 'move-hint-first-sentence-count',
+        playerMoveIndex: group.playerMoveIndex,
+        hintIndex: FIRST_HINT_INDEX,
+        hintText: firstHint
+      });
+    }
+
+    if (typeof firstHint === 'string' && firstHintUsesSquareId(firstHint)) {
+      failures.push({
+        code: 'move-hint-first-square-id',
+        playerMoveIndex: group.playerMoveIndex,
+        hintIndex: FIRST_HINT_INDEX,
+        hintText: firstHint
+      });
+    }
+
+    if (typeof firstHint === 'string' && firstHintPointsAtOwnSide(firstHint)) {
+      failures.push({
+        code: 'move-hint-first-points-at-own-side',
+        playerMoveIndex: group.playerMoveIndex,
+        hintIndex: FIRST_HINT_INDEX,
+        hintText: firstHint
+      });
+    }
+
+    if (typeof firstHint === 'string' && firstHintDirectsPlayer(firstHint)) {
+      failures.push({
+        code: 'move-hint-first-directs-player',
         playerMoveIndex: group.playerMoveIndex,
         hintIndex: FIRST_HINT_INDEX,
         hintText: firstHint
@@ -303,27 +358,58 @@ export const auditMoveHintGroups = (puzzle) => {
       });
     }
 
-    if (expectedSan && typeof secondHint === 'string') {
-      const pieceCuePattern = getExpectedMovePieceCuePattern(expectedSan);
-      const opportunityPattern = getExpectedOpportunityPattern(expectedSan);
-
-      if (!pieceCuePattern.test(secondHint)) {
+    if (typeof secondHint === 'string' && secondHintLooksMigrated(secondHint)) {
+      if (countSentences(secondHint) !== 2) {
         failures.push({
-          code: 'move-hint-second-missing-piece-cue',
+          code: 'move-hint-second-sentence-count',
           playerMoveIndex: group.playerMoveIndex,
           hintIndex: SECOND_HINT_INDEX,
-          hintText: secondHint,
-          expectedSan
+          hintText: secondHint
         });
       }
 
-      if (!opportunityPattern.test(secondHint)) {
+      if (secondHintUsesSquareId(secondHint)) {
         failures.push({
-          code: 'move-hint-second-missing-opportunity-cue',
+          code: 'move-hint-second-square-id',
           playerMoveIndex: group.playerMoveIndex,
           hintIndex: SECOND_HINT_INDEX,
-          hintText: secondHint,
-          expectedSan
+          hintText: secondHint
+        });
+      }
+
+      if (secondHintUsesSan(secondHint)) {
+        failures.push({
+          code: 'move-hint-second-san-notation',
+          playerMoveIndex: group.playerMoveIndex,
+          hintIndex: SECOND_HINT_INDEX,
+          hintText: secondHint
+        });
+      }
+
+      if (secondHintNamesPiece(secondHint)) {
+        failures.push({
+          code: 'move-hint-second-piece-name',
+          playerMoveIndex: group.playerMoveIndex,
+          hintIndex: SECOND_HINT_INDEX,
+          hintText: secondHint
+        });
+      }
+
+      if (secondHintPointsAtOwnSide(secondHint)) {
+        failures.push({
+          code: 'move-hint-second-points-at-own-side',
+          playerMoveIndex: group.playerMoveIndex,
+          hintIndex: SECOND_HINT_INDEX,
+          hintText: secondHint
+        });
+      }
+
+      if (secondHintDirectsPlayer(secondHint)) {
+        failures.push({
+          code: 'move-hint-second-directs-player',
+          playerMoveIndex: group.playerMoveIndex,
+          hintIndex: SECOND_HINT_INDEX,
+          hintText: secondHint
         });
       }
     }

@@ -88,12 +88,12 @@ describe('puzzle hint model', () => {
       moveHints: [
         [
           'Start with your queen to force the issue.',
-          'Find the best move.',
+          'The opportunity is your queen move to h5.',
           'Play Qxg6#.'
         ],
         [
           'Start with your queen to force the issue.',
-          'Find the best move.',
+          'The opportunity is your queen move to h5.',
           'Play Qh5+.'
         ]
       ]
@@ -116,17 +116,47 @@ describe('puzzle hint model', () => {
           playerMoveIndex: 0
         }),
         expect.objectContaining({
-          code: 'move-hint-first-names-piece',
+          code: 'move-hint-first-sentence-count',
           playerMoveIndex: 0,
           hintIndex: 0
         }),
         expect.objectContaining({
-          code: 'move-hint-second-missing-piece-cue',
+          code: 'move-hint-first-points-at-own-side',
+          playerMoveIndex: 0,
+          hintIndex: 0
+        }),
+        expect.objectContaining({
+          code: 'move-hint-first-directs-player',
+          playerMoveIndex: 0,
+          hintIndex: 0
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-sentence-count',
           playerMoveIndex: 0,
           hintIndex: 1
         }),
         expect.objectContaining({
-          code: 'move-hint-second-missing-opportunity-cue',
+          code: 'move-hint-second-square-id',
+          playerMoveIndex: 0,
+          hintIndex: 1
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-san-notation',
+          playerMoveIndex: 0,
+          hintIndex: 1
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-piece-name',
+          playerMoveIndex: 0,
+          hintIndex: 1
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-points-at-own-side',
+          playerMoveIndex: 0,
+          hintIndex: 1
+        }),
+        expect.objectContaining({
+          code: 'move-hint-second-directs-player',
           playerMoveIndex: 0,
           hintIndex: 1
         }),

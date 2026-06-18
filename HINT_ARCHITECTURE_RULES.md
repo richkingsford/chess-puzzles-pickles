@@ -46,20 +46,35 @@ exists.
 
 Each three-hint group should reveal one player move in layers.
 
-1. **Hint 1 - Blunt opportunity without piece names:** give roughly half of
-   the idea. Name the current opportunity type, such as mate-net pressure,
-   forcing check, loose target, promotion danger, safety resource, endgame
-   tempo, or quiet pressure. Add one board-state clue such as scarce exits,
-   collapsing shelter, overloaded defense, urgent race, unfinished development,
-   or poor coordination. Do not mention any piece type, name candidate moves,
-   give notation, or tell the player what move to play.
-2. **Hint 2 - Piece-shaped opportunity:** give roughly three-fifths of the idea
-   while still preserving the solve. Suggest the mover through movement shape or
-   piece family, such as queen line, rook file, bishop diagonal, knight jump,
-   pawn lever, passed-pawn choice, king step, or castling resource. Pair that
-   clue with the current opportunity: check, capture, promotion, mate-net clamp,
-   defender removal, tempo gain, or quiet pressure. Do not include square IDs,
-   SAN notation, or direct phrasing such as `play your queen`.
+1. **Hint 1 - Vulnerability only, in two brief sentences:** the first sentence
+   states the general principle behind the weakness, such as what a back-rank
+   mate, smothered mate, loose target, overloaded guard, promotion race, or
+   loaded line means. Do not use the first sentence as another board-location
+   clue.
+   The second sentence highlights the area of the board without saying the
+   piece the player must move or using square IDs. Prefer area clues like
+   `vulnerable diagonal near the enemy queen` or `the king cannot escape to the
+   right side`. Do not mention our opportunity, our side, candidate moves,
+   notation, or what the player should move.
+   For material vulnerabilities, be direct about why the target is loose: name
+   the defender count and target value, such as `a target with 1 defender` and
+   `the 3 point target near the enemy king`.
+   For king vulnerabilities, be direct about escape limits: name the safe
+   escape count and the area or blocked side, such as `a king with only 1 safe
+   escape square` and `the right side of the enemy king has no safe exit`.
+   For line, race, opening, endgame, and coordination vulnerabilities, name the
+   concrete failure point, such as one blocker, a late stopper, an unsettled
+   back line, no spare tempo, or thin nearby support.
+2. **Hint 2 - Tactical opportunity, in two brief sentences:** do not repeat
+   Hint 1's general principle. The first sentence highlights the opportunity
+   more directly, such as a capture on an under-defended target, a blocked
+   escape, a loaded line, a race lane, a tied-down guard, or a tempo problem.
+   The second sentence tells the player how to see the opportunity on the board
+   without giving the move away, such as following a diagonal, checking the
+   defender count, comparing escape sides, tracing the open line, or noticing
+   which reply is overloaded. Do not include square IDs, SAN notation, piece
+   names, our-side language, or direct phrasing such as `play`, `move`, or
+   `start with`.
 3. **Hint 3 - Near-direct:** give a clear nudge toward the move type or key
    square. This is the only hint in the group that may give the exact move id.
 
@@ -70,7 +85,10 @@ subtle again because it belongs to a new board position.
 
 Each hint should communicate exactly one instructional point.
 
-- Use one compact sentence.
+- Hint 1 uses exactly two brief sentences: principle first, area clue second.
+- Hint 2 uses exactly two brief sentences: opportunity first, how-to-see-it
+  clue second.
+- Hint 3 uses one compact sentence.
 - Do not chain multiple instructions into one hint.
 - Do not include a move sequence in a single hint.
 - Avoid opponent-response-plus-follow-up wording in one hint.
@@ -83,7 +101,7 @@ The first hints inside each player-move group should avoid exact board
 coordinates and SAN notation.
 
 - Hint 1 must not include square IDs such as `e4`, `h7`, or `a8`.
-- Hint 2 must not include square IDs or SAN notation.
+- Hint 2 must not include square IDs, SAN notation, or piece names.
 - Hint 3 may use a square or move type when the hint is intentionally direct.
 
 Legacy validator: `audit_rule3_early_square_ids.js`
@@ -131,7 +149,8 @@ Hints should be beginner-readable, compact, and easy to scan during play.
 - Avoid semicolons, colons, parenthetical explanations, dash-heavy phrasing,
   comma-heavy clauses, and dense connectors such as `because`, `although`,
   `however`, and `therefore`.
-- Use one sentence.
+- Use one sentence, except Hint 1 and Hint 2 in each `moveHints` group, which
+  use exactly two brief sentences.
 
 Legacy validator: `audit_rule6_clear_short_phrasing.js`
 
