@@ -46,35 +46,67 @@ exists.
 
 Each three-hint group should reveal one player move in layers.
 
-1. **Hint 1 - Vulnerability only, in two brief sentences:** the first sentence
-   states the general principle behind the weakness, such as what a back-rank
-   mate, smothered mate, loose target, overloaded guard, promotion race, or
-   loaded line means. Do not use the first sentence as another board-location
-   clue.
-   The second sentence highlights the area of the board without saying the
-   piece the player must move or using square IDs. Prefer area clues like
-   `vulnerable diagonal near the enemy queen` or `the king cannot escape to the
-   right side`. Do not mention our opportunity, our side, candidate moves,
-   notation, or what the player should move.
-   For material vulnerabilities, be direct about why the target is loose: name
-   the defender count and target value, such as `a target with 1 defender` and
-   `the 3 point target near the enemy king`.
-   For king vulnerabilities, be direct about escape limits: name the safe
-   escape count and the area or blocked side, such as `a king with only 1 safe
-   escape square` and `the right side of the enemy king has no safe exit`.
+1. **Hint 1 - Category principle + board clue, in two brief sentences:** write
+   for an 8-year-old. Use simple, short words. Be direct and friendly.
+   The first sentence names the puzzle's category or tactic and explains what
+   it means in plain terms. For a back-rank mate, say what a back-rank mate is.
+   For a fork, say what a fork does. For a pin, say what a pin is. Ground the
+   principle in the actual category — do not write a generic weakness statement
+   when a specific tactic name applies.
+   The two sentences must feel connected. Sentence 1 teaches the concept;
+   sentence 2 shows where that exact concept is alive on this board right now.
+   Sentence 2 should read like evidence of sentence 1 — a player should finish
+   reading both sentences and think "I can see it — that concept is right there."
+   Use bridging words at the start of sentence 2 such as "Right now", "That is
+   why", "In this position", or "That is exactly". Never write a sentence 2 that
+   would sound equally plausible after a different category's sentence 1.
+   The second sentence points at the relevant area of the board for this
+   specific position. Do not use square IDs. Name board areas like `the right
+   side`, `the back row`, `near the enemy king`, or `in the middle of the
+   board`. Be concrete about what makes this position vulnerable.
+   For material vulnerabilities, name the defender count and target value, such
+   as `a piece worth 3 points with only 1 defender`.
+   For king vulnerabilities, name how many safe escape squares exist and which
+   side is blocked, such as `the enemy king has no safe square to the right`.
    For line, race, opening, endgame, and coordination vulnerabilities, name the
    concrete failure point, such as one blocker, a late stopper, an unsettled
-   back line, no spare tempo, or thin nearby support.
-2. **Hint 2 - Tactical opportunity, in two brief sentences:** do not repeat
-   Hint 1's general principle. The first sentence highlights the opportunity
-   more directly, such as a capture on an under-defended target, a blocked
-   escape, a loaded line, a race lane, a tied-down guard, or a tempo problem.
-   The second sentence tells the player how to see the opportunity on the board
-   without giving the move away, such as following a diagonal, checking the
-   defender count, comparing escape sides, tracing the open line, or noticing
-   which reply is overloaded. Do not include square IDs, SAN notation, piece
-   names, our-side language, or direct phrasing such as `play`, `move`, or
-   `start with`.
+   back row, no spare move, or thin nearby support.
+   It is fine if the principle sentence is the same across many puzzles of the
+   same category — what matters is that the second sentence is true for this
+   specific board position and this specific move.
+2. **Hint 2 - Principle restated + opportunity nudge, in two brief sentences:**
+   write for an 8-year-old. Use simple, short words. Be warm and encouraging,
+   like a chessmaster sitting next to them who can see the answer and is
+   trying to guide their eyes to it — without pointing directly.
+   Hint 2 is about 30% more direct and obvious than Hint 1. It should feel
+   like a second, friendlier pass at the same lesson — a little clearer, a
+   little closer, but still leaving the "aha!" moment to the player.
+   Sentence 1 restates the puzzle's principle (the category or tactic) in a
+   different way than Hint 1 did it — roughly 30% more direct. If Hint 1
+   explained what a pin is, Hint 2 explains how you use a pin. If Hint 1
+   explained what a fork does, Hint 2 explains why a fork wins material. The
+   principle must still be category-specific — no generic weakness statements
+   when a tactic name applies. Do not repeat Hint 1's exact wording.
+   Sentence 2 tells the player specifically what to look for — like a
+   chessmaster leaning over and saying "look for an empty diagonal", "look
+   for a fork window", or "look for an opportunity to do X and Y". It should
+   name the type of opportunity (an open line, a fork square, a free capture,
+   a back-rank window) and anchor it to the relevant area of this specific
+   board. The player should finish reading and feel "I know exactly where to
+   look!" — not "I have no idea." Never give the move away. Never name a
+   specific square. Never name a specific piece.
+   Sentence 2 must start with "Look for". This frames the hint as active
+   guidance — the player is being coached to search, not just informed.
+   Examples: "Look for an open file aimed at the back row where the king has
+   no escape." "Look for a fork square near the center where one move hits
+   both targets." "Look for a chance to remove the only defender and win the
+   target behind it."
+   Both sentences must be specific to this puzzle's category AND this specific
+   board position. No canned or generic hints that would fit any puzzle in the
+   category. The second sentence must describe an opportunity that exists only
+   in this position.
+   Do not include square IDs, SAN notation, piece names, our-side language,
+   or mid-sentence directives such as `play`, `move`, `compare`, or `trace`.
 3. **Hint 3 - Near-direct:** give a clear nudge toward the move type or key
    square. This is the only hint in the group that may give the exact move id.
 
@@ -86,8 +118,8 @@ subtle again because it belongs to a new board position.
 Each hint should communicate exactly one instructional point.
 
 - Hint 1 uses exactly two brief sentences: principle first, area clue second.
-- Hint 2 uses exactly two brief sentences: opportunity first, how-to-see-it
-  clue second.
+- Hint 2 uses exactly two brief sentences: principle restated 30% more
+  directly first, opportunity nudge second.
 - Hint 3 uses one compact sentence.
 - Do not chain multiple instructions into one hint.
 - Do not include a move sequence in a single hint.
@@ -133,22 +165,18 @@ Legacy validator: `audit_rule5_dictionary_alignment.js`
 
 ## Rule 7: Clear, Short Phrasing
 
-Hints should be beginner-readable, compact, and easy to scan during play.
+Hints must be readable by an 8-year-old. If a child would not understand a
+word or phrase, replace it with something simpler.
 
-- Prefer plain phrasing over abstract or heavily qualified explanation.
-- Write for an 8-year-old learner: concrete, vivid, and friendly, with enough
-  texture to make the position feel memorable.
-- Prefer helpful over coy. A hint can point at the shape of the tactic without
-  giving away the mover or square.
-- Brevity is good, but early hints should still teach. Avoid tiny hints that
-  name only a theme and leave the player with no picture.
-- Dictionary linking can define terms, so hints do not need to explain every
-  chess word, but they should still point to a visible board clue.
+- Use short, plain words. Concrete and direct beats abstract and clever.
+- Be friendly and helpful — a hint should feel like a nudge from a friend, not
+  a riddle.
+- A hint should point at something visible and real on the board. Avoid hints
+  that only name a theme without giving any picture of the position.
 - Avoid generic filler such as `find the best move`, `look carefully`, or
   `strong move here`.
-- Avoid semicolons, colons, parenthetical explanations, dash-heavy phrasing,
-  comma-heavy clauses, and dense connectors such as `because`, `although`,
-  `however`, and `therefore`.
+- Avoid semicolons, colons, parenthetical explanations, and heavily qualified
+  clauses.
 - Use one sentence, except Hint 1 and Hint 2 in each `moveHints` group, which
   use exactly two brief sentences.
 

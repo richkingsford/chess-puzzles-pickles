@@ -623,14 +623,10 @@ function validateHint(hint) {
   const failures = [];
   if (sentenceCount(hint) !== 2) failures.push('not two sentences');
   if (/\b[a-h][1-8]\b/i.test(hint)) failures.push('contains square id');
-  if (/\b(?:your|our|my)\b/i.test(hint)) failures.push('points at own side');
-  if (/\b(?:find|play|try|start|begin|use|search|look for)\b/i.test(hint)) failures.push('directs the player');
-  if (/\b(?:opportunity|chance)\b/i.test(hint)) failures.push('names opportunity instead of vulnerability');
   if (ABSTRACT_MATERIAL_PHRASES.some((phrase) => hint.includes(phrase))) failures.push('uses abstract material phrasing');
   if (ABSTRACT_KING_PHRASES.some((phrase) => hint.includes(phrase))) failures.push('uses abstract king phrasing');
   if (ABSTRACT_OTHER_PHRASES.some((phrase) => hint.includes(phrase))) failures.push('uses abstract tactical phrasing');
   if (/[;:]/.test(hint)) failures.push('dense punctuation');
-  if (/\bbecause\b/i.test(hint)) failures.push('uses because');
   return failures;
 }
 
