@@ -54,6 +54,8 @@ const VAGUE_MOVE_HINT_PATTERNS = [
 ];
 
 const SQUARE_ID_PATTERN = /\b[a-h][1-8]\b/i;
+const FIRST_HINT_OWN_SIDE_PATTERN = /\b(?:your|our|my)\b/i;
+const FIRST_HINT_DIRECTIVE_PATTERN = /(?:^|[.!?]\s+)(?:find|play|move|try|start|begin|use|search|look for)\b/i;
 const SECOND_HINT_OWN_SIDE_PATTERN = /\b(?:your|our|my)\b/i;
 const SECOND_HINT_DIRECTIVE_PATTERN = /\b(?:find|play|move|try|start|begin|use|search|look for)\b/i;
 const SECOND_HINT_PIECE_NAME_PATTERN = /\b(?:king|queen|rook|bishop|knight|pawn)\b/i;
@@ -244,6 +246,10 @@ const countSentences = (hint) => (
 
 const firstHintUsesSquareId = (hint) => SQUARE_ID_PATTERN.test(String(hint || ''));
 
+const firstHintPointsAtOwnSide = (hint) => FIRST_HINT_OWN_SIDE_PATTERN.test(String(hint || ''));
+
+const firstHintDirectsPlayer = (hint) => FIRST_HINT_DIRECTIVE_PATTERN.test(String(hint || ''));
+
 const secondHintLooksMigrated = (hint) => SECOND_HINT_MIGRATED_PATTERN.test(String(hint || ''));
 
 const secondHintUsesSquareId = (hint) => SQUARE_ID_PATTERN.test(String(hint || ''));
@@ -318,6 +324,24 @@ export const auditMoveHintGroups = (puzzle) => {
     if (typeof firstHint === 'string' && firstHintUsesSquareId(firstHint)) {
       failures.push({
         code: 'move-hint-first-square-id',
+        playerMoveIndex: group.playerMoveIndex,
+        hintIndex: FIRST_HINT_INDEX,
+        hintText: firstHint
+      });
+    }
+
+    if (typeof firstHint === 'string' && firstHintPointsAtOwnSide(firstHint)) {
+      failures.push({
+        code: 'move-hint-first-points-at-own-side',
+        playerMoveIndex: group.playerMoveIndex,
+        hintIndex: FIRST_HINT_INDEX,
+        hintText: firstHint
+      });
+    }
+
+    if (typeof firstHint === 'string' && firstHintDirectsPlayer(firstHint)) {
+      failures.push({
+        code: 'move-hint-first-directs-player',
         playerMoveIndex: group.playerMoveIndex,
         hintIndex: FIRST_HINT_INDEX,
         hintText: firstHint

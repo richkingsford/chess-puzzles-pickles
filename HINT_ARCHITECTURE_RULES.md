@@ -46,34 +46,10 @@ exists.
 
 Each three-hint group should reveal one player move in layers.
 
-1. **Hint 1 - Category principle + board clue, in two brief sentences:** write
-   for an 8-year-old. Use simple, short words. Be direct and friendly.
-   The first sentence names the puzzle's category or tactic and explains what
-   it means in plain terms. For a back-rank mate, say what a back-rank mate is.
-   For a fork, say what a fork does. For a pin, say what a pin is. Ground the
-   principle in the actual category — do not write a generic weakness statement
-   when a specific tactic name applies.
-   The two sentences must feel connected. Sentence 1 teaches the concept;
-   sentence 2 shows where that exact concept is alive on this board right now.
-   Sentence 2 should read like evidence of sentence 1 — a player should finish
-   reading both sentences and think "I can see it — that concept is right there."
-   Use bridging words at the start of sentence 2 such as "Right now", "That is
-   why", "In this position", or "That is exactly". Never write a sentence 2 that
-   would sound equally plausible after a different category's sentence 1.
-   The second sentence points at the relevant area of the board for this
-   specific position. Do not use square IDs. Name board areas like `the right
-   side`, `the back row`, `near the enemy king`, or `in the middle of the
-   board`. Be concrete about what makes this position vulnerable.
-   For material vulnerabilities, name the defender count and target value, such
-   as `a piece worth 3 points with only 1 defender`.
-   For king vulnerabilities, name how many safe escape squares exist and which
-   side is blocked, such as `the enemy king has no safe square to the right`.
-   For line, race, opening, endgame, and coordination vulnerabilities, name the
-   concrete failure point, such as one blocker, a late stopper, an unsettled
-   back row, no spare move, or thin nearby support.
-   It is fine if the principle sentence is the same across many puzzles of the
-   same category — what matters is that the second sentence is true for this
-   specific board position and this specific move.
+1. **Hint 1 - Principle plus vulnerability clue, in two brief sentences:**
+   sentence 1 teaches the puzzle category's principle. Sentence 2 repeats the
+   tactic or theme name and uses it to point toward the exact vulnerability on
+   the current board. Keep both sentences in one string with no line break.
 2. **Hint 2 - Principle restated + opportunity nudge, in two brief sentences:**
    write for an 8-year-old. Use simple, short words. Be warm and encouraging,
    like a chessmaster sitting next to them who can see the answer and is
@@ -113,11 +89,43 @@ Each three-hint group should reveal one player move in layers.
 The progression resets for each player move. A later move's first hint can be
 subtle again because it belongs to a new board position.
 
+### Hint 1 Hard Rules
+
+- Sentence 1 must teach the category-specific principle, not merely say that a
+  good move exists.
+- Sentence 2 must use the same named tactic or theme from sentence 1 to
+  tactfully highlight the specific vulnerability before the current player
+  move.
+- Sentence 2 must describe parts of the tactic, such as trapped exits, blocked
+  defenders, overloaded guards, aligned targets, loose high-value targets, or
+  a weak promotion race.
+- Hint 1 must not give SAN notation, square IDs such as `e4`, or exact move
+  instructions.
+- Hint 1 must not name our moving piece or say whose piece should move.
+- Hint 1 must be relevant to both the puzzle category and the current player
+  move, including later player moves in multi-step puzzles.
+- Hint 1 must focus on the vulnerability, not the opportunity to play a
+  specific move.
+
+### Hint 1 Writing Guidelines
+
+- Write for an 8-year-old learner with direct, simple language.
+- Use plain language that helps the learner remember and detect the principle.
+  Do not reach for flowery or clever wording.
+- It is okay to name tactic ingredients when they teach the principle, such as
+  the enemy king, pinned target, blocker, defender, or escape squares.
+- Avoid vague location-only clues such as `back right`, `left side`, or `over
+  there`. Use the tactic itself to point at the board.
+- Good second sentences often begin with the tactic name, such as `The fork
+  clue is...` or `The pin vulnerability is...`.
+- Keep each sentence short enough to read during play.
+
 ## Rule 3: One Hint = One Point
 
 Each hint should communicate exactly one instructional point.
 
-- Hint 1 uses exactly two brief sentences: principle first, area clue second.
+- Hint 1 uses exactly two brief sentences: principle first, vulnerability clue
+  second.
 - Hint 2 uses exactly two brief sentences: principle restated 30% more
   directly first, opportunity nudge second.
 - Hint 3 uses one compact sentence.
@@ -175,8 +183,10 @@ word or phrase, replace it with something simpler.
   that only name a theme without giving any picture of the position.
 - Avoid generic filler such as `find the best move`, `look carefully`, or
   `strong move here`.
-- Avoid semicolons, colons, parenthetical explanations, and heavily qualified
+- Avoid semicolons, colons, parenthetical explanations, and comma-heavy
   clauses.
+- In Hint 1, also avoid dash-heavy phrasing and dense connectors such as
+  `because`, `although`, `however`, and `therefore`.
 - Use one sentence, except Hint 1 and Hint 2 in each `moveHints` group, which
   use exactly two brief sentences.
 
