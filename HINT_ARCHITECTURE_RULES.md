@@ -120,6 +120,24 @@ subtle again because it belongs to a new board position.
   clue is...` or `The pin vulnerability is...`.
 - Keep each sentence short enough to read during play.
 
+### Hint 2 Hard Rules
+
+- Do not use viewpoint-dependent board regions or directions such as `left`,
+  `right`, `center`, `front`, `back`, `top`, or `bottom`. These labels are easy
+  to reverse and do not teach the tactic.
+- A canonical tactic name such as `back-rank mate` is allowed in sentence 1.
+  Do not use `back row` or similar wording as the location clue in sentence 2.
+- Sentence 2 must guide the learner with stable chess relationships instead,
+  such as the same file, rank, or diagonal; a blocker between two pieces; an
+  overloaded defender; sealed escape squares; or a target's piece value.
+
+### Hint 2 Writing Guidelines
+
+- Lean out location wording that does not help the learner solve the tactic.
+- Prefer `the pinned 3 point piece` or `the open file to the boxed king` over
+  descriptions such as `the piece on the left` or `the king in the center`.
+- Relationships between pieces are more reliable than board-region labels.
+
 ## Rule 3: One Hint = One Point
 
 Each hint should communicate exactly one instructional point.

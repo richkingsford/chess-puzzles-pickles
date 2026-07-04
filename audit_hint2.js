@@ -101,6 +101,9 @@ const VAGUE_PHRASES = [
   'a king under thin cover is vulnerable to tempo pressure',
 ];
 
+const VIEWPOINT_POSITION_REGEX =
+  /\b(left|right|center|centre|central|middle|upper|lower|top|bottom|front|rear|forward|backward|far|back)\b/i;
+
 
 // Opening categories: sentence 2 must NOT mention the opening name
 const OPENING_S2_BANNED = {
@@ -230,6 +233,15 @@ function checkHint2(hint2, hint1, { category, game, move }) {
 
   const s2 = sentences[1] || '';
 
+  const positionCheck = String(hint2).replace(/\bback-rank\b/gi, '');
+  const positionHit = positionCheck.match(VIEWPOINT_POSITION_REGEX);
+  if (positionHit || /\bside of the board\b/i.test(positionCheck)) {
+    failures.push({
+      code: 'viewpoint-position',
+      detail: `uses viewpoint-dependent location wording: "${positionHit?.[0] || 'side of the board'}"`,
+    });
+  }
+
   // ── opening name must not appear in sentence 2 ──
 
   if (s2) {
@@ -277,12 +289,16 @@ function checkHint2(hint2, hint1, { category, game, move }) {
 
   if (move?.captured) {
     const actualPts = pieceValue(move.captured);
-    for (const m of lower.matchAll(/(\d+)\s*point/g)) {
-      const mentioned = parseInt(m[1], 10);
+    const captureClaims = [
+      ...lower.matchAll(/(?:capture|take|win|collect|remove)\s+(?:the\s+)?(?:enemy\s+)?(\d+)\s*point/g),
+      ...lower.matchAll(/(\d+)\s*point\s+(?:piece|target)\s+(?:is|that is)\s+(?:free|ready)\s+to\s+(?:capture|take|win)/g),
+    ];
+    for (const claim of captureClaims) {
+      const mentioned = parseInt(claim[1], 10);
       if (mentioned !== actualPts) {
         failures.push({
           code: 'wrong-piece-value',
-          detail: `says "${mentioned} point" but the captured piece (${move.captured}) is worth ${actualPts}pt`,
+          detail: `calls the capture target "${mentioned} point" but the captured piece (${move.captured}) is worth ${actualPts}pt`,
         });
       }
     }
