@@ -4,9 +4,10 @@ This file is the source of truth for chess puzzle hint writing and review.
 The current migration target is move-scoped hints: three hints for every player
 move in a puzzle.
 
-Existing puzzle data still uses the legacy flat `hints` array. Do not rewrite
-that content until weak categories have been trimmed and the remaining set is
-ready for regeneration.
+The dataset uses move-scoped hints. The legacy flat `hints` array remains for
+compatibility; its first hint must match the first move's reviewed first hint.
+Older generation and audit scripts may reflect superseded writing rules.
+Use the current rules below and `npm --prefix game test` before accepting edits.
 
 ## Current Target Shape
 
@@ -46,10 +47,15 @@ exists.
 
 Each three-hint group should reveal one player move in layers.
 
-1. **Hint 1 - Principle plus vulnerability clue, in two brief sentences:**
-   sentence 1 teaches the puzzle category's principle. Sentence 2 repeats the
-   tactic or theme name and uses it to point toward the exact vulnerability on
-   the current board. Keep both sentences in one string with no line break.
+1. **Hint 1 - A subtle nudge, in two brief sentences:** sentence 1 teaches a
+   short principle relevant to this move. Sentence 2 is an extremely brief
+   observation about the current board, at most 12 words. Do not repeat the
+   theme or add introductions such as `The advanced-pawn clue is...`.
+   Keep the whole hint at most 30 words, in one string with no line break.
+   Hint 1 helps the learner locate a weakness without describing the move,
+   checking route, mating pattern, or follow-up. For example, use
+   `An advanced pawn can stretch the defense. The king has little room beside
+   the passer.` rather than naming an L-shaped mate.
 2. **Hint 2 - Principle restated + opportunity nudge, in two brief sentences:**
    write for an 8-year-old. Use simple, short words. Be warm and encouraging,
    like a chessmaster sitting next to them who can see the answer and is
@@ -93,9 +99,8 @@ subtle again because it belongs to a new board position.
 
 - Sentence 1 must teach the category-specific principle, not merely say that a
   good move exists.
-- Sentence 2 must use the same named tactic or theme from sentence 1 to
-  tactfully highlight the specific vulnerability before the current player
-  move.
+- Sentence 2 must give a short board observation before the current player
+  move. It must not repeat the theme name or explain how to exploit it.
 - Sentence 2 must describe parts of the tactic, such as trapped exits, blocked
   defenders, overloaded guards, aligned targets, loose high-value targets, or
   a weak promotion race.
@@ -106,6 +111,11 @@ subtle again because it belongs to a new board position.
   move, including later player moves in multi-step puzzles.
 - Hint 1 must focus on the vulnerability, not the opportunity to play a
   specific move.
+- Prefer `heavy piece` for a queen or rook, and `medium piece` for a bishop or
+  knight. Avoid exact point values and descriptions such as `L-shaped` that
+  identify the moving piece indirectly. Pawns and kings may be named.
+- Keep detailed attacker identities, routes, capture instructions, promotion
+  choices, and named mating mechanisms for later hints.
 
 ### Hint 1 Writing Guidelines
 
@@ -116,8 +126,8 @@ subtle again because it belongs to a new board position.
   the enemy king, pinned target, blocker, defender, or escape squares.
 - Avoid vague location-only clues such as `back right`, `left side`, or `over
   there`. Use the tactic itself to point at the board.
-- Good second sentences often begin with the tactic name, such as `The fork
-  clue is...` or `The pin vulnerability is...`.
+- Start sentence 2 directly with the board observation, such as
+  `A heavy blocker is pinned near the king.`
 - Keep each sentence short enough to read during play.
 
 ### Hint 2 Hard Rules

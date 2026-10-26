@@ -12,6 +12,25 @@ const loadJson = (relativePath) => JSON.parse(
 );
 
 describe('Puzzle dataset audit', () => {
+  test('first hints are short nudges with broad piece descriptions', () => {
+    const puzzles = loadJson('../public/puzzles.json');
+    const forbidden = /\b(?:\d+[ -]?point|L-shaped|queen|rook|bishop|knight)\b|\bthe .+? (?:clue|vulnerability|payoff|finish|setup) is\b/i;
+    for (const [category, data] of Object.entries(puzzles)) {
+      for (const [url, puzzle] of Object.entries(data.puzzles)) {
+        expect(puzzle.hints[0], `${category}: legacy first hint`).toBe(puzzle.moveHints[0][0]);
+        for (const [move, group] of puzzle.moveHints.entries()) {
+          const hint = group[0];
+          const label = `${category}, move ${move + 1}, ${url}: ${hint}`;
+          const sentences = hint.split(/[.!?]+/).map((s) => s.trim()).filter(Boolean);
+          expect(sentences, label).toHaveLength(2);
+          expect(sentences[1].split(/\s+/).length, label).toBeLessThanOrEqual(12);
+          expect(hint.split(/\s+/).length, label).toBeLessThanOrEqual(30);
+          expect(hint, label).not.toMatch(forbidden);
+        }
+      }
+    }
+  });
+
   test('every puzzle is player-ready and tag-clean', () => {
     const publicPuzzles = loadJson('../public/puzzles.json');
     const dictionary = loadJson('../../dictionary.json');

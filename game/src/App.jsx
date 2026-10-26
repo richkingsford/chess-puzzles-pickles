@@ -4,7 +4,7 @@ import QRCode from 'qrcode';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
 import BattleScene from './components/BattleScene';
 import {
-  Trophy, HelpCircle, ChevronLeft, ChevronRight,
+  Trophy, HelpCircle, ChevronLeft, ChevronRight, Pause, Play,
   RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle,
   Users, QrCode, Link as LinkIcon, LogOut, MoreVertical, Download, Filter, Star
 } from 'lucide-react';
@@ -1448,6 +1448,7 @@ const PuzzleView = ({
   const [activeDictionaryEntry, setActiveDictionaryEntry] = useState(null);
   const [activeDictionaryLabel, setActiveDictionaryLabel] = useState(null);
   const [autoAdvanceCountdown, setAutoAdvanceCountdown] = useState(null);
+  const [isAutoAdvancePaused, setIsAutoAdvancePaused] = useState(false);
   const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
   const [lastMoveArrow, setLastMoveArrow] = useState(null);
   const [isCategoryMasked, setIsCategoryMasked] = useState(Boolean(isRandomMode));
@@ -1759,7 +1760,7 @@ const PuzzleView = ({
   };
 
   useEffect(() => {
-    if (autoAdvanceCountdown === null) {
+    if (autoAdvanceCountdown === null || isAutoAdvancePaused) {
       return;
     }
 
@@ -1778,7 +1779,7 @@ const PuzzleView = ({
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [autoAdvanceCountdown, index, total, onBack, onNext]);
+  }, [autoAdvanceCountdown, isAutoAdvancePaused, index, total, onBack, onNext]);
 
   useEffect(() => {
     const canPlaySanByDrop = (san) => {
@@ -3287,6 +3288,7 @@ const PuzzleView = ({
             setMoveStatus(null);
             setCurrentMoveIndex(0);
             setAutoAdvanceCountdown(null);
+            setIsAutoAdvancePaused(false);
             setPendingOpponentMove(null);
           }} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white" title="Reset Puzzle">
             <RotateCcw className="w-5 h-5" />
@@ -3345,8 +3347,19 @@ const PuzzleView = ({
                   </div>
                 )}
                 {autoAdvanceCountdown !== null && (
-                  <div data-testid="next-countdown" className="mt-1 text-xs font-semibold text-emerald-300 animate-pulse">
-                    {index < total - 1 ? 'Next' : 'Home'} in {autoAdvanceCountdown}...
+                  <div className="mt-1 flex items-center justify-center gap-2">
+                    <span data-testid="next-countdown" className="text-xs font-semibold text-emerald-300" aria-live="polite">
+                      {isAutoAdvancePaused ? 'Paused' : `${index < total - 1 ? 'Next' : 'Home'} in ${autoAdvanceCountdown}...`}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setIsAutoAdvancePaused((paused) => !paused)}
+                      aria-label={isAutoAdvancePaused ? 'Play auto progress' : 'Pause auto progress'}
+                      title={isAutoAdvancePaused ? 'Play auto progress' : 'Pause auto progress'}
+                      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-slate-700 text-emerald-300 hover:bg-slate-600 focus-visible:outline-2 focus-visible:outline-emerald-300"
+                    >
+                      {isAutoAdvancePaused ? <Play size={18} /> : <Pause size={18} />}
+                    </button>
                   </div>
                 )}
               </div>

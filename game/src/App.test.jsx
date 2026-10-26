@@ -482,6 +482,62 @@ describe('App unit tests by area', () => {
   });
 
   describe('Moving board + correct/incorrect checks', () => {
+    test.each([
+      { total: 2, seconds: 3, destination: 'Next' },
+      { total: 1, seconds: 4, destination: 'Home' }
+    ])('pauses and resumes auto progress to $destination', async ({ total, seconds, destination }) => {
+      vi.useFakeTimers();
+      hookState = makeHookState({
+        currentCategory: 'set-one',
+        currentPuzzle: makePuzzle({ answer: 'e4' }),
+        totalPuzzles: total
+      });
+      render(<App />);
+      expect(screen.queryByRole('button', { name: 'Pause auto progress' })).not.toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('move-correct'));
+      const solvedFen = screen.getByTestId('mock-board').dataset.fen;
+      await act(async () => { vi.advanceTimersByTime(1000); });
+      expect(screen.getByTestId('next-countdown')).toHaveTextContent(`${destination} in ${seconds - 1}`);
+
+      fireEvent.click(screen.getByRole('button', { name: 'Pause auto progress' }));
+      await act(async () => { vi.advanceTimersByTime(60000); });
+      expect(screen.getByTestId('next-countdown')).toHaveTextContent('Paused');
+      expect(screen.getByTestId('mock-board')).toHaveAttribute('data-fen', solvedFen);
+      expect(nextPuzzle).not.toHaveBeenCalled();
+      expect(selectCategory).not.toHaveBeenCalled();
+
+      fireEvent.click(screen.getByRole('button', { name: 'Play auto progress' }));
+      for (let tick = 0; tick < seconds - 2; tick += 1) {
+        await act(async () => { vi.advanceTimersByTime(1000); });
+      }
+      expect(nextPuzzle).not.toHaveBeenCalled();
+      expect(selectCategory).not.toHaveBeenCalled();
+      await act(async () => { vi.advanceTimersByTime(1000); });
+      if (total > 1) {
+        expect(nextPuzzle).toHaveBeenCalledTimes(1);
+      } else {
+        expect(selectCategory).toHaveBeenCalledWith(null);
+      }
+    });
+
+    test('reset clears a paused countdown and allows auto progress on the next solve', async () => {
+      vi.useFakeTimers();
+      hookState = makeHookState({
+        currentCategory: 'set-one', currentPuzzle: makePuzzle(), totalPuzzles: 2
+      });
+      render(<App />);
+      fireEvent.click(screen.getByTestId('move-correct'));
+      fireEvent.click(screen.getByRole('button', { name: 'Pause auto progress' }));
+      fireEvent.click(screen.getByTestId('reset-button'));
+      expect(screen.queryByTestId('next-countdown')).not.toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('move-correct'));
+      expect(screen.getByRole('button', { name: 'Pause auto progress' })).toBeInTheDocument();
+      for (let tick = 0; tick < 3; tick += 1) {
+        await act(async () => { vi.advanceTimersByTime(1000); });
+      }
+      expect(nextPuzzle).toHaveBeenCalledTimes(1);
+    });
+
     test('marks solved on correct move and shows countdown on final solve', async () => {
       hookState = makeHookState({
         currentCategory: 'set-one',
