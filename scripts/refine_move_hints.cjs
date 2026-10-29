@@ -264,7 +264,7 @@ function kingObservation(b,color){
 }
 function pawnObservation(b,m){
  const p={...b.get(m.from),square:m.from},steps=p.color==='w'?8-Number(m.from[1]):Number(m.from[1])-1;
- return {text:`A pawn is ${word(steps)} steps from promotion.`,fact:{kind:'pawn-distance',square:m.from,color:p.color,steps}};
+ return {text:`A pawn is ${word(steps)} ${steps===1?'step':'steps'} from promotion.`,fact:{kind:'pawn-distance',square:m.from,color:p.color,steps}};
 }
 function decodeFen(url){return decodeURIComponent(url.split('/analysis/')[1].split('?')[0].replace(/^standard\//,'')).replaceAll('_',' ');}
 function analyze(before,san,nextSan,category){
@@ -348,7 +348,7 @@ function analyze(before,san,nextSan,category){
  if(specialObservation)observation=specialObservation;
  else if(['promotion','underPromotion'].includes(topic))observation=pawnObservation(before,m);
  else if(topic==='opposition'){const own=king(before,m.color);observation={text:`The kings are ${word(distance(own,kingSq))} steps apart.`,fact:{kind:'king-distance',from:own,to:kingSq,distance:distance(own,kingSq)}};}
- else if(topic==='escapeCheck'){const count=before.moves({verbose:true}).filter(t=>t.piece==='k').length;observation={text:`The checked king has ${word(count)} legal escape squares.`,fact:{kind:'king-escapes',color:m.color,count}};}
+ else if(topic==='escapeCheck'){const count=before.moves({verbose:true}).filter(t=>t.piece==='k').length;observation={text:`The checked king has ${word(count)} legal escape ${count===1?'square':'squares'}.`,fact:{kind:'king-escapes',color:m.color,count}};}
  else if(topic==='develop')observation={text:'A medium piece still waits on its home rank.',fact:{kind:'home-piece',square:m.from,color:m.color,type:m.piece}};
  else if(topic==='discovered'&&target&&before.get(target)?.type==='k')observation=kingObservation(before,foe);
  else if(['exchangeAttraction','checkingOffer'].includes(topic)&&!m.captured)observation=kingObservation(before,foe);
@@ -358,7 +358,7 @@ function analyze(before,san,nextSan,category){
  else if(topic==='castle')observation={text:'The king still has a legal route to safety.',fact:{kind:'castling',square:m.from,color:m.color}};
  else if(['kingActivity','opposition','escapeCheck'].includes(topic)){
   const own=king(before,m.color);const candidates=pieces(before).filter(p=>p.color===foe&&p.type==='p');const closer=candidates.filter(p=>distance(m.to,p.square)<distance(own,p.square));const pawn=(closer.length?closer:candidates).sort((a,b)=>distance(m.to,a.square)-distance(m.to,b.square))[0];
-  observation=pawn?{text:`An enemy pawn is ${word(distance(own,pawn.square))} king steps away.`,fact:{kind:'king-pawn-distance',square:pawn.square,king:own,distance:distance(own,pawn.square),color:foe}}:kingObservation(before,foe);
+  observation=pawn?{text:`An enemy pawn is ${word(distance(own,pawn.square))} king ${distance(own,pawn.square)===1?'step':'steps'} away.`,fact:{kind:'king-pawn-distance',square:pawn.square,king:own,distance:distance(own,pawn.square),color:foe}}:kingObservation(before,foe);
  }else if(topic==='blockCheck')observation={text:'An enemy line attack is giving check.',fact:{kind:'in-check',color:m.color}};
  else {const ep=pieces(before).find(p=>p.color===foe&&p.type!=='k');observation=ep?firstTarget(before,ep.square):kingObservation(before,foe);}
  if(['check','mate','doubleCheck','captureCheck','forkCheck'].includes(topic)){
@@ -403,7 +403,7 @@ function secondCue(a,before){
  if(topic==='contactCheck')return 'Look for a close check that keeps the pressure forcing.';
  if(topic==='pawnPush')return `Look for an advance that shortens the path to promotion.`;
  if(topic==='pawnSpace'){const afterTargets=pieces(a.after).filter(p=>p.color!==m.color&&attacks(a.after,{...a.after.get(m.to),square:m.to},p.square));if(afterTargets.length){const t=afterTargets.sort((p,q)=>VALUES[q.type]-VALUES[p.type])[0];return `Look for an advance that challenges the ${t.type==='p'?'small target':label(t.type)}.`;}return a.observation.fact.kind==='support-target'?'Look for an advance that adds support to the neighboring small target.':'Look for an advance that adds control to the empty entry.';}
- if(topic==='kingActivity')return `Look for an approach to the small target ${word(a.observation.fact.distance||1)} steps away.`;
+ if(topic==='kingActivity')return `Look for an approach to the small target ${word(a.observation.fact.distance||1)} ${(a.observation.fact.distance||1)===1?'step':'steps'} away.`;
  if(topic==='opposition')return 'Look for a step that contests the entry squares beside the opposing position.';
  if(topic==='escapeCheck')return 'Look for an escape that stays outside every enemy attack.';
  if(topic==='blockCheck')return 'Look for a block that closes the current checking line.';
