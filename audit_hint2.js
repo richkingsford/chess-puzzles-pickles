@@ -9,6 +9,7 @@
  * Single test:  node audit_hint2.js --hint "..." --category fork --url "..." --group 0
  */
 
+const { checkIndependentPrinciple } = require('./audit_principles');
 const fs   = require('fs');
 const path = require('path');
 const { Chess } = require('./game/node_modules/chess.js');
@@ -128,58 +129,7 @@ const OPENING_S2_BANNED = {
 
 // ── category → required keyword(s) in sentence 1 ─────────────────────────────
 
-const CATEGORY_KEYWORDS = {
-  'back-rank-mate':     ['back-rank', 'back rank', 'back row'],
-  'smothered-mate':     ['smothered'],
-  'anastasia-mate':     ['anastasia'],
-  'arabian-mate':       ['arabian'],
-  'bodens-mate':        ['boden'],
-  'double-bishop-mate': ['double-bishop', 'double bishop'],
-  'dovetail-mate':      ['dovetail'],
-  'hook-mate':          ['hook'],
-  'fork':               ['fork'],
-  'pin':                ['pin'],
-  'skewer':             ['skewer'],
-  'discovered-attack':  ['discover'],
-  'deflection':         ['deflect'],
-  'hanging-piece':      ['hanging', 'undefended', 'no defender'],
-  'trapped-piece':      ['trap'],
-  'attraction':         ['attract', 'lure'],
-  'clearance':          ['clearance', 'clear the way'],
-  'interference':       ['interfer'],
-  'intermezzo':         ['intermezzo', 'zwischenzug', 'in-between'],
-  'double-check':       ['double check', 'two checks'],
-  'x-ray-attack':       ['x-ray'],
-  'capturing-defender': ['captur', 'remov', 'eliminat'],
-  'sacrifice':          ['sacrific'],
-  'under-promotion':    ['under-promot', 'promote to'],
-  'en-passant':         ['en passant', 'en-passant'],
-  'castling':           ['castl'],
-  'zugzwang':           ['zugzwang'],
-  'advanced-pawn':      ['pawn', 'pass'],
-  'promotion':          ['promot', 'queen'],
-  'french-defense':     ['french'],
-  'ruy-lopez':          ['ruy lopez', 'ruy-lopez', 'spanish'],
-  'sicilian-defense':   ['sicilian'],
-  'caro-kann-defense':  ['caro-kann', 'caro kann'],
-  'italian-game':       ['italian'],
-  'queens-gambit-declined': ["queen's gambit", 'queens gambit'],
-  'philidor-defense':   ['philidor'],
-  'four-knights-defense': ['four knight', 'four-knight'],
-  'kings-gambit-accepted': ["king's gambit", 'kings gambit'],
-  'damiano-defense':    ['damiano'],
-  'vienna-game':        ['vienna'],
-  'pawn-endgame':       ['pawn endgame', 'only pawns', 'pawns and kings'],
-  'queen-endgame':      ['queen endgame'],
-  'knight-endgame':     ['knight endgame'],
-  'english-opening':    ['english'],
-  'scandinavian-defense': ['scandinavian'],
-  'scotch-game':        ['scotch'],
-  'modern-defense':     ['modern defense'],
-  'pirc-defense':       ['pirc'],
-  'rapport-jobava-system': ['rapport', 'jobava'],
-  'queen-rook-endgame': ['queen and rook', 'queen-rook'],
-};
+
 
 // ── sentence helpers ──────────────────────────────────────────────────────────
 
@@ -200,7 +150,7 @@ function getSentences(hint) {
  * @returns {Array<{code, detail}>}
  */
 function checkHint2(hint2, hint1, { category, game, move }) {
-  const failures = [];
+  const failures = checkIndependentPrinciple(hint2);
   const sentences = getSentences(hint2);
   const lower = String(hint2).toLowerCase();
 
@@ -255,19 +205,6 @@ function checkHint2(hint2, hint1, { category, game, move }) {
           detail: `sentence 2 must not name the opening — found "${hit}" (describe the board pattern instead)`,
         });
       }
-    }
-  }
-
-  // ── category must be named in sentence 1 ──
-
-  const keywords = CATEGORY_KEYWORDS[category];
-  if (keywords && sentences.length >= 1) {
-    const s1 = sentences[0].toLowerCase();
-    if (!keywords.some(kw => s1.includes(kw.toLowerCase()))) {
-      failures.push({
-        code: 'category-not-named',
-        detail: `sentence 1 must mention one of [${keywords.join(' / ')}]`,
-      });
     }
   }
 

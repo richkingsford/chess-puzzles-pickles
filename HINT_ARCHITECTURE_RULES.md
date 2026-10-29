@@ -89,8 +89,10 @@ Each three-hint group should reveal one player move in layers.
    in this position.
    Do not include square IDs, SAN notation, piece names, our-side language,
    or mid-sentence directives such as `play`, `move`, `compare`, or `trace`.
-3. **Hint 3 - Near-direct:** give a clear nudge toward the move type or key
-   square. This is the only hint in the group that may give the exact move id.
+3. **Hint 3 - Near-direct:** begin with an independent teaching principle,
+   then give a clear nudge toward the move type or key square. This is the
+   only hint in the group that may give the exact move id. Older one-sentence
+   `Play ...` hints need editorial revision under Rule 9.
 
 The progression resets for each player move. A later move's first hint can be
 subtle again because it belongs to a new board position.
@@ -156,7 +158,7 @@ Each hint should communicate exactly one instructional point.
   second.
 - Hint 2 uses exactly two brief sentences: principle restated 30% more
   directly first, opportunity nudge second.
-- Hint 3 uses one compact sentence.
+- Hint 3 teaches a principle first, then gives a compact near-direct cue.
 - Do not chain multiple instructions into one hint.
 - Do not include a move sequence in a single hint.
 - Avoid opponent-response-plus-follow-up wording in one hint.
@@ -215,8 +217,8 @@ word or phrase, replace it with something simpler.
   clauses.
 - In Hint 1, also avoid dash-heavy phrasing and dense connectors such as
   `because`, `although`, `however`, and `therefore`.
-- Use one sentence, except Hint 1 and Hint 2 in each `moveHints` group, which
-  use exactly two brief sentences.
+- Use two brief sentences: an independent principle followed by the board
+  clue or near-direct cue. Brevity must not remove the teaching content.
 
 Legacy validator: `audit_rule6_clear_short_phrasing.js`
 
@@ -233,6 +235,45 @@ move, not just the puzzle's opening position or category.
 
 Validator: `game/src/lib/puzzleHints.js` checks structured `moveHints` for
 wrong SAN references, repeated opening pairs, and known vague phrasing.
+
+## Rule 9: An Independent Teaching Principle Comes First
+
+The first sentence of **every hint, at every hint level and player move**, must
+state a correct, transferable chess principle. A reader without this board,
+the category label, or the next sentence must learn something useful from it.
+
+- Explain a mechanism, cause and effect, constraint, or tradeoff. Naming a
+  theme or saying that something can happen is not enough.
+- Keep the principle separate from the position-specific observation. A good
+  second sentence cannot rescue a first sentence that teaches nothing.
+- Reject vague possibilities such as `A defender can be drawn away from a
+  safe post.` This does not explain what attraction accomplishes.
+- Prefer `Attraction draws a piece onto a square where it becomes vulnerable.`
+  This teaches the mechanism without identifying this puzzle's move.
+- Do not turn the principle into an exact move instruction or a description
+  of this board. Reserve those details for the second sentence, with the
+  disclosure level appropriate to Hint 1, 2, or 3.
+- Accuracy matters: a tactic does not always win. Avoid unconditional claims
+  that a fork, sacrifice, promotion, or attack guarantees a win.
+- Brevity is secondary to teaching value. Remove filler, not the explanation.
+
+Semantic auditor: `npm run audit:principles` checks every structured hint
+(legacy hints only when structured hints are absent). `audit_hint1.js` and
+`audit_hint2.js` also call this check. The screenshot's weak sentence is an
+explicit rejection with code `principle-not-independent`.
+
+Semantic quality cannot be established by matching chess words. Exact first
+sentences need a recorded editorial verdict and reason in
+`audit/principle_reviews.json`. Unreviewed wording returns
+`principle-review-required`, not a pass. A bare move instruction returns
+`principle-missing`. An approved principle still needs the other rules and
+current-board relevance checks; approval of the lesson alone is not approval
+of the whole hint.
+
+The existing dataset has not yet completed this semantic review. The new
+auditor intentionally reports the review backlog, including old direct-only
+Hint 3s, rather than treating earlier structural passes as teaching approval.
+Regression checks: `npm run test:principles`.
 
 ## Category Trimming Before Regeneration
 

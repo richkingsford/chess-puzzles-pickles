@@ -1,0 +1,46 @@
+{
+  "A defender can be drawn away from a safe post": {
+    "status": "rejected",
+    "reason": "States a possibility without explaining a tactical mechanism or benefit."
+  },
+  "Attraction draws a piece onto a square where it becomes vulnerable": {
+    "status": "approved",
+    "reason": "Defines the tactic and explains why the destination matters without a board or move."
+  },
+  "A fork threatens two targets at once": {
+    "status": "approved",
+    "reason": "Defines the mechanism independently of a particular position."
+  },
+  "A pinned defender has less freedom to help": {
+    "status": "rejected",
+    "reason": "Does not explain why the defender cannot safely move or what the pin exposes."
+  },
+  "A pin limits a defender because moving it exposes a more valuable target": {
+    "status": "approved",
+    "reason": "Explains the constraint and its cause as a transferable chess relationship."
+  },
+  "A blocked line can hide an attack": {
+    "status": "rejected",
+    "reason": "Too broad to teach how clearing a line creates an attack."
+  },
+  "Moving a blocker can open a line for an attacker behind it": {
+    "status": "approved",
+    "reason": "Explains clearance through the relationship between blocker and attacker."
+  },
+  "Promotion is about what the position needs": {
+    "status": "rejected",
+    "reason": "Advice without explaining any promotion rule or tactical tradeoff."
+  },
+  "A smaller promotion can avoid stalemate or create a different attack": {
+    "status": "approved",
+    "reason": "Explains why choosing less than the strongest piece can be useful."
+  },
+  "King safety and open lines can work together": {
+    "status": "rejected",
+    "reason": "Names two concepts without explaining their relationship."
+  },
+  "Castling shelters the king and brings a corner piece toward open lines": {
+    "status": "approved",
+    "reason": "Explains both consequences of castling without relying on this board."
+  }
+}

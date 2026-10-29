@@ -10,7 +10,9 @@
     "analyze:puzzles": "node analyze_puzzles.js game/public/puzzles.json",
     "audit:categories": "node audit_category_trim_candidates.js",
     "audit:puzzles": "node audit_puzzles.js",
-    "test:puzzles": "npm --prefix game run test:puzzles"
+    "test:puzzles": "npm --prefix game run test:puzzles",
+    "audit:principles": "node audit_principles.js",
+    "test:principles": "node --test audit_principles.test.js"
   },
   "dependencies": {
     "playwright": "^1.58.1"
