@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Independent nine-rule audit using python-chess, not the JS hint generator.
+"""Independent ten-rule audit using python-chess, not the JS hint generator.
 Install python-chess, then run python audit_independent.py [dataset.json].
 This verifies recorded board claims and tactical preconditions independently;
 semantic approval of the lesson prose is a separate editorial requirement.
@@ -17,6 +17,9 @@ ROOT = Path(__file__).resolve().parent
 
 def initial_fen(url):
     return unquote(url.split('/analysis/')[1].split('?')[0].removeprefix('standard/')).replace('_', ' ')
+
+def normalize_concept(text):
+    return re.sub(r'\s+', ' ', text.lower().replace('’', "'").replace('-', ' ').replace('_', ' ')).strip()
 
 def sentences(text):
     return [s.strip() for s in re.split(r'[.!?]+', text) if s.strip()]
@@ -63,17 +66,24 @@ def audit(dataset, evidence, reviews):
                     verdict=reviews.get(parts[0],{})
                     if verdict.get('status')!='approved' or not verdict.get('reason'):fail(9,'unreviewed-principle',c,u,mi,hint=hi+1)
                     context=evidence_index.get((c,u,mi))
-                    if context and verdict.get('topics') and context['topic'] not in verdict['topics']:fail(8,'principle-for-different-move-role',c,u,mi,hint=hi+1)
+                    primary=p.get('tags',[None])[0]
+                    primary_context=mi==1 and primary in verdict.get('primaryTags',[]) and bool(verdict.get('conceptName')) and normalize_concept(verdict['conceptName']) in normalize_concept(parts[0])
+                    if mi==1 and not primary_context:fail(10,'opening-principle-primary-tag-mismatch',c,u,mi,hint=hi+1,primaryTag=primary)
+                    style_first=normalize_concept(parts[0])
+                    if primary_context:style_first=style_first.replace(normalize_concept(verdict['conceptName']),'',1)
+                    style_hint=style_first+'. '+'. '.join(parts[1:])
+                    if context and not primary_context and verdict.get('topics') and context['topic'] not in verdict['topics']:fail(8,'principle-for-different-move-role',c,u,mi,hint=hi+1)
                     if re.search(r'\b(?:always|guarantees|wins because|will win)\b',parts[0],re.I):fail(9,'unconditional-win-claim',c,u,mi,hint=hi+1)
                     if hi<2 and re.search(r'\b[a-h][1-8]\b',hint):fail(4,'early-square',c,u,mi,hint=hi+1)
                     if hi<2 and re.search(r'\b(?:your|our|my)\b',hint,re.I):fail(2,'early-own-side',c,u,mi,hint=hi+1)
                     if hi==0:
+                        if re.search(r'\bfork\b.*\bking\b|\bking\b.*\bfork\b|\bchecking fork\b|\bL-shaped\b|\bone (?:knight )?jump\b',parts[0],re.I):fail(2,'hint1-over-specific-principle',c,u,mi)
                         if len(hint.split())>30 or (len(parts)>1 and len(parts[1].split())>12):fail(7,'hint1-too-long',c,u,mi)
-                        if re.search(r'\b(?:queen|rook|bishop|knight|L-shaped|\d+[ -]?point)\b',hint,re.I):fail(2,'hint1-piece-spoiler',c,u,mi)
+                        if re.search(r'\b(?:queen|rook|bishop|knight|L-shaped|\d+[ -]?point)\b',style_hint,re.I):fail(2,'hint1-piece-spoiler',c,u,mi)
                         if len(parts)>1 and re.match(r'(?:Play|Move|Look for|Use|Try)\b',parts[1]):fail(2,'hint1-gives-instruction',c,u,mi)
                     if hi==1:
                         if len(parts)>1 and not parts[1].startswith('Look for '):fail(2,'hint2-no-search-cue',c,u,mi)
-                        if re.search(r'\b(?:king|queen|rook|bishop|knight|pawn)\b',hint,re.I):fail(2,'hint2-piece-name',c,u,mi)
+                        if re.search(r'\b(?:king|queen|rook|bishop|knight|pawn)\b',style_hint,re.I):fail(2,'hint2-piece-name',c,u,mi)
                     if re.search(r'[;:\n]',hint) or len(hint.split())>45:fail(7,'dense-phrasing',c,u,mi,hint=hi+1)
                 if len(group)==3 and (len(sentences(group[2]))!=2 or sentences(group[2])[-1]!=f'Play {san}'):
                     fail(8,'wrong-direct-move',c,u,mi)

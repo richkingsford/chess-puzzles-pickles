@@ -10,6 +10,7 @@
  */
 
 const { checkIndependentPrinciple } = require('./audit_principles');
+const { conceptMatches, checkFirstHintGenerality } = require('./audit_concept_rules.cjs');
 const fs   = require('fs');
 const path = require('path');
 const { Chess } = require('./game/node_modules/chess.js');
@@ -119,7 +120,7 @@ function getSentences(hint) {
  * @returns {Array<{code, detail}>}
  */
 function checkHint1(hint, { category, game, move }) {
-  const failures = checkIndependentPrinciple(hint);
+  const failures = [...checkIndependentPrinciple(hint), ...checkFirstHintGenerality(hint)];
   const sentences = getSentences(hint);
   const lower = String(hint).toLowerCase();
 
@@ -250,6 +251,7 @@ function runFullAudit(data) {
   entries.forEach(({ category, url, groupIndex, hint1, game, move }) => {
     total++;
     const failures = checkHint1(hint1, { category, game, move });
+    if(groupIndex===0&&!conceptMatches(hint1,data[category].puzzles[url].tags?.[0]))failures.push({code:'opening-principle-primary-tag-mismatch',detail:'Move-one principle must teach the actual first tag.'});
 
     // uniqueness: flag if this area clue is shared by 3+ puzzles in the category
     const sentences = getSentences(hint1);

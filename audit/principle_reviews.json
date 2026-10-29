@@ -48,10 +48,14 @@
   },
   "Attraction can draw a piece onto a square where it becomes vulnerable": {
     "status": "approved",
-    "reason": "Defines attraction as drawing a piece onto a vulnerable destination without guaranteeing success.",
+    "reason": "Teaches attraction through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
     "topics": [
       "attraction"
-    ]
+    ],
+    "primaryTags": [
+      "attraction"
+    ],
+    "conceptName": "attraction"
   },
   "An offered target can draw a defender into a new attack": {
     "status": "approved",
@@ -167,11 +171,8 @@
     ]
   },
   "A fork can threaten the king and another target at once": {
-    "status": "approved",
-    "reason": "Explains the two-target mechanism and priority of answering check.",
-    "topics": [
-      "forkCheck"
-    ]
+    "status": "rejected",
+    "reason": "Hint 1 gives away the royal target of a checking fork instead of teaching the general two-target mechanism."
   },
   "A checking fork forces a reply while a second target remains attacked": {
     "status": "approved",
@@ -198,6 +199,7 @@
     "status": "approved",
     "reason": "Explains the defensive time problem caused by two simultaneous threats.",
     "topics": [
+      "forkCheck",
       "fork"
     ]
   },
@@ -810,5 +812,1208 @@
     "topics": [
       "capture"
     ]
+  },
+  "A check can gain time by forcing a defensive reply": {
+    "status": "approved",
+    "reason": "Explains the forcing character of a nearby check without claiming an open slider line.",
+    "topics": [
+      "contactCheck"
+    ]
+  },
+  "Double check combines two attacks in the same turn": {
+    "status": "approved",
+    "reason": "Teaches double check through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "topics": [
+      "doubleCheck"
+    ],
+    "primaryTags": [
+      "double-check"
+    ],
+    "conceptName": "double check"
+  },
+  "A fork can threaten two targets at once": {
+    "status": "approved",
+    "reason": "Teaches fork through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "topics": [
+      "fork",
+      "forkCheck"
+    ],
+    "primaryTags": [
+      "fork"
+    ],
+    "conceptName": "fork"
+  },
+  "A forcing capture can gain material while making the defender respond": {
+    "status": "approved",
+    "reason": "Explains the combination of a material capture and a forced answer to check.",
+    "topics": [
+      "captureCheck"
+    ]
+  },
+  "Active endgame pieces can support an attack on weak pawns": {
+    "status": "approved",
+    "reason": "Explains the supporting and attacking role of the king in an endgame.",
+    "topics": [
+      "kingActivity"
+    ]
+  },
+  "Check must be answered before a slower plan can continue": {
+    "status": "approved",
+    "reason": "Explains the priority of resolving check and the need to avoid controlled squares.",
+    "topics": [
+      "escapeCheck"
+    ]
+  },
+  "Back-rank mate exploits a king trapped by its own shelter": {
+    "status": "approved",
+    "reason": "Teaches back-rank mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "back-rank-mate"
+    ],
+    "conceptName": "back-rank mate"
+  },
+  "Back-rank mate threats grow when escape is limited by friendly blockers": {
+    "status": "approved",
+    "reason": "Teaches back-rank mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "back-rank-mate"
+    ],
+    "conceptName": "back-rank mate"
+  },
+  "A back-rank mate plan turns restricted escape into forcing line pressure": {
+    "status": "approved",
+    "reason": "Teaches back-rank mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "back-rank-mate"
+    ],
+    "conceptName": "back-rank mate"
+  },
+  "Smothered mate uses crowded defenders to take away escape squares": {
+    "status": "approved",
+    "reason": "Teaches smothered mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "smothered-mate"
+    ],
+    "conceptName": "smothered mate"
+  },
+  "Smothered mate threats can turn friendly shelter into a cage": {
+    "status": "approved",
+    "reason": "Teaches smothered mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "smothered-mate"
+    ],
+    "conceptName": "smothered mate"
+  },
+  "A smothered mate plan uses blocked escapes to make a check decisive": {
+    "status": "approved",
+    "reason": "Teaches smothered mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "smothered-mate"
+    ],
+    "conceptName": "smothered mate"
+  },
+  "Anastasia mate combines an edge attack with covered escape squares": {
+    "status": "approved",
+    "reason": "Teaches Anastasia mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "anastasia-mate"
+    ],
+    "conceptName": "Anastasia mate"
+  },
+  "Anastasia mate pressure grows when line threats meet restricted exits": {
+    "status": "approved",
+    "reason": "Teaches Anastasia mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "anastasia-mate"
+    ],
+    "conceptName": "Anastasia mate"
+  },
+  "An Anastasia mate plan joins a clear edge line with control of escape": {
+    "status": "approved",
+    "reason": "Teaches Anastasia mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "anastasia-mate"
+    ],
+    "conceptName": "Anastasia mate"
+  },
+  "Arabian mate combines a line attack with control around a corner": {
+    "status": "approved",
+    "reason": "Teaches Arabian mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "arabian-mate"
+    ],
+    "conceptName": "Arabian mate"
+  },
+  "Arabian mate threats grow when coordinated attacks cover the remaining exits": {
+    "status": "approved",
+    "reason": "Teaches Arabian mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "arabian-mate"
+    ],
+    "conceptName": "Arabian mate"
+  },
+  "An Arabian mate plan uses mutual support to keep a cornered king trapped": {
+    "status": "approved",
+    "reason": "Teaches Arabian mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "arabian-mate"
+    ],
+    "conceptName": "Arabian mate"
+  },
+  "Boden's mate uses crossing diagonal attacks to limit escape": {
+    "status": "approved",
+    "reason": "Teaches Boden's mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "bodens-mate"
+    ],
+    "conceptName": "Boden's mate"
+  },
+  "Boden's mate threats grow when diagonal pressure closes several exits together": {
+    "status": "approved",
+    "reason": "Teaches Boden's mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "bodens-mate"
+    ],
+    "conceptName": "Boden's mate"
+  },
+  "A Boden's mate plan joins two diagonals around a crowded king": {
+    "status": "approved",
+    "reason": "Teaches Boden's mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "bodens-mate"
+    ],
+    "conceptName": "Boden's mate"
+  },
+  "Double-bishop mate combines diagonal pressure against limited escape squares": {
+    "status": "approved",
+    "reason": "Teaches double-bishop mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "double-bishop-mate"
+    ],
+    "conceptName": "double-bishop mate"
+  },
+  "Double-bishop mate threats use separate diagonals to restrict different exits": {
+    "status": "approved",
+    "reason": "Teaches double-bishop mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "double-bishop-mate"
+    ],
+    "conceptName": "double-bishop mate"
+  },
+  "A double-bishop mate plan uses diagonal control to deny escape and defense": {
+    "status": "approved",
+    "reason": "Teaches double-bishop mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "double-bishop-mate"
+    ],
+    "conceptName": "double-bishop mate"
+  },
+  "Dovetail mate uses a king's own guards to close nearby escapes": {
+    "status": "approved",
+    "reason": "Teaches dovetail mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "dovetail-mate"
+    ],
+    "conceptName": "dovetail mate"
+  },
+  "Dovetail mate threats turn nearby defenders into barriers to escape": {
+    "status": "approved",
+    "reason": "Teaches dovetail mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "dovetail-mate"
+    ],
+    "conceptName": "dovetail mate"
+  },
+  "A dovetail mate plan combines a supported check with crowded escape squares": {
+    "status": "approved",
+    "reason": "Teaches dovetail mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "dovetail-mate"
+    ],
+    "conceptName": "dovetail mate"
+  },
+  "Hook mate uses supported line attacks against a crowded king": {
+    "status": "approved",
+    "reason": "Teaches hook mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "hook-mate"
+    ],
+    "conceptName": "hook mate"
+  },
+  "Hook mate threats grow when support and restricted escape work together": {
+    "status": "approved",
+    "reason": "Teaches hook mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "hook-mate"
+    ],
+    "conceptName": "hook mate"
+  },
+  "A hook mate plan joins a protected checking point with control of escape": {
+    "status": "approved",
+    "reason": "Teaches hook mate through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "hook-mate"
+    ],
+    "conceptName": "hook mate"
+  },
+  "The French Defense often locks the center and shifts pressure to pawn chains": {
+    "status": "approved",
+    "reason": "Teaches French Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "french-defense"
+    ],
+    "conceptName": "French Defense"
+  },
+  "French Defense tension can loosen the guards that hold a closed position together": {
+    "status": "approved",
+    "reason": "Teaches French Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "french-defense"
+    ],
+    "conceptName": "French Defense"
+  },
+  "French Defense exchanges can open lines that a locked pawn chain had closed": {
+    "status": "approved",
+    "reason": "Teaches French Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "french-defense"
+    ],
+    "conceptName": "French Defense"
+  },
+  "The Ruy Lopez builds pressure by challenging the support of key defenders": {
+    "status": "approved",
+    "reason": "Teaches Ruy Lopez through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "ruy-lopez"
+    ],
+    "conceptName": "Ruy Lopez"
+  },
+  "Ruy Lopez pressure can turn a defender's extra duty into a tactical weakness": {
+    "status": "approved",
+    "reason": "Teaches Ruy Lopez through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "ruy-lopez"
+    ],
+    "conceptName": "Ruy Lopez"
+  },
+  "In the Ruy Lopez, forcing threats can convert lasting pressure into material gains": {
+    "status": "approved",
+    "reason": "Teaches Ruy Lopez through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "ruy-lopez"
+    ],
+    "conceptName": "Ruy Lopez"
+  },
+  "The Sicilian Defense creates uneven pawn structures that can open attacking chances": {
+    "status": "approved",
+    "reason": "Teaches Sicilian Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "sicilian-defense"
+    ],
+    "conceptName": "Sicilian Defense"
+  },
+  "Sicilian Defense imbalances can give active pieces targets that passive play would miss": {
+    "status": "approved",
+    "reason": "Teaches Sicilian Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "sicilian-defense"
+    ],
+    "conceptName": "Sicilian Defense"
+  },
+  "Sicilian Defense exchanges can open files toward exposed pieces": {
+    "status": "approved",
+    "reason": "Teaches Sicilian Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "sicilian-defense"
+    ],
+    "conceptName": "Sicilian Defense"
+  },
+  "The Caro-Kann Defense supports a solid pawn chain that still needs active guards": {
+    "status": "approved",
+    "reason": "Teaches Caro-Kann Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "caro-kann-defense"
+    ],
+    "conceptName": "Caro-Kann Defense"
+  },
+  "Caro-Kann Defense solidity depends on defenders staying active and connected": {
+    "status": "approved",
+    "reason": "Teaches Caro-Kann Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "caro-kann-defense"
+    ],
+    "conceptName": "Caro-Kann Defense"
+  },
+  "In the Caro-Kann Defense, exchanges can expose pieces behind the pawn structure": {
+    "status": "approved",
+    "reason": "Teaches Caro-Kann Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "caro-kann-defense"
+    ],
+    "conceptName": "Caro-Kann Defense"
+  },
+  "The Italian Game uses quick development to build pressure near the enemy king": {
+    "status": "approved",
+    "reason": "Teaches Italian Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "italian-game"
+    ],
+    "conceptName": "Italian Game"
+  },
+  "Italian Game activity can turn open lines into forcing threats": {
+    "status": "approved",
+    "reason": "Teaches Italian Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "italian-game"
+    ],
+    "conceptName": "Italian Game"
+  },
+  "An Italian Game attack can grow when development brings several pieces into play": {
+    "status": "approved",
+    "reason": "Teaches Italian Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "italian-game"
+    ],
+    "conceptName": "Italian Game"
+  },
+  "The Queen's Gambit Declined keeps central tension while development adds pressure": {
+    "status": "approved",
+    "reason": "Teaches Queen's Gambit Declined through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queens-gambit-declined"
+    ],
+    "conceptName": "Queen's Gambit Declined"
+  },
+  "Queen's Gambit Declined tension can leave one guard responsible for several targets": {
+    "status": "approved",
+    "reason": "Teaches Queen's Gambit Declined through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queens-gambit-declined"
+    ],
+    "conceptName": "Queen's Gambit Declined"
+  },
+  "In the Queen's Gambit Declined, exchanges can change which pieces hold the center": {
+    "status": "approved",
+    "reason": "Teaches Queen's Gambit Declined through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queens-gambit-declined"
+    ],
+    "conceptName": "Queen's Gambit Declined"
+  },
+  "The English Opening uses flexible pawn control to prepare pressure on weak squares": {
+    "status": "approved",
+    "reason": "Teaches English Opening through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "english-opening"
+    ],
+    "conceptName": "English Opening"
+  },
+  "English Opening flexibility can turn a change in structure into a new attack": {
+    "status": "approved",
+    "reason": "Teaches English Opening through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "english-opening"
+    ],
+    "conceptName": "English Opening"
+  },
+  "An English Opening plan uses control of key squares before committing to a break": {
+    "status": "approved",
+    "reason": "Teaches English Opening through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "english-opening"
+    ],
+    "conceptName": "English Opening"
+  },
+  "The Philidor Defense holds a compact center but can leave pieces short of room": {
+    "status": "approved",
+    "reason": "Teaches Philidor Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "philidor-defense"
+    ],
+    "conceptName": "Philidor Defense"
+  },
+  "Philidor Defense pieces need active squares so compact shelter does not become a trap": {
+    "status": "approved",
+    "reason": "Teaches Philidor Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "philidor-defense"
+    ],
+    "conceptName": "Philidor Defense"
+  },
+  "In the Philidor Defense, exchanges can free cramped pieces or expose their guards": {
+    "status": "approved",
+    "reason": "Teaches Philidor Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "philidor-defense"
+    ],
+    "conceptName": "Philidor Defense"
+  },
+  "The Scandinavian Defense opens the center early and makes active development important": {
+    "status": "approved",
+    "reason": "Teaches Scandinavian Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "scandinavian-defense"
+    ],
+    "conceptName": "Scandinavian Defense"
+  },
+  "Scandinavian Defense development can punish a piece that advances without enough support": {
+    "status": "approved",
+    "reason": "Teaches Scandinavian Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "scandinavian-defense"
+    ],
+    "conceptName": "Scandinavian Defense"
+  },
+  "In the Scandinavian Defense, open central lines can make loose pieces important targets": {
+    "status": "approved",
+    "reason": "Teaches Scandinavian Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "scandinavian-defense"
+    ],
+    "conceptName": "Scandinavian Defense"
+  },
+  "The Scotch Game opens central lines and rewards quick development": {
+    "status": "approved",
+    "reason": "Teaches Scotch Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "scotch-game"
+    ],
+    "conceptName": "Scotch Game"
+  },
+  "Scotch Game activity can exploit a loose defender on an open line": {
+    "status": "approved",
+    "reason": "Teaches Scotch Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "scotch-game"
+    ],
+    "conceptName": "Scotch Game"
+  },
+  "In the Scotch Game, central exchanges can reveal targets before development is finished": {
+    "status": "approved",
+    "reason": "Teaches Scotch Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "scotch-game"
+    ],
+    "conceptName": "Scotch Game"
+  },
+  "The Modern Defense lets opposing pawns advance before challenging their support": {
+    "status": "approved",
+    "reason": "Teaches Modern Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "modern-defense"
+    ],
+    "conceptName": "Modern Defense"
+  },
+  "Modern Defense counterplay can turn a large structure into a target": {
+    "status": "approved",
+    "reason": "Teaches Modern Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "modern-defense"
+    ],
+    "conceptName": "Modern Defense"
+  },
+  "Modern Defense breaks can release cramped pieces while attacking the opposing center": {
+    "status": "approved",
+    "reason": "Teaches Modern Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "modern-defense"
+    ],
+    "conceptName": "Modern Defense"
+  },
+  "The Four Knights Defense develops medium pieces quickly to contest useful squares": {
+    "status": "approved",
+    "reason": "Teaches Four Knights Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "four-knights-defense"
+    ],
+    "conceptName": "Four Knights Defense"
+  },
+  "Four Knights Defense development can expose targets when active pieces lose support": {
+    "status": "approved",
+    "reason": "Teaches Four Knights Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "four-knights-defense"
+    ],
+    "conceptName": "Four Knights Defense"
+  },
+  "In the Four Knights Defense, coordination helps convert development into threats": {
+    "status": "approved",
+    "reason": "Teaches Four Knights Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "four-knights-defense"
+    ],
+    "conceptName": "Four Knights Defense"
+  },
+  "The King's Gambit Accepted trades a pawn for open lines and faster development": {
+    "status": "approved",
+    "reason": "Teaches King's Gambit Accepted through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "kings-gambit-accepted"
+    ],
+    "conceptName": "King's Gambit Accepted"
+  },
+  "King's Gambit Accepted positions balance extra material against faster attacking play": {
+    "status": "approved",
+    "reason": "Teaches King's Gambit Accepted through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "kings-gambit-accepted"
+    ],
+    "conceptName": "King's Gambit Accepted"
+  },
+  "In the King's Gambit Accepted, active development can matter more than keeping a pawn": {
+    "status": "approved",
+    "reason": "Teaches King's Gambit Accepted through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "kings-gambit-accepted"
+    ],
+    "conceptName": "King's Gambit Accepted"
+  },
+  "The Pirc Defense allows a broad pawn center before seeking counterplay against it": {
+    "status": "approved",
+    "reason": "Teaches Pirc Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pirc-defense"
+    ],
+    "conceptName": "Pirc Defense"
+  },
+  "Pirc Defense counterplay can challenge the support of an advancing structure": {
+    "status": "approved",
+    "reason": "Teaches Pirc Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pirc-defense"
+    ],
+    "conceptName": "Pirc Defense"
+  },
+  "In the Pirc Defense, active counterplay can reveal targets left by a broad center": {
+    "status": "approved",
+    "reason": "Teaches Pirc Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pirc-defense"
+    ],
+    "conceptName": "Pirc Defense"
+  },
+  "The Damiano Defense weakens king shelter when early pawn moves delay development": {
+    "status": "approved",
+    "reason": "Teaches Damiano Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "damiano-defense"
+    ],
+    "conceptName": "Damiano Defense"
+  },
+  "Damiano Defense weaknesses can let forcing threats outrun slower development": {
+    "status": "approved",
+    "reason": "Teaches Damiano Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "damiano-defense"
+    ],
+    "conceptName": "Damiano Defense"
+  },
+  "In the Damiano Defense, weak diagonals can make king safety more urgent than material": {
+    "status": "approved",
+    "reason": "Teaches Damiano Defense through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "damiano-defense"
+    ],
+    "conceptName": "Damiano Defense"
+  },
+  "The Rapport-Jobava System uses fast development to pressure unstable defenses": {
+    "status": "approved",
+    "reason": "Teaches Rapport-Jobava System through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "rapport-jobava-system"
+    ],
+    "conceptName": "Rapport-Jobava System"
+  },
+  "Rapport-Jobava System coordination can turn an active post into a forcing threat": {
+    "status": "approved",
+    "reason": "Teaches Rapport-Jobava System through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "rapport-jobava-system"
+    ],
+    "conceptName": "Rapport-Jobava System"
+  },
+  "In the Rapport-Jobava System, coordinated pieces can exploit loose guards before they regroup": {
+    "status": "approved",
+    "reason": "Teaches Rapport-Jobava System through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "rapport-jobava-system"
+    ],
+    "conceptName": "Rapport-Jobava System"
+  },
+  "The Vienna Game combines development with pawn support for an early attack": {
+    "status": "approved",
+    "reason": "Teaches Vienna Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "vienna-game"
+    ],
+    "conceptName": "Vienna Game"
+  },
+  "Vienna Game activity can make weak guards important before development is finished": {
+    "status": "approved",
+    "reason": "Teaches Vienna Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "vienna-game"
+    ],
+    "conceptName": "Vienna Game"
+  },
+  "In the Vienna Game, coordinated development can turn control of key squares into threats": {
+    "status": "approved",
+    "reason": "Teaches Vienna Game through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "vienna-game"
+    ],
+    "conceptName": "Vienna Game"
+  },
+  "Zugzwang makes the need to move a weakness when every choice loses ground": {
+    "status": "approved",
+    "reason": "Teaches zugzwang through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "zugzwang"
+    ],
+    "conceptName": "zugzwang"
+  },
+  "In zugzwang, a waiting step can make the defender break a useful restriction": {
+    "status": "approved",
+    "reason": "Teaches zugzwang through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "zugzwang"
+    ],
+    "conceptName": "zugzwang"
+  },
+  "Zugzwang plans preserve useful restrictions until the opponent must give one up": {
+    "status": "approved",
+    "reason": "Teaches zugzwang through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "zugzwang"
+    ],
+    "conceptName": "zugzwang"
+  },
+  "A pawn endgame rewards king activity and careful timing in the race to promote": {
+    "status": "approved",
+    "reason": "Teaches pawn endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pawn-endgame"
+    ],
+    "conceptName": "pawn endgame"
+  },
+  "Pawn endgame timing can turn one spare turn into a lasting advantage": {
+    "status": "approved",
+    "reason": "Teaches pawn endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pawn-endgame"
+    ],
+    "conceptName": "pawn endgame"
+  },
+  "In a pawn endgame, winning a tempo can change who reaches a key square": {
+    "status": "approved",
+    "reason": "Teaches pawn endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pawn-endgame"
+    ],
+    "conceptName": "pawn endgame"
+  },
+  "A queen endgame rewards active threats that give the opposing king little rest": {
+    "status": "approved",
+    "reason": "Teaches queen endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queen-endgame"
+    ],
+    "conceptName": "queen endgame"
+  },
+  "Queen endgame threats can force defense before a passed piece can be stopped": {
+    "status": "approved",
+    "reason": "Teaches queen endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queen-endgame"
+    ],
+    "conceptName": "queen endgame"
+  },
+  "In a queen endgame, a checking threat can outweigh a small material edge": {
+    "status": "approved",
+    "reason": "Teaches queen endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queen-endgame"
+    ],
+    "conceptName": "queen endgame"
+  },
+  "A queen-rook endgame rewards coordinated threats along open lines": {
+    "status": "approved",
+    "reason": "Teaches queen-rook endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queen-rook-endgame"
+    ],
+    "conceptName": "queen-rook endgame"
+  },
+  "Queen-rook endgame coordination can stretch a defense across several lines": {
+    "status": "approved",
+    "reason": "Teaches queen-rook endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queen-rook-endgame"
+    ],
+    "conceptName": "queen-rook endgame"
+  },
+  "In a queen-rook endgame, active checks can matter more than passive shelter": {
+    "status": "approved",
+    "reason": "Teaches queen-rook endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "queen-rook-endgame"
+    ],
+    "conceptName": "queen-rook endgame"
+  },
+  "An advanced pawn can tie down defenders by threatening promotion": {
+    "status": "approved",
+    "reason": "Teaches advanced pawn through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "advanced-pawn"
+    ],
+    "conceptName": "advanced pawn"
+  },
+  "An advanced-pawn threat can divert guards from other targets": {
+    "status": "approved",
+    "reason": "Teaches advanced pawn through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "advanced-pawn"
+    ],
+    "conceptName": "advanced pawn"
+  },
+  "An advanced pawn can create threats while defenders worry about its promotion": {
+    "status": "approved",
+    "reason": "Teaches advanced pawn through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "advanced-pawn"
+    ],
+    "conceptName": "advanced pawn"
+  },
+  "A knight endgame needs coordinated king and pawn support against distant threats": {
+    "status": "approved",
+    "reason": "Teaches knight endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "knight-endgame"
+    ],
+    "conceptName": "knight endgame"
+  },
+  "Knight endgame targets can be hard to save when short-range defenders are separated": {
+    "status": "approved",
+    "reason": "Teaches knight endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "knight-endgame"
+    ],
+    "conceptName": "knight endgame"
+  },
+  "In a knight endgame, a spare tempo can decide whether a passer is stopped": {
+    "status": "approved",
+    "reason": "Teaches knight endgame through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "knight-endgame"
+    ],
+    "conceptName": "knight endgame"
+  },
+  "A pin can tie a defender to something more valuable behind it": {
+    "status": "approved",
+    "reason": "Teaches pin through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pin"
+    ],
+    "conceptName": "pin"
+  },
+  "A pin can make a guard unable to help with another threat": {
+    "status": "approved",
+    "reason": "Teaches pin through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pin"
+    ],
+    "conceptName": "pin"
+  },
+  "Pin pressure can make a defender choose between losing its guard duty and material": {
+    "status": "approved",
+    "reason": "Teaches pin through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "pin"
+    ],
+    "conceptName": "pin"
+  },
+  "A fork can leave too little time to protect both targets": {
+    "status": "approved",
+    "reason": "Teaches fork through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "fork"
+    ],
+    "conceptName": "fork"
+  },
+  "A fork gains force when saving one target leaves the other exposed": {
+    "status": "approved",
+    "reason": "Teaches fork through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "fork"
+    ],
+    "conceptName": "fork"
+  },
+  "A discovered attack reveals pressure by moving a blocker out of the way": {
+    "status": "approved",
+    "reason": "Teaches discovered attack through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "discovered-attack"
+    ],
+    "conceptName": "discovered attack"
+  },
+  "A discovered attack can release one threat while the moving blocker creates another": {
+    "status": "approved",
+    "reason": "Teaches discovered attack through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "discovered-attack"
+    ],
+    "conceptName": "discovered attack"
+  },
+  "Discovered attack plans use the blocker and the hidden attacker for separate duties": {
+    "status": "approved",
+    "reason": "Teaches discovered attack through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "discovered-attack"
+    ],
+    "conceptName": "discovered attack"
+  },
+  "A skewer attacks a valuable target while another waits on the same line": {
+    "status": "approved",
+    "reason": "Teaches skewer through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "skewer"
+    ],
+    "conceptName": "skewer"
+  },
+  "A skewer can expose the next target when the first must move away": {
+    "status": "approved",
+    "reason": "Teaches skewer through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "skewer"
+    ],
+    "conceptName": "skewer"
+  },
+  "Skewer pressure uses a forcing threat to uncover material along a shared line": {
+    "status": "approved",
+    "reason": "Teaches skewer through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "skewer"
+    ],
+    "conceptName": "skewer"
+  },
+  "Double check cannot be answered by stopping only one of the attacks": {
+    "status": "approved",
+    "reason": "Teaches double check through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "double-check"
+    ],
+    "conceptName": "double check"
+  },
+  "A double check leaves a king needing an escape rather than a single block": {
+    "status": "approved",
+    "reason": "Teaches double check through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "double-check"
+    ],
+    "conceptName": "double check"
+  },
+  "Attraction can use an offered target to draw a defender into a new attack": {
+    "status": "approved",
+    "reason": "Teaches attraction through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "attraction"
+    ],
+    "conceptName": "attraction"
+  },
+  "An attraction plan changes a defender's square so a later threat can reach it": {
+    "status": "approved",
+    "reason": "Teaches attraction through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "attraction"
+    ],
+    "conceptName": "attraction"
+  },
+  "An x-ray attack keeps pressure on a target through an intervening piece": {
+    "status": "approved",
+    "reason": "Teaches x-ray attack through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "x-ray-attack"
+    ],
+    "conceptName": "x-ray attack"
+  },
+  "An x-ray attack can grow stronger when a blocker leaves its line": {
+    "status": "approved",
+    "reason": "Teaches x-ray attack through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "x-ray-attack"
+    ],
+    "conceptName": "x-ray attack"
+  },
+  "X-ray attack pressure can survive an exchange because another attacker remains on the line": {
+    "status": "approved",
+    "reason": "Teaches x-ray attack through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "x-ray-attack"
+    ],
+    "conceptName": "x-ray attack"
+  },
+  "Deflection can draw a guard away from something it needs to protect": {
+    "status": "approved",
+    "reason": "Teaches deflection through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "deflection"
+    ],
+    "conceptName": "deflection"
+  },
+  "Deflection can make one defender abandon a duty to meet a new threat": {
+    "status": "approved",
+    "reason": "Teaches deflection through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "deflection"
+    ],
+    "conceptName": "deflection"
+  },
+  "A deflection plan uses competing duties to loosen the protection of a target": {
+    "status": "approved",
+    "reason": "Teaches deflection through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "deflection"
+    ],
+    "conceptName": "deflection"
+  },
+  "A hanging piece has too little protection and can become a tactical target": {
+    "status": "approved",
+    "reason": "Teaches hanging piece through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "hanging-piece"
+    ],
+    "conceptName": "hanging piece"
+  },
+  "A hanging piece can be lost when its side must answer another threat": {
+    "status": "approved",
+    "reason": "Teaches hanging piece through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "hanging-piece"
+    ],
+    "conceptName": "hanging piece"
+  },
+  "Hanging piece tactics compare the target's protection with the cost of taking it": {
+    "status": "approved",
+    "reason": "Teaches hanging piece through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "hanging-piece"
+    ],
+    "conceptName": "hanging piece"
+  },
+  "A sacrifice can trade material for time, open lines, or a stronger attack": {
+    "status": "approved",
+    "reason": "Teaches sacrifice through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "sacrifice"
+    ],
+    "conceptName": "sacrifice"
+  },
+  "A sacrifice can make a defender change its duties before the attack continues": {
+    "status": "approved",
+    "reason": "Teaches sacrifice through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "sacrifice"
+    ],
+    "conceptName": "sacrifice"
+  },
+  "A sacrifice is useful when the resulting threats outweigh the material given up": {
+    "status": "approved",
+    "reason": "Teaches sacrifice through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "sacrifice"
+    ],
+    "conceptName": "sacrifice"
+  },
+  "Interference can weaken a defense by blocking the link between its pieces": {
+    "status": "approved",
+    "reason": "Teaches interference through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "interference"
+    ],
+    "conceptName": "interference"
+  },
+  "Interference can cut a guard's line without capturing the guard itself": {
+    "status": "approved",
+    "reason": "Teaches interference through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "interference"
+    ],
+    "conceptName": "interference"
+  },
+  "An interference plan separates a target from the piece that supports it": {
+    "status": "approved",
+    "reason": "Teaches interference through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "interference"
+    ],
+    "conceptName": "interference"
+  },
+  "A trapped piece can be lost when its safe escape squares disappear": {
+    "status": "approved",
+    "reason": "Teaches trapped piece through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "trapped-piece"
+    ],
+    "conceptName": "trapped piece"
+  },
+  "A trapped piece becomes easier to attack when its retreats are restricted": {
+    "status": "approved",
+    "reason": "Teaches trapped piece through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "trapped-piece"
+    ],
+    "conceptName": "trapped piece"
+  },
+  "Trapped piece tactics combine pressure on the target with control of its exits": {
+    "status": "approved",
+    "reason": "Teaches trapped piece through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "trapped-piece"
+    ],
+    "conceptName": "trapped piece"
+  },
+  "Capturing the defender can leave its target without enough protection": {
+    "status": "approved",
+    "reason": "Teaches capturing the defender through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "capturing-defender"
+    ],
+    "conceptName": "capturing the defender"
+  },
+  "Capturing the defender can weaken a target before that target is attacked directly": {
+    "status": "approved",
+    "reason": "Teaches capturing the defender through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "capturing-defender"
+    ],
+    "conceptName": "capturing the defender"
+  },
+  "Capturing the defender changes the support available to the pieces it guarded": {
+    "status": "approved",
+    "reason": "Teaches capturing the defender through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "capturing-defender"
+    ],
+    "conceptName": "capturing the defender"
+  },
+  "Clearance can improve an attack by removing a blocker from a useful line": {
+    "status": "approved",
+    "reason": "Teaches clearance through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "clearance"
+    ],
+    "conceptName": "clearance"
+  },
+  "Clearance can free a route while the moving piece creates a separate threat": {
+    "status": "approved",
+    "reason": "Teaches clearance through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "clearance"
+    ],
+    "conceptName": "clearance"
+  },
+  "A clearance plan makes a line available to an attacker that could not use it before": {
+    "status": "approved",
+    "reason": "Teaches clearance through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "clearance"
+    ],
+    "conceptName": "clearance"
+  },
+  "An intermezzo inserts an urgent threat before the expected reply": {
+    "status": "approved",
+    "reason": "Teaches intermezzo through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "intermezzo"
+    ],
+    "conceptName": "intermezzo"
+  },
+  "An intermezzo can gain time by making a new threat more urgent than a recapture": {
+    "status": "approved",
+    "reason": "Teaches intermezzo through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "intermezzo"
+    ],
+    "conceptName": "intermezzo"
+  },
+  "An intermezzo changes the order of play so a forcing threat is handled first": {
+    "status": "approved",
+    "reason": "Teaches intermezzo through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "intermezzo"
+    ],
+    "conceptName": "intermezzo"
+  },
+  "En passant allows a passing capture immediately after a two-square pawn advance": {
+    "status": "approved",
+    "reason": "Teaches en passant through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "en-passant"
+    ],
+    "conceptName": "en passant"
+  },
+  "En passant rights disappear if another reply is chosen first": {
+    "status": "approved",
+    "reason": "Teaches en passant through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "en-passant"
+    ],
+    "conceptName": "en passant"
+  },
+  "En passant can remove a neighboring pawn and change an important attack line": {
+    "status": "approved",
+    "reason": "Teaches en passant through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "en-passant"
+    ],
+    "conceptName": "en passant"
+  },
+  "Under-promotion can create a useful attack without choosing the most valuable piece": {
+    "status": "approved",
+    "reason": "Teaches under-promotion through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "under-promotion"
+    ],
+    "conceptName": "under-promotion"
+  },
+  "Under-promotion changes the available threats rather than simply maximizing material value": {
+    "status": "approved",
+    "reason": "Teaches under-promotion through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "under-promotion"
+    ],
+    "conceptName": "under-promotion"
+  },
+  "Under-promotion can avoid stalemate or create an attack that a different choice would miss": {
+    "status": "approved",
+    "reason": "Teaches under-promotion through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "under-promotion"
+    ],
+    "conceptName": "under-promotion"
+  },
+  "Castling can improve king shelter while bringing a corner piece into play": {
+    "status": "approved",
+    "reason": "Teaches castling through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "castling"
+    ],
+    "conceptName": "castling"
+  },
+  "Castling combines safer shelter with activity from a second piece": {
+    "status": "approved",
+    "reason": "Teaches castling through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "castling"
+    ],
+    "conceptName": "castling"
+  },
+  "Castling can connect a safety plan with pressure along a newly useful line": {
+    "status": "approved",
+    "reason": "Teaches castling through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.",
+    "primaryTags": [
+      "castling"
+    ],
+    "conceptName": "castling"
   }
 }

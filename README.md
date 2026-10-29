@@ -20,6 +20,7 @@ In short, our current hint direction is:
 7. Clear, short phrasing.
 8. Clues verified on the board before the current player move.
 9. An independent teaching principle at the start of every hint.
+10. Move-one principles clearly teach the first tag; later moves stay local.
 
 Before regenerating hints, use the category trim report to find weak or
 redundant categories:
@@ -36,6 +37,9 @@ npm run audit:hints
 npm run test:principles
 npm run test:move-hints
 ```
+
+The current combined audit report is `audit/final_hint_rules.json`; earlier
+nine-rule reports are historical snapshots.
 
 ## Common Commands
 

@@ -1,4 +1,6 @@
 import { readFileSync } from 'fs';
+import { createRequire } from 'node:module';
+const { stylePrinciple } = createRequire(import.meta.url)('../../audit_concept_rules.cjs');
 import { describe, test, expect } from 'vitest';
 import {
   auditPuzzlesData,
@@ -25,7 +27,7 @@ describe('Puzzle dataset audit', () => {
           expect(sentences, label).toHaveLength(2);
           expect(sentences[1].split(/\s+/).length, label).toBeLessThanOrEqual(12);
           expect(hint.split(/\s+/).length, label).toBeLessThanOrEqual(30);
-          expect(hint, label).not.toMatch(forbidden);
+          expect([stylePrinciple(hint, puzzle.tags[0], move), ...sentences.slice(1)].join('. '), label).not.toMatch(forbidden);
         }
       }
     }

@@ -6,6 +6,7 @@ const path = require('path');
 const { Chess } = require('../game/node_modules/chess.js');
 const root = path.resolve(__dirname, '..');
 const datasetPath = path.join(root, 'game/public/puzzles.json');
+const primaryLessons = require('../audit/primary_concept_lessons.json');
 const VALUES = {p:1,n:3,b:3,r:5,q:9,k:100};
 const FILES = 'abcdefgh';
 const lessons = {
@@ -30,22 +31,22 @@ const lessons = {
     'An open checking line can keep an exposed king under pressure.'
   ],
   contactCheck: [
-    'A close checking threat can force the enemy to spend time defending.',
+    'A check can gain time by forcing a defensive reply.',
     'A check must be answered before a separate threat can be handled.',
     'A checking move can keep the initiative by forcing an immediate reply.'
   ],
   doubleCheck: [
-    'Two checking attackers leave the king unable to answer just one threat.',
+    'Double check combines two attacks in the same turn.',
     'Double check requires an escape rather than a single block or capture.',
     'Uncovering one checking line can let a second attacker join the check.'
   ],
   forkCheck: [
-    'A fork can threaten the king and another target at once.',
+    'A fork can threaten two targets at once.',
     'A checking fork forces a reply while a second target remains attacked.',
     'A checked king must answer check before another attacked piece is saved.'
   ],
   fork: [
-    'A fork threatens two targets at once and can stretch the defense.',
+    'A fork can threaten two targets at once.',
     'A double attack can leave too little time to protect both targets.',
     'A move attacking two pieces can make the defender choose which to save.'
   ],
@@ -55,7 +56,7 @@ const lessons = {
     "A capture's gain depends on both the target and any recapture."
   ],
   captureCheck: [
-    'A capture with check can gain material while forcing a reply.',
+    'A forcing capture can gain material while making the defender respond.',
     'A checking capture can keep the initiative during an exchange.',
     'Taking a target with check makes the defender answer the king threat.'
   ],
@@ -95,7 +96,7 @@ const lessons = {
     'A well-supported pawn advance can make an enemy position harder to defend.'
   ],
   kingActivity: [
-    'An active king can help attack weak pawns in an endgame.',
+    'Active endgame pieces can support an attack on weak pawns.',
     'A closer defender can support targets that distant pieces cannot reach.',
     'Improving king activity can turn nearby weak pawns into targets.'
   ],
@@ -130,7 +131,7 @@ const lessons = {
     'Lining up pressure can tie a defender to the target behind it.'
   ],
   escapeCheck: [
-    'A checked king must escape danger before another plan can continue.',
+    'Check must be answered before a slower plan can continue.',
     'A safe escape must avoid every square controlled by the opposing side.',
     'Escaping check can preserve material while keeping the game going.'
   ],
@@ -182,7 +183,7 @@ const alternatives = {
  escapeCheck:'A legal escape from check must avoid all opposing attacks.',
  contactCheck:'A check can keep the initiative by demanding an immediate answer.',
  pawnSpace:'An advancing pawn can take useful squares away from enemy pieces.',
- forkCheck:'A check can give a fork time to threaten its second target.',
+ forkCheck:'A double attack can leave too little time to protect both targets.',
  check:'Checking on an open line can stop a slower defensive plan.'
 };
 const notes = {
@@ -418,6 +419,7 @@ function rewrite(data){
   for(let i=0;i<moves.length;i++){
    if(i%2){board.move(moves[i]);continue;}
    const before=board.fen(),a=analyze(board,moves[i],moves[i+1],category,moves[i+2]),lesson=[...lessons[a.topic]];
+   if(i===0){const primary=puzzle.tags?.[0];if(!primaryLessons[primary])throw Error('Unreviewed primary concept: '+primary);lesson.splice(0,3,...primaryLessons[primary].principles);}
    let hints=[`${lesson[0]} ${a.observation.text}`,`${lesson[1]} ${secondCue(a,board)}`,`${lesson[2]} Play ${moves[i]}.`];
    if(groups.length&&hints[0]===groups.at(-1)[0]&&hints[1]===groups.at(-1)[1]){
     if(!alternatives[a.topic])throw Error('Review a distinct current-move lesson for '+a.topic);
@@ -444,7 +446,12 @@ if(require.main===module){
  // explanatory reasons recorded by topic rather than blindly approving data.
  const reviews=JSON.parse(fs.readFileSync(path.join(root,'audit/principle_reviews.json'),'utf8'));
  for(const [topic,text] of Object.entries(alternatives))reviews[text.replace(/\.$/,'')]={status:'approved',reason:notes[topic]+' Gives an additional teaching emphasis for a later move.',topics:[topic]};
- for(const [topic,triplet] of Object.entries(lessons))for(const text of triplet)reviews[text.replace(/\.$/,'')]={status:'approved',reason:notes[topic],topics:[topic]};
+ for(const [topic,triplet] of Object.entries(lessons))for(const text of triplet){const key=text.replace(/\.$/,'');const prior=reviews[key]||{};reviews[key]={...prior,status:'approved',reason:notes[topic],topics:[...new Set([...(prior.topics||[]),topic])]};}
+ for(const [tag,entry] of Object.entries(primaryLessons))for(const text of entry.principles){
+  const key=text.replace(/\.$/,'');const prior=reviews[key]||{};
+  reviews[key]={...prior,status:'approved',reason:`Teaches ${entry.name} through its defining relationship or strategic tradeoff. The position-specific cue and action are separately checked against the current move.`,primaryTags:[...new Set([...(prior.primaryTags||[]),tag])],conceptName:entry.name};
+ }
+ reviews['A fork can threaten the king and another target at once']={status:'rejected',reason:'Hint 1 gives away the royal target of a checking fork instead of teaching the general two-target mechanism.'};
  reviews['A favorable exchange gains more material than it gives up']={status:'rejected',reason:'A favorable exchange can be positional rather than material. Teach capture gain and recapture risk without treating every useful trade as a material win.'};
  fs.writeFileSync(path.join(root,'audit/principle_reviews.json'),JSON.stringify(reviews,null,2)+'\n');
  console.log(JSON.stringify(evidence.reduce((r,e)=>(r[e.topic]=(r[e.topic]||0)+1,r),{}),null,2));

@@ -10,6 +10,7 @@
  */
 
 const { checkIndependentPrinciple } = require('./audit_principles');
+const { conceptMatches, checkFirstHintGenerality } = require('./audit_concept_rules.cjs');
 const fs   = require('fs');
 const path = require('path');
 const { Chess } = require('./game/node_modules/chess.js');
@@ -320,6 +321,7 @@ function runFullAudit(data) {
   entries.forEach(({ category, url, groupIndex, hint1, hint2, game, move }) => {
     total++;
     const failures = checkHint2(hint2, hint1, { category, game, move });
+    if(groupIndex===0&&!conceptMatches(hint2,data[category].puzzles[url].tags?.[0]))failures.push({code:'opening-principle-primary-tag-mismatch',detail:'Move-one principle must teach the actual first tag.'});
 
     const sentences = getSentences(hint2);
     const s2 = sentences[1] || '';

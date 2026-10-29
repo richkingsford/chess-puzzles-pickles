@@ -1,0 +1,78 @@
+{
+  "openingPrinciplesChecked": 1353,
+  "firstHintsChecked": 950,
+  "changedOpeningPrinciples": 1347,
+  "changedLaterPrinciples": 103,
+  "removedRoyalForkSpoilers": 78,
+  "preserved": "All tags, answers, URLs, board clues and move order",
+  "final": {
+    "datasetSha256": "7597cc4027262fdbb3df3912bf4ba2ad10d2ec5f6ecfcfb1b07588342261bfc5",
+    "puzzles": 451,
+    "playerMoves": 950,
+    "hints": 2850,
+    "positionEngines": [
+      "chess.js",
+      "python-chess"
+    ],
+    "rules": [
+      {
+        "number": 1,
+        "name": "Three hints per player move",
+        "failures": 0
+      },
+      {
+        "number": 2,
+        "name": "Progressive disclosure",
+        "failures": 0
+      },
+      {
+        "number": 3,
+        "name": "One teaching point per hint",
+        "failures": 0
+      },
+      {
+        "number": 4,
+        "name": "Early hints avoid exact notation",
+        "failures": 0
+      },
+      {
+        "number": 5,
+        "name": "No redundant hints within a move",
+        "failures": 0
+      },
+      {
+        "number": 6,
+        "name": "Dictionary and taxonomy alignment",
+        "failures": 0
+      },
+      {
+        "number": 7,
+        "name": "Clear short phrasing",
+        "failures": 0
+      },
+      {
+        "number": 8,
+        "name": "Current-move relevance",
+        "failures": 0
+      },
+      {
+        "number": 9,
+        "name": "Independent principle first",
+        "failures": 0
+      },
+      {
+        "number": 10,
+        "name": "Move-one principles tie to the first tag",
+        "failures": 0
+      }
+    ],
+    "applicationFindings": 0,
+    "principleFindings": 0,
+    "conceptFindings": 0,
+    "openingPrinciplesChecked": 1353,
+    "firstHintsChecked": 950,
+    "independentFindings": 0,
+    "examples": []
+  },
+  "testsPassed": 64
+}

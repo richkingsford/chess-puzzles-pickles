@@ -63,12 +63,13 @@ Each three-hint group should reveal one player move in layers.
    Hint 2 is about 30% more direct and obvious than Hint 1. It should feel
    like a second, friendlier pass at the same lesson — a little clearer, a
    little closer, but still leaving the "aha!" moment to the player.
-   Sentence 1 restates the current move's principle (its local tactic) in a
+   Sentence 1 restates Hint 1's principle (the primary concept on move one,
+   or the local tactic on later moves) in a
    different way than Hint 1 did it — roughly 30% more direct. If Hint 1
    explained what a pin is, Hint 2 explains how you use a pin. If Hint 1
    explained what a fork does, Hint 2 explains why a fork wins material. The
-   principle must fit the local tactic. That tactic may differ from the
-   overall puzzle category once its setup has happened. Do not repeat Hint
+   principle must fit Rule 10 on move one. On later moves the local tactic
+   may differ from the overall concept once its setup has happened. Do not repeat Hint
    1's exact wording.
    Sentence 2 tells the player specifically what to look for — like a
    chessmaster leaning over and saying "look for an empty diagonal", "look
@@ -101,8 +102,9 @@ subtle again because it belongs to a new board position.
 
 ### Hint 1 Hard Rules
 
-- Sentence 1 must teach a principle of the current move's tactic, not merely
-  say that a good move exists or repeat the overall puzzle category.
+- Sentence 1 must teach an independent principle. On move one it must clearly
+  teach the first tag's concept (Rule 10); on later moves it can teach the
+  current local tactic. Naming a category without explaining it is not enough.
 - Sentence 2 must give a short board observation before the current player
   move. It must not repeat the theme name or explain how to exploit it.
 - Sentence 2 must describe parts of the tactic, such as trapped exits, blocked
@@ -120,6 +122,14 @@ subtle again because it belongs to a new board position.
   identify the moving piece indirectly. Pawns and kings may be named.
 - Keep detailed attacker identities, routes, capture instructions, promotion
   choices, and named mating mechanisms for later hints.
+- Teach the broad mechanism before naming a special case. For example,
+  `A fork can threaten two targets at once.` is appropriate; `A fork can
+  threaten the king and another target at once.` gives away an unnecessary
+  target. Do not reveal a checking-fork subtype or exact jump pattern in
+  Hint 1's principle.
+- An already-visible concept name such as `queen endgame` or `double-bishop
+  mate` may appear in the principle when it is the first tag. This exception
+  does not permit naming this position's moving piece or extra target roles.
 
 ### Hint 1 Writing Guidelines
 
@@ -290,6 +300,35 @@ lesson fits the current move. New prose still requires editorial review;
 generation must not automatically approve arbitrary text read from a dataset.
 Regression checks: `npm run test:principles` and `npm run test:move-hints`.
 
+## Rule 10: Move-One Principles Clearly Teach the First Tag
+
+For the first player move, the first sentence of **all three hints** must have
+an obvious, instructional tie to `puzzle.tags[0]`. Use the actual first tag,
+not a secondary tag or the category folder. Explain its mechanism or strategic
+tradeoff rather than just inserting its name.
+
+- Move one introduces the puzzle's primary concept. The short board clue,
+  opportunity cue and direct answer must still describe this move, including
+  a setup move when the concept is completed later.
+- Later player moves are exempt from this tie-in. Their principles should
+  teach the tactic currently being played, rather than repeating a setup
+  lesson after the setup is over.
+- A concept-specific principle still must be subtle in Hint 1. Prefer `A fork
+  can threaten two targets at once.` over enumerating the king and a second
+  target. Keep checking variants and other solution-specific details for later
+  hints.
+- The canonical concept name may contain a piece name already disclosed by
+  the tag. Only that name in the teaching sentence is exempt from the generic
+  piece-name style check; the rest of the hint receives the usual checks.
+
+`audit/primary_concept_lessons.json` contains the authored teaching principles.
+Their editorial records declare their supported primary tags and concept name.
+Both `audit_concept_rules.cjs` and the independent Python audit check the
+first-tag connection, while the latter still verifies current-move evidence.
+Unknown principles or missing primary-tag ties fail rather than receiving an
+automatic keyword-based approval. Hint 1 generality is checked on every player
+move, including moves two, three and beyond.
+
 ## Category Trimming Before Regeneration
 
 Before regenerating `moveHints`, trim categories that are weak, redundant, too
@@ -305,7 +344,7 @@ list.
 
 ## Audit Commands
 
-Run the current nine-rule audit from the repo root:
+Run the current ten-rule audit from the repo root:
 
 ```sh
 python -m pip install -r requirements-audit.txt
@@ -314,7 +353,7 @@ npm run test:principles
 npm run test:move-hints
 ```
 
-`audit:hints` combines application and dictionary checks using chess.js,
+`audit:hints` covers all ten rules and combines application and dictionary checks using chess.js,
 editorial principle approval, and an independent python-chess board replay.
 It covers all three hint levels and every player move. The historical
 `audit_rule1...6` scripts target older flat five-stage or single-sentence
