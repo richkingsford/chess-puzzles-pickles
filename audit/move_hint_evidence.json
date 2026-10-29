@@ -6716,7 +6716,7 @@
     "move": 1,
     "beforeFen": "r4rk1/pp3ppp/2p4n/3PQb2/2p1N3/4qP2/PP2N1PP/3K1R1R w - - 0 20",
     "san": "Nf6+",
-    "topic": "check",
+    "topic": "contactCheck",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -16494,7 +16494,7 @@
     "move": 1,
     "beforeFen": "1k5r/pp2b1pp/5p2/2P1p3/1PQnqP2/8/P2B2PP/4RRK1 b - - 2 24",
     "san": "Nf3+",
-    "topic": "check",
+    "topic": "contactCheck",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -16712,7 +16712,7 @@
     "move": 1,
     "beforeFen": "r5k1/3rb3/p5pp/1p1N1p2/2p2P2/2P3P1/PP4KP/1R1R4 w - - 2 25",
     "san": "Nf6+",
-    "topic": "check",
+    "topic": "contactCheck",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -17484,7 +17484,7 @@
     "move": 1,
     "beforeFen": "r1b1qBk1/ppp2pbp/n5p1/3Nn3/2P5/5N2/PP3PPP/R2QKB1R b KQ - 0 11",
     "san": "Nxf3#",
-    "topic": "mate",
+    "topic": "doubleCheck",
     "target": "f3",
     "observation": {
       "kind": "target",

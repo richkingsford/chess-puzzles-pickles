@@ -31,11 +31,17 @@
         "distant-target-described-near": 3,
         "unsupported-advance-called-supported": 10
       },
-      "fixes": "Corrected unrelated targets, recapture roles, stale discovered targets, unsupported claims, repeated pairs and preparatory moves"
+      "fixes": "Corrected unrelated targets, recapture roles, stale discovered targets, unsupported claims, repeated pairs and preparatory moves",
+      "additionalFinalReviewFixes": [
+        "Non-slider checks must not be described as an open-line check.",
+        "A jumping mate must not claim its checker is protected unless that is true.",
+        "Promotion choices retain their own move-local lesson even when they also give mate.",
+        "Capture gains depend on recapture risk. Favorable exchanges can also be positional."
+      ]
     }
   ],
   "final": {
-    "datasetSha256": "3810fbd3cc1d3e064069603a20662abd566fe8332481228b1ff92f0011592394",
+    "datasetSha256": "69daadfe920e852eff066c564fc2cd43b087e0de5d04fab1d529a03e255752fe",
     "puzzles": 451,
     "playerMoves": 950,
     "hints": 2850,

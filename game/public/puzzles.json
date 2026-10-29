@@ -270,13 +270,13 @@
         ],
         "hints": [
           "A mating attack works when every legal defense to check is gone. Five enemy pieces stand beside their king.",
-          "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+          "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
           "A mating move leaves no escape, capture, or block that can answer check. Play Nd6#."
         ],
         "moveHints": [
           [
             "A mating attack works when every legal defense to check is gone. Five enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nd6#."
           ]
         ]
@@ -291,13 +291,13 @@
         ],
         "hints": [
           "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-          "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+          "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
           "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
         ],
         "moveHints": [
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -312,13 +312,13 @@
         ],
         "hints": [
           "A mating attack works when every legal defense to check is gone. Five enemy pieces stand beside their king.",
-          "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+          "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
           "A mating move leaves no escape, capture, or block that can answer check. Play Nh2#."
         ],
         "moveHints": [
           [
             "A mating attack works when every legal defense to check is gone. Five enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nh2#."
           ]
         ]
@@ -349,7 +349,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf7#."
           ]
         ]
@@ -380,7 +380,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -406,7 +406,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf7#."
           ]
         ]
@@ -437,7 +437,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -468,7 +468,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -499,7 +499,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -1818,7 +1818,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxf2."
+            "A capture's gain depends on both the target and any recapture. Play Kxf2."
           ]
         ]
       },
@@ -1843,7 +1843,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one medium guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play Nxg8."
+            "A capture's gain depends on both the target and any recapture. Play Nxg8."
           ]
         ]
       },
@@ -1869,7 +1869,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxg4."
+            "A capture's gain depends on both the target and any recapture. Play Bxg4."
           ]
         ]
       },
@@ -2027,7 +2027,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxb4."
+            "A capture's gain depends on both the target and any recapture. Play Qxb4."
           ]
         ]
       },
@@ -2213,7 +2213,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play gxf3."
+            "A capture's gain depends on both the target and any recapture. Play gxf3."
           ]
         ]
       },
@@ -2239,7 +2239,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the small target with one guard on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxg5."
+            "A capture's gain depends on both the target and any recapture. Play Bxg5."
           ],
           [
             "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one pawn guard.",
@@ -2269,7 +2269,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxc7."
+            "A capture's gain depends on both the target and any recapture. Play Rxc7."
           ]
         ]
       },
@@ -2305,7 +2305,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxd4."
+            "A capture's gain depends on both the target and any recapture. Play Qxd4."
           ]
         ]
       },
@@ -2331,7 +2331,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxb5."
+            "A capture's gain depends on both the target and any recapture. Play Qxb5."
           ]
         ]
       },
@@ -2345,13 +2345,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Qxe4."
+          "A capture's gain depends on both the target and any recapture. Play Qxe4."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxe4."
+            "A capture's gain depends on both the target and any recapture. Play Qxe4."
           ]
         ]
       }
@@ -2408,7 +2408,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxd3."
+            "A capture's gain depends on both the target and any recapture. Play Qxd3."
           ]
         ]
       },
@@ -2460,7 +2460,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxb4."
+            "A capture's gain depends on both the target and any recapture. Play Qxb4."
           ]
         ]
       },
@@ -2533,7 +2533,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxe5."
+            "A capture's gain depends on both the target and any recapture. Play Qxe5."
           ]
         ]
       },
@@ -2590,7 +2590,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxa6."
+            "A capture's gain depends on both the target and any recapture. Play Qxa6."
           ]
         ]
       },
@@ -2673,7 +2673,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxc2."
+            "A capture's gain depends on both the target and any recapture. Play Nxc2."
           ]
         ]
       },
@@ -2719,13 +2719,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has one medium guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-          "A favorable exchange gains more material than it gives up. Play cxb4."
+          "A capture's gain depends on both the target and any recapture. Play cxb4."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one medium guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play cxb4."
+            "A capture's gain depends on both the target and any recapture. Play cxb4."
           ]
         ]
       },
@@ -2751,12 +2751,12 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one medium guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxd4."
+            "A capture's gain depends on both the target and any recapture. Play Rxd4."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxd4."
+            "A capture's gain depends on both the target and any recapture. Play Qxd4."
           ]
         ]
       },
@@ -2781,7 +2781,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxg5."
+            "A capture's gain depends on both the target and any recapture. Play Qxg5."
           ]
         ]
       },
@@ -2806,7 +2806,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play fxe6."
+            "A capture's gain depends on both the target and any recapture. Play fxe6."
           ]
         ]
       },
@@ -2832,7 +2832,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play axb5."
+            "A capture's gain depends on both the target and any recapture. Play axb5."
           ]
         ]
       },
@@ -2858,7 +2858,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxf5."
+            "A capture's gain depends on both the target and any recapture. Play Qxf5."
           ]
         ]
       },
@@ -2910,7 +2910,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Nxe4."
+            "A capture's gain depends on both the target and any recapture. Play Nxe4."
           ]
         ]
       },
@@ -2951,13 +2951,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play cxd5."
+          "A capture's gain depends on both the target and any recapture. Play cxd5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play cxd5."
+            "A capture's gain depends on both the target and any recapture. Play cxd5."
           ],
           [
             "Developing a piece gives it access to more useful squares. A medium piece still waits on its home rank.",
@@ -3017,7 +3017,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxe6."
+            "A capture's gain depends on both the target and any recapture. Play Nxe6."
           ]
         ]
       },
@@ -3042,7 +3042,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxc4."
+            "A capture's gain depends on both the target and any recapture. Play Qxc4."
           ]
         ]
       },
@@ -3056,13 +3056,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play exd5."
+          "A capture's gain depends on both the target and any recapture. Play exd5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play exd5."
+            "A capture's gain depends on both the target and any recapture. Play exd5."
           ],
           [
             "An exchange can draw a defender onto a less safe square. An enemy medium piece has one medium guard.",
@@ -3072,7 +3072,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxe5."
+            "A capture's gain depends on both the target and any recapture. Play Qxe5."
           ]
         ]
       },
@@ -3097,7 +3097,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxg8."
+            "A capture's gain depends on both the target and any recapture. Play Bxg8."
           ]
         ]
       },
@@ -3247,7 +3247,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play axb6."
+            "A capture's gain depends on both the target and any recapture. Play axb6."
           ]
         ]
       },
@@ -3259,15 +3259,15 @@
           "opening-themes"
         ],
         "hints": [
-          "A check can gain time by making the enemy answer a threat. Four enemy pieces stand beside their king.",
-          "A checking threat must be answered before other defenses can help. Look for a checking entry on the clear line.",
-          "An open checking line can keep an exposed king under pressure. Play Nf6+."
+          "A close checking threat can force the enemy to spend time defending. Four enemy pieces stand beside their king.",
+          "A check must be answered before a separate threat can be handled. Look for a close check that keeps the pressure forcing.",
+          "A checking move can keep the initiative by forcing an immediate reply. Play Nf6+."
         ],
         "moveHints": [
           [
-            "A check can gain time by making the enemy answer a threat. Four enemy pieces stand beside their king.",
-            "A checking threat must be answered before other defenses can help. Look for a checking entry on the clear line.",
-            "An open checking line can keep an exposed king under pressure. Play Nf6+."
+            "A close checking threat can force the enemy to spend time defending. Four enemy pieces stand beside their king.",
+            "A check must be answered before a separate threat can be handled. Look for a close check that keeps the pressure forcing.",
+            "A checking move can keep the initiative by forcing an immediate reply. Play Nf6+."
           ],
           [
             "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
@@ -3302,7 +3302,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxh1."
+            "A capture's gain depends on both the target and any recapture. Play Rxh1."
           ]
         ]
       },
@@ -3327,7 +3327,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxc4."
+            "A capture's gain depends on both the target and any recapture. Play Qxc4."
           ]
         ]
       },
@@ -3357,7 +3357,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxd4."
+            "A capture's gain depends on both the target and any recapture. Play Nxd4."
           ]
         ]
       },
@@ -3382,7 +3382,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play gxf6."
+            "A capture's gain depends on both the target and any recapture. Play gxf6."
           ]
         ]
       },
@@ -3406,7 +3406,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nc7#."
           ]
         ]
@@ -3477,12 +3477,12 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one pawn guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxh4."
+            "A capture's gain depends on both the target and any recapture. Play Bxh4."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play bxc6."
+            "A capture's gain depends on both the target and any recapture. Play bxc6."
           ]
         ]
       },
@@ -3507,7 +3507,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe4."
+            "A capture's gain depends on both the target and any recapture. Play Rxe4."
           ]
         ]
       },
@@ -3532,7 +3532,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxg4."
+            "A capture's gain depends on both the target and any recapture. Play Qxg4."
           ]
         ]
       },
@@ -3607,7 +3607,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxc2."
+            "A capture's gain depends on both the target and any recapture. Play Qxc2."
           ]
         ]
       },
@@ -3621,18 +3621,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-          "A favorable exchange gains more material than it gives up. Play dxe5."
+          "A capture's gain depends on both the target and any recapture. Play dxe5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play dxe5."
+            "A capture's gain depends on both the target and any recapture. Play dxe5."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxc3."
+            "A capture's gain depends on both the target and any recapture. Play Bxc3."
           ]
         ]
       },
@@ -3717,7 +3717,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxg5."
+            "A capture's gain depends on both the target and any recapture. Play Bxg5."
           ]
         ]
       },
@@ -3731,13 +3731,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Qxf3."
+          "A capture's gain depends on both the target and any recapture. Play Qxf3."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxf3."
+            "A capture's gain depends on both the target and any recapture. Play Qxf3."
           ]
         ]
       },
@@ -3761,7 +3761,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nc7#."
           ]
         ]
@@ -3787,7 +3787,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play Nxf4."
+            "A capture's gain depends on both the target and any recapture. Play Nxf4."
           ]
         ]
       },
@@ -3812,7 +3812,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxc3."
+            "A capture's gain depends on both the target and any recapture. Play Qxc3."
           ]
         ]
       },
@@ -3837,7 +3837,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play cxd6."
+            "A capture's gain depends on both the target and any recapture. Play cxd6."
           ]
         ]
       },
@@ -3887,7 +3887,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxf7."
+            "A capture's gain depends on both the target and any recapture. Play Kxf7."
           ]
         ]
       }
@@ -4017,7 +4017,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxd4."
+            "A capture's gain depends on both the target and any recapture. Play Qxd4."
           ]
         ]
       },
@@ -4042,12 +4042,12 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxa3."
+            "A capture's gain depends on both the target and any recapture. Play Bxa3."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxa1."
+            "A capture's gain depends on both the target and any recapture. Play Rxa1."
           ]
         ]
       },
@@ -4061,13 +4061,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-          "A favorable exchange gains more material than it gives up. Play hxg6."
+          "A capture's gain depends on both the target and any recapture. Play hxg6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play hxg6."
+            "A capture's gain depends on both the target and any recapture. Play hxg6."
           ]
         ]
       },
@@ -4227,7 +4227,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxe5."
+            "A capture's gain depends on both the target and any recapture. Play Qxe5."
           ]
         ]
       },
@@ -4291,13 +4291,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Qxe4."
+          "A capture's gain depends on both the target and any recapture. Play Qxe4."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxe4."
+            "A capture's gain depends on both the target and any recapture. Play Qxe4."
           ],
           [
             "An exchange can change which pieces guard a target. An enemy heavy piece shares a file with its king.",
@@ -4307,7 +4307,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play cxb6."
+            "A capture's gain depends on both the target and any recapture. Play cxb6."
           ]
         ]
       },
@@ -4332,7 +4332,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxc3."
+            "A capture's gain depends on both the target and any recapture. Play Qxc3."
           ]
         ]
       },
@@ -4421,13 +4421,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has one heavy guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the small target with one guard on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Bxe6."
+          "A capture's gain depends on both the target and any recapture. Play Bxe6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the small target with one guard on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxe6."
+            "A capture's gain depends on both the target and any recapture. Play Bxe6."
           ]
         ]
       },
@@ -4452,7 +4452,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxg7."
+            "A capture's gain depends on both the target and any recapture. Play Kxg7."
           ]
         ]
       },
@@ -4477,7 +4477,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxc7."
+            "A capture's gain depends on both the target and any recapture. Play Nxc7."
           ]
         ]
       },
@@ -4502,7 +4502,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxb4."
+            "A capture's gain depends on both the target and any recapture. Play Qxb4."
           ]
         ]
       },
@@ -4527,7 +4527,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxg3."
+            "A capture's gain depends on both the target and any recapture. Play Qxg3."
           ]
         ]
       },
@@ -4552,7 +4552,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxc8."
+            "A capture's gain depends on both the target and any recapture. Play Nxc8."
           ]
         ]
       },
@@ -4566,18 +4566,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Bxe6."
+          "A capture's gain depends on both the target and any recapture. Play Bxe6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxe6."
+            "A capture's gain depends on both the target and any recapture. Play Bxe6."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxd8."
+            "A capture's gain depends on both the target and any recapture. Play Rxd8."
           ]
         ]
       }
@@ -4607,7 +4607,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxf5."
+            "A capture's gain depends on both the target and any recapture. Play Qxf5."
           ]
         ]
       },
@@ -4637,7 +4637,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play hxg6."
+            "A capture's gain depends on both the target and any recapture. Play hxg6."
           ]
         ]
       },
@@ -4662,7 +4662,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxg4."
+            "A capture's gain depends on both the target and any recapture. Play Rxg4."
           ]
         ]
       },
@@ -4692,7 +4692,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxf7."
+            "A capture's gain depends on both the target and any recapture. Play Rxf7."
           ]
         ]
       },
@@ -4767,7 +4767,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play bxc3."
+            "A capture's gain depends on both the target and any recapture. Play bxc3."
           ]
         ]
       },
@@ -4792,7 +4792,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxf3."
+            "A capture's gain depends on both the target and any recapture. Play Qxf3."
           ]
         ]
       },
@@ -4902,7 +4902,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe8."
+            "A capture's gain depends on both the target and any recapture. Play Rxe8."
           ]
         ]
       },
@@ -4916,18 +4916,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Bxb2."
+          "A capture's gain depends on both the target and any recapture. Play Bxb2."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxb2."
+            "A capture's gain depends on both the target and any recapture. Play Bxb2."
           ],
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxa1."
+            "A capture's gain depends on both the target and any recapture. Play Bxa1."
           ]
         ]
       },
@@ -4977,7 +4977,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxd4."
+            "A capture's gain depends on both the target and any recapture. Play Qxd4."
           ]
         ]
       },
@@ -5042,7 +5042,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxf1."
+            "A capture's gain depends on both the target and any recapture. Play Rxf1."
           ]
         ]
       },
@@ -5182,7 +5182,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxc3."
+            "A capture's gain depends on both the target and any recapture. Play Qxc3."
           ]
         ]
       },
@@ -5207,7 +5207,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxg5."
+            "A capture's gain depends on both the target and any recapture. Play Bxg5."
           ]
         ]
       },
@@ -5246,13 +5246,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has one medium guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-          "A favorable exchange gains more material than it gives up. Play Nxf7."
+          "A capture's gain depends on both the target and any recapture. Play Nxf7."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one medium guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play Nxf7."
+            "A capture's gain depends on both the target and any recapture. Play Nxf7."
           ]
         ]
       },
@@ -5266,13 +5266,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-          "A favorable exchange gains more material than it gives up. Play Rxe5."
+          "A capture's gain depends on both the target and any recapture. Play Rxe5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxe5."
+            "A capture's gain depends on both the target and any recapture. Play Rxe5."
           ]
         ]
       },
@@ -5297,7 +5297,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Nxe5."
+            "A capture's gain depends on both the target and any recapture. Play Nxe5."
           ]
         ]
       }
@@ -5346,13 +5346,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy heavy piece has one medium guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the file.",
-          "A favorable exchange gains more material than it gives up. Play Rxd5."
+          "A capture's gain depends on both the target and any recapture. Play Rxd5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one medium guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxd5."
+            "A capture's gain depends on both the target and any recapture. Play Rxd5."
           ]
         ]
       },
@@ -5487,7 +5487,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxh1."
+            "A capture's gain depends on both the target and any recapture. Play Rxh1."
           ]
         ]
       },
@@ -5501,13 +5501,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Qxg2."
+          "A capture's gain depends on both the target and any recapture. Play Qxg2."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxg2."
+            "A capture's gain depends on both the target and any recapture. Play Qxg2."
           ],
           [
             "A capture with check can gain material while forcing a reply. An unguarded enemy heavy piece shares its king's rank.",
@@ -5537,7 +5537,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxg4."
+            "A capture's gain depends on both the target and any recapture. Play Nxg4."
           ]
         ]
       }
@@ -5567,12 +5567,12 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxb5."
+            "A capture's gain depends on both the target and any recapture. Play Qxb5."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play gxf6."
+            "A capture's gain depends on both the target and any recapture. Play gxf6."
           ]
         ]
       },
@@ -5586,18 +5586,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-          "A favorable exchange gains more material than it gives up. Play Rxf4."
+          "A capture's gain depends on both the target and any recapture. Play Rxf4."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxf4."
+            "A capture's gain depends on both the target and any recapture. Play Rxf4."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxe5."
+            "A capture's gain depends on both the target and any recapture. Play Qxe5."
           ]
         ]
       },
@@ -5712,7 +5712,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxd4."
+            "A capture's gain depends on both the target and any recapture. Play Rxd4."
           ]
         ]
       },
@@ -5737,7 +5737,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxc7."
+            "A capture's gain depends on both the target and any recapture. Play Qxc7."
           ]
         ]
       },
@@ -5782,7 +5782,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one pawn guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play Nxe4."
+            "A capture's gain depends on both the target and any recapture. Play Nxe4."
           ]
         ]
       }
@@ -5817,7 +5817,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece shares a diagonal with its king.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with two guards.",
-            "A favorable exchange gains more material than it gives up. Play Nxc6."
+            "A capture's gain depends on both the target and any recapture. Play Nxc6."
           ]
         ]
       },
@@ -5871,7 +5871,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Four enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nd5#."
           ]
         ]
@@ -5947,7 +5947,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe4."
+            "A capture's gain depends on both the target and any recapture. Play Rxe4."
           ]
         ]
       },
@@ -6091,13 +6091,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play Kxa4."
+          "A capture's gain depends on both the target and any recapture. Play Kxa4."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxa4."
+            "A capture's gain depends on both the target and any recapture. Play Kxa4."
           ],
           [
             "An active king can help attack weak pawns in an endgame. An enemy pawn is two king steps away.",
@@ -6137,7 +6137,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's diagonal.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play bxa6."
+            "A capture's gain depends on both the target and any recapture. Play bxa6."
           ]
         ]
       },
@@ -6151,13 +6151,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play bxa6."
+          "A capture's gain depends on both the target and any recapture. Play bxa6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play bxa6."
+            "A capture's gain depends on both the target and any recapture. Play bxa6."
           ],
           [
             "An active king can help attack weak pawns in an endgame. An enemy pawn is two king steps away.",
@@ -6187,7 +6187,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxg5."
+            "A capture's gain depends on both the target and any recapture. Play Kxg5."
           ]
         ]
       },
@@ -6242,7 +6242,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxh5."
+            "A capture's gain depends on both the target and any recapture. Play Kxh5."
           ]
         ]
       },
@@ -6256,13 +6256,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-          "A favorable exchange gains more material than it gives up. Play gxf5."
+          "A capture's gain depends on both the target and any recapture. Play gxf5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play gxf5."
+            "A capture's gain depends on both the target and any recapture. Play gxf5."
           ],
           [
             "An active king can help attack weak pawns in an endgame. An enemy pawn is two king steps away.",
@@ -6291,13 +6291,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play Kxh2."
+          "A capture's gain depends on both the target and any recapture. Play Kxh2."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxh2."
+            "A capture's gain depends on both the target and any recapture. Play Kxh2."
           ],
           [
             "A passed pawn can tie down defenders by threatening promotion. A pawn is three steps from promotion.",
@@ -6342,7 +6342,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxh6."
+            "A capture's gain depends on both the target and any recapture. Play Kxh6."
           ]
         ]
       },
@@ -6422,7 +6422,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play gxf3."
+            "A capture's gain depends on both the target and any recapture. Play gxf3."
           ]
         ]
       },
@@ -6472,7 +6472,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxe5."
+            "A capture's gain depends on both the target and any recapture. Play Kxe5."
           ]
         ]
       },
@@ -6497,7 +6497,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxb3."
+            "A capture's gain depends on both the target and any recapture. Play Kxb3."
           ]
         ]
       },
@@ -6647,7 +6647,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one king guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play fxg3."
+            "A capture's gain depends on both the target and any recapture. Play fxg3."
           ]
         ]
       },
@@ -6722,7 +6722,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play cxd6."
+            "A capture's gain depends on both the target and any recapture. Play cxd6."
           ],
           [
             "A passed pawn can tie down defenders by threatening promotion. A pawn is five steps from promotion.",
@@ -6942,7 +6942,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxe7."
+            "A capture's gain depends on both the target and any recapture. Play Qxe7."
           ]
         ]
       },
@@ -7081,13 +7081,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-          "A favorable exchange gains more material than it gives up. Play exf6."
+          "A capture's gain depends on both the target and any recapture. Play exf6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard.",
-            "A favorable exchange gains more material than it gives up. Play exf6."
+            "A capture's gain depends on both the target and any recapture. Play exf6."
           ],
           [
             "A passed pawn can tie down defenders by threatening promotion. A pawn is two steps from promotion.",
@@ -7116,7 +7116,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Ne2#."
           ]
         ]
@@ -7206,13 +7206,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has two guards.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with two guards.",
-          "A favorable exchange gains more material than it gives up. Play gxf6."
+          "A capture's gain depends on both the target and any recapture. Play gxf6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has two guards.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with two guards.",
-            "A favorable exchange gains more material than it gives up. Play gxf6."
+            "A capture's gain depends on both the target and any recapture. Play gxf6."
           ],
           [
             "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece shares a file with its king.",
@@ -7272,12 +7272,12 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxd5."
+            "A capture's gain depends on both the target and any recapture. Play Kxd5."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Nxb4."
+            "A capture's gain depends on both the target and any recapture. Play Nxb4."
           ]
         ]
       },
@@ -7291,18 +7291,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play Kxc5."
+          "A capture's gain depends on both the target and any recapture. Play Kxc5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxc5."
+            "A capture's gain depends on both the target and any recapture. Play Kxc5."
           ],
           [
             "Undefended pieces offer material without a protecting piece to recapture. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Nxd3."
+            "A capture's gain depends on both the target and any recapture. Play Nxd3."
           ]
         ]
       },
@@ -7327,7 +7327,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play gxh5."
+            "A capture's gain depends on both the target and any recapture. Play gxh5."
           ],
           [
             "A passed pawn can tie down defenders by threatening promotion. A pawn is three steps from promotion.",
@@ -7387,7 +7387,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxd4."
+            "A capture's gain depends on both the target and any recapture. Play Kxd4."
           ]
         ]
       },
@@ -7462,7 +7462,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxg6."
+            "A capture's gain depends on both the target and any recapture. Play Kxg6."
           ]
         ]
       }
@@ -7686,13 +7686,13 @@
         ],
         "hints": [
           "A mating attack works when every legal defense to check is gone. Four enemy pieces stand beside their king.",
-          "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+          "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
           "A mating move leaves no escape, capture, or block that can answer check. Play Nb3#."
         ],
         "moveHints": [
           [
             "A mating attack works when every legal defense to check is gone. Four enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nb3#."
           ]
         ]
@@ -7823,7 +7823,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxf4."
+            "A capture's gain depends on both the target and any recapture. Play Qxf4."
           ]
         ]
       },
@@ -7848,7 +7848,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxc3."
+            "A capture's gain depends on both the target and any recapture. Play Bxc3."
           ]
         ]
       },
@@ -7873,7 +7873,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxd7."
+            "A capture's gain depends on both the target and any recapture. Play Qxd7."
           ]
         ]
       },
@@ -7958,7 +7958,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxb5."
+            "A capture's gain depends on both the target and any recapture. Play Qxb5."
           ]
         ]
       },
@@ -8018,7 +8018,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxd5."
+            "A capture's gain depends on both the target and any recapture. Play Rxd5."
           ]
         ]
       },
@@ -8030,20 +8030,20 @@
           "deflection"
         ],
         "hints": [
-          "A check can gain time by making the enemy answer a threat. Three enemy pieces stand beside their king.",
-          "A checking threat must be answered before other defenses can help. Look for a checking entry on the clear line.",
-          "An open checking line can keep an exposed king under pressure. Play Nf3+."
+          "A close checking threat can force the enemy to spend time defending. Three enemy pieces stand beside their king.",
+          "A check must be answered before a separate threat can be handled. Look for a close check that keeps the pressure forcing.",
+          "A checking move can keep the initiative by forcing an immediate reply. Play Nf3+."
         ],
         "moveHints": [
           [
-            "A check can gain time by making the enemy answer a threat. Three enemy pieces stand beside their king.",
-            "A checking threat must be answered before other defenses can help. Look for a checking entry on the clear line.",
-            "An open checking line can keep an exposed king under pressure. Play Nf3+."
+            "A close checking threat can force the enemy to spend time defending. Three enemy pieces stand beside their king.",
+            "A check must be answered before a separate threat can be handled. Look for a close check that keeps the pressure forcing.",
+            "A checking move can keep the initiative by forcing an immediate reply. Play Nf3+."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxc4."
+            "A capture's gain depends on both the target and any recapture. Play Qxc4."
           ]
         ]
       },
@@ -8068,7 +8068,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxf2."
+            "A capture's gain depends on both the target and any recapture. Play Qxf2."
           ]
         ]
       },
@@ -8093,7 +8093,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxa6."
+            "A capture's gain depends on both the target and any recapture. Play Rxa6."
           ]
         ]
       },
@@ -8130,20 +8130,20 @@
           "deflection"
         ],
         "hints": [
-          "A check can gain time by making the enemy answer a threat. The enemy king has no pawn beside it.",
-          "A checking threat must be answered before other defenses can help. Look for a checking entry on the clear line.",
-          "An open checking line can keep an exposed king under pressure. Play Nf6+."
+          "A close checking threat can force the enemy to spend time defending. The enemy king has no pawn beside it.",
+          "A check must be answered before a separate threat can be handled. Look for a close check that keeps the pressure forcing.",
+          "A checking move can keep the initiative by forcing an immediate reply. Play Nf6+."
         ],
         "moveHints": [
           [
-            "A check can gain time by making the enemy answer a threat. The enemy king has no pawn beside it.",
-            "A checking threat must be answered before other defenses can help. Look for a checking entry on the clear line.",
-            "An open checking line can keep an exposed king under pressure. Play Nf6+."
+            "A close checking threat can force the enemy to spend time defending. The enemy king has no pawn beside it.",
+            "A check must be answered before a separate threat can be handled. Look for a close check that keeps the pressure forcing.",
+            "A checking move can keep the initiative by forcing an immediate reply. Play Nf6+."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxd7."
+            "A capture's gain depends on both the target and any recapture. Play Rxd7."
           ]
         ]
       },
@@ -8168,7 +8168,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Qxd4."
+            "A capture's gain depends on both the target and any recapture. Play Qxd4."
           ]
         ]
       },
@@ -8278,7 +8278,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxg1."
+            "A capture's gain depends on both the target and any recapture. Play Rxg1."
           ]
         ]
       },
@@ -8303,7 +8303,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxh8."
+            "A capture's gain depends on both the target and any recapture. Play Rxh8."
           ]
         ]
       },
@@ -8353,7 +8353,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece shares a diagonal with its king.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with two guards on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe5."
+            "A capture's gain depends on both the target and any recapture. Play Rxe5."
           ]
         ]
       },
@@ -8378,7 +8378,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxf2."
+            "A capture's gain depends on both the target and any recapture. Play Rxf2."
           ]
         ]
       },
@@ -8403,7 +8403,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxb3."
+            "A capture's gain depends on both the target and any recapture. Play Rxb3."
           ]
         ]
       },
@@ -8428,7 +8428,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxh8."
+            "A capture's gain depends on both the target and any recapture. Play Rxh8."
           ],
           [
             "A check can gain time by making the enemy answer a threat. One pawn stands beside the enemy king.",
@@ -8438,7 +8438,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxa1."
+            "A capture's gain depends on both the target and any recapture. Play Rxa1."
           ]
         ]
       },
@@ -8468,7 +8468,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe8."
+            "A capture's gain depends on both the target and any recapture. Play Rxe8."
           ]
         ]
       }
@@ -8485,15 +8485,15 @@
           "mating-attack"
         ],
         "hints": [
-          "A mating attack works when every legal defense to check is gone. An enemy medium piece has two guards.",
-          "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the medium piece with two guards.",
-          "A mating move leaves no escape, capture, or block that can answer check. Play Nxf3#."
+          "Two checking attackers leave the king unable to answer just one threat. An enemy medium piece has two guards.",
+          "Double check requires an escape rather than a single block or capture. Look for a threat that uncovers the hidden file while also checking.",
+          "Uncovering one checking line can let a second attacker join the check. Play Nxf3#."
         ],
         "moveHints": [
           [
-            "A mating attack works when every legal defense to check is gone. An enemy medium piece has two guards.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the medium piece with two guards.",
-            "A mating move leaves no escape, capture, or block that can answer check. Play Nxf3#."
+            "Two checking attackers leave the king unable to answer just one threat. An enemy medium piece has two guards.",
+            "Double check requires an escape rather than a single block or capture. Look for a threat that uncovers the hidden file while also checking.",
+            "Uncovering one checking line can let a second attacker join the check. Play Nxf3#."
           ]
         ]
       },
@@ -8572,7 +8572,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -8707,7 +8707,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Nf2#."
           ]
         ]
@@ -8727,13 +8727,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy heavy piece has one king guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the file.",
-          "A favorable exchange gains more material than it gives up. Play Rxb7."
+          "A capture's gain depends on both the target and any recapture. Play Rxb7."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one king guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxb7."
+            "A capture's gain depends on both the target and any recapture. Play Rxb7."
           ],
           [
             "A fork can threaten the king and another target at once. An enemy medium piece has no guard.",
@@ -8798,7 +8798,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxc8."
+            "A capture's gain depends on both the target and any recapture. Play Qxc8."
           ]
         ]
       },
@@ -8958,7 +8958,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxb4."
+            "A capture's gain depends on both the target and any recapture. Play Nxb4."
           ]
         ]
       }
@@ -9112,18 +9112,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy heavy piece has one pawn guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the rank.",
-          "A favorable exchange gains more material than it gives up. Play Rxd8."
+          "A capture's gain depends on both the target and any recapture. Play Rxd8."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one pawn guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxd8."
+            "A capture's gain depends on both the target and any recapture. Play Rxd8."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxd8."
+            "A capture's gain depends on both the target and any recapture. Play Qxd8."
           ]
         ]
       },
@@ -9233,7 +9233,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxf4."
+            "A capture's gain depends on both the target and any recapture. Play Rxf4."
           ]
         ]
       },
@@ -9283,7 +9283,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxd2."
+            "A capture's gain depends on both the target and any recapture. Play Qxd2."
           ]
         ]
       },
@@ -9308,7 +9308,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxd8."
+            "A capture's gain depends on both the target and any recapture. Play Rxd8."
           ]
         ]
       },
@@ -9462,18 +9462,18 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-          "A favorable exchange gains more material than it gives up. Play Rxb1."
+          "A capture's gain depends on both the target and any recapture. Play Rxb1."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxb1."
+            "A capture's gain depends on both the target and any recapture. Play Rxb1."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxc7."
+            "A capture's gain depends on both the target and any recapture. Play Kxc7."
           ]
         ]
       },
@@ -9498,7 +9498,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxf7."
+            "A capture's gain depends on both the target and any recapture. Play Kxf7."
           ]
         ]
       },
@@ -9523,7 +9523,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxd1."
+            "A capture's gain depends on both the target and any recapture. Play Bxd1."
           ]
         ]
       },
@@ -9537,13 +9537,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-          "A favorable exchange gains more material than it gives up. Play Nxc6."
+          "A capture's gain depends on both the target and any recapture. Play Nxc6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxc6."
+            "A capture's gain depends on both the target and any recapture. Play Nxc6."
           ]
         ]
       },
@@ -9602,13 +9602,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-          "A favorable exchange gains more material than it gives up. Play Nxd6."
+          "A capture's gain depends on both the target and any recapture. Play Nxd6."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxd6."
+            "A capture's gain depends on both the target and any recapture. Play Nxd6."
           ]
         ]
       },
@@ -9633,7 +9633,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxa4."
+            "A capture's gain depends on both the target and any recapture. Play Qxa4."
           ]
         ]
       },
@@ -9658,7 +9658,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxh8."
+            "A capture's gain depends on both the target and any recapture. Play Nxh8."
           ]
         ]
       }
@@ -9719,7 +9719,7 @@
           ],
           [
             "A mating attack works when every legal defense to check is gone. One pawn stands beside the enemy king.",
-            "Checkmate requires a checking threat with no legal escape or defense. Look for a protected check with no legal escape.",
+            "Checkmate requires a checking threat with no legal escape or defense. Look for a jumping check with no legal escape.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Ng3#."
           ]
         ]
@@ -10058,7 +10058,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxe7."
+            "A capture's gain depends on both the target and any recapture. Play Qxe7."
           ]
         ]
       },
@@ -10108,7 +10108,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxg2."
+            "A capture's gain depends on both the target and any recapture. Play Kxg2."
           ]
         ]
       },
@@ -10138,7 +10138,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxe6."
+            "A capture's gain depends on both the target and any recapture. Play Rxe6."
           ]
         ]
       },
@@ -10163,7 +10163,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxb7."
+            "A capture's gain depends on both the target and any recapture. Play Bxb7."
           ]
         ]
       },
@@ -10193,7 +10193,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxh8."
+            "A capture's gain depends on both the target and any recapture. Play Bxh8."
           ]
         ]
       },
@@ -10287,13 +10287,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's file.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-          "A favorable exchange gains more material than it gives up. Play Nxe3."
+          "A capture's gain depends on both the target and any recapture. Play Nxe3."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Nxe3."
+            "A capture's gain depends on both the target and any recapture. Play Nxe3."
           ],
           [
             "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece shares a rank with its king.",
@@ -10323,7 +10323,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxa5."
+            "A capture's gain depends on both the target and any recapture. Play Bxa5."
           ]
         ]
       },
@@ -10373,7 +10373,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxh4."
+            "A capture's gain depends on both the target and any recapture. Play Qxh4."
           ]
         ]
       },
@@ -10428,7 +10428,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxh8."
+            "A capture's gain depends on both the target and any recapture. Play Bxh8."
           ]
         ]
       },
@@ -10483,12 +10483,12 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxb5."
+            "A capture's gain depends on both the target and any recapture. Play Rxb5."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxb8."
+            "A capture's gain depends on both the target and any recapture. Play Rxb8."
           ]
         ]
       },
@@ -10618,7 +10618,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxg5."
+            "A capture's gain depends on both the target and any recapture. Play Qxg5."
           ]
         ]
       },
@@ -10763,7 +10763,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxe1."
+            "A capture's gain depends on both the target and any recapture. Play Qxe1."
           ]
         ]
       },
@@ -10793,7 +10793,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxb2."
+            "A capture's gain depends on both the target and any recapture. Play Rxb2."
           ]
         ]
       },
@@ -10823,7 +10823,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxg7."
+            "A capture's gain depends on both the target and any recapture. Play Rxg7."
           ]
         ]
       },
@@ -10933,7 +10933,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxg3."
+            "A capture's gain depends on both the target and any recapture. Play Qxg3."
           ]
         ]
       },
@@ -10988,7 +10988,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxh1."
+            "A capture's gain depends on both the target and any recapture. Play Rxh1."
           ]
         ]
       },
@@ -11013,7 +11013,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxa4."
+            "A capture's gain depends on both the target and any recapture. Play Nxa4."
           ]
         ]
       },
@@ -11038,7 +11038,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe5."
+            "A capture's gain depends on both the target and any recapture. Play Rxe5."
           ]
         ]
       },
@@ -11093,7 +11093,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's diagonal.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Qxc4."
+            "A capture's gain depends on both the target and any recapture. Play Qxc4."
           ]
         ]
       },
@@ -11118,7 +11118,7 @@
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Nxd5."
+            "A capture's gain depends on both the target and any recapture. Play Nxd5."
           ]
         ]
       },
@@ -11143,7 +11143,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play bxc4."
+            "A capture's gain depends on both the target and any recapture. Play bxc4."
           ]
         ]
       },
@@ -11168,7 +11168,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play fxe3."
+            "A capture's gain depends on both the target and any recapture. Play fxe3."
           ]
         ]
       },
@@ -11313,7 +11313,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target.",
-            "A favorable exchange gains more material than it gives up. Play Kxe4."
+            "A capture's gain depends on both the target and any recapture. Play Kxe4."
           ]
         ]
       },
@@ -11327,13 +11327,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-          "A favorable exchange gains more material than it gives up. Play gxh5."
+          "A capture's gain depends on both the target and any recapture. Play gxh5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
-            "A favorable exchange gains more material than it gives up. Play gxh5."
+            "A capture's gain depends on both the target and any recapture. Play gxh5."
           ],
           [
             "A two-square pawn advance can allow an immediate passing capture. An enemy pawn shares a file with its king.",
@@ -11408,7 +11408,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Qxe1."
+            "A capture's gain depends on both the target and any recapture. Play Qxe1."
           ]
         ]
       }
@@ -11503,7 +11503,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
-            "A favorable exchange gains more material than it gives up. Play Rxc8."
+            "A capture's gain depends on both the target and any recapture. Play Rxc8."
           ]
         ]
       },
@@ -11623,7 +11623,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
-            "A favorable exchange gains more material than it gives up. Play Rxe8."
+            "A capture's gain depends on both the target and any recapture. Play Rxe8."
           ]
         ]
       },
@@ -11662,13 +11662,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Bxe5."
+          "A capture's gain depends on both the target and any recapture. Play Bxe5."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxe5."
+            "A capture's gain depends on both the target and any recapture. Play Bxe5."
           ],
           [
             "Castling can shelter the king and bring a corner piece into play. The king still has a legal route to safety.",
@@ -11772,13 +11772,13 @@
         "hints": [
           "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
           "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard on the diagonal.",
-          "A favorable exchange gains more material than it gives up. Play Bxf3."
+          "A capture's gain depends on both the target and any recapture. Play Bxf3."
         ],
         "moveHints": [
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard on the diagonal.",
-            "A favorable exchange gains more material than it gives up. Play Bxf3."
+            "A capture's gain depends on both the target and any recapture. Play Bxf3."
           ],
           [
             "Castling can shelter the king and bring a corner piece into play. The king still has a legal route to safety.",
@@ -11838,7 +11838,7 @@
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
-            "A favorable exchange gains more material than it gives up. Play Kxb2."
+            "A capture's gain depends on both the target and any recapture. Play Kxb2."
           ]
         ]
       },

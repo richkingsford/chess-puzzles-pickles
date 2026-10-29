@@ -147,6 +147,8 @@ def audit(dataset, evidence, reviews):
                         if not can_be_taken:fail(8,'offer-advice-after-setup-is-over',c,u,mi)
                 topic=e['topic'];checker_squares=set(after.checkers());mover=board.piece_at(move.from_square)
                 if topic=='mate' and not after.is_checkmate():fail(8,'false-mate-topic',c,u,mi)
+                if topic=='check' and (not e.get('line') or not any(after.piece_type_at(s) in (chess.BISHOP,chess.ROOK,chess.QUEEN) for s in checker_squares)):fail(8,'non-slider-described-as-line-check',c,u,mi)
+                if len(group)>1 and 'protected check' in group[1].lower() and not after.attackers(board.turn,move.to_square):fail(8,'unprotected-check-described-as-protected',c,u,mi)
                 if topic in ('check','captureCheck','contactCheck','forkCheck','doubleCheck') and not after.is_check():fail(8,'false-check-topic',c,u,mi)
                 if topic=='blockade':
                     target=chess.parse_square(e['target']);pc=board.piece_at(target)

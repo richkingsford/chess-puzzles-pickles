@@ -223,11 +223,8 @@
     ]
   },
   "A favorable exchange gains more material than it gives up": {
-    "status": "approved",
-    "reason": "Explains protection, recapture risk and the material tradeoff instead of declaring every capture free.",
-    "topics": [
-      "capture"
-    ]
+    "status": "rejected",
+    "reason": "A favorable exchange can be positional rather than material. Teach capture gain and recapture risk without treating every useful trade as a material win."
   },
   "A capture with check can gain material while forcing a reply": {
     "status": "approved",
@@ -805,6 +802,13 @@
     "reason": "Explains how progress of a passed pawn reduces defensive time.",
     "topics": [
       "pawnPush"
+    ]
+  },
+  "A capture's gain depends on both the target and any recapture": {
+    "status": "approved",
+    "reason": "Explains protection, recapture risk and the material tradeoff instead of declaring every capture free.",
+    "topics": [
+      "capture"
     ]
   }
 }

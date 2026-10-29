@@ -52,7 +52,7 @@ const lessons = {
   capture: [
     'A capture can win material when the target has too little protection.',
     'A safe capture weighs the target against any possible recapture.',
-    'A favorable exchange gains more material than it gives up.'
+    "A capture's gain depends on both the target and any recapture."
   ],
   captureCheck: [
     'A capture with check can gain material while forcing a reply.',
@@ -280,13 +280,13 @@ function analyze(before,san,nextSan,category){
  if(m.promotion)topic=m.promotion==='q'?'promotion':'underPromotion';
  else if(m.flags.includes('e'))topic='enPassant';
  else if(m.flags.includes('k')||m.flags.includes('q'))topic='castle';
- else if(after.isCheckmate())topic='mate';
  else if(checkers.length>=2)topic='doubleCheck';
+ else if(after.isCheckmate())topic=uncovered.some(u=>u.target===king(after,foe))&&!checkers.some(p=>p.square===m.to)?'discovered':'mate';
  else if(recaptured&&(VALUES[m.piece]>=VALUES[m.captured||'p'])&&category!=='hanging-piece'){
   if(reply.piece==='k')topic='attraction';
   else if(follow&&(follow.to===reply.to||attacks(followBoard,{...followBoard.get(follow.to),square:follow.to},reply.to)))topic='exchangeAttraction';
   else if(after.isCheck()&&follow&&followBoard.isCheck()&&VALUES[m.piece]>VALUES[m.captured||'p'])topic='checkingOffer';
-  else topic=m.captured?'exchange':after.isCheck()?'check':'improve';
+  else topic=m.captured?'exchange':after.isCheck()?(checkers.some(p=>['q','r','b'].includes(p.type))?'check':'contactCheck'):'improve';
  }
  else if(after.isCheck()&&valuable.some(p=>p.type!=='k')&&checkers.some(p=>p.square===m.to))topic='forkCheck';
  else if(!after.isCheck()&&valuable.length>=2)topic='fork';
@@ -378,7 +378,7 @@ function targetDescription(a,before,includePath=true){
 }
 function secondCue(a,before){
  const {topic,m,target,line,observation}=a;
- if(topic==='mate')return m.captured?`Look for a checking capture of ${targetDescription(a,before)}.`:line?`Look for a final checking entry on the ${line.relation}.`:'Look for a protected check with no legal escape.';
+ if(topic==='mate')return m.captured?`Look for a checking capture of ${targetDescription(a,before)}.`:line?`Look for a final checking entry on the ${line.relation}.`:m.piece==='n'?'Look for a jumping check with no legal escape.':'Look for a close check with no legal escape.';
  if(topic==='exchange')return `Look for a trade of ${targetDescription(a,before)}.`;
  if(topic==='checkingOffer')return 'Look for a checking offer that makes a defender leave its post.';
  if(topic==='maneuver')return 'Look for a quiet staging step toward the two valuable targets.';
@@ -445,6 +445,7 @@ if(require.main===module){
  const reviews=JSON.parse(fs.readFileSync(path.join(root,'audit/principle_reviews.json'),'utf8'));
  for(const [topic,text] of Object.entries(alternatives))reviews[text.replace(/\.$/,'')]={status:'approved',reason:notes[topic]+' Gives an additional teaching emphasis for a later move.',topics:[topic]};
  for(const [topic,triplet] of Object.entries(lessons))for(const text of triplet)reviews[text.replace(/\.$/,'')]={status:'approved',reason:notes[topic],topics:[topic]};
+ reviews['A favorable exchange gains more material than it gives up']={status:'rejected',reason:'A favorable exchange can be positional rather than material. Teach capture gain and recapture risk without treating every useful trade as a material win.'};
  fs.writeFileSync(path.join(root,'audit/principle_reviews.json'),JSON.stringify(reviews,null,2)+'\n');
  console.log(JSON.stringify(evidence.reduce((r,e)=>(r[e.topic]=(r[e.topic]||0)+1,r),{}),null,2));
 }
