@@ -18,6 +18,8 @@ In short, our current hint direction is:
 5. No redundant hints within a move.
 6. Dictionary / taxonomy alignment.
 7. Clear, short phrasing.
+8. Clues verified on the board before the current player move.
+9. An independent teaching principle at the start of every hint.
 
 Before regenerating hints, use the category trim report to find weak or
 redundant categories:
@@ -26,15 +28,13 @@ redundant categories:
 node audit_category_trim_candidates.js
 ```
 
-Run the focused hint audits from the repo root with:
+Run the current hint audits from the repo root with:
 
 ```sh
-node audit_rule1_progression.js
-node audit_rule2_one_point.js
-node audit_rule3_early_square_ids.js
-node audit_rule4_no_redundant_hints.js
-node audit_rule5_dictionary_alignment.js
-node audit_rule6_clear_short_phrasing.js
+python -m pip install -r requirements-audit.txt
+npm run audit:hints
+npm run test:principles
+npm run test:move-hints
 ```
 
 ## Common Commands

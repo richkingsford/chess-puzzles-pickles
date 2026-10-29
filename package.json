@@ -12,7 +12,9 @@
     "audit:puzzles": "node audit_puzzles.js",
     "test:puzzles": "npm --prefix game run test:puzzles",
     "audit:principles": "node audit_principles.js",
-    "test:principles": "node --test audit_principles.test.js"
+    "test:principles": "node --test audit_principles.test.js",
+    "audit:hints": "node audit_all_hints.cjs",
+    "test:move-hints": "python -m unittest audit_independent_test.py"
   },
   "dependencies": {
     "playwright": "^1.58.1"

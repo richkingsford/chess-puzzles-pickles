@@ -33,7 +33,10 @@
   },
   "A smaller promotion can avoid stalemate or create a different attack": {
     "status": "approved",
-    "reason": "Explains why choosing less than the strongest piece can be useful."
+    "reason": "Explains why promotion choice depends on threats or stalemate rather than material value alone.",
+    "topics": [
+      "underPromotion"
+    ]
   },
   "King safety and open lines can work together": {
     "status": "rejected",
@@ -42,5 +45,766 @@
   "Castling shelters the king and brings a corner piece toward open lines": {
     "status": "approved",
     "reason": "Explains both consequences of castling without relying on this board."
+  },
+  "Attraction can draw a piece onto a square where it becomes vulnerable": {
+    "status": "approved",
+    "reason": "Defines attraction as drawing a piece onto a vulnerable destination without guaranteeing success.",
+    "topics": [
+      "attraction"
+    ]
+  },
+  "An offered target can draw a defender into a new attack": {
+    "status": "approved",
+    "reason": "Defines attraction as drawing a piece onto a vulnerable destination without guaranteeing success.",
+    "topics": [
+      "attraction"
+    ]
+  },
+  "A forcing offer can change where the defender must stand": {
+    "status": "approved",
+    "reason": "Defines attraction as drawing a piece onto a vulnerable destination without guaranteeing success.",
+    "topics": [
+      "attraction"
+    ]
+  },
+  "An exchange can draw a defender onto a less safe square": {
+    "status": "approved",
+    "reason": "Explains how the location of a recapturing defender can become tactically useful.",
+    "topics": [
+      "exchangeAttraction"
+    ]
+  },
+  "A recapture can place a defender where another attack can reach it": {
+    "status": "approved",
+    "reason": "Explains how the location of a recapturing defender can become tactically useful.",
+    "topics": [
+      "exchangeAttraction"
+    ]
+  },
+  "A tempting capture can change which squares a defender must guard": {
+    "status": "approved",
+    "reason": "Explains how the location of a recapturing defender can become tactically useful.",
+    "topics": [
+      "exchangeAttraction"
+    ]
+  },
+  "A mating attack works when every legal defense to check is gone": {
+    "status": "approved",
+    "reason": "Explains the need to remove legal defenses and escape, rather than promising mate from a category.",
+    "topics": [
+      "mate"
+    ]
+  },
+  "Checkmate requires a checking threat with no legal escape or defense": {
+    "status": "approved",
+    "reason": "Explains the need to remove legal defenses and escape, rather than promising mate from a category.",
+    "topics": [
+      "mate"
+    ]
+  },
+  "A protected checking point can close the last gap in a mating net": {
+    "status": "approved",
+    "reason": "Explains the need to remove legal defenses and escape, rather than promising mate from a category."
+  },
+  "A check can gain time by making the enemy answer a threat": {
+    "status": "approved",
+    "reason": "Explains the tempo gained by obliging a response to check.",
+    "topics": [
+      "check"
+    ]
+  },
+  "A checking threat must be answered before other defenses can help": {
+    "status": "approved",
+    "reason": "Explains the tempo gained by obliging a response to check.",
+    "topics": [
+      "check"
+    ]
+  },
+  "An open checking line can keep an exposed king under pressure": {
+    "status": "approved",
+    "reason": "Explains the tempo gained by obliging a response to check.",
+    "topics": [
+      "check"
+    ]
+  },
+  "A close checking threat can force the enemy to spend time defending": {
+    "status": "approved",
+    "reason": "Explains the forcing character of a nearby check without claiming an open slider line.",
+    "topics": [
+      "contactCheck"
+    ]
+  },
+  "A check must be answered before another threat can be ignored": {
+    "status": "approved",
+    "reason": "Explains the forcing character of a nearby check without claiming an open slider line."
+  },
+  "A checking move can keep the initiative by forcing an immediate reply": {
+    "status": "approved",
+    "reason": "Explains the forcing character of a nearby check without claiming an open slider line.",
+    "topics": [
+      "contactCheck"
+    ]
+  },
+  "Two checking attackers leave the king unable to answer just one threat": {
+    "status": "approved",
+    "reason": "Explains why blocking or capturing only one attacker does not resolve double check.",
+    "topics": [
+      "doubleCheck"
+    ]
+  },
+  "Double check requires an escape rather than a single block or capture": {
+    "status": "approved",
+    "reason": "Explains why blocking or capturing only one attacker does not resolve double check.",
+    "topics": [
+      "doubleCheck"
+    ]
+  },
+  "Uncovering one checking line can let a second attacker join the check": {
+    "status": "approved",
+    "reason": "Explains why blocking or capturing only one attacker does not resolve double check.",
+    "topics": [
+      "doubleCheck"
+    ]
+  },
+  "A fork can threaten the king and another target at once": {
+    "status": "approved",
+    "reason": "Explains the two-target mechanism and priority of answering check.",
+    "topics": [
+      "forkCheck"
+    ]
+  },
+  "A checking fork forces a reply while a second target remains attacked": {
+    "status": "approved",
+    "reason": "Explains the two-target mechanism and priority of answering check.",
+    "topics": [
+      "forkCheck"
+    ]
+  },
+  "A checked king must answer check before another attacked piece is saved": {
+    "status": "approved",
+    "reason": "Explains the two-target mechanism and priority of answering check.",
+    "topics": [
+      "forkCheck"
+    ]
+  },
+  "A fork threatens two targets at once and can stretch the defense": {
+    "status": "approved",
+    "reason": "Explains the defensive time problem caused by two simultaneous threats.",
+    "topics": [
+      "fork"
+    ]
+  },
+  "A double attack can leave too little time to protect both targets": {
+    "status": "approved",
+    "reason": "Explains the defensive time problem caused by two simultaneous threats.",
+    "topics": [
+      "fork"
+    ]
+  },
+  "A move attacking two pieces can make the defender choose which to save": {
+    "status": "approved",
+    "reason": "Explains the defensive time problem caused by two simultaneous threats.",
+    "topics": [
+      "fork"
+    ]
+  },
+  "A capture can win material when the target has too little protection": {
+    "status": "approved",
+    "reason": "Explains protection, recapture risk and the material tradeoff instead of declaring every capture free.",
+    "topics": [
+      "capture"
+    ]
+  },
+  "A safe capture weighs the target against any possible recapture": {
+    "status": "approved",
+    "reason": "Explains protection, recapture risk and the material tradeoff instead of declaring every capture free.",
+    "topics": [
+      "capture"
+    ]
+  },
+  "A favorable exchange gains more material than it gives up": {
+    "status": "approved",
+    "reason": "Explains protection, recapture risk and the material tradeoff instead of declaring every capture free.",
+    "topics": [
+      "capture"
+    ]
+  },
+  "A capture with check can gain material while forcing a reply": {
+    "status": "approved",
+    "reason": "Explains the combination of a material capture and a forced answer to check.",
+    "topics": [
+      "captureCheck"
+    ]
+  },
+  "A checking capture can keep the initiative during an exchange": {
+    "status": "approved",
+    "reason": "Explains the combination of a material capture and a forced answer to check.",
+    "topics": [
+      "captureCheck"
+    ]
+  },
+  "Taking a target with check makes the defender answer the king threat": {
+    "status": "approved",
+    "reason": "Explains the combination of a material capture and a forced answer to check.",
+    "topics": [
+      "captureCheck"
+    ]
+  },
+  "Removing a guard can leave the piece it protects easier to attack": {
+    "status": "approved",
+    "reason": "Explains why a defender can be a tactical target before its protected piece.",
+    "topics": [
+      "removeGuard"
+    ]
+  },
+  "A defender may be worth removing before the target it guards": {
+    "status": "approved",
+    "reason": "Explains why a defender can be a tactical target before its protected piece.",
+    "topics": [
+      "removeGuard"
+    ]
+  },
+  "Capturing a guard can weaken protection without attacking every defender": {
+    "status": "approved",
+    "reason": "Explains why a defender can be a tactical target before its protected piece.",
+    "topics": [
+      "removeGuard"
+    ]
+  },
+  "A pawn reaching the last rank can become a stronger piece": {
+    "status": "approved",
+    "reason": "Explains the strength gained at the last rank without naming this move.",
+    "topics": [
+      "promotion"
+    ]
+  },
+  "Promotion can turn a small passed piece into a much larger threat": {
+    "status": "approved",
+    "reason": "Explains the strength gained at the last rank without naming this move.",
+    "topics": [
+      "promotion"
+    ]
+  },
+  "A clear promotion square lets an advanced pawn become a new attacker": {
+    "status": "approved",
+    "reason": "Explains the strength gained at the last rank without naming this move.",
+    "topics": [
+      "promotion"
+    ]
+  },
+  "Different promotion choices create different attacks from the same square": {
+    "status": "approved",
+    "reason": "Explains why promotion choice depends on threats or stalemate rather than material value alone.",
+    "topics": [
+      "underPromotion"
+    ]
+  },
+  "The strongest promotion choice depends on its threats rather than value alone": {
+    "status": "approved",
+    "reason": "Explains why promotion choice depends on threats or stalemate rather than material value alone.",
+    "topics": [
+      "underPromotion"
+    ]
+  },
+  "A two-square pawn advance can allow an immediate passing capture": {
+    "status": "approved",
+    "reason": "Explains the immediately expiring capture right and the unusual captured-pawn location.",
+    "topics": [
+      "enPassant"
+    ]
+  },
+  "A passing capture is available only on the reply to a double advance": {
+    "status": "approved",
+    "reason": "Explains the immediately expiring capture right and the unusual captured-pawn location.",
+    "topics": [
+      "enPassant"
+    ]
+  },
+  "En passant removes the pawn beside the capturing pawn rather than ahead": {
+    "status": "approved",
+    "reason": "Explains the immediately expiring capture right and the unusual captured-pawn location.",
+    "topics": [
+      "enPassant"
+    ]
+  },
+  "Castling can shelter the king and bring a corner piece into play": {
+    "status": "approved",
+    "reason": "Explains the linked safety and development effects of castling.",
+    "topics": [
+      "castle"
+    ]
+  },
+  "One castling turn can improve safety and activate a second piece": {
+    "status": "approved",
+    "reason": "Explains the linked safety and development effects of castling.",
+    "topics": [
+      "castle"
+    ]
+  },
+  "Castling joins king safety with development when its path is legal": {
+    "status": "approved",
+    "reason": "Explains the linked safety and development effects of castling.",
+    "topics": [
+      "castle"
+    ]
+  },
+  "An advanced pawn can threaten promotion and tie down defenders": {
+    "status": "approved",
+    "reason": "Explains how progress of a passed pawn reduces defensive time.",
+    "topics": [
+      "pawnPush"
+    ]
+  },
+  "A passed piece gains strength when its path to promotion stays clear": {
+    "status": "approved",
+    "reason": "Explains how progress of a passed pawn reduces defensive time.",
+    "topics": [
+      "pawnPush"
+    ]
+  },
+  "Advancing a passer can reduce the time available for a blockade": {
+    "status": "approved",
+    "reason": "Explains how progress of a passed pawn reduces defensive time.",
+    "topics": [
+      "pawnPush"
+    ]
+  },
+  "A pawn advance can gain space by controlling new squares": {
+    "status": "approved",
+    "reason": "Explains the new control and restrictions created by a pawn advance.",
+    "topics": [
+      "pawnSpace"
+    ]
+  },
+  "Extra space can restrict opposing pieces and support a later attack": {
+    "status": "approved",
+    "reason": "Explains the new control and restrictions created by a pawn advance.",
+    "topics": [
+      "pawnSpace"
+    ]
+  },
+  "A well-supported pawn advance can make an enemy position harder to defend": {
+    "status": "approved",
+    "reason": "Explains the new control and restrictions created by a pawn advance.",
+    "topics": [
+      "pawnSpace"
+    ]
+  },
+  "An active king can help attack weak pawns in an endgame": {
+    "status": "approved",
+    "reason": "Explains the supporting and attacking role of the king in an endgame.",
+    "topics": [
+      "kingActivity"
+    ]
+  },
+  "A closer defender can support targets that distant pieces cannot reach": {
+    "status": "approved",
+    "reason": "Explains the supporting and attacking role of the king in an endgame.",
+    "topics": [
+      "kingActivity"
+    ]
+  },
+  "Improving king activity can turn nearby weak pawns into targets": {
+    "status": "approved",
+    "reason": "Explains the supporting and attacking role of the king in an endgame.",
+    "topics": [
+      "kingActivity"
+    ]
+  },
+  "Facing kings can stop each other from reaching important squares": {
+    "status": "approved",
+    "reason": "Explains king restriction, entry squares and the effect of the obligation to move.",
+    "topics": [
+      "opposition"
+    ]
+  },
+  "A waiting step can change which side must give up an entry square": {
+    "status": "approved",
+    "reason": "Explains king restriction, entry squares and the effect of the obligation to move.",
+    "topics": [
+      "opposition"
+    ]
+  },
+  "Opposition can make the other king yield ground when it must move": {
+    "status": "approved",
+    "reason": "Explains king restriction, entry squares and the effect of the obligation to move.",
+    "topics": [
+      "opposition"
+    ]
+  },
+  "A waiting move can leave the opponent without a useful reply": {
+    "status": "approved",
+    "reason": "Explains the role of spare tempi and maintaining restrictions without claiming every wait wins.",
+    "topics": [
+      "waiting"
+    ]
+  },
+  "Keeping a restriction can matter more than making an immediate threat": {
+    "status": "approved",
+    "reason": "Explains the role of spare tempi and maintaining restrictions without claiming every wait wins.",
+    "topics": [
+      "waiting"
+    ]
+  },
+  "A spare tempo can make the opponent disturb its own defense": {
+    "status": "approved",
+    "reason": "Explains the role of spare tempi and maintaining restrictions without claiming every wait wins.",
+    "topics": [
+      "waiting"
+    ]
+  },
+  "Developing a piece gives it access to more useful squares": {
+    "status": "approved",
+    "reason": "Explains activity and preparation created by bringing a piece into play.",
+    "topics": [
+      "develop"
+    ]
+  },
+  "An active piece can defend important squares while adding pressure": {
+    "status": "approved",
+    "reason": "Explains activity and preparation created by bringing a piece into play.",
+    "topics": [
+      "develop"
+    ]
+  },
+  "Development can prepare an attack without an immediate capture": {
+    "status": "approved",
+    "reason": "Explains activity and preparation created by bringing a piece into play.",
+    "topics": [
+      "develop"
+    ]
+  },
+  "Attacking a target can make its defender give up another duty": {
+    "status": "approved",
+    "reason": "Explains how a new attack changes defensive duties and can gain a tempo."
+  },
+  "A new threat can force a choice between defending and retreating": {
+    "status": "approved",
+    "reason": "Explains how a new attack changes defensive duties and can gain a tempo.",
+    "topics": [
+      "pressure"
+    ]
+  },
+  "An active attacker can gain time by making an enemy piece respond": {
+    "status": "approved",
+    "reason": "Explains how a new attack changes defensive duties and can gain a tempo.",
+    "topics": [
+      "pressure"
+    ]
+  },
+  "Moving a blocker can uncover an attack from a piece behind it": {
+    "status": "approved",
+    "reason": "Explains the blocker and rear-attacker relationship of a discovered attack.",
+    "topics": [
+      "discovered"
+    ]
+  },
+  "Clearing one line can release pressure from a second attacker": {
+    "status": "approved",
+    "reason": "Explains the blocker and rear-attacker relationship of a discovered attack.",
+    "topics": [
+      "discovered"
+    ]
+  },
+  "A blocker can move with a threat while uncovering another attack": {
+    "status": "approved",
+    "reason": "Explains the blocker and rear-attacker relationship of a discovered attack.",
+    "topics": [
+      "discovered"
+    ]
+  },
+  "A pin can limit a defender when leaving exposes a more valuable target": {
+    "status": "approved",
+    "reason": "Explains the cost of leaving a line that shields a more valuable target.",
+    "topics": [
+      "pin"
+    ]
+  },
+  "A pinned guard cannot freely leave the more valuable target it shields": {
+    "status": "approved",
+    "reason": "Explains the cost of leaving a line that shields a more valuable target.",
+    "topics": [
+      "pin"
+    ]
+  },
+  "Lining up pressure can tie a defender to the target behind it": {
+    "status": "approved",
+    "reason": "Explains the cost of leaving a line that shields a more valuable target.",
+    "topics": [
+      "pin"
+    ]
+  },
+  "A checked king must escape danger before another plan can continue": {
+    "status": "approved",
+    "reason": "Explains the priority of resolving check and the need to avoid controlled squares.",
+    "topics": [
+      "escapeCheck"
+    ]
+  },
+  "A safe escape must avoid every square controlled by the opposing side": {
+    "status": "approved",
+    "reason": "Explains the priority of resolving check and the need to avoid controlled squares.",
+    "topics": [
+      "escapeCheck"
+    ]
+  },
+  "Escaping check can preserve material while keeping the game going": {
+    "status": "approved",
+    "reason": "Explains the priority of resolving check and the need to avoid controlled squares.",
+    "topics": [
+      "escapeCheck"
+    ]
+  },
+  "A line check can be stopped by placing a piece in its path": {
+    "status": "approved",
+    "reason": "Explains how interposition closes a slider checking line.",
+    "topics": [
+      "blockCheck"
+    ]
+  },
+  "Blocking a checking line can defend without moving the attacked target": {
+    "status": "approved",
+    "reason": "Explains how interposition closes a slider checking line.",
+    "topics": [
+      "blockCheck"
+    ]
+  },
+  "An interposing move stops check by closing the attack line": {
+    "status": "approved",
+    "reason": "Explains how interposition closes a slider checking line.",
+    "topics": [
+      "blockCheck"
+    ]
+  },
+  "Improving a piece can help it attack and defend more useful squares": {
+    "status": "approved",
+    "reason": "Explains the useful-square and pressure benefits of improving a piece.",
+    "topics": [
+      "improve"
+    ]
+  },
+  "A better post can add pressure without an immediate capture": {
+    "status": "approved",
+    "reason": "Explains the useful-square and pressure benefits of improving a piece.",
+    "topics": [
+      "improve"
+    ]
+  },
+  "Piece activity can matter even when no forcing move is available": {
+    "status": "approved",
+    "reason": "Explains the useful-square and pressure benefits of improving a piece.",
+    "topics": [
+      "improve"
+    ]
+  },
+  "A mating move leaves no escape, capture, or block that can answer check": {
+    "status": "approved",
+    "reason": "Explains the need to remove legal defenses and escape, rather than promising mate from a category.",
+    "topics": [
+      "mate"
+    ]
+  },
+  "A check must be answered before a separate threat can be handled": {
+    "status": "approved",
+    "reason": "Explains the forcing character of a nearby check without claiming an open slider line.",
+    "topics": [
+      "contactCheck"
+    ]
+  },
+  "Attacking an enemy piece can force it to retreat or gain protection": {
+    "status": "approved",
+    "reason": "Explains how a new attack changes defensive duties and can gain a tempo.",
+    "topics": [
+      "pressure"
+    ]
+  },
+  "An exchange can change which pieces guard a target": {
+    "status": "approved",
+    "reason": "Explains how exchanges simplify the position and change which pieces provide defense.",
+    "topics": [
+      "exchange"
+    ]
+  },
+  "Recapturing restores material but can alter the remaining defenses": {
+    "status": "approved",
+    "reason": "Explains how exchanges simplify the position and change which pieces provide defense.",
+    "topics": [
+      "exchange"
+    ]
+  },
+  "A trade can simplify a position while leaving other targets to defend": {
+    "status": "approved",
+    "reason": "Explains how exchanges simplify the position and change which pieces provide defense.",
+    "topics": [
+      "exchange"
+    ]
+  },
+  "A checking offer can draw a defender away from an important post": {
+    "status": "approved",
+    "reason": "Explains a checking sacrifice that moves a defender and gains a turn for another attacker.",
+    "topics": [
+      "checkingOffer"
+    ]
+  },
+  "A checking offer can make a defender abandon its current square": {
+    "status": "approved",
+    "reason": "Explains a checking sacrifice that moves a defender and gains a turn for another attacker.",
+    "topics": [
+      "checkingOffer"
+    ]
+  },
+  "A forcing sacrifice can gain time for a second attacker": {
+    "status": "approved",
+    "reason": "Explains a checking sacrifice that moves a defender and gains a turn for another attacker.",
+    "topics": [
+      "checkingOffer"
+    ]
+  },
+  "A quiet step can prepare a fork before either target is attacked": {
+    "status": "approved",
+    "reason": "Explains that a quiet preparatory move can stage a later fork without claiming that the fork already exists.",
+    "topics": [
+      "maneuver"
+    ]
+  },
+  "A staging post can bring two targets within reach on a later turn": {
+    "status": "approved",
+    "reason": "Explains that a quiet preparatory move can stage a later fork without claiming that the fork already exists.",
+    "topics": [
+      "maneuver"
+    ]
+  },
+  "A route toward a fork can begin with a quiet repositioning move": {
+    "status": "approved",
+    "reason": "Explains that a quiet preparatory move can stage a later fork without claiming that the fork already exists.",
+    "topics": [
+      "maneuver"
+    ]
+  },
+  "A blockade can stop a pawn by occupying its next square": {
+    "status": "approved",
+    "reason": "Explains how occupying the square ahead stops a straight pawn advance.",
+    "topics": [
+      "blockade"
+    ]
+  },
+  "A block can halt a straight advance without capturing the small target": {
+    "status": "approved",
+    "reason": "Explains how occupying the square ahead stops a straight pawn advance.",
+    "topics": [
+      "blockade"
+    ]
+  },
+  "A piece on the advance square can prevent a straight pawn push": {
+    "status": "approved",
+    "reason": "Explains how occupying the square ahead stops a straight pawn advance.",
+    "topics": [
+      "blockade"
+    ]
+  },
+  "A blocker can shield a passed pawn from a distant defender": {
+    "status": "approved",
+    "reason": "Explains the interposition of a blocker between an advanced passer and a long-range defender.",
+    "topics": [
+      "shieldPasser"
+    ]
+  },
+  "Interposing a defender can protect a promotion route by closing a line": {
+    "status": "approved",
+    "reason": "Explains the interposition of a blocker between an advanced passer and a long-range defender.",
+    "topics": [
+      "shieldPasser"
+    ]
+  },
+  "A guarded blocker can keep a distant defender from reaching a passed pawn": {
+    "status": "approved",
+    "reason": "Explains the interposition of a blocker between an advanced passer and a long-range defender.",
+    "topics": [
+      "shieldPasser"
+    ]
+  },
+  "A mating threat can force a defender to give up another task": {
+    "status": "approved",
+    "reason": "Explains the defensive priority imposed by a threat of checkmate.",
+    "topics": [
+      "mateThreat"
+    ]
+  },
+  "A threat of mate can make defense more urgent than a capture": {
+    "status": "approved",
+    "reason": "Explains the defensive priority imposed by a threat of checkmate.",
+    "topics": [
+      "mateThreat"
+    ]
+  },
+  "A direct mating threat can force the opponent to change its plan": {
+    "status": "approved",
+    "reason": "Explains the defensive priority imposed by a threat of checkmate.",
+    "topics": [
+      "mateThreat"
+    ]
+  },
+  "Undefended pieces offer material without a protecting piece to recapture": {
+    "status": "approved",
+    "reason": "Explains protection, recapture risk and the material tradeoff instead of declaring every capture free. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "capture"
+    ]
+  },
+  "A recapturing defender can become exposed on its new square": {
+    "status": "approved",
+    "reason": "Explains how the location of a recapturing defender can become tactically useful. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "exchangeAttraction"
+    ]
+  },
+  "Opposition can make a king yield an entry when it must move": {
+    "status": "approved",
+    "reason": "Explains king restriction, entry squares and the effect of the obligation to move. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "opposition"
+    ]
+  },
+  "A legal escape from check must avoid all opposing attacks": {
+    "status": "approved",
+    "reason": "Explains the priority of resolving check and the need to avoid controlled squares. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "escapeCheck"
+    ]
+  },
+  "A check can keep the initiative by demanding an immediate answer": {
+    "status": "approved",
+    "reason": "Explains the forcing character of a nearby check without claiming an open slider line. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "contactCheck"
+    ]
+  },
+  "An advancing pawn can take useful squares away from enemy pieces": {
+    "status": "approved",
+    "reason": "Explains the new control and restrictions created by a pawn advance. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "pawnSpace"
+    ]
+  },
+  "A check can give a fork time to threaten its second target": {
+    "status": "approved",
+    "reason": "Explains the two-target mechanism and priority of answering check. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "forkCheck"
+    ]
+  },
+  "Checking on an open line can stop a slower defensive plan": {
+    "status": "approved",
+    "reason": "Explains the tempo gained by obliging a response to check. Gives an additional teaching emphasis for a later move.",
+    "topics": [
+      "check"
+    ]
+  },
+  "A passed pawn can tie down defenders by threatening promotion": {
+    "status": "approved",
+    "reason": "Explains how progress of a passed pawn reduces defensive time.",
+    "topics": [
+      "pawnPush"
+    ]
   }
 }

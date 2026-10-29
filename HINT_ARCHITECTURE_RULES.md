@@ -63,12 +63,13 @@ Each three-hint group should reveal one player move in layers.
    Hint 2 is about 30% more direct and obvious than Hint 1. It should feel
    like a second, friendlier pass at the same lesson — a little clearer, a
    little closer, but still leaving the "aha!" moment to the player.
-   Sentence 1 restates the puzzle's principle (the category or tactic) in a
+   Sentence 1 restates the current move's principle (its local tactic) in a
    different way than Hint 1 did it — roughly 30% more direct. If Hint 1
    explained what a pin is, Hint 2 explains how you use a pin. If Hint 1
    explained what a fork does, Hint 2 explains why a fork wins material. The
-   principle must still be category-specific — no generic weakness statements
-   when a tactic name applies. Do not repeat Hint 1's exact wording.
+   principle must fit the local tactic. That tactic may differ from the
+   overall puzzle category once its setup has happened. Do not repeat Hint
+   1's exact wording.
    Sentence 2 tells the player specifically what to look for — like a
    chessmaster leaning over and saying "look for an empty diagonal", "look
    for a fork window", or "look for an opportunity to do X and Y". It should
@@ -83,10 +84,11 @@ Each three-hint group should reveal one player move in layers.
    no escape." "Look for a fork square near the center where one move hits
    both targets." "Look for a chance to remove the only defender and win the
    target behind it."
-   Both sentences must be specific to this puzzle's category AND this specific
-   board position. No canned or generic hints that would fit any puzzle in the
-   category. The second sentence must describe an opportunity that exists only
-   in this position.
+   Both sentences must fit this move's tactic AND this specific board
+   position. Never attach a generic clue merely because the category
+   matches. The second sentence must describe an opportunity verified in this
+   position. Similar positions can share wording when the same board
+   relationship is independently verified in each.
    Do not include square IDs, SAN notation, piece names, our-side language,
    or mid-sentence directives such as `play`, `move`, `compare`, or `trace`.
 3. **Hint 3 - Near-direct:** begin with an independent teaching principle,
@@ -99,8 +101,8 @@ subtle again because it belongs to a new board position.
 
 ### Hint 1 Hard Rules
 
-- Sentence 1 must teach the category-specific principle, not merely say that a
-  good move exists.
+- Sentence 1 must teach a principle of the current move's tactic, not merely
+  say that a good move exists or repeat the overall puzzle category.
 - Sentence 2 must give a short board observation before the current player
   move. It must not repeat the theme name or explain how to exploit it.
 - Sentence 2 must describe parts of the tactic, such as trapped exits, blocked
@@ -109,8 +111,8 @@ subtle again because it belongs to a new board position.
 - Hint 1 must not give SAN notation, square IDs such as `e4`, or exact move
   instructions.
 - Hint 1 must not name our moving piece or say whose piece should move.
-- Hint 1 must be relevant to both the puzzle category and the current player
-  move, including later player moves in multi-step puzzles.
+- Hint 1 must be relevant to the current player move, including later player
+  moves in multi-step puzzles. The category label must not override this.
 - Hint 1 must focus on the vulnerability, not the opportunity to play a
   specific move.
 - Prefer `heavy piece` for a queen or rook, and `medium piece` for a bishop or
@@ -184,6 +186,11 @@ The three hints for one player move should each add useful information.
 - Do not rephrase the same hint with different words.
 - Repeated concepts are only acceptable when the later hint adds a clearly more
   specific layer.
+- This rule applies within a player move, and identical opening pairs must
+  not repeat on consecutive player moves. Repeated wording across separate
+  puzzles is a review signal rather than an automatic failure: recurring
+  tactical patterns should teach the same relationship when the board facts
+  support it. Do not add cosmetic words just to make a string unique.
 
 Legacy validator: `audit_rule4_no_redundant_hints.js`
 
@@ -232,6 +239,13 @@ move, not just the puzzle's opening position or category.
   earlier player move.
 - Do not reuse the same first two hints for consecutive player moves.
 - Avoid generic filler such as `force the issue`, `big clue`, or `best move`.
+- Audit the setup and execution separately. Once attraction has already drawn
+  a defender away, the next hint must teach the current check, fork, capture,
+  or mate rather than telling the player to set up attraction again.
+- `audit/move_hint_evidence.json` binds each group to its before-move FEN,
+  current SAN, move role and observed targets. The independent Python auditor
+  reconstructs those positions with a different chess engine and checks the
+  claims instead of trusting the recorded role.
 
 Validator: `game/src/lib/puzzleHints.js` checks structured `moveHints` for
 wrong SAN references, repeated opening pairs, and known vague phrasing.
@@ -248,7 +262,7 @@ the category label, or the next sentence must learn something useful from it.
   second sentence cannot rescue a first sentence that teaches nothing.
 - Reject vague possibilities such as `A defender can be drawn away from a
   safe post.` This does not explain what attraction accomplishes.
-- Prefer `Attraction draws a piece onto a square where it becomes vulnerable.`
+- Prefer `Attraction can draw a piece onto a square where it becomes vulnerable.`
   This teaches the mechanism without identifying this puzzle's move.
 - Do not turn the principle into an exact move instruction or a description
   of this board. Reserve those details for the second sentence, with the
@@ -270,10 +284,11 @@ sentences need a recorded editorial verdict and reason in
 current-board relevance checks; approval of the lesson alone is not approval
 of the whole hint.
 
-The existing dataset has not yet completed this semantic review. The new
-auditor intentionally reports the review backlog, including old direct-only
-Hint 3s, rather than treating earlier structural passes as teaching approval.
-Regression checks: `npm run test:principles`.
+The authored lesson library has an editorial reason and applicable move roles
+for each approved first sentence. Board evidence must establish that the
+lesson fits the current move. New prose still requires editorial review;
+generation must not automatically approve arbitrary text read from a dataset.
+Regression checks: `npm run test:principles` and `npm run test:move-hints`.
 
 ## Category Trimming Before Regeneration
 
@@ -290,18 +305,22 @@ list.
 
 ## Audit Commands
 
-Run the focused legacy validators from the repo root:
+Run the current nine-rule audit from the repo root:
 
 ```sh
-node audit_rule1_progression.js
-node audit_rule2_one_point.js
-node audit_rule3_early_square_ids.js
-node audit_rule4_no_redundant_hints.js
-node audit_rule5_dictionary_alignment.js
-node audit_rule6_clear_short_phrasing.js
+python -m pip install -r requirements-audit.txt
+npm run audit:hints
+npm run test:principles
+npm run test:move-hints
 ```
 
-Run the app/data audit, including optional `moveHints` shape validation:
+`audit:hints` combines application and dictionary checks using chess.js,
+editorial principle approval, and an independent python-chess board replay.
+It covers all three hint levels and every player move. The historical
+`audit_rule1...6` scripts target older flat five-stage or single-sentence
+hints; their old stage/length scores are not release gates for this format.
+
+Run the app/data audit separately:
 
 ```sh
 npm run audit:puzzles

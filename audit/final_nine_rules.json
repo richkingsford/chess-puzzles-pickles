@@ -1,0 +1,61 @@
+{
+  "datasetSha256": "3810fbd3cc1d3e064069603a20662abd566fe8332481228b1ff92f0011592394",
+  "puzzles": 451,
+  "playerMoves": 950,
+  "hints": 2850,
+  "positionEngines": [
+    "chess.js",
+    "python-chess"
+  ],
+  "rules": [
+    {
+      "number": 1,
+      "name": "Three hints per player move",
+      "failures": 0
+    },
+    {
+      "number": 2,
+      "name": "Progressive disclosure",
+      "failures": 0
+    },
+    {
+      "number": 3,
+      "name": "One teaching point per hint",
+      "failures": 0
+    },
+    {
+      "number": 4,
+      "name": "Early hints avoid exact notation",
+      "failures": 0
+    },
+    {
+      "number": 5,
+      "name": "No redundant hints within a move",
+      "failures": 0
+    },
+    {
+      "number": 6,
+      "name": "Dictionary and taxonomy alignment",
+      "failures": 0
+    },
+    {
+      "number": 7,
+      "name": "Clear short phrasing",
+      "failures": 0
+    },
+    {
+      "number": 8,
+      "name": "Current-move relevance",
+      "failures": 0
+    },
+    {
+      "number": 9,
+      "name": "Independent principle first",
+      "failures": 0
+    }
+  ],
+  "applicationFindings": 0,
+  "principleFindings": 0,
+  "independentFindings": 0,
+  "examples": []
+}

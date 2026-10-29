@@ -1,3 +1,4 @@
+/* global __PUZZLE_DATA_VERSION__ */
 
 export function parsePuzzleUrl(url) {
     try {
@@ -53,7 +54,9 @@ function getCurrentBundleVersion() {
 
 export function getVersionedPublicAssetUrl(path) {
     const assetUrl = getPublicAssetUrl(path);
-    const version = getCurrentBundleVersion() || import.meta.env.MODE || 'dev';
+    const bundleVersion = getCurrentBundleVersion() || import.meta.env.MODE || 'dev';
+    const dataVersion = typeof __PUZZLE_DATA_VERSION__ === 'string' ? __PUZZLE_DATA_VERSION__ : '';
+    const version = dataVersion ? `${bundleVersion}-${dataVersion}` : bundleVersion;
     const separator = assetUrl.includes('?') ? '&' : '?';
 
     return `${assetUrl}${separator}v=${encodeURIComponent(version)}`;

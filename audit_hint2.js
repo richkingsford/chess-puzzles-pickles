@@ -314,6 +314,7 @@ function runFullAudit(data) {
 
   let total = 0;
   const allFailures = [];
+  let sharedObservations = 0;
   const codeCount   = {};
 
   entries.forEach(({ category, url, groupIndex, hint1, hint2, game, move }) => {
@@ -323,12 +324,11 @@ function runFullAudit(data) {
     const sentences = getSentences(hint2);
     const s2 = sentences[1] || '';
     const dupCount = categoryAreaClues[category]?.[s2] || 0;
-    if (s2 && dupCount >= 3) {
-      failures.push({
-        code: 'duplicate-area-clue',
-        detail: `sentence 2 is identical in ${dupCount} puzzles in "${category}"`,
-      });
-    }
+    if (s2 && dupCount >= 3) sharedObservations++;
+    // Shared wording across different puzzles is a review signal, not a
+    // rule-5 failure. The canonical audit verifies each observation on its
+    // own board and rejects repeated opening pairs within a solution.
+
 
     if (failures.length > 0) {
       allFailures.push({ category, url, groupIndex, hint1, hint2, failures });
@@ -341,6 +341,7 @@ function runFullAudit(data) {
   console.log(`Failing at least one rule: ${allFailures.length} (${pct(allFailures.length, total)}%)`);
   console.log(`Passing all rules:         ${total - allFailures.length} (${pct(total - allFailures.length, total)}%)\n`);
 
+  console.log(`Shared observation review signals: ${sharedObservations} (verify with npm run audit:hints)`);
   console.log('--- Failures by rule ---');
   Object.entries(codeCount)
     .sort((a, b) => b[1] - a[1])
