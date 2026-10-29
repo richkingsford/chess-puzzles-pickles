@@ -4175,7 +4175,7 @@
             "Capturing a guard can weaken protection without attacking every defender. Play bxc5."
           ],
           [
-            "A blockade can stop a pawn by occupying its next square. A pawn is one steps from promotion.",
+            "A blockade can stop a pawn by occupying its next square. A pawn is one step from promotion.",
             "A block can halt a straight advance without capturing the small target. Look for a block directly ahead of the advancing small target.",
             "A piece on the advance square can prevent a straight pawn push. Play Rg8."
           ]
@@ -5035,7 +5035,7 @@
             "A checked king must answer check before another attacked piece is saved. Play Re1+."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play f1=Q+."
           ],
@@ -6310,7 +6310,7 @@
             "Advancing a passer can reduce the time available for a blockade. Play g2."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play g1=Q."
           ]
@@ -6880,7 +6880,7 @@
             "Advancing a passer can reduce the time available for a blockade. Play a2."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play a1=Q."
           ]
@@ -7040,7 +7040,7 @@
             "An advanced pawn can create threats while defenders worry about its promotion. Play Rh8+."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play b8=Q+."
           ]
@@ -7140,7 +7140,7 @@
             "An advanced pawn can create threats while defenders worry about its promotion. Play Re1+."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play dxe1=Q#."
           ]
@@ -7190,7 +7190,7 @@
             "An advanced pawn can create threats while defenders worry about its promotion. Play Rxb3."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play d1=Q."
           ]
@@ -7621,7 +7621,7 @@
             "A tempting capture can change which squares a defender must guard. Play Rxh5."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play e8=Q."
           ]
@@ -8621,7 +8621,7 @@
             "A double check leaves a king needing an escape rather than a single block. Play g2+."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play g1=Q#."
           ]
@@ -9386,7 +9386,7 @@
             "A deflection plan uses competing duties to loosen the protection of a target. Play Rxb2."
           ],
           [
-            "A pawn reaching the last rank can become a stronger piece. A pawn is one steps from promotion.",
+            "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
             "A clear promotion square lets an advanced pawn become a new attacker. Play g8=Q."
           ]
@@ -11370,13 +11370,13 @@
           "line-opening"
         ],
         "hints": [
-          "En passant allows a passing capture immediately after a two-square pawn advance. The checked king has one legal escape squares.",
+          "En passant allows a passing capture immediately after a two-square pawn advance. The checked king has one legal escape square.",
           "En passant rights disappear if another reply is chosen first. Look for an escape that stays outside every enemy attack.",
           "En passant can remove a neighboring pawn and change an important attack line. Play Kh2."
         ],
         "moveHints": [
           [
-            "En passant allows a passing capture immediately after a two-square pawn advance. The checked king has one legal escape squares.",
+            "En passant allows a passing capture immediately after a two-square pawn advance. The checked king has one legal escape square.",
             "En passant rights disappear if another reply is chosen first. Look for an escape that stays outside every enemy attack.",
             "En passant can remove a neighboring pawn and change an important attack line. Play Kh2."
           ],
@@ -11425,13 +11425,13 @@
           "mate-in-one"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play c8=N#."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play c8=N#."
           ]
@@ -11445,13 +11445,13 @@
           "knight-promotion"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play c8=N#."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play c8=N#."
           ]
@@ -11476,7 +11476,7 @@
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play h2+."
           ],
           [
-            "A smaller promotion can avoid stalemate or create a different attack. A pawn is one steps from promotion.",
+            "A smaller promotion can avoid stalemate or create a different attack. A pawn is one step from promotion.",
             "Different promotion choices create different attacks from the same square. Look for a promotion choice whose attack matters more than its value.",
             "The strongest promotion choice depends on its threats rather than value alone. Play h1=N+."
           ]
@@ -11490,13 +11490,13 @@
           "knight-promotion"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play c8=N+."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play c8=N+."
           ],
@@ -11526,7 +11526,7 @@
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play dxe7+."
           ],
           [
-            "A smaller promotion can avoid stalemate or create a different attack. A pawn is one steps from promotion.",
+            "A smaller promotion can avoid stalemate or create a different attack. A pawn is one step from promotion.",
             "Different promotion choices create different attacks from the same square. Look for a promotion choice whose attack matters more than its value.",
             "The strongest promotion choice depends on its threats rather than value alone. Play exf8=N+."
           ]
@@ -11540,13 +11540,13 @@
           "rook-promotion"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play b8=R#."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play b8=R#."
           ]
@@ -11560,13 +11560,13 @@
           "passed-pawn"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play d1=R#."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play d1=R#."
           ]
@@ -11596,7 +11596,7 @@
             "Capturing a guard can weaken protection without attacking every defender. Play fxe2."
           ],
           [
-            "A smaller promotion can avoid stalemate or create a different attack. A pawn is one steps from promotion.",
+            "A smaller promotion can avoid stalemate or create a different attack. A pawn is one step from promotion.",
             "Different promotion choices create different attacks from the same square. Look for a promotion choice whose attack matters more than its value.",
             "The strongest promotion choice depends on its threats rather than value alone. Play exf1=N+."
           ]
@@ -11610,13 +11610,13 @@
           "deflection"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play e8=N+."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play e8=N+."
           ],
@@ -11635,13 +11635,13 @@
           "passed-pawn"
         ],
         "hints": [
-          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+          "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
           "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
           "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play e8=N#."
         ],
         "moveHints": [
           [
-            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one steps from promotion.",
+            "Under-promotion can create a useful attack without choosing the most valuable piece. A pawn is one step from promotion.",
             "Under-promotion changes the available threats rather than simply maximizing material value. Look for a promotion choice whose attack matters more than its value.",
             "Under-promotion can avoid stalemate or create an attack that a different choice would miss. Play e8=N#."
           ]
