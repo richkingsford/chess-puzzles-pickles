@@ -980,7 +980,125 @@
             "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Ba3#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy pawn has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qxc3+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  70,
+                  null
+                ],
+                "notes": {
+                  "9": "True, though this describes the result more than it teaches how to create mate."
+                }
+              },
+              {
+                "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Ba3#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/2kr3r/pp1n1ppp/2n1p1b1/1B6/5B2/b4NN1/P4PPP/2R1R1K1%20w%20-%20-%202%2017": {
         "answer": "Rxc6+, bxc6, Ba6#",
@@ -1006,7 +1124,125 @@
             "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Ba6#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy medium piece has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Rxc6+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  70,
+                  null
+                ],
+                "notes": {
+                  "9": "True, though this describes the result more than it teaches how to create mate."
+                }
+              },
+              {
+                "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Ba6#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/2kr3r/3b1ppp/pp6/3n4/1P3B2/P7/5PPP/R3RBK1%20w%20-%20-%200%2023": {
         "answer": "Bxa6#",
@@ -1027,7 +1263,67 @@
             "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking capture of the unguarded small target on the diagonal.",
             "A Boden's mate plan joins two diagonals around a crowded king. Play Bxa6#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An unguarded enemy pawn shares its king's diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The alignment narrows the target considerably for a first hint."
+                }
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking capture of the unguarded small target on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Bxa6#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r3kb1r/pb3ppp/1p2p3/4q1B1/P7/1QP5/4BPPP/R3K2R%20w%20KQkq%20-%200%2015": {
         "answer": "Qb5+, Qxb5, Bxb5+, Bc6, Bxc6#",
@@ -1058,7 +1354,179 @@
             "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the unguarded medium piece on the diagonal.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Bxc6#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. Two enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that draws the heavy defender away.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qb5+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "The alignment narrows the target considerably for a first hint."
+                }
+              },
+              {
+                "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "Taking a target with check makes the defender answer the king threat. Play Bxb5+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ],
+            [
+              {
+                "hint": "A mating attack works when every legal defense to check is gone. An unguarded enemy medium piece shares its king's diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  70,
+                  null
+                ],
+                "notes": {
+                  "2": "The alignment narrows the target considerably for a first hint.",
+                  "9": "True, though this describes the result more than it teaches how to create mate."
+                }
+              },
+              {
+                "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the unguarded medium piece on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Bxc6#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/2kr4/pp1nqpp1/2p1pn2/6N1/3P1B1r/5Q2/PPP2P2/R4BK1%20w%20-%20-%202%2019": {
         "answer": "Qxc6+, bxc6, Ba6#",
@@ -1084,7 +1552,125 @@
             "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Ba6#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy pawn has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qxc6+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  70,
+                  null
+                ],
+                "notes": {
+                  "9": "True, though this describes the result more than it teaches how to create mate."
+                }
+              },
+              {
+                "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Ba6#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r1bqkbnr/pp1np3/2ppp2p/8/3P2p1/3B1N2/PPP1QPPP/RNB1K2R%20w%20KQkq%20-%200%208": {
         "answer": "Bg6#",
@@ -1105,7 +1691,65 @@
             "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a final checking entry on the diagonal.",
             "A Boden's mate plan joins two diagonals around a crowded king. Play Bg6#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. Four enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a final checking entry on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Bg6#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/2rqk2r/p2n1pp1/1pbQp2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R%20w%20Kk%20-%203%2019": {
         "answer": "Qxe6+, fxe6, Bg6#",
@@ -1131,7 +1775,125 @@
             "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Bg6#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy pawn has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qxe6+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  70,
+                  null
+                ],
+                "notes": {
+                  "9": "True, though this describes the result more than it teaches how to create mate."
+                }
+              },
+              {
+                "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Bg6#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r3kr2/pppb1pp1/4p1Q1/3pP2p/3P3b/2P1PN1P/PP4P1/R1B2KR1%20b%20q%20-%200%2016": {
         "answer": "Bb5+, c4, Bxc4+, Qd3, Bxd3#",
@@ -1162,7 +1924,172 @@
             "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the unguarded heavy piece on the diagonal.",
             "A mating move leaves no escape, capture, or block that can answer check. Play Bxd3#."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Boden's mate uses crossing diagonal attacks to limit escape. Two enemy pieces stand beside their king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking entry on the diagonal.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Bb5+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              }
+            ],
+            [
+              {
+                "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy pawn shares its king's diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "The alignment narrows the target considerably for a first hint."
+                }
+              },
+              {
+                "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded small target on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "Taking a target with check makes the defender answer the king threat. Play Bxc4+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ],
+            [
+              {
+                "hint": "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  70,
+                  null
+                ],
+                "notes": {
+                  "2": "The alignment narrows the target considerably for a first hint.",
+                  "9": "True, though this describes the result more than it teaches how to create mate."
+                }
+              },
+              {
+                "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the unguarded heavy piece on the diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Bxd3#.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       }
     }
   },
@@ -10490,7 +11417,170 @@
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
             "A capture's gain depends on both the target and any recapture. Play Rxb8."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy heavy piece has one heavy guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a capture of the heavy piece with one guard on the diagonal that guards another target.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  60,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "7": "The repeated use of “guard” makes this sentence difficult to follow."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Bxb1.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the file.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A capture's gain depends on both the target and any recapture. Play Rxb5.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ],
+            [
+              {
+                "hint": "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A capture's gain depends on both the target and any recapture. Play Rxb8.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/3rr1k1/p3qp2/2p3p1/1p2p2p/1Q6/1P5P/1PP2PP1/3RR1K1%20w%20-%20-%200%2022": {
         "answer": "Qxe7, Rxe7, Rxd8+",
@@ -10515,7 +11605,122 @@
             "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the file.",
             "Taking a target with check makes the defender answer the king threat. Play Rxd8+."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy heavy piece has one heavy guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the heavy piece with one guard on the diagonal.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Qxe7.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's rank.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the file.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "Taking a target with check makes the defender answer the king threat. Play Rxd8+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/rn3rk1/2p1bpp1/1pnp2qp/p7/P2NP1bP/1QP1B3/1P1NBPP1/2KR3R%20b%20-%20-%200%2014": {
         "answer": "Nxd4, Bxd4, Bxe2",
@@ -10540,7 +11745,120 @@
             "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
             "Capturing a guard can weaken protection without attacking every defender. Play Bxe2."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has two guards.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with two guards.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxd4.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Capturing a guard can weaken protection without attacking every defender. Play Bxe2.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r1nq2k1/1b1p1rbp/pp2p1p1/n3Pp2/5P2/BNN2B2/PPP2QPP/3R1RK1%20w%20-%20-%207%2021": {
         "answer": "Nxa5, bxa5, Bxb7",
@@ -10565,7 +11883,123 @@
             "A double attack can leave too little time to protect both targets. Look for one attack that reaches both valuable targets.",
             "A move attacking two pieces can make the defender choose which to save. Play Bxb7."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with one guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxa5.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A fork can threaten two targets at once. An enemy heavy piece has one medium guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  70,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "Check that the fork is created by this move, rather than describing a later opportunity."
+                }
+              },
+              {
+                "hint": "A double attack can leave too little time to protect both targets. Look for one attack that reaches both valuable targets.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A move attacking two pieces can make the defender choose which to save. Play Bxb7.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/6k1/6pp/1q1np3/3p4/1p1n4/1P3PP1/1B2Q1KP/5B2%20w%20-%20-%200%2037": {
         "answer": "Bxd4, Qxd4, Qxe6+, Kf8, Qxd6+",
@@ -10595,7 +12029,179 @@
             "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded medium piece on the rank.",
             "Taking a target with check makes the defender answer the king threat. Play Qxd6+."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has one heavy guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with one guard on the diagonal.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Bxd4.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A fork can threaten two targets at once. An enemy medium piece has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  70,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "8": "Check that the fork is created by this move, rather than describing a later opportunity."
+                }
+              },
+              {
+                "hint": "A checking fork forces a reply while a second target remains attacked. Look for a checking fork that also reaches the medium piece.",
+                "scores": [
+                  100,
+                  70,
+                  100,
+                  65,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "4": "Hint 2 names a specific piece in the clue, which the rubric disallows.",
+                  "2": "A checking fork and target type disclose a great deal."
+                }
+              },
+              {
+                "hint": "A checked king must answer check before another attacked piece is saved. Play Qxe6+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ],
+            [
+              {
+                "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy medium piece shares its king's diagonal.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "The alignment narrows the target considerably for a first hint."
+                }
+              },
+              {
+                "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded medium piece on the rank.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "Taking a target with check makes the defender answer the king threat. Play Qxd6+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/rn2k1nr/ppp2ppp/3b4/3p1qB1/3P2b1/1PP2N1P/P3BPP1/RN1QK2R%20b%20KQkq%20-%200%209": {
         "answer": "Bxf3, Bxf3, Qxg5",
@@ -10620,7 +12226,120 @@
             "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
             "A capture's gain depends on both the target and any recapture. Play Qxg5."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has two guards.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with two guards on the diagonal.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Bxf3.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A capture's gain depends on both the target and any recapture. Play Qxg5.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r3k2r/1ppbq2p/p4pn1/3p3Q/1b3P1N/1P6/1PPP2PP/R1B2RK1%20w%20kq%20-%200%2015": {
         "answer": "Nxg6, hxg6, Qxh8+",
@@ -10645,7 +12364,122 @@
             "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the file.",
             "Taking a target with check makes the defender answer the king threat. Play Qxh8+."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with one guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxg6.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's rank.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the file.",
+                "scores": [
+                  100,
+                  75,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {
+                  "2": "This names a checking move and can make the solution quite direct."
+                }
+              },
+              {
+                "hint": "Taking a target with check makes the defender answer the king threat. Play Qxh8+.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r7/2k2p2/1Rr1p3/P1RpP2p/2pP2p1/2P3P1/5P1P/6K1%20b%20-%20-%204%2037": {
         "answer": "Rxc5, dxc5, Rxa5",
@@ -10670,7 +12504,118 @@
             "A defender may be worth removing before the target it guards. Look for a capture of the unguarded small target on the file that guards another target.",
             "Capturing a guard can weaken protection without attacking every defender. Play Rxa5."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy heavy piece has one pawn guard.",
+                "scores": [
+                  100,
+                  65,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  65,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
+                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                }
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for an exchange of the heavy piece that draws its guard away.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Rxc5.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "Removing a guard can leave the piece it protects easier to attack. An enemy pawn has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded small target on the file that guards another target.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Capturing a guard can weaken protection without attacking every defender. Play Rxa5.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       },
       "https://lichess.org/analysis/r2q1rk1/pp2bppp/2n2n2/3p4/3N2b1/6P1/PPP1NPBP/R1BQ1RK1%20b%20-%20-%204%2011": {
         "answer": "Nxd4, Qxd4, Bxe2",
@@ -10695,7 +12640,117 @@
             "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
             "Capturing a guard can weaken protection without attacking every defender. Play Bxe2."
           ]
-        ]
+        ],
+        "hintReviews": {
+          "version": 1,
+          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "moves": [
+            [
+              {
+                "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece shares a diagonal with its king.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  95
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with two guards.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  75,
+                  90,
+                  95
+                ],
+                "notes": {
+                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                }
+              },
+              {
+                "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxd4.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  75,
+                  95
+                ],
+                "notes": {
+                  "9": "The principle describes a change in support but could better explain why it matters."
+                }
+              }
+            ],
+            [
+              {
+                "hint": "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              },
+              {
+                "hint": "Capturing a guard can weaken protection without attacking every defender. Play Bxe2.",
+                "scores": [
+                  100,
+                  90,
+                  100,
+                  100,
+                  90,
+                  95,
+                  90,
+                  90,
+                  90,
+                  null
+                ],
+                "notes": {}
+              }
+            ]
+          ]
+        }
       }
     }
   },

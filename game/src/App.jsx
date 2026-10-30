@@ -3,6 +3,7 @@ import { Chess } from 'chess.js';
 import QRCode from 'qrcode';
 import { ChessgroundBoard } from './components/ChessgroundBoard';
 import BattleScene from './components/BattleScene';
+import HintAnalysis from './components/HintAnalysis';
 import {
   Trophy, HelpCircle, ChevronLeft, ChevronRight, Pause, Play,
   RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle,
@@ -3516,6 +3517,7 @@ const PuzzleView = ({
                     </div>
                   )}
                 </div>
+                <HintAnalysis key={`${hintFeedbackKey}-analysis`} puzzle={puzzle} moveIndex={Math.floor(hintAnswerMoveIndex / 2)} hintIndex={i} />
               </div>
             );
           })}
