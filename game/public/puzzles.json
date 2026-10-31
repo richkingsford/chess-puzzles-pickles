@@ -982,64 +982,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy pawn has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  70,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The c3 pawn is guarded by b2, but its guard count does not reveal why the sacrifice opens the mating diagonal.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r6r/1pp1k3/p1qb3p/4pb1N/3P2P1/2P5/PP1NQ3/2KR3R b - - 0 28",
+                  "san": "Qxc3+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
                 "scores": [
                   100,
-                  75,
+                  87,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  93,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qxc3+ draws the b2 pawn onto c3, clearing the diagonal for Ba3."
+                },
+                "position": {
+                  "fen": "r6r/1pp1k3/p1qb3p/4pb1N/3P2P1/2P5/PP1NQ3/2KR3R b - - 0 28",
+                  "san": "Qxc3+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qxc3+.",
                 "scores": [
                   100,
-                  90,
-                  100,
-                  100,
-                  90,
                   95,
+                  100,
+                  100,
+                  92,
+                  100,
                   90,
-                  75,
+                  100,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qxc3+ is the actual setup move, though the principle describes the later mate."
+                },
+                "position": {
+                  "fen": "r6r/1pp1k3/p1qb3p/4pb1N/3P2P1/2P5/PP1NQ3/2KR3R b - - 0 28",
+                  "san": "Qxc3+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               }
             ],
@@ -1048,53 +1065,75 @@
                 "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  70,
+                  88,
+                  75,
                   null
                 ],
                 "notes": {
-                  "9": "True, though this describes the result more than it teaches how to create mate."
+                  "8": "The c1 king has pieces on d1 and d2, but counting them gives only a broad mating clue.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "9": "This defines the condition for mate, but offers little guidance on creating it."
+                },
+                "position": {
+                  "fen": "r6r/1pp1k3/p2b3p/4pb1N/3P2P1/2P5/P2NQ3/2KR3R b - - 0 29",
+                  "san": "Ba3#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  88,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Ba3 is a checking entry on the a3–c1 diagonal and ends the game."
+                },
+                "position": {
+                  "fen": "r6r/1pp1k3/p2b3p/4pb1N/3P2P1/2P5/P2NQ3/2KR3R b - - 0 29",
+                  "san": "Ba3#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Ba3#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Ba3 is checkmate; there is no legal response."
+                },
+                "position": {
+                  "fen": "r6r/1pp1k3/p2b3p/4pb1N/3P2P1/2P5/P2NQ3/2KR3R b - - 0 29",
+                  "san": "Ba3#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1126,64 +1165,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy medium piece has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  72,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The c6 knight is guarded by b7; this is true but does not explain how moving the b7 pawn opens a line.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "2kr3r/pp1n1ppp/2n1p1b1/1B6/5B2/b4NN1/P4PPP/2R1R1K1 w - - 2 17",
+                  "san": "Rxc6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
                 "scores": [
                   100,
-                  75,
+                  87,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Rxc6+ draws b7 to c6 and clears the a6–c8 diagonal."
+                },
+                "position": {
+                  "fen": "2kr3r/pp1n1ppp/2n1p1b1/1B6/5B2/b4NN1/P4PPP/2R1R1K1 w - - 2 17",
+                  "san": "Rxc6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Rxc6+.",
                 "scores": [
                   100,
-                  90,
-                  100,
-                  100,
-                  90,
                   95,
+                  100,
+                  100,
+                  92,
+                  100,
                   90,
-                  75,
+                  100,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Rxc6+ is the correct setup for the crossing bishops."
+                },
+                "position": {
+                  "fen": "2kr3r/pp1n1ppp/2n1p1b1/1B6/5B2/b4NN1/P4PPP/2R1R1K1 w - - 2 17",
+                  "san": "Rxc6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               }
             ],
@@ -1192,53 +1248,75 @@
                 "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  70,
+                  88,
+                  75,
                   null
                 ],
                 "notes": {
-                  "9": "True, though this describes the result more than it teaches how to create mate."
+                  "8": "The c8 king has neighbors on d8 and d7, a true but broad clue.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "9": "This defines the condition for mate, but offers little guidance on creating it."
+                },
+                "position": {
+                  "fen": "2kr3r/p2n1ppp/2p1p1b1/1B6/5B2/b4NN1/P4PPP/4R1K1 w - - 0 18",
+                  "san": "Ba6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  88,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Ba6 checks along a6–c8 and mates."
+                },
+                "position": {
+                  "fen": "2kr3r/p2n1ppp/2p1p1b1/1B6/5B2/b4NN1/P4PPP/4R1K1 w - - 0 18",
+                  "san": "Ba6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Ba6#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Ba6 is checkmate."
+                },
+                "position": {
+                  "fen": "2kr3r/p2n1ppp/2p1p1b1/1B6/5B2/b4NN1/P4PPP/4R1K1 w - - 0 18",
+                  "san": "Ba6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1265,8 +1343,8 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
@@ -1276,15 +1354,22 @@
                   75,
                   100,
                   100,
+                  92,
+                  100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The alignment narrows the target considerably for a first hint."
+                  "8": "The a6 pawn is unguarded and shares the c8 king’s diagonal, but the clue narrows the mating target considerably.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "2kr3r/3b1ppp/pp6/3n4/1P3B2/P7/5PPP/R3RBK1 w - - 0 23",
+                  "san": "Bxa6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
@@ -1294,32 +1379,47 @@
                   75,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  100,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "The unguarded a6 pawn is captured with check along the diagonal; this is quite revealing.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "2kr3r/3b1ppp/pp6/3n4/1P3B2/P7/5PPP/R3RBK1 w - - 0 23",
+                  "san": "Bxa6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Bxa6#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
+                  100,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxa6 is the actual checkmate."
+                },
+                "position": {
+                  "fen": "2kr3r/3b1ppp/pp6/3n4/1P3B2/P7/5PPP/R3RBK1 w - - 0 23",
+                  "san": "Bxa6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1356,63 +1456,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. Two enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  82,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  85,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "The e8 king has friendly pieces on f8 and f7; this is accurate but only loosely identifies the queen offer.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kb1r/pb3ppp/1p2p3/4q1B1/P7/1QP5/4BPPP/R3K2R w KQkq - 0 15",
+                  "san": "Qb5+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that draws the heavy defender away.",
                 "scores": [
                   100,
-                  75,
+                  90,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qb5+ offers the queen and draws the e5 queen to b5."
+                },
+                "position": {
+                  "fen": "r3kb1r/pb3ppp/1p2p3/4q1B1/P7/1QP5/4BPPP/R3K2R w KQkq - 0 15",
+                  "san": "Qb5+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qb5+.",
                 "scores": [
                   100,
-                  90,
-                  100,
-                  100,
-                  90,
                   95,
+                  100,
+                  100,
+                  92,
+                  100,
                   90,
-                  75,
+                  100,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qb5+ is the correct setup move."
+                },
+                "position": {
+                  "fen": "r3kb1r/pb3ppp/1p2p3/4q1B1/P7/1QP5/4BPPP/R3K2R w KQkq - 0 15",
+                  "san": "Qb5+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               }
             ],
@@ -1421,53 +1539,75 @@
                 "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's diagonal.",
                 "scores": [
                   100,
-                  75,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "The alignment narrows the target considerably for a first hint."
+                  "8": "The queen on b5 is unguarded and lies on the e8 king’s diagonal; this nearly identifies the capture.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kb1r/pb3ppp/1p2p3/1q4B1/P7/2P5/4BPPP/R3K2R w KQkq - 0 16",
+                  "san": "Bxb5+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Bxb5+ captures that queen with check along the diagonal, a strong disclosure.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kb1r/pb3ppp/1p2p3/1q4B1/P7/2P5/4BPPP/R3K2R w KQkq - 0 16",
+                  "san": "Bxb5+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Taking a target with check makes the defender answer the king threat. Play Bxb5+.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxb5+ is the current checking capture."
+                },
+                "position": {
+                  "fen": "r3kb1r/pb3ppp/1p2p3/1q4B1/P7/2P5/4BPPP/R3K2R w KQkq - 0 16",
+                  "san": "Bxb5+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ],
             [
@@ -1475,54 +1615,76 @@
                 "hint": "A mating attack works when every legal defense to check is gone. An unguarded enemy medium piece shares its king's diagonal.",
                 "scores": [
                   100,
+                  78,
+                  100,
+                  100,
+                  92,
+                  100,
+                  90,
+                  100,
                   75,
-                  100,
-                  100,
-                  90,
-                  95,
-                  90,
-                  90,
-                  70,
                   null
                 ],
                 "notes": {
-                  "2": "The alignment narrows the target considerably for a first hint.",
-                  "9": "True, though this describes the result more than it teaches how to create mate."
+                  "8": "The unguarded bishop on c6 lies on the e8 king’s diagonal; naming the relationship makes the mate easier to locate.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "9": "This defines the condition for mate, but offers little guidance on creating it."
+                },
+                "position": {
+                  "fen": "r3kb1r/p4ppp/1pb1p3/1B4B1/P7/2P5/5PPP/R3K2R w KQkq - 1 17",
+                  "san": "Bxc6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the unguarded medium piece on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Bxc6 is a checking diagonal capture and checkmate.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kb1r/p4ppp/1pb1p3/1B4B1/P7/2P5/5PPP/R3K2R w KQkq - 1 17",
+                  "san": "Bxc6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Bxc6#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxc6 is the mating move."
+                },
+                "position": {
+                  "fen": "r3kb1r/p4ppp/1pb1p3/1B4B1/P7/2P5/5PPP/R3K2R w KQkq - 1 17",
+                  "san": "Bxc6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1554,64 +1716,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy pawn has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  70,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The c6 pawn has one pawn guard on b7, but the count alone does not identify the sacrifice’s purpose.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "2kr4/pp1nqpp1/2p1pn2/6N1/3P1B1r/5Q2/PPP2P2/R4BK1 w - - 2 19",
+                  "san": "Qxc6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
                 "scores": [
                   100,
-                  75,
+                  87,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qxc6+ draws the b7 pawn away, opening the a6–c8 diagonal."
+                },
+                "position": {
+                  "fen": "2kr4/pp1nqpp1/2p1pn2/6N1/3P1B1r/5Q2/PPP2P2/R4BK1 w - - 2 19",
+                  "san": "Qxc6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qxc6+.",
                 "scores": [
                   100,
-                  90,
-                  100,
-                  100,
-                  90,
                   95,
+                  100,
+                  100,
+                  92,
+                  100,
                   90,
-                  75,
+                  100,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qxc6+ is the correct setup move."
+                },
+                "position": {
+                  "fen": "2kr4/pp1nqpp1/2p1pn2/6N1/3P1B1r/5Q2/PPP2P2/R4BK1 w - - 2 19",
+                  "san": "Qxc6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               }
             ],
@@ -1620,53 +1799,75 @@
                 "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  70,
+                  88,
+                  75,
                   null
                 ],
                 "notes": {
-                  "9": "True, though this describes the result more than it teaches how to create mate."
+                  "8": "The c8 king is next to the d8 rook and d7 knight; the fact is true but broadly applicable.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "9": "This defines the condition for mate, but offers little guidance on creating it."
+                },
+                "position": {
+                  "fen": "2kr4/p2nqpp1/2p1pn2/6N1/3P1B1r/8/PPP2P2/R4BK1 w - - 0 20",
+                  "san": "Ba6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  88,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Ba6 enters on the diagonal and delivers mate."
+                },
+                "position": {
+                  "fen": "2kr4/p2nqpp1/2p1pn2/6N1/3P1B1r/8/PPP2P2/R4BK1 w - - 0 20",
+                  "san": "Ba6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Ba6#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Ba6 is checkmate."
+                },
+                "position": {
+                  "fen": "2kr4/p2nqpp1/2p1pn2/6N1/3P1B1r/8/PPP2P2/R4BK1 w - - 0 20",
+                  "san": "Ba6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1693,59 +1894,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. Four enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Four friendly pieces stand next to the e8 king, illustrating its crowded position."
+                },
+                "position": {
+                  "fen": "r1bqkbnr/pp1np3/2ppp2p/8/3P2p1/3B1N2/PPP1QPPP/RNB1K2R w KQkq - 0 8",
+                  "san": "Bg6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a final checking entry on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  88,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  100,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Bg6 is a diagonal checking entry that mates immediately."
+                },
+                "position": {
+                  "fen": "r1bqkbnr/pp1np3/2ppp2p/8/3P2p1/3B1N2/PPP1QPPP/RNB1K2R w KQkq - 0 8",
+                  "san": "Bg6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Bg6#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
+                  100,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bg6 is the correct mating move."
+                },
+                "position": {
+                  "fen": "r1bqkbnr/pp1np3/2ppp2p/8/3P2p1/3B1N2/PPP1QPPP/RNB1K2R w KQkq - 0 8",
+                  "san": "Bg6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1777,64 +2000,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. An enemy pawn has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  70,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The e6 pawn has one pawn guard on f7; the clue does not show why clearing f7 matters.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "2rqk2r/p2n1pp1/1pbQp2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 3 19",
+                  "san": "Qxe6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking offer that makes a defender leave its post.",
                 "scores": [
                   100,
-                  75,
+                  87,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "This identifies check and the sacrifice mechanism; it may be too direct for hint 2.",
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qxe6+ draws the f7 pawn to e6, opening the g6–e8 mating diagonal."
+                },
+                "position": {
+                  "fen": "2rqk2r/p2n1pp1/1pbQp2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 3 19",
+                  "san": "Qxe6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Qxe6+.",
                 "scores": [
                   100,
-                  90,
-                  100,
-                  100,
-                  90,
                   95,
+                  100,
+                  100,
+                  92,
+                  100,
                   90,
-                  75,
+                  100,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "This is a setup move; the mating principle should also connect clearly to the move being played."
+                  "8": "Qxe6+ is the correct checking sacrifice."
+                },
+                "position": {
+                  "fen": "2rqk2r/p2n1pp1/1pbQp2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 3 19",
+                  "san": "Qxe6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               }
             ],
@@ -1843,53 +2083,75 @@
                 "hint": "A mating attack works when every legal defense to check is gone. Two enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  70,
+                  88,
+                  75,
                   null
                 ],
                 "notes": {
-                  "9": "True, though this describes the result more than it teaches how to create mate."
+                  "8": "The e8 king has friendly pieces on d8 and d7; accurate, but not very specific.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "9": "This defines the condition for mate, but offers little guidance on creating it."
+                },
+                "position": {
+                  "fen": "2rqk2r/p2n2p1/1pb1p2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 0 20",
+                  "san": "Bg6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a final checking entry on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  88,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Bg6 enters the diagonal opened by the pawn’s move and mates."
+                },
+                "position": {
+                  "fen": "2rqk2r/p2n2p1/1pb1p2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 0 20",
+                  "san": "Bg6#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Bg6#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bg6 is checkmate."
+                },
+                "position": {
+                  "fen": "2rqk2r/p2n2p1/1pb1p2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 0 20",
+                  "san": "Bg6#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -1926,25 +2188,34 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Boden's mate uses crossing diagonal attacks to limit escape. Two enemy pieces stand beside their king.",
                 "scores": [
                   100,
-                  90,
+                  82,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  85,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The f1 king is beside its own g1 rook and g2 pawn; the observation relates to the mating net but is broad.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kr2/pppb1pp1/4p1Q1/3pP2p/3P3b/2P1PN1P/PP4P1/R1B2KR1 b q - 0 16",
+                  "san": "Bb5+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               },
               {
                 "hint": "Boden's mate threats grow when diagonal pressure closes several exits together. Look for a checking entry on the diagonal.",
@@ -1953,30 +2224,46 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  100,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bb5+ is the current diagonal check, not yet the final mate."
+                },
+                "position": {
+                  "fen": "r3kr2/pppb1pp1/4p1Q1/3pP2p/3P3b/2P1PN1P/PP4P1/R1B2KR1 b q - 0 16",
+                  "san": "Bb5+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A Boden's mate plan joins two diagonals around a crowded king. Play Bb5+.",
                 "scores": [
                   100,
-                  90,
-                  100,
-                  100,
-                  90,
                   95,
+                  100,
+                  100,
+                  92,
+                  100,
                   90,
+                  100,
                   90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bb5+ is the actual first move of the mating sequence."
+                },
+                "position": {
+                  "fen": "r3kr2/pppb1pp1/4p1Q1/3pP2p/3P3b/2P1PN1P/PP4P1/R1B2KR1 b q - 0 16",
+                  "san": "Bb5+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ],
             [
@@ -1984,53 +2271,75 @@
                 "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy pawn shares its king's diagonal.",
                 "scores": [
                   100,
-                  75,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "The alignment narrows the target considerably for a first hint."
+                  "8": "The c4 pawn is unguarded and shares the f1 king’s diagonal, strongly narrowing the capture.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kr2/ppp2pp1/4p1Q1/1b1pP2p/2PP3b/4PN1P/PP4P1/R1B2KR1 b q - 0 17",
+                  "san": "Bxc4+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded small target on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Bxc4+ captures the unguarded pawn with check on the diagonal.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kr2/ppp2pp1/4p1Q1/1b1pP2p/2PP3b/4PN1P/PP4P1/R1B2KR1 b q - 0 17",
+                  "san": "Bxc4+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Taking a target with check makes the defender answer the king threat. Play Bxc4+.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxc4+ is the current move."
+                },
+                "position": {
+                  "fen": "r3kr2/ppp2pp1/4p1Q1/1b1pP2p/2PP3b/4PN1P/PP4P1/R1B2KR1 b q - 0 17",
+                  "san": "Bxc4+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ],
             [
@@ -2038,54 +2347,76 @@
                 "hint": "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's diagonal.",
                 "scores": [
                   100,
+                  78,
+                  100,
+                  100,
+                  92,
+                  100,
+                  90,
+                  100,
                   75,
-                  100,
-                  100,
-                  90,
-                  95,
-                  90,
-                  90,
-                  70,
                   null
                 ],
                 "notes": {
-                  "2": "The alignment narrows the target considerably for a first hint.",
-                  "9": "True, though this describes the result more than it teaches how to create mate."
+                  "8": "The d3 queen is unguarded and aligned diagonally with the f1 king, a strong locator.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "9": "This defines the condition for mate, but offers little guidance on creating it."
+                },
+                "position": {
+                  "fen": "r3kr2/ppp2pp1/4p3/3pP2p/2bP3b/3QPN1P/PP4P1/R1B2KR1 b q - 1 18",
+                  "san": "Bxd3#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "Checkmate requires a checking threat with no legal escape or defense. Look for a checking capture of the unguarded heavy piece on the diagonal.",
                 "scores": [
                   100,
-                  75,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Bxd3 captures the queen with check on the diagonal and mates.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3kr2/ppp2pp1/4p3/3pP2p/2bP3b/3QPN1P/PP4P1/R1B2KR1 b q - 1 18",
+                  "san": "Bxd3#",
+                  "isCheck": true,
+                  "isMate": true
                 }
               },
               {
                 "hint": "A mating move leaves no escape, capture, or block that can answer check. Play Bxd3#.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxd3 is the current checkmate."
+                },
+                "position": {
+                  "fen": "r3kr2/ppp2pp1/4p3/3pP2p/2bP3b/3QPN1P/PP4P1/R1B2KR1 b q - 1 18",
+                  "san": "Bxd3#",
+                  "isCheck": true,
+                  "isMate": true
+                }
               }
             ]
           ]
@@ -11419,63 +11750,84 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy heavy piece has one heavy guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  65,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The b1 rook has one heavy guard on c1 and itself guards b5; the guard count does not state that second relationship.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "1r6/5pkb/pr2pN1p/1P2P3/2p2P2/8/6BP/1RR3K1 b - - 1 44",
+                  "san": "Bxb1",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a capture of the heavy piece with one guard on the diagonal that guards another target.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
+                  65,
+                  100,
                   90,
-                  95,
-                  60,
-                  90,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "7": "The repeated use of “guard” makes this sentence difficult to follow."
+                  "8": "Bxb1 captures the rook that guards b5; the sentence correctly identifies the diagonal capture but is awkward.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "7": "“Guard” is repeated in an awkward sentence."
+                },
+                "position": {
+                  "fen": "1r6/5pkb/pr2pN1p/1P2P3/2p2P2/8/6BP/1RR3K1 b - - 1 44",
+                  "san": "Bxb1",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Bxb1.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Bxb1 removes the rook guarding b5, though the principle could explain the consequence more plainly.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "1r6/5pkb/pr2pN1p/1P2P3/2p2P2/8/6BP/1RR3K1 b - - 1 44",
+                  "san": "Bxb1",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -11487,14 +11839,22 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The b5 pawn is unguarded and is the current capture target."
+                },
+                "position": {
+                  "fen": "1r6/3N1pk1/pr2p2p/1P2P3/2p2P2/8/6BP/1bR3K1 b - - 1 45",
+                  "san": "Rxb5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the file.",
@@ -11503,30 +11863,46 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxb5 captures the unguarded pawn along the b-file."
+                },
+                "position": {
+                  "fen": "1r6/3N1pk1/pr2p2p/1P2P3/2p2P2/8/6BP/1bR3K1 b - - 1 45",
+                  "san": "Rxb5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A capture's gain depends on both the target and any recapture. Play Rxb5.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxb5 is the current capture; material gain depends on the exchange."
+                },
+                "position": {
+                  "fen": "1r6/3N1pk1/pr2p2p/1P2P3/2p2P2/8/6BP/1bR3K1 b - - 1 45",
+                  "san": "Rxb5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ],
             [
@@ -11537,14 +11913,22 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The b8 knight is unguarded and is the current capture target."
+                },
+                "position": {
+                  "fen": "1N6/5pk1/p3p2p/1r2P3/2p2P2/8/6BP/1bR3K1 b - - 0 46",
+                  "san": "Rxb8",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
@@ -11553,30 +11937,46 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxb8 captures the unguarded knight along the b-file."
+                },
+                "position": {
+                  "fen": "1N6/5pk1/p3p2p/1r2P3/2p2P2/8/6BP/1bR3K1 b - - 0 46",
+                  "san": "Rxb8",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A capture's gain depends on both the target and any recapture. Play Rxb8.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxb8 is the actual capture of the knight."
+                },
+                "position": {
+                  "fen": "1N6/5pk1/p3p2p/1r2P3/2p2P2/8/6BP/1bR3K1 b - - 0 46",
+                  "san": "Rxb8",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -11607,63 +12007,82 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy heavy piece has one heavy guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  65,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The e7 queen has a single heavy guard on e8 and guards the d8 rook; the clue omits its defending role.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "3rr1k1/p3qp2/2p3p1/1p2p2p/1Q6/1P5P/1PP2PP1/3RR1K1 w - - 0 22",
+                  "san": "Qxe7",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the heavy piece with one guard on the diagonal.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  75,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Qxe7 trades queens along the diagonal, drawing the e8 rook away from d8."
+                },
+                "position": {
+                  "fen": "3rr1k1/p3qp2/2p3p1/1p2p2p/1Q6/1P5P/1PP2PP1/3RR1K1 w - - 0 22",
+                  "san": "Qxe7",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Qxe7.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Qxe7 is the correct removal setup, though the first sentence is abstract.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "3rr1k1/p3qp2/2p3p1/1p2p2p/1Q6/1P5P/1PP2PP1/3RR1K1 w - - 0 22",
+                  "san": "Qxe7",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -11672,51 +12091,74 @@
                 "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's rank.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The unguarded d8 rook shares the g8 king’s rank, making the checking capture easier to spot.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "3r2k1/p3rp2/2p3p1/1p2p2p/8/1P5P/1PP2PP1/3RR1K1 w - - 0 23",
+                  "san": "Rxd8+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the file.",
                 "scores": [
                   100,
-                  75,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Rxd8+ captures the rook on the d-file and gives check along the eighth rank."
+                },
+                "position": {
+                  "fen": "3r2k1/p3rp2/2p3p1/1p2p2p/8/1P5P/1PP2PP1/3RR1K1 w - - 0 23",
+                  "san": "Rxd8+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Taking a target with check makes the defender answer the king threat. Play Rxd8+.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxd8+ is the current checking capture."
+                },
+                "position": {
+                  "fen": "3r2k1/p3rp2/2p3p1/1p2p2p/8/1P5P/1PP2PP1/3RR1K1 w - - 0 23",
+                  "san": "Rxd8+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -11747,63 +12189,82 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has two guards.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The d4 knight has two guards, c3 and e3, and itself defends e2 and b3.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "rn3rk1/2p1bpp1/1pnp2qp/p7/P2NP1bP/1QP1B3/1P1NBPP1/2KR3R b - - 0 14",
+                  "san": "Nxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with two guards.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  75,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Nxd4 trades against the twice-guarded knight, but the clue omits what it defends."
+                },
+                "position": {
+                  "fen": "rn3rk1/2p1bpp1/1pnp2qp/p7/P2NP1bP/1QP1B3/1P1NBPP1/2KR3R b - - 0 14",
+                  "san": "Nxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxd4.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Nxd4 removes a defender of the e2 bishop.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "rn3rk1/2p1bpp1/1pnp2qp/p7/P2NP1bP/1QP1B3/1P1NBPP1/2KR3R b - - 0 14",
+                  "san": "Nxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -11815,46 +12276,70 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The e2 bishop is unguarded; it also guards the d1 rook, although the clue does not mention that relationship."
+                },
+                "position": {
+                  "fen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
+                  "san": "Bxe2",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
                 "scores": [
                   100,
-                  90,
+                  88,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxe2 captures the unguarded bishop, which guards d1, along the diagonal."
+                },
+                "position": {
+                  "fen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
+                  "san": "Bxe2",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "Capturing a guard can weaken protection without attacking every defender. Play Bxe2.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxe2 removes a guard of the d1 rook."
+                },
+                "position": {
+                  "fen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
+                  "san": "Bxe2",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -11885,63 +12370,82 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The a5 knight has one pawn guard on b6 and defends the b7 bishop.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r1nq2k1/1b1p1rbp/pp2p1p1/n3Pp2/5P2/BNN2B2/PPP2QPP/3R1RK1 w - - 7 21",
+                  "san": "Nxa5",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with one guard.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  75,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Nxa5 trades for the knight but the clue omits its defense of b7."
+                },
+                "position": {
+                  "fen": "r1nq2k1/1b1p1rbp/pp2p1p1/n3Pp2/5P2/BNN2B2/PPP2QPP/3R1RK1 w - - 7 21",
+                  "san": "Nxa5",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxa5.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Nxa5 removes the knight defending b7.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "r1nq2k1/1b1p1rbp/pp2p1p1/n3Pp2/5P2/BNN2B2/PPP2QPP/3R1RK1 w - - 7 21",
+                  "san": "Nxa5",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -11950,19 +12454,24 @@
                 "hint": "A fork can threaten two targets at once. An enemy heavy piece has one medium guard.",
                 "scores": [
                   100,
-                  65,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  70,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "Check that the fork is created by this move, rather than describing a later opportunity."
+                  "8": "The a8 rook is guarded by the b7 bishop; Bxb7 removes that bishop and attacks both a8 and c8."
+                },
+                "position": {
+                  "fen": "r1nq2k1/1b1p1rbp/p3p1p1/p3Pp2/5P2/B1N2B2/PPP2QPP/3R1RK1 w - - 0 22",
+                  "san": "Bxb7",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
@@ -11972,30 +12481,46 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxb7 attacks both the a8 rook and c8 knight."
+                },
+                "position": {
+                  "fen": "r1nq2k1/1b1p1rbp/p3p1p1/p3Pp2/5P2/B1N2B2/PPP2QPP/3R1RK1 w - - 0 22",
+                  "san": "Bxb7",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A move attacking two pieces can make the defender choose which to save. Play Bxb7.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxb7 is the current capture and double attack."
+                },
+                "position": {
+                  "fen": "r1nq2k1/1b1p1rbp/p3p1p1/p3Pp2/5P2/B1N2B2/PPP2QPP/3R1RK1 w - - 0 22",
+                  "san": "Bxb7",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -12031,63 +12556,82 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has one heavy guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The d4 knight has one heavy guard on b6 and guards the e6 pawn.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "6k1/6pp/1q1np3/3p4/1p1n4/1P3PP1/1B2Q1KP/5B2 w - - 0 37",
+                  "san": "Bxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with one guard on the diagonal.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  75,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Bxd4 is a diagonal trade for the guarded knight; the target it defends is not named."
+                },
+                "position": {
+                  "fen": "6k1/6pp/1q1np3/3p4/1p1n4/1P3PP1/1B2Q1KP/5B2 w - - 0 37",
+                  "san": "Bxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Bxd4.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Bxd4 removes a defender of e6.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "6k1/6pp/1q1np3/3p4/1p1n4/1P3PP1/1B2Q1KP/5B2 w - - 0 37",
+                  "san": "Bxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -12096,54 +12640,74 @@
                 "hint": "A fork can threaten two targets at once. An enemy medium piece has no guard.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  70,
-                  90,
                   null
                 ],
                 "notes": {
-                  "8": "Check that the fork is created by this move, rather than describing a later opportunity."
+                  "8": "The d6 knight is unguarded, and Qxe6+ attacks it while checking the king."
+                },
+                "position": {
+                  "fen": "6k1/6pp/3np3/3p4/1p1q4/1P3PP1/4Q1KP/5B2 w - - 0 38",
+                  "san": "Qxe6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A checking fork forces a reply while a second target remains attacked. Look for a checking fork that also reaches the medium piece.",
                 "scores": [
                   100,
-                  70,
+                  75,
                   100,
-                  65,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "4": "Hint 2 names a specific piece in the clue, which the rubric disallows.",
-                  "2": "A checking fork and target type disclose a great deal."
+                  "8": "Qxe6+ creates a checking fork on the king and d6 knight; this gives away much of the tactic.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "6k1/6pp/3np3/3p4/1p1q4/1P3PP1/4Q1KP/5B2 w - - 0 38",
+                  "san": "Qxe6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A checked king must answer check before another attacked piece is saved. Play Qxe6+.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Qxe6+ checks the king and attacks the d6 knight."
+                },
+                "position": {
+                  "fen": "6k1/6pp/3np3/3p4/1p1q4/1P3PP1/4Q1KP/5B2 w - - 0 38",
+                  "san": "Qxe6+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ],
             [
@@ -12151,53 +12715,74 @@
                 "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy medium piece shares its king's diagonal.",
                 "scores": [
                   100,
-                  75,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "The alignment narrows the target considerably for a first hint."
+                  "8": "The unguarded d6 knight shares the f8 king’s diagonal, which strongly identifies the target.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "5k2/6pp/3nQ3/3p4/1p1q4/1P3PP1/6KP/5B2 w - - 1 39",
+                  "san": "Qxd6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded medium piece on the rank.",
                 "scores": [
                   100,
-                  75,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Qxd6+ travels along the sixth rank and checks the king on f8."
+                },
+                "position": {
+                  "fen": "5k2/6pp/3nQ3/3p4/1p1q4/1P3PP1/6KP/5B2 w - - 1 39",
+                  "san": "Qxd6+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Taking a target with check makes the defender answer the king threat. Play Qxd6+.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Qxd6+ is the current checking capture."
+                },
+                "position": {
+                  "fen": "5k2/6pp/3nQ3/3p4/1p1q4/1P3PP1/6KP/5B2 w - - 1 39",
+                  "san": "Qxd6+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -12228,63 +12813,82 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has two guards.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The f3 knight has two guards, e2 and g2, and defends the bishop on g5.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P2b1/1PP2N1P/P3BPP1/RN1QK2R b KQkq - 0 9",
+                  "san": "Bxf3",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with two guards on the diagonal.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  75,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Bxf3 trades on the diagonal, but the clue does not identify the bishop it leaves exposed."
+                },
+                "position": {
+                  "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P2b1/1PP2N1P/P3BPP1/RN1QK2R b KQkq - 0 9",
+                  "san": "Bxf3",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Bxf3.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Bxf3 removes the knight defending g5.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P2b1/1PP2N1P/P3BPP1/RN1QK2R b KQkq - 0 9",
+                  "san": "Bxf3",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -12296,14 +12900,22 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The g5 bishop is unguarded and is the target of Qxg5."
+                },
+                "position": {
+                  "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P4/1PP2B1P/P4PP1/RN1QK2R b KQkq - 0 10",
+                  "san": "Qxg5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
@@ -12312,30 +12924,46 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Qxg5 captures the unguarded bishop along the fifth rank."
+                },
+                "position": {
+                  "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P4/1PP2B1P/P4PP1/RN1QK2R b KQkq - 0 10",
+                  "san": "Qxg5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A capture's gain depends on both the target and any recapture. Play Qxg5.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Qxg5 is the current capture."
+                },
+                "position": {
+                  "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P4/1PP2B1P/P4PP1/RN1QK2R b KQkq - 0 10",
+                  "san": "Qxg5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -12366,63 +12994,82 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The g6 knight has a single pawn guard on h7 and defends the h8 rook.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3k2r/1ppbq2p/p4pn1/3p3Q/1b3P1N/1P6/1PPP2PP/R1B2RK1 w kq - 0 15",
+                  "san": "Nxg6",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with one guard.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  75,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Nxg6 trades for the guarded knight but does not identify the h8 rook it protects."
+                },
+                "position": {
+                  "fen": "r3k2r/1ppbq2p/p4pn1/3p3Q/1b3P1N/1P6/1PPP2PP/R1B2RK1 w kq - 0 15",
+                  "san": "Nxg6",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxg6.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Nxg6 removes a defender of the h8 rook.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "r3k2r/1ppbq2p/p4pn1/3p3Q/1b3P1N/1P6/1PPP2PP/R1B2RK1 w kq - 0 15",
+                  "san": "Nxg6",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -12431,51 +13078,74 @@
                 "hint": "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's rank.",
                 "scores": [
                   100,
-                  90,
+                  80,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The unguarded h8 rook shares the e8 king’s rank; this makes the capture easier to locate.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r3k2r/1ppbq3/p4pp1/3p3Q/1b3P2/1P6/1PPP2PP/R1B2RK1 w kq - 0 16",
+                  "san": "Qxh8+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A checking capture can keep the initiative during an exchange. Look for a checking capture of the unguarded heavy piece on the file.",
                 "scores": [
                   100,
-                  75,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
                 "notes": {
-                  "2": "This names a checking move and can make the solution quite direct."
+                  "8": "Qxh8+ captures the rook along the h-file and checks along the eighth rank."
+                },
+                "position": {
+                  "fen": "r3k2r/1ppbq3/p4pp1/3p3Q/1b3P2/1P6/1PPP2PP/R1B2RK1 w kq - 0 16",
+                  "san": "Qxh8+",
+                  "isCheck": true,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Taking a target with check makes the defender answer the king threat. Play Qxh8+.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Qxh8+ is the actual checking capture."
+                },
+                "position": {
+                  "fen": "r3k2r/1ppbq3/p4pp1/3p3Q/1b3P2/1P6/1PPP2PP/R1B2RK1 w kq - 0 16",
+                  "san": "Qxh8+",
+                  "isCheck": true,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -12506,27 +13176,33 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy heavy piece has one pawn guard.",
                 "scores": [
                   100,
-                  65,
+                  78,
                   100,
+                  100,
+                  92,
                   100,
                   90,
                   95,
                   90,
-                  65,
-                  90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "2": "The guard count is subtle, but it does not clearly point to the tactical weakness.",
-                  "8": "The observation identifies a guarded piece without explaining its connection to this move."
+                  "8": "The c5 rook is guarded by the d4 pawn and protects the a5 pawn.",
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                },
+                "position": {
+                  "fen": "r7/2k2p2/1Rr1p3/P1RpP2p/2pP2p1/2P3P1/5P1P/6K1 b - - 4 37",
+                  "san": "Rxc5",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
@@ -12536,31 +13212,46 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
+                  100,
                   90,
-                  90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxc5 draws the d4 pawn to c5 and removes the rook that guarded a5."
+                },
+                "position": {
+                  "fen": "r7/2k2p2/1Rr1p3/P1RpP2p/2pP2p1/2P3P1/5P1P/6K1 b - - 4 37",
+                  "san": "Rxc5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Rxc5.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Rxc5 removes the rook defending a5 and draws the d4 pawn away.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "r7/2k2p2/1Rr1p3/P1RpP2p/2pP2p1/2P3P1/5P1P/6K1 b - - 4 37",
+                  "san": "Rxc5",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -12572,46 +13263,70 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The a5 pawn is unguarded and guards the b6 rook; the observation omits that second role."
+                },
+                "position": {
+                  "fen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
+                  "san": "Rxa5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded small target on the file that guards another target.",
                 "scores": [
                   100,
-                  90,
+                  88,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxa5 captures the unguarded pawn along the a-file; that pawn guards the b6 rook."
+                },
+                "position": {
+                  "fen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
+                  "san": "Rxa5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "Capturing a guard can weaken protection without attacking every defender. Play Rxa5.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Rxa5 removes the pawn guarding b6."
+                },
+                "position": {
+                  "fen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
+                  "san": "Rxa5",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ]
           ]
@@ -12642,60 +13357,81 @@
           ]
         ],
         "hintReviews": {
-          "version": 1,
-          "method": "Preliminary pattern-based AI-assisted scores using the current rubric; board-specific accuracy needs individual review.",
+          "version": 2,
+          "method": "Individual editorial review using the replayed position and current 10-rule rubric. Scores are subjective judgments.",
           "moves": [
             [
               {
                 "hint": "Capturing the defender can leave its target without enough protection. An enemy medium piece shares a diagonal with its king.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
                   90,
-                  90,
-                  95
+                  96
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The d4 knight shares the g1 king’s diagonal and guards the e2 knight; the clue does not identify its defensive role."
+                },
+                "position": {
+                  "fen": "r2q1rk1/pp2bppp/2n2n2/3p4/3N2b1/6P1/PPP1NPBP/R1BQ1RK1 b - - 4 11",
+                  "san": "Nxd4",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "Capturing the defender can weaken a target before that target is attacked directly. Look for a trade of the medium piece with two guards.",
                 "scores": [
                   100,
-                  90,
+                  85,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
                   90,
-                  75,
                   90,
-                  95
+                  96
                 ],
                 "notes": {
-                  "8": "A trade clue identifies the capture, but the defender relationship is not explicit."
+                  "8": "Nxd4 trades for the knight guarded by d1 and e2, but the clue omits what it protects."
+                },
+                "position": {
+                  "fen": "r2q1rk1/pp2bppp/2n2n2/3p4/3N2b1/6P1/PPP1NPBP/R1BQ1RK1 b - - 4 11",
+                  "san": "Nxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               },
               {
                 "hint": "Capturing the defender changes the support available to the pieces it guarded. Play Nxd4.",
                 "scores": [
                   100,
-                  90,
+                  96,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
-                  75,
-                  95
+                  100,
+                  78,
+                  96
                 ],
                 "notes": {
-                  "9": "The principle describes a change in support but could better explain why it matters."
+                  "8": "Nxd4 removes a defender of e2.",
+                  "9": "The principle describes a change in support without saying when or why it matters."
+                },
+                "position": {
+                  "fen": "r2q1rk1/pp2bppp/2n2n2/3p4/3N2b1/6P1/PPP1NPBP/R1BQ1RK1 b - - 4 11",
+                  "san": "Nxd4",
+                  "isCheck": false,
+                  "isMate": false
                 }
               }
             ],
@@ -12707,46 +13443,70 @@
                   90,
                   100,
                   100,
+                  92,
+                  100,
                   90,
                   95,
                   90,
-                  90,
-                  90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "The e2 knight is unguarded and protects the queen on d4; the clue does not mention the queen."
+                },
+                "position": {
+                  "fen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
+                  "san": "Bxe2",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
                 "scores": [
                   100,
-                  90,
+                  88,
                   100,
                   100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxe2 captures the unguarded e2 knight, which guards d4, along the diagonal."
+                },
+                "position": {
+                  "fen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
+                  "san": "Bxe2",
+                  "isCheck": false,
+                  "isMate": false
+                }
               },
               {
                 "hint": "Capturing a guard can weaken protection without attacking every defender. Play Bxe2.",
                 "scores": [
                   100,
-                  90,
                   100,
                   100,
+                  100,
+                  92,
+                  100,
                   90,
-                  95,
-                  90,
-                  90,
+                  100,
                   90,
                   null
                 ],
-                "notes": {}
+                "notes": {
+                  "8": "Bxe2 removes a defender of the queen."
+                },
+                "position": {
+                  "fen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
+                  "san": "Bxe2",
+                  "isCheck": false,
+                  "isMate": false
+                }
               }
             ]
           ]

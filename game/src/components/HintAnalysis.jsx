@@ -37,8 +37,9 @@ export default function HintAnalysis({ puzzle, moveIndex, hintIndex }) {
       {!currentReview ? <p>Analysis is not available for this hint yet.</p> : review && <>
         <div className="flex items-center justify-between gap-3"><strong>Move {review.m + 1} · Hint {review.h + 1}</strong><div className="flex gap-2"><button type="button" disabled={selected <= 0} onClick={() => setPosition([entries[selected - 1].m, entries[selected - 1].h])} className="rounded bg-slate-700 px-3 py-1 disabled:opacity-40">Previous</button><button type="button" disabled={selected >= entries.length - 1} onClick={() => setPosition([entries[selected + 1].m, entries[selected + 1].h])} className="rounded bg-slate-700 px-3 py-1 disabled:opacity-40">Next</button></div></div>
         <p className="mt-3 text-sm">{review.hint}</p>
+        {review.position && <details className="mt-2 text-xs text-slate-400"><summary className="cursor-pointer">Position reviewed</summary><p className="mt-1 break-all">FEN: {review.position.fen}</p><p>Move: {review.position.san}</p></details>}
         <p className="mt-3 font-bold">AI grade: {average}%</p>
-        <p className="text-xs text-slate-400">Average of applicable rule scores; preliminary estimates based on recurring wording, not a complete board review.</p>
+        <p className="text-xs text-slate-400">Average of applicable rule scores; Editorial scores based on the position before this move.</p>
         {response('overall')}
         <div className="mt-4 space-y-3">{RULES.map((rule, index) => <div key={rule} className="rounded bg-slate-800 p-3"><div className="flex justify-between gap-2"><span>{index + 1}. {rule}</span><strong>{review.scores[index] == null ? 'N/A' : `${review.scores[index]}%`}</strong></div>{review.notes?.[index + 1] && <p className="mt-1 text-sm text-amber-200">{review.notes[index + 1]}</p>}{review.scores[index] != null && response(index + 1)}</div>)}</div>
       </>}
