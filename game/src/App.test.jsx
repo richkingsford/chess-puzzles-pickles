@@ -547,6 +547,41 @@ describe('App unit tests by area', () => {
       expect(markSolved).toHaveBeenCalledTimes(1);
     });
 
+    test('a previously completed puzzle allows moving freely without replaying it', () => {
+      hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: makePuzzle({ answer: 'e4, e5, Nf3, Nc6, Bb5' }), currentPuzzleIndex: 1, totalPuzzles: 3, isCurrentPuzzleCompleted: true });
+      render(<App />);
+      const fen = () => screen.getByTestId('mock-board').dataset.fen;
+      const start = fen();
+      fireEvent.click(screen.getByTestId('next-button'));
+      const second = fen();
+      expect(second).not.toBe(start);
+      fireEvent.click(screen.getByTestId('next-button'));
+      expect(fen()).not.toBe(second);
+      fireEvent.click(screen.getByTestId('prev-button'));
+      expect(fen()).toBe(second);
+      fireEvent.click(screen.getByTestId('prev-button'));
+      expect(fen()).toBe(start);
+      fireEvent.click(screen.getByTestId('prev-button'));
+      expect(prevPuzzle).toHaveBeenCalledTimes(1);
+      expect(markSolved).not.toHaveBeenCalled();
+    });
+
+    test('review navigation cancels a pending opponent reply on a completed puzzle', async () => {
+      vi.useFakeTimers();
+      hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: makePuzzle({ answer: 'e4, e5, Nf3, Nc6, Bb5' }), totalPuzzles: 2, isCurrentPuzzleCompleted: true });
+      render(<App />);
+      act(() => { window.__smokePuzzle.playExpectedMove(); });
+      expect(screen.getByTestId('opponent-reply-note')).toBeInTheDocument();
+      fireEvent.click(screen.getByTestId('next-button'));
+      const reviewed = screen.getByTestId('mock-board').dataset.fen;
+      fireEvent.click(screen.getByTestId('next-button'));
+      const last = screen.getByTestId('mock-board').dataset.fen;
+      expect(last).not.toBe(reviewed);
+      await act(async () => { vi.advanceTimersByTime(1500); });
+      expect(screen.getByTestId('mock-board')).toHaveAttribute('data-fen', last);
+      expect(screen.queryByTestId('opponent-reply-note')).not.toBeInTheDocument();
+    });
+
     test('previous arrow crosses to the preceding puzzle at the first move', () => {
       hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: makePuzzle(), currentPuzzleIndex: 1, totalPuzzles: 2 });
       render(<App />);

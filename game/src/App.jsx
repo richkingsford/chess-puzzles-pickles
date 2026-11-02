@@ -1461,6 +1461,7 @@ const PuzzleView = ({
   const puzzleMistakesRef = useRef(0);
   const boardShellRef = useRef(null);
   const confettiTimerRef = useRef(null);
+  const moveTimerRef = useRef(null);
   const lastInteractionPointRef = useRef(null);
   const pendingOverlayAdvanceRef = useRef(null);
 
@@ -1642,6 +1643,7 @@ const PuzzleView = ({
 
   useEffect(() => () => {
     clearConfettiTimer();
+    clearTimeout(moveTimerRef.current);
   }, [clearConfettiTimer]);
 
   const getPromotionPieceForMove = React.useCallback((gameState, sourceSquare, targetSquare, expectedMoveSan) => {
@@ -1714,7 +1716,8 @@ const PuzzleView = ({
           const opponentReplySan = answerMoves[nextIndex];
           setPendingOpponentMove(opponentReplySan || null);
 
-          setTimeout(() => {
+          moveTimerRef.current = setTimeout(() => {
+            moveTimerRef.current = null;
             setMoveStatus(null);
 
             const gameWithOpponent = new Chess(gameCopy.fen());
@@ -1738,7 +1741,8 @@ const PuzzleView = ({
         }
         setPendingOpponentMove(null);
         const previousFen = game.fen();
-        setTimeout(() => {
+        moveTimerRef.current = setTimeout(() => {
+          moveTimerRef.current = null;
           const rewindGame = new Chess();
           try {
             rewindGame.load(previousFen);
@@ -1771,23 +1775,33 @@ const PuzzleView = ({
       setGame(replay);
       setCurrentMoveIndex(targetIndex);
       setLastMoveArrow(lastMove ? [lastMove.from, lastMove.to] : null);
+      clearTimeout(moveTimerRef.current);
+      moveTimerRef.current = null;
+      setPendingOpponentMove(null);
       setMoveStatus(null);
       setShowSolvedPosition(false);
     } catch (error) {
       console.error('Could not review move:', error);
     }
   };
-  const navigationBusy = Boolean(pendingOpponentMove) || moveStatus === 'incorrect';
+  const reviewUnlocked = isCompleted || isPuzzleSolvedState;
+  const navigationBusy = !reviewUnlocked && (Boolean(pendingOpponentMove) || moveStatus === 'incorrect');
   const atLastMove = currentMoveIndex >= answerMoves.length - 1;
   const handlePrevious = () => {
     if (navigationBusy) return;
     if (currentMoveIndex > 0) reviewMove(Math.max(0, currentMoveIndex - 2));
-    else onPrev();
+    else {
+      clearTimeout(moveTimerRef.current);
+      onPrev();
+    }
   };
   const handleNext = () => {
     if (navigationBusy) return;
-    if (!atLastMove && currentMoveIndex + 2 <= furthestMoveIndex) reviewMove(currentMoveIndex + 2);
-    else if (atLastMove) onNext();
+    if (!atLastMove && (reviewUnlocked || currentMoveIndex + 2 <= furthestMoveIndex)) reviewMove(currentMoveIndex + 2);
+    else if (atLastMove) {
+      clearTimeout(moveTimerRef.current);
+      onNext();
+    }
   };
 
   useEffect(() => {
@@ -3290,6 +3304,8 @@ const PuzzleView = ({
         </div>
         <div className="flex items-center gap-1">
           <button data-testid="reset-button" onClick={() => {
+            clearTimeout(moveTimerRef.current);
+            moveTimerRef.current = null;
             const newGame = new Chess();
             if (initialFen) try { newGame.load(initialFen); } catch (e) { }
             setGame(newGame);
@@ -3360,7 +3376,7 @@ const PuzzleView = ({
               </div>
             ) : moveStatus === 'incorrect' ? (
               <div className="text-red-500 font-black text-xl animate-pulse">TRY AGAIN</div>
-            ) : (currentMoveIndex < furthestMoveIndex || (isPuzzleSolvedState && !showSolvedPosition)) ? (
+            ) : (currentMoveIndex < furthestMoveIndex || (reviewUnlocked && !showSolvedPosition && currentMoveIndex > 0)) ? (
               <div className="text-slate-300 text-sm">Reviewing move {currentPlayerMoveNumber} of {playerMoveCount}</div>
             ) : isPuzzleSolvedState ? (
               <div className="text-green-400 font-bold text-xl flex items-center gap-2 justify-center">
@@ -3377,7 +3393,7 @@ const PuzzleView = ({
             )}
           </div>
 
-          <button data-testid="next-button" aria-label="Next move or puzzle" onClick={handleNext} disabled={navigationBusy || (atLastMove ? index === total - 1 : currentMoveIndex + 2 > furthestMoveIndex)} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
+          <button data-testid="next-button" aria-label="Next move or puzzle" onClick={handleNext} disabled={navigationBusy || (atLastMove ? index === total - 1 : !reviewUnlocked && currentMoveIndex + 2 > furthestMoveIndex)} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
             <ChevronRight />
           </button>
         </div>
