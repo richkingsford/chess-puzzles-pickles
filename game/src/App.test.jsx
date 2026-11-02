@@ -512,6 +512,48 @@ describe('App unit tests by area', () => {
       expect(screen.queryByRole('button', { name: 'Next Puzzle' })).not.toBeInTheDocument();
     });
 
+    test('reviews completed moves in order and advances to the next puzzle at the end', async () => {
+      vi.useFakeTimers();
+      const puzzle = makePuzzle({ answer: 'e4, e5, Nf3, Nc6, Bb5' });
+      hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: puzzle, totalPuzzles: 2 });
+      const { rerender } = render(<App />);
+      const boardFen = () => screen.getByTestId('mock-board').dataset.fen;
+      const start = boardFen();
+      expect(screen.getByTestId('next-button')).toBeDisabled();
+      act(() => { window.__smokePuzzle.playExpectedMove(); });
+      await act(async () => { vi.advanceTimersByTime(1100); });
+      const step2 = boardFen();
+      expect(step2).not.toBe(start);
+      act(() => { window.__smokePuzzle.playExpectedMove(); });
+      await act(async () => { vi.advanceTimersByTime(1100); });
+      const step3 = boardFen();
+      act(() => { window.__smokePuzzle.playExpectedMove(); });
+      const final = boardFen();
+      expect(final).not.toBe(step3);
+      hookState = { ...hookState, isSolved: true };
+      rerender(<App />);
+      fireEvent.click(screen.getByTestId('prev-button'));
+      expect(boardFen()).toBe(step2);
+      fireEvent.click(screen.getByTestId('prev-button'));
+      expect(boardFen()).toBe(start);
+      expect(screen.getByTestId('prev-button')).toBeDisabled();
+      fireEvent.click(screen.getByTestId('next-button'));
+      expect(boardFen()).toBe(step2);
+      fireEvent.click(screen.getByTestId('next-button'));
+      expect(boardFen()).toBe(step3);
+      expect(nextPuzzle).not.toHaveBeenCalled();
+      fireEvent.click(screen.getByTestId('next-button'));
+      expect(nextPuzzle).toHaveBeenCalledTimes(1);
+      expect(markSolved).toHaveBeenCalledTimes(1);
+    });
+
+    test('previous arrow crosses to the preceding puzzle at the first move', () => {
+      hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: makePuzzle(), currentPuzzleIndex: 1, totalPuzzles: 2 });
+      render(<App />);
+      fireEvent.click(screen.getByTestId('prev-button'));
+      expect(prevPuzzle).toHaveBeenCalledTimes(1);
+    });
+
     test('shows incorrect state and gracefully resets board state', async () => {
       vi.useFakeTimers();
       user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });

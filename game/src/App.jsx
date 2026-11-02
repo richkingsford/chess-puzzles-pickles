@@ -1446,6 +1446,8 @@ const PuzzleView = ({
   });
   const [moveStatus, setMoveStatus] = useState(null);
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
+  const [furthestMoveIndex, setFurthestMoveIndex] = useState(0);
+  const [showSolvedPosition, setShowSolvedPosition] = useState(false);
   const [activeDictionaryEntry, setActiveDictionaryEntry] = useState(null);
   const [activeDictionaryLabel, setActiveDictionaryLabel] = useState(null);
   const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
@@ -1659,7 +1661,7 @@ const PuzzleView = ({
   }, []);
 
   const onDrop = (sourceSquare, targetSquare) => {
-    if (isPuzzleSolvedState || isFailed || moveStatus || pendingOpponentMove) return false;
+    if (isPuzzleSolvedState || isFailed || moveStatus || pendingOpponentMove || currentMoveIndex < furthestMoveIndex) return false;
     const playerColor = orientation === 'white' ? 'w' : 'b';
     const sourcePiece = game.get(sourceSquare);
 
@@ -1690,6 +1692,8 @@ const PuzzleView = ({
 
         if (currentMoveIndex === answerMoves.length - 1) {
           setPendingOpponentMove(null);
+          setShowSolvedPosition(true);
+          setFurthestMoveIndex(currentMoveIndex);
           triggerWinConfetti();
           if (battle) battle.onCorrectMove();
           if (multiplayer?.isInRoom) {
@@ -1722,6 +1726,7 @@ const PuzzleView = ({
             }
             setGame(gameWithOpponent);
             setCurrentMoveIndex(nextIndex + 1);
+            setFurthestMoveIndex(previous => Math.max(previous, nextIndex + 1));
             setPendingOpponentMove(null);
           }, 1000);
         }
@@ -1755,6 +1760,34 @@ const PuzzleView = ({
       console.error("Move error:", e);
       return false;
     }
+  };
+
+  // Reconstruct the position before a previously reached player move.
+  const reviewMove = (targetIndex) => {
+    try {
+      const replay = initialFen ? new Chess(initialFen) : new Chess();
+      let lastMove = null;
+      for (let i = 0; i < targetIndex; i += 1) lastMove = replay.move(answerMoves[i]);
+      setGame(replay);
+      setCurrentMoveIndex(targetIndex);
+      setLastMoveArrow(lastMove ? [lastMove.from, lastMove.to] : null);
+      setMoveStatus(null);
+      setShowSolvedPosition(false);
+    } catch (error) {
+      console.error('Could not review move:', error);
+    }
+  };
+  const navigationBusy = Boolean(pendingOpponentMove) || moveStatus === 'incorrect';
+  const atLastMove = currentMoveIndex >= answerMoves.length - 1;
+  const handlePrevious = () => {
+    if (navigationBusy) return;
+    if (currentMoveIndex > 0) reviewMove(Math.max(0, currentMoveIndex - 2));
+    else onPrev();
+  };
+  const handleNext = () => {
+    if (navigationBusy) return;
+    if (!atLastMove && currentMoveIndex + 2 <= furthestMoveIndex) reviewMove(currentMoveIndex + 2);
+    else if (atLastMove) onNext();
   };
 
   useEffect(() => {
@@ -3263,6 +3296,8 @@ const PuzzleView = ({
             setLastMoveArrow(null);
             setMoveStatus(null);
             setCurrentMoveIndex(0);
+            setFurthestMoveIndex(0);
+            setShowSolvedPosition(false);
             setPendingOpponentMove(null);
           }} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white" title="Reset Puzzle">
             <RotateCcw className="w-5 h-5" />
@@ -3298,7 +3333,7 @@ const PuzzleView = ({
       <div className="p-4 bg-slate-800 space-y-4 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.5)]">
 
         <div className="flex justify-between items-center">
-          <button data-testid="prev-button" onClick={onPrev} disabled={index === 0} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
+          <button data-testid="prev-button" aria-label="Previous move or puzzle" onClick={handlePrevious} disabled={navigationBusy || (currentMoveIndex === 0 && index === 0)} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
             <ChevronLeft />
           </button>
 
@@ -3325,6 +3360,8 @@ const PuzzleView = ({
               </div>
             ) : moveStatus === 'incorrect' ? (
               <div className="text-red-500 font-black text-xl animate-pulse">TRY AGAIN</div>
+            ) : (currentMoveIndex < furthestMoveIndex || (isPuzzleSolvedState && !showSolvedPosition)) ? (
+              <div className="text-slate-300 text-sm">Reviewing move {currentPlayerMoveNumber} of {playerMoveCount}</div>
             ) : isPuzzleSolvedState ? (
               <div className="text-green-400 font-bold text-xl flex items-center gap-2 justify-center">
                 <Trophy className="w-6 h-6" /> Partnered!
@@ -3340,7 +3377,7 @@ const PuzzleView = ({
             )}
           </div>
 
-          <button data-testid="next-button" onClick={onNext} disabled={index === total - 1} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
+          <button data-testid="next-button" aria-label="Next move or puzzle" onClick={handleNext} disabled={navigationBusy || (atLastMove ? index === total - 1 : currentMoveIndex + 2 > furthestMoveIndex)} className="p-3 disabled:opacity-30 bg-slate-700 rounded-lg">
             <ChevronRight />
           </button>
         </div>
