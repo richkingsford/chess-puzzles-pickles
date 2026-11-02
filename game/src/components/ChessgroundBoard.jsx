@@ -70,12 +70,14 @@ const normalizeArrowShape = (arrow) => {
     };
 };
 
-export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, width, height, customArrows, movableColor, highlights = [], enemyHighlights = [] }) {
+export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, width, height, customArrows, movableColor, allowBoardScroll = false, highlights = [], enemyHighlights = [] }) {
     const wrapperRef = useRef(null);
     const ref = useRef(null);
     const api = useRef(null);
     const onMoveRef = useRef(onMove);
     const onInteractionRef = useRef(onInteraction);
+    const touchBoardState = useRef({ fen, orientation, movableColor, allowBoardScroll });
+    touchBoardState.current = { fen, orientation, movableColor, allowBoardScroll };
 
     // Keep the callback ref updated
     useEffect(() => {
@@ -237,12 +239,38 @@ export function ChessgroundBoard({ fen, orientation, onMove, onInteraction, widt
 
         el.addEventListener('pointerdown', handlePointerDown, { passive: true });
 
+        // Chessground cancels touch scrolling even on empty squares near pieces.
+        // Let swipes starting on non-draggable squares reach the browser; a tap
+        // still produces normal mouse events, so tap-to-move remains available.
+        const allowTouchScroll = (event) => {
+            if (event.touches.length !== 1) return;
+            const board = el.querySelector('cg-board');
+            if (!board) return;
+            const rect = board.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
+            const point = event.touches[0];
+            const file = Math.floor((point.clientX - rect.left) / rect.width * 8);
+            const row = Math.floor((point.clientY - rect.top) / rect.height * 8);
+            if (file < 0 || file > 7 || row < 0 || row > 7) return;
+            const state = touchBoardState.current;
+            const square = state.orientation === 'black'
+                ? `${FILES[7 - file]}${row + 1}`
+                : `${FILES[file]}${8 - row}`;
+            let piece;
+            try { piece = new Chess(state.fen).get(square); } catch { return; }
+            const canDrag = !state.allowBoardScroll && piece &&
+                (state.movableColor === 'both' || piece.color === (state.movableColor === 'black' ? 'b' : 'w'));
+            if (!canDrag) event.stopPropagation();
+        };
+        el.addEventListener('touchstart', allowTouchScroll, { capture: true, passive: true });
+
         const t = setTimeout(handleSync, 200);
 
         return () => {
             window.removeEventListener('resize', handleSync);
             observer.disconnect();
             el.removeEventListener('pointerdown', handlePointerDown);
+            el.removeEventListener('touchstart', allowTouchScroll, true);
             clearTimeout(t);
         };
     }, []);

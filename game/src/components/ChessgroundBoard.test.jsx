@@ -53,6 +53,41 @@ describe('ChessgroundBoard', () => {
     expect(config.movable.color).toBe('black');
   });
 
+  test('allows a swipe on an empty square while preserving touch events on a draggable piece', async () => {
+    render(<ChessgroundBoard fen="4k3/8/8/8/8/8/4P3/4K3 w - - 0 1" orientation="white" movableColor="white" />);
+    const [container] = chessgroundFactory.mock.calls[0];
+    const board = document.createElement('cg-board');
+    container.appendChild(board);
+    board.getBoundingClientRect = () => ({ left: 0, top: 0, width: 800, height: 800 });
+    const boardTouch = vi.fn();
+    board.addEventListener('touchstart', boardTouch);
+    const touchAt = (x, y) => {
+      const event = new Event('touchstart', { bubbles: true, cancelable: true });
+      Object.defineProperty(event, 'touches', { value: [{ clientX: x, clientY: y }] });
+      board.dispatchEvent(event);
+      return event;
+    };
+    expect(touchAt(50, 350).defaultPrevented).toBe(false);
+    expect(boardTouch).not.toHaveBeenCalled();
+    touchAt(450, 650); // e2 pawn remains draggable
+    expect(boardTouch).toHaveBeenCalledTimes(1);
+  });
+
+  test('allows scrolling over pieces once the puzzle is complete', () => {
+    render(<ChessgroundBoard fen="4k3/8/8/8/8/8/4P3/4K3 w - - 0 1" orientation="white" movableColor="white" allowBoardScroll />);
+    const [container] = chessgroundFactory.mock.calls[0];
+    const board = document.createElement('cg-board');
+    container.appendChild(board);
+    board.getBoundingClientRect = () => ({ left: 0, top: 0, width: 800, height: 800 });
+    const boardTouch = vi.fn();
+    board.addEventListener('touchstart', boardTouch);
+    const event = new Event('touchstart', { bubbles: true, cancelable: true });
+    Object.defineProperty(event, 'touches', { value: [{ clientX: 450, clientY: 650 }] });
+    board.dispatchEvent(event);
+    expect(event.defaultPrevented).toBe(false);
+    expect(boardTouch).not.toHaveBeenCalled();
+  });
+
   test('passes typed overlay arrows through to Chessground', async () => {
     render(
       <ChessgroundBoard

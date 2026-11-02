@@ -483,120 +483,33 @@ describe('App unit tests by area', () => {
 
   describe('Moving board + correct/incorrect checks', () => {
     test.each([
-      { total: 2, seconds: 3, destination: 'Next' },
-      { total: 1, seconds: 4, destination: 'Home' }
-    ])('pauses and resumes auto progress to $destination', async ({ total, seconds, destination }) => {
+      { total: 2, label: 'Next Puzzle' },
+      { total: 1, label: 'Back to Puzzles' }
+    ])('waits for an explicit $label action after solving', async ({ total, label }) => {
       vi.useFakeTimers();
-      hookState = makeHookState({
-        currentCategory: 'set-one',
-        currentPuzzle: makePuzzle({ answer: 'e4' }),
-        totalPuzzles: total
-      });
+      hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: makePuzzle({ answer: 'e4' }), totalPuzzles: total });
       render(<App />);
-      expect(screen.queryByRole('button', { name: 'Pause auto progress' })).not.toBeInTheDocument();
       fireEvent.click(screen.getByTestId('move-correct'));
+      expect(screen.getByText('CORRECT!')).toBeInTheDocument();
+      expect(markSolved).toHaveBeenCalledTimes(1);
       const solvedFen = screen.getByTestId('mock-board').dataset.fen;
-      await act(async () => { vi.advanceTimersByTime(1000); });
-      expect(screen.getByTestId('next-countdown')).toHaveTextContent(`${destination} in ${seconds - 1}`);
-
-      fireEvent.click(screen.getByRole('button', { name: 'Pause auto progress' }));
+      const nextButton = screen.getByRole('button', { name: label });
       await act(async () => { vi.advanceTimersByTime(60000); });
-      expect(screen.getByTestId('next-countdown')).toHaveTextContent('Paused');
       expect(screen.getByTestId('mock-board')).toHaveAttribute('data-fen', solvedFen);
       expect(nextPuzzle).not.toHaveBeenCalled();
       expect(selectCategory).not.toHaveBeenCalled();
-
-      fireEvent.click(screen.getByRole('button', { name: 'Play auto progress' }));
-      for (let tick = 0; tick < seconds - 2; tick += 1) {
-        await act(async () => { vi.advanceTimersByTime(1000); });
-      }
-      expect(nextPuzzle).not.toHaveBeenCalled();
-      expect(selectCategory).not.toHaveBeenCalled();
-      await act(async () => { vi.advanceTimersByTime(1000); });
-      if (total > 1) {
-        expect(nextPuzzle).toHaveBeenCalledTimes(1);
-      } else {
-        expect(selectCategory).toHaveBeenCalledWith(null);
-      }
+      fireEvent.click(nextButton);
+      if (total > 1) expect(nextPuzzle).toHaveBeenCalledTimes(1);
+      else expect(selectCategory).toHaveBeenCalledWith(null);
     });
 
-    test('reset clears a paused countdown and allows auto progress on the next solve', async () => {
-      vi.useFakeTimers();
-      hookState = makeHookState({
-        currentCategory: 'set-one', currentPuzzle: makePuzzle(), totalPuzzles: 2
-      });
+    test('reset removes the completion action', () => {
+      hookState = makeHookState({ currentCategory: 'set-one', currentPuzzle: makePuzzle(), totalPuzzles: 2 });
       render(<App />);
       fireEvent.click(screen.getByTestId('move-correct'));
-      fireEvent.click(screen.getByRole('button', { name: 'Pause auto progress' }));
+      expect(screen.getByRole('button', { name: 'Next Puzzle' })).toBeInTheDocument();
       fireEvent.click(screen.getByTestId('reset-button'));
-      expect(screen.queryByTestId('next-countdown')).not.toBeInTheDocument();
-      fireEvent.click(screen.getByTestId('move-correct'));
-      expect(screen.getByRole('button', { name: 'Pause auto progress' })).toBeInTheDocument();
-      for (let tick = 0; tick < 3; tick += 1) {
-        await act(async () => { vi.advanceTimersByTime(1000); });
-      }
-      expect(nextPuzzle).toHaveBeenCalledTimes(1);
-    });
-
-    test('marks solved on correct move and shows countdown on final solve', async () => {
-      hookState = makeHookState({
-        currentCategory: 'set-one',
-        currentPuzzle: makePuzzle({ answer: 'e4' }),
-        totalPuzzles: 2,
-        currentPuzzleIndex: 0
-      });
-
-      render(<App />);
-
-      act(() => {
-        fireEvent.click(screen.getByTestId('move-correct'));
-      });
-
-      expect(screen.getByText('CORRECT!')).toBeInTheDocument();
-      expect(screen.getByTestId('next-countdown')).toHaveTextContent('Next in 3');
-      expect(markSolved).toHaveBeenCalledTimes(1);
-
-      const confettiBurst = screen.getByTestId('win-confetti-burst');
-      expect(confettiBurst.style.getPropertyValue('--confetti-origin-x')).toBe('120px');
-      expect(confettiBurst.style.getPropertyValue('--confetti-origin-y')).toBe('160px');
-
-      await waitFor(() => expect(nextPuzzle).toHaveBeenCalledTimes(1), { timeout: 4500 });
-    }, 8000);
-
-    test('returns to the homepage after the last puzzle in a category is solved', async () => {
-      vi.useFakeTimers();
-
-      hookState = makeHookState({
-        currentCategory: 'set-one',
-        currentPuzzle: makePuzzle({ answer: 'e4' }),
-        totalPuzzles: 1,
-        currentPuzzleIndex: 0
-      });
-
-      render(<App />);
-
-      act(() => {
-        fireEvent.click(screen.getByTestId('move-correct'));
-      });
-
-      expect(screen.getByText('CORRECT!')).toBeInTheDocument();
-      expect(screen.getByTestId('next-countdown')).toHaveTextContent('Home in 4');
-
-      await act(async () => {
-        vi.advanceTimersByTime(1000);
-      });
-      await act(async () => {
-        vi.advanceTimersByTime(1000);
-      });
-      await act(async () => {
-        vi.advanceTimersByTime(1000);
-      });
-      await act(async () => {
-        vi.advanceTimersByTime(1000);
-      });
-
-      expect(nextPuzzle).not.toHaveBeenCalled();
-      expect(selectCategory).toHaveBeenCalledWith(null);
+      expect(screen.queryByRole('button', { name: 'Next Puzzle' })).not.toBeInTheDocument();
     });
 
     test('shows incorrect state and gracefully resets board state', async () => {

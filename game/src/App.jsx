@@ -5,7 +5,7 @@ import { ChessgroundBoard } from './components/ChessgroundBoard';
 import BattleScene from './components/BattleScene';
 import HintAnalysis from './components/HintAnalysis';
 import {
-  Trophy, HelpCircle, ChevronLeft, ChevronRight, Pause, Play,
+  Trophy, HelpCircle, ChevronLeft, ChevronRight,
   RotateCcw, ArrowLeft, Trash2, BookOpen, Shuffle,
   Users, QrCode, Link as LinkIcon, LogOut, MoreVertical, Download, Filter, Star
 } from 'lucide-react';
@@ -1448,8 +1448,6 @@ const PuzzleView = ({
   const [currentMoveIndex, setCurrentMoveIndex] = useState(0);
   const [activeDictionaryEntry, setActiveDictionaryEntry] = useState(null);
   const [activeDictionaryLabel, setActiveDictionaryLabel] = useState(null);
-  const [autoAdvanceCountdown, setAutoAdvanceCountdown] = useState(null);
-  const [isAutoAdvancePaused, setIsAutoAdvancePaused] = useState(false);
   const [pendingOpponentMove, setPendingOpponentMove] = useState(null);
   const [lastMoveArrow, setLastMoveArrow] = useState(null);
   const [isCategoryMasked, setIsCategoryMasked] = useState(Boolean(isRandomMode));
@@ -1661,7 +1659,7 @@ const PuzzleView = ({
   }, []);
 
   const onDrop = (sourceSquare, targetSquare) => {
-    if (isPuzzleSolvedState || isFailed || moveStatus || autoAdvanceCountdown !== null || pendingOpponentMove) return false;
+    if (isPuzzleSolvedState || isFailed || moveStatus || pendingOpponentMove) return false;
     const playerColor = orientation === 'white' ? 'w' : 'b';
     const sourcePiece = game.get(sourceSquare);
 
@@ -1703,7 +1701,6 @@ const PuzzleView = ({
             });
           }
           onSolved();
-          setAutoAdvanceCountdown(index < total - 1 ? 3 : 4);
         } else {
           if (battle) battle.onCorrectMove();
           if (multiplayer?.isInRoom) {
@@ -1761,28 +1758,6 @@ const PuzzleView = ({
   };
 
   useEffect(() => {
-    if (autoAdvanceCountdown === null || isAutoAdvancePaused) {
-      return;
-    }
-
-    if (autoAdvanceCountdown <= 0) {
-      setAutoAdvanceCountdown(null);
-      if (index < total - 1) {
-        onNext();
-      } else {
-        onBack();
-      }
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setAutoAdvanceCountdown((value) => (value === null ? null : value - 1));
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [autoAdvanceCountdown, isAutoAdvancePaused, index, total, onBack, onNext]);
-
-  useEffect(() => {
     const canPlaySanByDrop = (san) => {
       if (!san) return false;
       try {
@@ -1808,7 +1783,7 @@ const PuzzleView = ({
         currentMoveIndex,
         isSolved: isPuzzleSolvedState,
         isFailed,
-        autoAdvanceCountdown,
+        autoAdvanceCountdown: null,
         pendingOpponentMove,
         expectedSan: answerMoves[currentMoveIndex] || null,
         answerLength: answerMoves.length,
@@ -1860,7 +1835,7 @@ const PuzzleView = ({
         delete window.__smokePuzzle;
       }
     };
-  }, [game, moveStatus, currentMoveIndex, isPuzzleSolvedState, isFailed, autoAdvanceCountdown, pendingOpponentMove, answerMoves, index, total]);
+  }, [game, moveStatus, currentMoveIndex, isPuzzleSolvedState, isFailed, pendingOpponentMove, answerMoves, index, total]);
 
   // Determine arrows to draw
   const customArrows = React.useMemo(() => {
@@ -3288,8 +3263,6 @@ const PuzzleView = ({
             setLastMoveArrow(null);
             setMoveStatus(null);
             setCurrentMoveIndex(0);
-            setAutoAdvanceCountdown(null);
-            setIsAutoAdvancePaused(false);
             setPendingOpponentMove(null);
           }} className="p-2 hover:bg-slate-700 rounded-full text-slate-400 hover:text-white" title="Reset Puzzle">
             <RotateCcw className="w-5 h-5" />
@@ -3312,6 +3285,7 @@ const PuzzleView = ({
             height="100%"
             customArrows={boardArrows}
             movableColor={orientation}
+            allowBoardScroll={isPuzzleSolvedState || isFailed || (moveStatus === 'correct' && !pendingOpponentMove && currentMoveIndex === answerMoves.length - 1)}
             highlights={highlightedSquares}
             enemyHighlights={enemyHighlightedSquares}
           />
@@ -3347,22 +3321,7 @@ const PuzzleView = ({
                     Opponent reply coming...
                   </div>
                 )}
-                {autoAdvanceCountdown !== null && (
-                  <div className="mt-1 flex items-center justify-center gap-2">
-                    <span data-testid="next-countdown" className="text-xs font-semibold text-emerald-300" aria-live="polite">
-                      {isAutoAdvancePaused ? 'Paused' : `${index < total - 1 ? 'Next' : 'Home'} in ${autoAdvanceCountdown}...`}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => setIsAutoAdvancePaused((paused) => !paused)}
-                      aria-label={isAutoAdvancePaused ? 'Play auto progress' : 'Pause auto progress'}
-                      title={isAutoAdvancePaused ? 'Play auto progress' : 'Pause auto progress'}
-                      className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg bg-slate-700 text-emerald-300 hover:bg-slate-600 focus-visible:outline-2 focus-visible:outline-emerald-300"
-                    >
-                      {isAutoAdvancePaused ? <Play size={18} /> : <Pause size={18} />}
-                    </button>
-                  </div>
-                )}
+
               </div>
             ) : moveStatus === 'incorrect' ? (
               <div className="text-red-500 font-black text-xl animate-pulse">TRY AGAIN</div>
@@ -3385,6 +3344,12 @@ const PuzzleView = ({
             <ChevronRight />
           </button>
         </div>
+
+        {(isPuzzleSolvedState || (moveStatus === 'correct' && !pendingOpponentMove && currentMoveIndex === answerMoves.length - 1)) && (
+          <button type="button" onClick={index < total - 1 ? onNext : onBack} className="w-full rounded-lg bg-emerald-600 px-4 py-3 font-bold text-white hover:bg-emerald-500 focus-visible:outline-2 focus-visible:outline-emerald-300">
+            {index < total - 1 ? 'Next Puzzle' : 'Back to Puzzles'}
+          </button>
+        )}
 
         {/* Hints */}
         <div className="space-y-2">
