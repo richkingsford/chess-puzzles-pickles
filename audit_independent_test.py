@@ -56,7 +56,7 @@ class LaterMoveRegressionTests(unittest.TestCase):
         self.puzzle['moveHints'][1][0]='Attacking an enemy piece can force it to retreat or gain protection. One pawn stands beside the enemy king.'
         self.assertIn('unrelated-king-neighbor-clue',self.codes())
     def test_incidental_guard_role_is_not_a_capture_lesson(self):
-        self.fixture('french-defense','Qxd4','capture')
+        self.fixture('trapped-piece','Qxg4','capture')
         self.evidence[1]['topic']='removeGuard'
         self.assertIn('incidental-guard-removal',self.codes())
     def test_blocking_check_is_not_falsely_rejected(self):
