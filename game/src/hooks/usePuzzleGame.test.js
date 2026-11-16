@@ -116,4 +116,21 @@ describe('usePuzzleGame', () => {
       expect(result.current.isFailed).toBe(false);
     });
   });
+
+  test('restores revealed hints after leaving a puzzle and after remounting', async () => {
+    const first = renderHook(() => usePuzzleGame());
+    await waitFor(() => expect(first.result.current.loading).toBe(false));
+    act(() => first.result.current.selectCategory('set-one', 0));
+    act(() => first.result.current.showNextHint());
+    expect(first.result.current.hintsRevealed).toBe(1);
+    act(() => first.result.current.nextPuzzle());
+    expect(first.result.current.hintsRevealed).toBe(0);
+    act(() => first.result.current.prevPuzzle());
+    expect(first.result.current.hintsRevealed).toBe(1);
+    first.unmount();
+    const second = renderHook(() => usePuzzleGame());
+    await waitFor(() => expect(second.result.current.loading).toBe(false));
+    act(() => second.result.current.selectCategory('set-one', 0));
+    expect(second.result.current.hintsRevealed).toBe(1);
+  });
 });

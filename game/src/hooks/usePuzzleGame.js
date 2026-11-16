@@ -391,7 +391,12 @@ export const usePuzzleGame = () => {
     // Game State
     const [currentCategory, setCurrentCategory] = useState(null);
     const [currentPuzzleIndex, setCurrentPuzzleIndex] = useState(0);
-    const [hintRevealCountsByMove, setHintRevealCountsByMove] = useState({});
+    const [hintRevealHistory, setHintRevealHistory] = useState(() => loadState('puzzleHintHistory', {}) || {});
+
+    useEffect(() => {
+        try { localStorage.setItem('puzzleHintHistory', JSON.stringify(hintRevealHistory)); }
+        catch (error) { console.warn('Could not save hint history', error); }
+    }, [hintRevealHistory]);
     const [isSolved, setIsSolved] = useState(false);
     const [isFailed, setIsFailed] = useState(false); // If user gave up
 
@@ -446,6 +451,15 @@ export const usePuzzleGame = () => {
     }, [puzzlesData, currentCategory]);
 
     const currentPuzzle = currentCategoryPuzzles[currentPuzzleIndex];
+    const hintRevealCountsByMove = hintRevealHistory[currentPuzzle?.url] || {};
+    const setHintRevealCountsByMove = (update) => {
+        if (!currentPuzzle?.url) return;
+        const url = currentPuzzle.url;
+        setHintRevealHistory(previous => ({
+            ...previous,
+            [url]: typeof update === 'function' ? update(previous[url] || {}) : update
+        }));
+    };
     const currentPuzzleCompletion = currentPuzzle ? completedPuzzleRecords[currentPuzzle.url] || null : null;
     const hintsRevealed = useMemo(
         () => getTotalHintRevealCount(hintRevealCountsByMove),
@@ -473,7 +487,6 @@ export const usePuzzleGame = () => {
     };
 
     const resetPuzzleState = () => {
-        setHintRevealCountsByMove({});
         setIsSolved(false);
         setIsFailed(false);
     };
@@ -514,7 +527,6 @@ export const usePuzzleGame = () => {
                 currentPuzzleIndex
             );
             setCurrentPuzzleIndex(fallbackIndex);
-            setHintRevealCountsByMove({});
             setIsSolved(false);
             setIsFailed(false);
         }
@@ -572,6 +584,7 @@ export const usePuzzleGame = () => {
             localStorage.removeItem('solvedPuzzles');
             localStorage.removeItem('completedPuzzleRecords');
             localStorage.removeItem('feedbackLogs');
+            localStorage.removeItem('puzzleHintHistory');
             window.location.reload();
         }
     };
