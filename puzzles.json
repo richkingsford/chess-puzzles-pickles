@@ -99,9 +99,9 @@
             "A back-rank mate plan turns restricted escape into forcing line pressure. Play Qf2+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qf1+."
+            "An offer can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qf1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's rank.",
@@ -130,9 +130,9 @@
             "A back-rank mate plan turns restricted escape into forcing line pressure. Play Qf2+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qf1+."
+            "An offer can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qf1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's rank.",
@@ -161,9 +161,9 @@
             "A back-rank mate plan turns restricted escape into forcing line pressure. Play Qf7+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qf8+."
+            "An offer can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qf8+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's rank.",
@@ -343,9 +343,9 @@
             "A smothered mate plan uses blocked escapes to make a check decisive. Play Nh6+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg8+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg8+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -374,9 +374,9 @@
             "A smothered mate plan uses blocked escapes to make a check decisive. Play Nh3+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg1+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -431,9 +431,9 @@
             "A smothered mate plan uses blocked escapes to make a check decisive. Play Nh3+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg1+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -462,9 +462,9 @@
             "A smothered mate plan uses blocked escapes to make a check decisive. Play Nh3+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg1+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -493,9 +493,9 @@
             "A smothered mate plan uses blocked escapes to make a check decisive. Play Nh3+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg1+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -1001,8 +1001,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The c3 pawn is guarded by b2, but its guard count does not reveal why the sacrifice opens the mating diagonal.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c3 pawn is guarded by b2, but its guard count does not reveal why the sacrifice opens the mating diagonal."
                 },
                 "position": {
                   "fen": "r6r/1pp1k3/p1qb3p/4pb1N/3P2P1/2P5/PP1NQ3/2KR3R b - - 0 28",
@@ -1076,8 +1076,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The c1 king has pieces on d1 and d2, but counting them gives only a broad mating clue.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c1 king has pieces on d1 and d2, but counting them gives only a broad mating clue.",
                   "9": "This defines the condition for mate, but offers little guidance on creating it."
                 },
                 "position": {
@@ -1184,8 +1184,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The c6 knight is guarded by b7; this is true but does not explain how moving the b7 pawn opens a line.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c6 knight is guarded by b7; this is true but does not explain how moving the b7 pawn opens a line."
                 },
                 "position": {
                   "fen": "2kr3r/pp1n1ppp/2n1p1b1/1B6/5B2/b4NN1/P4PPP/2R1R1K1 w - - 2 17",
@@ -1259,8 +1259,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The c8 king has neighbors on d8 and d7, a true but broad clue.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c8 king has neighbors on d8 and d7, a true but broad clue.",
                   "9": "This defines the condition for mate, but offers little guidance on creating it."
                 },
                 "position": {
@@ -1362,8 +1362,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The a6 pawn is unguarded and shares the c8 king’s diagonal, but the clue narrows the mating target considerably.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The a6 pawn is unguarded and shares the c8 king’s diagonal, but the clue narrows the mating target considerably."
                 },
                 "position": {
                   "fen": "2kr3r/3b1ppp/pp6/3n4/1P3B2/P7/5PPP/R3RBK1 w - - 0 23",
@@ -1387,8 +1387,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The unguarded a6 pawn is captured with check along the diagonal; this is quite revealing.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The unguarded a6 pawn is captured with check along the diagonal; this is quite revealing."
                 },
                 "position": {
                   "fen": "2kr3r/3b1ppp/pp6/3n4/1P3B2/P7/5PPP/R3RBK1 w - - 0 23",
@@ -1475,8 +1475,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The e8 king has friendly pieces on f8 and f7; this is accurate but only loosely identifies the queen offer.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The e8 king has friendly pieces on f8 and f7; this is accurate but only loosely identifies the queen offer."
                 },
                 "position": {
                   "fen": "r3kb1r/pb3ppp/1p2p3/4q1B1/P7/1QP5/4BPPP/R3K2R w KQkq - 0 15",
@@ -1550,8 +1550,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The queen on b5 is unguarded and lies on the e8 king’s diagonal; this nearly identifies the capture.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The queen on b5 is unguarded and lies on the e8 king’s diagonal; this nearly identifies the capture."
                 },
                 "position": {
                   "fen": "r3kb1r/pb3ppp/1p2p3/1q4B1/P7/2P5/4BPPP/R3K2R w KQkq - 0 16",
@@ -1575,8 +1575,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "Bxb5+ captures that queen with check along the diagonal, a strong disclosure.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "Bxb5+ captures that queen with check along the diagonal, a strong disclosure."
                 },
                 "position": {
                   "fen": "r3kb1r/pb3ppp/1p2p3/1q4B1/P7/2P5/4BPPP/R3K2R w KQkq - 0 16",
@@ -1626,8 +1626,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The unguarded bishop on c6 lies on the e8 king’s diagonal; naming the relationship makes the mate easier to locate.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The unguarded bishop on c6 lies on the e8 king’s diagonal; naming the relationship makes the mate easier to locate.",
                   "9": "This defines the condition for mate, but offers little guidance on creating it."
                 },
                 "position": {
@@ -1652,8 +1652,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "Bxc6 is a checking diagonal capture and checkmate.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "Bxc6 is a checking diagonal capture and checkmate."
                 },
                 "position": {
                   "fen": "r3kb1r/p4ppp/1pb1p3/1B4B1/P7/2P5/5PPP/R3K2R w KQkq - 1 17",
@@ -1735,8 +1735,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The c6 pawn has one pawn guard on b7, but the count alone does not identify the sacrifice’s purpose.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c6 pawn has one pawn guard on b7, but the count alone does not identify the sacrifice’s purpose."
                 },
                 "position": {
                   "fen": "2kr4/pp1nqpp1/2p1pn2/6N1/3P1B1r/5Q2/PPP2P2/R4BK1 w - - 2 19",
@@ -1810,8 +1810,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The c8 king is next to the d8 rook and d7 knight; the fact is true but broadly applicable.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c8 king is next to the d8 rook and d7 knight; the fact is true but broadly applicable.",
                   "9": "This defines the condition for mate, but offers little guidance on creating it."
                 },
                 "position": {
@@ -2019,8 +2019,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The e6 pawn has one pawn guard on f7; the clue does not show why clearing f7 matters.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The e6 pawn has one pawn guard on f7; the clue does not show why clearing f7 matters."
                 },
                 "position": {
                   "fen": "2rqk2r/p2n1pp1/1pbQp2p/n3P3/2P5/B2B1N2/P4PPP/1R2K2R w Kk - 3 19",
@@ -2094,8 +2094,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The e8 king has friendly pieces on d8 and d7; accurate, but not very specific.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The e8 king has friendly pieces on d8 and d7; accurate, but not very specific.",
                   "9": "This defines the condition for mate, but offers little guidance on creating it."
                 },
                 "position": {
@@ -2207,8 +2207,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The f1 king is beside its own g1 rook and g2 pawn; the observation relates to the mating net but is broad.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The f1 king is beside its own g1 rook and g2 pawn; the observation relates to the mating net but is broad."
                 },
                 "position": {
                   "fen": "r3kr2/pppb1pp1/4p1Q1/3pP2p/3P3b/2P1PN1P/PP4P1/R1B2KR1 b q - 0 16",
@@ -2282,8 +2282,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The c4 pawn is unguarded and shares the f1 king’s diagonal, strongly narrowing the capture.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c4 pawn is unguarded and shares the f1 king’s diagonal, strongly narrowing the capture."
                 },
                 "position": {
                   "fen": "r3kr2/ppp2pp1/4p1Q1/1b1pP2p/2PP3b/4PN1P/PP4P1/R1B2KR1 b q - 0 17",
@@ -2307,8 +2307,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "Bxc4+ captures the unguarded pawn with check on the diagonal.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "Bxc4+ captures the unguarded pawn with check on the diagonal."
                 },
                 "position": {
                   "fen": "r3kr2/ppp2pp1/4p1Q1/1b1pP2p/2PP3b/4PN1P/PP4P1/R1B2KR1 b q - 0 17",
@@ -2358,8 +2358,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The d3 queen is unguarded and aligned diagonally with the f1 king, a strong locator.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The d3 queen is unguarded and aligned diagonally with the f1 king, a strong locator.",
                   "9": "This defines the condition for mate, but offers little guidance on creating it."
                 },
                 "position": {
@@ -2384,8 +2384,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "Bxd3 captures the queen with check on the diagonal and mates.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "Bxd3 captures the queen with check on the diagonal and mates."
                 },
                 "position": {
                   "fen": "r3kr2/ppp2pp1/4p3/3pP2p/2bP3b/3QPN1P/PP4P1/R1B2KR1 b q - 1 18",
@@ -3069,9 +3069,9 @@
             "French Defense exchanges can open lines that a locked pawn chain had closed. Play Nh4."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy heavy piece has one medium guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the heavy piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Qxf2."
+            "An exchange can change which pieces guard a target. An enemy heavy piece has one medium guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the heavy piece with one guard on the rank.",
+            "A trade can simplify a position while leaving other targets to defend. Play Qxf2."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
@@ -3176,14 +3176,14 @@
             "French Defense exchanges can open lines that a locked pawn chain had closed. Play g4."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy pawn has one medium guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the small target that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play hxg4."
+            "An exchange can change which pieces guard a target. An enemy pawn has one medium guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the small target with one guard.",
+            "A trade can simplify a position while leaving other targets to defend. Play hxg4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy medium piece shares its king's file.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxg4."
+            "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxg4."
           ]
         ]
       },
@@ -3206,9 +3206,9 @@
             "French Defense exchanges can open lines that a locked pawn chain had closed. Play Nb6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece shares a rank with its king.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with two guards that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd7."
+            "A capture can win material when the target has too little protection. An enemy heavy piece shares a rank with its king.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with two guards.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd7."
           ]
         ]
       },
@@ -3231,9 +3231,9 @@
             "French Defense exchanges can open lines that a locked pawn chain had closed. Play Bb5+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxd4."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Qxd4."
           ]
         ]
       },
@@ -3257,9 +3257,9 @@
             "French Defense exchanges can open lines that a locked pawn chain had closed. Play Rxe2."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxe2."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxe2."
           ]
         ]
       },
@@ -3392,9 +3392,9 @@
             "In the Ruy Lopez, forcing threats can convert lasting pressure into material gains. Play Bg5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one medium guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxg5."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one medium guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
+            "A capture's gain depends on both the target and any recapture. Play Nxg5."
           ]
         ]
       },
@@ -3500,9 +3500,9 @@
             "A capture's gain depends on both the target and any recapture. Play Bxg5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one pawn guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxf6."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one pawn guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxf6."
           ]
         ]
       },
@@ -3815,14 +3815,14 @@
             "Sicilian Defense exchanges can open files toward exposed pieces. Play Nxf6+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy medium piece has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the medium piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Qxb7."
+            "An exchange can change which pieces guard a target. An enemy medium piece has one heavy guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the medium piece with one guard on the diagonal.",
+            "A trade can simplify a position while leaving other targets to defend. Play Qxb7."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxb7."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxb7."
           ]
         ]
       },
@@ -3955,14 +3955,14 @@
             "In the Caro-Kann Defense, exchanges can expose pieces behind the pawn structure. Play dxe5."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy medium piece has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the medium piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Qxe5."
+            "An exchange can change which pieces guard a target. An enemy medium piece has one heavy guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the medium piece with one guard on the file.",
+            "A trade can simplify a position while leaving other targets to defend. Play Qxe5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's file.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxe5."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Rxe5."
           ]
         ]
       },
@@ -4248,9 +4248,9 @@
             "An Italian Game attack can grow when development brings several pieces into play. Play Bg4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play gxf6."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play gxf6."
           ]
         ]
       },
@@ -4323,9 +4323,9 @@
             "An Italian Game attack can grow when development brings several pieces into play. Play exd5."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy medium piece has one medium guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the medium piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Nxe5."
+            "An exchange can change which pieces guard a target. An enemy medium piece has one medium guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the medium piece with one guard.",
+            "A trade can simplify a position while leaving other targets to defend. Play Nxe5."
           ],
           [
             "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's file.",
@@ -4403,9 +4403,9 @@
             "An Italian Game attack can grow when development brings several pieces into play. Play Bxh6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's diagonal.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxh6."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play Nxh6."
           ]
         ]
       },
@@ -4528,9 +4528,9 @@
             "In the Queen's Gambit Declined, exchanges can change which pieces hold the center. Play Nf6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxe3."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Qxe3."
           ]
         ]
       },
@@ -4913,9 +4913,9 @@
             "An English Opening plan uses control of key squares before committing to a break. Play Bxd4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has one heavy guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the medium piece with one guard on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxd4."
+            "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Rxd4."
           ]
         ]
       }
@@ -4943,14 +4943,14 @@
             "In the Philidor Defense, exchanges can free cramped pieces or expose their guards. Play e4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd6."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd6."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy pawn has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded small target on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxh5."
+            "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Qxh5."
           ]
         ]
       },
@@ -5173,9 +5173,9 @@
             "In the Scandinavian Defense, open central lines can make loose pieces important targets. Play cxb5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has one heavy guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the medium piece with one guard on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxb5."
+            "A capture can win material when the target has too little protection. An enemy medium piece has one heavy guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with one guard on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxb5."
           ]
         ]
       },
@@ -5198,9 +5198,9 @@
             "In the Scandinavian Defense, open central lines can make loose pieces important targets. Play Bd2+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxh5."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Rxh5."
           ]
         ]
       },
@@ -5428,9 +5428,9 @@
             "In the Scotch Game, central exchanges can reveal targets before development is finished. Play Bc5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's diagonal.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play bxc5."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play bxc5."
           ],
           [
             "A blockade can stop a pawn by occupying its next square. A pawn is one step from promotion.",
@@ -5533,9 +5533,9 @@
             "In the Scotch Game, central exchanges can reveal targets before development is finished. Play Bc5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's diagonal.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play bxc5."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play bxc5."
           ]
         ]
       },
@@ -5663,9 +5663,9 @@
             "Modern Defense breaks can release cramped pieces while attacking the opposing center. Play Rg5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxg5."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxg5."
           ]
         ]
       },
@@ -5888,9 +5888,9 @@
             "In the Four Knights Defense, coordination helps convert development into threats. Play g6."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy medium piece has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the medium piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Qxg6."
+            "An exchange can change which pieces guard a target. An enemy medium piece has one heavy guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the medium piece with one guard on the rank.",
+            "A trade can simplify a position while leaving other targets to defend. Play Qxg6."
           ],
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
@@ -5973,9 +5973,9 @@
             "In the Four Knights Defense, coordination helps convert development into threats. Play Qc5+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxc4."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Qxc4."
           ]
         ]
       },
@@ -6128,9 +6128,9 @@
             "In the King's Gambit Accepted, active development can matter more than keeping a pawn. Play Qe5+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's rank.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxh8."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxh8."
           ]
         ]
       },
@@ -6263,9 +6263,9 @@
             "A trade can simplify a position while leaving other targets to defend. Play Qxf7."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxd2."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxd2."
           ]
         ]
       },
@@ -6295,7 +6295,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play f1=Q+."
+            "Reaching the last rank lets a pawn become a new attacker. Play f1=Q+."
           ],
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
@@ -6358,9 +6358,9 @@
             "In the Pirc Defense, active counterplay can reveal targets left by a broad center. Play Qxd1."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxe5."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Rxe5."
           ]
         ]
       },
@@ -6383,14 +6383,14 @@
             "In the Pirc Defense, active counterplay can reveal targets left by a broad center. Play Bxh7+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy heavy piece has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the heavy piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Qxd8."
+            "An exchange can change which pieces guard a target. An enemy heavy piece has one heavy guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the heavy piece with one guard on the file.",
+            "A trade can simplify a position while leaving other targets to defend. Play Qxd8."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxd8."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Rxd8."
           ]
         ]
       },
@@ -6583,9 +6583,9 @@
             "In the Damiano Defense, weak diagonals can make king safety more urgent than material. Play Bg4+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy pawn has one pawn guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the small target that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Bxf3+."
+            "An exchange can change which pieces guard a target. An enemy pawn has one pawn guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the small target with one guard on the diagonal.",
+            "A trade can simplify a position while leaving other targets to defend. Play Bxf3+."
           ],
           [
             "A fork can threaten two targets at once. An enemy medium piece has one heavy guard.",
@@ -6633,9 +6633,9 @@
             "In the Damiano Defense, weak diagonals can make king safety more urgent than material. Play Nc3+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece shares a file with its king.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with two guards that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd1."
+            "A capture can win material when the target has too little protection. An enemy heavy piece shares a file with its king.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with two guards.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd1."
           ]
         ]
       },
@@ -6658,9 +6658,9 @@
             "In the Damiano Defense, weak diagonals can make king safety more urgent than material. Play Qxd5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd5."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd5."
           ]
         ]
       },
@@ -6683,9 +6683,9 @@
             "In the Damiano Defense, weak diagonals can make king safety more urgent than material. Play Qxf6."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's rank.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxh8."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxh8."
           ]
         ]
       },
@@ -6713,9 +6713,9 @@
             "A checked king must answer check before another attacked piece is saved. Play Ne2+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one heavy guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxc1."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one heavy guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
+            "A capture's gain depends on both the target and any recapture. Play Nxc1."
           ]
         ]
       },
@@ -6883,9 +6883,9 @@
             "A checked king must answer check before another attacked piece is saved. Play Nb6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece shares a rank with its king.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with three guards that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd7."
+            "A capture can win material when the target has too little protection. An enemy heavy piece shares a rank with its king.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with three guards.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd7."
           ]
         ]
       },
@@ -6913,9 +6913,9 @@
             "An interposing move stops check by closing the attack line. Play c6."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play cxb5."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece.",
+            "A capture's gain depends on both the target and any recapture. Play cxb5."
           ]
         ]
       },
@@ -7228,9 +7228,9 @@
             "In the Vienna Game, coordinated development can turn control of key squares into threats. Play Bg4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxe2."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxe2."
           ]
         ]
       },
@@ -7273,9 +7273,9 @@
             "In the Vienna Game, coordinated development can turn control of key squares into threats. Play Qd4+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's rank.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxa1."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxa1."
           ]
         ]
       }
@@ -7570,7 +7570,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play g1=Q."
+            "Reaching the last rank lets a pawn become a new attacker. Play g1=Q."
           ]
         ]
       },
@@ -7593,9 +7593,9 @@
             "In a pawn endgame, winning a tempo can change who reaches a key square. Play Kg5."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. One pawn stands beside the enemy king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the small defender away.",
-            "A tempting capture can change which squares a defender must guard. Play h6."
+            "A pawn offer can loosen a barrier of enemy pawns. An unguarded enemy pawn shares its king's rank.",
+            "Offering a small target can break up a barrier to promotion. Look for a small offer against the neighboring barrier.",
+            "A pawn breakthrough can open a path toward promotion. Play h6."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
@@ -7673,9 +7673,9 @@
             "In a pawn endgame, winning a tempo can change who reaches a key square. Play g4."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the small defender away.",
-            "A tempting capture can change which squares a defender must guard. Play f3."
+            "A pawn offer can loosen a barrier of enemy pawns. An enemy pawn has no guard.",
+            "Offering a small target can break up a barrier to promotion. Look for a small offer against the neighboring barrier.",
+            "A pawn breakthrough can open a path toward promotion. Play f3."
           ],
           [
             "A capture can win material when the target has too little protection. An unguarded enemy pawn shares its king's rank.",
@@ -7898,9 +7898,9 @@
             "In a queen endgame, a checking threat can outweigh a small material edge. Play Qe1+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. One pawn stands beside the enemy king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qg3+."
+            "An offer can draw a defender onto a less safe square. One pawn stands beside the enemy king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qg3+."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has one king guard.",
@@ -7973,9 +7973,9 @@
             "In a queen endgame, a checking threat can outweigh a small material edge. Play Qd1+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qd6+."
+            "An offer can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qd6+."
           ],
           [
             "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's diagonal.",
@@ -8140,7 +8140,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play a1=Q."
+            "Reaching the last rank lets a pawn become a new attacker. Play a1=Q."
           ]
         ]
       },
@@ -8300,7 +8300,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play b8=Q+."
+            "Reaching the last rank lets a pawn become a new attacker. Play b8=Q+."
           ]
         ]
       },
@@ -8400,7 +8400,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play dxe1=Q#."
+            "Reaching the last rank lets a pawn become a new attacker. Play dxe1=Q#."
           ]
         ]
       },
@@ -8450,7 +8450,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play d1=Q."
+            "Reaching the last rank lets a pawn become a new attacker. Play d1=Q."
           ]
         ]
       },
@@ -8473,9 +8473,9 @@
             "An advanced pawn can create threats while defenders worry about its promotion. Play gxf6."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece shares a file with its king.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the medium piece with two guards that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play fxe7."
+            "A capture can win material when the target has too little protection. An enemy medium piece shares a file with its king.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the medium piece with two guards.",
+            "A capture's gain depends on both the target and any recapture. Play fxe7."
           ]
         ]
       }
@@ -8748,9 +8748,9 @@
             "Pin pressure can make a defender choose between losing its guard duty and material. Play Rxf2."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's rank.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxf2."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxf2."
           ]
         ]
       },
@@ -8773,9 +8773,9 @@
             "Pin pressure can make a defender choose between losing its guard duty and material. Play Ng6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxe5."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play Nxe5."
           ]
         ]
       },
@@ -8849,9 +8849,9 @@
             "Pin pressure can make a defender choose between losing its guard duty and material. Play Na6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one king guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxc7."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one king guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
+            "A capture's gain depends on both the target and any recapture. Play Nxc7."
           ]
         ]
       },
@@ -8874,14 +8874,14 @@
             "Pin pressure can make a defender choose between losing its guard duty and material. Play e7."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy pawn has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the small target that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Rxh5."
+            "A defender with two tasks may be unable to handle both. An enemy pawn has one heavy guard.",
+            "An offered capture can pull a defender away from a promotion route. Look for an offer that pulls the heavy blocker off its file.",
+            "Drawing away a blockading piece can free a passed pawn. Play Rxh5."
           ],
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play e8=Q."
+            "Reaching the last rank lets a pawn become a new attacker. Play e8=Q."
           ]
         ]
       },
@@ -9029,9 +9029,9 @@
             "A checked king must answer check before another attacked piece is saved. Play Qxe5+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's rank.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxh8."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxh8."
           ]
         ]
       },
@@ -9269,9 +9269,9 @@
             "Discovered attack plans use the blocker and the hidden attacker for separate duties. Play Bxh7+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy heavy piece has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the heavy piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Qxd5."
+            "An exchange can change which pieces guard a target. An enemy heavy piece has one heavy guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the heavy piece with one guard on the file.",
+            "A trade can simplify a position while leaving other targets to defend. Play Qxd5."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
@@ -9449,9 +9449,9 @@
             "Discovered attack plans use the blocker and the hidden attacker for separate duties. Play Bxg2+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the rank that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxd6."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the rank.",
+            "A capture's gain depends on both the target and any recapture. Play Qxd6."
           ]
         ]
       },
@@ -9474,9 +9474,9 @@
             "Discovered attack plans use the blocker and the hidden attacker for separate duties. Play Nxc6+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one heavy guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd8."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one heavy guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd8."
           ]
         ]
       }
@@ -9504,9 +9504,9 @@
             "Skewer pressure uses a forcing threat to uncover material along a shared line. Play Be5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxg7."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxg7."
           ]
         ]
       },
@@ -9824,9 +9824,9 @@
             "A double check leaves a king needing an escape rather than a single block. Play Nh3+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg1+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -9881,7 +9881,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play g1=Q#."
+            "Reaching the last rank lets a pawn become a new attacker. Play g1=Q#."
           ]
         ]
       },
@@ -9959,9 +9959,9 @@
             "A double check leaves a king needing an escape rather than a single block. Play Nh3+."
           ],
           [
-            "A checking offer can draw a defender away from an important post. Two enemy pieces stand beside their king.",
-            "A checking offer can make a defender abandon its current square. Look for a checking offer that makes a defender leave its post.",
-            "A forcing sacrifice can gain time for a second attacker. Play Qg1+."
+            "An offer can crowd the defense and reduce escape space. Two enemy pieces stand beside their king.",
+            "An accepted offer can put a defender in the way of an escape. Look for a checking offer that crowds the escape squares.",
+            "Drawing a defender beside its king can block a flight square. Play Qg1+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. Three enemy pieces stand beside their king.",
@@ -10294,9 +10294,9 @@
             "X-ray attack pressure can survive an exchange because another attacker remains on the line. Play Qxd3."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxd3."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxd3."
           ]
         ]
       },
@@ -10319,9 +10319,9 @@
             "X-ray attack pressure can survive an exchange because another attacker remains on the line. Play Qxa1+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Three enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Rd1+."
+            "An offer can open a line by drawing its blocker away. An enemy heavy piece has one heavy guard.",
+            "A recapture can become possible when a defender leaves a line. Look for a checking offer that draws the heavy blocker off its line.",
+            "Drawing a blocker away can open a route for another attacker. Play Rd1+."
           ],
           [
             "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's rank.",
@@ -10404,9 +10404,9 @@
             "X-ray attack pressure can survive an exchange because another attacker remains on the line. Play Rd1."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. An enemy heavy piece has one heavy guard.",
-            "A recapture can place a defender where another attack can reach it. Look for an exchange of the heavy piece that draws its guard away.",
-            "A tempting capture can change which squares a defender must guard. Play Rxe1+."
+            "An exchange can change which pieces guard a target. An enemy heavy piece has one heavy guard.",
+            "Recapturing restores material but can alter the remaining defenses. Look for a trade of the heavy piece with one guard on the rank.",
+            "A trade can simplify a position while leaving other targets to defend. Play Rxe1+."
           ],
           [
             "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's rank.",
@@ -10589,9 +10589,9 @@
             "A deflection plan uses competing duties to loosen the protection of a target. Play c5+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy medium piece shares its king's diagonal.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the rank that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxc7."
+            "A capture can win material when the target has too little protection. An unguarded enemy medium piece shares its king's diagonal.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the rank.",
+            "A capture's gain depends on both the target and any recapture. Play Rxc7."
           ]
         ]
       },
@@ -10646,7 +10646,7 @@
           [
             "A pawn reaching the last rank can become a stronger piece. A pawn is one step from promotion.",
             "Promotion can turn a small passed piece into a much larger threat. Look for the advance that reaches the final rank.",
-            "A clear promotion square lets an advanced pawn become a new attacker. Play g8=Q."
+            "Reaching the last rank lets a pawn become a new attacker. Play g8=Q."
           ]
         ]
       },
@@ -11028,9 +11028,9 @@
             "A sacrifice is useful when the resulting threats outweigh the material given up. Play Qxf7+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qf8+."
+            "An offer can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qf8+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's rank.",
@@ -11147,9 +11147,9 @@
             "A sacrifice is useful when the resulting threats outweigh the material given up. Play Qd7+."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Qd8+."
+            "An offer can draw a defender onto a less safe square. Two enemy pieces stand beside their king.",
+            "A guarded offer can allow a recapture after the defender takes. Look for a checking offer on a guarded square.",
+            "Support for an offered piece can make its capture costly. Play Qd8+."
           ],
           [
             "A mating attack works when every legal defense to check is gone. An unguarded enemy heavy piece shares its king's rank.",
@@ -11178,9 +11178,9 @@
             "A sacrifice is useful when the resulting threats outweigh the material given up. Play Rxe3."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. Three enemy pieces stand beside their king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Bf4."
+            "Attacking an enemy piece can force it to retreat or gain protection. An unguarded enemy heavy piece shares its king's diagonal.",
+            "A new threat can force a choice between defending and retreating. Look for a new threat against the heavy piece.",
+            "An active attacker can gain time by making an enemy piece respond. Play Bf4."
           ],
           [
             "A forcing capture can gain material while making the defender respond. An unguarded enemy heavy piece shares its king's diagonal.",
@@ -11504,9 +11504,9 @@
             "Trapped piece tactics combine pressure on the target with control of its exits. Play Bg4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's file.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxg4."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's file.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Qxg4."
           ]
         ]
       },
@@ -11554,9 +11554,9 @@
             "Trapped piece tactics combine pressure on the target with control of its exits. Play Nxe3."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece shares a rank with its king.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with two guards that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxd1."
+            "A capture can win material when the target has too little protection. An enemy heavy piece shares a rank with its king.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with two guards.",
+            "A capture's gain depends on both the target and any recapture. Play Nxd1."
           ]
         ]
       },
@@ -11604,9 +11604,9 @@
             "Trapped piece tactics combine pressure on the target with control of its exits. Play Kc7."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one heavy guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxa7."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one heavy guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxa7."
           ]
         ]
       },
@@ -11659,9 +11659,9 @@
             "A trade can simplify a position while leaving other targets to defend. Play Nxg3."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An unguarded enemy heavy piece shares its king's rank.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Qxh1."
+            "A capture can win material when the target has too little protection. An unguarded enemy heavy piece shares its king's rank.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Qxh1."
           ]
         ]
       },
@@ -11709,9 +11709,9 @@
             "Trapped piece tactics combine pressure on the target with control of its exits. Play Bg4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded heavy piece that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Nxg4."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded heavy piece.",
+            "A capture's gain depends on both the target and any recapture. Play Nxg4."
           ]
         ]
       }
@@ -11769,8 +11769,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The b1 rook has one heavy guard on c1 and itself guards b5; the guard count does not state that second relationship.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The b1 rook has one heavy guard on c1 and itself guards b5; the guard count does not state that second relationship."
                 },
                 "position": {
                   "fen": "1r6/5pkb/pr2pN1p/1P2P3/2p2P2/8/6BP/1RR3K1 b - - 1 44",
@@ -11794,9 +11794,9 @@
                   96
                 ],
                 "notes": {
-                  "8": "Bxb1 captures the rook that guards b5; the sentence correctly identifies the diagonal capture but is awkward.",
                   "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
-                  "7": "“Guard” is repeated in an awkward sentence."
+                  "7": "“Guard” is repeated in an awkward sentence.",
+                  "8": "Bxb1 captures the rook that guards b5; the sentence correctly identifies the diagonal capture but is awkward."
                 },
                 "position": {
                   "fen": "1r6/5pkb/pr2pN1p/1P2P3/2p2P2/8/6BP/1RR3K1 b - - 1 44",
@@ -12026,8 +12026,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The e7 queen has a single heavy guard on e8 and guards the d8 rook; the clue omits its defending role.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The e7 queen has a single heavy guard on e8 and guards the d8 rook; the clue omits its defending role."
                 },
                 "position": {
                   "fen": "3rr1k1/p3qp2/2p3p1/1p2p2p/1Q6/1P5P/1PP2PP1/3RR1K1 w - - 0 22",
@@ -12102,8 +12102,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The unguarded d8 rook shares the g8 king’s rank, making the checking capture easier to spot.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The unguarded d8 rook shares the g8 king’s rank, making the checking capture easier to spot."
                 },
                 "position": {
                   "fen": "3r2k1/p3rp2/2p3p1/1p2p2p/8/1P5P/1PP2PP1/3RR1K1 w - - 0 23",
@@ -12183,9 +12183,9 @@
             "Capturing the defender changes the support available to the pieces it guarded. Play Nxd4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxe2."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxe2."
           ]
         ],
         "hintReviews": {
@@ -12208,8 +12208,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The d4 knight has two guards, c3 and e3, and itself defends e2 and b3.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The d4 knight has two guards, c3 and e3, and itself defends e2 and b3."
                 },
                 "position": {
                   "fen": "rn3rk1/2p1bpp1/1pnp2qp/p7/P2NP1bP/1QP1B3/1P1NBPP1/2KR3R b - - 0 14",
@@ -12270,21 +12270,22 @@
             ],
             [
               {
-                "hint": "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
+                "hint": "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
                 "scores": [
-                  100,
-                  90,
-                  100,
                   100,
                   92,
                   100,
-                  90,
-                  95,
-                  90,
+                  100,
+                  94,
+                  100,
+                  94,
+                  100,
+                  92,
                   null
                 ],
                 "notes": {
-                  "8": "The e2 bishop is unguarded; it also guards the d1 rook, although the clue does not mention that relationship."
+                  "8": "The current target on e2 is an unguarded medium piece. This is the capture after the setup, not another instruction to remove a guard.",
+                  "2": "Subtle and accurate, though a guard-count clue is less distinctive than a unique tactical relationship."
                 },
                 "position": {
                   "fen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
@@ -12294,21 +12295,21 @@
                 }
               },
               {
-                "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
+                "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
                 "scores": [
-                  100,
-                  88,
-                  100,
                   100,
                   92,
                   100,
-                  90,
                   100,
-                  90,
+                  94,
+                  100,
+                  94,
+                  100,
+                  92,
                   null
                 ],
                 "notes": {
-                  "8": "Bxe2 captures the unguarded bishop, which guards d1, along the diagonal."
+                  "8": "The diagonal capture from g4 to e2 collects the now-unguarded target. The clue adds the approach line without giving the square."
                 },
                 "position": {
                   "fen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
@@ -12318,21 +12319,21 @@
                 }
               },
               {
-                "hint": "Capturing a guard can weaken protection without attacking every defender. Play Bxe2.",
+                "hint": "A capture's gain depends on both the target and any recapture. Play Bxe2.",
                 "scores": [
                   100,
                   100,
                   100,
                   100,
+                  94,
+                  100,
+                  94,
+                  100,
                   92,
-                  100,
-                  90,
-                  100,
-                  90,
                   null
                 ],
                 "notes": {
-                  "8": "Bxe2 removes a guard of the d1 rook."
+                  "8": "Bxe2 is the legal current move and captures the exposed target; the principle reminds the learner to consider recaptures."
                 },
                 "position": {
                   "fen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
@@ -12389,8 +12390,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The a5 knight has one pawn guard on b6 and defends the b7 bishop.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The a5 knight has one pawn guard on b6 and defends the b7 bishop."
                 },
                 "position": {
                   "fen": "r1nq2k1/1b1p1rbp/pp2p1p1/n3Pp2/5P2/BNN2B2/PPP2QPP/3R1RK1 w - - 7 21",
@@ -12575,8 +12576,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The d4 knight has one heavy guard on b6 and guards the e6 pawn.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The d4 knight has one heavy guard on b6 and guards the e6 pawn."
                 },
                 "position": {
                   "fen": "6k1/6pp/1q1np3/3p4/1p1n4/1P3PP1/1B2Q1KP/5B2 w - - 0 37",
@@ -12675,8 +12676,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "Qxe6+ creates a checking fork on the king and d6 knight; this gives away much of the tactic.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "Qxe6+ creates a checking fork on the king and d6 knight; this gives away much of the tactic."
                 },
                 "position": {
                   "fen": "6k1/6pp/3np3/3p4/1p1q4/1P3PP1/4Q1KP/5B2 w - - 0 38",
@@ -12726,8 +12727,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The unguarded d6 knight shares the f8 king’s diagonal, which strongly identifies the target.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The unguarded d6 knight shares the f8 king’s diagonal, which strongly identifies the target."
                 },
                 "position": {
                   "fen": "5k2/6pp/3nQ3/3p4/1p1q4/1P3PP1/6KP/5B2 w - - 1 39",
@@ -12832,8 +12833,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The f3 knight has two guards, e2 and g2, and defends the bishop on g5.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The f3 knight has two guards, e2 and g2, and defends the bishop on g5."
                 },
                 "position": {
                   "fen": "rn2k1nr/ppp2ppp/3b4/3p1qB1/3P2b1/1PP2N1P/P3BPP1/RN1QK2R b KQkq - 0 9",
@@ -13013,8 +13014,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The g6 knight has a single pawn guard on h7 and defends the h8 rook.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The g6 knight has a single pawn guard on h7 and defends the h8 rook."
                 },
                 "position": {
                   "fen": "r3k2r/1ppbq2p/p4pn1/3p3Q/1b3P1N/1P6/1PPP2PP/R1B2RK1 w kq - 0 15",
@@ -13089,8 +13090,8 @@
                   null
                 ],
                 "notes": {
-                  "8": "The unguarded h8 rook shares the e8 king’s rank; this makes the capture easier to locate.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The unguarded h8 rook shares the e8 king’s rank; this makes the capture easier to locate."
                 },
                 "position": {
                   "fen": "r3k2r/1ppbq3/p4pp1/3p3Q/1b3P2/1P6/1PPP2PP/R1B2RK1 w kq - 0 16",
@@ -13170,9 +13171,9 @@
             "Capturing the defender changes the support available to the pieces it guarded. Play Rxc5."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy pawn has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded small target on the file that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Rxa5."
+            "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the file.",
+            "A capture's gain depends on both the target and any recapture. Play Rxa5."
           ]
         ],
         "hintReviews": {
@@ -13195,8 +13196,8 @@
                   96
                 ],
                 "notes": {
-                  "8": "The c5 rook is guarded by the d4 pawn and protects the a5 pawn.",
-                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below."
+                  "2": "The clue may be either too revealing or too weak as guidance at this hint level; see the position review below.",
+                  "8": "The c5 rook is guarded by the d4 pawn and protects the a5 pawn."
                 },
                 "position": {
                   "fen": "r7/2k2p2/1Rr1p3/P1RpP2p/2pP2p1/2P3P1/5P1P/6K1 b - - 4 37",
@@ -13257,21 +13258,22 @@
             ],
             [
               {
-                "hint": "Removing a guard can leave the piece it protects easier to attack. An enemy pawn has no guard.",
+                "hint": "A capture can win material when the target has too little protection. An enemy pawn has no guard.",
                 "scores": [
-                  100,
-                  90,
-                  100,
                   100,
                   92,
                   100,
-                  90,
-                  95,
-                  90,
+                  100,
+                  94,
+                  100,
+                  94,
+                  100,
+                  92,
                   null
                 ],
                 "notes": {
-                  "8": "The a5 pawn is unguarded and guards the b6 rook; the observation omits that second role."
+                  "8": "The pawn on a5 is unguarded. The current move collects that pawn after the previous exchange.",
+                  "2": "Subtle and accurate, though a guard-count clue is less distinctive than a unique tactical relationship."
                 },
                 "position": {
                   "fen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
@@ -13281,21 +13283,21 @@
                 }
               },
               {
-                "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded small target on the file that guards another target.",
+                "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded small target on the file.",
                 "scores": [
-                  100,
-                  88,
-                  100,
                   100,
                   92,
                   100,
-                  90,
                   100,
-                  90,
+                  94,
+                  100,
+                  94,
+                  100,
+                  92,
                   null
                 ],
                 "notes": {
-                  "8": "Rxa5 captures the unguarded pawn along the a-file; that pawn guards the b6 rook."
+                  "8": "The rook on a8 reaches the unguarded pawn along the a-file. The clue names that stable board relationship."
                 },
                 "position": {
                   "fen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
@@ -13305,21 +13307,21 @@
                 }
               },
               {
-                "hint": "Capturing a guard can weaken protection without attacking every defender. Play Rxa5.",
+                "hint": "A capture's gain depends on both the target and any recapture. Play Rxa5.",
                 "scores": [
                   100,
                   100,
                   100,
                   100,
+                  94,
+                  100,
+                  94,
+                  100,
                   92,
-                  100,
-                  90,
-                  100,
-                  90,
                   null
                 ],
                 "notes": {
-                  "8": "Rxa5 removes the pawn guarding b6."
+                  "8": "Rxa5 is the legal current capture. Describing a further guard-removal plan would overstate what this solution demonstrates."
                 },
                 "position": {
                   "fen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
@@ -13351,9 +13353,9 @@
             "Capturing the defender changes the support available to the pieces it guarded. Play Nxd4."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play Bxe2."
+            "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
+            "A capture's gain depends on both the target and any recapture. Play Bxe2."
           ]
         ],
         "hintReviews": {
@@ -13437,21 +13439,22 @@
             ],
             [
               {
-                "hint": "Removing a guard can leave the piece it protects easier to attack. An enemy medium piece has no guard.",
+                "hint": "A capture can win material when the target has too little protection. An enemy medium piece has no guard.",
                 "scores": [
-                  100,
-                  90,
-                  100,
                   100,
                   92,
                   100,
-                  90,
-                  95,
-                  90,
+                  100,
+                  94,
+                  100,
+                  94,
+                  100,
+                  92,
                   null
                 ],
                 "notes": {
-                  "8": "The e2 knight is unguarded and protects the queen on d4; the clue does not mention the queen."
+                  "8": "The current target on e2 is an unguarded medium piece. This is the capture after the setup, not another instruction to remove a guard.",
+                  "2": "Subtle and accurate, though a guard-count clue is less distinctive than a unique tactical relationship."
                 },
                 "position": {
                   "fen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
@@ -13461,21 +13464,21 @@
                 }
               },
               {
-                "hint": "A defender may be worth removing before the target it guards. Look for a capture of the unguarded medium piece on the diagonal that guards another target.",
+                "hint": "A safe capture weighs the target against any possible recapture. Look for a capture of the unguarded medium piece on the diagonal.",
                 "scores": [
-                  100,
-                  88,
-                  100,
                   100,
                   92,
                   100,
-                  90,
                   100,
-                  90,
+                  94,
+                  100,
+                  94,
+                  100,
+                  92,
                   null
                 ],
                 "notes": {
-                  "8": "Bxe2 captures the unguarded e2 knight, which guards d4, along the diagonal."
+                  "8": "The diagonal capture from g4 to e2 collects the now-unguarded target. The clue adds the approach line without giving the square."
                 },
                 "position": {
                   "fen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
@@ -13485,21 +13488,21 @@
                 }
               },
               {
-                "hint": "Capturing a guard can weaken protection without attacking every defender. Play Bxe2.",
+                "hint": "A capture's gain depends on both the target and any recapture. Play Bxe2.",
                 "scores": [
                   100,
                   100,
                   100,
                   100,
+                  94,
+                  100,
+                  94,
+                  100,
                   92,
-                  100,
-                  90,
-                  100,
-                  90,
                   null
                 ],
                 "notes": {
-                  "8": "Bxe2 removes a defender of the queen."
+                  "8": "Bxe2 is the legal current move and captures the exposed target; the principle reminds the learner to consider recaptures."
                 },
                 "position": {
                   "fen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
@@ -13571,9 +13574,9 @@
             "A clearance plan makes a line available to an attacker that could not use it before. Play Rxe2."
           ],
           [
-            "An exchange can draw a defender onto a less safe square. One pawn stands beside the enemy king.",
-            "A recapture can place a defender where another attack can reach it. Look for a checking offer that draws the heavy defender away.",
-            "A tempting capture can change which squares a defender must guard. Play Re1."
+            "Attacking an enemy piece can force it to retreat or gain protection. An enemy heavy piece has no guard.",
+            "A new threat can force a choice between defending and retreating. Look for a new threat against the heavy piece.",
+            "An active attacker can gain time by making an enemy piece respond. Play Re1."
           ],
           [
             "A capture can win material when the target has too little protection. An enemy heavy piece has no guard.",
@@ -14006,9 +14009,9 @@
             "An intermezzo changes the order of play so a forcing threat is handled first. Play Qxc8+."
           ],
           [
-            "Removing a guard can leave the piece it protects easier to attack. An enemy heavy piece has one heavy guard.",
-            "A defender may be worth removing before the target it guards. Look for a capture of the heavy piece with one guard that guards another target.",
-            "Capturing a guard can weaken protection without attacking every defender. Play cxd4."
+            "A capture can win material when the target has too little protection. An enemy heavy piece has one heavy guard.",
+            "A safe capture weighs the target against any possible recapture. Look for a capture of the heavy piece with one guard.",
+            "A capture's gain depends on both the target and any recapture. Play cxd4."
           ]
         ]
       }
