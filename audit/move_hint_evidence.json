@@ -211,7 +211,7 @@
     "move": 2,
     "beforeFen": "5r2/ppk4p/2p1n1p1/4N3/4P1Q1/2P5/PP3qPP/R6K b - - 2 25",
     "san": "Qf1+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -297,7 +297,7 @@
     "move": 2,
     "beforeFen": "r4rk1/1pp5/2P5/p5p1/6Qp/PP2P3/5qPP/R1BR3K b - - 8 24",
     "san": "Qf1+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -384,7 +384,7 @@
     "move": 2,
     "beforeFen": "r1bq3k/pp3Qpp/2p5/3pb3/3P4/2NP3P/PP4P1/5RK1 w - - 2 19",
     "san": "Qf8+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -766,7 +766,7 @@
     "move": 2,
     "beforeFen": "r4r1k/p5pp/7N/q7/2Q2P2/7P/6P1/6K1 w - - 6 31",
     "san": "Qg8+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -857,7 +857,7 @@
     "move": 2,
     "beforeFen": "2r2r2/1p3pk1/p5p1/2qPP3/7Q/1P4Pn/P3P1BP/R4R1K b - - 6 26",
     "san": "Qg1+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -1004,7 +1004,7 @@
     "move": 2,
     "beforeFen": "3B3r/p5pp/6k1/1QP5/3q4/7n/6PP/1R3R1K b - - 6 34",
     "san": "Qg1+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -1096,7 +1096,7 @@
     "move": 2,
     "beforeFen": "r1b2rk1/pp1p1p1p/1q4p1/3Q2B1/2B2P2/2P4n/PP4PP/RN3R1K b - - 4 19",
     "san": "Qg1+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -1187,7 +1187,7 @@
     "move": 2,
     "beforeFen": "5rk1/8/Q5pp/2q2N2/8/2b3Pn/P5BP/3R1R1K b - - 2 30",
     "san": "Qg1+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -3841,7 +3841,7 @@
     "move": 2,
     "beforeFen": "rnb2rk1/pppp1ppp/4p3/8/3Pn2N/2P3P1/P1PBQqBP/R3K2R w KQ - 0 11",
     "san": "Qxf2",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "f2",
     "observation": {
       "kind": "target",
@@ -4059,7 +4059,7 @@
     "move": 2,
     "beforeFen": "r4rk1/pppn1p2/3p2p1/3P1b2/1PP3p1/2N4P/P3BP2/R4RK1 w - - 0 17",
     "san": "hxg4",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "g4",
     "observation": {
       "kind": "target",
@@ -4084,7 +4084,7 @@
     "move": 3,
     "beforeFen": "r4rk1/pppn1p2/3p2p1/3P4/1PP3b1/2N5/P3BP2/R4RK1 w - - 0 18",
     "san": "Bxg4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "g4",
     "observation": {
       "kind": "target",
@@ -4136,7 +4136,7 @@
     "move": 2,
     "beforeFen": "3r1b1r/1pkq1ppp/pNn1p3/2p1P3/6P1/3Qp2P/PPP2P2/2KR1R1R w - - 2 17",
     "san": "Nxd7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d7",
     "observation": {
       "kind": "target",
@@ -4197,7 +4197,7 @@
     "move": 2,
     "beforeFen": "rnb1kb1r/1p3ppp/4p3/1p1pn1B1/3q4/2N5/PPPQ1PPP/R4RK1 w kq - 0 12",
     "san": "Qxd4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d4",
     "observation": {
       "kind": "target",
@@ -4246,7 +4246,7 @@
     "move": 2,
     "beforeFen": "r5k1/pQp2ppp/1n1b4/7q/3P3P/6P1/PP1BRP2/R5K1 b - - 0 19",
     "san": "Qxe2",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e2",
     "observation": {
       "kind": "target",
@@ -4481,7 +4481,7 @@
     "move": 2,
     "beforeFen": "r1b2rk1/p1p1bppp/2p5/3p2q1/3P4/2P2N2/P1P2PPP/R2QR1K1 w - - 0 13",
     "san": "Nxg5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "g5",
     "observation": {
       "kind": "target",
@@ -4722,7 +4722,7 @@
     "move": 3,
     "beforeFen": "2kr1b1r/1pp1npp1/p1n2qb1/3pp1B1/4P3/1BPP1N1P/PP3P2/R2QKN1R w KQ - 0 14",
     "san": "Bxf6",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "f6",
     "observation": {
       "kind": "target",
@@ -5369,7 +5369,7 @@
     "move": 2,
     "beforeFen": "r4rk1/1bq1bppp/pp3n2/2p5/3p1N2/3P1QPP/PPP2PB1/R1B1R1K1 w - - 0 15",
     "san": "Qxb7",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "b7",
     "observation": {
       "kind": "target",
@@ -5395,7 +5395,7 @@
     "move": 3,
     "beforeFen": "r4rk1/1q2bppp/pp3n2/2p5/3p1N2/3P2PP/PPP2PB1/R1B1R1K1 w - - 0 16",
     "san": "Bxb7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "b7",
     "observation": {
       "kind": "target",
@@ -5640,7 +5640,7 @@
     "move": 2,
     "beforeFen": "r3k2r/p1q2ppp/1pp1pn2/4b1B1/8/1N5P/PPP1QPP1/R3R1K1 w kq - 0 17",
     "san": "Qxe5",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "e5",
     "observation": {
       "kind": "target",
@@ -5666,7 +5666,7 @@
     "move": 3,
     "beforeFen": "r3k2r/p4ppp/1pp1pn2/4q1B1/8/1N5P/PPP2PP1/R3R1K1 w kq - 0 18",
     "san": "Rxe5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e5",
     "observation": {
       "kind": "target",
@@ -6197,7 +6197,7 @@
     "move": 2,
     "beforeFen": "r2qk2r/bpp1npp1/p2p1Q1p/4p3/4P1bN/1BPP2N1/PP3PPP/R1B1K2R b KQkq - 0 12",
     "san": "gxf6",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "f6",
     "observation": {
       "kind": "target",
@@ -6343,7 +6343,7 @@
     "move": 2,
     "beforeFen": "2kr1b1r/ppp1q3/2n2n1p/3pN1p1/8/P1PPBN1P/1P3PP1/R2QK2R b KQ - 0 13",
     "san": "Nxe5",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "e5",
     "observation": {
       "kind": "target",
@@ -6524,7 +6524,7 @@
     "move": 2,
     "beforeFen": "r3rk2/bbp2p1n/p2p3q/1p2pN2/1P2P1Q1/2PP3P/1P3PP1/R4RK1 w - - 0 20",
     "san": "Nxh6",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h6",
     "observation": {
       "kind": "target",
@@ -6749,7 +6749,7 @@
     "move": 2,
     "beforeFen": "r4rk1/pp3p1p/2p2p1n/3PQb2/2p5/4qP2/PP2N1PP/3K1R1R w - - 0 21",
     "san": "Qxe3",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e3",
     "observation": {
       "kind": "target",
@@ -7542,7 +7542,7 @@
     "move": 2,
     "beforeFen": "3r1rk1/pp3ppp/5q2/3B4/3b4/6P1/PP1R1P1P/R2Q2K1 w - - 0 18",
     "san": "Rxd4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d4",
     "observation": {
       "kind": "target",
@@ -7584,7 +7584,7 @@
     "move": 2,
     "beforeFen": "2kr3N/pppn2p1/3QB2p/5n1P/4p2q/8/PPP2P2/RNB2RK1 b - - 0 16",
     "san": "Nxd6",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d6",
     "observation": {
       "kind": "target",
@@ -7605,7 +7605,7 @@
     "move": 3,
     "beforeFen": "2kr4/pppn2p1/3nB1Np/7P/4p2q/8/PPP2P2/RNB2RK1 b - - 1 17",
     "san": "Qxh5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h5",
     "observation": {
       "kind": "target",
@@ -8042,7 +8042,7 @@
     "move": 2,
     "beforeFen": "r4rk1/2p1nppp/2q1p3/pb2P1PP/3P4/P2Q1R2/2P1B3/R1B3K1 w - - 0 21",
     "san": "Qxb5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "b5",
     "observation": {
       "kind": "target",
@@ -8103,7 +8103,7 @@
     "move": 2,
     "beforeFen": "rn1q3r/pppkn3/5p2/3pP2Q/7N/2N4P/PPPB1PP1/R3K2R b KQ - 0 13",
     "san": "Rxh5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h5",
     "observation": {
       "kind": "target",
@@ -8588,7 +8588,7 @@
     "move": 2,
     "beforeFen": "r2qk2r/p1p3p1/1p2pP1p/2Qp4/5P2/2N5/PPP3PP/R1B2RK1 b kq - 0 13",
     "san": "bxc5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "c5",
     "observation": {
       "kind": "target",
@@ -8823,7 +8823,7 @@
     "move": 2,
     "beforeFen": "r1bq1rk1/p1p2ppp/1p3n2/2QN4/4P3/5P2/PPPBB1PP/R4RK1 b - - 0 12",
     "san": "bxc5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "c5",
     "observation": {
       "kind": "target",
@@ -9081,7 +9081,7 @@
     "move": 2,
     "beforeFen": "2kr2nr/pp3ppp/8/2b3q1/3n1B2/3P4/PPP3PP/RN3Q1K w - - 0 17",
     "san": "Bxg5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "g5",
     "observation": {
       "kind": "target",
@@ -9490,7 +9490,7 @@
     "move": 2,
     "beforeFen": "r6k/pppb3p/2nb1qB1/4pp1Q/8/3P4/PPP2PPP/R1B2RK1 b - - 0 15",
     "san": "Qxg6",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "g6",
     "observation": {
       "kind": "target",
@@ -9694,7 +9694,7 @@
     "move": 2,
     "beforeFen": "r1b2rk1/p1p2pp1/2p2n1p/2qP4/2B5/5P2/PPP3PP/R1BQ1R1K b - - 2 13",
     "san": "Qxc4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "c4",
     "observation": {
       "kind": "target",
@@ -9984,7 +9984,7 @@
     "move": 2,
     "beforeFen": "rnb1kb1r/pppp1p1p/4q2n/4Q3/4P3/2N5/PPPP2PP/R1B2R1K w kq - 3 11",
     "san": "Qxh8",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h8",
     "observation": {
       "kind": "target",
@@ -10295,7 +10295,7 @@
     "move": 3,
     "beforeFen": "2kr3r/pp1n1B2/2pp3b/7p/3PP1nP/2N3P1/PPPB4/R4RK1 b - - 0 16",
     "san": "Bxd2",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d2",
     "observation": {
       "kind": "target",
@@ -10538,7 +10538,7 @@
     "move": 2,
     "beforeFen": "r1b1r1k1/1pp2pbp/p4np1/4B3/2B1P3/2N5/PPP2PPP/3RR1K1 b - - 0 13",
     "san": "Rxe5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e5",
     "observation": {
       "kind": "target",
@@ -10592,7 +10592,7 @@
     "move": 2,
     "beforeFen": "r1bq1r2/pp3ppk/2p2n2/2b1N3/8/2N5/PPPQ1PPP/2KR3R w - - 0 13",
     "san": "Qxd8",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "d8",
     "observation": {
       "kind": "target",
@@ -10619,7 +10619,7 @@
     "move": 3,
     "beforeFen": "r1br4/pp3ppk/2p2n2/2b1N3/8/2N5/PPP2PPP/2KR3R w - - 0 14",
     "san": "Rxd8",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d8",
     "observation": {
       "kind": "target",
@@ -10967,7 +10967,7 @@
     "move": 2,
     "beforeFen": "rn2kb2/ppp1n2p/3p2p1/8/4q1b1/2QP1P2/PPP3PP/RNBK1B1R b q - 0 10",
     "san": "Bxf3+",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "f3",
     "observation": {
       "kind": "target",
@@ -11081,7 +11081,7 @@
     "move": 2,
     "beforeFen": "rnbk1b1N/pp1pqB1p/2p3p1/8/8/2n2P2/PPPK2PP/RNBQ3R b - - 2 11",
     "san": "Nxd1",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d1",
     "observation": {
       "kind": "target",
@@ -11132,7 +11132,7 @@
     "move": 2,
     "beforeFen": "r1b1k2r/ppp1n1pp/2n5/3Q2B1/4N3/8/PPP2PPP/R4RK1 b kq - 0 13",
     "san": "Nxd5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d5",
     "observation": {
       "kind": "target",
@@ -11181,7 +11181,7 @@
     "move": 2,
     "beforeFen": "r1bqkb1r/ppp1n2p/3p1Qp1/4p3/2n1P2N/3P4/PPP2PPP/RNB1K2R w KQkq - 0 9",
     "san": "Qxh8",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h8",
     "observation": {
       "kind": "target",
@@ -11257,7 +11257,7 @@
     "move": 3,
     "beforeFen": "q7/pp1b3p/3k1p2/3Bp3/1P2P3/8/PP2nPPP/2Q2R1K b - - 2 19",
     "san": "Nxc1",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "c1",
     "observation": {
       "kind": "target",
@@ -11633,7 +11633,7 @@
     "move": 3,
     "beforeFen": "3r2r1/1k1qppb1/pNp1bn2/1p1pB2p/3P3P/P2BPpQ1/1PP3P1/3R1RK1 w - - 2 19",
     "san": "Nxd7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d7",
     "observation": {
       "kind": "target",
@@ -11706,7 +11706,7 @@
     "move": 3,
     "beforeFen": "rn1qk2r/pp3ppp/2p1p1b1/1B2N3/1b1PpB2/4P3/PPP2PPP/R2Q1RK1 b kq - 1 10",
     "san": "cxb5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "b5",
     "observation": {
       "kind": "target",
@@ -12403,7 +12403,7 @@
     "move": 2,
     "beforeFen": "1r1qk2r/2pn1pp1/p1pb4/4p1Pp/N2pP1bP/1P1P2Q1/P1P1NP2/R1B2RK1 b k - 2 16",
     "san": "Bxe2",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e2",
     "observation": {
       "kind": "target",
@@ -12487,7 +12487,7 @@
     "move": 2,
     "beforeFen": "r4rk1/2p2p1p/p1n1bnp1/2p5/3qPB2/P2PQ1N1/2P3PP/RB3RK1 b - - 6 17",
     "san": "Qxa1",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "a1",
     "observation": {
       "kind": "target",
@@ -13083,15 +13083,15 @@
     "move": 2,
     "beforeFen": "8/4k1p1/1p2p1P1/2ppP1KP/8/2P5/P7/8 w - - 0 34",
     "san": "h6",
-    "topic": "exchangeAttraction",
+    "topic": "pawnBreak",
     "target": null,
     "observation": {
-      "kind": "king-neighbors",
-      "square": "e7",
+      "kind": "target",
+      "square": "g7",
       "color": "b",
-      "neighbors": [
-        "e6"
-      ]
+      "type": "p",
+      "guards": [],
+      "relation": "rank"
     },
     "line": null,
     "uncovered": [],
@@ -13227,16 +13227,15 @@
     "move": 2,
     "beforeFen": "8/8/8/1k6/1P3pp1/1K6/P5PP/8 b - - 1 45",
     "san": "f3",
-    "topic": "exchangeAttraction",
+    "topic": "pawnBreak",
     "target": null,
     "observation": {
-      "kind": "king-neighbors",
-      "square": "b3",
+      "kind": "target",
+      "square": "g2",
       "color": "w",
-      "neighbors": [
-        "b4",
-        "a2"
-      ]
+      "type": "p",
+      "guards": [],
+      "relation": null
     },
     "line": null,
     "uncovered": [],
@@ -13613,7 +13612,7 @@
     "move": 2,
     "beforeFen": "8/ppk5/8/2P5/1P3p1p/P2Q3P/6K1/4q3 b - - 3 51",
     "san": "Qg3+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -13782,7 +13781,7 @@
     "move": 2,
     "beforeFen": "6k1/2p2p2/p4Q2/8/2P5/7P/5PPK/3q4 b - - 2 33",
     "san": "Qd6+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -14805,7 +14804,7 @@
     "move": 2,
     "beforeFen": "r2qk2r/1b2bppp/p1p2P2/4pP2/8/2Np4/PPPB3P/R2QK2R w KQkq - 0 14",
     "san": "fxe7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e7",
     "observation": {
       "kind": "target",
@@ -15301,7 +15300,7 @@
     "move": 2,
     "beforeFen": "8/ppp2p1k/2np1p2/2b1p2q/2B1P3/2PP1P1P/PPK2Q2/6RR b - - 0 18",
     "san": "Bxf2",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "f2",
     "observation": {
       "kind": "target",
@@ -15350,7 +15349,7 @@
     "move": 2,
     "beforeFen": "2r3k1/6rp/p3p1N1/1p1pqp1Q/7R/P5PP/2P2PK1/8 w - - 2 35",
     "san": "Nxe5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e5",
     "observation": {
       "kind": "target",
@@ -15523,7 +15522,7 @@
     "move": 2,
     "beforeFen": "2kr3r/ppq2p2/N1p2np1/3p3p/3P4/1Q2P3/PP3PPP/2R2RK1 w - - 6 20",
     "san": "Nxc7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "c7",
     "observation": {
       "kind": "target",
@@ -15565,7 +15564,7 @@
     "move": 2,
     "beforeFen": "8/pp2P3/7R/3kr2p/2p3p1/8/P1P3PP/6K1 w - - 1 38",
     "san": "Rxh5",
-    "topic": "exchangeAttraction",
+    "topic": "deflectPromotion",
     "target": "h5",
     "observation": {
       "kind": "target",
@@ -15888,7 +15887,7 @@
     "move": 3,
     "beforeFen": "rnb1kb1r/pp1pq2p/2p3pn/4Q3/2B1P3/2N5/PPPP1PPP/R1B1K2R w KQkq - 1 8",
     "san": "Qxh8",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h8",
     "observation": {
       "kind": "target",
@@ -16447,7 +16446,7 @@
     "move": 2,
     "beforeFen": "3r1r2/pp3ppk/2n5/3qp3/8/1P3P2/P1PQ1P1P/2KR3R w - - 0 16",
     "san": "Qxd5",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "d5",
     "observation": {
       "kind": "target",
@@ -16849,7 +16848,7 @@
     "move": 2,
     "beforeFen": "3rk2r/1p1n1ppp/pq1Qp3/4N3/5P2/2N5/PPP3KP/R1B2R2 b k - 0 15",
     "san": "Qxd6",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d6",
     "observation": {
       "kind": "target",
@@ -16904,7 +16903,7 @@
     "move": 2,
     "beforeFen": "r2q1k1r/ppp2ppp/2Nb4/1B1n4/8/7P/PPPP1PP1/RNBbR1K1 w - - 1 11",
     "san": "Nxd8",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d8",
     "observation": {
       "kind": "target",
@@ -16952,7 +16951,7 @@
     "move": 2,
     "beforeFen": "r3k2r/pp2qpbp/2p1b1p1/4Bp2/1P1P4/P1P5/4BPPP/R2QK2R w KQkq - 3 17",
     "san": "Bxg7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "g7",
     "observation": {
       "kind": "target",
@@ -17695,7 +17694,7 @@
     "move": 2,
     "beforeFen": "r1b2k1r/1pQ3p1/1pp5/7p/3qP3/1BNP1P1n/PPP3PP/R4R1K b - - 6 20",
     "san": "Qg1+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -18066,7 +18065,7 @@
     "move": 2,
     "beforeFen": "r3r1k1/p3Bppp/1qp5/4p3/2Q1P3/1PN4n/P1P3PP/R4R1K b - - 4 20",
     "san": "Qg1+",
-    "topic": "checkingOffer",
+    "topic": "closeEscapeOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -18856,7 +18855,7 @@
     "move": 2,
     "beforeFen": "r4rk1/p3bppp/b1p5/8/8/3B4/PP3PPP/R1B2RK1 b - - 0 15",
     "san": "Bxd3",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d3",
     "observation": {
       "kind": "target",
@@ -18908,17 +18907,17 @@
     "move": 2,
     "beforeFen": "3r2k1/2p2ppp/8/1P6/8/4Q3/5PPP/q1R3K1 b - - 1 28",
     "san": "Rd1+",
-    "topic": "exchangeAttraction",
-    "target": null,
+    "topic": "xrayOffer",
+    "target": "c1",
     "observation": {
-      "kind": "king-neighbors",
-      "square": "g1",
+      "kind": "target",
+      "square": "c1",
       "color": "w",
-      "neighbors": [
-        "f2",
-        "g2",
-        "h2"
-      ]
+      "type": "r",
+      "guards": [
+        "e3"
+      ],
+      "relation": "rank"
     },
     "line": null,
     "uncovered": [],
@@ -19118,7 +19117,7 @@
     "move": 2,
     "beforeFen": "2k1r3/pp6/2p5/2P5/1P6/7P/P3R1P1/3rR2K b - - 0 36",
     "san": "Rxe1+",
-    "topic": "exchangeAttraction",
+    "topic": "exchange",
     "target": "e1",
     "observation": {
       "kind": "target",
@@ -19540,7 +19539,7 @@
     "move": 2,
     "beforeFen": "8/ppn4R/2p1r3/2P1k3/6P1/8/PP5P/6K1 w - - 1 32",
     "san": "Rxc7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "c7",
     "observation": {
       "kind": "target",
@@ -20418,7 +20417,7 @@
     "move": 2,
     "beforeFen": "2r4k/p4Qpp/3p4/8/PP6/2P5/3qr1PP/R4RK1 w - - 1 24",
     "san": "Qf8+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -20740,7 +20739,7 @@
     "move": 2,
     "beforeFen": "1k2r3/1ppQ2p1/p1p2p1p/4r3/2P1b3/4BqPP/PP3P1K/3RR3 w - - 5 27",
     "san": "Qd8+",
-    "topic": "exchangeAttraction",
+    "topic": "supportedOffer",
     "target": null,
     "observation": {
       "kind": "king-neighbors",
@@ -20822,17 +20821,15 @@
     "move": 2,
     "beforeFen": "r4nk1/1pqb1ppp/2pb1p2/p4P2/3P3P/2NBQ3/PPP3P1/2KR3R b - - 0 16",
     "san": "Bf4",
-    "topic": "exchangeAttraction",
-    "target": null,
+    "topic": "pressure",
+    "target": "e3",
     "observation": {
-      "kind": "king-neighbors",
-      "square": "c1",
+      "kind": "target",
+      "square": "e3",
       "color": "w",
-      "neighbors": [
-        "b2",
-        "c2",
-        "d1"
-      ]
+      "type": "q",
+      "guards": [],
+      "relation": "diagonal"
     },
     "line": null,
     "uncovered": [],
@@ -21527,7 +21524,7 @@
     "move": 2,
     "beforeFen": "r1b2rk1/pppn2pp/3b4/3p4/3Pp1q1/6P1/PPP2PNP/R1BQ1RK1 w - - 0 14",
     "san": "Qxg4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "g4",
     "observation": {
       "kind": "target",
@@ -21622,7 +21619,7 @@
     "move": 2,
     "beforeFen": "r1bqr1k1/pppp1ppp/2n5/4P3/2P1N3/1P2nN2/P3B1PP/R1BQK2R b KQ - 1 10",
     "san": "Nxd1",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d1",
     "observation": {
       "kind": "target",
@@ -21707,7 +21704,7 @@
     "move": 2,
     "beforeFen": "7r/Q1k2p2/1b1pb2p/1Pp3p1/4n3/4BN2/5PPP/R5K1 b - - 0 29",
     "san": "Bxa7",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "a7",
     "observation": {
       "kind": "target",
@@ -21833,7 +21830,7 @@
     "move": 3,
     "beforeFen": "r1b1k2r/p4p2/1pnpp2p/3p4/3P3q/3BPPP1/PPP5/R2QK1NR b KQkq - 0 13",
     "san": "Qxh1",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "h1",
     "observation": {
       "kind": "target",
@@ -21926,7 +21923,7 @@
     "move": 2,
     "beforeFen": "r2qkb1r/1p3ppp/p4n2/2p1p3/P2pP1Q1/3P2N1/BPP2PPP/R1B1K2R b KQkq - 0 12",
     "san": "Nxg4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "g4",
     "observation": {
       "kind": "target",
@@ -22094,7 +22091,7 @@
     "move": 2,
     "beforeFen": "rn3rk1/2p1bpp1/1p1p2qp/p7/P2BP1bP/1QP5/1P1NBPP1/2KR3R b - - 0 15",
     "san": "Bxe2",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e2",
     "observation": {
       "kind": "target",
@@ -22377,7 +22374,7 @@
     "move": 2,
     "beforeFen": "r7/2k2p2/1R2p3/P1PpP2p/2p3p1/2P3P1/5P1P/6K1 b - - 0 38",
     "san": "Rxa5",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "a5",
     "observation": {
       "kind": "target",
@@ -22424,7 +22421,7 @@
     "move": 2,
     "beforeFen": "r2q1rk1/pp2bppp/5n2/3p4/3Q2b1/6P1/PPP1NPBP/R1B2RK1 b - - 0 12",
     "san": "Bxe2",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "e2",
     "observation": {
       "kind": "target",
@@ -22586,15 +22583,15 @@
     "move": 2,
     "beforeFen": "r1b3k1/pp3p2/3p2pp/2p5/2P5/1PQ3P1/P3qPBP/R5K1 w - - 0 21",
     "san": "Re1",
-    "topic": "exchangeAttraction",
-    "target": null,
+    "topic": "pressure",
+    "target": "e2",
     "observation": {
-      "kind": "king-neighbors",
-      "square": "g8",
+      "kind": "target",
+      "square": "e2",
       "color": "b",
-      "neighbors": [
-        "f7"
-      ]
+      "type": "q",
+      "guards": [],
+      "relation": null
     },
     "line": null,
     "uncovered": [],
@@ -23541,7 +23538,7 @@
     "move": 2,
     "beforeFen": "2Q5/5ppk/4p2p/3pq3/1P1r1n2/P1P3RP/5PP1/2R3K1 w - - 1 31",
     "san": "cxd4",
-    "topic": "removeGuard",
+    "topic": "capture",
     "target": "d4",
     "observation": {
       "kind": "target",

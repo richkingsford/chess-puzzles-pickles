@@ -68,7 +68,7 @@ const lessons = {
   promotion: [
     'A pawn reaching the last rank can become a stronger piece.',
     'Promotion can turn a small passed piece into a much larger threat.',
-    'A clear promotion square lets an advanced pawn become a new attacker.'
+    'Reaching the last rank lets a pawn become a new attacker.'
   ],
   underPromotion: [
     'A smaller promotion can avoid stalemate or create a different attack.',
@@ -176,6 +176,33 @@ lessons.mateThreat = [
  'A threat of mate can make defense more urgent than a capture.',
  'A direct mating threat can force the opponent to change its plan.'
 ];
+// Later-move lessons describe the action on this turn, not an incidental
+// defense or the eventual follow-up. Opening concept lessons stay unchanged.
+lessons.pawnBreak = [
+ 'A pawn offer can loosen a barrier of enemy pawns.',
+ 'Offering a small target can break up a barrier to promotion.',
+ 'A pawn breakthrough can open a path toward promotion.'
+];
+lessons.closeEscapeOffer = [
+ 'An offer can crowd the defense and reduce escape space.',
+ 'An accepted offer can put a defender in the way of an escape.',
+ 'Drawing a defender beside its king can block a flight square.'
+];
+lessons.deflectPromotion = [
+ 'A defender with two tasks may be unable to handle both.',
+ 'An offered capture can pull a defender away from a promotion route.',
+ 'Drawing away a blockading piece can free a passed pawn.'
+];
+lessons.xrayOffer = [
+ 'An offer can open a line by drawing its blocker away.',
+ 'A recapture can become possible when a defender leaves a line.',
+ 'Drawing a blocker away can open a route for another attacker.'
+];
+lessons.supportedOffer = [
+ 'An offer can draw a defender onto a less safe square.',
+ 'A guarded offer can allow a recapture after the defender takes.',
+ 'Support for an offered piece can make its capture costly.'
+];
 const alternatives = {
  capture:'Undefended pieces offer material without a protecting piece to recapture.',
  exchangeAttraction:'A recapturing defender can become exposed on its new square.',
@@ -221,6 +248,13 @@ const notes = {
  shieldPasser:'Explains the interposition of a blocker between an advanced passer and a long-range defender.',
  mateThreat:'Explains the defensive priority imposed by a threat of checkmate.'
 };
+Object.assign(notes, {
+ pawnBreak:'Teaches how a pawn offer opens a blocked pawn barrier.',
+ closeEscapeOffer:'Teaches how an offered piece draws a defender onto a king escape square.',
+ deflectPromotion:'Teaches the conflict between accepting a capture and maintaining a promotion blockade.',
+ xrayOffer:'Teaches how accepting a checking offer moves a blocker off a recapture line.',
+ supportedOffer:'Teaches how support for an offered piece allows a recapture.'
+});
 const sq = s => [FILES.indexOf(s[0]), Number(s[1]) - 1];
 const distance = (a,b) => { const [x,y]=sq(a),[u,v]=sq(b);return Math.max(Math.abs(x-u),Math.abs(y-v)); };
 const enemy = c => c === 'w' ? 'b' : 'w';
@@ -267,14 +301,14 @@ function pawnObservation(b,m){
  return {text:`A pawn is ${word(steps)} ${steps===1?'step':'steps'} from promotion.`,fact:{kind:'pawn-distance',square:m.from,color:p.color,steps}};
 }
 function decodeFen(url){return decodeURIComponent(url.split('/analysis/')[1].split('?')[0].replace(/^standard\//,'')).replaceAll('_',' ');}
-function analyze(before,san,nextSan,category){
+function analyze(before,san,nextSan,category,followSan,reviewLocal=false){
  const after=new Chess(before.fen());const m=after.move(san);const foe=enemy(m.color),kingSq=king(before,foe);
  const moved={...after.get(m.to),square:m.to};const targets=pieces(after).filter(p=>p.color===foe&&attacks(after,moved,p.square));
  const valuable=targets.filter(p=>p.type==='k'||VALUES[p.type]>=3);
  const checkers=attackers(after,king(after,foe),m.color);
  const uncovered=pieces(before).filter(p=>p.color===m.color&&p.square!==m.from&&['q','r','b'].includes(p.type)).flatMap(p=>pieces(before).filter(t=>t.color===foe&&(t.type==='k'||VALUES[t.type]>=3)&&after.get(t.square)?.color===foe&&attacks(after,{...after.get(p.square),square:p.square},t.square)&&!attacks(before,p,t.square)).map(t=>({attacker:p.square,target:t.square})));
  let reply=null,replyBoard=null,follow=null,followBoard=null;if(nextSan){replyBoard=new Chess(after.fen());reply=replyBoard.move(nextSan);}
- if(replyBoard&&arguments[4]){followBoard=new Chess(replyBoard.fen());follow=followBoard.move(arguments[4]);}
+ if(replyBoard&&followSan){followBoard=new Chess(replyBoard.fen());follow=followBoard.move(followSan);}
  const recaptured=reply&&reply.to===m.to&&reply.captured;
  const captureSquare=m.flags.includes('e')?m.to[0]+m.from[1]:m.to;
  let topic,target=null,line=null;
@@ -304,9 +338,27 @@ function analyze(before,san,nextSan,category){
  else if(['n','b'].includes(m.piece)&&Number(m.from[1])===(m.color==='w'?1:8))topic='develop';
  else if(valuable.length||targets.some(p=>p.type!=='k'))topic='pressure';
  else topic='improve';
+ // This stricter local review applies after the opening setup.
+ if(reviewLocal){
+  if(topic==='removeGuard'){
+   const victim={...before.get(captureSquare),square:captureSquare};
+   const payoff=follow && before.get(follow.to)?.color===foe &&
+    attacks(before,victim,follow.to) && follow.captured &&
+    attackers(after,follow.to,m.color).length>0;
+   if(!payoff)topic='capture';
+  }
+  if(topic==='exchangeAttraction'){
+   if(m.piece==='p'&&!m.captured)topic='pawnBreak';
+   else if(!m.captured&&!after.isCheck()&&valuable.length)topic='pressure';
+   else if(m.captured&&follow?.promotion&&reply.piece==='r')topic='deflectPromotion';
+   else topic=m.captured?'exchange':attackers(after,m.to,m.color).length?'supportedOffer':'xrayOffer';
+  }
+  if(topic==='checkingOffer'&&reply&&distance(reply.to,kingSq)===1&&followBoard?.isCheckmate())topic='closeEscapeOffer';
+ }
  if(['fork','forkCheck','pressure'].includes(topic))target=(valuable.find(p=>p.type!=='k')||targets.find(p=>p.type!=='k'))?.square;
  else if(m.captured)target=captureSquare;
  else if(topic==='discovered')target=uncovered[0]?.target;
+ else if(topic==='xrayOffer')target=reply.from;
  // A quiet staging move is not the later fork it prepares.
  if(topic==='improve'&&targets.length===0&&follow&&follow.from===m.to&&followBoard.isCheck()){
   const fp={...followBoard.get(follow.to),square:follow.to};
@@ -351,7 +403,8 @@ function analyze(before,san,nextSan,category){
  else if(topic==='escapeCheck'){const count=before.moves({verbose:true}).filter(t=>t.piece==='k').length;observation={text:`The checked king has ${word(count)} legal escape ${count===1?'square':'squares'}.`,fact:{kind:'king-escapes',color:m.color,count}};}
  else if(topic==='develop')observation={text:'A medium piece still waits on its home rank.',fact:{kind:'home-piece',square:m.from,color:m.color,type:m.piece}};
  else if(topic==='discovered'&&target&&before.get(target)?.type==='k')observation=kingObservation(before,foe);
- else if(['exchangeAttraction','checkingOffer'].includes(topic)&&!m.captured)observation=kingObservation(before,foe);
+ else if(topic==='pawnBreak')observation=firstTarget(before,reply.from);
+ else if(['exchangeAttraction','checkingOffer','closeEscapeOffer','supportedOffer'].includes(topic)&&!m.captured)observation=kingObservation(before,foe);
  else if(target&&before.get(target)?.type!=='k')observation=firstTarget(before,target);
  else if(['pawnPush','pawnSpace','promotion','underPromotion','enPassant'].includes(topic))observation=pawnObservation(before,m);
  else if(['mate','check','contactCheck','doubleCheck','attraction','forkCheck'].includes(topic))observation=kingObservation(before,foe);
@@ -380,6 +433,11 @@ function targetDescription(a,before,includePath=true){
 function secondCue(a,before){
  const {topic,m,target,line,observation}=a;
  if(topic==='mate')return m.captured?`Look for a checking capture of ${targetDescription(a,before)}.`:line?`Look for a final checking entry on the ${line.relation}.`:m.piece==='n'?'Look for a jumping check with no legal escape.':'Look for a close check with no legal escape.';
+ if(topic==='pawnBreak')return 'Look for a small offer against the neighboring barrier.';
+ if(topic==='closeEscapeOffer')return 'Look for a checking offer that crowds the escape squares.';
+ if(topic==='xrayOffer')return 'Look for a checking offer that draws the heavy blocker off its line.';
+ if(topic==='supportedOffer')return 'Look for a checking offer on a guarded square.';
+ if(topic==='deflectPromotion')return 'Look for an offer that pulls the heavy blocker off its file.';
  if(topic==='exchange')return `Look for a trade of ${targetDescription(a,before)}.`;
  if(topic==='checkingOffer')return 'Look for a checking offer that makes a defender leave its post.';
  if(topic==='maneuver')return 'Look for a quiet staging step toward the two valuable targets.';
@@ -418,7 +476,7 @@ function rewrite(data){
   const board=new Chess(decodeFen(url));const moves=puzzle.answer.split(',').map(s=>s.trim());const groups=[];
   for(let i=0;i<moves.length;i++){
    if(i%2){board.move(moves[i]);continue;}
-   const before=board.fen(),a=analyze(board,moves[i],moves[i+1],category,moves[i+2]),lesson=[...lessons[a.topic]];
+   const before=board.fen(),a=analyze(board,moves[i],moves[i+1],category,moves[i+2],i>0),lesson=[...lessons[a.topic]];
    if(i===0){const primary=puzzle.tags?.[0];if(!primaryLessons[primary])throw Error('Unreviewed primary concept: '+primary);lesson.splice(0,3,...primaryLessons[primary].principles);}
    let hints=[`${lesson[0]} ${a.observation.text}`,`${lesson[1]} ${secondCue(a,board)}`,`${lesson[2]} Play ${moves[i]}.`];
    if(groups.length&&hints[0]===groups.at(-1)[0]&&hints[1]===groups.at(-1)[1]){

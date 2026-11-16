@@ -2015,5 +2015,118 @@
       "castling"
     ],
     "conceptName": "castling"
+  },
+  "A pawn offer can loosen a barrier of enemy pawns": {
+    "status": "approved",
+    "reason": "Teaches how a pawn offer opens a blocked pawn barrier.",
+    "topics": [
+      "pawnBreak"
+    ]
+  },
+  "Offering a small target can break up a barrier to promotion": {
+    "status": "approved",
+    "reason": "Teaches how a pawn offer opens a blocked pawn barrier.",
+    "topics": [
+      "pawnBreak"
+    ]
+  },
+  "A pawn breakthrough can open a path toward promotion": {
+    "status": "approved",
+    "reason": "Teaches how a pawn offer opens a blocked pawn barrier.",
+    "topics": [
+      "pawnBreak"
+    ]
+  },
+  "An offer can crowd the defense and reduce escape space": {
+    "status": "approved",
+    "reason": "Teaches how an offered piece draws a defender onto a king escape square.",
+    "topics": [
+      "closeEscapeOffer"
+    ]
+  },
+  "An accepted offer can put a defender in the way of an escape": {
+    "status": "approved",
+    "reason": "Teaches how an offered piece draws a defender onto a king escape square.",
+    "topics": [
+      "closeEscapeOffer"
+    ]
+  },
+  "Drawing a defender beside its king can block a flight square": {
+    "status": "approved",
+    "reason": "Teaches how an offered piece draws a defender onto a king escape square.",
+    "topics": [
+      "closeEscapeOffer"
+    ]
+  },
+  "A defender with two tasks may be unable to handle both": {
+    "status": "approved",
+    "reason": "Teaches the conflict between accepting a capture and maintaining a promotion blockade.",
+    "topics": [
+      "deflectPromotion"
+    ]
+  },
+  "An offered capture can pull a defender away from a promotion route": {
+    "status": "approved",
+    "reason": "Teaches the conflict between accepting a capture and maintaining a promotion blockade.",
+    "topics": [
+      "deflectPromotion"
+    ]
+  },
+  "Drawing away a blockading piece can free a passed pawn": {
+    "status": "approved",
+    "reason": "Teaches the conflict between accepting a capture and maintaining a promotion blockade.",
+    "topics": [
+      "deflectPromotion"
+    ]
+  },
+  "An offer can draw a defender onto a less safe square": {
+    "status": "approved",
+    "reason": "Teaches how support for an offered piece allows a recapture.",
+    "topics": [
+      "lineOffer",
+      "supportedOffer"
+    ]
+  },
+  "A guarded offer can allow a recapture after the defender takes": {
+    "status": "approved",
+    "reason": "Teaches how support for an offered piece allows a recapture.",
+    "topics": [
+      "supportedOffer"
+    ]
+  },
+  "Support for an offered piece can make its capture costly": {
+    "status": "approved",
+    "reason": "Teaches how support for an offered piece allows a recapture.",
+    "topics": [
+      "supportedOffer"
+    ]
+  },
+  "Reaching the last rank lets a pawn become a new attacker": {
+    "status": "approved",
+    "reason": "Explains the strength gained at the last rank without naming this move.",
+    "topics": [
+      "promotion"
+    ]
+  },
+  "An offer can open a line by drawing its blocker away": {
+    "status": "approved",
+    "reason": "Teaches how accepting a checking offer moves a blocker off a recapture line.",
+    "topics": [
+      "xrayOffer"
+    ]
+  },
+  "A recapture can become possible when a defender leaves a line": {
+    "status": "approved",
+    "reason": "Teaches how accepting a checking offer moves a blocker off a recapture line.",
+    "topics": [
+      "xrayOffer"
+    ]
+  },
+  "Drawing a blocker away can open a route for another attacker": {
+    "status": "approved",
+    "reason": "Teaches how accepting a checking offer moves a blocker off a recapture line.",
+    "topics": [
+      "xrayOffer"
+    ]
   }
 }

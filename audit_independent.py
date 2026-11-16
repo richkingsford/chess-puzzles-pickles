@@ -155,6 +155,61 @@ def audit(dataset, evidence, reviews):
                     if re.search(r'offer|lure|draw|bait|sacrifice',cue):
                         can_be_taken=any(m.to_square==move.to_square and after.is_capture(m) for m in after.legal_moves)
                         if not can_be_taken:fail(8,'offer-advice-after-setup-is-over',c,u,mi)
+                # Check actual prose against this turn, independently of the topic
+                # assigned by the JS generator. A valid recorded fact is not enough.
+                if mi > 1 and len(group) >= 2:
+                    cue=sentences(group[1])[-1].lower()
+                    if re.search(r'checking|(?:close|jumping) check',cue) and not after.is_check() and e['topic']!='blockCheck':
+                        fail(8,'checking-cue-for-quiet-move',c,u,mi)
+                    if kind=='king-neighbors' and not after.is_check() and e['topic']!='mateThreat':
+                        fail(8,'unrelated-king-neighbor-clue',c,u,mi)
+                    if e['topic']=='exchange' and not board.is_capture(move):
+                        fail(8,'exchange-principle-for-quiet-move',c,u,mi)
+                    if e['topic']=='removeGuard':
+                        payoff=False
+                        if answer_index+2<len(sans):
+                            continuation=after.copy();continuation.push_san(sans[answer_index+1])
+                            fm=continuation.parse_san(sans[answer_index+2])
+                            payoff=(continuation.is_capture(fm) and fm.to_square in board.attacks(move.to_square)
+                                and bool(after.attackers(board.turn,fm.to_square)))
+                        if not payoff:fail(8,'incidental-guard-removal',c,u,mi)
+                    if e['topic'] in ('supportedOffer','xrayOffer','closeEscapeOffer','pawnBreak','deflectPromotion'):
+                        reply=after.parse_san(sans[answer_index+1]) if answer_index+1<len(sans) else None
+                        if not reply or reply.to_square!=move.to_square or not after.is_capture(reply):
+                            fail(8,'offer-without-acceptance',c,u,mi)
+                        elif e['topic']=='supportedOffer':
+                            if not after.is_check() or not after.attackers(board.turn,move.to_square):
+                                fail(8,'unsupported-checking-offer',c,u,mi)
+                        elif e['topic']=='xrayOffer':
+                            test=after.copy();test.push(reply)
+                            if not after.is_check() or after.attackers(board.turn,move.to_square) or not test.attackers(board.turn,move.to_square):
+                                fail(8,'false-xray-offer',c,u,mi)
+                        elif e['topic']=='closeEscapeOffer':
+                            if not after.is_check() or distance(reply.to_square,after.king(not board.turn))!=1:
+                                fail(8,'offer-does-not-crowd-escape',c,u,mi)
+                            test=after.copy();test.push(reply)
+                            if answer_index+2>=len(sans):fail(8,'crowding-without-payoff',c,u,mi)
+                            else:
+                                test.push_san(sans[answer_index+2])
+                                if not test.is_checkmate():fail(8,'crowding-without-mate',c,u,mi)
+                        elif e['topic']=='pawnBreak':
+                            if mover.piece_type!=chess.PAWN or board.is_capture(move) or after.piece_type_at(reply.from_square)!=chess.PAWN:
+                                fail(8,'false-pawn-break',c,u,mi)
+                        elif e['topic']=='deflectPromotion':
+                            test=after.copy();test.push(reply)
+                            fm=test.parse_san(sans[answer_index+2])
+                            probe=after.copy();probe.turn=board.turn;probe.push(fm)
+                            test.push(fm)
+                            if not fm.promotion or not probe.is_attacked_by(not board.turn,fm.to_square) or test.is_attacked_by(not board.turn,fm.to_square):
+                                fail(8,'false-promotion-deflection',c,u,mi)
+                    if e['topic']=='kingActivity' and kind=='king-pawn-distance':
+                        if distance(move.to_square,chess.parse_square(obs['square']))>=obs['distance']:
+                            fail(8,'king-not-approaching-target',c,u,mi)
+                    if e['topic']=='pawnPush':
+                        enemy_pawns=board.pieces(chess.PAWN,not board.turn)
+                        blocked=any(abs(chess.square_file(s)-chess.square_file(move.from_square))<=1 and
+                            (chess.square_rank(s)>chess.square_rank(move.from_square) if board.turn else chess.square_rank(s)<chess.square_rank(move.from_square)) for s in enemy_pawns)
+                        if mover.piece_type!=chess.PAWN or blocked:fail(8,'pawn-not-passed',c,u,mi)
                 topic=e['topic'];checker_squares=set(after.checkers());mover=board.piece_at(move.from_square)
                 if topic=='mate' and not after.is_checkmate():fail(8,'false-mate-topic',c,u,mi)
                 if topic=='check' and (not e.get('line') or not any(after.piece_type_at(s) in (chess.BISHOP,chess.ROOK,chess.QUEEN) for s in checker_squares)):fail(8,'non-slider-described-as-line-check',c,u,mi)

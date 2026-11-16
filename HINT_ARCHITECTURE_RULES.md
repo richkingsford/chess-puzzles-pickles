@@ -252,6 +252,17 @@ move, not just the puzzle's opening position or category.
 - Audit the setup and execution separately. Once attraction has already drawn
   a defender away, the next hint must teach the current check, fork, capture,
   or mate rather than telling the player to set up attraction again.
+- Check both sentences against the current action. A true fact about an
+  unrelated pawn or king is still an invalid clue. Do not use a king-neighbor
+  count to explain a quiet attack on a loose piece.
+- A checking cue must actually give check on this turn. Blocking an existing
+  check is different and must be described as a block.
+- Do not label a material-winning capture as guard removal just because the
+  captured piece happened to defend something. Name that lesson only when the
+  solution exploits the loss of that protection.
+- Distinguish a direct guarded offer, an offer that opens a recapture line,
+  an offer that blocks an escape square, and a pawn breakthrough. Validate the
+  relevant relationship before selecting its principle.
 - `audit/move_hint_evidence.json` binds each group to its before-move FEN,
   current SAN, move role and observed targets. The independent Python auditor
   reconstructs those positions with a different chess engine and checks the
